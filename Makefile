@@ -1,7 +1,8 @@
 # James Ray Tracker makefile
 
 # Select appropriate compiler:
-CPP=g++
+CPP=g++		# use on win
+#CPP=g++-8	# use on mac
 CPPFLAGS=-O3 -fopenmp -static -lpthread -Wall -MMD -std=c++14      # multiple threads version
 #CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
 
@@ -17,6 +18,5 @@ Render.o:
 clean:
 	del *.exe *.o *.d
 
-run:
-	nmake JRT.exe
+run: JRT.exe
 	jrt.exe 10 "out/image.ppm"
