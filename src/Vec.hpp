@@ -7,7 +7,7 @@
 
 #include "lib.h"
 
-// vector struct
+// vector definition
 template<typename T>
 struct Vec
 {
@@ -16,10 +16,10 @@ struct Vec
 	Vec(T x_ = 0, T y_ = 0, T z_ = 0) : x(x_), y(y_), z(z_)
 	{}
 
-	Vec operator+(const Vec &b) const
+	inline Vec operator+(const Vec &b) const
 	{ return {x + b.x, y + b.y, z + b.z}; }
 
-	Vec &operator+=(const Vec &b)
+	inline Vec &operator+=(const Vec &b)
 	{
 		x += b.x;
 		y += b.y;
@@ -27,10 +27,10 @@ struct Vec
 		return *this;
 	}
 
-	Vec operator-(const Vec &b) const
+	inline Vec operator-(const Vec &b) const
 	{ return {x - b.x, y - b.y, z - b.z}; }
 
-	Vec &operator-=(const Vec &b)
+	inline Vec &operator-=(const Vec &b)
 	{
 		x -= b.x;
 		y -= b.y;
@@ -38,10 +38,10 @@ struct Vec
 		return *this;
 	}
 
-	Vec operator*(T k) const    // mul number
+	inline Vec operator*(T k) const    // mul number
 	{ return {x * k, y * k, z * k}; }
 
-	Vec &operator*=(T k)
+	inline Vec &operator*=(T k)
 	{
 		x *= k;
 		y *= k;
@@ -49,10 +49,10 @@ struct Vec
 		return *this;
 	}
 
-	Vec operator/(T k) const    // div number
+	inline Vec operator/(T k) const    // div number
 	{ return {x / k, y / k, z / k}; }
 
-	Vec &operator/=(T k)
+	inline Vec &operator/=(T k)
 	{
 		x /= k;
 		y /= k;
@@ -60,25 +60,31 @@ struct Vec
 		return *this;
 	}
 
-	Vec mul(const Vec &b) const    // element-wise multiply
+	inline Vec mul(const Vec &b) const    // element-wise multiply
 	{ return {x * b.x, y * b.y, z * b.z}; }
 
-	T norm()
+	inline T norm()	// Euclidean norm
 	{ return sqrt(x * x + y * y + z * z); }
 
-	Vec &unitize()    // to unit vector
+	inline T sqr()	// square
+	{ return x * x + y * y + z * z; }
+
+	inline Vec &unitize()    // to unit vector
 	{ return *this /= sqrt(x * x + y * y + z * z); }
 
-	T operator*(const Vec &b) const    // dot product
+	inline T operator*(const Vec &b) const    // dot product
 	{ return x * b.x + y * b.y + z * b.z; }
 
-	Vec operator^(const Vec &b) const    // cross product
+	inline Vec operator^(const Vec &b) const    // cross product
 	{ return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x}; }
 
-	T max() const
+	inline T max() const
 	{ return (x >= y && x >= z) ? x : (y >= z) ? y : z; }
 
-	T mean() const
+	inline T min() const
+	{ return (x <= y && x <= z) ? x : (y <= z) ? y : z; }
+
+	inline T mean() const
 	{ return (x + y + z) / 3; }
 
 	/*void get_orthogonal_axises(Vec &ei, Vec &ej) const
@@ -97,20 +103,37 @@ struct Vec
 
 typedef Vec<double> Pos;    // 3D coordinate
 
+struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
+{
+	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_)
+	{}
+
+	inline double &alpha()
+	{ return x; }
+
+	inline double &beta()
+	{ return y; }
+
+	inline double &gamma()
+	{ return z; }
+};
+
 struct Color : public Vec<double>    // RGB Color, range [0, 1]
 {
 	Color(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_)
 	{}
 
-	double r() const
+	inline double &r()
 	{ return x; }
 
-	double g() const
+	inline double &g()
 	{ return y; }
 
-	double b() const
+	inline double &b()
 	{ return z; }
 };
+
+typedef Color Emission;
 
 struct Dir : public Vec<double>		// direction data type, should automatically unitize
 {

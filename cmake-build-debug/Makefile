@@ -178,6 +178,60 @@ src\Render.cpp.s:
 	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\Render.cpp.s
 .PHONY : src\Render.cpp.s
 
+src\scene\Object.obj: src\scene\Object.cpp.obj
+
+.PHONY : src\scene\Object.obj
+
+# target to build an object file
+src\scene\Object.cpp.obj:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Object.cpp.obj
+.PHONY : src\scene\Object.cpp.obj
+
+src\scene\Object.i: src\scene\Object.cpp.i
+
+.PHONY : src\scene\Object.i
+
+# target to preprocess a source file
+src\scene\Object.cpp.i:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Object.cpp.i
+.PHONY : src\scene\Object.cpp.i
+
+src\scene\Object.s: src\scene\Object.cpp.s
+
+.PHONY : src\scene\Object.s
+
+# target to generate assembly for a file
+src\scene\Object.cpp.s:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Object.cpp.s
+.PHONY : src\scene\Object.cpp.s
+
+src\scene\Sphere.obj: src\scene\Sphere.cpp.obj
+
+.PHONY : src\scene\Sphere.obj
+
+# target to build an object file
+src\scene\Sphere.cpp.obj:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj
+.PHONY : src\scene\Sphere.cpp.obj
+
+src\scene\Sphere.i: src\scene\Sphere.cpp.i
+
+.PHONY : src\scene\Sphere.i
+
+# target to preprocess a source file
+src\scene\Sphere.cpp.i:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.i
+.PHONY : src\scene\Sphere.cpp.i
+
+src\scene\Sphere.s: src\scene\Sphere.cpp.s
+
+.PHONY : src\scene\Sphere.s
+
+# target to generate assembly for a file
+src\scene\Sphere.cpp.s:
+	$(MAKE) -f CMakeFiles\test.exe.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.s
+.PHONY : src\scene\Sphere.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -193,6 +247,12 @@ help:
 	@echo ... src/Render.obj
 	@echo ... src/Render.i
 	@echo ... src/Render.s
+	@echo ... src/scene/Object.obj
+	@echo ... src/scene/Object.i
+	@echo ... src/scene/Object.s
+	@echo ... src/scene/Sphere.obj
+	@echo ... src/scene/Sphere.i
+	@echo ... src/scene/Sphere.s
 .PHONY : help
 
 

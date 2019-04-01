@@ -85,6 +85,9 @@
 		<Unit filename="E:/ZFS_TEST/CG/JRT/main.cpp">
 			<Option target="test.exe"/>
 		</Unit>
+		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Ray.hpp">
+			<Option target="test.exe"/>
+		</Unit>
 		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Render.cpp">
 			<Option target="test.exe"/>
 		</Unit>
@@ -92,6 +95,18 @@
 			<Option target="test.exe"/>
 		</Unit>
 		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Vec.hpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Object.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Object.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Sphere.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Sphere.h">
 			<Option target="test.exe"/>
 		</Unit>
 		<Unit filename="E:/ZFS_TEST/CG/JRT/CMakeLists.txt">

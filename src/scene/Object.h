@@ -1,0 +1,42 @@
+//
+// Created by think on 2019/4/2.
+//
+
+#ifndef RAYTRACKER_OBJECT_H
+#define RAYTRACKER_OBJECT_H
+
+#include "../lib.h"
+#include "../Vec.hpp"
+#include "../Ray.hpp"
+
+// base class of 3D object
+struct Object
+{
+	enum ReflType
+	{
+		DIFF, MIRR, REFR
+	};    // diffusive, mirror, refractory
+
+	// member vars
+	Pos pos;
+	Color clr;
+	Emission emi;
+	ElAg ea;
+	ReflType rft;
+
+	// other params ...
+
+	Object(Pos pos_, Color color_, Emission emission_ = {0, 0, 0}, ElAg euler_angles_ = {0, 0, 0},
+		   ReflType refl_type_ = DIFF);
+
+	// standard intersection api, to be overriden
+	virtual double intersect(const Ray &ray);
+
+	// 3D transformation
+	Object &translate(const Pos &delta);
+
+	Object &rotate(const ElAg &dea);
+};
+
+
+#endif //RAYTRACKER_OBJECT_H

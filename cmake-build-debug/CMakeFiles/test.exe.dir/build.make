@@ -96,19 +96,61 @@ CMakeFiles\test.exe.dir\src\Render.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\test.exe.dir\src\Render.cpp.s /c E:\ZFS_TEST\CG\JRT\src\Render.cpp
 <<
 
+CMakeFiles\test.exe.dir\src\scene\Object.cpp.obj: CMakeFiles\test.exe.dir\flags.make
+CMakeFiles\test.exe.dir\src\scene\Object.cpp.obj: ..\src\scene\Object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\ZFS_TEST\CG\JRT\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Object.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\test.exe.dir\src\scene\Object.cpp.obj /FdCMakeFiles\test.exe.dir\ /FS -c E:\ZFS_TEST\CG\JRT\src\scene\Object.cpp
+<<
+
+CMakeFiles\test.exe.dir\src\scene\Object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Object.cpp.i"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\test.exe.dir\src\scene\Object.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\ZFS_TEST\CG\JRT\src\scene\Object.cpp
+<<
+
+CMakeFiles\test.exe.dir\src\scene\Object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Object.cpp.s"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\test.exe.dir\src\scene\Object.cpp.s /c E:\ZFS_TEST\CG\JRT\src\scene\Object.cpp
+<<
+
+CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj: CMakeFiles\test.exe.dir\flags.make
+CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj: ..\src\scene\Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\ZFS_TEST\CG\JRT\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj /FdCMakeFiles\test.exe.dir\ /FS -c E:\ZFS_TEST\CG\JRT\src\scene\Sphere.cpp
+<<
+
+CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.i"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\ZFS_TEST\CG\JRT\src\scene\Sphere.cpp
+<<
+
+CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\test.exe.dir\src\scene\Sphere.cpp.s /c E:\ZFS_TEST\CG\JRT\src\scene\Sphere.cpp
+<<
+
 # Object files for target test.exe
 test_exe_OBJECTS = \
 "CMakeFiles\test.exe.dir\main.cpp.obj" \
-"CMakeFiles\test.exe.dir\src\Render.cpp.obj"
+"CMakeFiles\test.exe.dir\src\Render.cpp.obj" \
+"CMakeFiles\test.exe.dir\src\scene\Object.cpp.obj" \
+"CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj"
 
 # External object files for target test.exe
 test_exe_EXTERNAL_OBJECTS =
 
 test.exe.exe: CMakeFiles\test.exe.dir\main.cpp.obj
 test.exe.exe: CMakeFiles\test.exe.dir\src\Render.cpp.obj
+test.exe.exe: CMakeFiles\test.exe.dir\src\scene\Object.cpp.obj
+test.exe.exe: CMakeFiles\test.exe.dir\src\scene\Sphere.cpp.obj
 test.exe.exe: CMakeFiles\test.exe.dir\build.make
 test.exe.exe: CMakeFiles\test.exe.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\ZFS_TEST\CG\JRT\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test.exe.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\ZFS_TEST\CG\JRT\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test.exe.exe"
 	"C:\Program Files\JetBrains\CLion 2018.2.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\test.exe.dir --manifests  -- C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\test.exe.dir\objects1.rsp @<<
  /out:test.exe.exe /implib:test.exe.lib /pdb:E:\ZFS_TEST\CG\JRT\cmake-build-debug\test.exe.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

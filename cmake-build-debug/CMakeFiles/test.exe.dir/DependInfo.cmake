@@ -6,6 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "E:/ZFS_TEST/CG/JRT/main.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/main.cpp.obj"
   "E:/ZFS_TEST/CG/JRT/src/Render.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/Render.cpp.obj"
+  "E:/ZFS_TEST/CG/JRT/src/scene/Object.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Object.cpp.obj"
+  "E:/ZFS_TEST/CG/JRT/src/scene/Sphere.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 
