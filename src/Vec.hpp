@@ -153,6 +153,20 @@ struct Pos : Vec<double>    // 3D coordinate
 	}
 };
 
+struct Dir : public Vec<double>        // direction data type, should automatically unitize
+{
+	Dir(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
+	{
+		this->unitize();
+	}
+
+	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	{}
+
+	Dir(const Dir &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	{}
+};
+
 struct Color : public Vec<double>    // RGB Color, range [0, 1]
 {
 	double &r, &g, &b;
@@ -168,20 +182,6 @@ struct Color : public Vec<double>    // RGB Color, range [0, 1]
 };
 
 typedef Color Emission;
-
-struct Dir : public Vec<double>        // direction data type, should automatically unitize
-{
-	Dir(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
-	{
-		this->unitize();
-	}
-
-	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
-	{}
-
-	Dir(const Dir &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
-	{}
-};
 
 // common colors
 #define BLACK {0, 0, 0}

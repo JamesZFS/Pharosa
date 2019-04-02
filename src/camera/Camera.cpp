@@ -5,12 +5,17 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-Camera::Camera(const Pos &pos_, const Dir &dir_, unsigned int width_, unsigned int height_) :
-		pos(pos_), dir(dir_), width(width_), height(height_), size(width_ * height_)
+Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
+		pos(pos_), width(width_), height(height_), size(width_ * height_),
+		ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1)
 {
 	img = new Color[size];
 	render_cnt = new unsigned int[size];
 	memset(render_cnt, 0, size * sizeof(unsigned int));
+	// calculate basis vectors
+	ex.rotate(euler_angles_).unitize();
+	ey.rotate(euler_angles_).unitize();
+	ez.rotate(euler_angles_).unitize();
 }
 
 Camera::~Camera()
@@ -45,6 +50,11 @@ const Ray &Camera::shootRay()
 double Camera::progress()
 {
 	return 0;
+}
+
+void Camera::resetProgress()
+{
+
 }
 
 void Camera::writePPM(String out_path) const

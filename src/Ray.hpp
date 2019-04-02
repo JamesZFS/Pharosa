@@ -15,7 +15,7 @@ struct Ray
 
 	Ray() = default;
 
-	Ray(Pos org_, Dir dir_) : org(org_), dir(dir_)
+	Ray(const Pos &org_, const Dir &dir_) : org(org_), dir(dir_)
 	{}
 };
 
