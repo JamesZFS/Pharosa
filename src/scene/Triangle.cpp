@@ -36,11 +36,10 @@ double Triangle::intersect(const Ray &ray) const
 			{ray.dir.y, gp[0].y - gp[1].y, gp[0].y - gp[2].y},
 			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z},
 	};
-
 	double b[3], x[3];
 	(gp[0] - ray.org).putToArray(b);
 
-	if (Solver::SolveLinear((double **) A, b, x, 3)) {    // solvable and has only root
+	if (Solver::SolveLinear(&A[0][0], b, x, 3)) {    // solvable and has only root
 		double t = x[0], beta = x[1], gamma = x[2];
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1) ? t : -1;
 	}

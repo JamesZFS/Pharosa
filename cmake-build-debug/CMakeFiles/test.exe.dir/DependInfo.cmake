@@ -6,10 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/james/Test/CG/JRT/main.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/main.cpp.o"
   "/Users/james/Test/CG/JRT/src/Render.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/Render.cpp.o"
-  "/Users/james/Test/CG/JRT/src/scene/Object.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Object.cpp.o"
-  "/Users/james/Test/CG/JRT/src/scene/Sphere.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o"
-  "/Users/james/Test/CG/JRT/src/scene/Stage.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o"
-  "/Users/james/Test/CG/JRT/src/scene/Triangle.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
