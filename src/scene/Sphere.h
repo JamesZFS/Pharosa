@@ -14,7 +14,7 @@ struct Sphere : public Object
 	Sphere(Pos pos_, double radius_, Color color_, Emission emission_ = {0, 0, 0}, ElAg euler_angles_ = {0, 0, 0},
 		   ReflType refl_type_ = DIFF);
 
-	double intersect(const Ray &ray) override;
+	double intersect(const Ray &ray) const override;
 };
 
 

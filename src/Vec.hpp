@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef JRT_VEC_HPP
-#define JRT_VEC_HPP
+#ifndef RAYTRACKER_VEC_HPP
+#define RAYTRACKER_VEC_HPP
 
 #include "lib.h"
 
@@ -63,10 +63,10 @@ struct Vec
 	inline Vec mul(const Vec &b) const    // element-wise multiply
 	{ return {x * b.x, y * b.y, z * b.z}; }
 
-	inline T norm()	// Euclidean norm
+	inline T norm()    // Euclidean norm
 	{ return sqrt(x * x + y * y + z * z); }
 
-	inline T sqr()	// square
+	inline T sqr()    // square
 	{ return x * x + y * y + z * z; }
 
 	inline Vec &unitize()    // to unit vector
@@ -87,12 +87,12 @@ struct Vec
 	inline T mean() const
 	{ return (x + y + z) / 3; }
 
-	/*void get_orthogonal_axises(Vec &ei, Vec &ej) const
+	inline void putToArray(T *dst) const	// output to `dst`: an array of T
 	{
-		//Vec ei = ((fabs(x) > .1 ? Vec(0, 1) : Vec(1)) ^ *this).norm();
-		ei = (Vec(1) ^ *this).norm();
-		ej = *this ^ ei;
-	}*/
+		dst[0] = x;
+		dst[1] = y;
+		dst[2] = z;
+	}
 
 	void report(bool endl = false) const
 	{
@@ -101,21 +101,53 @@ struct Vec
 	}
 };
 
-typedef Vec<double> Pos;    // 3D coordinate
-
 struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 {
-	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_)
+	double &alpha, &beta, &gamma;
+
+	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
+	{}    // todo can use cosine, sine cache to boost
+
+	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)	// copy constructor
+	{}
+};
+
+struct Pos : Vec<double>    // 3D coordinate
+{
+	Pos(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
 	{}
 
-	inline double &alpha()
-	{ return x; }
+	Pos(const Vec<double> &obj) : Pos(obj.x, obj.y, obj.z)
+	{}
 
-	inline double &beta()
-	{ return y; }
+	inline void rotateAlongX(double theta)
+	{
+		double y_ = cos(theta) * y - sin(theta) * z;
+		z = sin(theta) * y + cos(theta) * z;
+		y = y_;
+	}
 
-	inline double &gamma()
-	{ return z; }
+	inline void rotateAlongY(double theta)
+	{
+		double z_ = cos(theta) * z - sin(theta) * x;
+		x = sin(theta) * z + cos(theta) * x;
+		z = z_;
+	}
+
+	inline void rotateAlongZ(double theta)
+	{
+		double x_ = cos(theta) * x - sin(theta) * y;
+		y = sin(theta) * x + cos(theta) * y;
+		x = x_;
+	}
+
+	Pos &rotate(const ElAg &ea)    // Euler rotation, in place
+	{
+		rotateAlongX(ea.gamma);
+		rotateAlongY(ea.beta);
+		rotateAlongZ(ea.alpha);
+		return *this;
+	}
 };
 
 struct Color : public Vec<double>    // RGB Color, range [0, 1]
@@ -135,7 +167,7 @@ struct Color : public Vec<double>    // RGB Color, range [0, 1]
 
 typedef Color Emission;
 
-struct Dir : public Vec<double>		// direction data type, should automatically unitize
+struct Dir : public Vec<double>        // direction data type, should automatically unitize
 {
 	Dir(double x_, double y_, double z_) : Vec(x_, y_, z_)
 	{
@@ -150,4 +182,4 @@ struct Dir : public Vec<double>		// direction data type, should automatically un
 #define GREEN {0, 1, 0}
 #define BLUE {0, 0, 1}
 
-#endif //JRT_VEC_HPP
+#endif //RAYTRACKER_VEC_HPP

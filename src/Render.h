@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef JRT_RENDER_H
-#define JRT_RENDER_H
+#ifndef RAYTRACKER_RENDER_H
+#define RAYTRACKER_RENDER_H
 
 #include "lib.h"
 
@@ -14,4 +14,4 @@ public:
 	Render();
 };
 
-#endif //JRT_RENDER_H
+#endif //RAYTRACKER_RENDER_H

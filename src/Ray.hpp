@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef JRT_RAY_HPP
-#define JRT_RAY_HPP
+#ifndef RAYTRACKER_RAY_HPP
+#define RAYTRACKER_RAY_HPP
 
 #include "Vec.hpp"
 
@@ -17,4 +17,4 @@ struct Ray
 	{}
 };
 
-#endif //JRT_RAY_HPP
+#endif //RAYTRACKER_RAY_HPP

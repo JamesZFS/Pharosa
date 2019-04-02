@@ -231,6 +231,60 @@ src/scene/Sphere.cpp.s:
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s
 .PHONY : src/scene/Sphere.cpp.s
 
+src/scene/Stage.o: src/scene/Stage.cpp.o
+
+.PHONY : src/scene/Stage.o
+
+# target to build an object file
+src/scene/Stage.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o
+.PHONY : src/scene/Stage.cpp.o
+
+src/scene/Stage.i: src/scene/Stage.cpp.i
+
+.PHONY : src/scene/Stage.i
+
+# target to preprocess a source file
+src/scene/Stage.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.i
+.PHONY : src/scene/Stage.cpp.i
+
+src/scene/Stage.s: src/scene/Stage.cpp.s
+
+.PHONY : src/scene/Stage.s
+
+# target to generate assembly for a file
+src/scene/Stage.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.s
+.PHONY : src/scene/Stage.cpp.s
+
+src/scene/Triangle.o: src/scene/Triangle.cpp.o
+
+.PHONY : src/scene/Triangle.o
+
+# target to build an object file
+src/scene/Triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o
+.PHONY : src/scene/Triangle.cpp.o
+
+src/scene/Triangle.i: src/scene/Triangle.cpp.i
+
+.PHONY : src/scene/Triangle.i
+
+# target to preprocess a source file
+src/scene/Triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.i
+.PHONY : src/scene/Triangle.cpp.i
+
+src/scene/Triangle.s: src/scene/Triangle.cpp.s
+
+.PHONY : src/scene/Triangle.s
+
+# target to generate assembly for a file
+src/scene/Triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.s
+.PHONY : src/scene/Triangle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +306,12 @@ help:
 	@echo "... src/scene/Sphere.o"
 	@echo "... src/scene/Sphere.i"
 	@echo "... src/scene/Sphere.s"
+	@echo "... src/scene/Stage.o"
+	@echo "... src/scene/Stage.i"
+	@echo "... src/scene/Stage.s"
+	@echo "... src/scene/Triangle.o"
+	@echo "... src/scene/Triangle.i"
+	@echo "... src/scene/Triangle.s"
 .PHONY : help
 
 

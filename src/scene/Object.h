@@ -17,25 +17,26 @@ struct Object
 		DIFF, MIRR, REFR
 	};    // diffusive, mirror, refractory
 
-	// member vars
-	Pos pos;
-	Color clr;
-	Emission emi;
-	ElAg ea;
-	ReflType rft;
+	Pos pos;		// ref point position in global coordinate system
+	Color clr;		// color
+	Emission emi;	// emission
+	ElAg ea;		// Euler angles
+	ReflType rft;	// reflection type
 
 	// other params ...
 
 	Object(Pos pos_, Color color_, Emission emission_ = {0, 0, 0}, ElAg euler_angles_ = {0, 0, 0},
 		   ReflType refl_type_ = DIFF);
 
-	// standard intersection api, to be overriden
-	virtual double intersect(const Ray &ray);
+	// standard intersection api, to be overriden. Should return -1 if not hitting
+	virtual double intersect(const Ray &ray) const;
 
-	// 3D transformation
+	// 3D transformation, return *this
 	Object &translate(const Pos &delta);
 
 	Object &rotate(const ElAg &dea);
+
+	virtual void applyTransform();	// apply transform from obj crd to global crd, to be overriden
 };
 
 
