@@ -13,6 +13,8 @@ struct Ray
 	Pos org;
 	Dir dir;
 
+	Ray() = default;
+
 	Ray(Pos org_, Dir dir_) : org(org_), dir(dir_)
 	{}
 };

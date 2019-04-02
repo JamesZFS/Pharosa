@@ -6,11 +6,11 @@
 #define RAYTRACKER_DOFCAMERA_H
 
 
-
-class DOFCamera {
+class DOFCamera
+{
 
 };
 
-
+#include "DOFCamera.cpp"
 
 #endif //RAYTRACKER_DOFCAMERA_H

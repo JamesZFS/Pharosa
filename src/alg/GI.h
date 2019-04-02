@@ -2,15 +2,17 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_ILLUMINATOR_H
-#define RAYTRACKER_ILLUMINATOR_H
+#ifndef RAYTRACKER_GI_H
+#define RAYTRACKER_GI_H
 
 
 // standard global illumination algorithm, base class
-class Illuminator
+class GI
 {
+private:
 
 };
 
+#include "GI.cpp"
 
-#endif //RAYTRACKER_ILLUMINATOR_H
+#endif //RAYTRACKER_GI_H

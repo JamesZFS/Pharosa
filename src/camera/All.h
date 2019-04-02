@@ -2,7 +2,16 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_ALL_H
-#define RAYTRACKER_ALL_H
+#ifndef RAYTRACKER_CAMERA_ALL_H
+#define RAYTRACKER_CAMERA_ALL_H
 
-#endif //RAYTRACKER_ALL_H
+namespace Cameras
+{
+
+#include "Camera.h"
+#include "BasicCamera.h"
+#include "DOFCamera.h"
+
+}
+
+#endif //RAYTRACKER_CAMERA_ALL_H

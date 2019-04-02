@@ -9,13 +9,13 @@ void Stage::from_obj(const String &obj_path)
 	// todo implement this
 }
 
-bool Stage::intersectAny(const Ray &ray, double &t, const Object *touched) const
+bool Stage::intersectAny(const Ray &ray, double &t, const Actors::Object *touched) const
 {
 	// naive for loop calculation
 	// todo use OctTree
 	t = INF;
 	touched = nullptr;
-	for (const Object &obj : objs) {
+	for (const Actors::Object &obj : objs) {
 		double s = obj.intersect(ray);
 		if (s > EPS && s < t) {	// if s < 0, meaning no hitting, continue
 			t = s;

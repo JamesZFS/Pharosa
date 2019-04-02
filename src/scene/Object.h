@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_OBJECT_HPP
-#define RAYTRACKER_OBJECT_HPP
+#ifndef RAYTRACKER_OBJECT_H
+#define RAYTRACKER_OBJECT_H
 
 #include "../lib.h"
 #include "../Vec.hpp"
@@ -41,4 +41,4 @@ struct Object
 
 #include "Object.cpp"
 
-#endif //RAYTRACKER_OBJECT_HPP
+#endif //RAYTRACKER_OBJECT_H

@@ -134,8 +134,8 @@ bool SolveLinearDebug(double *A, double *b, double *x, int n)
 // M: expanded Matrix (n x n+1)
 bool SolveLinearInPlace(double *M, int n)
 {
-	int n_1 = n + 1;
 #define MAT(i, j) (M + (i) * n_1)[j]
+	int n_1 = n + 1;
 	for (int k = 0; k < n; ++k) {    // n principle component
 		double col_max = fabs(MAT(k, k)), fm;
 		int maxi = k;

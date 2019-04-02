@@ -5,7 +5,7 @@
 #ifndef RAYTRACKER_SPHERE_H
 #define RAYTRACKER_SPHERE_H
 
-#include "Object.hpp"
+#include "Object.h"
 
 struct Sphere : public Object
 {

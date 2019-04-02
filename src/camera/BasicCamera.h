@@ -6,11 +6,11 @@
 #define RAYTRACKER_BASICCAMERA_H
 
 
-
-class BasicCamera {
+class BasicCamera
+{
 
 };
 
-
+#include "BasicCamera.cpp"
 
 #endif //RAYTRACKER_BASICCAMERA_H

@@ -87,7 +87,7 @@ struct Vec
 	inline T mean() const
 	{ return (x + y + z) / 3; }
 
-	inline void putToArray(T *dst) const	// output to `dst`: an array of T
+	inline void putToArray(T *dst) const    // output to `dst`: an array of T
 	{
 		dst[0] = x;
 		dst[1] = y;
@@ -108,7 +108,7 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
 	{}    // todo can use cosine, sine cache to boost
 
-	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)	// copy constructor
+	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 };
 
@@ -117,7 +117,7 @@ struct Pos : Vec<double>    // 3D coordinate
 	Pos(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
 	{}
 
-	Pos(const Vec<double> &obj) : Pos(obj.x, obj.y, obj.z)
+	Pos(const Vec<double> &obj) : Pos(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
 	inline void rotateAlongX(double theta)
@@ -152,27 +152,26 @@ struct Pos : Vec<double>    // 3D coordinate
 
 struct Color : public Vec<double>    // RGB Color, range [0, 1]
 {
-	Color(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_)
+	double &r, &g, &b;
+
+	Color(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
 	{}
 
-	inline double &r()
-	{ return x; }
-
-	inline double &g()
-	{ return y; }
-
-	inline double &b()
-	{ return z; }
+	Color(const Vec<double> &obj) : Color(obj.x, obj.y, obj.z)    // copy constructor
+	{}
 };
 
 typedef Color Emission;
 
 struct Dir : public Vec<double>        // direction data type, should automatically unitize
 {
-	Dir(double x_, double y_, double z_) : Vec(x_, y_, z_)
+	Dir(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
 	{
 		this->unitize();
 	}
+
+	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	{}
 };
 
 // common colors
