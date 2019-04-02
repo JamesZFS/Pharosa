@@ -1,4 +1,3 @@
-out/
 *.o
 *.d
 *.exe
@@ -6,3 +5,4 @@ out/
 .idea/
 cmake-build-debug/
 res/
+out/
