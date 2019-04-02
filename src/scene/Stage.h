@@ -15,8 +15,7 @@ class Stage
 private:
 	List<Object> objs;
 public:
-	Stage() = default;
-	Stage(const List<Object> &objects_);	// copy constructor
+	Stage() = default;		// init an empty stage
 
 	void from_obj(const String &obj_path);		// load triangles from obj file
 

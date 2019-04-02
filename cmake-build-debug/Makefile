@@ -150,33 +150,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/Render.o: src/Render.cpp.o
-
-.PHONY : src/Render.o
-
-# target to build an object file
-src/Render.cpp.o:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/Render.cpp.o
-.PHONY : src/Render.cpp.o
-
-src/Render.i: src/Render.cpp.i
-
-.PHONY : src/Render.i
-
-# target to preprocess a source file
-src/Render.cpp.i:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/Render.cpp.i
-.PHONY : src/Render.cpp.i
-
-src/Render.s: src/Render.cpp.s
-
-.PHONY : src/Render.s
-
-# target to generate assembly for a file
-src/Render.cpp.s:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/Render.cpp.s
-.PHONY : src/Render.cpp.s
-
 src/scene/Object.o: src/scene/Object.cpp.o
 
 .PHONY : src/scene/Object.o
@@ -297,9 +270,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... src/Render.o"
-	@echo "... src/Render.i"
-	@echo "... src/Render.s"
 	@echo "... src/scene/Object.o"
 	@echo "... src/scene/Object.i"
 	@echo "... src/scene/Object.s"

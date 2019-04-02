@@ -98,12 +98,6 @@
 		<Unit filename="/Users/james/Test/CG/JRT/src/Ray.hpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="/Users/james/Test/CG/JRT/src/Render.cpp">
-			<Option target="test.exe"/>
-		</Unit>
-		<Unit filename="/Users/james/Test/CG/JRT/src/Render.h">
-			<Option target="test.exe"/>
-		</Unit>
 		<Unit filename="/Users/james/Test/CG/JRT/src/Vec.hpp">
 			<Option target="test.exe"/>
 		</Unit>

@@ -3,12 +3,6 @@
 
 CMakeFiles/test.exe.dir/main.cpp.o: ../main.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/lib.h
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Linear.hpp
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Solvers.h
-
-CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/Render.cpp
-CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/Render.h
-CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/lib.h
 
 CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/Ray.hpp
 CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/Vec.hpp

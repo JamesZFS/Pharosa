@@ -3,7 +3,6 @@
 //
 
 #include "src/lib.h"
-#include "src/utils/Solvers.h"
 #include <iostream>
 
 using namespace std;
@@ -24,7 +23,7 @@ int main()
 					  {-4.10422, -0.928472, 2.88121,  5.97111},
 					  {-1.22797, 3.67243,   3.836,    4.22353}};
 
-	auto solvable = Solver::SolveLinearDemo(&A[0][0], b, x, 3);
+	auto solvable = Solver::SolveLinearDebug(&A[0][0], b, x, 3);
 	if (solvable) {
 		debug("x = (%.5f, %.5f, %.5f)\n", x[0], x[1], x[2]);
 	}

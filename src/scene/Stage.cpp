@@ -4,11 +4,6 @@
 
 #include "Stage.h"
 
-Stage::Stage(const List<Object> &objects_)
-{
-	objs = objects_;
-}
-
 void Stage::from_obj(const String &obj_path)
 {
 	// todo implement this
