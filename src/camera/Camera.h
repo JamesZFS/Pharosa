@@ -16,7 +16,7 @@ private:
 	Color *img;            // rendered image, float [0, 1]
 	unsigned int *render_cnt;    // rendering times for each pixel
 
-protected:
+public:
 	Pos pos;        // camera position
 	unsigned int width, height, size;    // image width and height, n_pixel
 
@@ -38,14 +38,17 @@ public:
 
 	virtual double progress();    // how far have the shooting been, real number [0, 1]
 
-	virtual void resetProgress();	// reset shooting progress
+	virtual void resetProgress();   // reset shooting progress
 
 	void writePPM(String out_path) const;        // output image into ppm format
+
+	// camera constants
+	static const double PIXEL_SIZE;
+	static const double CAMERA_FOCUS;
 };
 
-// camera constants
-#define PIXEL_SIZE 1.0
-#define CAMERA_FOCUS 150.0
+const double Camera::PIXEL_SIZE = 1.0;
+const double Camera::CAMERA_FOCUS = 150.0;
 
 #include "Camera.cpp"
 

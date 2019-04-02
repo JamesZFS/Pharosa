@@ -11,7 +11,7 @@ int main()
 {
 	debug("\n\nHello Ray Tracking!\n");
 
-	Actors::Object ob({0, 0, 0}, WHITE);
+	/*Actors::Object ob({0, 0, 0}, WHITE);
 	Actors::Sphere sphere({0, 0, 0}, 2, WHITE);
 	Pos q[3] = {{1, 0, 0}, {0, 1, 0}, {0, 0, 0}};
 	Actors::Triangle tr({0, 0, 0}, q, WHITE);
@@ -22,17 +22,26 @@ int main()
 	tr.rotate({M_PI_2, M_PI_4, 0});
 	for (auto &p : tr.gp) {
 		cout << p.x << ' ' << p.y << ' ' << p.z << endl;
-	}
+	}*/
 
-	Cameras::Camera cam({0, 0, 0}, {1, 1, 1});
-
-	for (unsigned int i = 0; i < 500; ++i) {
-		for (unsigned int j = 0; j < 50; ++j) {
-			cam.renderInc(i, j, {1, 0.1, 0});
-			cam.renderInc(j, i, {0, 0, 1});
+	Cameras::BasicCamera cam({0, 100, 0}, {0, 0, 0});
+	debug("ex = (%.2f, %.2f, %.2f)\n", cam.ex.x, cam.ex.y, cam.ex.z);
+	debug("ey = (%.2f, %.2f, %.2f)\n", cam.ey.x, cam.ey.y, cam.ey.z);
+	debug("ez = (%.2f, %.2f, %.2f)\n", cam.ez.x, cam.ez.y, cam.ez.z);
+	int cnt = 0;
+	while (cam.progress() < 1.0) {
+		++cnt;
+		auto &r = cam.shootRay();
+		if (cnt < 10) {
+			debug("r.dir = ");
+			r.dir.report();
+			debug(", \tr.org = ");
+			r.org.report(true);
 		}
+		assert(r.org.z - Cameras::Camera::CAMERA_FOCUS < EPS);
 	}
-	cam.writePPM("../out/test3");
+	cout << cnt << endl;
+	assert(cnt == cam.size);
 
 	debug("\n\n");
 	return 0;

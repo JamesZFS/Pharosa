@@ -8,7 +8,7 @@
 #include "../lib.h"
 #include "Camera.h"
 
-class BasicCamera : Camera
+class BasicCamera : public Camera
 {
 private:
 	unsigned int cur_i, cur_j;	// current pixel to shoot toward, screen coordinate sys

@@ -8,7 +8,6 @@
 namespace Cameras
 {
 
-#include "Camera.h"
 #include "BasicCamera.h"
 #include "DOFCamera.h"
 

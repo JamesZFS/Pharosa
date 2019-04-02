@@ -5,7 +5,6 @@
 #ifndef RAYTRACKER_GI_H
 #define RAYTRACKER_GI_H
 
-
 // standard global illumination algorithm, base class
 class GI
 {
