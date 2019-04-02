@@ -4,112 +4,122 @@
 	<Project>
 		<Option title="RayTracker"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="msvc8"/>
+		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="E:/ZFS_TEST/CG/JRT/cmake-build-debug"/>
+				<Option working_dir="/Users/james/Test/CG/JRT/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test.exe">
-				<Option output="E:/ZFS_TEST/CG/JRT/cmake-build-debug/test.exe.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/ZFS_TEST/CG/JRT/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 test.exe"/>
-					<CompileFile command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test.exe/fast">
-				<Option output="E:/ZFS_TEST/CG/JRT/cmake-build-debug/test.exe.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/ZFS_TEST/CG/JRT/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 test.exe/fast"/>
-					<CompileFile command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="E:/ZFS_TEST/CG/JRT/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="E:/ZFS_TEST/CG/JRT/cmake-build-debug"/>
+				<Option working_dir="/Users/james/Test/CG/JRT/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/nmake.exe /NOLOGO /f E:\ZFS_TEST\CG\JRT\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/james/Test/CG/JRT/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test.exe">
+				<Option output="/Users/james/Test/CG/JRT/cmake-build-debug/test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/james/Test/CG/JRT/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0/x86_64-apple-darwin17.7.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 test.exe"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test.exe/fast">
+				<Option output="/Users/james/Test/CG/JRT/cmake-build-debug/test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/james/Test/CG/JRT/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0/x86_64-apple-darwin17.7.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/../../../../../../include/c++/8.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 test.exe/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/james/Test/CG/JRT/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/main.cpp">
+		<Unit filename="/Users/james/Test/CG/JRT/main.cpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Ray.hpp">
+		<Unit filename="/Users/james/Test/CG/JRT/src/Ray.hpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Render.cpp">
+		<Unit filename="/Users/james/Test/CG/JRT/src/Render.cpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Render.h">
+		<Unit filename="/Users/james/Test/CG/JRT/src/Render.h">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/Vec.hpp">
+		<Unit filename="/Users/james/Test/CG/JRT/src/Vec.hpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Object.cpp">
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Object.cpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Object.h">
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Object.h">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Sphere.cpp">
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Sphere.cpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/src/scene/Sphere.h">
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Sphere.h">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="E:/ZFS_TEST/CG/JRT/CMakeLists.txt">
+		<Unit filename="/Users/james/Test/CG/JRT/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

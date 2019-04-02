@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef RAYTRACKER_VEC_HPP
-#define RAYTRACKER_VEC_HPP
+#ifndef JRT_VEC_HPP
+#define JRT_VEC_HPP
 
 #include "lib.h"
 
@@ -150,4 +150,4 @@ struct Dir : public Vec<double>		// direction data type, should automatically un
 #define GREEN {0, 1, 0}
 #define BLUE {0, 0, 1}
 
-#endif //RAYTRACKER_VEC_HPP
+#endif //JRT_VEC_HPP

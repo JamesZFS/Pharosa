@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/ZFS_TEST/CG/JRT/main.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/main.cpp.obj"
-  "E:/ZFS_TEST/CG/JRT/src/Render.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/Render.cpp.obj"
-  "E:/ZFS_TEST/CG/JRT/src/scene/Object.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Object.cpp.obj"
-  "E:/ZFS_TEST/CG/JRT/src/scene/Sphere.cpp" "E:/ZFS_TEST/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.obj"
+  "/Users/james/Test/CG/JRT/main.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/main.cpp.o"
+  "/Users/james/Test/CG/JRT/src/Render.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/Render.cpp.o"
+  "/Users/james/Test/CG/JRT/src/scene/Object.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Object.cpp.o"
+  "/Users/james/Test/CG/JRT/src/scene/Sphere.cpp" "/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
