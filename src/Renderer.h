@@ -2,23 +2,23 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef RAYTRACKER_RENDER_H
-#define RAYTRACKER_RENDER_H
+#ifndef RAYTRACKER_RENDERER_H
+#define RAYTRACKER_RENDERER_H
 
 #include "lib.h"
 #include "Vec.hpp"
 #include "Ray.hpp"
-#include "alg/All.h"
-#include "camera/All.h"
 #include "scene/Stage.h"
+#include "camera/All.h"
+#include "alg/All.h"
 
-// frontend of all sources, the Renderer
-class Render
+// frontend of all, the Renderer
+class Renderer
 {
 public:
-	Render();
+	Renderer();
 };
 
-#include "Render.cpp"
+#include "Renderer.cpp"
 
-#endif //RAYTRACKER_RENDER_H
+#endif //RAYTRACKER_RENDERER_H

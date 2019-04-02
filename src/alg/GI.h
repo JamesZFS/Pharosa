@@ -6,17 +6,20 @@
 #define RAYTRACKER_GI_H
 
 #include "../lib.h"
+#include "../Ray.hpp"
 #include "../camera/All.h"
 #include "../scene/Stage.h"
 
 // standard global illumination algorithm, base class
 class GI
 {
-private:
+protected:
 	const Stage &stage;    // cannot change stage
 	Cameras::BasicCamera &camera;
 public:
 	GI(const Stage &stage_, Cameras::BasicCamera &camera_);
+
+	virtual void render(unsigned int n_epoch);	// do the rendering for n_epoch times
 };
 
 #include "GI.cpp"

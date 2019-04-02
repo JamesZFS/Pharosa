@@ -5,15 +5,18 @@
 #ifndef RAYTRACKER_RAYTRACING_H
 #define RAYTRACKER_RAYTRACING_H
 
-#include "../lib.h"
 #include "GI.h"
 
 // Ray Tracing algorithm
 class RayTracing : public GI
 {
-private:
+public:
+	RayTracing(const Stage &stage_, Cameras::BasicCamera &camera_);
 
+	void render(unsigned int n_epoch) override;
 
+protected:
+	Color radiance(const Ray &r, unsigned int depth);	// main alg
 };
 
 #include "RayTracing.cpp"

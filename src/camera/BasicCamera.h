@@ -5,7 +5,6 @@
 #ifndef RAYTRACKER_BASICCAMERA_H
 #define RAYTRACKER_BASICCAMERA_H
 
-#include "../lib.h"
 #include "Camera.h"
 
 class BasicCamera : public Camera

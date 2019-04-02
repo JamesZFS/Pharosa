@@ -8,3 +8,7 @@
 GI::GI(const Stage &stage_, Cameras::BasicCamera &camera_) : stage(stage_), camera(camera_)
 {
 }
+
+void GI::render(unsigned int n_epoch)
+{
+}

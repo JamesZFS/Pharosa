@@ -5,7 +5,7 @@
 #ifndef RAYTRACKER_SCENE_ALL_H
 #define RAYTRACKER_SCENE_ALL_H
 
-namespace Actors
+namespace Scenes
 {
 
 #include "Object.h"
