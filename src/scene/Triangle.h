@@ -20,5 +20,6 @@ struct Triangle : public Object
 	double intersect(const Ray &ray) const override;
 };
 
+#include "Triangle.cpp"
 
 #endif //RAYTRACKER_TRIANGLE_H

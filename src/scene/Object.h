@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_OBJECT_H
-#define RAYTRACKER_OBJECT_H
+#ifndef RAYTRACKER_OBJECT_HPP
+#define RAYTRACKER_OBJECT_HPP
 
 #include "../lib.h"
 #include "../Vec.hpp"
@@ -17,11 +17,11 @@ struct Object
 		DIFF, MIRR, REFR
 	};    // diffusive, mirror, refractory
 
-	Pos pos;		// ref point position in global coordinate system
-	Color clr;		// color
-	Emission emi;	// emission
-	ElAg ea;		// Euler angles
-	ReflType rft;	// reflection type
+	Pos pos;        // ref point position in global coordinate system
+	Color clr;        // color
+	Emission emi;    // emission
+	ElAg ea;        // Euler angles
+	ReflType rft;    // reflection type
 
 	// other params ...
 
@@ -36,8 +36,9 @@ struct Object
 
 	Object &rotate(const ElAg &dea);
 
-	virtual void applyTransform();	// apply transform from obj crd to global crd, to be overriden
+	virtual void applyTransform();    // apply transform from obj crd to global crd, to be overriden
 };
 
+#include "Object.cpp"
 
-#endif //RAYTRACKER_OBJECT_H
+#endif //RAYTRACKER_OBJECT_HPP

@@ -13,15 +13,17 @@
 class Stage
 {
 private:
-	List<Object> objs;
+	List<Actors::Object> objs;
 public:
-	Stage() = default;		// init an empty stage
+	Stage() = default;        // init an empty stage
 
-	void from_obj(const String &obj_path);		// load triangles from obj file
+	void from_obj(const String &obj_path);        // load triangles from obj file
 
-	bool intersectAny(const Ray &ray, double &t, const Object *touched) const;	// calculate first intersection with all objects
+	// calculate first intersection with all objects
+	bool intersectAny(const Ray &ray, double &t, const Actors::Object *touched) const;
 
 };
 
+#include "Stage.cpp"
 
 #endif //RAYTRACKER_STAGE_H

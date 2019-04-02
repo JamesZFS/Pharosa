@@ -5,7 +5,7 @@
 #ifndef RAYTRACKER_SPHERE_H
 #define RAYTRACKER_SPHERE_H
 
-#include "Object.h"
+#include "Object.hpp"
 
 struct Sphere : public Object
 {
@@ -17,5 +17,6 @@ struct Sphere : public Object
 	double intersect(const Ray &ray) const override;
 };
 
+#include "Sphere.cpp"
 
 #endif //RAYTRACKER_SPHERE_H
