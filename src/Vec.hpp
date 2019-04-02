@@ -178,6 +178,9 @@ struct Dir : public Vec<double>        // direction data type, should automatica
 
 	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	Dir(const Dir &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	{}
 };
 
 // common colors
