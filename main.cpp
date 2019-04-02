@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-	debug("Hello Ray Tracking!\n");
+	debug("\n\nHello Ray Tracking!\n");
 
 	Actors::Object ob({0, 0, 0}, {1, 1, 1});
 
@@ -27,5 +27,6 @@ int main()
 	cam.postProcess();
 	cam.writePPM("../out/test3");
 
+	debug("\n\n");
 	return 0;
 }

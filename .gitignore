@@ -1,6 +1,7 @@
 *.o
 *.d
 *.exe
+*.out
 *.dll
 .idea/
 cmake-build-debug/

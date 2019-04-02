@@ -6,8 +6,8 @@ CPP=g++-8	# use on mac
 #CPPFLAGS=-O3 -fopenmp -static -lpthread -Wall -MMD -std=c++14      # multiple threads version
 CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
 
-JRT.out:
-	$(CPP) $(CPPFLAGS) -c main.cpp -o JRT.out
+JRT.out: main.cpp Makefile
+	$(CPP) $(CPPFLAGS) main.cpp -o JRT.out
 
 clean:
 #	del *.o *.d	# on win
