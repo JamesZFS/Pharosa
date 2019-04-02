@@ -6,7 +6,7 @@
 #include "../utils/funcs.hpp"
 
 Camera::Camera(const Pos &pos_, const Dir &dir_, unsigned int width_, unsigned int height_) :
-		post_processed(false), pos(pos_), dir(dir_), width(width_), height(height_), size(width_ * height_)
+		pos(pos_), dir(dir_), width(width_), height(height_), size(width_ * height_)
 {
 	img = new Color[size];
 	render_cnt = new unsigned int[size];
@@ -32,7 +32,7 @@ void Camera::renderInc(unsigned int x, unsigned int y, Color color)
 	checkCrd;
 	unsigned int rank = y * width + x;
 	img[rank] += color;
-	++render_cnt[rank];	// count up
+	++render_cnt[rank];    // rendering times count up
 }
 
 #undef checkCrd
@@ -47,20 +47,8 @@ double Camera::progress()
 	return 0;
 }
 
-void Camera::postProcess()
-{
-	// assert: progress == 1
-	for (unsigned int i = 0; i < size; ++i) {
-		img[i] /= render_cnt[i];
-	}
-	post_processed = true;
-}
-
 void Camera::writePPM(String out_path) const
 {
-	if (!post_processed) {
-		warn("warning: not post_processed yet.");
-	}
 	if (!Funcs::endsWith(out_path, ".ppm")) {
 		out_path += ".ppm";
 	}
@@ -70,11 +58,12 @@ void Camera::writePPM(String out_path) const
 	char buffer[250];
 	if (f.is_open()) {
 		// write head
-		sprintf(buffer, "P3 %d %d\n%d\n", width, height, 255);
+		sprintf(buffer, "P3 %d %d \n%d \n", width, height, 255);
 		f << buffer;
 		// write body
 		for (unsigned int i = 0; i < size; ++i) {
-			sprintf(buffer, "%d %d %d ", Funcs::toUchar(img[i].x), Funcs::toUchar(img[i].y), Funcs::toUchar(img[i].z));
+			const Color p = img[i] / render_cnt[i];
+			sprintf(buffer, "%d %d %d ", Funcs::toUchar(p.x), Funcs::toUchar(p.y), Funcs::toUchar(p.z));
 			f << buffer;
 		}
 	}
@@ -82,4 +71,5 @@ void Camera::writePPM(String out_path) const
 		sprintf(buffer, "IO error, out_path \"%s\" cannot be opened, writing stopped.", out_path.data());
 		warn(buffer);
 	}
+	f.close();
 }

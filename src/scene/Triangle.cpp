@@ -5,9 +5,8 @@
 #include "Triangle.h"
 #include "../utils/Solvers.h"
 
-Triangle::Triangle(const Pos &pos_, const Pos *p_, const Color &color_, const Emission &emission_,
-				   const ElAg &euler_angles_,
-				   Object::ReflType refl_type_) :
+Triangle::Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const Emission &emission_,
+				   const ElAg &euler_angles_, Object::ReflType refl_type_) :
 		Object(pos_, color_, emission_, euler_angles_, refl_type_)
 {
 	p[0] = p_[0];

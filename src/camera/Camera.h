@@ -15,7 +15,6 @@ class Camera
 private:
 	Color *img;            // rendered image, float [0, 1]
 	unsigned int * render_cnt;	// rendering times for each pixel
-	bool post_processed;		// whether post_processed
 
 protected:
 	Pos pos;    // camera position
@@ -37,8 +36,6 @@ public:
 	virtual const Ray &shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
 
 	virtual double progress();    // how far have the shooting been, real number [0, 1]
-
-	void postProcess();		// post process image when rendering is over
 
 	void writePPM(String out_path) const;		// output image into ppm format
 };

@@ -110,6 +110,9 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 
 	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	ElAg(const ElAg &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
+	{}
 };
 
 struct Pos : Vec<double>    // 3D coordinate
@@ -158,6 +161,9 @@ struct Color : public Vec<double>    // RGB Color, range [0, 1]
 	{}
 
 	Color(const Vec<double> &obj) : Color(obj.x, obj.y, obj.z)    // copy constructor
+	{}
+
+	Color(const Color &obj) : Color(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 };
 
