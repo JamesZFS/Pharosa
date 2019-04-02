@@ -12,17 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RayTracker.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/RayTracker.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Triangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Triangle.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Linear.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Linear.hpp" afterDir="false" />
@@ -91,7 +80,7 @@
           <entry key="Makefile" value="3" />
           <entry key="cpp" value="20" />
           <entry key="gitignore" value="2" />
-          <entry key="h" value="29" />
+          <entry key="h" value="30" />
           <entry key="hpp" value="15" />
           <entry key="txt" value="3" />
         </counts>
@@ -100,17 +89,17 @@
         <counts>
           <entry key="CMakeLists.txt" value="3" />
           <entry key="Makefile" value="3" />
-          <entry key="ObjectiveC" value="64" />
+          <entry key="ObjectiveC" value="65" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="274" />
-          <entry key="cpp" value="2400" />
+          <entry key="cpp" value="2571" />
           <entry key="gitignore" value="28" />
           <entry key="h" value="1488" />
-          <entry key="hpp" value="2642" />
+          <entry key="hpp" value="2966" />
           <entry key="mm" value="45" />
           <entry key="txt" value="86" />
         </counts>
@@ -119,7 +108,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="86" />
           <entry key="Makefile" value="274" />
-          <entry key="ObjectiveC" value="6575" />
+          <entry key="ObjectiveC" value="7070" />
           <entry key="PLAIN_TEXT" value="28" />
         </counts>
       </usages-collector>
@@ -131,18 +120,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ray.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="476">
               <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#97#116#0" expanded="true" />
@@ -151,23 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-              <folding>
-                <element signature="e#40#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="212">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="e#40#60#0" expanded="true" />
               </folding>
@@ -176,13 +144,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="639">
+              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+              <folding>
+                <element signature="e#40#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/Linear.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-              <folding>
-                <element signature="e#1565#2875#0" />
-              </folding>
+            <state relative-caret-position="260">
+              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -208,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            <state relative-caret-position="144">
+              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -240,7 +217,6 @@
       <find>i\+\+</find>
       <find>\w\+\+</find>
       <find>\w\-\-</find>
-      <find>x</find>
       <find>delete</find>
       <find>intersect</find>
       <find>intersectAny</find>
@@ -248,13 +224,17 @@
       <find>A</find>
       <find>j</find>
       <find>3</find>
+      <find>x</find>
+      <find>M\[\w+\]\[\w\]</find>
+      <find>]</find>
     </findStrings>
     <replaceStrings>
       <replace>T</replace>
       <replace>\+\+</replace>
-      <replace>z</replace>
-      <replace>y</replace>
       <replace>8</replace>
+      <replace>y</replace>
+      <replace>z</replace>
+      <replace>)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -281,8 +261,8 @@
         <option value="$PROJECT_DIR$/src/scene/Sphere.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Stage.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Triangle.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/utils/Linear.hpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -348,47 +328,6 @@
             <path>
               <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="c++" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="c++" type="462c0819:PsiDirectoryNode" />
-              <item name="8.3.0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="c++" type="462c0819:PsiDirectoryNode" />
-              <item name="8.3.0" type="462c0819:PsiDirectoryNode" />
-              <item name="bits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RayTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Header Search Paths" type="70bed36:NamedLibraryElementNode" />
-              <item name="include-fixed" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -477,12 +416,12 @@
       <updated>1554126840776</updated>
       <workItem from="1554126848945" duration="1720000" />
       <workItem from="1554129219614" duration="6820000" />
-      <workItem from="1554164063535" duration="17682000" />
+      <workItem from="1554164063535" duration="18762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26222000" />
+    <option name="totallyTimeSpent" value="27302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -509,24 +448,25 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="make" order="4" />
-      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" side_tool="true" weight="0.22603719" />
+      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" side_tool="true" visible="true" weight="0.22603719" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.58554214" visible="true" weight="0.19241774" />
-      <window_info id="Structure" order="1" sideWeight="0.41445783" side_tool="true" visible="true" weight="0.19241774" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.58554214" visible="true" weight="0.19241774" />
+      <window_info id="Structure" order="1" sideWeight="0.41445783" side_tool="true" weight="0.19241774" />
       <window_info id="Favorites" order="2" sideWeight="0.50120485" side_tool="true" weight="0.14377682" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32771084" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28674698" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32891566" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32771084" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.33975902" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.28674698" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -685,23 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#97#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/Solvers.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -737,30 +660,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Linear.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#1565#2875#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        <state relative-caret-position="639">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
             <element signature="e#40#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Linear.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0/include/c++/8.3.0/bits/stl_algobase.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="323" column="20" selection-start-line="323" selection-start-column="20" selection-end-line="323" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#97#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="212">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding>
             <element signature="e#40#60#0" expanded="true" />
           </folding>

@@ -31,16 +31,14 @@ void Triangle::applyTransform()
 double Triangle::intersect(const Ray &ray) const
 {
 	// solve Ro + t Rd = (1 - beta - gamma) P0 + beta P1 + gamma P2
-	double A[3][3] = {
-			{ray.dir.x, gp[0].x - gp[1].x, gp[0].x - gp[2].x},
-			{ray.dir.y, gp[0].y - gp[1].y, gp[0].y - gp[2].y},
-			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z},
+	double M[3][4] = {
+			{ray.dir.x, gp[0].x - gp[1].x, gp[0].x - gp[2].x, gp[0].x - ray.org.x},
+			{ray.dir.y, gp[0].y - gp[1].y, gp[0].y - gp[2].y, gp[0].y - ray.org.y},
+			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z, gp[0].z - ray.org.z},
 	};
-	double b[3], x[3];
-	(gp[0] - ray.org).putToArray(b);
 
-	if (Solver::SolveLinear(&A[0][0], b, x, 3)) {    // solvable and has only root
-		double t = x[0], beta = x[1], gamma = x[2];
+	if (Solver::SolveLinearInPlace(&M[0][0], 3)) {    // solvable and has only root
+		double t = M[0][3], beta = M[1][3], gamma = M[2][3];
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1) ? t : -1;
 	}
 	else {    // cannot solve or root is not unique
