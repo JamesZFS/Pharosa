@@ -177,6 +177,114 @@ src/Render.cpp.s:
 	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/Render.cpp.s
 .PHONY : src/Render.cpp.s
 
+src/scene/Object.o: src/scene/Object.cpp.o
+
+.PHONY : src/scene/Object.o
+
+# target to build an object file
+src/scene/Object.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Object.cpp.o
+.PHONY : src/scene/Object.cpp.o
+
+src/scene/Object.i: src/scene/Object.cpp.i
+
+.PHONY : src/scene/Object.i
+
+# target to preprocess a source file
+src/scene/Object.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Object.cpp.i
+.PHONY : src/scene/Object.cpp.i
+
+src/scene/Object.s: src/scene/Object.cpp.s
+
+.PHONY : src/scene/Object.s
+
+# target to generate assembly for a file
+src/scene/Object.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Object.cpp.s
+.PHONY : src/scene/Object.cpp.s
+
+src/scene/Sphere.o: src/scene/Sphere.cpp.o
+
+.PHONY : src/scene/Sphere.o
+
+# target to build an object file
+src/scene/Sphere.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o
+.PHONY : src/scene/Sphere.cpp.o
+
+src/scene/Sphere.i: src/scene/Sphere.cpp.i
+
+.PHONY : src/scene/Sphere.i
+
+# target to preprocess a source file
+src/scene/Sphere.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.i
+.PHONY : src/scene/Sphere.cpp.i
+
+src/scene/Sphere.s: src/scene/Sphere.cpp.s
+
+.PHONY : src/scene/Sphere.s
+
+# target to generate assembly for a file
+src/scene/Sphere.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s
+.PHONY : src/scene/Sphere.cpp.s
+
+src/scene/Stage.o: src/scene/Stage.cpp.o
+
+.PHONY : src/scene/Stage.o
+
+# target to build an object file
+src/scene/Stage.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o
+.PHONY : src/scene/Stage.cpp.o
+
+src/scene/Stage.i: src/scene/Stage.cpp.i
+
+.PHONY : src/scene/Stage.i
+
+# target to preprocess a source file
+src/scene/Stage.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.i
+.PHONY : src/scene/Stage.cpp.i
+
+src/scene/Stage.s: src/scene/Stage.cpp.s
+
+.PHONY : src/scene/Stage.s
+
+# target to generate assembly for a file
+src/scene/Stage.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Stage.cpp.s
+.PHONY : src/scene/Stage.cpp.s
+
+src/scene/Triangle.o: src/scene/Triangle.cpp.o
+
+.PHONY : src/scene/Triangle.o
+
+# target to build an object file
+src/scene/Triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o
+.PHONY : src/scene/Triangle.cpp.o
+
+src/scene/Triangle.i: src/scene/Triangle.cpp.i
+
+.PHONY : src/scene/Triangle.i
+
+# target to preprocess a source file
+src/scene/Triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.i
+.PHONY : src/scene/Triangle.cpp.i
+
+src/scene/Triangle.s: src/scene/Triangle.cpp.s
+
+.PHONY : src/scene/Triangle.s
+
+# target to generate assembly for a file
+src/scene/Triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.s
+.PHONY : src/scene/Triangle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +300,18 @@ help:
 	@echo "... src/Render.o"
 	@echo "... src/Render.i"
 	@echo "... src/Render.s"
+	@echo "... src/scene/Object.o"
+	@echo "... src/scene/Object.i"
+	@echo "... src/scene/Object.s"
+	@echo "... src/scene/Sphere.o"
+	@echo "... src/scene/Sphere.i"
+	@echo "... src/scene/Sphere.s"
+	@echo "... src/scene/Stage.o"
+	@echo "... src/scene/Stage.i"
+	@echo "... src/scene/Stage.s"
+	@echo "... src/scene/Triangle.o"
+	@echo "... src/scene/Triangle.i"
+	@echo "... src/scene/Triangle.s"
 .PHONY : help
 
 

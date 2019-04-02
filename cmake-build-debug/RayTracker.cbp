@@ -95,10 +95,49 @@
 		<Unit filename="/Users/james/Test/CG/JRT/main.cpp">
 			<Option target="test.exe"/>
 		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/Ray.hpp">
+			<Option target="test.exe"/>
+		</Unit>
 		<Unit filename="/Users/james/Test/CG/JRT/src/Render.cpp">
 			<Option target="test.exe"/>
 		</Unit>
 		<Unit filename="/Users/james/Test/CG/JRT/src/Render.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/Vec.hpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/All.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Object.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Object.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Sphere.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Sphere.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Stage.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Stage.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Triangle.cpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/scene/Triangle.h">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/utils/Linear.hpp">
+			<Option target="test.exe"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/JRT/src/utils/Solvers.h">
 			<Option target="test.exe"/>
 		</Unit>
 		<Unit filename="/Users/james/Test/CG/JRT/CMakeLists.txt">

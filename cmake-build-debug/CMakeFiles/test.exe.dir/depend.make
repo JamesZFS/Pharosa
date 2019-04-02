@@ -10,3 +10,35 @@ CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/Render.cpp
 CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/Render.h
 CMakeFiles/test.exe.dir/src/Render.cpp.o: ../src/lib.h
 
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/Ray.hpp
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/Vec.hpp
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/lib.h
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/scene/Object.cpp
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/scene/Object.h
+
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/Ray.hpp
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/Vec.hpp
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/lib.h
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/scene/Object.h
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/scene/Sphere.cpp
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/scene/Sphere.h
+
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/Ray.hpp
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/Vec.hpp
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/lib.h
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/All.h
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Object.h
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Sphere.h
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Stage.cpp
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Stage.h
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Triangle.h
+
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/Ray.hpp
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/Vec.hpp
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/lib.h
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/scene/Object.h
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/scene/Triangle.cpp
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/scene/Triangle.h
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/utils/Linear.hpp
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/utils/Solvers.h
+

@@ -83,19 +83,79 @@ CMakeFiles/test.exe.dir/src/Render.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/Render.cpp.s"
 	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/JRT/src/Render.cpp -o CMakeFiles/test.exe.dir/src/Render.cpp.s
 
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: CMakeFiles/test.exe.dir/flags.make
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.o: ../src/scene/Object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Object.cpp.o"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.exe.dir/src/scene/Object.cpp.o -c /Users/james/Test/CG/JRT/src/scene/Object.cpp
+
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Object.cpp.i"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/JRT/src/scene/Object.cpp > CMakeFiles/test.exe.dir/src/scene/Object.cpp.i
+
+CMakeFiles/test.exe.dir/src/scene/Object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Object.cpp.s"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/JRT/src/scene/Object.cpp -o CMakeFiles/test.exe.dir/src/scene/Object.cpp.s
+
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: CMakeFiles/test.exe.dir/flags.make
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o: ../src/scene/Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o -c /Users/james/Test/CG/JRT/src/scene/Sphere.cpp
+
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.i"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/JRT/src/scene/Sphere.cpp > CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.i
+
+CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/JRT/src/scene/Sphere.cpp -o CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.s
+
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: CMakeFiles/test.exe.dir/flags.make
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o: ../src/scene/Stage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o -c /Users/james/Test/CG/JRT/src/scene/Stage.cpp
+
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Stage.cpp.i"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/JRT/src/scene/Stage.cpp > CMakeFiles/test.exe.dir/src/scene/Stage.cpp.i
+
+CMakeFiles/test.exe.dir/src/scene/Stage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Stage.cpp.s"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/JRT/src/scene/Stage.cpp -o CMakeFiles/test.exe.dir/src/scene/Stage.cpp.s
+
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: CMakeFiles/test.exe.dir/flags.make
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o: ../src/scene/Triangle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o -c /Users/james/Test/CG/JRT/src/scene/Triangle.cpp
+
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.i"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/JRT/src/scene/Triangle.cpp > CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.i
+
+CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.s"
+	/usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/JRT/src/scene/Triangle.cpp -o CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.s
+
 # Object files for target test.exe
 test_exe_OBJECTS = \
 "CMakeFiles/test.exe.dir/main.cpp.o" \
-"CMakeFiles/test.exe.dir/src/Render.cpp.o"
+"CMakeFiles/test.exe.dir/src/Render.cpp.o" \
+"CMakeFiles/test.exe.dir/src/scene/Object.cpp.o" \
+"CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o" \
+"CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o" \
+"CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o"
 
 # External object files for target test.exe
 test_exe_EXTERNAL_OBJECTS =
 
 test.exe: CMakeFiles/test.exe.dir/main.cpp.o
 test.exe: CMakeFiles/test.exe.dir/src/Render.cpp.o
+test.exe: CMakeFiles/test.exe.dir/src/scene/Object.cpp.o
+test.exe: CMakeFiles/test.exe.dir/src/scene/Sphere.cpp.o
+test.exe: CMakeFiles/test.exe.dir/src/scene/Stage.cpp.o
+test.exe: CMakeFiles/test.exe.dir/src/scene/Triangle.cpp.o
 test.exe: CMakeFiles/test.exe.dir/build.make
 test.exe: CMakeFiles/test.exe.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/james/Test/CG/JRT/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.exe.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
