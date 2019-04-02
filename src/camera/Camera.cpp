@@ -47,7 +47,7 @@ const Ray &Camera::shootRay()
 	return cur_ray;
 }
 
-double Camera::progress()
+double Camera::progress() const
 {
 	return 0;
 }

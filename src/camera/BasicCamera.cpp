@@ -37,7 +37,7 @@ const Ray &BasicCamera::shootRay()
 	return cur_ray;
 }
 
-double BasicCamera::progress()
+double BasicCamera::progress() const
 {
 	return (cur_j * width + cur_i) * 1.0 / size;
 }

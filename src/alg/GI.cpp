@@ -3,3 +3,8 @@
 //
 
 #include "GI.h"
+
+
+GI::GI(const Stage &stage_, Cameras::BasicCamera &camera_) : stage(stage_), camera(camera_)
+{
+}

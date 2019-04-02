@@ -16,7 +16,7 @@ private:
 	Color *img;            // rendered image, float [0, 1]
 	unsigned int *render_cnt;    // rendering times for each pixel
 
-public:
+protected:
 	Pos pos;        // camera position
 	unsigned int width, height, size;    // image width and height, n_pixel
 
@@ -36,7 +36,7 @@ public:
 	// interfaces:
 	virtual const Ray &shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
 
-	virtual double progress();    // how far have the shooting been, real number [0, 1]
+	virtual double progress() const;    // how far have the shooting been, real number [0, 1]
 
 	virtual void resetProgress();   // reset shooting progress
 
