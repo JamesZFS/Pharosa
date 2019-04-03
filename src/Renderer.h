@@ -20,6 +20,7 @@ private:
 	Stage *stage;
 	Cameras::Camera *camera;
 	Algorithms::GI *illuminator;
+	unsigned int prev_epoch;	// previous rendering times
 public:
 	// init a Renderer with any type of Alg and Camera
 	Renderer();
@@ -31,8 +32,9 @@ public:
 
 	void setupStage(ObjectGroup &&objects);
 
-	// setup stage by designating a stage config file path
-	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	// setup stage by designating a stage config file path, can continue from a previous ppm image path
+	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_,
+					 unsigned int height_, const String &prev_path = "", unsigned int n_epoch = 1);
 
 	// start rendering
 	void start(unsigned int n_epoch = 1, unsigned int verbose = 1, bool save_checkpoints = false);

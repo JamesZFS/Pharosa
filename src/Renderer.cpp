@@ -36,10 +36,12 @@ void Renderer<GI_Algorithm, Cameras_Type>::setupStage(ObjectGroup &&objects)
 
 template<typename GI_Algorithm, typename Cameras_Type>
 void Renderer<GI_Algorithm, Cameras_Type>::
-setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_)
+setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
+			const String &prev_path, unsigned int n_epoch)
 {
+	prev_epoch = n_epoch;
 	if (camera != nullptr) delete camera;
-	camera = new Cameras_Type(pos_, euler_angles_, width_, height_);
+	camera = new Cameras_Type(pos_, euler_angles_, width_, height_, prev_path, n_epoch);
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
@@ -58,7 +60,7 @@ void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch, unsigned 
 		illuminator = new GI_Algorithm(*stage, *camera);
 	}
 
-	illuminator->render(n_epoch);
+	illuminator->render(n_epoch, prev_epoch);
 	// todo
 }
 

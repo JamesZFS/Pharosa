@@ -15,12 +15,17 @@ namespace Funcs
 	{ return x < 0 ? 0 : x > 1 ? 1 : x; }
 
 // to unsigned char [0 - 255], using gamma correction
-#define GAMMA_COEFF 0.45454545454545 // 1 / 2.2
+#define C_GAMMA 0.45454545454545 // 1 / 2.2
+#define C_1_GAMMA 2.2 // 2.2 / 1
 
-	inline unsigned char toUchar(double x)
-	{ return (unsigned char) (pow(clamp(x), GAMMA_COEFF) * 255); }
+	inline unsigned int gammaCorrection(double x)
+	{ return (unsigned int) (pow(clamp(x), C_GAMMA) * 255); }
 
-#undef GAMMA_COEFF
+	inline double inverseGammaCorrection(unsigned int y)
+	{ return pow(y * 1.0 / 255, C_1_GAMMA); }
+
+#undef C_GAMMA
+#undef C_1_GAMMA
 
 	inline bool startWith(const String &s, const String &prefix)
 	{

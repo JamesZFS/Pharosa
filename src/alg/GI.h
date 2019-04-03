@@ -22,7 +22,7 @@ public:
 	virtual ~GI() = default;
 
 	// interfaces:
-	virtual void render(unsigned int n_epoch) = 0;    // do the rendering for n_epoch times
+	virtual void render(unsigned int n_epoch = 1, unsigned int prev_epoch = 0) = 0;   // do the rendering for n_epoch times
 };
 
 #include "GI.cpp"

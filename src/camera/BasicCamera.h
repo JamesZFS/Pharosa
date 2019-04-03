@@ -13,7 +13,8 @@ private:
 	double w_2, h_2;            // width / 2, height / 2
 
 public:
-	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,
+				const String &prev_path_ = "", unsigned int n_epoch_ = 1);
 
 	const Ray &shootRay() override;
 };

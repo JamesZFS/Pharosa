@@ -28,6 +28,7 @@ ObjectGroup Parser::fromJsonFile(const String &config_path)
 	if (!fin.is_open()) {    // exception
 		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
 		warn(buffer);
+		fin.close();
 		exit(1);
 	}
 

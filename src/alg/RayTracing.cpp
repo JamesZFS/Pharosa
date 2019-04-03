@@ -4,10 +4,10 @@
 
 #include "RayTracing.h"
 
-RayTracing::RayTracing(const Stage &stage_, Cameras::Camera &camera_, unsigned int random_seed) :
+RayTracing::RayTracing(const Stage &stage_, Cameras::Camera &camera_) :
 		GI(stage_, camera_), distribution(0.0, 1.0)
 {
-	generator.seed(random_seed);
+	generator.seed((unsigned int) time(nullptr));
 }
 
 double RayTracing::randf()
@@ -82,10 +82,12 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 	}
 }
 
-void RayTracing::render(unsigned int n_epoch)
+void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch)
 {
-	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch + 1, n_epoch);
+	char buffer[100];
+	unsigned int tot_epoch = n_epoch + prev_epoch;
+	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
+		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
 		camera.resetProgress();
 		while (!camera.finished()) {
 			const Ray &ray = camera.shootRay();
@@ -94,5 +96,7 @@ void RayTracing::render(unsigned int n_epoch)
 			camera.updateProgress();
 		}
 		debug("\n");
+		sprintf(buffer, "../out/fun - %d.ppm", epoch);
+		camera.writePPM(buffer);
 	}
 }

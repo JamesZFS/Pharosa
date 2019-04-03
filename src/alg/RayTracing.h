@@ -20,9 +20,9 @@ protected:
 	Color radiance(const Ray &ray, unsigned int depth);    // ** main algorithm **
 
 public:
-	RayTracing(const Stage &stage_, Cameras::Camera &camera_, unsigned int random_seed = 0);
+	RayTracing(const Stage &stage_, Cameras::Camera &camera_);
 
-	void render(unsigned int n_epoch) override;        // ** pipeline **
+	void render(unsigned int n_epoch, unsigned int prev_epoch) override;        // ** pipeline **
 };
 
 #include "RayTracing.cpp"

@@ -25,7 +25,8 @@ protected:
 	Ray cur_ray;    // current ray to shoot
 
 public:
-	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,
+		   const String &prev_path_ = "", unsigned int n_epoch_ = 1);
 
 	virtual ~Camera();
 
@@ -45,7 +46,11 @@ public:
 	inline void resetProgress();   // reset shooting progress
 
 	// io:
-	void writePPM(String out_path) const;        // output image into ppm format
+	// load from previous rendered ppm file to continue, which was rendered n_epoch times
+	void readPPM(String prev_path, unsigned int n_epoch = 1);
+
+	// output image into ppm format
+	void writePPM(String out_path) const;
 
 	// interface:
 	virtual const Ray &shootRay() = 0;    // shoot a ray iteratively. will stop when all pixels are traversed
