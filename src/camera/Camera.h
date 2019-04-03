@@ -25,8 +25,7 @@ protected:
 	Ray cur_ray;    // current ray to shoot
 
 public:
-	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,
-		   const String &prev_path_ = "", unsigned int n_epoch_ = 1);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_);
 
 	virtual ~Camera();
 
@@ -39,7 +38,7 @@ public:
 	// iterators:
 	inline bool finished() const;    // check whether the rendering progress is finished
 
-	inline bool finishedDisplay(unsigned int n_step = 50) const; // as above, with a progressbar displayed every n_step
+	inline bool finishedVerbose(unsigned int n_step) const; // as above, with a progressbar displayed every n_step
 
 	inline void updateProgress();    // current pixel rank++
 
@@ -47,7 +46,7 @@ public:
 
 	// io:
 	// load from previous rendered ppm file to continue, which was rendered n_epoch times
-	void readPPM(String prev_path, unsigned int n_epoch = 1);
+	void readPPM(String prev_path, unsigned int prev_epoch);
 
 	// output image into ppm format
 	void writePPM(String out_path) const;

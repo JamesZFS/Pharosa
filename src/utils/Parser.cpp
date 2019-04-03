@@ -23,7 +23,7 @@ ObjectGroup Parser::fromJsonFile(const String &config_path)
 	using json = nlohmann::json;
 	std::ifstream fin;
 	fin.open(config_path, std::ios::in);
-	char buffer[250];
+	Buffer buffer;
 
 	if (!fin.is_open()) {    // exception
 		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());

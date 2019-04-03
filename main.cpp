@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+	debug("\n");
 	using namespace Scenes;
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 
@@ -23,11 +24,14 @@ int main()
 
 	renderer.setupStage(ObjectGroup(p, p + 5));
 
-	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 800, 500, "../out/fun.ppm", 10);
+//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 800, 500, "../out/fun.ppm", 115);
+	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 800, 500);
 
-	renderer.start(30);
+//	renderer.start(100, 10000, "../out/fun/");
+	renderer.start(100, 10000);
 
-	renderer.save("../out/fun.ppm");
+	renderer.save("../out/fun-100.ppm");
 
+	debug("\n");
 	return 0;
 }

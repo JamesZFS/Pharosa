@@ -16,13 +16,19 @@ private:
 
 	double randf();    // random float [0.0, 1.0]
 
+	// render with progressbar
+	void renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
+					   unsigned int verbose_step, const String &checkpoint_dir);
+
 protected:
 	Color radiance(const Ray &ray, unsigned int depth);    // ** main algorithm **
 
 public:
 	RayTracing(const Stage &stage_, Cameras::Camera &camera_);
 
-	void render(unsigned int n_epoch, unsigned int prev_epoch) override;        // ** pipeline **
+	// ** rendering pipeline **
+	void render(unsigned int n_epoch, unsigned int prev_epoch, unsigned int verbose_step,
+				const String &checkpoint_dir) override;
 };
 
 #include "RayTracing.cpp"

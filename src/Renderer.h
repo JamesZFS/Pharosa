@@ -20,7 +20,8 @@ private:
 	Stage *stage;
 	Cameras::Camera *camera;
 	Algorithms::GI *illuminator;
-	unsigned int prev_epoch;	// previous rendering times
+	unsigned int prev_epoch;    // previous rendering times
+
 public:
 	// init a Renderer with any type of Alg and Camera
 	Renderer();
@@ -33,11 +34,16 @@ public:
 	void setupStage(ObjectGroup &&objects);
 
 	// setup stage by designating a stage config file path, can continue from a previous ppm image path
-	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_,
-					 unsigned int height_, const String &prev_path = "", unsigned int n_epoch = 1);
+	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,
+					 const String &prev_path_ = "", unsigned int prev_epoch_ = 0);
 
-	// start rendering
-	void start(unsigned int n_epoch = 1, unsigned int verbose = 1, bool save_checkpoints = false);
+	/** start rendering
+	 *
+	 * @param n_epoch : epochs to render
+	 * @param verbose_step : steps to update progressbar, if 0 - no progressbar
+	 * @param checkpoint_dir : directory for storing checkpoint ppm images, should not end with "/", if "" - don't save checkpoints
+	 */
+	void start(unsigned int n_epoch = 1, unsigned int verbose_step = 10000, const String &checkpoint_dir = "");
 
 	// save ppm image
 	void save(const String &out_path);

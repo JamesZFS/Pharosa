@@ -7,8 +7,7 @@
 
 const double Camera::PIXEL_SIZE = 1.0, Camera::CAMERA_FOCUS = 300.0;
 
-Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
-			   const String &prev_path_, unsigned int n_epoch_) :
+Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		pos(pos_), width(width_), height(height_), size(width_ * height_),
 		ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),
 		cur_i(0), cur_j(0), cur_rank(0)
@@ -20,10 +19,6 @@ Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, 
 	ex.rotate(euler_angles_).unitize();
 	ey.rotate(euler_angles_).unitize();
 	ez.rotate(euler_angles_).unitize();
-	// load from prev
-	if (prev_path_.length() > 0) {
-		readPPM(prev_path_, n_epoch_);
-	}
 }
 
 Camera::~Camera()
@@ -53,8 +48,9 @@ bool Camera::finished() const
 	return (cur_rank >= size);
 }
 
-bool Camera::finishedDisplay(unsigned int n_step) const
+bool Camera::finishedVerbose(unsigned int n_step) const
 {
+	assert(n_step > 0);
 	if (cur_rank % n_step == 0) {
 		debug("\r\tprogress:  %.1f %%", cur_rank * 100.0 / size);
 	}
@@ -78,16 +74,16 @@ void Camera::resetProgress()
 	cur_i = cur_j = cur_rank = 0;
 }
 
-void Camera::readPPM(String prev_path, unsigned int n_epoch)
+void Camera::readPPM(String prev_path, unsigned int prev_epoch)
 {
-	if (n_epoch == 0) return;
+	if (prev_epoch == 0) return;
 	if (!Funcs::endsWith(prev_path, ".ppm")) {
 		prev_path += ".ppm";
 	}
 	std::fstream fin;
 	fin.open(prev_path, std::ios::in);
 
-	char buffer[250];
+	Buffer buffer;
 	if (!fin.is_open()) {
 		sprintf(buffer, "Error: prev_path \"%s\" cannot be opened, reading stopped.", prev_path.data());
 		warn(buffer);
@@ -102,11 +98,11 @@ void Camera::readPPM(String prev_path, unsigned int n_epoch)
 	assert(b == height);
 	assert(c == 255);
 	for (unsigned int i = 0; i < size; ++i) {
-		fin >> a >> b >> c;	// 0 - 255
-		img[i].r += Funcs::inverseGammaCorrection(a) * n_epoch;
-		img[i].g += Funcs::inverseGammaCorrection(b) * n_epoch;
-		img[i].b += Funcs::inverseGammaCorrection(c) * n_epoch;
-		render_cnt[i] += n_epoch;
+		fin >> a >> b >> c;    // 0 - 255
+		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch;
+		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch;
+		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch;
+		render_cnt[i] += prev_epoch;
 	}
 }
 
@@ -118,7 +114,7 @@ void Camera::writePPM(String out_path) const
 	std::ofstream fout;
 	fout.open(out_path, std::ios::out | std::ios::trunc);
 
-	char buffer[250];
+	Buffer buffer;
 	if (!fout.is_open()) {
 		sprintf(buffer, "Error: out_path \"%s\" cannot be opened, writing stopped.", out_path.data());
 		warn(buffer);

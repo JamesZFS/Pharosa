@@ -37,15 +37,21 @@ void Renderer<GI_Algorithm, Cameras_Type>::setupStage(ObjectGroup &&objects)
 template<typename GI_Algorithm, typename Cameras_Type>
 void Renderer<GI_Algorithm, Cameras_Type>::
 setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
-			const String &prev_path, unsigned int n_epoch)
+			const String &prev_path_, unsigned int prev_epoch_)
 {
-	prev_epoch = n_epoch;
+	prev_epoch = prev_epoch_;
 	if (camera != nullptr) delete camera;
-	camera = new Cameras_Type(pos_, euler_angles_, width_, height_, prev_path, n_epoch);
+	camera = new Cameras_Type(pos_, euler_angles_, width_, height_);
+
+	// load from prev
+	if (prev_path_.length() > 0) {
+		camera->readPPM(prev_path_, prev_epoch_);
+	}
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch, unsigned int verbose, bool save_checkpoints)
+void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
+												 unsigned int verbose_step, const String &checkpoint_dir)
 {
 	if (stage == nullptr) {
 		warn("Warning: stage is not setup yet, the result shall be empty.\n");
@@ -60,8 +66,8 @@ void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch, unsigned 
 		illuminator = new GI_Algorithm(*stage, *camera);
 	}
 
-	illuminator->render(n_epoch, prev_epoch);
-	// todo
+	illuminator->render(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
+	prev_epoch += n_epoch;
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>

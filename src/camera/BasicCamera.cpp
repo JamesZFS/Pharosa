@@ -4,10 +4,8 @@
 
 #include "BasicCamera.h"
 
-BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
-						 const String &prev_path_, unsigned int n_epoch_) :
-		Camera(pos_, euler_angles_, width_, height_, prev_path_, n_epoch_),
-		w_2(width_ >> 1), h_2(height_ >> 1)
+BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
+		Camera(pos_, euler_angles_, width_, height_), w_2(width_ >> 1), h_2(height_ >> 1)
 {
 }
 

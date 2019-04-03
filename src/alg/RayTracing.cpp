@@ -74,7 +74,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 			);
 		}
 		default: {
-			char buffer[50];
+			Buffer buffer;
 			sprintf(buffer, "Warning: got invalid reft value \"%d\", rendering as black.\n", obj.reft);
 			warn(buffer);
 			return Color::BLACK;
@@ -82,9 +82,16 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 	}
 }
 
-void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch)
+void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch,
+						unsigned int verbose_step, const String &checkpoint_dir)
 {
-	char buffer[100];
+	if (verbose_step > 0) {
+		renderVerbose(n_epoch, prev_epoch, verbose_step, checkpoint_dir);    // with progressbar
+		return;
+	}
+	// without progressbar
+	Buffer buffer;
+	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	unsigned int tot_epoch = n_epoch + prev_epoch;
 	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
 		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
@@ -95,8 +102,35 @@ void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch)
 			camera.renderInc(color);
 			camera.updateProgress();
 		}
-		debug("\n");
-		sprintf(buffer, "../out/fun - %d.ppm", epoch);
-		camera.writePPM(buffer);
+		if (checkpoint) {    // save checkpoints
+			sprintf(buffer, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch);
+			camera.writePPM(buffer);
+		}// todo
 	}
+}
+
+void RayTracing::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
+							   unsigned int verbose_step, const String &checkpoint_dir)
+{
+	// without progressbar
+	Buffer buffer;
+	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
+	unsigned int tot_epoch = n_epoch + prev_epoch;
+	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
+		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
+		fflush(stdout);
+		camera.resetProgress();
+		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
+			const Ray &ray = camera.shootRay();
+			for (unsigned int k = 0; k < 4; ++k) {	// repeat 4 times
+				camera.renderInc(radiance(ray, 0));
+			}
+			camera.updateProgress();
+		}
+		if (checkpoint) {    // save checkpoints
+			sprintf(buffer, "%sepoch - %d.ppm", checkpoint_dir.data(), epoch);
+			camera.writePPM(buffer);
+		}
+	}
+	debug("\n");
 }
