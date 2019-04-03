@@ -41,7 +41,7 @@ private:
 public:
 	static void reset();
 
-	static List<const Scenes::Object *> fromJsonFile(const String &config_path);    // remember to use std::move
+	static ObjectGroup fromJsonFile(const String &config_path);    // remember to use std::move
 };
 
 #include "Parser.cpp"    // todo del

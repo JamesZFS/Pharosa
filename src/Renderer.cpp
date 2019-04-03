@@ -23,7 +23,15 @@ void Renderer<GI_Algorithm, Cameras_Type>::setupStage(const String &config_path)
 {
 	if (stage != nullptr) delete stage;
 	stage = new Stage;
-	stage->from_json(config_path);
+	stage->fromJsonFile(config_path);
+}
+
+template<typename GI_Algorithm, typename Cameras_Type>
+void Renderer<GI_Algorithm, Cameras_Type>::setupStage(ObjectGroup &&objects)
+{
+	if (stage != nullptr) delete stage;
+	stage = new Stage;
+	stage->fromList(objects);
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>

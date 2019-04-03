@@ -18,7 +18,7 @@ Pos Parser::points[3];
 String Parser::obj_str;
 const Scenes::Object *Parser::result;
 
-List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
+ObjectGroup Parser::fromJsonFile(const String &config_path)
 {
 	using json = nlohmann::json;
 	std::ifstream fin;
@@ -34,7 +34,7 @@ List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 	json config;
 	fin >> config;
 	fin.close();
-	List<const Scenes::Object *> objects;
+	ObjectGroup objects;
 
 	// for each Object defined in config
 	for (auto &item : config.items()) {

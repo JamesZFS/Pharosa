@@ -156,8 +156,8 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	Pos &rotate(const ElAg &ea)    // Euler rotation, in place
 	{
-		rotateAlongX(ea.gamma);
-		rotateAlongY(ea.beta);
+		rotateAlongZ(ea.gamma);
+		rotateAlongX(ea.beta);
 		rotateAlongZ(ea.alpha);
 		return *this;
 	}

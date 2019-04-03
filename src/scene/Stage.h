@@ -9,20 +9,24 @@
 #include "../Ray.hpp"
 #include "All.h"
 
+typedef List<const Scenes::Object *> ObjectGroup;
+
 // Stage class, for i/o models and calculating ray intersection
 class Stage
 {
 private:
-	List<const Scenes::Object *> objects;	// using pointer to allow polymorphism
+	ObjectGroup objects;	// using pointer to allow polymorphism
 
 public:
 	Stage() = default;        // init an empty stage
 
 	~Stage();
 
-	void from_json(const String &config_path);	// load objects from json file
+	void fromJsonFile(const String &config_path);	// load objects from json file
 
-	void from_obj(const String &obj_path);        // load triangles from obj file
+	void fromObjFile(const String &obj_path);      // load triangles from obj file
+
+	void fromList(ObjectGroup &objects_);	// load from list
 
 	// calculate first intersection with all objects
 	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) const;

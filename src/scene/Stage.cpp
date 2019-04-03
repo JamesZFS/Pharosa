@@ -5,17 +5,30 @@
 #include "Stage.h"
 //#include "../utils/json.hpp"
 #include "../utils/funcs.hpp"
-#include "../utils/Parser.h"
+//#include "../utils/Parser.h"
 
 
-void Stage::from_json(const String &config_path)
+Stage::~Stage()
 {
-	objects = std::move(Parser::fromJsonFile(config_path));
+	for (const Scenes::Object *obj : objects) {
+		delete obj;
+	}
 }
 
-void Stage::from_obj(const String &obj_path)
+void Stage::fromJsonFile(const String &config_path)
+{
+	// todo
+//	objects = std::move(Parser::fromJsonFile(config_path));
+}
+
+void Stage::fromObjFile(const String &obj_path)
 {
 	// todo implement this
+}
+
+void Stage::fromList(ObjectGroup &objects_)
+{
+	objects = std::move(objects_);
 }
 
 bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) const
@@ -32,11 +45,4 @@ bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) 
 		}
 	}
 	return (hit != nullptr);    // if no intersection, return false
-}
-
-Stage::~Stage()
-{
-	for (const Scenes::Object *obj : objects) {
-		delete obj;
-	}
 }

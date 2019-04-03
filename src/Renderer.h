@@ -29,6 +29,8 @@ public:
 	// setup stage by specify a stage config file path
 	void setupStage(const String &config_path);
 
+	void setupStage(ObjectGroup &&objects);
+
 	// setup stage by designating a stage config file path
 	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
 

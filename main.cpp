@@ -3,40 +3,29 @@
 //
 
 #include "src/Renderer.h"
-//#include "src/utils/json.hpp"
 #include <iostream>
 
 using namespace std;
-using json = nlohmann::json;
 
 int main()
 {
-	Parser::reset();
-	debug("\n\nHello Ray Tracking!\n");
-
-//	json config;
-//	ifstream fin("../config/1.json");
-//	fin >> config;
-//	fin.close();
-//
-//	for (auto &el : config.items()) {
-//		cout << el.key() << " : " << el.value() << "\n";
-//		json j_obj = el.value();
-//		cout << j_obj["type"].get<String>() << endl;
-//		if (j_obj.find("color") != j_obj.end()) {
-//			auto &j_tmp = j_obj["color"];
-//			Color color = {j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>()};
-//			color.report(true);
-//		}
-//		cout << endl;
-//	}
-
+	using namespace Scenes;
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
-	renderer.setupStage("../config/1.json");
-	renderer.setupCamera(Pos::ORIGIN, ElAg::NONROT);
-	renderer.start(5);
-	renderer.save("../out/test.ppm");
 
-	debug("\n\n");
+	Scenes::Object *p[] = {
+			new Sphere(Pos(0, 0, 100), 20, Color::RED, Emission::LIGHTSOURCE, ElAg::NONROT, Object::DIFF),
+			new Sphere(Pos(0, 0, -100), 20, Color::BLUE, Emission::DARK, ElAg::NONROT, Object::DIFF),
+			new Sphere(Pos(0, 100, 0), 30, Color::GREEN, Emission::DARK, ElAg::NONROT, Object::REFR),
+//			new Triangle(Pos::ORIGIN, new Pos[3]{{0, -40, 0}, {0, 40, 0}, {0, 0, 50}}, Color::WHITE, Emission::DARK, ElAg::NONROT, Object::DIFF),
+	};
+
+	renderer.setupStage(ObjectGroup(p, p + 3));
+
+	renderer.setupCamera(Pos(300, 0, 0), ElAg(M_PI_2, -M_PI_2, 0));
+
+	renderer.start(5);
+
+	renderer.save("../out/fun.ppm");
+
 	return 0;
 }
