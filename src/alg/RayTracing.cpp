@@ -4,7 +4,7 @@
 
 #include "RayTracing.h"
 
-RayTracing::RayTracing(const Stage &stage_, Cameras::BasicCamera &camera_, unsigned int random_seed) :
+RayTracing::RayTracing(const Stage &stage_, Cameras::Camera &camera_, unsigned int random_seed) :
 		GI(stage_, camera_), distribution(0.0, 1.0)
 {
 	generator.seed(random_seed);
@@ -18,17 +18,16 @@ double RayTracing::randf()
 Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 {
 	using namespace Scenes;
-	double t;                               // distance to intersection
-	int id = 0;                               // id of intersected object
-	Object *hit = nullptr;
 	// calculate intersection
+	double t;		// distance to intersection
+	Object *hit = nullptr;
 	if (!stage.intersectAny(ray, t, hit)) return BLACK; // if miss, return black
 	assert(hit != nullptr);    // todo
 	const auto &obj = *hit;        // the hit object
 
 	// forward ray
-	Pos x = ray.org + ray.dir * t;                    // hitting point
-	Pos n = (x - obj.pos).norm();                // normal
+	Pos x = ray.org + ray.dir * t;           // hitting point
+	Pos n = (x - obj.pos).norm();            // normal
 	Pos nl = n % ray.dir < 0 ? n : n * -1;
 	Pos f = obj.color;
 	double p = f.max(); // max color component as refl_t
@@ -85,16 +84,12 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 
 void RayTracing::render(unsigned int n_epoch)
 {
-	double progress;
-	Ray ray;
-	double t;
-	Scenes::Object *obj = nullptr;
 	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
-		debug("=== epoch %d / %d ===\n", epoch, n_epoch);
+		debug("\n=== epoch %d / %d ===\n", epoch, n_epoch);
 		camera.resetProgress();
-		while ((progress = camera.progress()) < 1.0) {
-			ray = camera.shootRay();
-			camera
+		while (!camera.finishedDisplay(50)) {
+			camera.renderInc(radiance(camera.shootRay(), 0));
 		}
+		debug("\n");
 	}
 }

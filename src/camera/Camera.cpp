@@ -41,9 +41,17 @@ void Camera::renderInc(const Color &color)
 	++render_cnt[cur_rank];    // counts up rendering time of current pixel
 }
 
-double Camera::progress() const
+bool Camera::finished() const
 {
-	return cur_rank * 1.0 / size;
+	return (cur_rank >= size);
+}
+
+bool Camera::finishedDisplay(unsigned int n_step) const
+{
+	if (cur_rank % n_step == 0) {
+		debug("\r\tprogress:  %.1f %%", cur_rank * 100.0 / size);
+	}
+	return (cur_rank >= size);
 }
 
 void Camera::updateProgress()
@@ -92,6 +100,6 @@ void Camera::writePPM(String out_path) const
 
 const Ray &Camera::shootRay()
 {
-	warn("Warning: method Camera::shootRay not implemented.\n");
+	warn("Warning: method Camera::shootRay is not implemented.\n");
 	return cur_ray;
 }

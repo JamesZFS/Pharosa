@@ -18,7 +18,7 @@ const Ray &BasicCamera::shootRay()
 	// from screen center crd (x', y') get global crd of ray.dir
 	// using dir = x' ex + y' ey + ez * CAM_FOCUS
 	cur_ray.dir = ex * xs + ey * ys + ez * CAMERA_FOCUS;
-	cur_ray.dir.norm(); // todo
+//	cur_ray.dir.norm(); // todo
 
 	// calculate ray.org
 	// solve t ez.dir = F ez.ez

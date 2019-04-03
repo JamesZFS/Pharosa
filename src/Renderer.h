@@ -13,10 +13,15 @@
 #include "alg/All.h"
 
 // frontend of all, the Renderer
+template <typename Algorithm, typename CameraType>
 class Renderer
 {
+private:
+	Algorithm illuminator;
+	CameraType camera;
+	Stage stage;
 public:
-	Renderer();
+	Renderer() = default;
 };
 
 #include "Renderer.cpp"

@@ -36,7 +36,9 @@ public:
 	inline void renderInc(const Color &color);    // render incrementally
 
 	// iterators:
-	inline double progress() const;    // how far have the rendering been, real number [0, 1]
+	inline bool finished() const;    // check whether the rendering progress is finished
+
+	inline bool finishedDisplay(unsigned int n_step = 50) const; // as above, with a progressbar displayed every n_step
 
 	inline void updateProgress();    // current pixel rank++
 

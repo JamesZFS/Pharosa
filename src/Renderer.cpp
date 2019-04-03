@@ -3,8 +3,3 @@
 //
 
 #include "Renderer.h"
-
-Renderer::Renderer()
-{
-	debug("Renderer Ready!\n");
-}

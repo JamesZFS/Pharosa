@@ -15,9 +15,9 @@ class GI
 {
 protected:
 	const Stage &stage;    // cannot change stage
-	Cameras::BasicCamera &camera;
+	Cameras::Camera &camera;
 public:
-	GI(const Stage &stage_, Cameras::BasicCamera &camera_);
+	GI(const Stage &stage_, Cameras::Camera &camera_);
 
 	virtual void render(unsigned int n_epoch);	// do the rendering for n_epoch times
 };
