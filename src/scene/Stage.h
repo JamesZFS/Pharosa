@@ -13,9 +13,13 @@
 class Stage
 {
 private:
-	List<const Scenes::Object *> objs;
+	List<const Scenes::Object *> objects;
 public:
 	Stage() = default;        // init an empty stage
+
+	~Stage();
+
+	void from_config(const String &config_path);	// load objects from config file
 
 	void from_obj(const String &obj_path);        // load triangles from obj file
 

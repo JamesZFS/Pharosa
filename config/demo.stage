@@ -1,0 +1,6 @@
+# this is a demo config file
+# number symbol is for comments
+# every object is defined in one line
+# format: [object type] [center coordinate (x, y, z)] [Euler angles (alpha, beta, gamma)]
+
+triangle

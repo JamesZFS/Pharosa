@@ -3,6 +3,25 @@
 //
 
 #include "Stage.h"
+#include "../utils/json.hpp"
+
+void Stage::from_config(const String &config_path)
+{
+	std::ifstream fin;
+	fin.open(config_path, std::ios::in);
+	using json = nlohmann::json;
+
+	char buffer[250];
+	if (fin.is_open()) {
+		fin.getline(buffer, 200);
+	}
+	else {
+		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
+		warn(buffer);
+		exit(-1);
+	}
+	fin.close();
+}
 
 void Stage::from_obj(const String &obj_path)
 {
@@ -15,7 +34,7 @@ bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *hit) c
 	// todo use OctTree
 	t = INF;
 	hit = nullptr;
-	for (const Scenes::Object *obj : objs) {
+	for (const Scenes::Object *obj : objects) {
 		double s = obj->intersect(ray);
 		if (s > EPS && s < t) {	// if s < 0, meaning no hitting, continue
 			t = s;
@@ -23,4 +42,11 @@ bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *hit) c
 		}
 	}
 	return (hit != nullptr);    // if no intersection, return false
+}
+
+Stage::~Stage()
+{
+	for (const Scenes::Object *obj : objects) {
+		delete obj;
+	}
 }

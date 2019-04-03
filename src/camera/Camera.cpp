@@ -27,7 +27,7 @@ Camera::~Camera()
 
 const Color &Camera::pixelAt(unsigned int i, unsigned int j) const
 {
-	if(0 <= i && i < width && 0 <= j && j < height) {
+	if (0 <= i && i < width && 0 <= j && j < height) {
 		return img[j * width + i];
 	}
 	else {
@@ -57,7 +57,7 @@ bool Camera::finishedDisplay(unsigned int n_step) const
 void Camera::updateProgress()
 {
 	++cur_rank;
-	if (++cur_i == width) {		// first ++i then ++j
+	if (++cur_i == width) {        // first ++i then ++j
 		cur_i = 0;
 		if (++cur_j > height) {
 			warn("Warning: pixel index overflows.\n");
@@ -76,26 +76,26 @@ void Camera::writePPM(String out_path) const
 	if (!Funcs::endsWith(out_path, ".ppm")) {
 		out_path += ".ppm";
 	}
-	std::ofstream f;
-	f.open(out_path, std::ios::out | std::ios::trunc);
+	std::ofstream fout;
+	fout.open(out_path, std::ios::out | std::ios::trunc);
 
 	char buffer[250];
-	if (f.is_open()) {
+	if (fout.is_open()) {
 		// write head
 		sprintf(buffer, "P3 %d %d \n%d \n", width, height, 255);
-		f << buffer;
+		fout << buffer;
 		// write body
 		for (unsigned int i = 0; i < size; ++i) {
 			const Color p = img[i] / render_cnt[i];
 			sprintf(buffer, "%d %d %d ", Funcs::toUchar(p.x), Funcs::toUchar(p.y), Funcs::toUchar(p.z));
-			f << buffer;
+			fout << buffer;
 		}
 	}
 	else {
-		sprintf(buffer, "IO error, out_path \"%s\" cannot be opened, writing stopped.", out_path.data());
+		sprintf(buffer, "IO Error: out_path \"%s\" cannot be opened, writing stopped.", out_path.data());
 		warn(buffer);
 	}
-	f.close();
+	fout.close();
 }
 
 const Ray &Camera::shootRay()

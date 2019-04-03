@@ -12,16 +12,18 @@
 #include "camera/All.h"
 #include "alg/All.h"
 
-// frontend of all, the Renderer
-template <typename Algorithm, typename CameraType>
+// frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Stage
 class Renderer
 {
 private:
-	Algorithm illuminator;
-	CameraType camera;
+	Algorithms::GI illuminator;
+	Cameras::Camera camera;
 	Stage stage;
 public:
-	Renderer() = default;
+	// init a Renderer with any type of Alg and Camera
+	Renderer(const Algorithms::GI &algorithm_, const Cameras::Camera &camera_);
+
+	void setStage(const String &config_path);	// setup stage by designating a stage config file path
 };
 
 #include "Renderer.cpp"
