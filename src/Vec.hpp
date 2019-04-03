@@ -171,7 +171,7 @@ struct Dir : public Vec<double>        // direction data type, should automatica
 	{}
 };
 
-struct RGB : public Vec<double>		// RGB Vector
+struct RGB : public Vec<double>        // RGB Vector
 {
 	double &r, &g, &b;
 
@@ -188,8 +188,8 @@ struct RGB : public Vec<double>		// RGB Vector
 	static const RGB DARK, BRIGHT, SPLENDID, LIGHTSOURCE;
 };
 
-typedef RGB Color;			// intrinsic color of an object
-typedef RGB Emission;		// RGB emission of an object
+typedef RGB Color;            // intrinsic color of an object
+typedef RGB Emission;        // RGB emission of an object
 
 // common Pos
 const Pos Pos::ORIGIN(0, 0, 0);

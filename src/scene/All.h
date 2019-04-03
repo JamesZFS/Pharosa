@@ -8,7 +8,6 @@
 namespace Scenes
 {
 
-#include "Object.h"
 #include "Sphere.h"
 #include "Triangle.h"
 

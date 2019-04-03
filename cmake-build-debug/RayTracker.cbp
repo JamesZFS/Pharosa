@@ -95,9 +95,6 @@
 		<Unit filename="/Users/james/Test/CG/JRT/main.cpp">
 			<Option target="test.exe"/>
 		</Unit>
-		<Unit filename="/Users/james/Test/CG/JRT/src/utils/json.hpp">
-			<Option target="test.exe"/>
-		</Unit>
 		<Unit filename="/Users/james/Test/CG/JRT/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

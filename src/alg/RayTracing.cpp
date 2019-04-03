@@ -48,7 +48,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 			Pos d = (i * cos(r1) * r2s + j * sin(r1) * r2s + k * sqrt(1 - r2)).norm();
 			return obj.emi + f.mul(radiance(Ray(x, d), depth));
 		}
-		case Object::MIRR: {         // Ideal mirror reflection
+		case Object::REFL: {         // Ideal mirror reflection
 			return obj.emi + f.mul(radiance(Ray(x, ray.dir - nl * 2 * (nl % ray.dir)), depth));
 		}
 		case Object::REFR: {    // Ideal dielectric refraction

@@ -1,18 +1,17 @@
-// a demo config file with comments
 [
 	{
 		"type": "sphere",
-		"pos": [10, 10, 10], // coordinate tuple
+		"pos": [10, 10, 10],
 		"radius": 2,
-		"color": [1, 0, 0], // red
+		"color": [1, 0, 0],
 		"emission": "dark",
 		"angles": "nonrot",
 		"reflection": "diffusive"
 	},
 	{
 		"type": "triangle",
-		"pos": [0, -10, -10], // tuple
-		"points": // three points
+		"pos": [0, -10, -10],
+		"points":
 		[
 			[0, 0, 1],
 			[1, 0, 0],
@@ -20,16 +19,16 @@
 		],
 		"color": "blue",
 		"emission": "bright",
-		"angles": [90, 0, 0], // in degrees
+		"angles": [90, 0, 0],
 		"reflection": "reflective"
 	},
 	{
-		"type": "obj", // from .obj file
-		"obj path": "res/bunny.fine.obj", // .obj file path
+		"type": "obj",
+		"path": "res/bunny.fine.obj",
 		"pos": [0, -10, -10],
 		"color": "green",
 		"emission": "dark",
-		"angles": [45, 10, 0], // in degrees
+		"angles": [45, 10, 0],
 		"reflection": "refractive"
 	}
 ]

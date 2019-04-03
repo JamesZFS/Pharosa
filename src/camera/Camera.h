@@ -27,7 +27,7 @@ protected:
 public:
 	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
 
-	~Camera();
+	virtual ~Camera();
 
 	// getter:
 	inline const Color &pixelAt(unsigned int i, unsigned int j) const;

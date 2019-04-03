@@ -4,25 +4,13 @@
 
 #include "Stage.h"
 //#include "../utils/json.hpp"
-#include <nlohmann/json.hpp>
+#include "../utils/funcs.hpp"
+#include "../utils/Parser.h"
 
-void Stage::from_config(const String &config_path)
+
+void Stage::from_json(const String &config_path)
 {
-	std::ifstream fin;
-	fin.open(config_path, std::ios::in);
-	using json = nlohmann::json;
 
-	char buffer[250];
-	if (fin.is_open()) {
-		fin.getline(buffer, 200);
-		// todo
-	}
-	else {
-		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
-		warn(buffer);
-		exit(1);
-	}
-	fin.close();
 }
 
 void Stage::from_obj(const String &obj_path)

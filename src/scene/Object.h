@@ -14,8 +14,8 @@ struct Object
 {
 	enum ReflType
 	{
-		DIFF, MIRR, REFR
-	};    // diffusive, mirror, refractory
+		NONE = 0, DIFF = 1, REFL = 2, REFR = 3
+	};    // undefined, diffusive, reflective, refractive
 
 	Pos pos;        // ref point position in global coordinate system
 	Color color;        // color
@@ -28,7 +28,7 @@ struct Object
 	Object(const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
 		   const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
 
-	~Object() = default;
+	virtual ~Object() = default;
 
 	// 3D transformation, return *this
 	Object &translate(const Pos &delta);
