@@ -27,7 +27,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 
 	// forward ray
 	Pos x = ray.org + ray.dir * t;           // hitting point
-	Pos n = (x - obj.pos).norm();            // normal
+	Pos n = (x - obj.pos).unitize();            // unitizeal
 	Pos nl = n % ray.dir < 0 ? n : n * -1;
 	Pos f = obj.color;
 	double p = f.max(); // max color component as refl_t
@@ -43,9 +43,9 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 		case Object::DIFF: {           // Ideal diffusive reflection
 			double r1 = 2 * M_PI * randf(), r2 = randf(), r2s = sqrt(r2);
 			Pos k = nl;
-			Pos i = ((fabs(k.x) > .1 ? Pos(0, 1) : Pos(1)) ^ k).norm();    // .1 is the max threshold value for k.x
+			Pos i = ((fabs(k.x) > .1 ? Pos(0, 1) : Pos(1)) ^ k).unitize();    // .1 is the max threshold value for k.x
 			Pos j = k ^i;    // i, j, k(nl) coordinate system
-			Pos d = (i * cos(r1) * r2s + j * sin(r1) * r2s + k * sqrt(1 - r2)).norm();
+			Pos d = (i * cos(r1) * r2s + j * sin(r1) * r2s + k * sqrt(1 - r2)).unitize();
 			return obj.emi + f.mul(radiance(Ray(x, d), depth));
 		}
 		case Object::REFL: {         // Ideal mirror reflection
@@ -60,7 +60,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 			if (cos2t < 0)    // Total internal reflection
 				return obj.emi + f.mul(radiance(reflRay, depth));    // only reflection term
 
-			Ray r_out(x, (ray.dir * nnt - nl * (ddn * nnt + sqrt(cos2t))).norm());
+			Ray r_out(x, (ray.dir * nnt - nl * (ddn * nnt + sqrt(cos2t))).unitize());
 			double a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_out.dir % n);
 			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
 			double Tr = 1 - Re, P = .25 + .5 * Re, RP = Re / P;
@@ -89,7 +89,8 @@ void RayTracing::render(unsigned int n_epoch)
 		camera.resetProgress();
 		while (!camera.finished()) {
 			const Ray &ray = camera.shootRay();
-			camera.renderInc(radiance(ray, 0));
+			auto color = radiance(ray, 0);
+			camera.renderInc(color);
 			camera.updateProgress();
 		}
 		debug("\n");

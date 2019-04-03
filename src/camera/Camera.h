@@ -54,8 +54,6 @@ public:
 	static const double PIXEL_SIZE, CAMERA_FOCUS;
 };
 
-const double Camera::PIXEL_SIZE = 1.0, Camera::CAMERA_FOCUS = 150.0;
-
 #include "Camera.cpp"
 
 #endif //RAYTRACKER_CAMERA_H
