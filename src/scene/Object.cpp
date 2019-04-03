@@ -9,11 +9,6 @@ Object::Object(Pos pos_, Color color_, Emission emission_, ElAg euler_angles_, R
 {
 }
 
-double Object::intersect(const Ray &ray) const
-{
-	return -1;
-}
-
 Object &Object::translate(const Pos &delta)
 {
 	pos += delta;
@@ -25,8 +20,4 @@ Object &Object::rotate(const ElAg &dea)
 	ea += dea;
 	applyTransform();
 	return *this;
-}
-
-void Object::applyTransform()
-{
 }

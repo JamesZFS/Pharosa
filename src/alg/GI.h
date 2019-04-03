@@ -19,7 +19,8 @@ protected:
 public:
 	GI(const Stage &stage_, Cameras::Camera &camera_);
 
-	virtual void render(unsigned int n_epoch);	// do the rendering for n_epoch times
+	// interfaces:
+	virtual void render(unsigned int n_epoch) = 0;    // do the rendering for n_epoch times
 };
 
 #include "GI.cpp"

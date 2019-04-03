@@ -19,3 +19,8 @@ double Sphere::intersect(const Ray &ray) const
 	else det = sqrt(det);
 	return (t = b - det) > EPS ? t : ((t = b + det) > EPS ? t : -1);
 }
+
+void Sphere::applyTransform()
+{
+	// do nothing
+}

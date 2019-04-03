@@ -48,15 +48,13 @@ public:
 	void writePPM(String out_path) const;        // output image into ppm format
 
 	// interface:
-	virtual const Ray &shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
+	virtual const Ray &shootRay() = 0;    // shoot a ray iteratively. will stop when all pixels are traversed
 
 	// camera constants
-	static const double PIXEL_SIZE;
-	static const double CAMERA_FOCUS;
+	static const double PIXEL_SIZE, CAMERA_FOCUS;
 };
 
-const double Camera::PIXEL_SIZE = 1.0;
-const double Camera::CAMERA_FOCUS = 150.0;
+const double Camera::PIXEL_SIZE = 1.0, Camera::CAMERA_FOCUS = 150.0;
 
 #include "Camera.cpp"
 

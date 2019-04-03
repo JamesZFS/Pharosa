@@ -13,7 +13,8 @@ int main()
 	debug("\n\nHello Ray Tracking!\n");
 
 	Stage stage;
-	Cameras::BasicCamera camera(ORIGIN, NONROT);
+	Scenes::Sphere sphere(Pos::ORIGIN, 1, ElAg::NONROT, Color::WHITE);
+	Cameras::BasicCamera camera(Pos::ORIGIN, ElAg::NONROT);
 	Algorithms::RayTracing rt(stage, camera);
 	rt.render(1);
 //	Renderer renderer(Algorithms::RayTracing, Cameras::BasicCamera);

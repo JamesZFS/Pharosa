@@ -97,9 +97,3 @@ void Camera::writePPM(String out_path) const
 	}
 	fout.close();
 }
-
-const Ray &Camera::shootRay()
-{
-	warn("Warning: method Camera::shootRay is not implemented.\n");
-	exit(1);
-}

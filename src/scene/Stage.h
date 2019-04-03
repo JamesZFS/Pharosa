@@ -13,7 +13,7 @@
 class Stage
 {
 private:
-	List<const Scenes::Object *> objects;
+	List<const Scenes::Object *> objects;	// using pointer to allow polymorphism
 public:
 	Stage() = default;        // init an empty stage
 

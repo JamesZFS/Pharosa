@@ -28,15 +28,14 @@ struct Object
 	Object(Pos pos_, Color color_, Emission emission_ = {0, 0, 0}, ElAg euler_angles_ = {0, 0, 0},
 		   ReflType refl_type_ = DIFF);
 
-	// standard intersection api, to be overriden. Should return -1 if not hitting
-	virtual double intersect(const Ray &ray) const;
-
 	// 3D transformation, return *this
 	Object &translate(const Pos &delta);
 
 	Object &rotate(const ElAg &dea);
 
-	virtual void applyTransform();    // apply transform from obj crd to global crd, to be overriden
+	// interfaces:
+	virtual double intersect(const Ray &ray) const = 0; // standard intersection api. Should return -1 if not hitting
+	virtual void applyTransform() = 0;    // apply transform from obj crd to global crd
 };
 
 #include "Object.cpp"

@@ -113,6 +113,8 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 
 	ElAg(const ElAg &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	static const ElAg NONROT;
 };
 
 struct Pos : Vec<double>    // 3D coordinate
@@ -151,6 +153,8 @@ struct Pos : Vec<double>    // 3D coordinate
 		rotateAlongZ(ea.alpha);
 		return *this;
 	}
+
+	static const Pos ORIGIN;
 };
 
 struct Dir : public Vec<double>        // direction data type, should automatically unitize
@@ -167,33 +171,45 @@ struct Dir : public Vec<double>        // direction data type, should automatica
 	{}
 };
 
-struct Color : public Vec<double>    // RGB Color, range [0, 1]
+struct RGB : public Vec<double>		// RGB Vector
 {
 	double &r, &g, &b;
 
-	Color(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
+	RGB(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
 	{}
 
-	Color(const Vec<double> &obj) : Color(obj.x, obj.y, obj.z)    // copy constructor
+	RGB(const Vec<double> &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
-	Color(const Color &obj) : Color(obj.x, obj.y, obj.z)    // copy constructor
+	RGB(const RGB &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	static const RGB BLACK, WHITE, RED, GREEN, BLUE;
+	static const RGB DARK, BRIGHT, SPLENDID, LIGHTSOURCE;
 };
 
-typedef Color Emission;
-
-// common colors
-#define BLACK {0, 0, 0}
-#define WHITE {1, 1, 1}
-#define RED {1, 0, 0}
-#define GREEN {0, 1, 0}
-#define BLUE {0, 0, 1}
+typedef RGB Color;			// intrinsic color of an object
+typedef RGB Emission;		// RGB emission of an object
 
 // common Pos
-#define ORIGIN {0, 0, 0}
+const Pos Pos::ORIGIN(0, 0, 0);
 
 // common ElAg
-#define NONROT {0, 0, 0}
+const ElAg ElAg::NONROT(0, 0, 0);
+
+// common colors
+const Color
+		Color::BLACK(0, 0, 0),
+		Color::WHITE(1, 1, 1),
+		Color::RED(1, 0, 0),
+		Color::GREEN(0, 1, 0),
+		Color::BLUE(0, 0, 1);
+
+// common Emission
+const Emission
+		Emission::DARK(0, 0, 0),
+		Emission::BRIGHT(0.5, 0.5, 0.5),
+		Emission::SPLENDID(1.0, 1.0, 1.0),
+		Emission::LIGHTSOURCE(5.0, 5.0, 5.0);
 
 #endif //RAYTRACKER_VEC_HPP

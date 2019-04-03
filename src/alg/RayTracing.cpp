@@ -21,7 +21,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 	// calculate intersection
 	double t;        // distance to intersection
 	Object *hit = nullptr;
-	if (!stage.intersectAny(ray, t, hit)) return BLACK; // if miss, return black
+	if (!stage.intersectAny(ray, t, hit)) return Color::BLACK; // if miss, return black
 	assert(hit != nullptr);    // todo
 	const auto &obj = *hit;        // the hit object
 
@@ -77,7 +77,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 			char buffer[50];
 			sprintf(buffer, "Warning: got invalid reft value \"%d\", rendering as black.\n", obj.reft);
 			warn(buffer);
-			return BLACK;
+			return Color::BLACK;
 		}
 	}
 }
