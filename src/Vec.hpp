@@ -114,6 +114,14 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 	ElAg(const ElAg &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
+	ElAg &operator=(const ElAg &obj)	// copy assignment
+	{
+		alpha = obj.alpha;
+		beta = obj.beta;
+		gamma = obj.gamma;
+		return *this;
+	}
+
 	static const ElAg NONROT;
 };
 
@@ -183,6 +191,14 @@ struct RGB : public Vec<double>        // RGB Vector
 
 	RGB(const RGB &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	RGB &operator=(const RGB &obj)	// copy assignment
+	{
+		r = obj.r;
+		g = obj.g;
+		b = obj.b;
+		return *this;
+	}
 
 	static const RGB BLACK, WHITE, RED, GREEN, BLUE;
 	static const RGB DARK, BRIGHT, SPLENDID, LIGHTSOURCE;

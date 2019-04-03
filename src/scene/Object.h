@@ -14,8 +14,8 @@ struct Object
 {
 	enum ReflType
 	{
-		NONE = 0, DIFF = 1, REFL = 2, REFR = 3
-	};    // undefined, diffusive, reflective, refractive
+		DIFF, REFL, REFR
+	};    // diffusive, reflective, refractive
 
 	Pos pos;        // ref point position in global coordinate system
 	Color color;        // color

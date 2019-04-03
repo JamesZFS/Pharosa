@@ -10,7 +10,7 @@
 
 void Stage::from_json(const String &config_path)
 {
-
+//	objects = std::move(Parser::fromJsonFile(config_path));
 }
 
 void Stage::from_obj(const String &obj_path)

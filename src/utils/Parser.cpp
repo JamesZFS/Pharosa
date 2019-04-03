@@ -31,7 +31,6 @@ List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 		String type = j_obj["type"].get<String>();
 		obj_str = j_obj.get<String>();
 		Funcs::toLower(type);    // into lower cases
-		reset();    // init results
 
 		// switch type
 		if (type == "sphere") {
@@ -52,26 +51,17 @@ List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 	return objects;
 }
 
-#define release(x) delete x; x = nullptr
-#define releaseArr(x) delete[] x; x = nullptr
-
 void Parser::reset()
 {
-	release(pos);
-	release(color);
-	release(emission);
-	release(euler_angles);
-	refl_type = Scenes::Object::NONE;
-
-	release(radius);
-	releaseArr(points);
+	// assign default values
+	emission = Emission::DARK;
+	euler_angles = ElAg::NONROT;
+	refl_type = Scenes::Object::DIFF;
 }
-
-#undef release
-#undef releaseArr
 
 void Parser::parseGeneric()
 {
+	reset();
 	using json = nlohmann::json;
 	json j_obj = json::parse(obj_str), j_tmp;
 	String s_tmp;
@@ -82,23 +72,23 @@ void Parser::parseGeneric()
 		exit(1);
 	}
 	j_tmp = j_obj["pos"];
-	pos = new Pos(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
+	pos = {j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>()};
 
 	if (j_obj.find("color") == j_obj.end()) {
 		warn("Error: attribute \"color\" not found, parsing stops.\n");
 		exit(1);
 	}
 	j_tmp = j_obj["color"];
-	color = new Color(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
+	color = {j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>()};
 
 	// optional attributes:
 	if (j_obj.find("emission") != j_obj.end()) {
 		j_tmp = j_obj["emission"];
-		emission = new Emission(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
+		emission = {j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>()};
 	}
 	if (j_obj.find("angles") != j_obj.end()) {
 		j_tmp = j_obj["angles"];
-		euler_angles = new ElAg(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
+		euler_angles = ElAg(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
 	}
 	if (j_obj.find("reflection") != j_obj.end()) {
 		j_tmp = j_obj["reflection"];
@@ -131,7 +121,8 @@ void Parser::parseSphere()
 		warn("Error: attribute \"radius\" not found, parsing stops.\n");
 		exit(1);
 	}
-	radius = new double(j_obj["radius"].get<double>());
+	radius = double(j_obj["radius"].get<double>());
+	result = new Scenes::Sphere(pos, radius, color, emission, euler_angles, refl_type);
 }
 
 void Parser::parseTriangle()
@@ -145,11 +136,11 @@ void Parser::parseTriangle()
 		warn("Error: attribute \"points\" not found, parsing stops.\n");
 		exit(1);
 	}
-	points = new Pos[3];
 	for (int i = 0; i < 3; ++i) {
 		j_tmp = j_obj["points"][i];
 		points[i] = Pos(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
 	}
+	result = new Scenes::Triangle(pos, points, color, emission, euler_angles, refl_type);
 }
 
 void Parser::parseObj()

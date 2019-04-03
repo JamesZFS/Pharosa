@@ -3,7 +3,7 @@
 //
 
 #include "src/Renderer.h"
-#include "src/utils/json.hpp"
+//#include "src/utils/json.hpp"
 #include <iostream>
 
 using namespace std;
@@ -13,28 +13,11 @@ int main()
 {
 	debug("\n\nHello Ray Tracking!\n");
 
-	ifstream fin("config/example.json");
-	json config;
-//	cin >> config;
-	fin >> config;
-	fin.close();
-
-	for (auto &el : config.items()) {
-		cout << el.key() << " : " << el.value() << "\n";
-		json obj = el.value();
-		cout << obj["type"].get<String>() << endl;
-		if (obj.find("color") != obj.end()) {
-			cout << obj["color"].get<String>() << endl;
-		}
-		cout << endl;
-	}
-
-//	cout << config.dump(4);
-
-//	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
-//	renderer.setupCamera(Pos::ORIGIN, ElAg::NONROT);
-//	renderer.start(1);
-//	renderer.save("../out/hhh");
+	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
+	renderer.setupStage("../config/1.json");
+	renderer.setupCamera(Pos::ORIGIN, ElAg::NONROT);
+	renderer.start(3);
+	renderer.save("../out/test.ppm");
 
 	debug("\n\n");
 	return 0;

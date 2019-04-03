@@ -9,21 +9,22 @@
 #include "../Vec.hpp"
 #include "../scene/All.h"
 
+
 class Parser
 {
 private:
 	// generic:
-	static Pos *pos;
-	static Color *color;
-	static Emission *emission;
-	static ElAg *euler_angles;
+	static Pos pos;
+	static Color color;
+	static Emission emission;
+	static ElAg euler_angles;
 	static Scenes::Object::ReflType refl_type;
 
 	// sphere:
-	static double *radius;
+	static double radius;
 
 	// triangle:
-	static Pos *points;
+	static Pos points[3];
 
 	// cache:
 	static String obj_str;
@@ -38,8 +39,6 @@ private:
 	static void parseObj();
 
 public:
-	Parser() = default;
-
 	static void reset();
 
 	static List<const Scenes::Object *> fromJsonFile(const String &config_path);    // remember to use std::move
