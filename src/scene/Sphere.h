@@ -15,6 +15,8 @@ struct Sphere : public Object
 		   ReflType refl_type_ = DIFF);
 
 	double intersect(const Ray &ray) const override;
+
+	void applyTransform() override;
 };
 
 #include "Sphere.cpp"

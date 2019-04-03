@@ -12,8 +12,8 @@
 // Stage class, for i/o models and calculating ray intersection
 class Stage
 {
-private:
-	List<Scenes::Object> objs;
+public:
+	List<Scenes::Object *> objs;
 public:
 	Stage() = default;        // init an empty stage
 

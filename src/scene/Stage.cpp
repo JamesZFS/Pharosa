@@ -15,11 +15,11 @@ bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *touche
 	// todo use OctTree
 	t = INF;
 	touched = nullptr;
-	for (const Scenes::Object &obj : objs) {
-		double s = obj.intersect(ray);
+	for (const Scenes::Object *obj : objs) {
+		double s = obj->intersect(ray);
 		if (s > EPS && s < t) {	// if s < 0, meaning no hitting, continue
 			t = s;
-			touched = &obj;
+			touched = obj;
 		}
 	}
 	return (touched != nullptr);    // if no intersection, return false

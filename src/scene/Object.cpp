@@ -29,5 +29,5 @@ Object &Object::rotate(const ElAg &dea)
 
 void Object::applyTransform()
 {
-
+	debug("Object\n");
 }
