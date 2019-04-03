@@ -85,7 +85,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 void RayTracing::render(unsigned int n_epoch)
 {
 	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch, n_epoch);
+		debug("\n=== epoch %d / %d ===\n", epoch + 1, n_epoch);
 		camera.resetProgress();
 		while (!camera.finishedDisplay(100)) {
 			const Ray &ray = camera.shootRay();

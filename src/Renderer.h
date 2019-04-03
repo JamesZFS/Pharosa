@@ -26,7 +26,17 @@ public:
 
 	~Renderer();
 
-	void setStage(const String &config_path);    // setup stage by designating a stage config file path
+	// setup stage by specify a stage config file path
+	void setupStage(const String &config_path);
+
+	// setup stage by designating a stage config file path
+	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+
+	// start rendering
+	void start(unsigned int n_epoch = 1, unsigned int verbose = 1, bool save_checkpoints = false);
+
+	// save ppm image
+	void save(const String &out_path);
 };
 
 #include "Renderer.cpp"

@@ -12,12 +12,10 @@ int main()
 {
 	debug("\n\nHello Ray Tracking!\n");
 
-	Stage stage;
-	Scenes::Sphere sphere(Pos::ORIGIN, 1, ElAg::NONROT, Color::WHITE);
-	Cameras::BasicCamera camera(Pos::ORIGIN, ElAg::NONROT);
-	Algorithms::RayTracing rt(stage, camera);
-	rt.render(1);
-//	Renderer renderer(Algorithms::RayTracing, Cameras::BasicCamera);
+	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
+	renderer.setupCamera(Pos::ORIGIN, ElAg::NONROT);
+	renderer.start(1);
+	renderer.save("../out/hhh");
 
 	debug("\n\n");
 	return 0;

@@ -28,6 +28,8 @@ struct Object
 	Object(const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
 		   const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
 
+	~Object() = default;
+
 	// 3D transformation, return *this
 	Object &translate(const Pos &delta);
 

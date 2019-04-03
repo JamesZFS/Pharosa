@@ -15,6 +15,7 @@ void Stage::from_config(const String &config_path)
 	char buffer[250];
 	if (fin.is_open()) {
 		fin.getline(buffer, 200);
+		// todo
 	}
 	else {
 		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());

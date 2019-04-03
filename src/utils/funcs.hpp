@@ -29,7 +29,8 @@ namespace Funcs
 
 	inline bool endsWith(const String &s, const String &suffix)
 	{
-		return s.rfind(suffix) == (s.length() - suffix.length());
+		auto idx = s.rfind(suffix);
+		return idx != String::npos && idx == (s.length() - suffix.length());
 	}
 }
 
