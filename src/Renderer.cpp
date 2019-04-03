@@ -4,12 +4,14 @@
 
 #include "Renderer.h"
 
-Renderer::Renderer(const Algorithms::GI &algorithm_, const Cameras::Camera &camera_) :
-		illuminator(algorithm_), camera(camera_)
+template<typename GI_Algorithm, typename Cameras_Type>
+Renderer<GI_Algorithm, Cameras_Type>::Renderer()
 {
+	stage = new Stage();
 }
 
-void Renderer::setStage(const String &config_path)
+template<typename GI_Algorithm, typename Cameras_Type>
+Renderer<GI_Algorithm, Cameras_Type>::~Renderer()
 {
-	stage.from_config(config_path);
+
 }

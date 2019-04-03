@@ -101,5 +101,5 @@ void Camera::writePPM(String out_path) const
 const Ray &Camera::shootRay()
 {
 	warn("Warning: method Camera::shootRay is not implemented.\n");
-	return cur_ray;
+	exit(1);
 }

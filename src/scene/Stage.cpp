@@ -3,7 +3,8 @@
 //
 
 #include "Stage.h"
-#include "../utils/json.hpp"
+//#include "../utils/json.hpp"
+#include <nlohmann/json.hpp>
 
 void Stage::from_config(const String &config_path)
 {
@@ -18,7 +19,7 @@ void Stage::from_config(const String &config_path)
 	else {
 		sprintf(buffer, "IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
 		warn(buffer);
-		exit(-1);
+		exit(1);
 	}
 	fin.close();
 }

@@ -19,7 +19,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 {
 	using namespace Scenes;
 	// calculate intersection
-	double t;		// distance to intersection
+	double t;        // distance to intersection
 	Object *hit = nullptr;
 	if (!stage.intersectAny(ray, t, hit)) return BLACK; // if miss, return black
 	assert(hit != nullptr);    // todo
@@ -87,8 +87,10 @@ void RayTracing::render(unsigned int n_epoch)
 	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
 		debug("\n=== epoch %d / %d ===\n", epoch, n_epoch);
 		camera.resetProgress();
-		while (!camera.finishedDisplay(50)) {
-			camera.renderInc(radiance(camera.shootRay(), 0));
+		while (!camera.finishedDisplay(100)) {
+			const Ray &ray = camera.shootRay();
+			camera.renderInc(radiance(ray, 0));
+			camera.updateProgress();
 		}
 		debug("\n");
 	}

@@ -190,4 +190,10 @@ typedef Color Emission;
 #define GREEN {0, 1, 0}
 #define BLUE {0, 0, 1}
 
+// common Pos
+#define ORIGIN {0, 0, 0}
+
+// common ElAg
+#define NONROT {0, 0, 0}
+
 #endif //RAYTRACKER_VEC_HPP
