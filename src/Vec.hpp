@@ -72,7 +72,7 @@ struct Vec
 	inline Vec &unitize()    // to unit vector
 	{ return *this /= sqrt(x * x + y * y + z * z); }
 
-	inline T operator*(const Vec &b) const    // dot product
+	inline T operator%(const Vec &b) const    // dot product
 	{ return x * b.x + y * b.y + z * b.z; }
 
 	inline Vec operator^(const Vec &b) const    // cross product

@@ -16,7 +16,6 @@ struct Sphere : public Object
 
 	double intersect(const Ray &ray) const override;
 
-	void applyTransform() override;
 };
 
 #include "Sphere.cpp"

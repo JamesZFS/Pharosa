@@ -22,7 +22,7 @@ const Ray &BasicCamera::shootRay()
 
 	// calculate ray.org
 	// solve t ez.dir = F ez.ez
-	double t = CAMERA_FOCUS / (ez * cur_ray.dir);
+	double t = CAMERA_FOCUS / (ez % cur_ray.dir);
 	assert(t > EPS); // todo
 	cur_ray.org = this->pos + cur_ray.dir * t;
 

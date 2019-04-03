@@ -3,8 +3,8 @@
 
 CMakeFiles/test.exe.dir/main.cpp.o: ../main.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/Ray.hpp
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/Render.cpp
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/Render.h
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/Renderer.cpp
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/Renderer.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/Vec.hpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/All.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/GI.cpp

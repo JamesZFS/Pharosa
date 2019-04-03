@@ -18,10 +18,10 @@ struct Object
 	};    // diffusive, mirror, refractory
 
 	Pos pos;        // ref point position in global coordinate system
-	Color clr;        // color
+	Color color;        // color
 	Emission emi;    // emission
 	ElAg ea;        // Euler angles
-	ReflType rft;    // reflection type
+	ReflType reft;    // reflection type
 
 	// other params ...
 

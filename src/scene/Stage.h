@@ -12,15 +12,15 @@
 // Stage class, for i/o models and calculating ray intersection
 class Stage
 {
-public:
-	List<Scenes::Object *> objs;
+private:
+	List<const Scenes::Object *> objs;
 public:
 	Stage() = default;        // init an empty stage
 
 	void from_obj(const String &obj_path);        // load triangles from obj file
 
 	// calculate first intersection with all objects
-	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *touched) const;
+	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *hit) const;
 
 };
 

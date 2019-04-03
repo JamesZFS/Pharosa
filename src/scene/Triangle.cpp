@@ -17,7 +17,6 @@ Triangle::Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const 
 
 void Triangle::applyTransform()
 {
-	debug("Triangle\n");
 	gp[0] = p[0].rotate(ea);
 	gp[0] += pos;
 

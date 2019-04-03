@@ -14,6 +14,7 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <random>
 
 const double INF = 1e20, EPS = 1e-4;
 
