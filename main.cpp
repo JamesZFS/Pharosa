@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
 	debug("\n\nHello Ray Tracking!\n");
-	
+
 	debug("\n\n");
 	return 0;
 }

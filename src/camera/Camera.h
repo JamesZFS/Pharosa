@@ -19,9 +19,9 @@ private:
 protected:
 	Pos pos;        // camera position
 	unsigned int width, height, size;    // image width and height, n_pixel
-
 	Pos ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
 
+	unsigned int cur_i, cur_j, cur_rank;    // current pixel to render, using screen coordinate sys
 	Ray cur_ray;    // current ray to shoot
 
 public:
@@ -29,18 +29,24 @@ public:
 
 	~Camera();
 
-	inline const Color &pixelAt(unsigned int x, unsigned int y) const;    // getter
+	// getter:
+	inline const Color &pixelAt(unsigned int i, unsigned int j) const;
 
-	inline void renderInc(unsigned int x, unsigned int y, Color color);    // render incrementally
+	// setter:
+	inline void renderInc(const Color &color);    // render incrementally
 
-	// interfaces:
-	virtual const Ray &shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
+	// iterators:
+	inline double progress() const;    // how far have the rendering been, real number [0, 1]
 
-	virtual double progress() const;    // how far have the shooting been, real number [0, 1]
+	inline void updateProgress();    // current pixel rank++
 
-	virtual void resetProgress();   // reset shooting progress
+	inline void resetProgress();   // reset shooting progress
 
+	// io:
 	void writePPM(String out_path) const;        // output image into ppm format
+
+	// interface:
+	virtual const Ray &shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
 
 	// camera constants
 	static const double PIXEL_SIZE;

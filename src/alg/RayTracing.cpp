@@ -15,22 +15,6 @@ double RayTracing::randf()
 	return distribution(generator);
 }
 
-void RayTracing::render(unsigned int n_epoch)
-{
-	double progress;
-	Ray ray;
-	double t;
-	Scenes::Object *obj = nullptr;
-	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
-		debug("=== epoch %d / %d ===\n", epoch, n_epoch);
-		camera.resetProgress();
-		while ((progress = camera.progress()) < 1.0) {
-			ray = camera.shootRay();
-			stage.intersectAny(ray, t, obj);
-		}
-	}
-}
-
 Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 {
 	using namespace Scenes;
@@ -78,8 +62,8 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 				return obj.emi + f.mul(radiance(reflRay, depth));    // only reflection term
 
 			Ray r_out(x, (ray.dir * nnt - nl * (ddn * nnt + sqrt(cos2t))).norm());
-			double a = nt - nc, b = nt + nc, R0 = a * a / (b * b), c = 1 - (into ? -ddn : r_out.dir % n);
-			double Re = R0 + (1 - R0) * pow(c, 5);
+			double a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_out.dir % n);
+			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
 			double Tr = 1 - Re, P = .25 + .5 * Re, RP = Re / P;
 			double TP = Tr / (1 - P);
 			return obj.emi + f.mul(
@@ -90,10 +74,27 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 					: radiance(reflRay, depth) * Re + radiance(r_out, depth) * Tr    // weighted addition
 			);
 		}
-		default:
+		default: {
 			char buffer[50];
 			sprintf(buffer, "Warning: got invalid reft value \"%d\", rendering as black.\n", obj.reft);
 			warn(buffer);
 			return BLACK;
+		}
+	}
+}
+
+void RayTracing::render(unsigned int n_epoch)
+{
+	double progress;
+	Ray ray;
+	double t;
+	Scenes::Object *obj = nullptr;
+	for (unsigned int epoch = 0; epoch < n_epoch; ++epoch) {
+		debug("=== epoch %d / %d ===\n", epoch, n_epoch);
+		camera.resetProgress();
+		while ((progress = camera.progress()) < 1.0) {
+			ray = camera.shootRay();
+			camera
+		}
 	}
 }
