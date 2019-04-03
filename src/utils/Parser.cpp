@@ -73,8 +73,6 @@ void Parser::reset()
 
 void Parser::parseGeneric()
 {
-	debug("in parseGeneric\n");
-	debug("%s", obj_str.data());
 	reset();
 	using json = nlohmann::json;
 	json j_obj = json::parse(obj_str), j_tmp;

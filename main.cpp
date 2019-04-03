@@ -34,7 +34,7 @@ int main()
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 	renderer.setupStage("../config/1.json");
 	renderer.setupCamera(Pos::ORIGIN, ElAg::NONROT);
-	renderer.start(20);
+	renderer.start(5);
 	renderer.save("../out/test.ppm");
 
 	debug("\n\n");

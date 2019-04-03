@@ -16,5 +16,18 @@
 		"emission": [0, 0, 0],
 		"angles": [0, 0, 0],
 		"reflection": "diffusive"
+	},
+	{
+		"type": "triangle",
+		"pos": [0, 0, 300],
+		"points": [
+			[-1000, 0, 0],
+			[0, 1000, 0],
+			[0, -1000, 0]
+		],
+		"color": [0.1, 0, 1],
+		"emission": [0, 0.2, 0.2],
+		"angles": [0, 0, 0],
+		"reflection": "refractive"
 	}
 ]
