@@ -20,7 +20,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth)
 	using namespace Scenes;
 	// calculate intersection
 	double t;        // distance to intersection
-	Object *hit = nullptr;
+	const Object *hit = nullptr;
 	if (!stage.intersectAny(ray, t, hit)) return Color::BLACK; // if miss, return black
 	assert(hit != nullptr);    // todo
 	const auto &obj = *hit;        // the hit object

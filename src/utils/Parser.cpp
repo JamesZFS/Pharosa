@@ -40,7 +40,7 @@ List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 	for (auto &item : config.items()) {
 		json j_obj = item.value();
 		String type = j_obj["type"].get<String>();
-		obj_str = j_obj.get<String>();
+		obj_str = j_obj.dump();
 		Funcs::toLower(type);    // into lower cases
 
 		// switch type
@@ -101,8 +101,10 @@ void Parser::parseGeneric()
 		emission = {j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>()};
 	}
 	if (j_obj.find("angles") != j_obj.end()) {
-		j_tmp = j_obj["angles"];
-		euler_angles = ElAg(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
+		j_tmp = j_obj["angles"];	// notice that this is degree angle
+		euler_angles = ElAg(j_tmp[0].get<double>() * M_PI / 180.0,
+							j_tmp[1].get<double>() * M_PI / 180.0,
+							j_tmp[2].get<double>() * M_PI / 180.0);
 	}
 	if (j_obj.find("reflection") != j_obj.end()) {
 		j_tmp = j_obj["reflection"];

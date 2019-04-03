@@ -18,7 +18,7 @@ void Stage::from_obj(const String &obj_path)
 	// todo implement this
 }
 
-bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *hit) const
+bool Stage::intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) const
 {
 	// naive for loop calculation
 	// todo use OctTree

@@ -25,7 +25,7 @@ public:
 	void from_obj(const String &obj_path);        // load triangles from obj file
 
 	// calculate first intersection with all objects
-	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *hit) const;
+	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) const;
 
 };
 
