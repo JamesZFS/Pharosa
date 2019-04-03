@@ -25,8 +25,8 @@ struct Object
 
 	// other params ...
 
-	Object(Pos pos_, Color color_, Emission emission_ = {0, 0, 0}, ElAg euler_angles_ = {0, 0, 0},
-		   ReflType refl_type_ = DIFF);
+	Object(const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
+		   const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
 
 	// 3D transformation, return *this
 	Object &translate(const Pos &delta);
