@@ -7,6 +7,17 @@
 #include "funcs.hpp"
 // todo use makefile to compile .o first to exclude this file
 
+// ** init static member variables **
+Pos Parser::pos;
+Color Parser::color;
+Emission Parser::emission;
+ElAg Parser::euler_angles;
+Scenes::Object::ReflType Parser::refl_type;
+double Parser::radius;
+Pos Parser::points[3];
+String Parser::obj_str;
+const Scenes::Object *Parser::result;
+
 List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 {
 	using json = nlohmann::json;
@@ -43,8 +54,9 @@ List<const Scenes::Object *> Parser::fromJsonFile(const String &config_path)
 			Parser::parseObj();
 		}
 		else {
-			sprintf(buffer, "Warning: got unidentified Object type \"%s\", continue.\n", type.data());
+			sprintf(buffer, "Error: got unidentified Object type \"%s\", parsing stops.\n", type.data());
 			warn(buffer);
+			exit(1);
 		}
 		objects.push_back(result);
 	}
@@ -61,6 +73,8 @@ void Parser::reset()
 
 void Parser::parseGeneric()
 {
+	debug("in parseGeneric\n");
+	debug("%s", obj_str.data());
 	reset();
 	using json = nlohmann::json;
 	json j_obj = json::parse(obj_str), j_tmp;

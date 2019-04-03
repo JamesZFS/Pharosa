@@ -29,6 +29,7 @@ CMakeFiles/test.exe.dir/main.cpp.o: ../src/scene/Stage.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/scene/Triangle.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/scene/Triangle.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Linear.hpp
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Parser.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Parser.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/Solvers.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/utils/funcs.hpp

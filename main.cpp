@@ -11,6 +11,7 @@ using json = nlohmann::json;
 
 int main()
 {
+	Parser::reset();
 	debug("\n\nHello Ray Tracking!\n");
 
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;

@@ -1,0 +1,11 @@
+[
+	{
+		"type": "sphere",
+		"pos": [10, 10, 10],
+		"radius": 2,
+		"color": [1, 0, 0],
+		"emission": [0, 0, 0],
+		"angles": [0, 0, 0],
+		"reflection": "diffusive"
+	}
+]
