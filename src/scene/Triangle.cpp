@@ -12,8 +12,8 @@ Triangle::Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const 
 	p[0] = p_[0];
 	p[1] = p_[1];
 	p[2] = p_[2];
-	(n = (p[0] - p[1]) ^ (p[0] - p[2])).unitize();
  	applyTransform();
+	(n = (p[0] - p[1]) ^ (p[0] - p[2])).unitize();
 }
 
 void Triangle::applyTransform()
