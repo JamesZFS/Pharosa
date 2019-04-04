@@ -220,7 +220,7 @@ struct RGB : public Vec<double>        // RGB Vector
 	}
 
 	static const RGB BLACK, WHITE, RED, GREEN, BLUE;
-	static const RGB DARK, BRIGHT, SPLENDID, LIGHTSOURCE;
+	static const RGB NONE, GLOW, BRIGHT, SPLENDID;
 };
 
 typedef RGB Color;            // intrinsic color of an object
@@ -242,9 +242,9 @@ const Color
 
 // common Emission
 const Emission
-		Emission::DARK(0, 0, 0),
-		Emission::BRIGHT(0.5, 0.5, 0.5),
-		Emission::SPLENDID(1.0, 1.0, 1.0),
-		Emission::LIGHTSOURCE(5.0, 5.0, 5.0);
+		Emission::NONE(0, 0, 0),
+		Emission::GLOW(0.5, 0.5, 0.5),
+		Emission::BRIGHT(1.0, 1.0, 1.0),
+		Emission::SPLENDID(5.0, 5.0, 5.0);
 
 #endif //RAYTRACKER_VEC_HPP

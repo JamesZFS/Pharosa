@@ -35,11 +35,10 @@ bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir
 {
 	// naive for loop calculation
 	// todo use OctTree
-	double t = INF;	// intersection
+	double t = INF, s;	// intersection
 	hit = nullptr;
 	for (const Scenes::Object *obj : objects) {
-		double s = obj->intersect(ray, t);
-		if (s > EPS && s < t) {	// if s < 0, i.e. no hitting, continue
+		if (obj->intersect(ray, s) && s < t) {
 			t = s;
 			hit = obj;
 		}
