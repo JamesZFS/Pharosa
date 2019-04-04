@@ -36,7 +36,7 @@ struct Object
 	Object &rotate(const ElAg &dea);
 
 	// interfaces:
-	virtual void applyTransform() = 0;    // apply transform from obj crd to global crd
+	virtual void applyTransform() = 0;    // re-apply transform from obj crd to global crd
 
 	/** standard intersection api.
 	 * @param ray

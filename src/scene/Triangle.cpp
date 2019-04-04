@@ -12,20 +12,24 @@ Triangle::Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const 
 	p[0] = p_[0];
 	p[1] = p_[1];
 	p[2] = p_[2];
- 	applyTransform();
-	(n = (p[0] - p[1]) ^ (p[0] - p[2])).unitize();
+	applyTransform();
 }
 
 void Triangle::applyTransform()
 {
-	gp[0] = p[0].rotate(ea);
+	gp[0] = p[0];
+	gp[0].rotate(ea);
 	gp[0] += pos;
 
-	gp[1] = p[1].rotate(ea);
+	gp[1] = p[1];
+	gp[1].rotate(ea);
 	gp[1] += pos;
 
-	gp[2] = p[2].rotate(ea);
+	gp[2] = p[2];
+	gp[2].rotate(ea);
 	gp[2] += pos;
+
+	(n = (gp[0] - gp[1]) ^ (gp[0] - gp[2])).unitize();
 }
 
 bool Triangle::intersect(const Ray &ray, double &t) const
@@ -51,4 +55,3 @@ Dir Triangle::normalAt(const Pos &x) const
 {
 	return n;
 }
-

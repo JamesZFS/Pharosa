@@ -13,6 +13,7 @@ Object::Object(const Pos &pos_, const Color &color_, const Emission &emission_, 
 Object &Object::translate(const Pos &delta)
 {
 	pos += delta;
+	applyTransform();
 	return *this;
 }
 

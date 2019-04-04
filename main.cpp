@@ -23,10 +23,8 @@ int main()
 			new Sphere(Pos(0, 0, 100), 50, Color::RED, Emission::SPLENDID, ElAg::NONROT, Object::DIFF),
 			new Sphere(Pos(0, 0, -100), 20, Color::BLUE, Emission::NONE, ElAg::NONROT, Object::REFL),
 			new Sphere(Pos(0, 100, 0), 30, Color::GREEN, Emission::NONE, ElAg::NONROT, Object::REFR),
-//			new Triangle(Pos::ORIGIN, new Pos[3]{{0, -100, 0}, {0, 100, 0}, {0, 0, 50}}, Color::WHITE, Emission::NONE, ElAg::NONROT, Object::DIFF),
-			new Triangle(Pos(-80, 0, 0), new Pos[3]{{0, -1000, 0}, {0, 1000, 2000}, {0, 1000, -2000}}, Color::WHITE, Emission::NONE, ElAg::NONROT, Object::DIFF),
-			new Triangle(Pos(0, 0, -200), new Pos[3]{{0, -1000, 0}, {0, 1000, 2000}, {0, 1000, -2000}}, Color::WHITE, Emission::NONE, ElAg(M_PI_2, M_PI_2, -M_PI_2), Object::DIFF),
-//			new Triangle(Pos(0, 0, -200), new Pos[3]{{0, -1000, 0}, {-2000, 1000, 0}, {2000, 1000, 0}}, Color::WHITE, Emission::NONE, ElAg::NONROT, Object::DIFF),
+			new InfPlane(Pos(0, 0, -200), Color::WHITE, Emission::NONE, ElAg::NONROT, Object::DIFF),
+			new InfPlane(Pos(-200, 0, 0), Color::WHITE, Emission::NONE, ElAg(M_PI_2, M_PI_2), Object::DIFF)
 	};
 
 	renderer.setupStage(ObjectGroup(p, p + 5));
@@ -35,9 +33,9 @@ int main()
 	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 800, 500);
 
 //	renderer.start(100, 10000, "../out/fun/");
-	renderer.start(10, 10000);
+	renderer.start(10);
 
-	renderer.save("../out/fun-test4.ppm");
+	renderer.save("../out/fun-test-plane.ppm");
 
 	debug("\n");
 	return 0;
