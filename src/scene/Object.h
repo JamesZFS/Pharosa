@@ -36,8 +36,17 @@ struct Object
 	Object &rotate(const ElAg &dea);
 
 	// interfaces:
-	virtual double intersect(const Ray &ray) const = 0; // standard intersection api. Should return -1 if not hitting
 	virtual void applyTransform() = 0;    // apply transform from obj crd to global crd
+
+	/** standard intersection api.
+	 * @param ray
+	 * @param t : distance to first intersection point
+	 * @return true if intersected else false
+	 */
+	virtual bool intersect(const Ray &ray, double &t) const = 0;
+
+	// calculate normal vector at surface point x
+	virtual Dir normalAt(const Pos &x) const = 0;
 };
 
 #include "Object.cpp"

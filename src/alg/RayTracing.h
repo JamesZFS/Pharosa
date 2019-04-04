@@ -11,17 +11,12 @@
 class RayTracing : public GI
 {
 private:
-	std::default_random_engine generator;
-	std::uniform_real_distribution<double> distribution;
-
-	double randf();    // random float [0.0, 1.0]
-
 	// render with progressbar
 	void renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 					   unsigned int verbose_step, const String &checkpoint_dir);
 
 protected:
-	Color radiance(const Ray &ray, unsigned int depth);    // ** main algorithm **
+	Color radiance(const Ray &ray, unsigned int depth) const;    // ** main algorithm **
 
 public:
 	RayTracing(const Stage &stage_, Cameras::Camera &camera_);

@@ -16,9 +16,9 @@ Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, 
 	render_cnt = new unsigned int[size];
 	memset(render_cnt, 0, size * sizeof(unsigned int));
 	// calculate basis vectors
-	ex.rotate(euler_angles_).unitize();
-	ey.rotate(euler_angles_).unitize();
-	ez.rotate(euler_angles_).unitize();
+	ex.rotate(euler_angles_);
+	ey.rotate(euler_angles_);
+	ez.rotate(euler_angles_);
 }
 
 Camera::~Camera()

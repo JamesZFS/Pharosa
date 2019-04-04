@@ -9,12 +9,20 @@
 
 namespace Funcs
 {
+	// random engine
+	std::default_random_engine generator;
+	std::uniform_real_distribution<double> distribution(0.0, 1.0);
 
-// staircase function Real -> [0, 1]
+	double randf() // random float [0.0, 1.0)
+	{
+		return distribution(generator);
+	}
+
+	// staircase function Real -> [0, 1]
 	inline double clamp(double x)
 	{ return x < 0 ? 0 : x > 1 ? 1 : x; }
 
-// to unsigned char [0 - 255], using gamma correction
+	// to unsigned char [0 - 255], using gamma correction
 #define C_GAMMA 0.45454545454545 // 1 / 2.2
 #define C_1_GAMMA 2.2 // 2.2 / 1
 

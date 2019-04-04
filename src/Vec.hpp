@@ -69,9 +69,6 @@ struct Vec
 	inline T sqr()    // square
 	{ return x * x + y * y + z * z; }
 
-	inline Vec &unitize()    // to unit vector
-	{ return *this /= sqrt(x * x + y * y + z * z); }
-
 	inline T operator%(const Vec &b) const    // dot product
 	{ return x * b.x + y * b.y + z * b.z; }
 
@@ -99,6 +96,12 @@ struct Vec
 		debug("(%.2f, %.2f, %.2f)", x, y, z);
 		if (endl) debug("\n");
 	}
+//
+//	inline auto &unitize()    // to unit vector
+//	{
+//		*this /= sqrt(x * x + y * y + z * z);
+//		return *this;
+//	}
 };
 
 struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
@@ -114,7 +117,7 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 	ElAg(const ElAg &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
-	ElAg &operator=(const ElAg &obj)	// copy assignment
+	inline ElAg &operator=(const ElAg &obj)    // copy assignment
 	{
 		alpha = obj.alpha;
 		beta = obj.beta;
@@ -165,18 +168,34 @@ struct Pos : Vec<double>    // 3D coordinate
 	static const Pos ORIGIN;
 };
 
-struct Dir : public Vec<double>        // direction data type, should automatically unitize
+struct Dir : public Pos        // direction, unitized vector
 {
-	Dir(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
+	Dir() = default;
+
+	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
+		assert(x != 0 || y != 0 || z != 0); // todo?
 		this->unitize();
 	}
 
 	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
-	Dir(const Dir &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
-	{}
+	Dir(const Dir &obj) = default;    // copy constructor
+
+	inline Dir &unitize()    // to unit vector
+	{
+		*this /= sqrt(x * x + y * y + z * z);
+		return *this;
+	}
+
+	void getOrthogonalBasis(Dir &ex, Dir &ey) const   // get orthogonal axis (ex, ey) from ez
+	{
+		ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
+		ey = *this ^ ex;
+		ex.unitize();
+		ey.unitize();
+	}
 };
 
 struct RGB : public Vec<double>        // RGB Vector
@@ -192,7 +211,7 @@ struct RGB : public Vec<double>        // RGB Vector
 	RGB(const RGB &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
-	RGB &operator=(const RGB &obj)	// copy assignment
+	inline RGB &operator=(const RGB &obj)    // copy assignment
 	{
 		r = obj.r;
 		g = obj.g;

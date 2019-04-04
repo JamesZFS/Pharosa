@@ -7,8 +7,13 @@
 
 using namespace std;
 
+// todo rename this project to Pharosa ( variation of pharos - lighthouse )
+
 int main()
 {
+	// init random engine
+	Funcs::generator.seed((unsigned int) time(nullptr));
+
 	debug("\n");
 	using namespace Scenes;
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
@@ -28,9 +33,9 @@ int main()
 	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 800, 500);
 
 //	renderer.start(100, 10000, "../out/fun/");
-	renderer.start(100, 10000);
+	renderer.start(10, 10000);
 
-	renderer.save("../out/fun-100.ppm");
+	renderer.save("../out/fun-10.ppm");
 
 	debug("\n");
 	return 0;

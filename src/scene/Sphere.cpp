@@ -10,17 +10,28 @@ Sphere::Sphere(const Pos &pos_, double radius_, const Color &color_, const Emiss
 {
 }
 
-double Sphere::intersect(const Ray &ray) const
+void Sphere::applyTransform()
+{
+	// do nothing here
+}
+
+bool Sphere::intersect(const Ray &ray, double &t) const
 {
 	// Solve t^2*d.d + 2*t*(o-p).d + (o-p).(o-p)-R^2 = 0
 	Pos op = pos - ray.org;
-	double t, b = op % ray.dir, det = b * b - op.sqr() + rad * rad;
-	if (det < 0) return 0;
+	double b = op % ray.dir, det = b * b - op.sqr() + rad * rad;
+	if (det < 0) return false;    // no solution
 	else det = sqrt(det);
-	return (t = b - det) > EPS ? t : ((t = b + det) > EPS ? t : -1);
+
+	t = b - det;    // intersect at front of sphere
+	if (t <= EPS) {        // intersect at back of sphere
+		t = b + det;
+		if (t <= EPS) return false;    // intersect before ray.org
+	}
+	return true;
 }
 
-void Sphere::applyTransform()
+Dir Sphere::normalAt(const Pos &x) const
 {
-	// do nothing
+	return x - pos;    // from center to x
 }

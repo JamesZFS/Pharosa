@@ -14,9 +14,11 @@ struct Sphere : public Object
 	Sphere(const Pos &pos_, double radius_, const Color &color_, const Emission &emission_ = {0, 0, 0},
 		   const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
 
-	double intersect(const Ray &ray) const override;
-
 	void applyTransform() override;
+
+	bool intersect(const Ray &ray, double &t) const override;
+
+	Dir normalAt(const Pos &x) const override;
 };
 
 #include "Sphere.cpp"

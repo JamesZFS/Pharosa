@@ -28,8 +28,14 @@ public:
 
 	void fromList(ObjectGroup &objects_);	// load from list
 
-	// calculate first intersection with all objects
-	bool intersectAny(const Ray &ray, double &t, const Scenes::Object *&hit) const;
+	/** judge and calculate first intersection with all objects
+	 * @param ray
+	 * @param hit : pointer of object first hit
+	 * @param x : hitting point
+	 * @param normal : normal vector of hitting point
+	 * @return true if intersects any object else false
+	 */
+	bool intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const;
 
 };
 

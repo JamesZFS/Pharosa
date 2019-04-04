@@ -19,7 +19,7 @@ private:
 protected:
 	Pos pos;        // camera position
 	unsigned int width, height, size;    // image width and height, n_pixel
-	Pos ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
+	Dir ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
 
 	unsigned int cur_i, cur_j, cur_rank;    // current pixel to render, using screen coordinate sys
 	Ray cur_ray;    // current ray to shoot
