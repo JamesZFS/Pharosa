@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef RAYTRACKER_VEC_HPP
-#define RAYTRACKER_VEC_HPP
+#ifndef PHAROSA_VEC_HPP
+#define PHAROSA_VEC_HPP
 
 #include "lib.h"
 
@@ -219,7 +219,7 @@ struct RGB : public Vec<double>        // RGB Vector
 		return *this;
 	}
 
-	static const RGB BLACK, WHITE, RED, GREEN, BLUE;
+	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW;
 	static const RGB NONE, GLOW, BRIGHT, SPLENDID;
 };
 
@@ -238,7 +238,8 @@ const Color
 		Color::WHITE(1, 1, 1),
 		Color::RED(1, 0, 0),
 		Color::GREEN(0, 1, 0),
-		Color::BLUE(0, 0, 1);
+		Color::BLUE(0, 0, 1),
+		Color::YELLOW(1, 0.784, 0);
 
 // common Emission
 const Emission
@@ -247,4 +248,4 @@ const Emission
 		Emission::BRIGHT(1.0, 1.0, 1.0),
 		Emission::SPLENDID(5.0, 5.0, 5.0);
 
-#endif //RAYTRACKER_VEC_HPP
+#endif //PHAROSA_VEC_HPP

@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_ALG_ALL_H
-#define RAYTRACKER_ALG_ALL_H
+#ifndef PHAROSA_ALG_ALL_H
+#define PHAROSA_ALG_ALL_H
 
 namespace Algorithms
 {
@@ -12,4 +12,4 @@ namespace Algorithms
 
 }
 
-#endif //RAYTRACKER_ALG_ALL_H
+#endif //PHAROSA_ALG_ALL_H

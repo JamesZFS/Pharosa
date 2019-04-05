@@ -3,11 +3,12 @@
 # Select appropriate compiler:
 #CPP=g++		# use on win
 CPP=g++-8	# use on mac
-#CPPFLAGS=-O3 -fopenmp -static -lpthread -Wall -MMD -std=c++14      # multiple threads version
+#CPPFLAGS=-O3 -fopenmp -static -lpthread -Wall -MMD -std=c++14      # multiple threads version on win
+#CPPFLAGS=-O3 -fopenmp -Wall -MMD -std=c++14      # multiple threads version on mac
 CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
 
-JRT.out: main.cpp Makefile
-	$(CPP) $(CPPFLAGS) main.cpp -o JRT.out
+Pharosa.out: main.cpp Makefile
+	$(CPP) $(CPPFLAGS) main.cpp -o Pharosa.out
 
 clean:
 #	del *.o *.d	# on win
@@ -17,7 +18,7 @@ clean-up:
 #	del *.exe *.o *.d	# on win
 	rm *.out *.o *.d		# on mac
 
-run: JRT.out
-	./JRT.out
+run: Pharosa.out
+	./Pharosa.out
 	make clean
 #	nmake clean

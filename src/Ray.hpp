@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_RAY_HPP
-#define RAYTRACKER_RAY_HPP
+#ifndef PHAROSA_RAY_HPP
+#define PHAROSA_RAY_HPP
 
 #include "Vec.hpp"
 
@@ -19,4 +19,4 @@ struct Ray
 	{}
 };
 
-#endif //RAYTRACKER_RAY_HPP
+#endif //PHAROSA_RAY_HPP

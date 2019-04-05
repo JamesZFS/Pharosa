@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef RAYTRACKER_LIB_H
-#define RAYTRACKER_LIB_H
+#ifndef PHAROSA_LIB_H
+#define PHAROSA_LIB_H
 
 #include <iostream>
 #include <fstream>
@@ -30,4 +30,4 @@ typedef char Buffer[256];
 #define warn(x) std::cerr << x << std::endl         // show error
 //#define prompt(...) fprintf(stderr, __VA_ARGS__)    // show progressbar info
 
-#endif //RAYTRACKER_LIB_H
+#endif //PHAROSA_LIB_H

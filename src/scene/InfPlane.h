@@ -2,12 +2,12 @@
 // Created by James on 2019/4/5.
 //
 
-#ifndef RAYTRACKER_INFPLANE_H
-#define RAYTRACKER_INFPLANE_H
+#ifndef PHAROSA_INFPLANE_H
+#define PHAROSA_INFPLANE_H
 
 #include "Object.h"
 
-// infinitive large plane. Described by one point and normal vec
+// infinitively large plane. Described by one point and normal vec
 struct InfPlane : public Object
 {
 	Dir n;	// normal vector, in Global coordinate sys, default towards ez
@@ -25,4 +25,4 @@ struct InfPlane : public Object
 
 #include "InfPlane.cpp"
 
-#endif //RAYTRACKER_INFPLANE_H
+#endif //PHAROSA_INFPLANE_H

@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_STAGE_H
-#define RAYTRACKER_STAGE_H
+#ifndef PHAROSA_STAGE_H
+#define PHAROSA_STAGE_H
 
 #include "../lib.h"
 #include "../Ray.hpp"
@@ -41,4 +41,4 @@ public:
 
 #include "Stage.cpp"
 
-#endif //RAYTRACKER_STAGE_H
+#endif //PHAROSA_STAGE_H

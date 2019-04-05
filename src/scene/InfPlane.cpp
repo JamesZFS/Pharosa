@@ -2,8 +2,8 @@
 //
 // Created by James on 2019/4/5.
 //
-#include "InfPlane.h"
 
+#include "InfPlane.h"
 
 InfPlane::InfPlane(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
 				   Object::ReflType refl_type_) :

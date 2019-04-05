@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/8.3.0/bin/g++-8 -G "CodeBlocks - Unix Makefiles" /Users/james/Test/CG/JRT
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/8.3.0/bin/g++-8 -G "CodeBlocks - Unix Makefiles" /Users/james/Test/CG/Pharosa
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/james/Test/CG/JRT/cmake-build-debug
+-- Build files have been written to: /Users/james/Test/CG/Pharosa/cmake-build-debug

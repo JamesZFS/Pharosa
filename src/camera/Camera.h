@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_CAMERA_H
-#define RAYTRACKER_CAMERA_H
+#ifndef PHAROSA_CAMERA_H
+#define PHAROSA_CAMERA_H
 
 #include "../lib.h"
 #include "../Ray.hpp"
@@ -60,4 +60,4 @@ public:
 
 #include "Camera.cpp"
 
-#endif //RAYTRACKER_CAMERA_H
+#endif //PHAROSA_CAMERA_H

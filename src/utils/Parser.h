@@ -2,8 +2,8 @@
 // Created by James on 2019/4/3.
 //
 
-#ifndef RAYTRACKER_PARSER_H
-#define RAYTRACKER_PARSER_H
+#ifndef PHAROSA_PARSER_H
+#define PHAROSA_PARSER_H
 
 #include "../lib.h"
 #include "../Vec.hpp"
@@ -46,4 +46,4 @@ public:
 
 #include "Parser.cpp"    // todo del
 
-#endif //RAYTRACKER_PARSER_H
+#endif //PHAROSA_PARSER_H

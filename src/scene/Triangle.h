@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_TRIANGLE_H
-#define RAYTRACKER_TRIANGLE_H
+#ifndef PHAROSA_TRIANGLE_H
+#define PHAROSA_TRIANGLE_H
 
 #include "Object.h"
 
@@ -25,4 +25,4 @@ struct Triangle : public Object
 
 #include "Triangle.cpp"
 
-#endif //RAYTRACKER_TRIANGLE_H
+#endif //PHAROSA_TRIANGLE_H

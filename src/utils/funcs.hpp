@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_FUNCS_HPP
-#define RAYTRACKER_FUNCS_HPP
+#ifndef PHAROSA_FUNCS_HPP
+#define PHAROSA_FUNCS_HPP
 
 #include "../lib.h"
 
@@ -57,4 +57,4 @@ namespace Funcs
 	}
 }
 
-#endif //RAYTRACKER_FUNCS_HPP
+#endif //PHAROSA_FUNCS_HPP

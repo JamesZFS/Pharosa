@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_LINEAR_HPP
-#define RAYTRACKER_LINEAR_HPP
+#ifndef PHAROSA_LINEAR_HPP
+#define PHAROSA_LINEAR_HPP
 
 // Linear algebra solver
 
@@ -172,4 +172,4 @@ bool SolveLinearInPlace(double *M, int n)
 }
 
 
-#endif //RAYTRACKER_LINEAR_HPP
+#endif //PHAROSA_LINEAR_HPP

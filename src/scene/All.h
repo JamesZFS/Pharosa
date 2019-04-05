@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_SCENE_ALL_H
-#define RAYTRACKER_SCENE_ALL_H
+#ifndef PHAROSA_SCENE_ALL_H
+#define PHAROSA_SCENE_ALL_H
 
 namespace Scenes
 {
@@ -14,4 +14,4 @@ namespace Scenes
 
 }
 
-#endif //RAYTRACKER_SCENE_ALL_H
+#endif //PHAROSA_SCENE_ALL_H

@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_SPHERE_H
-#define RAYTRACKER_SPHERE_H
+#ifndef PHAROSA_SPHERE_H
+#define PHAROSA_SPHERE_H
 
 #include "Object.h"
 
@@ -23,4 +23,4 @@ struct Sphere : public Object
 
 #include "Sphere.cpp"
 
-#endif //RAYTRACKER_SPHERE_H
+#endif //PHAROSA_SPHERE_H

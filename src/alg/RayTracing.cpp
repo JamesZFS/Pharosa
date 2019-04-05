@@ -27,13 +27,17 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 	Color color = obj.color;    // color to render
 	double p = color.max();    // max color component as refl_t
 
-	// stop tracing when depth too large
+	// stop tracing when depth too large or color too dim
 	if (++depth > 5 || p < EPS) {    // depth limit
-		if (randf() < p) color /= p;    // brighter
-		else return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
+		// todo
+//		if (randf() < p) color /= p;    // brighter
+//		else return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
+		return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
 	}
 
 	// recursively trace back
+	// todo implement BRDF / BTDF which receives an incidence and returns a reflection
+	// todo light attenuation
 	switch (obj.reft) {
 
 		// Ideal diffusive reflection

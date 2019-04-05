@@ -2,8 +2,8 @@
 // Created by think on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_OBJECT_H
-#define RAYTRACKER_OBJECT_H
+#ifndef PHAROSA_OBJECT_H
+#define PHAROSA_OBJECT_H
 
 #include "../lib.h"
 #include "../Vec.hpp"
@@ -51,4 +51,4 @@ struct Object
 
 #include "Object.cpp"
 
-#endif //RAYTRACKER_OBJECT_H
+#endif //PHAROSA_OBJECT_H

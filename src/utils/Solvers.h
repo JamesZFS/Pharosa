@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_SOLVERS_H
-#define RAYTRACKER_SOLVERS_H
+#ifndef PHAROSA_SOLVERS_H
+#define PHAROSA_SOLVERS_H
 
 // all solvers
 namespace Solver
@@ -13,4 +13,4 @@ namespace Solver
 
 }
 
-#endif //RAYTRACKER_SOLVERS_H
+#endif //PHAROSA_SOLVERS_H

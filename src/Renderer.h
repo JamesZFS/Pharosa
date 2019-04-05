@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef RAYTRACKER_RENDERER_H
-#define RAYTRACKER_RENDERER_H
+#ifndef PHAROSA_RENDERER_H
+#define PHAROSA_RENDERER_H
 
 #include "lib.h"
 #include "Vec.hpp"
@@ -51,4 +51,4 @@ public:
 
 #include "Renderer.cpp"
 
-#endif //RAYTRACKER_RENDERER_H
+#endif //PHAROSA_RENDERER_H

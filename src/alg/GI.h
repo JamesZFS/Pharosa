@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef RAYTRACKER_GI_H
-#define RAYTRACKER_GI_H
+#ifndef PHAROSA_GI_H
+#define PHAROSA_GI_H
 
 #include "../lib.h"
 #include "../Ray.hpp"
@@ -29,4 +29,4 @@ public:
 
 #include "GI.cpp"
 
-#endif //RAYTRACKER_GI_H
+#endif //PHAROSA_GI_H
