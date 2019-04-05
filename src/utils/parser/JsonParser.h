@@ -5,12 +5,11 @@
 #ifndef PHAROSA_PARSER_H
 #define PHAROSA_PARSER_H
 
-#include "../lib.h"
-#include "../Vec.hpp"
-#include "../scene/All.h"
+#include "../../lib.h"
+#include "../../Vec.hpp"
+#include "../../scene/All.h"
 
-
-class Parser
+class JsonParser
 {
 private:
 	// generic:
@@ -44,6 +43,6 @@ public:
 	static ObjectGroup fromJsonFile(const String &config_path);    // remember to use std::move
 };
 
-#include "Parser.cpp"    // todo del
+#include "JsonParser.cpp"    // todo del
 
 #endif //PHAROSA_PARSER_H

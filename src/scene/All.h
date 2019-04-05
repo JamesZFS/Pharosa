@@ -11,6 +11,7 @@ namespace Scenes
 #include "Sphere.h"
 #include "Triangle.h"
 #include "InfPlane.h"
+#include "MeshObj.h"
 
 }
 

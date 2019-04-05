@@ -4,21 +4,21 @@
 
 #include "Parser.h"
 #include "json.hpp"
-#include "funcs.hpp"
+#include "../funcs.hpp"
 // todo use makefile to compile .o first to exclude this file
 
 // ** init static member variables **
-Pos Parser::pos;
-Color Parser::color;
-Emission Parser::emission;
-ElAg Parser::euler_angles;
-Scenes::Object::ReflType Parser::refl_type;
-double Parser::radius;
-Pos Parser::points[3];
-String Parser::obj_str;
-const Scenes::Object *Parser::result;
+Pos JsonParser::pos;
+Color JsonParser::color;
+Emission JsonParser::emission;
+ElAg JsonParser::euler_angles;
+Scenes::Object::ReflType JsonParser::refl_type;
+double JsonParser::radius;
+Pos JsonParser::points[3];
+String JsonParser::obj_str;
+const Scenes::Object *JsonParser::result;
 
-ObjectGroup Parser::fromJsonFile(const String &config_path)
+ObjectGroup JsonParser::fromJsonFile(const String &config_path)
 {
 	using json = nlohmann::json;
 	std::ifstream fin;
@@ -46,13 +46,13 @@ ObjectGroup Parser::fromJsonFile(const String &config_path)
 
 		// switch type
 		if (type == "sphere") {
-			Parser::parseSphere();
+			JsonParser::parseSphere();
 		}
 		else if (type == "triangle") {
-			Parser::parseTriangle();
+			JsonParser::parseTriangle();
 		}
 		else if (type == "object" || type == "obj") {
-			Parser::parseObj();
+			JsonParser::parseObj();
 		}
 		else {
 			sprintf(buffer, "Error: got unidentified Object type \"%s\", parsing stops.\n", type.data());
@@ -64,7 +64,7 @@ ObjectGroup Parser::fromJsonFile(const String &config_path)
 	return objects;
 }
 
-void Parser::reset()
+void JsonParser::reset()
 {
 	// assign default values
 	emission = Emission::DARK;
@@ -72,7 +72,7 @@ void Parser::reset()
 	refl_type = Scenes::Object::DIFF;
 }
 
-void Parser::parseGeneric()
+void JsonParser::parseGeneric()
 {
 	reset();
 	using json = nlohmann::json;
@@ -125,7 +125,7 @@ void Parser::parseGeneric()
 	}
 }
 
-void Parser::parseSphere()
+void JsonParser::parseSphere()
 {
 	parseGeneric();
 
@@ -140,7 +140,7 @@ void Parser::parseSphere()
 	result = new Scenes::Sphere(pos, radius, color, emission, euler_angles, refl_type);
 }
 
-void Parser::parseTriangle()
+void JsonParser::parseTriangle()
 {
 	parseGeneric();
 
@@ -158,7 +158,7 @@ void Parser::parseTriangle()
 	result = new Scenes::Triangle(pos, points, color, emission, euler_angles, refl_type);
 }
 
-void Parser::parseObj()
+void JsonParser::parseObj()
 {
 	parseGeneric();
 

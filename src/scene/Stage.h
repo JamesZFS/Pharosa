@@ -9,7 +9,7 @@
 #include "../Ray.hpp"
 #include "All.h"
 
-typedef List<const Scenes::Object *> ObjectGroup;
+typedef List<Scenes::Object *> ObjectGroup;
 
 // Stage class, for i/o models and calculating ray intersection
 class Stage
@@ -26,7 +26,11 @@ public:
 
 	void fromObjFile(const String &obj_path);      // load triangles from obj file
 
-	void fromList(ObjectGroup &objects_);	// load from list
+	void fromList(ObjectGroup &objects_);	// load from list (! move constructor)
+
+	void append(Scenes::Object *object);	// append an object (affiliates it)
+
+	void appendMeshes(Scenes::TriangleGroup meshes); 	// append mesh segments (affiliates it)
 
 	/** judge and calculate first intersection with all objects
 	 * @param ray

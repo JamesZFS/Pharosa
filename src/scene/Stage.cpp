@@ -10,7 +10,7 @@
 
 Stage::~Stage()
 {
-	for (const Scenes::Object *obj : objects) {
+	for (Scenes::Object *obj : objects) {
 		delete obj;
 	}
 }
@@ -29,6 +29,16 @@ void Stage::fromObjFile(const String &obj_path)
 void Stage::fromList(ObjectGroup &objects_)
 {
 	objects = std::move(objects_);
+}
+
+void Stage::append(Scenes::Object *object)
+{
+	objects.push_back(object);
+}
+
+void Stage::appendMeshes(Scenes::TriangleGroup meshes)
+{
+	objects.insert(objects.end(), meshes.begin(), meshes.end());
 }
 
 bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const

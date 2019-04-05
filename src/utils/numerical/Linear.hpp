@@ -5,9 +5,9 @@
 #ifndef PHAROSA_LINEAR_HPP
 #define PHAROSA_LINEAR_HPP
 
-// Linear algebra solver
+// Linear numerical solver
 
-#include "../lib.h"
+#include "../../lib.h"
 
 // Solve A b == x (n_dim == n, A: matrix)
 bool SolveLinear(double *A, double *b, double *x, int n)

@@ -1,10 +1,11 @@
 /** Created by James on 2019/4/1.
- *  Pharosa, an individual GL project focusing on state-of-the-art ray tracing algorithms
- *
+ *  Pharosa, an individual 3D rendering engine based on state-of-the-art ray tracing algorithms
+ *  Author: Fengshi Zheng
  *  License: Department of Computer Science and Technology, Tsinghua University ®
  */
 
 
+#include "src/utils/funcs.hpp"
 #include "src/Renderer.h"
 #include <iostream>
 
@@ -12,6 +13,7 @@ using namespace std;
 
 int main()
 {
+	// todo implement superposition of multiple .ppm
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
 //	Funcs::generator.seed(1);
@@ -33,13 +35,13 @@ int main()
 
 	renderer.setupStage(ObjectGroup(p, p + 8));
 
-//	renderer.setupCamera(Pos(800, 300, 0), ElAg(2.0 * M_PI / 3.0, -M_PI_2, 0), 800, 500, "../out/Cornell Box - 30.ppm", 30);
-	renderer.setupCamera(Pos(800, 300, 0), ElAg(2.0 * M_PI / 3.0, -M_PI_2, 0), 800, 500);
+//	renderer.setupCamera(Pos(800, 300, 0), ElAg(2.0 * M_PI / 3.0, -M_PI_2, 0), 800, 500, "../out/Cornell Box - 50.ppm", 50);
+	renderer.setupCamera(Pos(800, 300, 0), ElAg(120 DEG, -90 DEG, 0), 800, 500);
 
 //	renderer.start(100, 10000, "../out/fun/");
 	renderer.start(5);
 
-	renderer.save("../out/Cornell Box - test.ppm");
+	renderer.save("../out/Mesh Object Test - 5.ppm");
 
 	debug("\n");
 	return 0;

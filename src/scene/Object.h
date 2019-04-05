@@ -31,6 +31,8 @@ struct Object
 	virtual ~Object() = default;
 
 	// 3D transformation, return *this
+	Object &replace(const Pos &pos_, const ElAg &euler_angles_);
+
 	Object &translate(const Pos &delta);
 
 	Object &rotate(const ElAg &dea);

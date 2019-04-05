@@ -9,7 +9,7 @@
 namespace Solver
 {
 
-#include "Linear.hpp"
+#include "numerical/Linear.hpp"
 
 }
 

@@ -10,6 +10,13 @@ Object::Object(const Pos &pos_, const Color &color_, const Emission &emission_, 
 {
 }
 
+Object &Object::replace(const Pos &pos_, const ElAg &euler_angles_)
+{
+	pos = pos_;
+	ea = euler_angles_;
+	applyTransform();
+}
+
 Object &Object::translate(const Pos &delta)
 {
 	pos += delta;

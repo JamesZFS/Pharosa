@@ -231,6 +231,7 @@ const Pos Pos::ORIGIN(0, 0, 0);
 
 // common ElAg
 const ElAg ElAg::NONROT(0, 0, 0);
+#define DEG * 0.0174532925199432957692369076848861271	// degree to rad
 
 // common colors
 const Color
