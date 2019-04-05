@@ -8,8 +8,8 @@ ImageMixer::ImageMixer(unsigned int width_, unsigned int height_) : Camera(Pos::
 {
 }
 
-const Ray &ImageMixer::shootRay()
+Ray ImageMixer::shootRayAt(unsigned int i, unsigned int j)
 {
-	warn("Warning: invalid use of ImageMixer::shootRay.\n");
-	return cur_ray;
+	warn("Error: invalid use of ImageMixer::shootRayAt.\n");
+	exit(1);
 }

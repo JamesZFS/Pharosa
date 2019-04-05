@@ -5,12 +5,12 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-const double Camera::PIXEL_SIZE = 1.0, Camera::CAMERA_FOCUS = 300.0;
+const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 140.0;	// todo params
 
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
-		pos(pos_), width(width_), height(height_), size(width_ * height_),
-		ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),
-		cur_i(0), cur_j(0), cur_rank(0)
+		cur_i(0), cur_j(0), cur_rank(0),
+		pos(pos_), ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),
+		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1)
 {
 	img = new Color[size];
 	render_cnt = new unsigned int[size];
@@ -27,21 +27,38 @@ Camera::~Camera()
 	delete[] render_cnt;
 }
 
+#define rankOf(i, j) ((j) * width + (i))
+#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
+
 const Color &Camera::pixelAt(unsigned int i, unsigned int j) const
 {
-	if (0 <= i && i < width && 0 <= j && j < height) {
-		return img[j * width + i];
-	}
-	else {
-		warn("Warning: got invalid pixel rank in Camera::pixelAt.\n");
-	}
+	checkCoordinate(i, j);
+	return img[rankOf(i, j)];
 }
 
-void Camera::renderInc(const Color &color)
+void Camera::render(const Color &color)
 {
 	img[cur_rank] += color;
 	++render_cnt[cur_rank];    // counts up rendering time of current pixel
 }
+
+void Camera::render(unsigned int rank, const Color &color)
+{
+	assert(rank < size);    // todo for performance, cancel checking
+	img[rank] += color;
+	++render_cnt[rank];
+}
+
+void Camera::renderAt(unsigned int i, unsigned int j, const Color &color)
+{
+	checkCoordinate(i, j);    // todo for performance, cancel checking
+	auto rank = rankOf(i, j);
+	img[rank] += color;
+	++render_cnt[rank];
+}
+
+#undef rankOf
+#undef checkCoordinate
 
 bool Camera::finished() const
 {
@@ -135,4 +152,15 @@ void Camera::writePPM(String out_path) const
 		fout << buffer;
 	}
 	fout.close();
+}
+
+Ray Camera::shootRay()
+{
+	return shootRayAt(cur_i, cur_j);
+}
+
+Ray Camera::shootRay(unsigned int rank)
+{
+	assert(rank < size);    // todo
+	return shootRayAt(rank % width, rank / width);
 }

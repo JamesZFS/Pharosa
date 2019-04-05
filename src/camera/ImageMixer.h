@@ -13,7 +13,7 @@ class ImageMixer : public Camera
 public:
 	ImageMixer(unsigned int width_ = 1024, unsigned int height_ = 768);
 
-	const Ray &shootRay() override;
+	Ray shootRayAt(unsigned int i, unsigned int j) override;
 };
 
 #include "ImageMixer.cpp"

@@ -30,7 +30,8 @@ public:
 
 	void append(Scenes::Object *object);	// append an object (affiliates it)
 
-	void appendMeshes(Scenes::TriangleGroup meshes); 	// append mesh segments (affiliates it)
+	void appendMeshes(Scenes::TriangleGroup meshes);  // append mesh segments (affiliates it)
+	// meshes should be excluded from ObjectList and installed via appendMeshes method
 
 	/** judge and calculate first intersection with all objects
 	 * @param ray

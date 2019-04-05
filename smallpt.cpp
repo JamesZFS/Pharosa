@@ -10,7 +10,6 @@
 
 std::default_random_engine generator;
 std::uniform_real_distribution<double> distr(0.0, 1.0);
-#define M_PI 3.141592653579
 
 double randf()
 {
@@ -104,12 +103,9 @@ Sphere spheres[] = {// todo Scene: radius, position, emission, color, material
 		Sphere(1e5, Vec(50, 1e5, 81.6), Vec(), Vec(.75, .75, .75), DIFF),//Botm
 		Sphere(1e5, Vec(50, -1e5 + 81.6, 81.6), Vec(), Vec(.75, .75, .75), DIFF),//Top
 		Sphere(16.5, Vec(27, 16.5, 47), Vec(), Vec(1, 1, 1) * .999, SPEC),//Mirr
-		Sphere(10, Vec(20, 10, 100), Vec(), Vec(0.15, 0, 1) * .999, SPEC),//Mirr
-		Sphere(10, Vec(60, 10, 10), Vec(), Vec(0.02, 0, 1) * .999, DIFF),//DIFF
-		Sphere(16.5, Vec(73, 30, 78), Vec(), Vec(1, 1, 1) * .999, REFR),//Glas
+		Sphere(16.5, Vec(73, 16.5, 78), Vec(), Vec(1, 1, 1) * .999, REFR),//Glas
 		Sphere(600, Vec(50, 681.6 - .27, 81.6), Vec(12, 12, 12), Vec(), DIFF) //Lite
 };
-Ray cam(Vec(50, 52, 295.6), Vec(0, -0.042612, -1).norm()); // todo camera pos, direction
 
 inline double clamp(double x)
 { return x < 0 ? 0 : x > 1 ? 1 : x; }
@@ -191,38 +187,23 @@ Vec radiance(const Ray &r, int depth)
 int main(int argc, char *argv[])
 {
 	int w = 1024, h = 768, samps = argc >= 2 ? atoi(argv[1]) / 4 : 2; // # samples
-//	int w = 102, h = 76, samps = argc >= 2 ? atoi(argv[1]) / 4 : 1; // # samples
-//	Vec ci = Vec(w * 1.0 / h, 0, 0) * .5135, cj = (ci ^ cam.d).norm() * .5135;
-//	Vec ci = ((fabs(cam.d.y) > .1 ? Vec(1, 0) : Vec(0, -1)) ^ cam.d).norm() * (0.5135 * w / h);
-//	Vec cj = (ci ^ cam.d).norm() * 0.5135, e;
-	Vec cj, ci;
-	cam.d.get_orthogonal_axises(cj, ci);
-	ci = ci * (0.5135 * w / h);
-	cj = cj * 0.5135;
-	Vec ei = ci, ej = cj, ek = cam.d;
-	ei.norm(), ej.norm(), ek.norm();
-
-	printf("ei = ");
-	ei.report(true);
-	printf("ej = ");
-	ej.report(true);
-	printf("ek = ");
-	ek.report(true);
-	printf("\n");
-	fflush(stdout);
+//	Ray cam(Vec(50, 52, 295.6), Vec(0, -0.042612, -1).norm()); // cam pos, dir
+	Ray cam(Vec(50, 52, 230.6), Vec(0, -0.042612, -1).norm()); // cam pos, dir
+	Vec ci = Vec(w * 1.0 / h, 0, 0) * .5135, cj = (ci ^ cam.d).norm() * .5135;
+//	ci.norm(), cj.norm();
 
 	Vec e;            // pixel color buffer
 //	Vec c[w * h];
 	auto *c = new Vec[w * h];    // image
 	double progress;
 
+	clock_t since = clock();
+
 #pragma omp parallel for schedule(dynamic, 1) private(e)       // OpenMP
 
 	for (int y = 0; y < h; ++y) {                       // Loop over image rows
-		if (y % 5 == 0 || y == h - 1) {
-			progress = 100 * (y + 1.0) / h;
-			fprintf(stderr, "\rRendering (%d spp) %5.2f%%\n", samps * 4, progress);
-		}
+		progress = 100 * (y + 1.0) / h;
+		fprintf(stderr, "\rRendering (%d spp) %5.1f%%\n", samps * 4, progress);
 		for (unsigned short x = 0; x < w; ++x) {   // Loop cols
 			for (int sy = 0, i = (h - y - 1) * w + x; sy < 2; ++sy) {    // 2x2 subpixel rows
 				for (int sx = 0; sx < 2; ++sx, e = Vec()) {             // 2x2 subpixel cols
@@ -246,6 +227,9 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < w * h; i++)
 		fprintf(f, "%d %d %d ", toInt(c[i].x), toInt(c[i].y), toInt(c[i].z));
 	fclose(f);
+
+	double elapse = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+	printf("\nelapse = %.2f sec\n", elapse);
 
 	return 0;
 }

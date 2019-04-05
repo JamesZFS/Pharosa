@@ -18,6 +18,8 @@ CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/Camera.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/Camera.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/DOFCamera.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/DOFCamera.h
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/ImageMixer.cpp
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/ImageMixer.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/lib.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/scene/All.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/scene/InfPlane.cpp

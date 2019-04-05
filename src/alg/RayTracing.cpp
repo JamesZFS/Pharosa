@@ -108,7 +108,7 @@ void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch,
 		while (!camera.finished()) {
 			const Ray &ray = camera.shootRay();
 			auto color = radiance(ray, 0);
-			camera.renderInc(color);
+			camera.render(color);
 			camera.updateProgress();
 		}
 		if (checkpoint) {    // save checkpoints
@@ -127,6 +127,7 @@ void RayTracing::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 	unsigned int tot_epoch = n_epoch + prev_epoch;
 
 	// todo use openmp to boost, (single camera, multi pixel to render simultaneously )
+//#pragma omp parallel for schedule(dynamic, 1) private(e)       // OpenMP
 
 	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
 		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
@@ -134,8 +135,8 @@ void RayTracing::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 		camera.resetProgress();
 		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
 			const Ray &ray = camera.shootRay();
-			for (unsigned int k = 0; k < 4; ++k) {    // repeat 4 times
-				camera.renderInc(radiance(ray, 0));
+			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
+				camera.render(radiance(ray, 0));
 			}
 			camera.updateProgress();
 		}

@@ -5,8 +5,8 @@
 #include "Sphere.h"
 
 Sphere::Sphere(const Pos &pos_, double radius_, const Color &color_, const Emission &emission_,
-			   const ElAg &euler_angles_, Object::ReflType refl_type_) :
-		Object(pos_, color_, emission_, euler_angles_, refl_type_), rad(radius_)
+		Object::ReflType refl_type_) :
+		Object(pos_, color_, emission_, ElAg::NONROT, refl_type_), rad(radius_)
 {
 }
 

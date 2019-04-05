@@ -10,7 +10,7 @@ namespace Cameras
 
 #include "BasicCamera.h"
 #include "DOFCamera.h"
-
+#include "OrthographicCamera.h"
 #include "ImageMixer.h"
 
 }

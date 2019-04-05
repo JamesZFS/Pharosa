@@ -96,12 +96,6 @@ struct Vec
 		debug("(%.2f, %.2f, %.2f)", x, y, z);
 		if (endl) debug("\n");
 	}
-//
-//	inline auto &unitize()    // to unit vector
-//	{
-//		*this /= sqrt(x * x + y * y + z * z);
-//		return *this;
-//	}
 };
 
 struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
@@ -231,7 +225,7 @@ const Pos Pos::ORIGIN(0, 0, 0);
 
 // common ElAg
 const ElAg ElAg::NONROT(0, 0, 0);
-#define DEG * 0.0174532925199432957692369076848861271	// degree to rad
+#define DEG * 0.0174532925199432957692369076848861271    // degree to rad
 
 // common colors
 const Color
