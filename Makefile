@@ -12,7 +12,7 @@ Pharosa.out: main.cpp Makefile
 
 clean:
 #	del *.o *.d	# on win
-	rm *.o *.d		# on mac
+	rm *.d		# on mac
 
 clean-up:
 #	del *.exe *.o *.d	# on win

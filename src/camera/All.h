@@ -11,6 +11,8 @@ namespace Cameras
 #include "BasicCamera.h"
 #include "DOFCamera.h"
 
+#include "ImageMixer.h"
+
 }
 
 #endif //PHAROSA_CAMERA_ALL_H

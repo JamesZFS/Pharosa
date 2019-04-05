@@ -25,7 +25,7 @@ protected:
 	Ray cur_ray;    // current ray to shoot
 
 public:
-	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
 
 	virtual ~Camera();
 
