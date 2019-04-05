@@ -9,7 +9,7 @@ MeshObj::MeshObj(const Pos &pos_, const Color &color_, const Emission &emission_
 				 Object::ReflType refl_type_) : Object(pos_, color_, emission_, euler_angles_, refl_type_)
 {}
 
-void MeshObj::fromObjFile(const String &obj_path, double zoom_ratio = 1.0)
+void MeshObj::fromObjFile(const String &obj_path, double zoom_ratio)
 {
 	meshes = Parser::fromObjFile(obj_path, zoom_ratio, pos, color, emi, ea, REFR);
 }

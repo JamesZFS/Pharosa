@@ -30,14 +30,14 @@ int main()
 			new InfPlane(Pos(0, -500, 0), Color::RED, Emission::NONE, ElAg(0, M_PI_2), Object::SPEC),    // left
 			new InfPlane(Pos(0, 500, 0), Color::BLUE, Emission::NONE, ElAg(0, M_PI_2), Object::SPEC)    // right
 	};
-	MeshObj cube(Pos(0, 100, -200), Color::BLUE, Emission::NONE, ElAg::NONROT, Object::DIFF);
+	MeshObj cube(Pos(0, 100, -200), Color::BLUE, Emission::NONE, ElAg::NONROT, Object::DIFF);	// load mesh object
 	cube.fromObjFile("res/cube.obj", 200);
 
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 7));
-	renderer.stage().appendMeshes(cube.meshes);
+	renderer.stage().appendMeshes(cube.meshes);		// meshes should be excluded from ObjectList and installed via appendMeshes method
 
 	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400);
 //	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
