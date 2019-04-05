@@ -10,7 +10,7 @@
 #include "../../scene/Triangle.h"
 #include "../../scene/MeshObj.h"
 
-TriangleGroup fromObjFile(const String &obj_path)	// load mesh segments from objects file
+TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio)	// load mesh segments from objects file
 {
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
@@ -39,16 +39,16 @@ TriangleGroup fromObjFile(const String &obj_path)	// load mesh segments from obj
 
 			case 'v':	// vertex (x, y, z)
 				fin >> x >> y >> z;
-				v.emplace_back(x, y, z);
+				v.emplace_back(x * zoom_ratio, y * zoom_ratio, z * zoom_ratio);
 				break;
 
-			case 'f':	// face (rank1, rank2, rank3)
+			case 'f':	// face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
-				p[0] = v[a];
-				p[1] = v[b];
-				p[2] = v[c];
+				p[0] = v[--a];
+				p[1] = v[--b];
+				p[2] = v[--c];
 				// todo multicolor, emission, texture support
-				meshes.push_back(new Triangle(Pos::ORIGIN, p, Color::WHITE));
+				meshes.push_back(new Triangle(Pos::ORIGIN, p, Color::WHITE, Emission::GLOW));
 				break;
 
 			default:

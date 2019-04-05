@@ -15,6 +15,7 @@ Object &Object::replace(const Pos &pos_, const ElAg &euler_angles_)
 	pos = pos_;
 	ea = euler_angles_;
 	applyTransform();
+	return *this;
 }
 
 Object &Object::translate(const Pos &delta)

@@ -40,7 +40,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 	// todo light attenuation
 	switch (obj.reft) {
 
-		// Ideal diffusive reflection
+		// Ideal diffusive reflection, todo use I = kd ( L . N ) model
 		case Object::DIFF: {
 			double r1 = 2 * M_PI * randf(), r2 = randf(), r2s = sqrt(r2);
 			Dir ex, ey;
@@ -51,8 +51,8 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 			return obj.emi + color.mul(radiance(Ray(x, d), depth));
 		}
 
-		// Ideal mirror reflection
-		case Object::REFL: {
+		// Ideal mirror reflection, todo use I = ks ( V . R )^n model
+		case Object::SPEC: {
 			return obj.emi + color.mul(radiance(Ray(x, ray.dir - nl * 2 * (nl % ray.dir)), depth));
 		}
 

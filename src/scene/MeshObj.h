@@ -17,7 +17,7 @@ struct MeshObj : public Object
 	MeshObj(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
 			ReflType refl_type_);
 
-	void fromObj(const String &obj_path);	// append mesh segments from a .obj file
+	void fromObjFile(const String &obj_path, double zoom_ratio = 1.0);	// append mesh segments from a .obj file
 
 	void applyTransform() override;
 

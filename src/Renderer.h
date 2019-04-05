@@ -16,7 +16,7 @@
 template<typename GI_Algorithm, typename Cameras_Type>
 class Renderer
 {
-private:
+public:
 	Stage *stage;
 	Cameras::Camera *camera;
 	Algorithms::GI *illuminator;

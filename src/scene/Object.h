@@ -14,7 +14,7 @@ struct Object
 {
 	enum ReflType
 	{
-		DIFF, REFL, REFR
+		DIFF, SPEC, REFR
 	};    // diffusive, reflective, refractive
 
 	Pos pos;        // ref point position in global coordinate system

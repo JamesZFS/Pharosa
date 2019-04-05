@@ -9,9 +9,9 @@ MeshObj::MeshObj(const Pos &pos_, const Color &color_, const Emission &emission_
 				 Object::ReflType refl_type_) : Object(pos_, color_, emission_, euler_angles_, refl_type_)
 {}
 
-void MeshObj::fromObj(const String &obj_path)
+void MeshObj::fromObjFile(const String &obj_path, double zoom_ratio)
 {
-	meshes = Parser::fromObjFile(obj_path);
+	meshes = Parser::fromObjFile(obj_path, zoom_ratio);
 	applyTransform();	// apply translation and rotation to all meshes
 }
 
