@@ -15,6 +15,7 @@
 #include <vector>
 #include <string>
 #include <random>
+#include <omp.h>
 
 const double INF = 1e20, EPS = 1e-4;
 

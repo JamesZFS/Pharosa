@@ -5,7 +5,7 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 140.0;	// todo params
+const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 70.0;    // todo params
 
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		cur_i(0), cur_j(0), cur_rank(0),
@@ -34,6 +34,16 @@ const Color &Camera::pixelAt(unsigned int i, unsigned int j) const
 {
 	checkCoordinate(i, j);
 	return img[rankOf(i, j)];
+}
+
+const Pos &Camera::viewpoint() const
+{
+	return pos;
+}
+
+const Dir &Camera::orientation() const
+{
+	return ez;
 }
 
 void Camera::render(const Color &color)
@@ -69,7 +79,7 @@ bool Camera::finishedVerbose(unsigned int n_step) const
 {
 	assert(n_step > 0);
 	if (cur_rank % n_step == 0) {
-		debug("\r\tprogress:  %.1f %%", cur_rank * 100.0 / size);
+		debug("\r  progress:  %.1f %%", cur_rank * 100.0 / size);
 		fflush(stdout);
 	}
 	return (cur_rank >= size);
@@ -154,13 +164,14 @@ void Camera::writePPM(String out_path) const
 	fout.close();
 }
 
-Ray Camera::shootRay()
+Ray Camera::shootRay() const
 {
 	return shootRayAt(cur_i, cur_j);
 }
 
-Ray Camera::shootRay(unsigned int rank)
+Ray Camera::shootRay(unsigned int rank) const
 {
 	assert(rank < size);    // todo
 	return shootRayAt(rank % width, rank / width);
 }
+

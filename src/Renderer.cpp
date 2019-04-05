@@ -81,7 +81,16 @@ void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
 		_illuminator = new GI_Algorithm(*_stage, *_camera);
 	}
 
+	debug("loaded %d objects in total.\n", _stage->getObjectCount());
+	debug("camera viewpoint at %s  orienting towards %s\n",
+			camera().viewpoint().toString().data(), camera().orientation().toString().data());
+	debug("===== rendering start =====\n");
+	double since = omp_get_wtime();
+
 	_illuminator->render(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
+
+	auto elapse = lround(omp_get_wtime() - since);
+	debug("\n===== rendering finished in %ld min %ld sec =====\n", elapse / 60,  elapse % 60);
 	prev_epoch += n_epoch;
 }
 

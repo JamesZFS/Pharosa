@@ -22,6 +22,8 @@ public:
 
 	~Stage();
 
+	unsigned int getObjectCount();	// count objects in total
+
 	void fromJsonFile(const String &config_path);	// load objects from json file
 
 	void fromObjFile(const String &obj_path);      // load triangles from obj file

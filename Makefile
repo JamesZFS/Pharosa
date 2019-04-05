@@ -19,14 +19,14 @@ clean:
 
 clean-up:
 #	del *.exe *.o *.d	# on win
-	rm *.out *.o *.d		# on mac
+	rm *.out *.d		# on mac
 
 run: Pharosa.out
 	./Pharosa.out
-	make clean
+	make clean-up
 #	nmake clean
 
 compare: smallpt.out Pharosa.out
 	./smallpt.out 40 standard.ppm
 	./Pharosa.out
-	make clean
+	make clean-up

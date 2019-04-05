@@ -12,35 +12,35 @@ using namespace Scenes;
 int main()
 {
 	// init random engine
-	Funcs::generator.seed((unsigned int) time(nullptr));
+//	Funcs::generator.seed((unsigned int) time(nullptr));
+	Funcs::generator.seed(1);
 
 	Object *p[] = {
-			new Sphere(Pos(1e5 + 1, 40.8, 81.6),   1e5,  Color(.75, .25, .25), Emission::NONE, Object::DIFF),//Left
-			new Sphere(Pos(-1e5 + 99, 40.8, 81.6), 1e5,  Color(.25, .25, .75), Emission::NONE, Object::DIFF),//Rght
-			new Sphere(Pos(50, 40.8, 1e5),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Back
-			new Sphere(Pos(50, 40.8, -1e5 + 170),  1e5,  Color(),              Emission::NONE, Object::DIFF),//Frnt
-			new Sphere(Pos(50, 1e5, 81.6),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Botm
-			new Sphere(Pos(50, -1e5 + 81.6,81.6),  1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Top
-			new Sphere(Pos(27, 16.5, 47),          16.5, Color::WHITE * .999,  Emission::NONE, Object::SPEC),//Mirr
-			new Sphere(Pos(73, 16.5, 78),          16.5, Color::WHITE * .999,  Emission::NONE, Object::REFR),//Glas
-			new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
+	new Sphere(Pos(1e5 + 1, 40.8, 81.6),   1e5,  Color(.75, .25, .25), Emission::NONE, Object::DIFF),//Left
+	new Sphere(Pos(-1e5 + 99, 40.8, 81.6), 1e5,  Color(.25, .25, .75), Emission::NONE, Object::DIFF),//Rght
+	new Sphere(Pos(50, 40.8, 1e5),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Back
+//	new Sphere(Pos(50, 40.8, -1e5 + 170),  1e5,  Color(),              Emission::NONE, Object::DIFF),//Frnt
+	new Sphere(Pos(50, 1e5, 81.6),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Botm
+	new Sphere(Pos(50, -1e5 + 81.6,81.6),  1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Top
+	new Sphere(Pos(27, 16.5, 47),          16.5, Color::WHITE * .999,  Emission::NONE, Object::SPEC),//Mirr
+	new Sphere(Pos(73, 16.5, 78),          16.5, Color::WHITE * .999,  Emission::NONE, Object::REFR),//Glas
+	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing, Cameras::OrthographicCamera> renderer;
+	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
-	renderer.stage().fromObjectList(ObjectList(p, p + 9));
+	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
 //	renderer.setupCamera(Pos(50, 50, 266.6), ElAg(0, M_PI - 3 DEG, 0));
-	renderer.setupCamera(Pos(50, 25, 150), ElAg(0, M_PI, 0));
+	renderer.setupCamera(Pos(50, 50, 200.6), ElAg(0, M_PI - 3 DEG, 0), 800, 500);
+//						 "out/omp/100 - static - inside.ppm", 100);
+//	renderer.setupCamera(Pos(50, 25, 150), ElAg(0, M_PI, 0));
 	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
 
 	//	renderer.start(100, 10000, "out/fun/");
-	clock_t since = clock();
-	renderer.start(100);
-	double elapse = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-	debug("\nelapse = %.2f sec\n", elapse);
+	renderer.start(100, 0);
 
-	renderer.save("ours ortho - 100.ppm");
+//	renderer.save("out/omp/100 - static 5 - inside.ppm");
 
 	return 0;
 }

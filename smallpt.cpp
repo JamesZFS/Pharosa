@@ -200,6 +200,7 @@ int main(int argc, char *argv[])
 	clock_t since = clock();
 
 #pragma omp parallel for schedule(dynamic, 1) private(e)       // OpenMP
+//#pragma omp parallel for private(e)
 
 	for (int y = 0; y < h; ++y) {                       // Loop over image rows
 		progress = 100 * (y + 1.0) / h;

@@ -51,12 +51,12 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 			return obj.emi + color.mul(radiance(Ray(x, d), depth));
 		}
 
-		// Ideal mirror reflection, todo use I = ks ( V . R )^n model
+			// Ideal mirror reflection, todo use I = ks ( V . R )^n model
 		case Object::SPEC: {
 			return obj.emi + color.mul(radiance(Ray(x, ray.dir - nl * 2 * (nl % ray.dir)), depth));
 		}
 
-		// Ideal dielectric refraction
+			// Ideal dielectric refraction
 		case Object::REFR: {
 			Ray reflRay(x, ray.dir - normal * 2 * (normal % ray.dir));
 			bool into = (normal % nl) > 0;                // Ray from outside going in?
@@ -102,14 +102,19 @@ void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch,
 	Buffer buffer;
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	unsigned int tot_epoch = n_epoch + prev_epoch;
+
+//#pragma omp parallel for schedule(dynamic, 1)  // OpenMP
+
 	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
 		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
-		camera.resetProgress();
-		while (!camera.finished()) {
-			const Ray &ray = camera.shootRay();
-			auto color = radiance(ray, 0);
-			camera.render(color);
-			camera.updateProgress();
+		fflush(stdout);
+
+		#pragma omp parallel for schedule(static, camera.size / 4) num_threads(4)  // OpenMP
+		for (unsigned int rank = 0; rank < camera.size; ++rank) {
+			const Ray &ray = camera.shootRay(rank);
+			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
+				camera.render(rank, radiance(ray, 0));
+			}
 		}
 		if (checkpoint) {    // save checkpoints
 			sprintf(buffer, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch);
@@ -125,9 +130,6 @@ void RayTracing::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 	Buffer buffer;
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	unsigned int tot_epoch = n_epoch + prev_epoch;
-
-	// todo use openmp to boost, (single camera, multi pixel to render simultaneously )
-//#pragma omp parallel for schedule(dynamic, 1) private(e)       // OpenMP
 
 	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
 		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);

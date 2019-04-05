@@ -58,3 +58,8 @@ bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir
 	normal = hit->normalAt(x);
 	return true;
 }
+
+unsigned int Stage::getObjectCount()
+{
+	return (unsigned int) objects.size();
+}

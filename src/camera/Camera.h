@@ -30,7 +30,11 @@ public:
 	virtual ~Camera();
 
 	// getter:
-	inline const Color &pixelAt(unsigned int i, unsigned int j) const;
+	inline const Color &pixelAt(unsigned int i, unsigned int j) const;	// img
+
+	inline const Pos &viewpoint() const;	// pos
+
+	inline const Dir &orientation() const;	// ez
 
 	// setter:
 	inline void render(const Color &color);    // render incrementally
@@ -55,12 +59,12 @@ public:
 	// output image into ppm format
 	void writePPM(String out_path) const;
 
-	inline Ray shootRay();    // shoot a ray iteratively. will stop when all pixels are traversed
+	inline Ray shootRay() const;    // shoot a ray iteratively. will stop when all pixels are traversed
 
-	inline Ray shootRay(unsigned int rank);    // shoot a ray at a given pixel rank
+	inline Ray shootRay(unsigned int rank) const;    // shoot a ray at a given pixel rank
 
 	// interface:
-	virtual Ray shootRayAt(unsigned int i, unsigned int j) = 0;
+	virtual Ray shootRayAt(unsigned int i, unsigned int j) const = 0;
 
 	// camera constants
 	static const double PIXEL_SIZE, CAMERA_FOCUS;

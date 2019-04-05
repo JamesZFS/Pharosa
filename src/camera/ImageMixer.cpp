@@ -8,7 +8,7 @@ ImageMixer::ImageMixer(unsigned int width_, unsigned int height_) : Camera(Pos::
 {
 }
 
-Ray ImageMixer::shootRayAt(unsigned int i, unsigned int j)
+Ray ImageMixer::shootRayAt(unsigned int i, unsigned int j) const
 {
 	warn("Error: invalid use of ImageMixer::shootRayAt.\n");
 	exit(1);

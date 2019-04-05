@@ -96,6 +96,13 @@ struct Vec
 		debug("(%.2f, %.2f, %.2f)", x, y, z);
 		if (endl) debug("\n");
 	}
+
+	String toString() const
+	{
+		Buffer buffer;
+		sprintf(buffer, "(%.2f, %.2f, %.2f)", x, y, z);
+		return String(buffer);
+	}
 };
 
 struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)

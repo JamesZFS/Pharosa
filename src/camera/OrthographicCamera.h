@@ -13,7 +13,7 @@ public:
 	OrthographicCamera(const Pos &pos_, const ElAg &euler_angles_,
 					   unsigned int width_ = 1024, unsigned int height_ = 768);
 
-	Ray shootRayAt(unsigned int i, unsigned int j) override;
+	Ray shootRayAt(unsigned int i, unsigned int j) const override;
 };
 
 #include "OrthographicCamera.cpp"

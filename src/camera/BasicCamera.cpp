@@ -9,7 +9,7 @@ BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned in
 {
 }
 
-Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j)
+Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j) const
 {
 	// convert screen pixel crd sys (i, j) to screen center crd sys (x', y', z')
 	// using (x', y') = (i - w/2, j - h/2) * a
