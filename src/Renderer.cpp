@@ -6,32 +6,47 @@
 
 template<typename GI_Algorithm, typename Cameras_Type>
 Renderer<GI_Algorithm, Cameras_Type>::Renderer() :
-		stage(nullptr), camera(nullptr), illuminator(nullptr)
+		_stage(nullptr), _camera(nullptr), _illuminator(nullptr)
 {
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
 Renderer<GI_Algorithm, Cameras_Type>::~Renderer()
 {
-	delete stage;
-	delete camera;
-	delete illuminator;
+	delete _stage;
+	delete _camera;
+	delete _illuminator;
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::setupStage(const String &config_path)
+Stage &Renderer<GI_Algorithm, Cameras_Type>::stage()
 {
-	if (stage != nullptr) delete stage;
-	stage = new Stage;
-	stage->fromJsonFile(config_path);
+	if (_stage == nullptr) {
+		warn("Error: stage is not setup yet.\n");
+		exit(1);
+	}
+	return *_stage;
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::setupStage(ObjectGroup &&objects)
+const Cameras::Camera &Renderer<GI_Algorithm, Cameras_Type>::camera()
 {
-	if (stage != nullptr) delete stage;
-	stage = new Stage;
-	stage->fromList(objects);
+	if (_camera == nullptr) {
+		warn("Error: camera is not setup yet.\n");
+		exit(1);
+	}
+	return *_camera;
+}
+
+template<typename GI_Algorithm, typename Cameras_Type>
+void Renderer<GI_Algorithm, Cameras_Type>::
+setupStage(const String &config_path)
+{
+	if (_stage != nullptr) delete _stage;
+	_stage = new Stage;            // new an empty stage
+	if (config_path.length() > 0) {
+		_stage->fromJsonFile(config_path);
+	}
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
@@ -40,12 +55,12 @@ setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, uns
 			const String &prev_path_, unsigned int prev_epoch_)
 {
 	prev_epoch = prev_epoch_;
-	if (camera != nullptr) delete camera;
-	camera = new Cameras_Type(pos_, euler_angles_, width_, height_);
+	if (_camera != nullptr) delete _camera;
+	_camera = new Cameras_Type(pos_, euler_angles_, width_, height_);	// new a camera
 
 	// load from prev
 	if (prev_path_.length() > 0) {
-		camera->readPPM(prev_path_, prev_epoch_);
+		_camera->readPPM(prev_path_, prev_epoch_);
 	}
 }
 
@@ -53,29 +68,29 @@ template<typename GI_Algorithm, typename Cameras_Type>
 void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
 												 unsigned int verbose_step, const String &checkpoint_dir)
 {
-	if (stage == nullptr) {
+	if (_stage == nullptr) {
 		warn("Warning: stage is not setup yet, the result shall be empty.\n");
-		stage = new Stage;
+		_stage = new Stage;
 	}
-	if (camera == nullptr) {
+	if (_camera == nullptr) {
 		warn("Error: camera is not setup yet.\n");
 		exit(1);
 	}
 	// setup algorithm
-	if (illuminator == nullptr) {
-		illuminator = new GI_Algorithm(*stage, *camera);
+	if (_illuminator == nullptr) {
+		_illuminator = new GI_Algorithm(*_stage, *_camera);
 	}
 
-	illuminator->render(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
+	_illuminator->render(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
 	prev_epoch += n_epoch;
 }
 
 template<typename GI_Algorithm, typename Cameras_Type>
 void Renderer<GI_Algorithm, Cameras_Type>::save(const String &out_path)
 {
-	if (camera == nullptr) {
+	if (_camera == nullptr) {
 		warn("Error: camera is not setup yet.\n");
 		exit(1);
 	}
-	camera->writePPM(out_path);
+	_camera->writePPM(out_path);
 }

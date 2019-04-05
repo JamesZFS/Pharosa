@@ -19,7 +19,7 @@ protected:
 	Color radiance(const Ray &ray, unsigned int depth) const;    // ** main algorithm **
 
 public:
-	RayTracing(const Stage &stage_, Cameras::Camera &camera_);
+	RayTracing(Stage &stage_, Cameras::Camera &camera_);
 
 	// ** rendering pipeline **
 	void render(unsigned int n_epoch, unsigned int prev_epoch, unsigned int verbose_step,

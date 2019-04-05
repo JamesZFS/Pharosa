@@ -9,13 +9,13 @@
 #include "../Ray.hpp"
 #include "All.h"
 
-typedef List<Scenes::Object *> ObjectGroup;
+typedef List<Scenes::Object *> ObjectList;
 
 // Stage class, for i/o models and calculating ray intersection
 class Stage
 {
 private:
-	ObjectGroup objects;	// using pointer to allow polymorphism
+	ObjectList objects;	// using pointer to allow polymorphism
 
 public:
 	Stage() = default;        // init an empty stage
@@ -26,7 +26,7 @@ public:
 
 	void fromObjFile(const String &obj_path);      // load triangles from obj file
 
-	void fromList(ObjectGroup &objects_);	// load from list (! move constructor)
+	void fromObjectList(ObjectList &&objects_);	// load from list (! move constructor)
 
 	void append(Scenes::Object *object);	// append an object (affiliates it)
 
@@ -40,7 +40,6 @@ public:
 	 * @return true if intersects any object else false
 	 */
 	bool intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const;
-
 };
 
 #include "Stage.cpp"

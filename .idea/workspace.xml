@@ -5,6 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" line="93" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" />
     <bookmark url="file://$PROJECT_DIR$/main.cpp" />
+    <bookmark url="file://$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" line="50" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -18,15 +19,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.exe.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alg/GI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/GI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alg/GI.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/GI.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/MeshObj.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/MeshObj.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/MeshObj.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/MeshObj.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Object.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Object.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Object.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Stage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Stage.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Stage.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Stage.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -173,9 +176,9 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Makefile" value="5" />
-          <entry key="cpp" value="26" />
-          <entry key="h" value="60" />
-          <entry key="hpp" value="14" />
+          <entry key="cpp" value="41" />
+          <entry key="h" value="67" />
+          <entry key="hpp" value="17" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
@@ -183,23 +186,23 @@
         <counts>
           <entry key="CMakeLists.txt" value="2" />
           <entry key="Makefile" value="5" />
-          <entry key="ObjectiveC" value="100" />
+          <entry key="ObjectiveC" value="125" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="30" />
-          <entry key="cpp" value="1693" />
-          <entry key="h" value="653" />
-          <entry key="hpp" value="1440" />
-          <entry key="mm" value="33" />
+          <entry key="cpp" value="2036" />
+          <entry key="h" value="802" />
+          <entry key="hpp" value="1488" />
+          <entry key="mm" value="111" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="4" />
           <entry key="Makefile" value="30" />
-          <entry key="ObjectiveC" value="3815" />
+          <entry key="ObjectiveC" value="4433" />
         </counts>
       </usages-collector>
     </session>
@@ -208,88 +211,16 @@
     <favorites_list name="RayTracker" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5326505">
+    <splitter split-orientation="vertical" split-proportion="0.5029703">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.53540903">
+        <splitter split-orientation="horizontal" split-proportion="0.5">
           <split-first>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/scene/Stage.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="270">
-                      <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-                      <folding>
-                        <element signature="e#89#108#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="244">
-                      <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/main.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="61">
-                      <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-                      <folding>
-                        <element signature="e#244#274#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="78">
-                      <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-                      <folding>
-                        <element signature="e#854#900#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="141">
-                      <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
+            <leaf>
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
+                <entry file="file://$PROJECT_DIR$/src/camera/Camera.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="169">
-                      <caret line="136" column="42" selection-start-line="136" selection-start-column="42" selection-end-line="136" selection-end-column="42" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="18">
-                      <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/alg/GI.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="159">
-                      <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+                    <state relative-caret-position="-41">
+                      <caret line="42" column="34" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="34" />
                     </state>
                   </provider>
                 </entry>
@@ -297,21 +228,12 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/scene/Triangle.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="171">
-                      <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
+            <leaf>
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="148">
-                      <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+                    <state relative-caret-position="178">
+                      <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
                     </state>
                   </provider>
                 </entry>
@@ -323,58 +245,44 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.cpp">
+            <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/utils/parser/ObjParser.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
-                  <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+                <state relative-caret-position="58">
+                  <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Renderer.h">
+            <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="47">
-                  <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+                <state relative-caret-position="166">
+                  <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/lib.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="275">
+                  <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
                   <folding>
-                    <element signature="e#95#111#0" expanded="true" />
+                    <element signature="e#85#104#0" expanded="true" />
+                    <element signature="e#317#329#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/alg/All.h">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+                <state relative-caret-position="125">
+                  <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#244#274#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -383,7 +291,7 @@
             <entry file="file://$PROJECT_DIR$/src/Vec.hpp">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="96">
-                  <caret line="205" selection-start-line="205" selection-end-line="205" />
+                  <caret line="222" column="41" selection-start-line="222" selection-start-column="41" selection-end-line="222" selection-end-column="41" />
                   <folding>
                     <element signature="e#136#148#0" expanded="true" />
                   </folding>
@@ -392,14 +300,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/lib.h">
+            <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="220">
-                  <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#85#104#0" expanded="true" />
-                    <element signature="e#317#329#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="110">
+                  <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -472,23 +376,19 @@
         <option value="$PROJECT_DIR$/config/demo.stage" />
         <option value="$PROJECT_DIR$/src/utils/json.hpp" />
         <option value="$PROJECT_DIR$/config/package.json" />
-        <option value="$PROJECT_DIR$/src/alg/GI.cpp" />
         <option value="$PROJECT_DIR$/config/demo 2.json" />
         <option value="$PROJECT_DIR$/config/demo.json" />
         <option value="$PROJECT_DIR$/src/utils/parser.hpp" />
         <option value="$PROJECT_DIR$/config/example.json" />
         <option value="$PROJECT_DIR$/config/1.json" />
-        <option value="$PROJECT_DIR$/src/Renderer.cpp" />
         <option value="$PROJECT_DIR$/src/utils/Parser.cpp" />
         <option value="$PROJECT_DIR$/src/camera/BasicCamera.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Sphere.cpp" />
         <option value="$PROJECT_DIR$/src/camera/Camera.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Triangle.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/alg/RayTracing.h" />
         <option value="$PROJECT_DIR$/src/lib.h" />
         <option value="$PROJECT_DIR$/src/Ray.hpp" />
-        <option value="$PROJECT_DIR$/src/alg/GI.h" />
         <option value="$PROJECT_DIR$/src/camera/All.h" />
         <option value="$PROJECT_DIR$/src/camera/BasicCamera.h" />
         <option value="$PROJECT_DIR$/src/camera/Camera.h" />
@@ -508,16 +408,20 @@
         <option value="$PROJECT_DIR$/src/utils/Parsers.h" />
         <option value="$PROJECT_DIR$/src/Vec.hpp" />
         <option value="$PROJECT_DIR$/src/scene/Object.h" />
-        <option value="$PROJECT_DIR$/src/scene/Stage.h" />
-        <option value="$PROJECT_DIR$/src/scene/Stage.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Object.cpp" />
-        <option value="$PROJECT_DIR$/src/Renderer.h" />
         <option value="$PROJECT_DIR$/Makefile" />
-        <option value="$PROJECT_DIR$/src/scene/MeshObj.h" />
-        <option value="$PROJECT_DIR$/src/scene/MeshObj.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/GI.cpp" />
         <option value="$PROJECT_DIR$/src/alg/RayTracing.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/RayTracing.h" />
         <option value="$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" />
+        <option value="$PROJECT_DIR$/src/scene/MeshObj.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/MeshObj.h" />
+        <option value="$PROJECT_DIR$/src/scene/Stage.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Stage.h" />
+        <option value="$PROJECT_DIR$/src/Renderer.h" />
+        <option value="$PROJECT_DIR$/src/Renderer.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/GI.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -529,8 +433,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-255" />
+    <option name="y" value="-1080" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -731,12 +637,12 @@
       <workItem from="1554254015175" duration="33714000" />
       <workItem from="1554391263141" duration="14778000" />
       <workItem from="1554437390227" duration="2251000" />
-      <workItem from="1554439893867" duration="11106000" />
+      <workItem from="1554439893867" duration="13412000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102376000" />
+    <option name="totallyTimeSpent" value="104682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -748,15 +654,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <frame x="-255" y="-1080" width="1920" height="1080" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49598393" visible="true" weight="0.17310444" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49598393" visible="true" weight="0.12886049" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50401604" side_tool="true" weight="0.13876967" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32871288" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23373494" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24257426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -833,9 +738,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out/fun.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/fun - 39.ppm">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -976,13 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/Camera.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera/Camera.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -994,17 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="20" column="5" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding>
-            <element signature="e#85#104#0" expanded="true" />
-            <element signature="e#317#329#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,6 +909,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Parsers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/All.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1039,44 +937,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Stage.cpp">
+    <entry file="file://$PROJECT_DIR$/src/lib.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Stage.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+        <state relative-caret-position="275">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
           <folding>
-            <element signature="e#89#108#0" expanded="true" />
+            <element signature="e#85#104#0" expanded="true" />
+            <element signature="e#317#329#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Parsers.h">
+    <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/parser/ObjParser.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/GI.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Vec.hpp">
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-          <folding>
-            <element signature="e#136#148#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="18">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1089,94 +999,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        <state relative-caret-position="178">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/GI.h">
+    <entry file="file://$PROJECT_DIR$/src/camera/Camera.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="e#854#900#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-41">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="58">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+    <entry file="file://$PROJECT_DIR$/src/alg/GI.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        <state relative-caret-position="152">
+          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding>
+            <element signature="e#620#666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Stage.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding>
+            <element signature="e#89#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Stage.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Renderer.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+        <state relative-caret-position="119">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
           <folding>
             <element signature="e#95#111#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Vec.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="96">
+          <caret line="222" column="41" selection-start-line="222" selection-start-column="41" selection-end-line="222" selection-end-column="41" />
+          <folding>
+            <element signature="e#136#148#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.h">
+    <entry file="file://$PROJECT_DIR$/src/scene/MeshObj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        <state relative-caret-position="110">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+        <state relative-caret-position="125">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
           <folding>
             <element signature="e#244#274#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="136" column="42" selection-start-line="136" selection-start-column="42" selection-end-line="136" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parser/ObjParser.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
         </state>
       </provider>
     </entry>

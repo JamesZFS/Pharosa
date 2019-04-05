@@ -14,10 +14,11 @@
 class GI
 {
 protected:
-	const Stage &stage;    // cannot change stage
+	Stage &stage;
 	Cameras::Camera &camera;
+
 public:
-	GI(const Stage &stage_, Cameras::Camera &camera_);
+	GI(Stage &stage_, Cameras::Camera &camera_);
 
 	virtual ~GI() = default;
 

@@ -5,6 +5,6 @@
 #include "GI.h"
 
 
-GI::GI(const Stage &stage_, Cameras::Camera &camera_) : stage(stage_), camera(camera_)
+GI::GI(Stage &stage_, Cameras::Camera &camera_) : stage(stage_), camera(camera_)
 {
 }

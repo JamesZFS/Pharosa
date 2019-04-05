@@ -16,10 +16,10 @@
 template<typename GI_Algorithm, typename Cameras_Type>
 class Renderer
 {
-public:
-	Stage *stage;
-	Cameras::Camera *camera;
-	Algorithms::GI *illuminator;
+private:
+	Stage *_stage;
+	Cameras::Camera *_camera;
+	Algorithms::GI *_illuminator;
 	unsigned int prev_epoch;    // previous rendering times
 
 public:
@@ -28,10 +28,13 @@ public:
 
 	~Renderer();
 
-	// setup stage by specify a stage config file path
-	void setupStage(const String &config_path);
+	// access to stage and camera
+	Stage &stage();
 
-	void setupStage(ObjectGroup &&objects);
+	const Cameras::Camera &camera();
+
+	// setup stage by specify a stage config file path
+	void setupStage(const String &config_path = "");
 
 	// setup stage by designating a stage config file path, can continue from a previous ppm image path
 	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,

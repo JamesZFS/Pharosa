@@ -26,7 +26,7 @@ void Stage::fromObjFile(const String &obj_path)
 	// todo implement this
 }
 
-void Stage::fromList(ObjectGroup &objects_)
+void Stage::fromObjectList(ObjectList &&objects_)
 {
 	objects = std::move(objects_);
 }

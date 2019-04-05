@@ -22,7 +22,7 @@ int main()
 
 
 	Scenes::Object *p[] = {
-			new Sphere(Pos(0, 0, 300), 50, Color::RED, Emission(10, 10, 10), ElAg::NONROT, Object::DIFF),	// light
+			new Sphere(Pos(0, 0, 300), 50, Color::RED, Emission::SPLENDID, ElAg::NONROT, Object::DIFF),	// light
 			new InfPlane(Pos(0, 0, 300), Color::WHITE, Emission::NONE, ElAg::NONROT, Object::DIFF),    // ceil
 			new InfPlane(Pos(0, 0, -300), Color::YELLOW, Emission::NONE, ElAg::NONROT, Object::DIFF), // floor
 			new InfPlane(Pos(-200, 0, 0), Color::WHITE, Emission::NONE, ElAg(M_PI_2, M_PI_2), Object::DIFF),    // front
@@ -30,22 +30,22 @@ int main()
 			new InfPlane(Pos(0, -500, 0), Color::RED, Emission::NONE, ElAg(0, M_PI_2), Object::SPEC),    // left
 			new InfPlane(Pos(0, 500, 0), Color::BLUE, Emission::NONE, ElAg(0, M_PI_2), Object::SPEC)    // right
 	};
-	MeshObj cube(Pos(0, 100, -200), Color::WHITE, Emission::SPLENDID, ElAg::NONROT, Object::DIFF);
-	cube.fromObjFile("res/block.obj", 10);
+	MeshObj cube(Pos(0, 100, -200), Color::BLUE, Emission::NONE, ElAg::NONROT, Object::DIFF);
+	cube.fromObjFile("res/cube.obj", 200);
 
 	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 
-	renderer.setupStage(ObjectGroup(p, p + 7));
-
-	renderer.stage->appendMeshes(cube.meshes);
+	renderer.setupStage();
+	renderer.stage().fromObjectList(ObjectList(p, p + 7));
+	renderer.stage().appendMeshes(cube.meshes);
 
 	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400);
 //	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
 
 //	renderer.start(100, 10000, "out/fun/");
-	renderer.start(1);
+	renderer.start(10);
 
-	renderer.save("out/block - 1.ppm");
+	renderer.save("out/cube - 10.ppm");
 
 	return 0;
 }

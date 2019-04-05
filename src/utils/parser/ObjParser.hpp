@@ -6,11 +6,11 @@
 #define PHAROSA_OBJPARSER_HPP
 
 #include "../../lib.h"
-#include "../funcs.hpp"
 #include "../../scene/Triangle.h"
 #include "../../scene/MeshObj.h"
 
-TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio)	// load mesh segments from objects file
+TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &pos, const Color &color, const Emission &emission,
+						  const ElAg &euler_angles, Object::ReflType refl_type)    // load mesh segments from objects file
 {
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
@@ -23,7 +23,7 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio)	// load mes
 		exit(1);
 	}
 
-	TriangleGroup meshes;	// result
+	TriangleGroup meshes;    // result
 	char mark;
 	double x, y, z;
 	unsigned int a, b, c;
@@ -34,21 +34,21 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio)	// load mes
 		fin >> mark;
 		switch (mark) {
 			case '#':
-				fin.getline(buffer, 200);	// comment
+				fin.getline(buffer, 200);    // comment
 				break;
 
-			case 'v':	// vertex (x, y, z)
+			case 'v':    // vertex (x, y, z)
 				fin >> x >> y >> z;
 				v.emplace_back(x * zoom_ratio, y * zoom_ratio, z * zoom_ratio);
 				break;
 
-			case 'f':	// face (rank1, rank2, rank3), notice this rank starts from 1
+			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
 				p[0] = v[--a];
 				p[1] = v[--b];
 				p[2] = v[--c];
 				// todo multicolor, emission, texture support
-				meshes.push_back(new Triangle(Pos::ORIGIN, p, Color::WHITE, Emission::GLOW));
+				meshes.push_back(new Triangle(pos, p, color, emission, euler_angles, refl_type));
 				break;
 
 			default:

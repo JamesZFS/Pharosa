@@ -5,7 +5,7 @@
 #include "../utils/funcs.hpp"
 #include "RayTracing.h"
 
-RayTracing::RayTracing(const Stage &stage_, Cameras::Camera &camera_) :
+RayTracing::RayTracing(Stage &stage_, Cameras::Camera &camera_) :
 		GI(stage_, camera_)
 {
 }
