@@ -5,11 +5,13 @@
 #include "../utils/funcs.hpp"
 #include "RayTracing.h"
 
-RayTracing::RayTracing(Stage &stage_, Cameras::Camera &camera_) : Illuminator(stage_, camera_)
+template<unsigned int MAX_DEPTH>
+RayTracing<MAX_DEPTH>::RayTracing(Stage &stage_, Cameras::Camera &camera_) : Illuminator(stage_, camera_)
 {
 }
 
-Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
+template<unsigned int MAX_DEPTH>
+Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, unsigned int depth) const
 {
 	using namespace Scenes;
 	using Funcs::randf;
@@ -26,8 +28,8 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 	double p = color.max();    // max color component as refl_t
 
 	// stop tracing when depth too large or color too dim
-	if (++depth > 5 || p < EPS) {    // depth limit
-		if (depth <= 10 && randf() < p) color /= p;
+	if (++depth > MAX_DEPTH || p < EPS) {    // depth limit
+		if (depth <= (MAX_DEPTH << 1) && randf() < p) color /= p;
 		else return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
 	}
 

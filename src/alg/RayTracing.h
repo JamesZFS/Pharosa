@@ -8,6 +8,7 @@
 #include "Illuminator.h"
 
 // Ray Tracing algorithm
+template<unsigned int MAX_DEPTH = 5>	// depth limit to use R.R.
 class RayTracing : public Illuminator
 {
 protected:

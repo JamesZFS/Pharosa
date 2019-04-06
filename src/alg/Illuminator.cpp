@@ -30,7 +30,7 @@ void Illuminator::render(unsigned int n_epoch, unsigned int prev_epoch, const St
 		}
 		if (checkpoint) {    // save checkpoints
 			Buffer out_path;
-			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch);
+			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + N_SUBPIXEL);
 			camera.writePPM(out_path);
 		}
 	}
@@ -56,7 +56,7 @@ void Illuminator::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 		}
 		if (checkpoint) {    // save checkpoints
 			Buffer out_path;
-			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch);
+			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + N_SUBPIXEL);
 			camera.writePPM(out_path);
 		}
 	}
