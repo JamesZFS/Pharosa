@@ -13,7 +13,7 @@ Sphere *ball;
 
 void motion()
 {
-	ball->translate({-2, 2, 0});
+	ball->translate({-1, 1.2, -0.2});
 }
 
 int main(int argc, char *argv[])
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing<1>, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::RayTracing<3>, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	//	renderer.start(100, 10000, "out/fun/");
 //	renderer.start(n_epoch, 0);
 
-	renderer.startKinetic(3, motion, n_epoch, 10000, "out/kinetic");
+	renderer.startKinetic(15, motion, n_epoch, 0, "out/kinetic");
 
 	renderer.save(out_path);
 

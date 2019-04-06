@@ -4,6 +4,8 @@
 
 #include "BasicCamera.h"
 
+const double BasicCamera::PIXEL_SIZE = 0.1, BasicCamera::FOCUS = 140.0;    // todo params
+
 BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		Camera(pos_, euler_angles_, width_, height_)
 {
@@ -20,7 +22,7 @@ Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j) const
 
 	// from screen center crd (x', y') get global crd of ray.dir
 	// using dir = x' ex + y' ey + ez * CAM_FOCUS
-	Dir &&dir = ex * xs + ey * ys + ez * CAMERA_FOCUS;
+	Dir &&dir = ex * xs + ey * ys + ez * FOCUS;
 	dir.unitize();    // todo
 
 	return {pos, dir};

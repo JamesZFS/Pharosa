@@ -5,8 +5,6 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 140.0;    // todo params
-
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		cur_i(0), cur_j(0), cur_rank(0),
 		pos(pos_), ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),

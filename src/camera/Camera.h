@@ -65,9 +65,6 @@ public:
 
 	// interface:
 	virtual Ray shootRayAt(unsigned int i, unsigned int j) const = 0;
-
-	// camera constants
-	static const double PIXEL_SIZE, CAMERA_FOCUS;
 };
 
 #include "Camera.cpp"
