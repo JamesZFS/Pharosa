@@ -5,8 +5,7 @@
 #include "../utils/funcs.hpp"
 #include "RayTracing.h"
 
-RayTracing::RayTracing(Stage &stage_, Cameras::Camera &camera_) :
-		GI(stage_, camera_)
+RayTracing::RayTracing(Stage &stage_, Cameras::Camera &camera_) : Illuminator(stage_, camera_)
 {
 }
 
@@ -20,7 +19,6 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 	Dir normal;
 	const Object *hit = nullptr;
 	if (!stage.intersectAny(ray, hit, x, normal)) return Color::BLACK; // if miss, return black
-	assert(hit != nullptr);    // todo
 
 	const Object &obj = *hit;    // the hit object
 	Dir nl = normal % ray.dir < 0 ? normal : normal * -1;    // regularized normal, against in direction
@@ -89,63 +87,4 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 			return Color::BLACK;
 		}
 	}
-}
-
-void RayTracing::render(unsigned int n_epoch, unsigned int prev_epoch,
-						unsigned int verbose_step, const String &checkpoint_dir)
-{
-	if (verbose_step > 0) {
-		renderVerbose(n_epoch, prev_epoch, verbose_step, checkpoint_dir);    // with progressbar
-		return;
-	}
-	// without progressbar
-	Buffer buffer;
-	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
-	unsigned int tot_epoch = n_epoch + prev_epoch;
-
-//#pragma omp parallel for schedule(dynamic, 1)  // OpenMP
-
-	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
-		fflush(stdout);
-
-		#pragma omp parallel for schedule(static, camera.size / 4) num_threads(4)  // OpenMP
-		for (unsigned int rank = 0; rank < camera.size; ++rank) {
-			const Ray &ray = camera.shootRay(rank);
-			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
-				camera.render(rank, radiance(ray, 0));
-			}
-		}
-		if (checkpoint) {    // save checkpoints
-			sprintf(buffer, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch);
-			camera.writePPM(buffer);
-		}// todo update code
-	}
-}
-
-void RayTracing::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
-							   unsigned int verbose_step, const String &checkpoint_dir)
-{
-	// without progressbar
-	Buffer buffer;
-	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
-	unsigned int tot_epoch = n_epoch + prev_epoch;
-
-	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
-		fflush(stdout);
-		camera.resetProgress();
-		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
-			const Ray &ray = camera.shootRay();
-			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
-				camera.render(radiance(ray, 0));
-			}
-			camera.updateProgress();
-		}
-		if (checkpoint) {    // save checkpoints
-			sprintf(buffer, "%sepoch - %d.ppm", checkpoint_dir.data(), epoch);
-			camera.writePPM(buffer);
-		}
-	}
-	debug("\n");
 }

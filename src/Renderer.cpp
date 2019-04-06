@@ -4,22 +4,22 @@
 
 #include "Renderer.h"
 
-template<typename GI_Algorithm, typename Cameras_Type>
-Renderer<GI_Algorithm, Cameras_Type>::Renderer() :
+template<typename Render_Algorithm, typename Cameras_Type>
+Renderer<Render_Algorithm, Cameras_Type>::Renderer() :
 		_stage(nullptr), _camera(nullptr), _illuminator(nullptr)
 {
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-Renderer<GI_Algorithm, Cameras_Type>::~Renderer()
+template<typename Render_Algorithm, typename Cameras_Type>
+Renderer<Render_Algorithm, Cameras_Type>::~Renderer()
 {
 	delete _stage;
 	delete _camera;
 	delete _illuminator;
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-Stage &Renderer<GI_Algorithm, Cameras_Type>::stage()
+template<typename Render_Algorithm, typename Cameras_Type>
+Stage &Renderer<Render_Algorithm, Cameras_Type>::stage()
 {
 	if (_stage == nullptr) {
 		warn("Error: stage is not setup yet.\n");
@@ -28,8 +28,8 @@ Stage &Renderer<GI_Algorithm, Cameras_Type>::stage()
 	return *_stage;
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-const Cameras::Camera &Renderer<GI_Algorithm, Cameras_Type>::camera()
+template<typename Render_Algorithm, typename Cameras_Type>
+const Cameras::Camera &Renderer<Render_Algorithm, Cameras_Type>::camera()
 {
 	if (_camera == nullptr) {
 		warn("Error: camera is not setup yet.\n");
@@ -38,8 +38,8 @@ const Cameras::Camera &Renderer<GI_Algorithm, Cameras_Type>::camera()
 	return *_camera;
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::
+template<typename Render_Algorithm, typename Cameras_Type>
+void Renderer<Render_Algorithm, Cameras_Type>::
 setupStage(const String &config_path)
 {
 	if (_stage != nullptr) delete _stage;
@@ -49,8 +49,8 @@ setupStage(const String &config_path)
 	}
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::
+template<typename Render_Algorithm, typename Cameras_Type>
+void Renderer<Render_Algorithm, Cameras_Type>::
 setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
 			const String &prev_path_, unsigned int prev_epoch_)
 {
@@ -64,8 +64,8 @@ setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, uns
 	}
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
+template<typename Render_Algorithm, typename Cameras_Type>
+void Renderer<Render_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
 												 unsigned int verbose_step, const String &checkpoint_dir)
 {
 	if (_stage == nullptr) {
@@ -78,7 +78,7 @@ void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
 	}
 	// setup algorithm
 	if (_illuminator == nullptr) {
-		_illuminator = new GI_Algorithm(*_stage, *_camera);
+		_illuminator = new Render_Algorithm(*_stage, *_camera);
 	}
 
 	debug("loaded %d objects in total.\n", _stage->getObjectCount());
@@ -87,15 +87,18 @@ void Renderer<GI_Algorithm, Cameras_Type>::start(unsigned int n_epoch,
 	debug("===== rendering start =====\n");
 	double since = omp_get_wtime();
 
-	_illuminator->render(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
+	if (verbose_step == 0)
+		_illuminator->render(n_epoch, prev_epoch, checkpoint_dir);
+	else
+		_illuminator->renderVerbose(n_epoch, prev_epoch, verbose_step, checkpoint_dir);
 
 	auto elapse = lround(omp_get_wtime() - since);
 	debug("\n===== rendering finished in %ld min %ld sec =====\n", elapse / 60,  elapse % 60);
 	prev_epoch += n_epoch;
 }
 
-template<typename GI_Algorithm, typename Cameras_Type>
-void Renderer<GI_Algorithm, Cameras_Type>::save(const String &out_path)
+template<typename Render_Algorithm, typename Cameras_Type>
+void Renderer<Render_Algorithm, Cameras_Type>::save(const String &out_path)
 {
 	if (_camera == nullptr) {
 		warn("Error: camera is not setup yet.\n");

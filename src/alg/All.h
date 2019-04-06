@@ -9,6 +9,7 @@ namespace Algorithms
 {
 
 #include "RayTracing.h"
+#include "DirectImaging.h"
 
 }
 

@@ -126,11 +126,11 @@ void Camera::readPPM(String prev_path, unsigned int prev_epoch)
 	assert(b == height);
 	assert(c == 255);
 	for (unsigned int i = 0; i < size; ++i) {
-		fin >> a >> b >> c;    // 0 - 255
-		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch;
-		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch;
-		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch;
-		render_cnt[i] += prev_epoch;
+		fin >> a >> b >> c;    // 0 - 255 todo mul 4?
+		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch * 4;
+		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch * 4;
+		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch * 4;
+		render_cnt[i] += prev_epoch * 4;
 	}
 }
 

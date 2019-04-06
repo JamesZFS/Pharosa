@@ -12,8 +12,7 @@ using namespace Scenes;
 int main()
 {
 	// init random engine
-//	Funcs::generator.seed((unsigned int) time(nullptr));
-	Funcs::generator.seed(1);
+	Funcs::generator.seed((unsigned int) time(nullptr));
 
 	Object *p[] = {
 	new Sphere(Pos(1e5 + 1, 40.8, 81.6),   1e5,  Color(.75, .25, .25), Emission::NONE, Object::DIFF),//Left
@@ -27,7 +26,7 @@ int main()
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::DirectImaging, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
@@ -38,9 +37,9 @@ int main()
 	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
 
 	//	renderer.start(100, 10000, "out/fun/");
-	renderer.start(100, 0);
+	renderer.start(20, 0);
 
-//	renderer.save("out/omp/100 - static 5 - inside.ppm");
+	renderer.save("out/omp/20 - direct.ppm");
 
 	return 0;
 }

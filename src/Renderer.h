@@ -13,13 +13,13 @@
 #include "alg/All.h"
 
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Stage
-template<typename GI_Algorithm, typename Cameras_Type>
+template<typename Render_Algorithm, typename Cameras_Type>
 class Renderer
 {
 private:
 	Stage *_stage;
 	Cameras::Camera *_camera;
-	Algorithms::GI *_illuminator;
+	Algorithms::Illuminator *_illuminator;
 	unsigned int prev_epoch;    // previous rendering times
 
 public:
