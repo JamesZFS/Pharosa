@@ -13,6 +13,7 @@ Color DirectImaging::radiance(const Ray &ray, unsigned int depth) const
 	Dir normal;
 	const Scenes::Object *hit = nullptr;
 	if (!stage.intersectAny(ray, hit, x, normal)) return Color::BLACK;
-	// return the RGB color of hit
-	return hit->color + hit->emi;
+	Dir nl = normal % ray.dir < 0 ? normal : normal * -1;    // regularized normal, against in direction
+	// return the RGB color of hit, assuming environment light source is shooting at (-1, -1, -1)
+	return hit->color * (0.1 + 0.45 * (1 + Dir::UNIT % nl)) + hit->emi;
 }

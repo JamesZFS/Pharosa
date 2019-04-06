@@ -26,7 +26,7 @@ int main()
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::DirectImaging, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
@@ -39,7 +39,7 @@ int main()
 	//	renderer.start(100, 10000, "out/fun/");
 	renderer.start(50, 0);
 
-	renderer.save("out/omp/AA normal sigma = 0.5 - 50.ppm");
+	renderer.save("out/omp/AA direct normal sigma = 0.5 - 50.ppm");
 
 	return 0;
 }

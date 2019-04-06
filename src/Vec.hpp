@@ -197,6 +197,8 @@ struct Dir : public Pos        // direction, unitized vector
 		ex.unitize();
 		ey.unitize();
 	}
+
+	static const Dir UNIT;
 };
 
 struct RGB : public Vec<double>        // RGB Vector
@@ -229,6 +231,7 @@ typedef RGB Emission;        // RGB emission of an object
 
 // common Pos
 const Pos Pos::ORIGIN(0, 0, 0);
+const Dir Dir::UNIT(1, 1, 1);
 
 // common ElAg
 const ElAg ElAg::NONROT(0, 0, 0);
