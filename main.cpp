@@ -26,12 +26,12 @@ int main()
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::DirectImaging, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
 //	renderer.setupCamera(Pos(50, 50, 266.6), ElAg(0, M_PI - 3 DEG, 0));
-	renderer.setupCamera(Pos(50, 50, 200.6), ElAg(0, M_PI - 3 DEG, 0), 800, 500);
+	renderer.setupCamera(Pos(50, 50, 100.6), ElAg(0, M_PI, 0), 800, 500);
 //						 "out/omp/100 - static - inside.ppm", 100);
 //	renderer.setupCamera(Pos(50, 25, 150), ElAg(0, M_PI, 0));
 	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
@@ -39,7 +39,7 @@ int main()
 	//	renderer.start(100, 10000, "out/fun/");
 	renderer.start(20, 0);
 
-	renderer.save("out/omp/20 - direct.ppm");
+	renderer.save("out/omp/fovx - 20.ppm");
 
 	return 0;
 }

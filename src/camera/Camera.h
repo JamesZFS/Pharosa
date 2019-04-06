@@ -24,17 +24,19 @@ protected:
 public:
 	const unsigned int width, height, size;    // image width and height, n_pixel
 	const double w_2, h_2;            // width / 2, height / 2
+	const double fovx, fovy;        // field of view (0, pi/2)
 
-	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	Camera(const Pos &pos_, const ElAg &euler_angles_,
+		   unsigned int width_ = 1024, unsigned int height_ = 768, double fovx_ = M_PI_4);
 
 	virtual ~Camera();
 
 	// getter:
-	inline const Color &pixelAt(unsigned int i, unsigned int j) const;	// img
+	inline const Color &pixelAt(unsigned int i, unsigned int j) const;    // img
 
-	inline const Pos &viewpoint() const;	// pos
+	inline const Pos &viewpoint() const;    // pos
 
-	inline const Dir &orientation() const;	// ez
+	inline const Dir &orientation() const;    // ez
 
 	// setter:
 	inline void render(const Color &color);    // render incrementally

@@ -7,10 +7,11 @@
 
 const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 70.0;    // todo params
 
-Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
+Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_, double fovx_) :
 		cur_i(0), cur_j(0), cur_rank(0),
 		pos(pos_), ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),
-		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1)
+		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1),
+		fovx(fovx_), fovy(fovx * height_ / width_)
 {
 	img = new Color[size];
 	render_cnt = new unsigned int[size];
@@ -19,6 +20,8 @@ Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, 
 	ex.rotate(euler_angles_);
 	ey.rotate(euler_angles_);
 	ez.rotate(euler_angles_);
+	// validating fovx & fovy
+	assert(0 < fovx && fovx < M_PI_2 && 0 < fovy && fovy < M_PI_2);
 }
 
 Camera::~Camera()
