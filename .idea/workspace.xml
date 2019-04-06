@@ -18,13 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/Camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/Camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/ImageMixer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/ImageMixer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/OrthographicCamera.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -188,7 +182,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="204" />
-          <entry key="cpp" value="6185" />
+          <entry key="cpp" value="6199" />
           <entry key="h" value="2262" />
           <entry key="hpp" value="1707" />
           <entry key="mm" value="155" />
@@ -200,7 +194,7 @@
           <entry key="CMakeLists.txt" value="12" />
           <entry key="Doxygen file" value="6" />
           <entry key="Makefile" value="204" />
-          <entry key="ObjectiveC" value="10303" />
+          <entry key="ObjectiveC" value="10317" />
         </counts>
       </usages-collector>
     </session>
@@ -215,8 +209,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="157">
-                  <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+                <state relative-caret-position="596">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
                 </state>
               </provider>
             </entry>
@@ -233,8 +227,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="16" column="116" selection-start-line="16" selection-start-column="116" selection-end-line="16" selection-end-column="116" />
+                <state relative-caret-position="306">
+                  <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
                 </state>
               </provider>
             </entry>
@@ -619,12 +613,12 @@
       <workItem from="1554391263141" duration="14778000" />
       <workItem from="1554437390227" duration="2251000" />
       <workItem from="1554439893867" duration="33321000" />
-      <workItem from="1554517120506" duration="4886000" />
+      <workItem from="1554517120506" duration="5143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129477000" />
+    <option name="totallyTimeSpent" value="129734000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1035,13 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1063,10 +1050,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="116" selection-start-line="16" selection-start-column="116" selection-end-line="16" selection-end-column="116" />
+        <state relative-caret-position="306">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>

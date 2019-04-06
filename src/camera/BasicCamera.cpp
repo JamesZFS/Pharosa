@@ -14,7 +14,7 @@ Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j) const
 {
 	// convert screen pixel crd sys (i, j) to screen center crd sys (x', y', z')
 //	double xs = (i - w_2) * PIXEL_SIZE, ys = (j - h_2) * PIXEL_SIZE;
-	double xs = (2.0 * i - width) / width * tan(fovx), ys = (2.0 * j - height) / height + tan(fovy);
+	double xs = (2.0 * i - width) / width * tan(fovx), ys = (2.0 * j - height) / height * tan(fovy);
 
 	// from screen center crd (x', y') get global crd of ray.dir
 	// using dir = x' ex + y' ey + ez * CAM_FOCUS
