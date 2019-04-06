@@ -5,7 +5,7 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 50.0;    // todo params
+const double Camera::PIXEL_SIZE = 0.1, Camera::CAMERA_FOCUS = 140.0;    // todo params
 
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		cur_i(0), cur_j(0), cur_rank(0),
@@ -126,11 +126,11 @@ void Camera::readPPM(String prev_path, unsigned int prev_epoch)
 	assert(b == height);
 	assert(c == 255);
 	for (unsigned int i = 0; i < size; ++i) {
-		fin >> a >> b >> c;    // 0 - 255 todo mul 4?
-		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch * 4;
-		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch * 4;
-		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch * 4;
-		render_cnt[i] += prev_epoch * 4;
+		fin >> a >> b >> c;    // 0 - 255
+		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch;
+		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch;
+		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch;
+		render_cnt[i] += prev_epoch;
 	}
 }
 

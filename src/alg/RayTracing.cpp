@@ -27,10 +27,8 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 
 	// stop tracing when depth too large or color too dim
 	if (++depth > 5 || p < EPS) {    // depth limit
-		// todo
-//		if (randf() < p) color /= p;    // brighter
-//		else return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
-		return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
+		if (depth <= 10 && randf() < p) color /= p;
+		else return obj.emi; // R.R. the darker the obj is, the more likely to stop radiating
 	}
 
 	// recursively trace back

@@ -9,20 +9,21 @@ Illuminator::Illuminator(Stage &stage_, Cameras::Camera &camera_) : stage(stage_
 {
 }
 
+#define N_SUBPIXEL 10
+
 void Illuminator::render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir)
 {
 	// without progressbar, fast version
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	unsigned int tot_epoch = n_epoch + prev_epoch;
 
-	//#pragma omp parallel for schedule(dynamic, 1)  // OpenMP
-	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
+	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
+		debug("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
 		fflush(stdout);
-
-		#pragma omp parallel for schedule(static, camera.size / 4)  // OpenMP
+//		#pragma omp parallel for schedule(static, camera.size / N_SUBPIXEL)  // OpenMP
+		#pragma omp parallel for schedule(dynamic, 1)  // OpenMP
 		for (unsigned int rank = 0; rank < camera.size; ++rank) {
-			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
+			for (unsigned int k = 0; k < N_SUBPIXEL; ++k) {    // repeat 4 subpixels
 				Ray &&ray = camera.shootRay(rank);
 				camera.render(rank, radiance(ray, 0));
 			}
@@ -42,12 +43,12 @@ void Illuminator::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	unsigned int tot_epoch = n_epoch + prev_epoch;
 
-	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {
-		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
+	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
+		debug("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
 		fflush(stdout);
 		camera.resetProgress();
 		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
-			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
+			for (unsigned int k = 0; k < N_SUBPIXEL; ++k) {
 				Ray &&ray = camera.shootRay();
 				camera.render(radiance(ray, 0));
 			}
@@ -61,3 +62,5 @@ void Illuminator::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 	}
 	debug("\n");
 }
+
+#undef N_SUBPIXEL

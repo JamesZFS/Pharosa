@@ -9,8 +9,11 @@
 using namespace std;
 using namespace Scenes;
 
-int main()
+int main(int argc, char *argv[])
 {
+	unsigned int n_epoch = (argc >= 2) ? (unsigned int) atoi(argv[1]) : 10;
+	String out_path = (argc >= 3) ? argv[2] : "our image.ppm";
+
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
 
@@ -26,20 +29,20 @@ int main()
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::DirectImaging, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
 //	renderer.setupCamera(Pos(50, 50, 266.6), ElAg(0, M_PI - 3 DEG, 0));
-	renderer.setupCamera(Pos(50, 50, 166.6), ElAg(0, M_PI - 3 DEG, 0), 800, 500);
+	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0));
 //						 "out/omp/100 - static - inside.ppm", 100);
 //	renderer.setupCamera(Pos(50, 25, 150), ElAg(0, M_PI, 0));
 	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
 
 	//	renderer.start(100, 10000, "out/fun/");
-	renderer.start(50, 0);
+	renderer.start(n_epoch, 10000);
 
-	renderer.save("out/omp/AA direct normal sigma = 0.5 - 50.ppm");
+	renderer.save(out_path);
 
 	return 0;
 }

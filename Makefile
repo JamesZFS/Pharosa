@@ -27,6 +27,6 @@ run: Pharosa.out
 #	nmake clean
 
 compare: smallpt.out Pharosa.out
-	./smallpt.out 40 standard.ppm
-	./Pharosa.out
+#	./smallpt.out 300 "out/comp/300 standard.ppm"
+	./Pharosa.out 10 "out/comp/10 ours.ppm"
 	make clean-up

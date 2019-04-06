@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string>
 #include <random>
+#include <omp.h>
 
 std::default_random_engine generator;
 std::uniform_real_distribution<double> distr(0.0, 1.0);
@@ -99,7 +100,7 @@ Sphere spheres[] = {// todo Scene: radius, position, emission, color, material
 		Sphere(1e5, Vec(1e5 + 1, 40.8, 81.6), Vec(), Vec(.75, .25, .25), DIFF),//Left
 		Sphere(1e5, Vec(-1e5 + 99, 40.8, 81.6), Vec(), Vec(.25, .25, .75), DIFF),//Rght
 		Sphere(1e5, Vec(50, 40.8, 1e5), Vec(), Vec(.75, .75, .75), DIFF),//Back
-		Sphere(1e5, Vec(50, 40.8, -1e5 + 170), Vec(), Vec(), DIFF),//Frnt
+//		Sphere(1e5, Vec(50, 40.8, -1e5 + 170), Vec(), Vec(), DIFF),//Frnt
 		Sphere(1e5, Vec(50, 1e5, 81.6), Vec(), Vec(.75, .75, .75), DIFF),//Botm
 		Sphere(1e5, Vec(50, -1e5 + 81.6, 81.6), Vec(), Vec(.75, .75, .75), DIFF),//Top
 		Sphere(16.5, Vec(27, 16.5, 47), Vec(), Vec(1, 1, 1) * .999, SPEC),//Mirr
@@ -187,8 +188,7 @@ Vec radiance(const Ray &r, int depth)
 int main(int argc, char *argv[])
 {
 	int w = 1024, h = 768, samps = argc >= 2 ? atoi(argv[1]) / 4 : 2; // # samples
-//	Ray cam(Vec(50, 52, 295.6), Vec(0, -0.042612, -1).norm()); // cam pos, dir
-	Ray cam(Vec(50, 52, 230.6), Vec(0, -0.042612, -1).norm()); // cam pos, dir
+	Ray cam(Vec(50, 52, 295.6), Vec(0, -0.042612, -1).norm()); // cam pos, dir
 	Vec ci = Vec(w * 1.0 / h, 0, 0) * .5135, cj = (ci ^ cam.d).norm() * .5135;
 //	ci.norm(), cj.norm();
 
@@ -197,7 +197,7 @@ int main(int argc, char *argv[])
 	auto *c = new Vec[w * h];    // image
 	double progress;
 
-	clock_t since = clock();
+	double since = omp_get_wtime();
 
 #pragma omp parallel for schedule(dynamic, 1) private(e)       // OpenMP
 //#pragma omp parallel for private(e)
@@ -229,8 +229,8 @@ int main(int argc, char *argv[])
 		fprintf(f, "%d %d %d ", toInt(c[i].x), toInt(c[i].y), toInt(c[i].z));
 	fclose(f);
 
-	double elapse = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-	printf("\nelapse = %.2f sec\n", elapse);
+	auto elapse = lround(omp_get_wtime() - since);
+	printf("\nrendering finished in %ld min %ld sec\n", elapse / 60,  elapse % 60);
 
 	return 0;
 }
