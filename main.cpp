@@ -12,7 +12,7 @@ using namespace Scenes;
 int main(int argc, char *argv[])
 {
 	unsigned int n_epoch = (argc >= 2) ? (unsigned int) atoi(argv[1]) : 10;
-	String out_path = (argc >= 3) ? argv[2] : "our image.ppm";
+	String out_path = (argc >= 3) ? argv[2] : "test image.ppm";
 
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::RayCasting, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
 
 	//	renderer.start(100, 10000, "out/fun/");
-	renderer.start(n_epoch, 10000);
+	renderer.start(n_epoch, 0);
 
 	renderer.save(out_path);
 

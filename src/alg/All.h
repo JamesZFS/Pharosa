@@ -8,8 +8,8 @@
 namespace Algorithms
 {
 
+#include "RayCasting.h"
 #include "RayTracing.h"
-#include "DirectImaging.h"
 
 }
 
