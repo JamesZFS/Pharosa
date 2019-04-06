@@ -20,7 +20,7 @@ void Illuminator::render(unsigned int n_epoch, unsigned int prev_epoch, const St
 		debug("\n=== epoch %d / %d ===\n", epoch + 1, tot_epoch);
 		fflush(stdout);
 
-		#pragma omp parallel for schedule(static, camera.size / 4) num_threads(4)  // OpenMP
+		#pragma omp parallel for schedule(static, camera.size / 4)  // OpenMP
 		for (unsigned int rank = 0; rank < camera.size; ++rank) {
 			for (unsigned int k = 0; k < 4; ++k) {    // todo repeat 4 times
 				Ray &&ray = camera.shootRay(rank);

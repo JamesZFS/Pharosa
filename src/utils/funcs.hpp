@@ -11,11 +11,32 @@ namespace Funcs
 {
 	// random engine
 	std::default_random_engine generator;
-	std::uniform_real_distribution<double> distribution(0.0, 1.0);
+	std::uniform_real_distribution<double> uniform_distribution(0.0, 1.0);
+	std::normal_distribution<double> normal_distribution(0.0, 1.0);
 
-	double randf() // random float [0.0, 1.0)
+	inline double randf() // random float [0.0, 1.0)
 	{
-		return distribution(generator);
+		return uniform_distribution(generator);
+	}
+
+	inline double randf(double upper) // random float [0.0, upper)
+	{
+		return upper * uniform_distribution(generator);
+	}
+
+	inline double randf(double lower, double upper) // [lower, upper)
+	{
+		return lower + (upper - lower) * uniform_distribution(generator);
+	}
+
+	inline double randfNormal()	// 0-1 normal dist
+	{
+		return normal_distribution(generator);
+	}
+
+	inline double randfNormal(double mu, double sigma)
+	{
+		return mu + sigma * normal_distribution(generator);
 	}
 
 	// staircase function Real -> [0, 1]

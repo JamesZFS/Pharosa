@@ -16,14 +16,3 @@ Color DirectImaging::radiance(const Ray &ray, unsigned int depth) const
 	// return the RGB color of hit
 	return hit->color + hit->emi;
 }
-
-void DirectImaging::render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir)
-{
-	Illuminator::render(1, prev_epoch, checkpoint_dir);	// one epoch is enough
-}
-
-void DirectImaging::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch, unsigned int verbose_step,
-								  const String &checkpoint_dir)
-{
-	Illuminator::renderVerbose(1, prev_epoch, verbose_step, checkpoint_dir);
-}

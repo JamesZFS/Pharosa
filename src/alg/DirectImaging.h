@@ -15,11 +15,6 @@ protected:
 
 public:
 	DirectImaging(Stage &stage_, Cameras::Camera &camera_);
-
-	void render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir) override;
-
-	void renderVerbose(unsigned int n_epoch, unsigned int prev_epoch, unsigned int verbose_step,
-					   const String &checkpoint_dir) override;
 };
 
 #include "DirectImaging.cpp"

@@ -40,7 +40,7 @@ Color RayTracing::radiance(const Ray &ray, unsigned int depth) const
 
 		// Ideal diffusive reflection, todo use I = kd ( L . N ) model
 		case Object::DIFF: {
-			double r1 = 2 * M_PI * randf(), r2 = randf(), r2s = sqrt(r2);
+			double r1 = randf(2 * M_PI), r2 = randf(), r2s = sqrt(r2);
 			Dir ex, ey;
 			const Dir &ez = nl;
 			ez.getOrthogonalBasis(ex, ey);
