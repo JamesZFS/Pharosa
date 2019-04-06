@@ -5,7 +5,7 @@
 #include "OrthographicCamera.h"
 
 OrthographicCamera::OrthographicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_,
-									   unsigned int height_) : Camera(pos_, euler_angles_, width_, height_, 0)
+									   unsigned int height_) : Camera(pos_, euler_angles_, width_, height_)
 {}
 
 Ray OrthographicCamera::shootRayAt(unsigned int i, unsigned int j) const

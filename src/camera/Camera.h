@@ -24,10 +24,8 @@ protected:
 public:
 	const unsigned int width, height, size;    // image width and height, n_pixel
 	const double w_2, h_2;            // width / 2, height / 2
-	const double fovx, fovy;        // field of view (0, pi/2)
 
-	Camera(const Pos &pos_, const ElAg &euler_angles_,
-		   unsigned int width_ = 1024, unsigned int height_ = 768, double fovx_ = M_PI_4);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
 
 	virtual ~Camera();
 

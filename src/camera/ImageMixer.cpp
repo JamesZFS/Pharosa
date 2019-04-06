@@ -4,8 +4,7 @@
 
 #include "ImageMixer.h"
 
-ImageMixer::ImageMixer(unsigned int width_, unsigned int height_) : Camera(Pos::ORIGIN, ElAg::NONROT, width_, height_,
-																		   0)
+ImageMixer::ImageMixer(unsigned int width_, unsigned int height_) : Camera(Pos::ORIGIN, ElAg::NONROT, width_, height_)
 {
 }
 
