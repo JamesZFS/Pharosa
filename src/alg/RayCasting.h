@@ -15,6 +15,8 @@ protected:
 
 public:
 	RayCasting(Stage &stage_, Cameras::Camera &camera_);
+	
+	static Dir LIGHT_DIR;	// parallel light orientation
 };
 
 #include "RayCasting.cpp"

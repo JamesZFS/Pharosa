@@ -7,10 +7,10 @@ CMakeFiles/test.exe.dir/main.cpp.o: ../src/Renderer.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/Renderer.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/Vec.hpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/All.h
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/DirectImaging.cpp
-CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/DirectImaging.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/Illuminator.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/Illuminator.h
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/RayCasting.cpp
+CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/RayCasting.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/RayTracing.cpp
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/alg/RayTracing.h
 CMakeFiles/test.exe.dir/main.cpp.o: ../src/camera/All.h

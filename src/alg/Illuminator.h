@@ -31,6 +31,8 @@ public:
 
 	virtual void renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 							   unsigned int verbose_step, const String &checkpoint_dir);
+
+	static unsigned int N_SUBPIXEL;	// subpixel to render for each pixel
 };
 
 #include "Illuminator.cpp"

@@ -4,7 +4,7 @@
 
 #include "BasicCamera.h"
 
-const double BasicCamera::PIXEL_SIZE = 0.1, BasicCamera::FOCUS = 140.0;    // todo params
+double BasicCamera::PIXEL_SIZE = 0.1, BasicCamera::FOCUS = 140.0;
 
 BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		Camera(pos_, euler_angles_, width_, height_)

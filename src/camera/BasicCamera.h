@@ -7,6 +7,7 @@
 
 #include "Camera.h"
 
+//template <double PX = 1.0>
 class BasicCamera : public Camera
 {
 public:
@@ -14,8 +15,7 @@ public:
 
 	Ray shootRayAt(unsigned int i, unsigned int j) const override;
 
-	// camera constants
-	static const double PIXEL_SIZE, FOCUS;
+	static double PIXEL_SIZE, FOCUS;
 };
 
 #include "BasicCamera.cpp"

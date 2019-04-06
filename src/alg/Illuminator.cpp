@@ -4,12 +4,11 @@
 
 #include "Illuminator.h"
 
+unsigned int Illuminator::N_SUBPIXEL = 10;
 
 Illuminator::Illuminator(Stage &stage_, Cameras::Camera &camera_) : stage(stage_), camera(camera_)
 {
 }
-
-#define N_SUBPIXEL 10
 
 void Illuminator::render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir)
 {
@@ -62,5 +61,3 @@ void Illuminator::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 	}
 	debug("\n");
 }
-
-#undef N_SUBPIXEL

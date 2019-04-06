@@ -14,6 +14,8 @@ public:
 					   unsigned int width_ = 1024, unsigned int height_ = 768);
 
 	Ray shootRayAt(unsigned int i, unsigned int j) const override;
+
+	static double PIXEL_SIZE;
 };
 
 #include "OrthographicCamera.cpp"

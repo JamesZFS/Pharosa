@@ -37,20 +37,16 @@ int main(int argc, char *argv[])
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Renderer<Algorithms::RayTracing<3>, Cameras::BasicCamera> renderer;
+	Algorithms::Illuminator::N_SUBPIXEL = 4;
+	Algorithms::RayCasting::LIGHT_DIR = Dir(1, -1, -1);
+
+	Renderer<Algorithms::RayCasting, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
-//	renderer.setupCamera(Pos(50, 50, 266.6), ElAg(0, M_PI - 3 DEG, 0));
-	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0), 800, 500);
-//						 "out/omp/100 - static - inside.ppm", 100);
-//	renderer.setupCamera(Pos(50, 25, 150), ElAg(0, M_PI, 0));
-	//	renderer.setupCamera(Pos(500, 0, 0), ElAg(M_PI_2, -M_PI_2, 0), 600, 400, "out/Mesh Object Test - 50.ppm", 50);
+	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0));
 
-	//	renderer.start(100, 10000, "out/fun/");
-//	renderer.start(n_epoch, 0);
-
-	renderer.startKinetic(15, motion, n_epoch, 0, "out/kinetic");
+	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	renderer.save(out_path);
 
