@@ -59,6 +59,21 @@ bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir
 	return true;
 }
 
+const Scenes::Object * Stage::hitOf(const Ray &ray) const
+{
+	// naive for loop calculation
+	// todo use OctTree
+	double t = INF, s;
+	const Scenes::Object *hit = nullptr;
+	for (const Scenes::Object *obj : objects) {
+		if (obj->intersect(ray, s) && s < t) {
+			t = s;
+			hit = obj;
+		}
+	}
+	return hit;
+}
+
 unsigned int Stage::getObjectCount()
 {
 	return (unsigned int) objects.size();

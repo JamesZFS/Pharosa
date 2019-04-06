@@ -13,6 +13,12 @@
 // standard illumination algorithm, base class, can access stage and camera
 class Illuminator
 {
+private:
+	bool *is_edge;	// if each pixel on the screen is edge of an object
+
+	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
+	void computeEdgePixels();
+
 protected:
 	Stage &stage;
 	Cameras::Camera &camera;
@@ -20,10 +26,12 @@ protected:
 	// interfaces:
 	virtual Color radiance(const Ray &ray, unsigned int depth) const = 0;    // ** main algorithm **
 
+	inline Color radiance(const Ray &ray) const;	// entrance
+
 public:
 	Illuminator(Stage &stage_, Cameras::Camera &camera_);
 
-	virtual ~Illuminator() = default;
+	virtual ~Illuminator();
 
 	// ** rendering pipeline **
 	// do the rendering for n_epoch times

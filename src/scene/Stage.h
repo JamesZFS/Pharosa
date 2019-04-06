@@ -43,6 +43,8 @@ public:
 	 * @return true if intersects any object else false
 	 */
 	bool intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const;
+
+	const Scenes::Object * hitOf(const Ray &ray) const;	// compute only the first hit target of ray
 };
 
 #include "Stage.cpp"

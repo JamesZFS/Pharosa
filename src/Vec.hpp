@@ -6,6 +6,7 @@
 #define PHAROSA_VEC_HPP
 
 #include "lib.h"
+#include "utils/funcs.hpp"
 
 // vector definition
 template<typename T>
@@ -97,7 +98,7 @@ struct Vec
 		if (endl) debug("\n");
 	}
 
-	String toString() const
+	inline String toString() const
 	{
 		Buffer buffer;
 		sprintf(buffer, "(%.2f, %.2f, %.2f)", x, y, z);
@@ -217,6 +218,14 @@ struct RGB : public Vec<double>        // RGB Vector
 		r = obj.r;
 		g = obj.g;
 		b = obj.b;
+		return *this;
+	}
+
+	inline RGB &clamp()	// to [0, 1]
+	{
+		r = Funcs::clamp(r);
+		g = Funcs::clamp(g);
+		b = Funcs::clamp(b);
 		return *this;
 	}
 

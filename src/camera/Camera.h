@@ -64,7 +64,8 @@ public:
 	inline Ray shootRay(unsigned int rank) const;    // shoot a ray at a given pixel rank
 
 	// interface:
-	virtual Ray shootRayAt(unsigned int i, unsigned int j) const = 0;
+	// shoot ray at (i, j), offset deferring normal dist 0 - sigma
+	virtual Ray shootRayAt(double i, double j, double sigma = 0) const = 0;
 };
 
 #include "Camera.cpp"

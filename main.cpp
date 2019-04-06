@@ -40,13 +40,14 @@ int main(int argc, char *argv[])
 	Algorithms::Illuminator::N_SUBPIXEL = 4;
 	Algorithms::RayCasting::LIGHT_DIR = Dir(1, -1, -1);
 
-	Renderer<Algorithms::RayCasting, Cameras::BasicCamera> renderer;
+	Renderer<Algorithms::RayTracing<>, Cameras::BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
-	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0));
+	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0), 1024, 768);
 
-	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
+	renderer.start(n_epoch, 0);
+//	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	renderer.save(out_path);
 

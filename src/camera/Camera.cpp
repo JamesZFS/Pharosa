@@ -164,12 +164,11 @@ void Camera::writePPM(String out_path) const
 
 Ray Camera::shootRay() const
 {
-	return shootRayAt(cur_i, cur_j);
+	return shootRayAt(cur_i, cur_j, 0.5);
 }
 
 Ray Camera::shootRay(unsigned int rank) const
 {
 	assert(rank < size);    // todo
-	return shootRayAt(rank % width, rank / width);
+	return shootRayAt(rank % width, rank / width, 0.5);
 }
-

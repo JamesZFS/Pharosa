@@ -11,14 +11,11 @@ BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned in
 {
 }
 
-#define SIGMA 0.5
-
-Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j) const
+Ray BasicCamera::shootRayAt(double i, double j, double sigma) const
 {
 	using Funcs::randfNormal;
 	// convert screen pixel crd sys (i, j) to screen center crd sys (x', y', z')
-	double xs = (i - w_2 + randfNormal(0, SIGMA)) * PIXEL_SIZE, ys = (j - h_2 + randfNormal(0, SIGMA)) * PIXEL_SIZE;
-//	double xs = (i - w_2) * PIXEL_SIZE, ys = (j - h_2) * PIXEL_SIZE;
+	double xs = (i - w_2 + randfNormal(0, sigma)) * PIXEL_SIZE, ys = (j - h_2 + randfNormal(0, sigma)) * PIXEL_SIZE;
 
 	// from screen center crd (x', y') get global crd of ray.dir
 	// using dir = x' ex + y' ey + ez * CAM_FOCUS
@@ -27,5 +24,3 @@ Ray BasicCamera::shootRayAt(unsigned int i, unsigned int j) const
 
 	return {pos, dir};
 }
-
-#undef SIGMA
