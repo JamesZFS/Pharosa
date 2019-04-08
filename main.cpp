@@ -5,6 +5,7 @@
  */
 
 #include "src/Renderer.h"
+#include "test.cpp"
 
 using namespace std;
 using namespace Scenes;
@@ -50,34 +51,9 @@ int main(int argc, char *argv[])
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	renderer.save(out_path);*/
-	
-	double A[3][3] = {{-2.86854, 0.712385, -2.0962},
-					  {-1.70362, -4.42166, -4.19973},
-					  {-4.72415, 2.76108,  -1.30315}};
-	double b[3] = {-3.02974, 2.1059, 1.67481};
-	double M[3][4] = {{-2.86854, 0.712385, -2.0962,  -3.02974},
-					  {-1.70362, -4.42166, -4.19973, 2.1059},
-					  {-4.72415, 2.76108,  -1.30315, 1.67481}};
-	double x[3];
-	Solver::LinearSolve(A, b, x);
-	for (auto &i:x) {
-		cout << i << " ";
-		i = 0;
-	}
-	cout << endl;
 
-	Solver::LinearSolveDebug(A, b, x);
-	for (auto &i:x) {
-		cout << i << " ";
-		i = 0;
-	}
-	cout << endl;
+	Test::testLinear();
 
-	Solver::SolveLinearInPlace<3>(M);
-	for (auto &i : M) {
-		cout << i[3] << " ";
-	}
-	cout << endl;
 
 	return 0;
 }

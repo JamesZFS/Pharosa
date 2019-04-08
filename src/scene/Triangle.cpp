@@ -41,7 +41,7 @@ bool Triangle::intersect(const Ray &ray, double &t) const
 			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z, gp[0].z - ray.org.z},
 	};
 
-	if (Solver::SolveLinearInPlace<3>(M)) {    // solvable and has only root
+	if (Solver::LinearSolveInPlace<3>(M)) {    // solvable and has only root
 		t = M[0][3];
 		double beta = M[1][3], gamma = M[2][3];
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1);
@@ -49,9 +49,4 @@ bool Triangle::intersect(const Ray &ray, double &t) const
 	}
 	// cannot solve or root is not unique
 	return false;
-}
-
-Dir Triangle::normalAt(const Pos &x) const
-{
-	return n;
 }
