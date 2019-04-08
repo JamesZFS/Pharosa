@@ -5,13 +5,14 @@
 #ifndef PHAROSA_LIB_H
 #define PHAROSA_LIB_H
 
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 #include <fstream>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <cassert>
-#include <cmath>
 #include <vector>
 #include <string>
 #include <random>

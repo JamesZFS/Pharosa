@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test.exe
+# Target rules for targets named Pharosa
 
 # Build rule for target.
-test.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test.exe
-.PHONY : test.exe
+Pharosa: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Pharosa
+.PHONY : Pharosa
 
 # fast build rule for target.
-test.exe/fast:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/build
-.PHONY : test.exe/fast
+Pharosa/fast:
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/build
+.PHONY : Pharosa/fast
 
 main.o: main.cpp.o
 
@@ -129,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,7 +147,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -158,7 +158,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test.exe"
+	@echo "... Pharosa"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

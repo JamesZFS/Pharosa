@@ -65,39 +65,39 @@ CMAKE_SOURCE_DIR = /Users/james/Test/CG/Pharosa
 CMAKE_BINARY_DIR = /Users/james/Test/CG/Pharosa/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/test.exe.dir
+# Target rules for target CMakeFiles/Pharosa.dir
 
 # All Build rule for target.
-CMakeFiles/test.exe.dir/all:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/depend
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target test.exe"
-.PHONY : CMakeFiles/test.exe.dir/all
+CMakeFiles/Pharosa.dir/all:
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/depend
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Pharosa"
+.PHONY : CMakeFiles/Pharosa.dir/all
 
 # Include target in all.
-all: CMakeFiles/test.exe.dir/all
+all: CMakeFiles/Pharosa.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test.exe.dir/rule: cmake_check_build_system
+CMakeFiles/Pharosa.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.exe.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Pharosa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/test.exe.dir/rule
+.PHONY : CMakeFiles/Pharosa.dir/rule
 
 # Convenience name for target.
-test.exe: CMakeFiles/test.exe.dir/rule
+Pharosa: CMakeFiles/Pharosa.dir/rule
 
-.PHONY : test.exe
-
-# clean rule for target.
-CMakeFiles/test.exe.dir/clean:
-	$(MAKE) -f CMakeFiles/test.exe.dir/build.make CMakeFiles/test.exe.dir/clean
-.PHONY : CMakeFiles/test.exe.dir/clean
+.PHONY : Pharosa
 
 # clean rule for target.
-clean: CMakeFiles/test.exe.dir/clean
+CMakeFiles/Pharosa.dir/clean:
+	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/clean
+.PHONY : CMakeFiles/Pharosa.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Pharosa.dir/clean
 
 .PHONY : clean
 
