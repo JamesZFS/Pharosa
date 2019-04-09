@@ -3,7 +3,6 @@
 //
 
 #include "../utils/funcs.hpp"
-#include "RayTracing.h"
 
 template<unsigned int MAX_DEPTH>
 RayTracing<MAX_DEPTH>::RayTracing(Stage &stage_, Camera &camera_) : Algorithm(stage_, camera_)
@@ -87,5 +86,3 @@ Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, unsigned int depth) const
 		}
 	}
 }
-
-template class RayTracing<>;

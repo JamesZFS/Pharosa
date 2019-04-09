@@ -3,7 +3,6 @@ in 'src/', found sources:
 	./Vec.cpp
 	alg/Algorithm.cpp
 	alg/RayCasting.cpp
-	alg/RayTracing.cpp
 	camera/BasicCamera.cpp
 	camera/Camera.cpp
 	camera/DOFCamera.cpp

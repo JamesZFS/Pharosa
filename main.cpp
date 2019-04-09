@@ -13,7 +13,7 @@ Sphere *ball;
 
 void motion()
 {
-	ball->translate({-1, 1.0, -0.2});
+	ball->translate({-1, 1.0, -0.3});
 }
 
 int main(int argc, char *argv[])
