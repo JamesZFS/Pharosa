@@ -3,7 +3,7 @@
 //
 
 #include "Triangle.h"
-#include "../utils/Solvers.h"
+#include "../utils/solvers/Linear.h"
 
 Triangle::Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const Emission &emission_,
 				   const ElAg &euler_angles_, Object::ReflType refl_type_) :
@@ -41,7 +41,7 @@ bool Triangle::intersect(const Ray &ray, double &t) const
 			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z, gp[0].z - ray.org.z},
 	};
 
-	if (Solver::LinearSolveInPlace<3>(M)) {    // solvable and has only root
+	if (Linear::SolveInPlace(M)) {    // solvable and has only root	todo use 3D
 		t = M[0][3];
 		double beta = M[1][3], gamma = M[2][3];
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1);

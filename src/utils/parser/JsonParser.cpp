@@ -12,11 +12,11 @@ Pos JsonParser::pos;
 Color JsonParser::color;
 Emission JsonParser::emission;
 ElAg JsonParser::euler_angles;
-Scenes::Object::ReflType JsonParser::refl_type;
+Object::ReflType JsonParser::refl_type;
 double JsonParser::radius;
 Pos JsonParser::points[3];
 String JsonParser::obj_str;
-const Scenes::Object *JsonParser::result;
+const Object *JsonParser::result;
 
 ObjectGroup JsonParser::fromJsonFile(const String &config_path)
 {
@@ -69,7 +69,7 @@ void JsonParser::reset()
 	// assign default values
 	emission = Emission::DARK;
 	euler_angles = ElAg::NONROT;
-	refl_type = Scenes::Object::DIFF;
+	refl_type = Object::DIFF;
 }
 
 void JsonParser::parseGeneric()
@@ -110,13 +110,13 @@ void JsonParser::parseGeneric()
 		s_tmp = j_tmp.get<String>();
 		Funcs::toLower(s_tmp);
 		if (s_tmp == "diffusive") {
-			refl_type = Scenes::Object::DIFF;
+			refl_type = Object::DIFF;
 		}
 		else if (s_tmp == "reflective") {
-			refl_type = Scenes::Object::REFL;
+			refl_type = Object::REFL;
 		}
 		else if (s_tmp == "refractive") {
-			refl_type = Scenes::Object::REFR;
+			refl_type = Object::REFR;
 		}
 		else {
 			warn("Error: got unidentified \"reflection\" attribute, parsing stops.\n");
@@ -137,7 +137,7 @@ void JsonParser::parseSphere()
 		exit(1);
 	}
 	radius = double(j_obj["radius"].get<double>());
-	result = new Scenes::Sphere(pos, radius, color, emission, euler_angles, refl_type);
+	result = new Sphere(pos, radius, color, emission, euler_angles, refl_type);
 }
 
 void JsonParser::parseTriangle()
@@ -155,7 +155,7 @@ void JsonParser::parseTriangle()
 		j_tmp = j_obj["points"][i];
 		points[i] = Pos(j_tmp[0].get<double>(), j_tmp[1].get<double>(), j_tmp[2].get<double>());
 	}
-	result = new Scenes::Triangle(pos, points, color, emission, euler_angles, refl_type);
+	result = new Triangle(pos, points, color, emission, euler_angles, refl_type);
 }
 
 void JsonParser::parseObj()

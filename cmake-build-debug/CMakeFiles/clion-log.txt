@@ -1,4 +1,23 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/8.3.0/bin/g++-8 -G "CodeBlocks - Unix Makefiles" /Users/james/Test/CG/Pharosa
+in 'src/', found sources:
+	./Vec.cpp
+	alg/Algorithm.cpp
+	alg/RayCasting.cpp
+	alg/RayTracing.cpp
+	camera/BasicCamera.cpp
+	camera/Camera.cpp
+	camera/DOFCamera.cpp
+	camera/ImageMixer.cpp
+	camera/OrthographicCamera.cpp
+	scene/InfPlane.cpp
+	scene/MeshObj.cpp
+	scene/Object.cpp
+	scene/Sphere.cpp
+	scene/Stage.cpp
+	scene/Triangle.cpp
+	utils/funcs.cpp
+	utils/solvers/Linear.cpp
+
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/james/Test/CG/Pharosa/cmake-build-debug

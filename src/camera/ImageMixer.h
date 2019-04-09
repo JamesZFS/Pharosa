@@ -16,6 +16,4 @@ public:
 	Ray shootRayAt(double i, double j, double sigma) const override;
 };
 
-#include "ImageMixer.cpp"
-
 #endif //PHAROSA_IMAGEMIXER_H

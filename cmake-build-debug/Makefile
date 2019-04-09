@@ -123,6 +123,19 @@ Pharosa/fast:
 	$(MAKE) -f CMakeFiles/Pharosa.dir/build.make CMakeFiles/Pharosa.dir/build
 .PHONY : Pharosa/fast
 
+#=============================================================================
+# Target rules for targets named PharosaLib
+
+# Build rule for target.
+PharosaLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PharosaLib
+.PHONY : PharosaLib
+
+# fast build rule for target.
+PharosaLib/fast:
+	$(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/build
+.PHONY : PharosaLib/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +172,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Pharosa"
+	@echo "... PharosaLib"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

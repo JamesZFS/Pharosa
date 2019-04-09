@@ -5,14 +5,10 @@
 #ifndef PHAROSA_CAMERA_ALL_H
 #define PHAROSA_CAMERA_ALL_H
 
-namespace Cameras
-{
-
+#include "Camera.h"
 #include "BasicCamera.h"
 #include "DOFCamera.h"
 #include "OrthographicCamera.h"
 #include "ImageMixer.h"
-
-}
 
 #endif //PHAROSA_CAMERA_ALL_H

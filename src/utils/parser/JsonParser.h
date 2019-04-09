@@ -17,7 +17,7 @@ private:
 	static Color color;
 	static Emission emission;
 	static ElAg euler_angles;
-	static Scenes::Object::ReflType refl_type;
+	static Object::ReflType refl_type;
 
 	// sphere:
 	static double radius;
@@ -27,7 +27,7 @@ private:
 
 	// cache:
 	static String obj_str;
-	static const Scenes::Object *result;
+	static const Object *result;
 
 	static void parseGeneric();
 
@@ -42,7 +42,5 @@ public:
 
 	static ObjectGroup fromJsonFile(const String &config_path);    // remember to use std::move
 };
-
-#include "JsonParser.cpp"    // todo del
 
 #endif //PHAROSA_PARSER_H

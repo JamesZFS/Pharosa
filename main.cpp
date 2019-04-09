@@ -4,22 +4,21 @@
  *  License: Department of Computer Science and Technology, Tsinghua University ®
  */
 
-#include "src/Renderer.h"
-#include "test.cpp"
+#include "src/Renderer.hpp"
+//#include "test.cpp"
 
 using namespace std;
-using namespace Scenes;
 
 Sphere *ball;
 
 void motion()
 {
-	ball->translate({-1, 1.2, -0.2});
+	ball->translate({-1, 1.0, -0.2});
 }
 
 int main(int argc, char *argv[])
 {
-	/*unsigned int n_epoch = (argc >= 2) ? (unsigned int) atoi(argv[1]) : 10;
+	unsigned int n_epoch = (argc >= 2) ? (unsigned int) atoi(argv[1]) : 10;
 	String out_path = (argc >= 3) ? argv[2] : "test image.ppm";
 
 	// init random engine
@@ -38,10 +37,9 @@ int main(int argc, char *argv[])
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
-	Algorithms::Illuminator::N_SUBPIXEL = 4;
-	Algorithms::RayCasting::LIGHT_DIR = Dir(1, -1, -1);
+	RayCasting::LIGHT_DIR = Dir(1, -1, -1);
 
-	Renderer<Algorithms::RayTracing<5>, Cameras::BasicCamera> renderer;
+	Renderer<RayTracing<>, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + 8));
 
@@ -50,9 +48,7 @@ int main(int argc, char *argv[])
 	renderer.start(n_epoch, 0);
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
-	renderer.save(out_path);*/
-
-	Test::testLinear();
+	renderer.save(out_path);
 
 
 	return 0;

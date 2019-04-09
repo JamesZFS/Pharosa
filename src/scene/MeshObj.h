@@ -26,6 +26,4 @@ struct MeshObj : public Object
 	Dir normalAt(const Pos &x) const override;
 };
 
-#include "MeshObj.cpp"
-
 #endif //PHAROSA_MESHOBJ_H

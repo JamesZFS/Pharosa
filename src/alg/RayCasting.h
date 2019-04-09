@@ -5,20 +5,18 @@
 #ifndef PHAROSA_DIRECTIMAGING_H
 #define PHAROSA_DIRECTIMAGING_H
 
-#include "Illuminator.h"
+#include "Algorithm.h"
 
 // render directly the RGB color of an object
-class RayCasting : public Illuminator
+class RayCasting : public Algorithm
 {
 protected:
 	Color radiance(const Ray &ray, unsigned int depth) const override;
 
 public:
-	RayCasting(Stage &stage_, Cameras::Camera &camera_);
+	RayCasting(Stage &stage_, Camera &camera_);
 	
 	static Dir LIGHT_DIR;	// parallel light orientation
 };
-
-#include "RayCasting.cpp"
 
 #endif //PHAROSA_DIRECTIMAGING_H

@@ -18,7 +18,8 @@
 #include <random>
 #include <omp.h>
 
-const double INF = 1e20, EPS = 1e-4;
+#define INF 1e20
+#define EPS 1e-4
 
 template<typename T>
 using List = std::vector<T>;

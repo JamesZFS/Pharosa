@@ -10,9 +10,9 @@
 namespace Funcs
 {
 	// random engine
-	std::default_random_engine generator;
-	std::uniform_real_distribution<double> uniform_distribution(0.0, 1.0);
-	std::normal_distribution<double> normal_distribution(0.0, 1.0);
+	extern std::default_random_engine generator;
+	extern std::uniform_real_distribution<double> uniform_distribution;
+	extern std::normal_distribution<double> normal_distribution;
 
 	inline double randf() // random float [0.0, 1.0)
 	{
@@ -29,7 +29,7 @@ namespace Funcs
 		return lower + (upper - lower) * uniform_distribution(generator);
 	}
 
-	inline double randfNormal()	// 0-1 normal dist
+	inline double randfNormal()    // 0-1 normal dist
 	{
 		return normal_distribution(generator);
 	}
@@ -41,17 +41,23 @@ namespace Funcs
 
 	// staircase function Real -> [0, 1]
 	inline double clamp(double x)
-	{ return x < 0 ? 0 : x > 1 ? 1 : x; }
+	{
+		return x < 0 ? 0 : x > 1 ? 1 : x;
+	}
 
 	// to unsigned char [0 - 255], using gamma correction
 #define C_GAMMA 0.45454545454545 // 1 / 2.2
 #define C_1_GAMMA 2.2 // 2.2 / 1
 
 	inline unsigned int gammaCorrection(double x)
-	{ return (unsigned int) (pow(clamp(x), C_GAMMA) * 255); }
+	{
+		return (unsigned int) (pow(clamp(x), C_GAMMA) * 255);
+	}
 
 	inline double inverseGammaCorrection(unsigned int y)
-	{ return pow(y * 1.0 / 255, C_1_GAMMA); }
+	{
+		return pow(y * 1.0 / 255, C_1_GAMMA);
+	}
 
 #undef C_GAMMA
 #undef C_1_GAMMA

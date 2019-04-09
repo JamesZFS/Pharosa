@@ -51,6 +51,4 @@ struct Object
 	virtual Dir normalAt(const Pos &x) const = 0;
 };
 
-#include "Object.cpp"
-
 #endif //PHAROSA_OBJECT_H

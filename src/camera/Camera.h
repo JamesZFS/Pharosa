@@ -9,6 +9,9 @@
 #include "../Ray.hpp"
 #include "../Vec.hpp"
 
+#define rankOf(i, j) ((j) * width + (i))
+#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
+
 // standard camera api, base class
 class Camera
 {
@@ -30,11 +33,14 @@ public:
 	virtual ~Camera();
 
 	// getter:
-	inline const Color &pixelAt(unsigned int i, unsigned int j) const;    // img
+	inline const Color &pixelAt(unsigned int i, unsigned int j) const    // img
+	{ return img[rankOf(i, j)]; }
 
-	inline const Pos &viewpoint() const;    // pos
+	inline const Pos &viewpoint() const    // pos
+	{ return pos; }
 
-	inline const Dir &orientation() const;    // ez
+	inline const Dir &orientation() const    // ez
+	{ return ez; }
 
 	// setter:
 	inline void render(const Color &color);    // render incrementally
@@ -44,13 +50,15 @@ public:
 	inline void renderAt(unsigned int i, unsigned int j, const Color &color);
 
 	// iterators:
-	inline bool finished() const;    // check whether the rendering progress is finished
+	inline bool finished() const    // check whether the rendering progress is finished
+	{ return (cur_rank >= size); }
 
 	inline bool finishedVerbose(unsigned int n_step) const; // as above, with a progressbar displayed every n_step
 
 	inline void updateProgress();    // current pixel rank++
 
-	inline void resetProgress();   // reset shooting progress
+	inline void resetProgress()   // reset shooting progress
+	{ cur_i = cur_j = cur_rank = 0; }
 
 	// io:
 	// load from previous rendered ppm file to continue, which was rendered n_epoch times
@@ -59,15 +67,64 @@ public:
 	// output image into ppm format
 	void writePPM(String out_path) const;
 
-	inline Ray shootRay() const;    // shoot a ray iteratively. will stop when all pixels are traversed
+	inline Ray shootRay() const    // shoot a ray iteratively. will stop when all pixels are traversed
+	{ return shootRayAt(cur_i, cur_j, 0.5); }
 
-	inline Ray shootRay(unsigned int rank) const;    // shoot a ray at a given pixel rank
+	inline Ray shootRay(unsigned int rank) const    // shoot a ray at a given pixel rank
+	{ return shootRayAt(rank % width, rank / width, 0.5); }
+
+	Ray shootRayAt(double i, double j) const
+	{ return shootRayAt(i, j, 0); }
 
 	// interface:
 	// shoot ray at (i, j), offset deferring normal dist 0 - sigma
-	virtual Ray shootRayAt(double i, double j, double sigma = 0) const = 0;
+	virtual Ray shootRayAt(double i, double j, double sigma) const = 0;
 };
 
-#include "Camera.cpp"
+// inline methods:
+
+void Camera::render(const Color &color)
+{
+	img[cur_rank] += color;
+	++render_cnt[cur_rank];    // counts up rendering time of current pixel
+}
+
+void Camera::render(unsigned int rank, const Color &color)
+{
+	img[rank] += color;
+	++render_cnt[rank];
+}
+
+void Camera::renderAt(unsigned int i, unsigned int j, const Color &color)
+{
+	auto rank = rankOf(i, j);
+	img[rank] += color;
+	++render_cnt[rank];
+}
+
+#undef rankOf
+#undef checkCoordinate
+
+bool Camera::finishedVerbose(unsigned int n_step) const
+{
+	assert(n_step > 0);
+	if (cur_rank % n_step == 0) {
+		debug("\r  progress:  %.1f %%", cur_rank * 100.0 / size);
+		fflush(stdout);
+	}
+	return (cur_rank >= size);
+}
+
+void Camera::updateProgress()
+{
+	++cur_rank;
+	if (++cur_i == width) {        // first ++i then ++j
+		cur_i = 0;
+		if (++cur_j > height) {
+			warn("Warning: pixel index overflows.\n");
+			resetProgress();
+		}
+	}
+}
 
 #endif //PHAROSA_CAMERA_H

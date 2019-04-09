@@ -58,7 +58,7 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 				exit(1);
 		}
 	}
-	return std::move(meshes);
+	return meshes;
 }
 
 #endif //PHAROSA_OBJPARSER_HPP

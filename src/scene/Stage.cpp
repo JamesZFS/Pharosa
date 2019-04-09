@@ -10,7 +10,7 @@
 
 Stage::~Stage()
 {
-	for (Scenes::Object *obj : objects) {
+	for (Object *obj : objects) {
 		delete obj;
 	}
 }
@@ -31,23 +31,23 @@ void Stage::fromObjectList(ObjectList &&objects_)
 	objects = std::move(objects_);
 }
 
-void Stage::append(Scenes::Object *object)
+void Stage::append(Object *object)
 {
 	objects.push_back(object);
 }
 
-void Stage::appendMeshes(Scenes::TriangleGroup meshes)
+void Stage::appendMeshes(TriangleGroup meshes)
 {
 	objects.insert(objects.end(), meshes.begin(), meshes.end());
 }
 
-bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const
+bool Stage::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const
 {
 	// naive for loop calculation
 	// todo use OctTree
 	double t = INF, s;	// intersection
 	hit = nullptr;
-	for (const Scenes::Object *obj : objects) {
+	for (const Object *obj : objects) {
 		if (obj->intersect(ray, s) && s < t) {
 			t = s;
 			hit = obj;
@@ -59,13 +59,13 @@ bool Stage::intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir
 	return true;
 }
 
-const Scenes::Object * Stage::hitOf(const Ray &ray) const
+const Object * Stage::hitOf(const Ray &ray) const
 {
 	// naive for loop calculation
 	// todo use OctTree
 	double t = INF, s;
-	const Scenes::Object *hit = nullptr;
-	for (const Scenes::Object *obj : objects) {
+	const Object *hit = nullptr;
+	for (const Object *obj : objects) {
 		if (obj->intersect(ray, s) && s < t) {
 			t = s;
 			hit = obj;

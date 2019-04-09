@@ -9,7 +9,7 @@
 #include "../Ray.hpp"
 #include "All.h"
 
-typedef List<Scenes::Object *> ObjectList;
+typedef List<Object *> ObjectList;
 
 // Stage class, for i/o models and calculating ray intersection
 class Stage
@@ -30,9 +30,9 @@ public:
 
 	void fromObjectList(ObjectList &&objects_);	// load from list (! move constructor)
 
-	void append(Scenes::Object *object);	// append an object (affiliates it)
+	void append(Object *object);	// append an object (affiliates it)
 
-	void appendMeshes(Scenes::TriangleGroup meshes);  // append mesh segments (affiliates it)
+	void appendMeshes(TriangleGroup meshes);  // append mesh segments (affiliates it)
 	// meshes should be excluded from ObjectList and installed via appendMeshes method
 
 	/** judge and calculate first intersection with all objects
@@ -42,11 +42,9 @@ public:
 	 * @param normal : normal vector of hitting point
 	 * @return true if intersects any object else false
 	 */
-	bool intersectAny(const Ray &ray, const Scenes::Object *&hit, Pos &x, Dir &normal) const;
+	bool intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const;
 
-	const Scenes::Object * hitOf(const Ray &ray) const;	// compute only the first hit target of ray
+	const Object * hitOf(const Ray &ray) const;	// compute only the first hit target of ray
 };
-
-#include "Stage.cpp"
 
 #endif //PHAROSA_STAGE_H

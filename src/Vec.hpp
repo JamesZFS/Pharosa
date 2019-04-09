@@ -236,27 +236,6 @@ struct RGB : public Vec<double>        // RGB Vector
 typedef RGB Color;            // intrinsic color of an object
 typedef RGB Emission;        // RGB emission of an object
 
-// common Pos
-const Pos Pos::ORIGIN(0, 0, 0);
-
-// common ElAg
-const ElAg ElAg::NONROT(0, 0, 0);
 #define DEG * 0.0174532925199432957692369076848861271    // degree to rad
-
-// common colors
-const Color
-		Color::BLACK(0, 0, 0),
-		Color::WHITE(1, 1, 1),
-		Color::RED(1, 0, 0),
-		Color::GREEN(0, 1, 0),
-		Color::BLUE(0, 0, 1),
-		Color::YELLOW(1, 0.784, 0);
-
-// common Emission
-const Emission
-		Emission::NONE(0, 0, 0),
-		Emission::GLOW(0.5, 0.5, 0.5),
-		Emission::BRIGHT(1.0, 1.0, 1.0),
-		Emission::SPLENDID(5.0, 5.0, 5.0);
 
 #endif //PHAROSA_VEC_HPP

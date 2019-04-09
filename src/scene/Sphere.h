@@ -21,6 +21,4 @@ struct Sphere : public Object
 	Dir normalAt(const Pos &x) const override;
 };
 
-#include "Sphere.cpp"
-
 #endif //PHAROSA_SPHERE_H

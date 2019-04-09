@@ -2,7 +2,8 @@
 // Created by James on 2019/4/9.
 //
 
-#include "src/Renderer.h"
+#include "src/lib.h"
+#include "src/utils/solvers/Linear.h"
 
 namespace Test
 {
@@ -10,7 +11,7 @@ namespace Test
 	void testLinear()
 	{
 		using namespace std;
-		using namespace Scenes;
+		using namespace Linear;
 
 		double A[3][3] = {
 				{-2.86854, 0.712385, -2.0962},
@@ -25,24 +26,24 @@ namespace Test
 		};
 		double x[3];
 
-		int N = 20000000;
+		int N = 50000000;
 		double t[3] = {0, 0, 0};
 
 		clock_t since = clock();
 		for (int i = 0; i < N; ++i) {
-			Solver::LinearSolve(A, b, x);
+			Solve(A, b, x);
 		}
 		t[0] = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
 
 		since = clock();
 		for (int i = 0; i < N; ++i) {
-			Solver::LinearSolveInPlace(M);
+			SolveInPlace(M);
 		}
 		t[1] = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
 
 		since = clock();
 		for (int i = 0; i < N; ++i) {
-			Solver::LinearSolve3D(A, b, x);
+			Solve3D(A, b, x);
 		}
 		t[2] = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
 

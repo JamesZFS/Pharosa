@@ -5,12 +5,8 @@
 #ifndef PHAROSA_ALG_ALL_H
 #define PHAROSA_ALG_ALL_H
 
-namespace Algorithms
-{
-
+#include "Algorithm.h"
 #include "RayCasting.h"
 #include "RayTracing.h"
-
-}
 
 #endif //PHAROSA_ALG_ALL_H

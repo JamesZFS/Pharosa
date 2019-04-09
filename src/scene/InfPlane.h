@@ -23,6 +23,4 @@ struct InfPlane : public Object
 
 };
 
-#include "InfPlane.cpp"
-
 #endif //PHAROSA_INFPLANE_H

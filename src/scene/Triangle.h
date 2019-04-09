@@ -25,6 +25,4 @@ struct Triangle : public Object
 	{ return n; }
 };
 
-#include "Triangle.cpp"
-
 #endif //PHAROSA_TRIANGLE_H

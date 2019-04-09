@@ -18,6 +18,4 @@ public:
 	static double PIXEL_SIZE;
 };
 
-#include "OrthographicCamera.cpp"
-
 #endif //PHAROSA_ORTHOGRAPHICCAMERA_H

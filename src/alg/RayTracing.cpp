@@ -6,14 +6,13 @@
 #include "RayTracing.h"
 
 template<unsigned int MAX_DEPTH>
-RayTracing<MAX_DEPTH>::RayTracing(Stage &stage_, Cameras::Camera &camera_) : Illuminator(stage_, camera_)
+RayTracing<MAX_DEPTH>::RayTracing(Stage &stage_, Camera &camera_) : Algorithm(stage_, camera_)
 {
 }
 
 template<unsigned int MAX_DEPTH>
 Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, unsigned int depth) const
 {
-	using namespace Scenes;
 	using Funcs::randf;
 
 	// calculate intersection
@@ -88,3 +87,5 @@ Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, unsigned int depth) const
 		}
 	}
 }
+
+template class RayTracing<>;

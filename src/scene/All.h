@@ -5,14 +5,10 @@
 #ifndef PHAROSA_SCENE_ALL_H
 #define PHAROSA_SCENE_ALL_H
 
-namespace Scenes
-{
-
+#include "Object.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "InfPlane.h"
 #include "MeshObj.h"
-
-}
 
 #endif //PHAROSA_SCENE_ALL_H

@@ -12,6 +12,4 @@ class DOFCamera
 
 };
 
-#include "DOFCamera.cpp"
-
 #endif //PHAROSA_DOFCAMERA_H

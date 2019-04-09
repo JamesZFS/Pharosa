@@ -25,81 +25,6 @@ Camera::~Camera()
 	delete[] render_cnt;
 }
 
-#define rankOf(i, j) ((j) * width + (i))
-#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
-
-const Color &Camera::pixelAt(unsigned int i, unsigned int j) const
-{
-	checkCoordinate(i, j);
-	return img[rankOf(i, j)];
-}
-
-const Pos &Camera::viewpoint() const
-{
-	return pos;
-}
-
-const Dir &Camera::orientation() const
-{
-	return ez;
-}
-
-void Camera::render(const Color &color)
-{
-	img[cur_rank] += color;
-	++render_cnt[cur_rank];    // counts up rendering time of current pixel
-}
-
-void Camera::render(unsigned int rank, const Color &color)
-{
-	assert(rank < size);    // todo for performance, cancel checking
-	img[rank] += color;
-	++render_cnt[rank];
-}
-
-void Camera::renderAt(unsigned int i, unsigned int j, const Color &color)
-{
-	checkCoordinate(i, j);    // todo for performance, cancel checking
-	auto rank = rankOf(i, j);
-	img[rank] += color;
-	++render_cnt[rank];
-}
-
-#undef rankOf
-#undef checkCoordinate
-
-bool Camera::finished() const
-{
-	return (cur_rank >= size);
-}
-
-bool Camera::finishedVerbose(unsigned int n_step) const
-{
-	assert(n_step > 0);
-	if (cur_rank % n_step == 0) {
-		debug("\r  progress:  %.1f %%", cur_rank * 100.0 / size);
-		fflush(stdout);
-	}
-	return (cur_rank >= size);
-}
-
-void Camera::updateProgress()
-{
-	++cur_rank;
-	if (++cur_i == width) {        // first ++i then ++j
-		cur_i = 0;
-		if (++cur_j > height) {
-			warn("Warning: pixel index overflows.\n");
-			resetProgress();
-		}
-	}
-}
-
-void Camera::resetProgress()
-{
-	cur_i = cur_j = cur_rank = 0;
-}
-
 void Camera::readPPM(String prev_path, unsigned int prev_epoch)
 {
 	if (prev_epoch == 0) return;
@@ -160,15 +85,4 @@ void Camera::writePPM(String out_path) const
 		fout << buffer;
 	}
 	fout.close();
-}
-
-Ray Camera::shootRay() const
-{
-	return shootRayAt(cur_i, cur_j, 0.5);
-}
-
-Ray Camera::shootRay(unsigned int rank) const
-{
-	assert(rank < size);    // todo
-	return shootRayAt(rank % width, rank / width, 0.5);
 }
