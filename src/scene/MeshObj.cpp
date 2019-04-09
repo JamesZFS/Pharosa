@@ -33,3 +33,11 @@ Dir MeshObj::normalAt(const Pos &x) const
 	warn("Error: method `MeshObj::normalAt` should never be called.\n");
 	exit(1);
 }
+
+bool MeshObj::hasSurfacePoint(const Pos &x) const
+{
+	for (const auto &triangle: meshes) {
+		if (triangle->hasSurfacePoint(x)) return true;
+	}
+	return false;
+}

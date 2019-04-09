@@ -9,7 +9,7 @@
 
 struct Sphere : public Object
 {
-	double rad;
+	double rad, rad_2;	// radius, radius^2
 
 	Sphere(double radius_, const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
 		   ElAg euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
@@ -19,6 +19,9 @@ struct Sphere : public Object
 	bool intersect(const Ray &ray, double &t) const override;
 
 	Dir normalAt(const Pos &x) const override;
+
+	inline bool hasSurfacePoint(const Pos &x) const override
+	{ return (x - pos).sqr() - rad_2 < EPS; }
 };
 
 #endif //PHAROSA_SPHERE_H

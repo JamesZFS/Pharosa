@@ -6,8 +6,8 @@
 #define PHAROSA_OBJECT_H
 
 #include "../lib.h"
-#include "../Vec.h"
-#include "../Ray.hpp"
+#include "../core/Vec.h"
+#include "../core/Ray.hpp"
 
 // base class of 3D object
 struct Object
@@ -51,6 +51,10 @@ struct Object
 
 	// calculate normal vector at surface point x
 	virtual Dir normalAt(const Pos &x) const = 0;
+
+	// determine if a point is on the surface of object
+	virtual bool hasSurfacePoint(const Pos &x) const = 0;
+
 };
 
 #endif //PHAROSA_OBJECT_H

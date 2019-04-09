@@ -7,16 +7,16 @@
 
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
 		cur_i(0), cur_j(0), cur_rank(0),
-		pos(pos_), ex(1, 0, 0), ey(0, 1, 0), ez(0, 0, 1),
+		pos(pos_), ex(Dir::X_AXIS), ey(Dir::Y_AXIS), ez(Dir::Z_AXIS), ea(euler_angles_),
 		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1)
 {
 	img = new Color[size];
 	render_cnt = new unsigned int[size];
 	memset(render_cnt, 0, size * sizeof(unsigned int));
 	// calculate basis vectors
-	ex.rotate(euler_angles_);
-	ey.rotate(euler_angles_);
-	ez.rotate(euler_angles_);
+	ex.rotate(ea);
+	ey.rotate(ea);
+	ez.rotate(ea);
 }
 
 Camera::~Camera()
@@ -85,4 +85,12 @@ void Camera::writePPM(String out_path) const
 		fout << buffer;
 	}
 	fout.close();
+}
+
+
+void Camera::rotate(const ElAg &euler_angles)
+{
+	(ex = Dir::X_AXIS).rotate(euler_angles).rotate(ea);
+	(ey = Dir::Y_AXIS).rotate(euler_angles).rotate(ea);
+	(ez = Dir::Z_AXIS).rotate(euler_angles).rotate(ea);
 }

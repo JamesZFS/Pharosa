@@ -27,7 +27,7 @@ Stage &Renderer<Render_Algorithm, Camera_Type>::stage()
 }
 
 template<typename Render_Algorithm, typename Camera_Type>
-const Camera &Renderer<Render_Algorithm, Camera_Type>::camera()
+Camera &Renderer<Render_Algorithm, Camera_Type>::camera()
 {
 	if (_camera == nullptr) {
 		warn("Error: camera is not setup yet.\n");

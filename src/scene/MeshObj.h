@@ -24,6 +24,8 @@ struct MeshObj : public Object
 	bool intersect(const Ray &ray, double &t) const override;
 
 	Dir normalAt(const Pos &x) const override;
+
+	bool hasSurfacePoint(const Pos &x) const override;
 };
 
 #endif //PHAROSA_MESHOBJ_H

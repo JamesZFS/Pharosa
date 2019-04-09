@@ -5,7 +5,8 @@
 #include "src/lib.h"
 #include "src/utils/solvers/Linear.h"
 #include "src/utils/funcs.hpp"
-#include "src/Vec.h"
+#include "src/core/Vec.h"
+#include "src/scene/All.h"
 
 namespace Test
 {
@@ -75,5 +76,21 @@ namespace Test
 		ea = d.getEulerAngles();
 		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.y == 0 && ea.z == M_PI);
+	}
+
+	void rotate()
+	{
+		auto p = InfPlane(Dir(1, 0, 0), Pos(0, 0, 0), {1, 1, 1}, {1, 1, 1}, Object::DIFF);
+		assert(p.ea == ElAg(0, 0, M_PI_2));
+	}
+
+	void onSurface()
+	{
+		auto t = Triangle(new Pos[3]{{10,  0, 0},
+									 {0,  10, 0},
+									 {-10, 0, 0}}, Pos(0, 0, 10), Color());
+		assert(!t.hasSurfacePoint(Pos(0, 12, 10)));
+		assert(t.hasSurfacePoint(Pos(0, 0, 10)));
+		assert(!t.hasSurfacePoint(Pos(1, 1, 11)));
 	}
 }

@@ -1,6 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/8.3.0/bin/g++-8 -G "CodeBlocks - Unix Makefiles" /Users/james/Test/CG/Pharosa
 in 'src/', found sources:
-	./Vec.cpp
 	alg/Algorithm.cpp
 	alg/RayCasting.cpp
 	camera/BasicCamera.cpp
@@ -8,6 +7,7 @@ in 'src/', found sources:
 	camera/DOFCamera.cpp
 	camera/ImageMixer.cpp
 	camera/OrthographicCamera.cpp
+	core/Vec.cpp
 	scene/Cube.cpp
 	scene/InfPlane.cpp
 	scene/MeshObj.cpp

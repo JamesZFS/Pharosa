@@ -17,12 +17,24 @@ struct InfPlane : public Object
 	InfPlane(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
 			 ReflType refl_type_);
 
-	void applyTransform() override;
+	// construct by specifying normal
+	InfPlane(const Dir &n_, const Pos &pos_, const Color &color_, const Emission &emission_,
+			 ReflType refl_type_);
 
-	bool intersect(const Ray &ray, double &t) const override;
+	inline void applyTransform() override
+	{ (n = Dir::Z_AXIS).rotate(ea); }
 
-	Dir normalAt(const Pos &x) const override;
+	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - pos) % normal == 0
+	{
+		double dn = ray.dir % n;
+		return (fabs(dn) < EPS ? false : ((t = (pos - ray.org) % n / dn) > EPS));
+	}
 
+	inline Dir normalAt(const Pos &x) const override
+	{ return n; }
+
+	inline bool hasSurfacePoint(const Pos &x) const override
+	{ return fabs((x - pos) % n) < EPS; }
 };
 
 #endif //PHAROSA_INFPLANE_H

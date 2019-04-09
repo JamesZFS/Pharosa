@@ -17,18 +17,9 @@ Triangle::Triangle(const Pos p_[3], const Pos &pos_, const Color &color_, const 
 
 void Triangle::applyTransform()
 {
-	gp[0] = p[0];
-	gp[0].rotate(ea);
-	gp[0] += pos;
-
-	gp[1] = p[1];
-	gp[1].rotate(ea);
-	gp[1] += pos;
-
-	gp[2] = p[2];
-	gp[2].rotate(ea);
-	gp[2] += pos;
-
+	(gp[0] = p[0]).rotate(ea) += pos;
+	(gp[1] = p[1]).rotate(ea) += pos;
+	(gp[2] = p[2]).rotate(ea) += pos;
 	(n = (gp[0] - gp[1]) ^ (gp[0] - gp[2])).unitize();
 }
 
@@ -56,4 +47,19 @@ bool Triangle::intersect(const Ray &ray, double &t) const
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1);
 	}
 	return false;    // cannot solve or root is not unique
+}
+
+bool Triangle::hasSurfacePoint(const Pos &x) const
+{
+	double A[3][3], k[3], b[3];
+	gp[0].putToArray(&A[0][0], 3);
+	gp[1].putToArray(&A[0][1], 3);
+	gp[2].putToArray(&A[0][2], 3);
+	x.putToArray(b);
+
+	if (Linear::Solve3D(A, b, k)) {
+		return (k[0] >= 0 && k[1] >= 0 && k[1] >= 0 && fabs(k[0] + k[1] + k[2] - 1) < EPS);
+	}
+	return false;
+//	return (fabs(x % ((gp[0] - gp[1]) ^ (gp[0] - gp[2]))) < EPS);	// three points in a plane, todo some bugs
 }

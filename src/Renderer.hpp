@@ -6,8 +6,8 @@
 #define PHAROSA_RENDERER_HPP
 
 #include "lib.h"
-#include "Vec.h"
-#include "Ray.hpp"
+#include "core/Vec.h"
+#include "core/Ray.hpp"
 #include "alg/All.h"
 #include "camera/All.h"
 #include "scene/Stage.h"
@@ -36,7 +36,7 @@ public:
 	// access to stage and camera
 	Stage &stage();
 
-	const Camera &camera();
+	Camera &camera();
 
 	// setup stage by specify a stage config file path
 	void setupStage(const String &config_path = "");

@@ -6,7 +6,7 @@
 #define PHAROSA_PARSER_H
 
 #include "../../lib.h"
-#include "../../Vec.h"
+#include "../../core/Vec.h"
 #include "../../scene/All.h"
 
 class JsonParser

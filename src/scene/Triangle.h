@@ -22,6 +22,8 @@ struct Triangle : public Object
 
 	inline Dir normalAt(const Pos &x) const override
 	{ return n; }
+
+	bool hasSurfacePoint(const Pos &x) const override;
 };
 
 #endif //PHAROSA_TRIANGLE_H

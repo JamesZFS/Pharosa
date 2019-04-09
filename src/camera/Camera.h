@@ -6,8 +6,8 @@
 #define PHAROSA_CAMERA_H
 
 #include "../lib.h"
-#include "../Ray.hpp"
-#include "../Vec.h"
+#include "../core/Ray.hpp"
+#include "../core/Vec.h"
 
 #define rankOf(i, j) ((j) * width + (i))
 #define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
@@ -23,6 +23,7 @@ private:
 protected:
 	Pos pos;        // position of the viewpoint
 	Dir ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
+	ElAg ea;        // euler angles cache
 
 public:
 	const unsigned int width, height, size;    // image width and height, n_pixel
@@ -48,6 +49,11 @@ public:
 	inline void render(unsigned int rank, const Color &color);    // render incrementally at given rank
 
 	inline void renderAt(unsigned int i, unsigned int j, const Color &color);
+
+	void rotate(const ElAg &euler_angles);	// rotate inc
+
+	inline void translate(const Pos &delta)	// move inc
+	{ pos += delta; }
 
 	// iterators:
 	inline bool finished() const    // check whether the rendering progress is finished

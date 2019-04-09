@@ -6,7 +6,7 @@
 
 Sphere::Sphere(double radius_, const Pos &pos_, const Color &color_, const Emission &emission_, ElAg euler_angles_,
 			   ReflType refl_type_) :
-		Object(pos_, color_, emission_, euler_angles_, refl_type_), rad(radius_)
+		Object(pos_, color_, emission_, euler_angles_, refl_type_), rad(radius_), rad_2(radius_ * radius_)
 {
 }
 
@@ -23,12 +23,9 @@ bool Sphere::intersect(const Ray &ray, double &t) const
 	if (det < 0) return false;    // no solution
 	else det = sqrt(det);
 
-	t = b - det;    // intersect at front of sphere
-	if (t <= EPS) {        // intersect at back of sphere
-		t = b + det;
-		if (t <= EPS) return false;    // intersect before ray.org
-	}
-	return true;
+	return ((t = b - det) < EPS	// intersect at front of sphere?
+			? ((t = b + det) > EPS) // intersect at back?
+			: true);
 }
 
 Dir Sphere::normalAt(const Pos &x) const

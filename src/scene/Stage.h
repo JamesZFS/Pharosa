@@ -6,7 +6,7 @@
 #define PHAROSA_STAGE_H
 
 #include "../lib.h"
-#include "../Ray.hpp"
+#include "../core/Ray.hpp"
 #include "All.h"
 
 typedef List<Object *> ObjectList;

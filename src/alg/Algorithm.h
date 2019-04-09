@@ -6,7 +6,7 @@
 #define PHAROSA_ALGORITHM_H
 
 #include "../lib.h"
-#include "../Ray.hpp"
+#include "../core/Ray.hpp"
 #include "../camera/All.h"
 #include "../scene/Stage.h"
 
