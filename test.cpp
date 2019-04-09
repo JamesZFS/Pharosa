@@ -86,11 +86,66 @@ namespace Test
 
 	void onSurface()
 	{
-		auto t = Triangle(new Pos[3]{{10,  0, 0},
-									 {0,  10, 0},
-									 {-10, 0, 0}}, Pos(0, 0, 10), Color());
+		auto t = Triangle(new Pos[3]{{10,  0,  0},
+									 {0,   10, 0},
+									 {-10, 0,  0}}, Pos(0, 0, 10), Color());
 		assert(!t.hasSurfacePoint(Pos(0, 12, 10)));
 		assert(t.hasSurfacePoint(Pos(0, 0, 10)));
 		assert(!t.hasSurfacePoint(Pos(1, 1, 11)));
+	}
+
+	void intersect()
+	{
+		double t0 = 0, t1 = 0, t2 = 0, t3 = 0, tr = 0, _;
+		long long N = 30000000;
+		Dir d[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS};
+		Pos cp[3][2]{{{0, 0, 0}, {30, 0,  0}},
+					 {{0, 0, 0}, {0,  30, 0}},
+					 {{0, 0, 0}, {0,  0,  50}}};
+		Pos tp[3]{Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}};
+
+		auto cube = Cube(d, cp, Pos(10, 30, 20),
+						 Color(0.5, 0.5, 0.8), Emission::NONE, ElAg(0, 10 * DEG, 0));
+		auto triangle = Triangle(tp, Pos(50, 0, 50), {0.8, 0.6, 0.5},
+								 Emission::NONE, ElAg::NONROT, Object::REFR);
+		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), Color::BLACK, Emission(12, 12, 12), ElAg(), Object::DIFF);
+		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0), Color(.75, .75, .75), Emission::NONE, Object::DIFF);
+
+		clock_t since = clock();
+		for (long long i = 0; i < N; ++i) {
+			Ray(Pos::random(0, 100), Dir::random());
+		}
+		tr = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+		debug("t_ref: %19.10f sec\n", tr);
+
+		since = clock();
+		for (long long i = 0; i < N; ++i) {
+			cube.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
+		}
+		t0 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+		debug("cube: %20.10f sec\n", t0 - tr);
+
+		since = clock();
+		for (long long i = 0; i < N; ++i) {
+			triangle.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
+		}
+		t1 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+		debug("triangle: %16.10f sec\n", t1 - tr);
+
+		since = clock();
+		for (long long i = 0; i < N; ++i) {
+			sphere.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
+		}
+		t2 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+		debug("sphere: %18.10f sec\n", t2 - tr);
+
+		since = clock();
+		for (long long i = 0; i < N; ++i) {
+			plane.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
+		}
+		t3 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
+		debug("plane: %19.10f sec\n", t3 - tr);
+
+		fflush(stdout);
 	}
 }

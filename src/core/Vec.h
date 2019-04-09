@@ -167,6 +167,9 @@ struct Pos : Vec<double>    // 3D coordinate
 //	inline Pos rotate(const ElAg &ea)
 //	{ return Pos(*this).rotateInPlace(ea); }
 
+	static inline Pos random(double lower = 0.0, double upper = 1.0)
+	{ return {Funcs::randf(lower, upper), Funcs::randf(lower, upper), Funcs::randf(lower, upper)}; }
+
 	static const Pos ORIGIN;
 };
 

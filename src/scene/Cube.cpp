@@ -30,7 +30,7 @@ void Cube::applyTransform()
 bool Cube::intersect(const Ray &ray, double &t) const
 {
 	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
-	for (const auto &s : slab) {
+	for (const auto &s : slab) {	// todo acc
 		dn = ray.dir % s[0].n;	// d.n
 		if (fabs(dn) < EPS) { // parallel to some face
 			if (s[0].relationWith(ray.org) == s[1].relationWith(ray.org)) return false; //and outside the cube

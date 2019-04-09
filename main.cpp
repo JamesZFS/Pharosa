@@ -53,7 +53,7 @@ void Pharosa(int argc, char *argv[])
 	renderer.camera().rotate(ElAg(0, -5 * DEG, 0));
 	renderer.camera().translate({0, 0, -70});
 
-	renderer.start(n_epoch, 0, );
+	renderer.start(n_epoch, 0, "out/checkpoints");
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	renderer.save(out_path);
@@ -61,6 +61,7 @@ void Pharosa(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	Pharosa(argc, argv);
+//	Pharosa(argc, argv);
+	Test::intersect();
 	return 0;
 }
