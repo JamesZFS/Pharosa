@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef PHAROSA_VEC_HPP
-#define PHAROSA_VEC_HPP
+#ifndef PHAROSA_VEC_H
+#define PHAROSA_VEC_H
 
 #include "lib.h"
 #include "utils/funcs.hpp"
@@ -92,7 +92,7 @@ struct Vec
 		*(dst + step) = z;
 	}
 
-	void report(bool endl = false) const
+	inline void report(bool endl = false) const
 	{
 		debug("(%.2f, %.2f, %.2f)", x, y, z);
 		if (endl) debug("\n");
@@ -159,13 +159,7 @@ struct Pos : Vec<double>    // 3D coordinate
 		x = x_;
 	}
 
-	Pos &rotate(const ElAg &ea)    // Euler rotation, in place
-	{
-		rotateAlongY(ea.gamma);
-		rotateAlongX(ea.beta);
-		rotateAlongZ(ea.alpha);
-		return *this;
-	}
+	Pos &rotate(const ElAg &ea);    // Euler rotation, in place. Z -> X -> Y
 
 	static const Pos ORIGIN;
 };
@@ -191,13 +185,10 @@ struct Dir : public Pos        // direction, unitized vector
 		return *this;
 	}
 
-	void getOrthogonalBasis(Dir &ex, Dir &ey) const   // get orthogonal axis (ex, ey) from ez
-	{
-		ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
-		ey = *this ^ ex;
-		ex.unitize();
-		ey.unitize();
-	}
+	void getOrthogonalBasis(Dir &ex, Dir &ey) const;   // get orthogonal axis (ex, ey) from ez
+
+	inline ElAg getEulerAngles()  // get euler angles according to vector
+	{ return {atan2(y, x), 0, atan2(sqrt(x * x + y * y), z)}; }
 };
 
 struct RGB : public Vec<double>        // RGB Vector
@@ -221,7 +212,7 @@ struct RGB : public Vec<double>        // RGB Vector
 		return *this;
 	}
 
-	inline RGB &clamp()	// to [0, 1]
+	inline RGB &clamp()    // to [0, 1]
 	{
 		r = Funcs::clamp(r);
 		g = Funcs::clamp(g);
@@ -236,6 +227,6 @@ struct RGB : public Vec<double>        // RGB Vector
 typedef RGB Color;            // intrinsic color of an object
 typedef RGB Emission;        // RGB emission of an object
 
-#define DEG * 0.0174532925199432957692369076848861271    // degree to rad
+#define DEG 0.0174532925199432957692369076848861271    // degree to rad
 
-#endif //PHAROSA_VEC_HPP
+#endif //PHAROSA_VEC_H

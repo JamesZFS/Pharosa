@@ -6,7 +6,7 @@
 #define PHAROSA_OBJECT_H
 
 #include "../lib.h"
-#include "../Vec.hpp"
+#include "../Vec.h"
 #include "../Ray.hpp"
 
 // base class of 3D object

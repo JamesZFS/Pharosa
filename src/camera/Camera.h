@@ -7,7 +7,7 @@
 
 #include "../lib.h"
 #include "../Ray.hpp"
-#include "../Vec.hpp"
+#include "../Vec.h"
 
 #define rankOf(i, j) ((j) * width + (i))
 #define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)

@@ -4,11 +4,13 @@
 
 #include "src/lib.h"
 #include "src/utils/solvers/Linear.h"
+#include "src/utils/funcs.hpp"
+#include "src/Vec.h"
 
 namespace Test
 {
 
-	void testLinear()
+	void linear()
 	{
 		using namespace std;
 		using namespace Linear;
@@ -52,4 +54,26 @@ namespace Test
 		}
 	}
 
+	void coordinateConvert()
+	{
+		auto d = Dir(0, 2, 0);
+		auto ea = d.getEulerAngles();
+		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		assert(ea.x == M_PI_2 && ea.y == 0 && ea.z == M_PI_2);
+
+		d = Dir(1, 1, 0);
+		ea = d.getEulerAngles();
+		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		assert(ea.x == M_PI_4 && ea.y == 0 && ea.z == M_PI_2);
+
+		d = Dir(0, 0, 5);
+		ea = d.getEulerAngles();
+		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		assert(ea.y == 0 && ea.z == 0);
+
+		d = Dir(0, 0, -5);
+		ea = d.getEulerAngles();
+		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		assert(ea.y == 0 && ea.z == M_PI);
+	}
 }

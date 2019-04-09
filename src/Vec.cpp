@@ -2,10 +2,11 @@
 // Created by James on 2019/4/9.
 //
 
-#include "Vec.hpp"
+#include "Vec.h"
 
 // common Pos
 const Pos Pos::ORIGIN(0, 0, 0);
+
 // common ElAg
 const ElAg ElAg::NONROT(0, 0, 0);
 
@@ -24,3 +25,19 @@ const Emission
 		Emission::GLOW(0.5, 0.5, 0.5),
 		Emission::BRIGHT(1.0, 1.0, 1.0),
 		Emission::SPLENDID(5.0, 5.0, 5.0);
+
+Pos &Pos::rotate(const ElAg &ea)
+{
+	rotateAlongY(ea.gamma);
+	rotateAlongX(ea.beta);
+	rotateAlongZ(ea.alpha);
+	return *this;
+}
+
+void Dir::getOrthogonalBasis(Dir &ex, Dir &ey) const
+{
+	ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
+	ey = *this ^ ex;
+	ex.unitize();
+	ey.unitize();
+}

@@ -9,6 +9,7 @@
 #include "Sphere.h"
 #include "Triangle.h"
 #include "InfPlane.h"
+#include "Cube.h"
 #include "MeshObj.h"
 
 #endif //PHAROSA_SCENE_ALL_H

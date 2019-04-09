@@ -12,8 +12,8 @@ struct Cube : Object
 {
 	InfPlane f[6];	// 6 faces
 
-	Cube(const InfPlane f_[6], const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
-			 Object::ReflType refl_type_);
+	Cube(const InfPlane f_[6], const Pos &pos_, const Color &color_, const Emission &emission_,
+		 const ElAg &euler_angles_, Object::ReflType refl_type_);
 
 	void applyTransform() override;
 

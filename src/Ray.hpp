@@ -5,7 +5,7 @@
 #ifndef PHAROSA_RAY_HPP
 #define PHAROSA_RAY_HPP
 
-#include "Vec.hpp"
+#include "Vec.h"
 
 // ray definition
 struct Ray
