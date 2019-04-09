@@ -19,6 +19,6 @@ public:
 
 };
 
-#include "RayTracing.tpp"
+#include "RayTracing.tcc"
 
 #endif //PHAROSA_RAYTRACING_H

@@ -68,6 +68,6 @@ public:
 	void save(const String &out_path);
 };
 
-#include "Renderer.tpp"
+#include "Renderer.tcc"
 
 #endif //PHAROSA_RENDERER_HPP

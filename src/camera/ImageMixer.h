@@ -14,6 +14,8 @@ public:
 	ImageMixer(unsigned int width_ = 1024, unsigned int height_ = 768);
 
 	Ray shootRayAt(double i, double j, double sigma) const override;
+
+	Ray shootRayAt(double i, double j) const override;
 };
 
 #endif //PHAROSA_IMAGEMIXER_H

@@ -5,7 +5,7 @@
  */
 
 #include "src/Renderer.hpp"
-//#include "test.cpp"
+#include "test.cpp"
 
 using namespace std;
 
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 	new Sphere(Pos(50, -1e5 + 81.6,81.6),  1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Top
 	new Sphere(Pos(27, 16.5, 47),          16.5, Color::WHITE * .999,  Emission::NONE, Object::SPEC),//Mirr
 	ball,	//Glas
+	new Triangle(Pos::ORIGIN, new Pos[3]{Pos(20, 0, 100), {80, 0, 100}, {50, 80, 80}}, {0.6, 0.4, 0.5}, Emission::NONE, ElAg::NONROT, Object::REFR),
 	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
@@ -41,9 +42,9 @@ int main(int argc, char *argv[])
 
 	Renderer<RayTracing<>, BasicCamera> renderer;
 	renderer.setupStage();
-	renderer.stage().fromObjectList(ObjectList(p, p + 8));
+	renderer.stage().fromObjectList(ObjectList(p, p + sizeof(p) / sizeof(Object *)));
 
-	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG, 0), 1024, 768);
+	renderer.setupCamera(Pos(50, 52, 285.6), ElAg(0, M_PI - 2.5 DEG), 1024, 768);
 
 	renderer.start(n_epoch, 0);
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");

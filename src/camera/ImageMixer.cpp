@@ -13,3 +13,9 @@ Ray ImageMixer::shootRayAt(double i, double j, double sigma) const
 	warn("Error: invalid use of ImageMixer::shootRayAt.\n");
 	exit(1);
 }
+
+Ray ImageMixer::shootRayAt(double i, double j) const
+{
+	warn("Error: invalid use of ImageMixer::shootRayAt.\n");
+	exit(1);
+}

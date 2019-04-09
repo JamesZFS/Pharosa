@@ -12,7 +12,7 @@ struct Triangle : public Object
 	Pos p[3];    // Three points in Object coordinate sys
 	Pos gp[3];    // points in Global coordinate sys
 	Dir n;		// normal vector, in Global coordinate sys
-	double cache_M[3][4];	// cache of M (for computing intersection)
+//	double _A[3][3], _b[3], _x[3];	// cache for computing intersection
 
 	Triangle(const Pos &pos_, const Pos p_[3], const Color &color_, const Emission &emission_ = {0, 0, 0},
 			 const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);

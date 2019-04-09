@@ -15,6 +15,8 @@ public:
 
 	Ray shootRayAt(double i, double j, double sigma) const override;
 
+	Ray shootRayAt(double i, double j) const override;
+
 	static double PIXEL_SIZE, FOCUS;
 };
 

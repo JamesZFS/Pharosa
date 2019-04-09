@@ -23,6 +23,10 @@ namespace Linear
 
 	// solve 3 dim linear eqls, fastest version
 	bool Solve3D(double (&A)[3][3], double (&b)[3], double (&x)[3]);
+
+	bool Solve3D(double (&A)[3][3], double (&b)[3], double &x0, double &x1, double &x2);
 }
+
+#include "Linear.tcc"
 
 #endif //PHAROSA_LINEAR_H

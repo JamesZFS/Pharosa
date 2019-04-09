@@ -85,11 +85,11 @@ struct Vec
 	inline T mean() const
 	{ return (x + y + z) / 3; }
 
-	inline void putToArray(T *dst) const    // output to `dst`: an array of T
+	inline void putToArray(T *dst, unsigned int step = 1) const    // output to `dst`: an array of T
 	{
-		dst[0] = x;
-		dst[1] = y;
-		dst[2] = z;
+		*(dst) = x;
+		*(dst += step) = y;
+		*(dst + step) = z;
 	}
 
 	void report(bool endl = false) const
@@ -161,7 +161,7 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	Pos &rotate(const ElAg &ea)    // Euler rotation, in place
 	{
-		rotateAlongZ(ea.gamma);
+		rotateAlongY(ea.gamma);
 		rotateAlongX(ea.beta);
 		rotateAlongZ(ea.alpha);
 		return *this;

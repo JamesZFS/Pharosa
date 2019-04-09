@@ -36,7 +36,7 @@ namespace Funcs
 
 	inline double randfNormal(double mu, double sigma)
 	{
-		return (sigma == 0) ? mu : mu + sigma * normal_distribution(generator);
+		return mu + sigma * normal_distribution(generator);
 	}
 
 	// staircase function Real -> [0, 1]

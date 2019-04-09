@@ -35,18 +35,19 @@ void Triangle::applyTransform()
 bool Triangle::intersect(const Ray &ray, double &t) const
 {
 	// solve Ro + t Rd = (1 - beta - gamma) P0 + beta P1 + gamma P2
-	double M[3][4] = {
-			{ray.dir.x, gp[0].x - gp[1].x, gp[0].x - gp[2].x, gp[0].x - ray.org.x},
-			{ray.dir.y, gp[0].y - gp[1].y, gp[0].y - gp[2].y, gp[0].y - ray.org.y},
-			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z, gp[0].z - ray.org.z},
-	};
+//	double M[3][4] = {
+//			{ray.dir.x, gp[0].x - gp[1].x, gp[0].x - gp[2].x, gp[0].x - ray.org.x},
+//			{ray.dir.y, gp[0].y - gp[1].y, gp[0].y - gp[2].y, gp[0].y - ray.org.y},
+//			{ray.dir.z, gp[0].z - gp[1].z, gp[0].z - gp[2].z, gp[0].z - ray.org.z},
+//	};
+	double A[3][3], b[3], beta, gamma;
+	ray.dir.putToArray(&A[0][0], 3);
+	(gp[0] - gp[1]).putToArray(&A[0][1], 3);
+	(gp[0] - gp[2]).putToArray(&A[0][2], 3);
+	(gp[0] - ray.org).putToArray(b);
 
-	if (Linear::SolveInPlace(M)) {    // solvable and has only root	todo use 3D
-		t = M[0][3];
-		double beta = M[1][3], gamma = M[2][3];
+	if (Linear::Solve3D(A, b, t, beta, gamma)) {    // solvable and has only root	todo use 3D
 		return (t > EPS && 0 <= beta && beta <= 1 && 0 <= gamma && gamma <= 1 && beta + gamma <= 1);
-		// valid intersection
 	}
-	// cannot solve or root is not unique
-	return false;
+	return false;    // cannot solve or root is not unique
 }
