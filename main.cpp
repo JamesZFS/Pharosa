@@ -23,19 +23,20 @@ int main(int argc, char *argv[])
 
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
-	ball = new Sphere(Pos(73, 16.5, 78), 16.5, Color::WHITE * .999, Emission::NONE, Object::REFR);
+	ball = new Sphere(16.5, Pos(73, 16.5, 78), Color::WHITE * .999, Emission::NONE, ElAg(), Object::REFR);
 
 	Object *p[] = {
-	new Sphere(Pos(1e5 + 1, 40.8, 81.6),   1e5,  Color(.75, .25, .25), Emission::NONE, Object::DIFF),//Left
-	new Sphere(Pos(-1e5 + 99, 40.8, 81.6), 1e5,  Color(.25, .25, .75), Emission::NONE, Object::DIFF),//Rght
-	new Sphere(Pos(50, 40.8, 1e5),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Back
-//	new Sphere(Pos(50, 40.8, -1e5 + 170),  1e5,  Color(),              Emission::NONE, Object::DIFF),//Frnt
-	new Sphere(Pos(50, 1e5, 81.6),         1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Botm
-	new Sphere(Pos(50, -1e5 + 81.6,81.6),  1e5,  Color(.75, .75, .75), Emission::NONE, Object::DIFF),//Top
-	new Sphere(Pos(27, 16.5, 47),          16.5, Color::WHITE * .999,  Emission::NONE, Object::SPEC),//Mirr
+	new Sphere(1e5, Pos(1e5 + 1, 40.8, 81.6), 	Color(.75, .25, .25), 	Emission::NONE, ElAg(), Object::DIFF),//Left
+	new Sphere(1e5, Pos(-1e5 + 99, 40.8, 81.6), Color(.25, .25, .75), 	Emission::NONE, ElAg(), Object::DIFF),//Rght
+	new Sphere(1e5, Pos(50, 40.8, 1e5), 		Color(.75, .75, .75),	Emission::NONE, ElAg(), Object::DIFF),//Back
+//	new Sphere(Pos(50, 40.8, -1e5 + 170),  1e5,  Color(),              	Emission::NONE, Object::DIFF),//Frnt
+	new Sphere(1e5, Pos(50, 1e5, 81.6), 		Color(.75, .75, .75),	Emission::NONE, ElAg(), Object::DIFF),//Botm
+	new Sphere(1e5, Pos(50, -1e5 + 81.6, 81.6), Color(.75, .75, .75), 	Emission::NONE, ElAg(), Object::DIFF),//Top
+	new Sphere(16.5, Pos(27, 16.5, 47), 		Color::WHITE * .999, 	Emission::NONE, ElAg(), Object::SPEC),//Mirr
 	ball,	//Glas
-	new Triangle(Pos::ORIGIN, new Pos[3]{Pos(20, 0, 100), {80, 0, 100}, {50, 80, 80}}, {0.6, 0.4, 0.5}, Emission::NONE, ElAg::NONROT, Object::REFR),
-	new Sphere(Pos(50, 681.6 - .27, 81.6), 600,  Color::BLACK,   Emission(12, 12, 12), Object::DIFF) //Lite
+	new Triangle(new Pos[3]{Pos(20, 0, 100), {80, 0, 100}, {50, 80, 80}}, Pos::ORIGIN, {0.6, 0.4, 0.5}, Emission::NONE,
+				 ElAg::NONROT, Object::REFR),
+	new Sphere(600, Pos(50, 681.6 - .27, 81.6), Color::BLACK, 			Emission(12, 12, 12), ElAg(), Object::DIFF) //Lite
 	};
 
 	RayCasting::LIGHT_DIR = Dir(1, -1, -1);

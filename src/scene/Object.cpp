@@ -4,6 +4,11 @@
 
 #include "Object.h"
 
+Object::Object()
+{
+	reft = DIFF;
+}
+
 Object::Object(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
 			   ReflType refl_type_) :
 		pos(pos_), color(color_), emi(emission_), ea(euler_angles_), reft(refl_type_)

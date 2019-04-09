@@ -18,30 +18,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/camera/Camera.inl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scene/Cube.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scene/Cube.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/is_edge.ppm" beforeDir="false" afterPath="$PROJECT_DIR$/is_edge.ppm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Renderer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Renderer.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.tcc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vec.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vec.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/Algorithm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/Algorithm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.tcc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/Camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/ImageMixer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/ImageMixer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/ImageMixer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/ImageMixer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/OrthographicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/OrthographicCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/OrthographicCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/OrthographicCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/InfPlane.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/InfPlane.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Object.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Object.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Object.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Sphere.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Sphere.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Sphere.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Sphere.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Triangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Triangle.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Triangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Triangle.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/funcs.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/funcs.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/Linear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/Linear.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/Linear.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/Linear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/parser/ObjParser.hpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -191,12 +182,12 @@
         <counts>
           <entry key="Makefile" value="22" />
           <entry key="cmake" value="1" />
-          <entry key="cpp" value="275" />
+          <entry key="cpp" value="288" />
           <entry key="gitignore" value="1" />
-          <entry key="h" value="295" />
+          <entry key="h" value="317" />
           <entry key="hpp" value="71" />
           <entry key="inl" value="3" />
-          <entry key="ppm" value="24" />
+          <entry key="ppm" value="26" />
           <entry key="tcc" value="1" />
           <entry key="tpp" value="7" />
           <entry key="txt" value="18" />
@@ -205,20 +196,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="19" />
-          <entry key="Image" value="24" />
+          <entry key="Image" value="26" />
           <entry key="Makefile" value="22" />
-          <entry key="ObjectiveC" value="651" />
+          <entry key="ObjectiveC" value="686" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="305" />
-          <entry key="cpp" value="13617" />
-          <entry key="h" value="4579" />
+          <entry key="cpp" value="13886" />
+          <entry key="h" value="4777" />
           <entry key="hpp" value="3709" />
           <entry key="inl" value="3" />
-          <entry key="mm" value="231" />
+          <entry key="mm" value="237" />
           <entry key="tcc" value="17" />
           <entry key="tpp" value="11" />
           <entry key="txt" value="815" />
@@ -229,7 +220,7 @@
           <entry key="CMakeLists.txt" value="815" />
           <entry key="Doxygen file" value="7" />
           <entry key="Makefile" value="305" />
-          <entry key="ObjectiveC" value="22160" />
+          <entry key="ObjectiveC" value="22633" />
         </counts>
       </usages-collector>
     </session>
@@ -238,13 +229,79 @@
     <favorites_list name="RayTracker" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test image.ppm">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.55293274">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/main.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="35">
+                  <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#243#270#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/scene/Cube.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="84">
+                  <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/scene/Cube.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="182">
+                  <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+                  <folding>
+                    <element signature="e#87#106#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/scene/InfPlane.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="278">
+                  <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+                  <folding>
+                    <element signature="e#40#61#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/scene/Triangle.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="252">
+                  <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -256,7 +313,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>0.33</find>
       <find>clamp</find>
       <find>radiance</find>
       <find>SUB_PIXEL_SIZE</find>
@@ -286,6 +342,7 @@
       <find>Cameras_Type</find>
       <find>rotate</find>
       <find>shootRayAt</find>
+      <find>0</find>
     </findStrings>
     <replaceStrings>
       <replace>T</replace>
@@ -312,6 +369,7 @@
       <replace>PHAROSA_LINEAR_CPP</replace>
       <replace>PHAROSA_ALGORITHM_H</replace>
       <replace>Camera_Type</replace>
+      <replace>1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -320,20 +378,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/scene/InfPlane.h" />
-        <option value="$PROJECT_DIR$/src/camera/Camera.cpp" />
-        <option value="$PROJECT_DIR$/Makefile" />
-        <option value="$PROJECT_DIR$/src/Renderer.h" />
-        <option value="$PROJECT_DIR$/src/Vec.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/funcs.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/Linear.h" />
         <option value="$PROJECT_DIR$/src/utils/Linear.cpp" />
         <option value="$PROJECT_DIR$/src/lib.h" />
         <option value="$PROJECT_DIR$/src/utils/Solvers.h" />
         <option value="$PROJECT_DIR$/src/utils/numerical/Linear.h" />
         <option value="$PROJECT_DIR$/src/utils/numerical/Linear.cpp" />
         <option value="$PROJECT_DIR$/test.cpp" />
-        <option value="$PROJECT_DIR$/src/scene/Object.h" />
         <option value="$PROJECT_DIR$/src/scene/Stage.h" />
         <option value="$PROJECT_DIR$/src/scene/Stage.cpp" />
         <option value="$PROJECT_DIR$/src/utils/parser/JsonParser.cpp" />
@@ -362,15 +412,23 @@
         <option value="$PROJECT_DIR$/src/camera/OrthographicCamera.h" />
         <option value="$PROJECT_DIR$/src/camera/OrthographicCamera.cpp" />
         <option value="$PROJECT_DIR$/src/alg/Algorithm.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/src/Vec.hpp" />
-        <option value="$PROJECT_DIR$/src/scene/Triangle.h" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/scene/Triangle.cpp" />
         <option value="$PROJECT_DIR$/src/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.cpp" />
+        <option value="$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/objects/plane.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Triangle.h" />
+        <option value="$PROJECT_DIR$/src/scene/InfPlane.h" />
+        <option value="$PROJECT_DIR$/src/scene/Object.h" />
+        <option value="$PROJECT_DIR$/src/scene/Object.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Cube.h" />
+        <option value="$PROJECT_DIR$/src/scene/Cube.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Sphere.h" />
+        <option value="$PROJECT_DIR$/src/scene/Sphere.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Triangle.cpp" />
       </list>
     </option>
   </component>
@@ -544,6 +602,10 @@
               <item name="utils" type="462c0819:PsiDirectoryNode" />
               <item name="solvers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Pharosa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -556,7 +618,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -580,7 +642,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Pharosa">
-    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="2000" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
+    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -621,12 +683,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Pharosa" />
-      <item itemvalue="Application.PharosaLib" />
       <item itemvalue="Makefile.Compare" />
       <item itemvalue="Makefile.Run" />
       <item itemvalue="Makefile.Build" />
       <item itemvalue="Makefile.Clean" />
+      <item itemvalue="Application.Pharosa" />
+      <item itemvalue="Application.PharosaLib" />
       <item itemvalue="Makefile.Makefile" />
     </list>
     <recent_temporary>
@@ -654,12 +716,12 @@
       <workItem from="1554439893867" duration="33321000" />
       <workItem from="1554517120506" duration="30229000" />
       <workItem from="1554724423472" duration="27000" />
-      <workItem from="1554737398159" duration="21424000" />
+      <workItem from="1554737398159" duration="23629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176271000" />
+    <option name="totallyTimeSpent" value="178476000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -672,13 +734,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49598393" visible="true" weight="0.20243205" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49598393" weight="0.20243205" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50401604" side_tool="true" weight="0.13876967" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32771084" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2807229" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2807229" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -747,105 +810,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/smallpt.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Solvers.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding>
-            <element signature="e#40#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Stage.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parser/JsonParser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parser/JsonParser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/All.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#121#140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/All.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#93#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/InfPlane.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fasd.tpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera/All.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -934,9 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/is_edge.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera/ImageMixer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1019,23 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Triangle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="47" column="60" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
-          <folding>
-            <element signature="e#91#110#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/image.ppm">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1060,30 +1004,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="e#243#270#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-          <folding>
-            <element signature="e#40#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1129,8 +1053,152 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/is_edge.ppm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin17.7.0/8.3.0/include-fixed/math.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="773" column="14" selection-start-line="773" selection-start-column="14" selection-end-line="773" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test image.ppm">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/core/vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/core/object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="35" column="14" lean-forward="true" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/objects/plane.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/core/vector.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../RayTracing-ProgressivePhotonMapping-master/objects/plane.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/InfPlane.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Sphere.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+          <folding>
+            <element signature="e#91#110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Sphere.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/学习/大二下学习资料学习部/图形学/2014011426_邵韵秋/raytracing/ConsoleApplication1/ConsoleApplication1/Cube.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Triangle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Triangle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#243#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/InfPlane.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Cube.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Cube.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#87#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

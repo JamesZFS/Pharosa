@@ -8,6 +8,7 @@ in 'src/', found sources:
 	camera/DOFCamera.cpp
 	camera/ImageMixer.cpp
 	camera/OrthographicCamera.cpp
+	scene/Cube.cpp
 	scene/InfPlane.cpp
 	scene/MeshObj.cpp
 	scene/Object.cpp

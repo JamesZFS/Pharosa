@@ -12,6 +12,8 @@ struct InfPlane : public Object
 {
 	Dir n;	// normal vector, in Global coordinate sys, default towards ez
 
+	InfPlane() = default;
+
 	InfPlane(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
 			 ReflType refl_type_);
 

@@ -48,7 +48,7 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 				p[1] = v[--b];
 				p[2] = v[--c];
 				// todo multicolor, emission, texture support
-				meshes.push_back(new Triangle(pos, p, color, emission, euler_angles, refl_type));
+				meshes.push_back(new Triangle(p, pos, color, emission, euler_angles, refl_type));
 				break;
 
 			default:
