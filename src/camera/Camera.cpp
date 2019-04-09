@@ -93,4 +93,5 @@ void Camera::rotate(const ElAg &euler_angles)
 	(ex = Dir::X_AXIS).rotate(euler_angles).rotate(ea);
 	(ey = Dir::Y_AXIS).rotate(euler_angles).rotate(ea);
 	(ez = Dir::Z_AXIS).rotate(euler_angles).rotate(ea);
+	ea = ez.getEulerAngles();
 }

@@ -32,7 +32,6 @@ Object &Object::translate(const Pos &delta)
 
 Object &Object::rotate(const ElAg &dea)
 {
-	ea += dea;
 	applyTransform();
 	return *this;
 }

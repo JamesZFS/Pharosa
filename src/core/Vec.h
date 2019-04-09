@@ -164,6 +164,9 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	Pos &rotate(const ElAg &ea);    // Euler rotation, in place. Z -> X -> Y
 
+//	inline Pos rotate(const ElAg &ea)
+//	{ return Pos(*this).rotateInPlace(ea); }
+
 	static const Pos ORIGIN;
 };
 
@@ -190,7 +193,7 @@ struct Dir : public Pos        // direction, unitized vector
 
 	void getOrthogonalBasis(Dir &ex, Dir &ey) const;   // get orthogonal axis (ex, ey) from ez
 
-	inline ElAg getEulerAngles() const  // get euler angles according to vector
+	inline ElAg getEulerAngles() const  // get euler angles according to vector, assuming original dir of this is (0, 0, 1)
 	{ return {atan2(y, x), 0, atan2(sqrt(x * x + y * y), z)}; }
 
 	const static Dir X_AXIS, Y_AXIS, Z_AXIS;

@@ -44,7 +44,7 @@ void Algorithm::render(unsigned int n_epoch, unsigned int prev_epoch, const Stri
 				}
 			}
 		}
-		if (checkpoint) {    // save checkpoints
+		if (checkpoint && (epoch - prev_epoch) % 500 == 0) {    // save checkpoints every 500 epochs
 			Buffer out_path;
 			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + 1);
 			camera.writePPM(out_path);

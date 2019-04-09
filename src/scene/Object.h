@@ -37,7 +37,7 @@ struct Object
 
 	Object &translate(const Pos &delta);
 
-	Object &rotate(const ElAg &dea);
+	virtual Object &rotate(const ElAg &dea);
 
 	// interfaces:
 	virtual void applyTransform() = 0;    // re-apply transform from obj crd to global crd

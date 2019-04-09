@@ -4,15 +4,18 @@
 
 #include "Cube.h"
 
-Cube::Cube(const Dir n_[3], const Pos p_[3][2], const Pos &pos_, const Color &color_, const Emission &emission_,
+Cube::Cube(Dir n_[3], const Pos p_[3][2], const Pos &pos_, const Color &color_, const Emission &emission_,
 		   const ElAg &euler_angles_, Object::ReflType refl_type_) :
 		   Object(pos_, color_, emission_, euler_angles_, refl_type_)
 {
 	for (int i = 0; i < 3; ++i) {
+		n_[i].rotate(euler_angles_);
 		p[i][0] = p_[i][0];	// cache
 		p[i][1] = p_[i][1];
 		slab[i][0] = InfPlane(n_[i], pos + p[i][0], color, emi, reft);	// notice slab.pos is global crd
 		slab[i][1] = InfPlane(n_[i], pos + p[i][1], color, emi, reft);
+		slab[i][0].rotate(ea);	// todo problematic
+		slab[i][1].rotate(ea);
 	}
 }
 
@@ -29,7 +32,9 @@ bool Cube::intersect(const Ray &ray, double &t) const
 	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
 	for (const auto &s : slab) {
 		dn = ray.dir % s[0].n;	// d.n
-		if (fabs(dn) < EPS) continue;	// no intersection
+		if (fabs(dn) < EPS) { // parallel to some face
+			if (s[0].relationWith(ray.org) == s[1].relationWith(ray.org)) return false; //and outside the cube
+		}
 
 		// assert: s[0].n == s[1].n
 		ti_min = (s[0].pos - ray.org) % s[0].n / dn;

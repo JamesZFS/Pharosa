@@ -17,3 +17,10 @@ InfPlane::InfPlane(const Dir &n_, const Pos &pos_, const Color &color_, const Em
 		Object(pos_, color_, emission_, n_.getEulerAngles(), refl_type_), n(n_)
 {
 }
+
+Object &InfPlane::rotate(const ElAg &dea)
+{
+	(n = Dir::Z_AXIS).rotate(dea).rotate(ea);
+	ea = n.getEulerAngles();
+	return *this;
+}

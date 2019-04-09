@@ -6,6 +6,7 @@
 #define PHAROSA_INFPLANE_H
 
 #include "Object.h"
+#include "../utils/funcs.hpp"
 
 // infinitively large plane. Described by one point and normal vec
 struct InfPlane : public Object
@@ -21,6 +22,8 @@ struct InfPlane : public Object
 	InfPlane(const Dir &n_, const Pos &pos_, const Color &color_, const Emission &emission_,
 			 ReflType refl_type_);
 
+	Object &rotate(const ElAg &dea) override;
+
 	inline void applyTransform() override
 	{ (n = Dir::Z_AXIS).rotate(ea); }
 
@@ -35,6 +38,9 @@ struct InfPlane : public Object
 
 	inline bool hasSurfacePoint(const Pos &x) const override
 	{ return fabs((x - pos) % n) < EPS; }
+
+	inline int relationWith(const Pos &x) const	// +1, -1, 0(on plane)
+	{ return Funcs::sgn((x - pos) % n); }
 };
 
 #endif //PHAROSA_INFPLANE_H

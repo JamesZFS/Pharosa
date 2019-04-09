@@ -45,6 +45,11 @@ namespace Funcs
 		return x < 0 ? 0 : x > 1 ? 1 : x;
 	}
 
+	inline int sgn(double x)
+	{
+		return (x > EPS ? 1 : (x < -EPS ? -1 : 0));
+	}
+
 	// to unsigned char [0 - 255], using gamma correction
 #define C_GAMMA 0.45454545454545 // 1 / 2.2
 #define C_1_GAMMA 2.2 // 2.2 / 1
