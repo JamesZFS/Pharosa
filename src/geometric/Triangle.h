@@ -5,16 +5,15 @@
 #ifndef PHAROSA_TRIANGLE_H
 #define PHAROSA_TRIANGLE_H
 
-#include "../scene/Object.h"
+#include "Geometry.h"
 
-struct Triangle : public Object
+struct Triangle : Geometry
 {
 	Pos p[3];    // Three points in Object coordinate sys
 	Pos gp[3];    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 
-	Triangle(const Pos p_[3], const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
-			 const ElAg &euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
+	Triangle(const Pos p_[3], const Pos &pos_, const ElAg &euler_angles_);
 
 	void applyTransform() override;    // calculate gp according to p
 

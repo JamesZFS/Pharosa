@@ -5,42 +5,38 @@
 #ifndef PHAROSA_INFPLANE_H
 #define PHAROSA_INFPLANE_H
 
-#include "../scene/Object.h"
+#include "Geometry.h"
 #include "../utils/funcs.hpp"
 
 // infinitively large plane. Described by one point and normal vec
-struct InfPlane : public Object
+struct InfPlane : Geometry
 {
-	Dir n;	// normal vector, in Global coordinate sys, default towards ez
+	Pos p; 	// a point on infplane
+	Dir n_org, n;    // normal vector, in Global coordinate sys, default towards ez
 
-	InfPlane() = default;
+	InfPlane();
 
-	InfPlane(const Pos &pos_, const Color &color_, const Emission &emission_, const ElAg &euler_angles_,
-			 ReflType refl_type_);
+	InfPlane(const Pos &p_, const ElAg &euler_angles_);
 
 	// construct by specifying normal
-	InfPlane(const Dir &n_, const Pos &pos_, const Color &color_, const Emission &emission_,
-			 ReflType refl_type_);
+	InfPlane(const Dir &n_, const Pos &p_);
 
-	Object &rotate(const ElAg &dea) override;
-
-	inline void applyTransform() override
-	{ (n = Dir::Z_AXIS).rotate(ea); }
+	void applyTransform() override;
 
 	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - pos) % normal == 0
 	{
 		double dn = ray.dir % n;
-		return (fabs(dn) < EPS ? false : ((t = (pos - ray.org) % n / dn) > EPS));
+		return (fabs(dn) < EPS ? false : ((t = (p - ray.org) % n / dn) > EPS));
 	}
 
 	inline Dir normalAt(const Pos &x) const override
 	{ return n; }
 
 	inline bool hasSurfacePoint(const Pos &x) const override
-	{ return fabs((x - pos) % n) < EPS; }
+	{ return fabs((x - p) % n) < EPS; }
 
-	inline int relationWith(const Pos &x) const	// +1, -1, 0(on plane)
-	{ return Funcs::sgn((x - pos) % n); }
+	inline int relationWith(const Pos &x) const    // +1, -1, 0(on plane)
+	{ return Funcs::sgn((x - p) % n); }
 };
 
 #endif //PHAROSA_INFPLANE_H

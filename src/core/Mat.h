@@ -28,17 +28,17 @@ struct Mat    // 3D matrix
 	inline T at(unsigned int i, unsigned int j) const    // getter
 	{ return el[i][j]; }
 
-	Mat<T> operator+(Mat<T> B) const;    // pls mul
+	Mat<T> operator+(const Mat<T> &B) const;    // pls mul
 
-	Mat<T> operator+=(Mat<T> B);    // pls mul in place
+	Mat<T> operator+=(const Mat<T> &B);    // pls mul in place
 
-	Mat<T> operator*(Mat<T> B) const;   // mat mul
+	Mat<T> operator*(const Mat<T> &B) const;   // mat mul
 
-	Mat<T> &operator*=(Mat<T> B);    // mat mul in place
+	Mat<T> &operator*=(const Mat<T> &B);    // mat mul in place
 
 	Mat<T> operator*(T k) const;    // mul number
 
-	inline Vec<T> operator*(Vec<T> b) const;    // mul vector
+	inline Vec<T> operator*(const Vec<T> &b) const;    // mul vector
 
 	void report() const;
 };
@@ -55,21 +55,21 @@ struct TransMat
 	Pos tra;    // translation vector
 	Mat<double> rot;    // rotation matrix
 
-	TransMat();
+	TransMat();			// identical transformation
 
-	TransMat(const Pos &delta);    // translate
+	TransMat(const Pos &delta);    // pure translate
 
-	TransMat(const ElAg &ea);    // init from ea: Rz.Rx.Ry
+	TransMat(const ElAg &ea);    	// pure rotate: Rz.Rx.Ry
 
-	TransMat(const Pos &delta, const ElAg &ea);
+	TransMat(const Pos &delta, const ElAg &ea);	// rotate then translate
 
 	TransMat(const Vec<double> &tra_, const Mat<double> &rot_);
 
-	TransMat &operator*=(TransMat B);    // mat mul
+	TransMat &operator*=(const TransMat &B);    // mat mul
 
-	TransMat operator*(TransMat B) const;    // mat mul
+	TransMat operator*(const TransMat &B) const;    // mat mul
 
-	inline Vec<double> operator*(Vec<double> x) const    // apply transform to a vec
+	inline Vec<double> operator*(const Vec<double> &x) const    // apply transform to a vec
 	{ return tra + rot * x; }
 
 	void report() const;

@@ -4,15 +4,14 @@
 
 #include "Sphere.h"
 
-Sphere::Sphere(double radius_, const Pos &pos_, const Color &color_, const Emission &emission_, ElAg euler_angles_,
-			   ReflType refl_type_) :
-		Object(pos_, color_, emission_, euler_angles_, refl_type_), rad(radius_), rad_2(radius_ * radius_)
+Sphere::Sphere(double radius_, const Pos &pos_, ElAg euler_angles_) :
+		Geometry(pos_, euler_angles_), pos(pos_), rad(radius_), rad_2(radius_ * radius_)
 {
 }
 
 void Sphere::applyTransform()
 {
-	// texture rotation?
+	pos = mat.tra;
 }
 
 bool Sphere::intersect(const Ray &ray, double &t) const

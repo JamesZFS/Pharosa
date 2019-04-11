@@ -33,14 +33,14 @@ TransMat::TransMat(const Vec<double> &tra_, const Mat<double> &rot_) : tra(tra_)
 {
 }
 
-TransMat &TransMat::operator*=(TransMat B)
+TransMat &TransMat::operator*=(const TransMat &B)
 {
 	tra += rot * B.tra;
 	rot *= B.rot;
 	return *this;
 }
 
-TransMat TransMat::operator*(TransMat B)const
+TransMat TransMat::operator*(const TransMat &B)const
 {
 	return {tra + rot * B.tra, rot * B.rot};
 }

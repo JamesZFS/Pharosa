@@ -36,10 +36,10 @@ void Stage::append(Object *object)
 	objects.push_back(object);
 }
 
-void Stage::appendMeshes(TriangleGroup meshes)
-{
-	objects.insert(objects.end(), meshes.begin(), meshes.end());
-}
+//void Stage::appendMeshes(TriangleGroup meshes)
+//{
+//	objects.insert(objects.end(), meshes.begin(), meshes.end());
+//}
 
 bool Stage::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const
 {
@@ -48,14 +48,14 @@ bool Stage::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal
 	double t = INF, s;	// intersection
 	hit = nullptr;
 	for (const Object *obj : objects) {
-		if (obj->intersect(ray, s) && s < t) {
+		if (obj->geo->intersect(ray, s) && s < t) {
 			t = s;
 			hit = obj;
 		}
 	}
 	if (hit == nullptr) return false;    // no intersection
 	x = ray.org + ray.dir * t;
-	normal = hit->normalAt(x);
+	normal = hit->geo->normalAt(x);
 	return true;
 }
 
@@ -66,7 +66,7 @@ const Object * Stage::hitOf(const Ray &ray) const
 	double t = INF, s;
 	const Object *hit = nullptr;
 	for (const Object *obj : objects) {
-		if (obj->intersect(ray, s) && s < t) {
+		if (obj->geo->intersect(ray, s) && s < t) {
 			t = s;
 			hit = obj;
 		}

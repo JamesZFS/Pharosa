@@ -10,6 +10,7 @@ template<typename T>
 Mat<T>::~Mat()
 {
 	delete[] el;
+//	debug("~Mat()\n");
 }
 
 template<typename T>
@@ -20,7 +21,7 @@ Mat<T>::Mat(T k)
 }
 
 template<typename T>
-Mat<T> Mat<T>::operator*(Mat<T> B) const
+Mat<T> Mat<T>::operator*(const Mat<T> &B) const
 {
 	Mat C;
 	C.el = new T[3][3];
@@ -37,9 +38,9 @@ Mat<T> Mat<T>::operator*(Mat<T> B) const
 }
 
 template<typename T>
-Mat<T> &Mat<T>::operator*=(Mat<T> B)
+Mat<T> &Mat<T>::operator*=(const Mat<T> &B)
 {
-	*this = std::move(*this * B);
+	*this = *this * B;
 	return *this;
 }
 
@@ -53,6 +54,7 @@ Mat<T>::Mat(const Mat &b)
 template<typename T>
 Mat<T> &Mat<T>::operator=(const Mat &b)
 {
+	delete[] el;
 	el = new double[3][3];
 	memcpy(el, b.el, 9 * sizeof(T));
 	return *this;
@@ -74,7 +76,7 @@ Mat<T> Mat<T>::operator*(T k) const
 }
 
 template<typename T>
-Vec<T> Mat<T>::operator*(Vec<T> b) const
+Vec<T> Mat<T>::operator*(const Vec<T> &b) const
 {
 	return {el[0][0] * b.x + el[0][1] * b.y + el[0][2] * b.z,
 			el[1][0] * b.x + el[1][1] * b.y + el[1][2] * b.z,
@@ -94,7 +96,7 @@ void Mat<T>::report() const
 }
 
 template<typename T>
-Mat<T> Mat<T>::operator+(Mat<T> B) const
+Mat<T> Mat<T>::operator+(const Mat<T> &B) const
 {
 	Mat C;
 	C.el = new T[3][3];
@@ -111,7 +113,7 @@ Mat<T> Mat<T>::operator+(Mat<T> B) const
 }
 
 template<typename T>
-Mat<T> Mat<T>::operator+=(Mat<T> B)
+Mat<T> Mat<T>::operator+=(const Mat<T> &B)
 {
 	el[0][0] += B.el[0][0];
 	el[0][1] += B.el[0][1];

@@ -5,9 +5,8 @@
 #include "Triangle.h"
 #include "../utils/solvers/Linear.h"
 
-Triangle::Triangle(const Pos p_[3], const Pos &pos_, const Color &color_, const Emission &emission_,
-				   const ElAg &euler_angles_, ReflType refl_type_) :
-		Object(pos_, color_, emission_, euler_angles_, refl_type_)
+Triangle::Triangle(const Pos p_[3], const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_)
 {
 	p[0] = p_[0];
 	p[1] = p_[1];
@@ -17,9 +16,9 @@ Triangle::Triangle(const Pos p_[3], const Pos &pos_, const Color &color_, const 
 
 void Triangle::applyTransform()
 {
-	(gp[0] = p[0]).rotate(ea) += pos;
-	(gp[1] = p[1]).rotate(ea) += pos;
-	(gp[2] = p[2]).rotate(ea) += pos;
+	gp[0] = mat * p[0];
+	gp[1] = mat * p[1];
+	gp[2] = mat * p[2];
 	(n = (gp[0] - gp[1]) ^ (gp[0] - gp[2])).unitize();
 }
 

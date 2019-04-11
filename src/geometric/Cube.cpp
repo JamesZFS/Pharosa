@@ -4,25 +4,23 @@
 
 #include "Cube.h"
 
-Cube::Cube(Dir n_[3], const Pos p_[3][2], const Pos &pos_, const Color &color_, const Emission &emission_,
-		   const ElAg &euler_angles_, Object::ReflType refl_type_) :
-		   Object(pos_, color_, emission_, euler_angles_, refl_type_)
+Cube::Cube(const Dir n_[3], const Pos p_[3][2], const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_)
 {
-	for (int i = 0; i < 3; ++i) {
-		n_[i].rotate(euler_angles_);
-		p[i][0] = p_[i][0];	// cache
+	for (int i = 0; i < 3; ++i) {	// cache
+		n[i] = n_[i];
+		p[i][0] = p_[i][0];
 		p[i][1] = p_[i][1];
-		slab[i][0] = InfPlane(n_[i], pos + p[i][0], color, emi, reft);	// notice slab.pos is global crd
-		slab[i][1] = InfPlane(n_[i], pos + p[i][1], color, emi, reft);
-		slab[i][0].rotate(ea);	// todo problematic
-		slab[i][1].rotate(ea);
 	}
+	applyTransform();
 }
 
 void Cube::applyTransform()
 {
 	for (int i = 0; i < 3; ++i) {
-		slab[i][0].replace(pos + p[i][0], ea);	// todo problematic ea
+		Dir ni = mat.rot * n[i];
+		slab[i][0] = InfPlane(ni, mat * p[i][0]);
+		slab[i][1] = InfPlane(ni, mat * p[i][1]);
 	}
 }
 
@@ -37,8 +35,8 @@ bool Cube::intersect(const Ray &ray, double &t) const
 		}
 
 		// assert: s[0].n == s[1].n
-		ti_min = (s[0].pos - ray.org) % s[0].n / dn;
-		ti_max = (s[1].pos - ray.org) % s[1].n / dn;
+		ti_min = (s[0].p - ray.org) % s[0].n / dn;
+		ti_max = (s[1].p - ray.org) % s[1].n / dn;
 		if (ti_max < ti_min) std::swap(ti_min, ti_max);
 
 		tmin = std::max(tmin, ti_min);

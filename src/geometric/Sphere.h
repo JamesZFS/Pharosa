@@ -5,14 +5,14 @@
 #ifndef PHAROSA_SPHERE_H
 #define PHAROSA_SPHERE_H
 
-#include "../scene/Object.h"
+#include "Geometry.h"
 
-struct Sphere : public Object
+struct Sphere : Geometry
 {
+	Pos pos;	// center
 	double rad, rad_2;	// radius, radius^2
 
-	Sphere(double radius_, const Pos &pos_, const Color &color_, const Emission &emission_ = {0, 0, 0},
-		   ElAg euler_angles_ = {0, 0, 0}, ReflType refl_type_ = DIFF);
+	Sphere(double radius_, const Pos &pos_, ElAg euler_angles_);
 
 	void applyTransform() override;
 

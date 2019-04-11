@@ -79,12 +79,6 @@ namespace Test
 		assert(ea.y == 0 && ea.z == M_PI);
 	}
 
-	void rotate()
-	{
-		auto p = InfPlane(Dir(1, 0, 0), Pos(0, 0, 0), {1, 1, 1}, {1, 1, 1}, Object::DIFF);
-		assert(p.ea == ElAg(0, 0, M_PI_2));
-	}
-
 	void onSurface()
 	{
 		auto t = Triangle(new Pos[3]{{10,  0,  0},
@@ -105,12 +99,10 @@ namespace Test
 					 {{0, 0, 0}, {0,  0,  50}}};
 		Pos tp[3]{Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}};
 
-		auto cube = Cube(d, cp, Pos(10, 30, 20),
-						 Color(0.5, 0.5, 0.8), Emission::NONE, ElAg(0, 10 * DEG, 0));
-		auto triangle = Triangle(tp, Pos(50, 0, 50), {0.8, 0.6, 0.5},
-								 Emission::NONE, ElAg::NONROT, Object::REFR);
-		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), Color::BLACK, Emission(12, 12, 12), ElAg(), Object::DIFF);
-		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0), Color(.75, .75, .75), Emission::NONE, Object::DIFF);
+		auto cube = Cube(d, cp, Pos(10, 30, 20), ElAg(0, 10 * DEG, 0));
+		auto triangle = Triangle(tp, Pos(50, 0, 50), ElAg::NONROT);
+		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg());
+		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0));
 
 		clock_t since = clock();
 		for (long long i = 0; i < N; ++i) {
@@ -169,6 +161,7 @@ namespace Test
 		A.report();
 		B.report();
 		(B * A).report();
+		debug("\n");
 		auto c = ((B * A) * Pos(0, 1, 0));
 		c.report(true);
 		assert(c == Pos(0, 1, 2));

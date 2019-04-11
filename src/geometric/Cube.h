@@ -5,17 +5,16 @@
 #ifndef PHAROSA_CUBE_H
 #define PHAROSA_CUBE_H
 
-#include "../scene/Object.h"
+#include "Geometry.h"
 #include "InfPlane.h"
 
-struct Cube : Object
+struct Cube : Geometry
 {
-	InfPlane slab[3][2];	// 3 slabs, 6 planes, each slap is two paralleled planes
+	Dir n[3];	// cache original normal
 	Pos p[3][2];			// local crd of 6 planes
+	InfPlane slab[3][2];	// 3 slabs, 6 planes, each slap is two paralleled planes
 
-	Cube(Dir n_[3], const Pos p_[3][2], const Pos &pos_, const Color &color_,
-		 const Emission &emission_ = {0, 0, 0}, const ElAg &euler_angles_ = {0, 0, 0},
-		 Object::ReflType refl_type_ = Object::DIFF);
+	Cube(const Dir n_[3], const Pos p_[3][2], const Pos &pos_, const ElAg &euler_angles_);
 
 	void applyTransform() override;
 

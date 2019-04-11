@@ -109,7 +109,7 @@ struct Vec
 	}
 };
 
-struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
+struct ElAg : Vec<double>    // Euler angles (alpha, beta, gamma)
 {
 	double &alpha, &beta, &gamma;
 
@@ -133,7 +133,7 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 	static const ElAg NONROT;
 };
 
-struct Pos : public Vec<double>    // 3D coordinate
+struct Pos : Vec<double>    // 3D coordinate
 {
 	Pos(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
 	{}
@@ -170,7 +170,7 @@ struct Pos : public Vec<double>    // 3D coordinate
 	static const Pos ORIGIN;
 };
 
-struct Dir : public Pos        // direction, unitized vector
+struct Dir : Pos        // direction, unitized vector
 {
 	Dir() = default;
 
@@ -199,7 +199,7 @@ struct Dir : public Pos        // direction, unitized vector
 	const static Dir X_AXIS, Y_AXIS, Z_AXIS;
 };
 
-struct RGB : public Vec<double>        // RGB Vector
+struct RGB : Vec<double>        // RGB Vector
 {
 	double &r, &g, &b;
 

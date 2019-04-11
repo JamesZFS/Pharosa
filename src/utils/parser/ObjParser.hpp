@@ -9,8 +9,8 @@
 #include "../../geometric/Triangle.h"
 #include "../../geometric/MeshObj.h"
 
-TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &pos, const Color &color, const Emission &emission,
-						  const ElAg &euler_angles, Object::ReflType refl_type)    // load mesh segments from objects file
+TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &pos,
+						  const ElAg &euler_angles)    // load mesh segments from objects file
 {
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
@@ -48,7 +48,7 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 				p[1] = v[--b];
 				p[2] = v[--c];
 				// todo multicolor, emission, texture support
-				meshes.push_back(new Triangle(p, pos, color, emission, euler_angles, refl_type));
+				meshes.push_back(new Triangle(p, pos, euler_angles));
 				break;
 
 			default:

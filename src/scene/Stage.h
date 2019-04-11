@@ -7,7 +7,7 @@
 
 #include "../lib.h"
 #include "../core/Ray.hpp"
-#include "../geometric/All.h"
+#include "Object.h"
 
 typedef List<Object *> ObjectList;
 
@@ -32,7 +32,7 @@ public:
 
 	void append(Object *object);	// append an object (affiliates it)
 
-	void appendMeshes(TriangleGroup meshes);  // append mesh segments (affiliates it)
+//	void appendMeshes(TriangleGroup meshes);  // append mesh segments (affiliates it)todo
 	// meshes should be excluded from ObjectList and installed via appendMeshes method
 
 	/** judge and calculate first intersection with all objects
