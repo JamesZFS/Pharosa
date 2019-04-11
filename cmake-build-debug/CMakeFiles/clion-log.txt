@@ -7,14 +7,10 @@ in 'src/', found sources:
 	camera/DOFCamera.cpp
 	camera/ImageMixer.cpp
 	camera/OrthographicCamera.cpp
+	core/Mat.cpp
 	core/Vec.cpp
-	scene/Cube.cpp
-	scene/InfPlane.cpp
-	scene/MeshObj.cpp
 	scene/Object.cpp
-	scene/Sphere.cpp
 	scene/Stage.cpp
-	scene/Triangle.cpp
 	utils/funcs.cpp
 	utils/solvers/Linear.cpp
 

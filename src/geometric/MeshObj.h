@@ -5,7 +5,7 @@
 #ifndef PHAROSA_MESHOBJ_H
 #define PHAROSA_MESHOBJ_H
 
-#include "Object.h"
+#include "../scene/Object.h"
 #include "Triangle.h"
 
 typedef List<Triangle *> TriangleGroup;

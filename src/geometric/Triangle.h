@@ -5,7 +5,7 @@
 #ifndef PHAROSA_TRIANGLE_H
 #define PHAROSA_TRIANGLE_H
 
-#include "Object.h"
+#include "../scene/Object.h"
 
 struct Triangle : public Object
 {

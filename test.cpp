@@ -6,7 +6,7 @@
 #include "src/utils/solvers/Linear.h"
 #include "src/utils/funcs.hpp"
 #include "src/core/Vec.h"
-#include "src/scene/All.h"
+#include "src/geometric/All.h"
 
 namespace Test
 {

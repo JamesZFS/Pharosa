@@ -1,0 +1,82 @@
+
+template<typename T>
+Mat<T>::Mat(const T (&a)[3][3])
+{
+	el = new double[3][3];
+	memcpy(el, a, sizeof(a));
+}
+
+template<typename T>
+Mat<T>::~Mat()
+{
+	delete[] el;
+}
+
+template<typename T>
+Mat<T>::Mat(T k)
+{
+	el = new double[3][3]{};
+	el[0][0] = el[1][1] = el[2][2] = k;
+}
+
+template<typename T>
+Mat<T> Mat<T>::operator*(Mat<T> B)
+{
+	Mat C;
+	C.el = new T[3][3];
+	C.el[0][0] = el[0][0] * B.el[0][0] + el[0][1] * B.el[1][0] + el[0][2] * B.el[2][0];
+	C.el[0][1] = el[0][0] * B.el[0][1] + el[0][1] * B.el[1][1] + el[0][2] * B.el[2][1];
+	C.el[0][2] = el[0][0] * B.el[0][2] + el[0][1] * B.el[1][2] + el[0][2] * B.el[2][2];
+	C.el[1][0] = el[1][0] * B.el[0][0] + el[1][1] * B.el[1][0] + el[1][2] * B.el[2][0];
+	C.el[1][1] = el[1][0] * B.el[0][1] + el[1][1] * B.el[1][1] + el[1][2] * B.el[2][1];
+	C.el[1][2] = el[1][0] * B.el[0][2] + el[1][1] * B.el[1][2] + el[1][2] * B.el[2][2];
+	C.el[2][0] = el[2][0] * B.el[0][0] + el[2][1] * B.el[1][0] + el[2][2] * B.el[2][0];
+	C.el[2][1] = el[2][0] * B.el[0][1] + el[2][1] * B.el[1][1] + el[2][2] * B.el[2][1];
+	C.el[2][2] = el[2][0] * B.el[0][2] + el[2][1] * B.el[1][2] + el[2][2] * B.el[2][2];
+	return C;
+}
+
+template<typename T>
+Mat<T> &Mat<T>::operator*=(Mat<T> B)
+{
+	*this = std::move(*this * B);
+	return *this;
+}
+
+template<typename T>
+Mat<T>::Mat(const Mat &b)
+{
+	el = new double[3][3];
+	memcpy(el, b.el, 9 * sizeof(T));
+}
+
+template<typename T>
+Mat<T> &Mat<T>::operator=(const Mat &b)
+{
+	el = new double[3][3];
+	memcpy(el, b.el, 9 * sizeof(T));
+	return *this;
+}
+
+template<typename T>
+Mat<T> Mat<T>::operator*(T k)
+{
+	el[0][0] *= k;
+	el[0][1] *= k;
+	el[0][2] *= k;
+	el[1][0] *= k;
+	el[1][1] *= k;
+	el[1][2] *= k;
+	el[2][0] *= k;
+	el[2][1] *= k;
+	el[2][2] *= k;
+	return *this;
+}
+
+template<typename T>
+Vec<T> Mat<T>::operator*(Vec<T> b)
+{
+	return {el[0][0] * b.x + el[0][1] * b.y + el[0][2] * b.z,
+			el[1][0] * b.x + el[1][1] * b.y + el[1][2] * b.z,
+			el[2][0] * b.x + el[2][1] * b.y + el[2][2] * b.z};
+}

@@ -81,7 +81,7 @@ all: CMakeFiles/Pharosa.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Pharosa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Pharosa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Pharosa.dir/rule
@@ -126,7 +126,7 @@ src/preinstall:
 src/CMakeFiles/PharosaLib.dir/all:
 	$(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/depend
 	$(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target PharosaLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target PharosaLib"
 .PHONY : src/CMakeFiles/PharosaLib.dir/all
 
 # Include target in all.
@@ -136,7 +136,7 @@ all: src/CMakeFiles/PharosaLib.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/PharosaLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PharosaLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles 0
 .PHONY : src/CMakeFiles/PharosaLib.dir/rule

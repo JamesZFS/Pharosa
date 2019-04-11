@@ -5,7 +5,7 @@
 #ifndef PHAROSA_SCENE_ALL_H
 #define PHAROSA_SCENE_ALL_H
 
-#include "Object.h"
+#include "Geometry.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "InfPlane.h"

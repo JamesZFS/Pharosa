@@ -7,7 +7,7 @@
 
 #include "../lib.h"
 #include "../core/Ray.hpp"
-#include "All.h"
+#include "../geometric/All.h"
 
 typedef List<Object *> ObjectList;
 

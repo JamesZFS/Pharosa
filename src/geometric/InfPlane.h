@@ -5,7 +5,7 @@
 #ifndef PHAROSA_INFPLANE_H
 #define PHAROSA_INFPLANE_H
 
-#include "Object.h"
+#include "../scene/Object.h"
 #include "../utils/funcs.hpp"
 
 // infinitively large plane. Described by one point and normal vec

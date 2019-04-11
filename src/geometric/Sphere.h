@@ -5,7 +5,7 @@
 #ifndef PHAROSA_SPHERE_H
 #define PHAROSA_SPHERE_H
 
-#include "Object.h"
+#include "../scene/Object.h"
 
 struct Sphere : public Object
 {

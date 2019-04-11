@@ -7,7 +7,7 @@
 
 #include "../../lib.h"
 #include "../../core/Vec.h"
-#include "../../scene/All.h"
+#include "../../geometric/All.h"
 
 class JsonParser
 {

@@ -5,7 +5,7 @@
 #ifndef PHAROSA_CUBE_H
 #define PHAROSA_CUBE_H
 
-#include "Object.h"
+#include "../scene/Object.h"
 #include "InfPlane.h"
 
 struct Cube : Object

@@ -133,7 +133,7 @@ struct ElAg : public Vec<double>    // Euler angles (alpha, beta, gamma)
 	static const ElAg NONROT;
 };
 
-struct Pos : Vec<double>    // 3D coordinate
+struct Pos : public Vec<double>    // 3D coordinate
 {
 	Pos(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
 	{}
