@@ -40,7 +40,14 @@ TransMat &TransMat::operator*=(TransMat B)
 	return *this;
 }
 
-TransMat TransMat::operator*(TransMat B)
+TransMat TransMat::operator*(TransMat B)const
 {
 	return {tra + rot * B.tra, rot * B.rot};
+}
+
+void TransMat::report() const
+{
+	tra.report(true);
+	rot.report();
+	debug("\n");
 }

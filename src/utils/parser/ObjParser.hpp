@@ -6,8 +6,8 @@
 #define PHAROSA_OBJPARSER_HPP
 
 #include "../../lib.h"
-#include "../../scene/Triangle.h"
-#include "../../scene/MeshObj.h"
+#include "../../geometric/Triangle.h"
+#include "../../geometric/MeshObj.h"
 
 TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &pos, const Color &color, const Emission &emission,
 						  const ElAg &euler_angles, Object::ReflType refl_type)    // load mesh segments from objects file

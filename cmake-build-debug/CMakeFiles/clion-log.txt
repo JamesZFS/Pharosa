@@ -9,6 +9,12 @@ in 'src/', found sources:
 	camera/OrthographicCamera.cpp
 	core/Mat.cpp
 	core/Vec.cpp
+	geometric/Cube.cpp
+	geometric/Geometry.cpp
+	geometric/InfPlane.cpp
+	geometric/MeshObj.cpp
+	geometric/Sphere.cpp
+	geometric/Triangle.cpp
 	scene/Object.cpp
 	scene/Stage.cpp
 	utils/funcs.cpp

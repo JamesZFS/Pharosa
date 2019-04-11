@@ -62,6 +62,6 @@ void Pharosa(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 //	Pharosa(argc, argv);
-	Test::intersect();
+	Test::matrix();
 	return 0;
 }

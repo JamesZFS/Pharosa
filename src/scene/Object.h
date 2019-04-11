@@ -7,6 +7,7 @@
 
 #include "../lib.h"
 #include "../core/Vec.h"
+#include "../core/Mat.h"
 #include "../core/Ray.hpp"
 
 // base class of 3D object
@@ -22,6 +23,7 @@ struct Object
 	Emission emi;    // emission
 	ElAg ea;        // Euler angles
 	ReflType reft;    // reflection type
+	TransMat mat;	// transform matrix
 
 	// other params ...
 

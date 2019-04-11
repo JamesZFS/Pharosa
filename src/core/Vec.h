@@ -1,5 +1,5 @@
 //
-// Created by think on 2019/4/1.
+// Created by think on 2019/5/1.
 //
 
 #ifndef PHAROSA_VEC_H
@@ -9,7 +9,7 @@
 #include "../utils/funcs.hpp"
 
 // vector definition
-template<typename T>
+template<typename T = double>
 struct Vec
 {
 	T x, y, z;
@@ -18,7 +18,7 @@ struct Vec
 	{}
 
 	inline bool operator==(const Vec &b)const
-	{ return (x - b.x < EPS && y - b.y < EPS && z - b.z < EPS); }
+	{ return (*this - b).sqr() < EPS; }
 
 	inline Vec operator+(const Vec &b) const
 	{ return {x + b.x, y + b.y, z + b.z}; }
@@ -97,7 +97,7 @@ struct Vec
 
 	inline void report(bool endl = false) const
 	{
-		debug("(%.2f, %.2f, %.2f)", x, y, z);
+		debug("(%5.2f, %5.2f, %5.2f)", x, y, z);
 		if (endl) debug("\n");
 	}
 
@@ -163,9 +163,6 @@ struct Pos : public Vec<double>    // 3D coordinate
 	}
 
 	Pos &rotate(const ElAg &ea);    // Euler rotation, in place. Z -> X -> Y
-
-//	inline Pos rotate(const ElAg &ea)
-//	{ return Pos(*this).rotateInPlace(ea); }
 
 	static inline Pos random(double lower = 0.0, double upper = 1.0)
 	{ return {Funcs::randf(lower, upper), Funcs::randf(lower, upper), Funcs::randf(lower, upper)}; }

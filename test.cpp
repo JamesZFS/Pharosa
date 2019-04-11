@@ -6,6 +6,7 @@
 #include "src/utils/solvers/Linear.h"
 #include "src/utils/funcs.hpp"
 #include "src/core/Vec.h"
+#include "src/core/Mat.h"
 #include "src/geometric/All.h"
 
 namespace Test
@@ -147,5 +148,29 @@ namespace Test
 		debug("plane: %19.10f sec\n", t3 - tr);
 
 		fflush(stdout);
+	}
+
+	void matrix()
+	{
+		double d[3][3] = {
+				{1,  2, 3},
+				{0,  1, 0},
+				{-1, 0, 2}
+		};
+		Mat<double> a(d);
+		a.report();
+		auto b = a;
+		b *= b;
+		b.report();
+		(b * Vec<>(1, 2, 3)).report(true);
+		debug("\n\n");
+
+		TransMat A(ElAg(0, M_PI_2, 0)), B(Pos(0, 1, 1));
+		A.report();
+		B.report();
+		(B * A).report();
+		auto c = ((B * A) * Pos(0, 1, 0));
+		c.report(true);
+		assert(c == Pos(0, 1, 2));
 	}
 }
