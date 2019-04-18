@@ -15,6 +15,7 @@ in 'src/', found sources:
 	geometric/MeshObj.cpp
 	geometric/Sphere.cpp
 	geometric/Triangle.cpp
+	scene/Object.cpp
 	scene/Stage.cpp
 	utils/funcs.cpp
 	utils/solvers/Linear.cpp

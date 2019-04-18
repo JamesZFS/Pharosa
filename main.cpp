@@ -29,7 +29,7 @@ void Pharosa(int argc, char *argv[])
 
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
-	ball = new Object(Sphere(10, Pos(73, 10, 78)), Color::WHITE * .999, Emission::NONE, Object::REFR);
+	ball = new Object(Sphere(10, Pos(73, 10, 78)), Color::WHITE * .999, Emission::BRIGHT, Object::REFR);
 
 	auto *front = new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, 200)), Color::YELLOW);//front
 	auto *right = new Object(InfPlane(Dir(1, 0, 0), Pos(90, 0, 0)));//right
@@ -45,20 +45,20 @@ void Pharosa(int argc, char *argv[])
 			front,
 			new Object(Sphere(10, Pos(0, 0, 10)), Color(0.2, 0.8, 1.0), Emission::NONE, Object::SPEC),
 			ball,    //Glas
-//			new Object(Triangle(new Pos[3]{{0, 0, 80}, {80, 0, 0}, {0, 80, 0}}, Pos(50, 0, 50), {0.8, 0.6, 0.5}),
-//					Emission(), ElAg(), Object::REFR),
-//			new Object(Cube(new Dir[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
-//					 new Pos[3][2]{
-//							 {{0, 0, 0}, {30, 0,  0}},
-//							 {{0, 0, 0}, {0,  30, 0}},
-//							 {{0, 0, 0}, {0,  0,  50}}}, Pos(10, 30, 20), ElAg(0, 10 * DEG, 0)),
-//					 Color(0.5, 0.5, 0.8), Emission::NONE),
+			new Object(Triangle(new Pos[3]{{0, 0, 0}, {50, 0, 0}, {0, 75, 0}}, Pos(0, -10, 10), ElAg()), {0.8, 0.6, 0.5},
+					Emission(), Object::REFR),
+			new Object(Cube(new Dir[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+					 new Pos[3][2]{
+							 {{0, 0, 0}, {30, 0,  0}},
+							 {{0, 0, 0}, {0,  30, 0}},
+							 {{0, 0, 0}, {0,  0,  50}}}, Pos(10, 30, -20), ElAg(45 * DEG, 0 * DEG, 0)),
+					 Color(0.5, 0.5, 0.8), Emission::NONE),
 			new Object(Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
 	RayCasting::LIGHT_DIR = Dir(0, 0, 1);
 
-	Renderer<RayTracing<>, BasicCamera> renderer;
+	Renderer<RayCasting, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + sizeof(p) / sizeof(Object *)));
 
