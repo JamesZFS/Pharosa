@@ -18,15 +18,21 @@ struct Object
 		DIFF, SPEC, REFR
 	};    // diffusive, reflective, refractive
 
-	Geometry *geo;	// geometric attributes
+	Geometry *geo;    // geometric attributes
 	Color color;
 	Emission emi;    // emission
 	ReflType reft;    // reflection type
 
-	Object(Geometry *geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
-		   ReflType refl_type_ = DIFF);
+	// todo texture
 
-	virtual ~Object() = default;
+	template<class GeometryType>
+	Object(GeometryType &&geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
+		   ReflType refl_type_ = DIFF);    // init from a temporarily defined Geometry, copy it to stay long todo use move
+
+	inline ~Object()
+	{ delete geo; }
 };
+
+#include "Object.tcc"
 
 #endif //PHAROSA_OBJECT_H

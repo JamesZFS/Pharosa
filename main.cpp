@@ -23,24 +23,24 @@ void Pharosa(int argc, char *argv[])
 
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
-	ball = new Object(new Sphere(10, Pos(73, 10, 78), ElAg(0, 0, 0)), Color::WHITE * .999, Emission::NONE, Object::REFR);
+	ball = new Object(Sphere(10, Pos(73, 10, 78), ElAg(0, 0, 0)), Color::WHITE * .999, Emission::NONE, Object::REFR);
 
 	Object *p[] = {
-			new Object(new InfPlane(Dir(0, 1, 0), Pos(0, -10, 0))),//Botm
-			new Object(new InfPlane(Dir(1, 0, 0), Pos(-20, 0, 0))),//left
-			new Object(new InfPlane(Dir(0, 0, 1), Pos(0, 0, -30))),//right
-			new Object(new InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0))),//ceil
-			new Object(new Sphere(8, Pos(27, 16.5, 100), Color(0.2, 0.4, 0.8)), Emission::NONE, ElAg(), Object::SPEC),
+			new Object(InfPlane(Dir(0, 1, 0), Pos(0, -10, 0))),//Botm
+			new Object(InfPlane(Dir(1, 0, 0), Pos(-20, 0, 0))),//left
+			new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, -30))),//right
+			new Object(InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0))),//ceil
+			new Object(Sphere(8, Pos(27, 16.5, 100), Color(0.2, 0.4, 0.8)), Emission::NONE, ElAg(), Object::SPEC),
 			ball,    //Glas
-			new Object(new Triangle(new Pos[3]{{0, 0, 80}, {80, 0, 0}, {0, 80, 0}}, Pos(50, 0, 50), {0.8, 0.6, 0.5}),
+			new Object(Triangle(new Pos[3]{{0, 0, 80}, {80, 0, 0}, {0, 80, 0}}, Pos(50, 0, 50), {0.8, 0.6, 0.5}),
 					Emission(), ElAg(), Object::REFR),
-			new Object(new Cube(new Dir[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+			new Object(Cube(new Dir[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
 					 new Pos[3][2]{
 							 {{0, 0, 0}, {30, 0,  0}},
 							 {{0, 0, 0}, {0,  30, 0}},
 							 {{0, 0, 0}, {0,  0,  50}}}, Pos(10, 30, 20), ElAg(0, 10 * DEG, 0)),
 					 Color(0.5, 0.5, 0.8), Emission::NONE),
-			new Object(new Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12), Object::DIFF) //Lite
+			new Object(Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12), Object::DIFF) //Lite
 	};
 
 	RayCasting::LIGHT_DIR = Dir(0.5, -0.5, -1);
@@ -61,7 +61,7 @@ void Pharosa(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-//	Pharosa(argc, argv);
-	Test::matrix();
+	Pharosa(argc, argv);
+//	Test::matrix();
 	return 0;
 }

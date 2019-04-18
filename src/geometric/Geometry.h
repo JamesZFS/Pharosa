@@ -19,7 +19,13 @@ struct Geometry
 
 	Geometry(const Pos &pos_, const ElAg &euler_angles_);
 
-	Geometry &operator=(const Geometry &geo) = default;
+	Geometry(const Geometry &geo) = default;  // copy
+
+//	Geometry(Geometry &&geo) noexcept;	// move todo
+
+	Geometry &operator=(const Geometry &geo) = default;    // copy
+
+//	Geometry &operator=(Geometry &&geo) noexcept;    // move
 
 	virtual ~Geometry() = default;
 

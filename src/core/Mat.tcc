@@ -1,21 +1,17 @@
-
 template<typename T>
-Mat<T>::Mat(const T (&a)[3][3])
+Mat<T>::Mat() : el(List2D<T>(3, List<T>(3, 0)))
 {
-	el = new double[3][3];
-	memcpy(el, a, sizeof(a));
 }
 
 template<typename T>
-Mat<T>::~Mat()
+Mat<T>::Mat(List2D<T> &&a) noexcept : el(std::move(a))
 {
-	delete[] el;
+	assert(el.size() == 3 && el[0].size() == 3 && el[1].size() == 3 && el[2].size() == 3); // noexcept
 }
 
 template<typename T>
-Mat<T>::Mat(T k)    // init diag
+Mat<T>::Mat(T k) : el(List2D<T>(3, List<T>(3, 0)))   // init diag
 {
-	el = new double[3][3]{};
 	el[0][0] = el[1][1] = el[2][2] = k;
 }
 
@@ -23,7 +19,6 @@ template<typename T>
 Mat<T> Mat<T>::operator*(const Mat<T> &B) const
 {
 	Mat C;
-	C.el = new T[3][3];
 	C.el[0][0] = el[0][0] * B.el[0][0] + el[0][1] * B.el[1][0] + el[0][2] * B.el[2][0];
 	C.el[0][1] = el[0][0] * B.el[0][1] + el[0][1] * B.el[1][1] + el[0][2] * B.el[2][1];
 	C.el[0][2] = el[0][0] * B.el[0][2] + el[0][1] * B.el[1][2] + el[0][2] * B.el[2][2];
@@ -40,22 +35,6 @@ template<typename T>
 Mat<T> &Mat<T>::operator*=(const Mat<T> &B)
 {
 	*this = *this * B;
-	return *this;
-}
-
-template<typename T>
-Mat<T>::Mat(const Mat &b)
-{
-	el = new double[3][3];
-	memcpy(el, b.el, 9 * sizeof(T));
-}
-
-template<typename T>
-Mat<T> &Mat<T>::operator=(const Mat &b)
-{
-	delete[] el;
-	el = new double[3][3];
-	memcpy(el, b.el, 9 * sizeof(T));
 	return *this;
 }
 
@@ -99,7 +78,6 @@ template<typename T>
 Mat<T> Mat<T>::operator+(const Mat<T> &B) const
 {
 	Mat C;
-	C.el = new T[3][3];
 	C.el[0][0] = el[0][0] + B.el[0][0];
 	C.el[0][1] = el[0][1] + B.el[0][1];
 	C.el[0][2] = el[0][2] + B.el[0][2];
@@ -130,13 +108,17 @@ Mat<T> Mat<T>::operator+=(const Mat<T> &B)
 template<typename T>
 Mat<T>::Mat(Mat &&b) noexcept : el(std::move(b.el))
 {
-	b.el = nullptr;
 }
 
 template<typename T>
 Mat<T> &Mat<T>::operator=(Mat &&b) noexcept
 {
 	el = std::move(b.el);
-	b.el = nullptr;
 	return *this;
+}
+
+template<typename T>
+void Mat<T>::reset()
+{
+	el = List2D<T>(3, List<T>(3, 0));
 }

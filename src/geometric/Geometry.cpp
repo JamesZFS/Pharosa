@@ -8,6 +8,10 @@ Geometry::Geometry(const Pos &pos_, const ElAg &euler_angles_) : mat(pos_, euler
 {
 }
 
+//Geometry::Geometry(Geometry &&geo) noexcept : mat(std::move(geo.mat))
+//{
+//}
+
 Geometry &Geometry::replace(const Pos &pos_, const ElAg &euler_angles_)
 {
 	mat = TransMat(pos_, euler_angles_);
@@ -28,3 +32,9 @@ Geometry &Geometry::rotate(const ElAg &dea)
 	applyTransform();
 	return *this;
 }
+
+//Geometry &Geometry::operator=(Geometry &&geo) noexcept
+//{
+//	mat = std::move(geo.mat);
+//	return *this;
+//}

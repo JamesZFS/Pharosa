@@ -144,15 +144,11 @@ namespace Test
 
 	void matrix()
 	{
-//		Sphere s(1, Pos::ORIGIN, ElAg::NONROT);
-//		Sphere a = s;
-
-		double d[3][3] = {
+		Mat<double> a(List2D<double>{
 				{1,  2, 3},
 				{0,  1, 0},
 				{-1, 0, 2}
-		};
-		Mat<double> a(d);
+		});
 		a.report();
 		auto b = a;
 		b *= b;

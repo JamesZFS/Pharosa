@@ -23,10 +23,12 @@ TransMat::TransMat(const Pos &delta, const ElAg &ea) : tra(delta)
 			cos_b = cos(ea.beta), sin_b = sin(ea.beta),
 			cos_g = cos(ea.gamma), sin_g = sin(ea.gamma);
 
-	rot.el = new double[3][3]
-			{{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g},
-			 {cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b,  -cos_a * cos_g * sin_b + sin_a * sin_g},
-			 {-cos_b * sin_g,                        sin_b,          cos_b * cos_g}};
+	rot = Mat<double>
+			(List2D<double>
+					 {{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g},
+					  {cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b,  -cos_a * cos_g * sin_b + sin_a * sin_g},
+					  {-cos_b * sin_g,                        sin_b,          cos_b * cos_g}}
+			);
 }
 
 TransMat::TransMat(const Vec<double> &tra_, const Mat<double> &rot_) : tra(tra_), rot(rot_)

@@ -13,6 +13,7 @@
 #include "scene/Stage.h"
 
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Stage
+// todo move template declaration to setup functions
 template<typename Render_Algorithm, typename Camera_Type>
 class Renderer
 {

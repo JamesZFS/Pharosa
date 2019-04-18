@@ -11,21 +11,21 @@
 template<typename T = double>
 struct Mat    // 3D matrix
 {
-	T (*el)[3];
+	List2D<T> el;
 
-	Mat() = default;
+	Mat();	// init a 3x3 zero matrix
 
-	Mat(const T (&a)[3][3]);
+	Mat(List2D<T> &&a) noexcept;	// move from array
 
 	Mat(T k);    // diag
 
-	Mat(const Mat &b);    // copy
+	Mat(const Mat &b) = default;    // copy
 
 	Mat(Mat &&b) noexcept;	// move
 
-	~Mat();
+	void reset();	// reset to zero
 
-	Mat<T> &operator=(const Mat &b);    // copy
+	Mat<T> &operator=(const Mat &b) = default;    // copy
 
 	Mat<T> &operator=(Mat &&b) noexcept;    // move
 
