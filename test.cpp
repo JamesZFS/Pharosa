@@ -144,6 +144,9 @@ namespace Test
 
 	void matrix()
 	{
+//		Sphere s(1, Pos::ORIGIN, ElAg::NONROT);
+//		Sphere a = s;
+
 		double d[3][3] = {
 				{1,  2, 3},
 				{0,  1, 0},
@@ -156,6 +159,9 @@ namespace Test
 		b.report();
 		(b * Vec<>(1, 2, 3)).report(true);
 		debug("\n\n");
+
+		auto e = a + b;
+		e.report();
 
 		TransMat A(ElAg(0, M_PI_2, 0)), B(Pos(0, 1, 1));
 		A.report();

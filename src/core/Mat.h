@@ -21,9 +21,13 @@ struct Mat    // 3D matrix
 
 	Mat(const Mat &b);    // copy
 
+	Mat(Mat &&b) noexcept;	// move
+
 	~Mat();
 
 	Mat<T> &operator=(const Mat &b);    // copy
+
+	Mat<T> &operator=(Mat &&b) noexcept;    // move
 
 	inline T at(unsigned int i, unsigned int j) const    // getter
 	{ return el[i][j]; }
@@ -64,6 +68,14 @@ struct TransMat
 	TransMat(const Pos &delta, const ElAg &ea);	// rotate then translate
 
 	TransMat(const Vec<double> &tra_, const Mat<double> &rot_);
+
+	TransMat(const TransMat &mat) = default;	// copy
+
+	TransMat(TransMat &&mat) noexcept;	// move
+
+	TransMat &operator=(const TransMat &mat) = default;	// copy
+
+	TransMat &operator=(TransMat &&mat) noexcept;	// copy
 
 	TransMat &operator*=(const TransMat &B);    // mat mul
 

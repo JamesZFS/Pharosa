@@ -40,7 +40,7 @@ TransMat &TransMat::operator*=(const TransMat &B)
 	return *this;
 }
 
-TransMat TransMat::operator*(const TransMat &B)const
+TransMat TransMat::operator*(const TransMat &B) const
 {
 	return {tra + rot * B.tra, rot * B.rot};
 }
@@ -50,4 +50,15 @@ void TransMat::report() const
 	tra.report(true);
 	rot.report();
 	debug("\n");
+}
+
+TransMat::TransMat(TransMat &&mat) noexcept : tra(mat.tra), rot(std::move(mat.rot))
+{
+}
+
+TransMat &TransMat::operator=(TransMat &&mat) noexcept
+{
+	tra = mat.tra;
+	rot = std::move(mat.rot);
+	return *this;
 }

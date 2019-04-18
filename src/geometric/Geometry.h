@@ -19,6 +19,8 @@ struct Geometry
 
 	Geometry(const Pos &pos_, const ElAg &euler_angles_);
 
+	Geometry &operator=(const Geometry &geo) = default;
+
 	virtual ~Geometry() = default;
 
 	// 3D transformation, return *this
