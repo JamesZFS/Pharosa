@@ -58,10 +58,10 @@ namespace Test
 
 	void coordinateConvert()
 	{
-		auto d = Dir(0, 2, 0);
+		auto d = Dir(1, 0, 0);
 		auto ea = d.getEulerAngles();
 		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
-		assert(ea.x == M_PI_2 && ea.y == 0 && ea.z == M_PI_2);
+		assert(ea.x == 0 && ea.y == 0 && ea.z == M_PI_2);
 
 		d = Dir(1, 1, 0);
 		ea = d.getEulerAngles();

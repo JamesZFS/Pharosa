@@ -93,10 +93,11 @@ void Algorithm::computeEdgePixels()
 					*hit1 = stage.hitOf(camera.shootRayAt(i - SUB_D2, j + SUB_D1)),
 					*hit2 = stage.hitOf(camera.shootRayAt(i + SUB_D2, j - SUB_D1)),
 					*hit3 = stage.hitOf(camera.shootRayAt(i + SUB_D1, j + SUB_D2));
-			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);	// if hit different objs, mark true
+			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);	// if hit different objs, mark as edge
 		}
 	}
-	// todo
+	// todo cancel debug
+#ifdef __DEV_STAGE__
 	std::ofstream fout("is_edge.ppm");
 	if (!fout.is_open()) {
 		warn("not open is_edge");
@@ -107,6 +108,7 @@ void Algorithm::computeEdgePixels()
 		fout << (is_edge[rank] ? "0 0 0 " : "255 255 255 ");
 	}
 	fout.close();
+#endif
 }
 
 #undef SUB_D1

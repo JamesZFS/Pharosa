@@ -32,11 +32,23 @@ using String = std::string;
 
 typedef char Buffer[256];
 
-#define debug(...) printf(__VA_ARGS__)              // for dev
-//#define debug(...)								// for release
+#define __DEV_STAGE__
+
+#ifdef __DEV_STAGE__
+	#define debug(...) printf(__VA_ARGS__)              // for dev
+	//#define prompt(...) fprintf(stderr, __VA_ARGS__)    // show progressbar info
+
+	// global params for debugging
+	extern size_t __counter__;
+
+#else	// when release
+	#undef assert
+	#define assert(...)
+	#define debug(...)
+
+#endif
+
 #define warn(x) std::cerr << x << std::endl         // show error
-#define message(x) std::cout << x << std::endl         // show error
-//#define prompt(...) fprintf(stderr, __VA_ARGS__)    // show progressbar info
-//#define assert(...)	// for release
+#define message(x) std::cout << x << std::endl        // show message
 
 #endif //PHAROSA_LIB_H

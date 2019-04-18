@@ -109,7 +109,7 @@ struct Vec
 	}
 };
 
-struct ElAg : Vec<double>    // Euler angles (alpha, beta, gamma)
+struct ElAg : Vec<double>    // Euler angles (Z - alpha, X - beta, Y - gamma)
 {
 	double &alpha, &beta, &gamma;
 
