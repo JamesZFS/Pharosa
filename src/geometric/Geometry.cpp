@@ -33,6 +33,37 @@ Geometry &Geometry::rotate(const ElAg &dea)
 	return *this;
 }
 
+// todo use pure virtual
+double Geometry::xMin()
+{
+	return 0;
+}
+
+double Geometry::xMax()
+{
+	return 0;
+}
+
+double Geometry::yMin()
+{
+	return 0;
+}
+
+double Geometry::yMax()
+{
+	return 0;
+}
+
+double Geometry::zMin()
+{
+	return 0;
+}
+
+double Geometry::zMax()
+{
+	return 0;
+}
+
 //Geometry &Geometry::operator=(Geometry &&geo) noexcept
 //{
 //	mat = std::move(geo.mat);

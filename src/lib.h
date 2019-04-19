@@ -38,6 +38,22 @@ using String = std::string;
 
 typedef char Buffer[256];
 
+template <typename T>
+inline T min2(const T &a, const T &b)
+{ return std::min(a, b); }
+
+template <typename T>
+inline T max2(const T &a, const T &b)
+{ return std::max(a, b); }
+
+template <typename T>
+inline T min3(const T &a, const T &b, const T &c)
+{ return std::min(std::min(a, b), c); }
+
+template <typename T>
+inline T max3(const T &a, const T &b, const T &c)
+{ return std::max(std::max(a, b), c); }
+
 #define __DEV_STAGE__
 
 #ifdef __DEV_STAGE__

@@ -73,7 +73,7 @@ bool Stage::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal
 	return true;
 }
 
-const Object * Stage::hitOf(const Ray &ray) const	// return hit without normal and x
+const Object * Stage::hitOf(const Ray &ray) const	// return hit without normal and x todo
 {
 	// naive for loop calculation
 	// todo use OctTree

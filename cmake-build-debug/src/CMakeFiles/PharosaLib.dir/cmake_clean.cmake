@@ -19,6 +19,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o"
   "CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o"
   "CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o"
+  "CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o"
   "CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o"
   "CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o"
   "libPharosaLib.pdb"

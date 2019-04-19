@@ -20,6 +20,7 @@ in 'src/', found sources:
 	scene/bounding/BoundingBox.cpp
 	scene/bounding/BoundingCube.cpp
 	scene/bounding/BoundingSphere.cpp
+	utils/Parser.cpp
 	utils/funcs.cpp
 	utils/solvers/Linear.cpp
 

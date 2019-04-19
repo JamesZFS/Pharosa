@@ -269,6 +269,9 @@
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h">
 			<Option target="PharosaLib"/>
 		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/utils/Parser.cpp">
+			<Option target="PharosaLib"/>
+		</Unit>
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/utils/funcs.cpp">
 			<Option target="PharosaLib"/>
 		</Unit>

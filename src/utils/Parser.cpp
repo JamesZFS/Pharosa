@@ -1,16 +1,11 @@
 //
-// Created by James on 2019/4/5.
+// Created by James on 2019/4/19.
 //
 
-#ifndef PHAROSA_OBJPARSER_HPP
-#define PHAROSA_OBJPARSER_HPP
+#include "Parsers.h"
 
-#include "../../lib.h"
-#include "../../geometric/Triangle.h"
-#include "../../geometric/MeshObj.h"
-
-TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &pos,
-						  const ElAg &euler_angles)    // load mesh segments from objects file
+ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const Color &color,
+								const Emission &emi, Object::ReflType reft)    // load mesh segments from objects file
 {
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
@@ -23,11 +18,10 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 		exit(1);
 	}
 
-	TriangleGroup meshes;    // result
+	ObjectList meshes;    // result
 	char mark;
 	double x, y, z;
 	size_t a, b, c;
-	Pos p[3];
 	List<Pos> v;
 
 	while (!fin.eof()) {
@@ -44,11 +38,8 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
-				p[0] = v[--a];
-				p[1] = v[--b];
-				p[2] = v[--c];
-				// todo multicolor, emission, texture support
-				meshes.push_back(new Triangle(p, pos, euler_angles));
+				--a, --b, --c;
+				meshes.push_back(new Object(Triangle({{v[a], v[b], v[c]}}, Pos()), color, emi, reft));
 				break;
 
 			default:
@@ -58,7 +49,6 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 				exit(1);
 		}
 	}
-	return meshes;
+	return std::move(meshes);
+//	return meshes;
 }
-
-#endif //PHAROSA_OBJPARSER_HPP

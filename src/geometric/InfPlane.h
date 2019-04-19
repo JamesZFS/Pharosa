@@ -14,7 +14,7 @@ struct InfPlane : Geometry
 	Pos p; 	// a point on infplane
 	Dir n;    // normal vector, in Global coordinate sys, default towards ez
 
-	InfPlane();
+	InfPlane() = default;
 
 	InfPlane(const Pos &p_, const ElAg &euler_angles_);
 

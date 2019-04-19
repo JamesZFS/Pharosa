@@ -71,3 +71,10 @@ BoundingBox::~BoundingBox()
 		delete obj;
 	}
 }
+
+void BoundingBox::fromObjFile(const String &obj_path, double zoom_ratio, const Color &color, const Emission &emi,
+							  Object::ReflType reft)
+{
+	objects = std::move(Parser::parseObjFile(obj_path, zoom_ratio, color, emi, reft));
+	findBounds();
+}

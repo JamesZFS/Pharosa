@@ -30,6 +30,7 @@ src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o
  /Users/james/Test/CG/Pharosa/src/alg/Algorithm.h
@@ -61,6 +62,7 @@ src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/camera/BasicCamera.cpp.o
  /Users/james/Test/CG/Pharosa/src/camera/BasicCamera.cpp
@@ -211,6 +213,7 @@ src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
@@ -229,6 +232,7 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/Object.tcc
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
@@ -248,6 +252,7 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
@@ -267,6 +272,25 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp
  /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
+ /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o
+ /Users/james/Test/CG/Pharosa/src/core/Mat.h
+ /Users/james/Test/CG/Pharosa/src/core/Mat.tcc
+ /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
+ /Users/james/Test/CG/Pharosa/src/core/Vec.h
+ /Users/james/Test/CG/Pharosa/src/geometric/All.h
+ /Users/james/Test/CG/Pharosa/src/geometric/Cube.h
+ /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
+ /Users/james/Test/CG/Pharosa/src/geometric/InfPlane.h
+ /Users/james/Test/CG/Pharosa/src/geometric/MeshObj.h
+ /Users/james/Test/CG/Pharosa/src/geometric/Sphere.h
+ /Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
+ /Users/james/Test/CG/Pharosa/src/lib.h
+ /Users/james/Test/CG/Pharosa/src/scene/Object.h
+ /Users/james/Test/CG/Pharosa/src/scene/Object.tcc
+ /Users/james/Test/CG/Pharosa/src/utils/Parser.cpp
+ /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o
  /Users/james/Test/CG/Pharosa/src/lib.h

@@ -29,6 +29,7 @@ src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/scene/bounding/All.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/scene/bounding/BoundingBox.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/scene/bounding/BoundingCube.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/scene/bounding/BoundingSphere.h
+src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/alg/Algorithm.h
@@ -60,6 +61,7 @@ src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/scene/bounding/All.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/scene/bounding/BoundingBox.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/scene/bounding/BoundingCube.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/scene/bounding/BoundingSphere.h
+src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/camera/BasicCamera.cpp.o: ../src/camera/BasicCamera.cpp
@@ -210,6 +212,7 @@ src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/scene/bounding/All.h
 src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/scene/bounding/BoundingBox.h
 src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/scene/bounding/BoundingCube.h
 src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/scene/bounding/BoundingSphere.h
+src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/core/Mat.h
@@ -228,6 +231,7 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/scene/Obj
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/scene/Object.tcc
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/scene/bounding/BoundingBox.cpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/scene/bounding/BoundingBox.h
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/core/Mat.h
@@ -247,6 +251,7 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/scene/Ob
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/scene/bounding/BoundingBox.h
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/scene/bounding/BoundingCube.cpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/scene/bounding/BoundingCube.h
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/core/Mat.h
@@ -266,7 +271,26 @@ src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/scene/
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/scene/bounding/BoundingBox.h
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/scene/bounding/BoundingSphere.cpp
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/scene/bounding/BoundingSphere.h
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/utils/Parsers.h
 src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/utils/funcs.hpp
+
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/core/Mat.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/core/Mat.tcc
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/core/Ray.hpp
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/core/Vec.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/All.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/Cube.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/Geometry.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/InfPlane.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/MeshObj.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/Sphere.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/geometric/Triangle.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/lib.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/scene/Object.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/scene/Object.tcc
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/utils/Parser.cpp
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/utils/Parsers.h
+src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o: ../src/lib.h
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o: ../src/utils/funcs.cpp

@@ -665,6 +665,33 @@ scene/bounding/BoundingSphere.cpp.s:
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.s
 .PHONY : scene/bounding/BoundingSphere.cpp.s
 
+utils/Parser.o: utils/Parser.cpp.o
+
+.PHONY : utils/Parser.o
+
+# target to build an object file
+utils/Parser.cpp.o:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.o
+.PHONY : utils/Parser.cpp.o
+
+utils/Parser.i: utils/Parser.cpp.i
+
+.PHONY : utils/Parser.i
+
+# target to preprocess a source file
+utils/Parser.cpp.i:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.i
+.PHONY : utils/Parser.cpp.i
+
+utils/Parser.s: utils/Parser.cpp.s
+
+.PHONY : utils/Parser.s
+
+# target to generate assembly for a file
+utils/Parser.cpp.s:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/utils/Parser.cpp.s
+.PHONY : utils/Parser.cpp.s
+
 utils/funcs.o: utils/funcs.cpp.o
 
 .PHONY : utils/funcs.o
@@ -788,6 +815,9 @@ help:
 	@echo "... scene/bounding/BoundingSphere.o"
 	@echo "... scene/bounding/BoundingSphere.i"
 	@echo "... scene/bounding/BoundingSphere.s"
+	@echo "... utils/Parser.o"
+	@echo "... utils/Parser.i"
+	@echo "... utils/Parser.s"
 	@echo "... utils/funcs.o"
 	@echo "... utils/funcs.i"
 	@echo "... utils/funcs.s"

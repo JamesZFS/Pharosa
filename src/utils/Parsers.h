@@ -5,11 +5,16 @@
 #ifndef PHAROSA_PARSERS_H
 #define PHAROSA_PARSERS_H
 
+#include "../lib.h"
+#include "../scene/Object.h"
+#include "../geometric/Triangle.h"
+
 // all parsers
 namespace Parser
 {
 
-#include "parser/ObjParser.hpp"
+	ObjectList parseObjFile(const String &obj_path, double zoom_ratio, const Color &color,
+							const Emission &emi, Object::ReflType reft);    // load mesh segments from objects file
 
 }
 

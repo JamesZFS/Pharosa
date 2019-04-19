@@ -8,7 +8,7 @@
 //#include "Geometry.h"
 //#include "Triangle.h"
 //
-typedef List<Triangle *> TriangleGroup;
+//typedef List<Triangle *> TriangleGroup;
 //
 //struct MeshObj : Geometry
 //{

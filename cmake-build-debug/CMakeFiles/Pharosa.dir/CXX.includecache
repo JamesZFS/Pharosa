@@ -229,6 +229,8 @@ BoundingSphere.h
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
 ../Object.h
 /Users/james/Test/CG/Pharosa/src/scene/Object.h
+../../utils/Parsers.h
+/Users/james/Test/CG/Pharosa/src/utils/Parsers.h
 
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
 BoundingBox.h
@@ -237,6 +239,14 @@ BoundingBox.h
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
 BoundingBox.h
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+
+/Users/james/Test/CG/Pharosa/src/utils/Parsers.h
+../lib.h
+/Users/james/Test/CG/Pharosa/src/lib.h
+../scene/Object.h
+/Users/james/Test/CG/Pharosa/src/scene/Object.h
+../geometric/Triangle.h
+/Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
 
 /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 ../lib.h

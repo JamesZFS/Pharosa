@@ -52,6 +52,12 @@ struct Geometry
 	// determine if a point is on the surface of object
 	virtual bool hasSurfacePoint(const Pos &x) const = 0;
 
+	virtual double xMin();
+	virtual double xMax();
+	virtual double yMin();
+	virtual double yMax();
+	virtual double zMin();
+	virtual double zMax();
 };
 
 #endif //PHAROSA_GEOMETRY_H

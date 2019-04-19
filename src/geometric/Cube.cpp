@@ -27,6 +27,18 @@ Cube::Cube(Arr<Pos, 3> &&vertices_, const Pos &pos_, const ElAg &euler_angles_) 
 	applyTransform();    // local to global slabs
 }
 
+Cube::Cube(double length, double width, double height, const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_),
+		n{{Dir::Z_AXIS, Dir::X_AXIS, Dir::Y_AXIS}},
+		p{{
+				  {{Pos::ORIGIN, Pos(0, 0, height)}}, // plane oxy, oxy'
+				  {{Pos::ORIGIN, Pos(length, 0, 0)}}, // oyz, oyz'
+				  {{Pos::ORIGIN, Pos(0, width, 0)}}   // ozx, ozx'
+		  }}
+{
+	applyTransform();
+}
+
 void Cube::applyTransform()
 {
 	for (size_t i = 0; i < 3; ++i) {
@@ -75,4 +87,8 @@ bool Cube::hasSurfacePoint(const Pos &x) const
 		if (p[0].hasSurfacePoint(x) || p[1].hasSurfacePoint(x)) return true;
 	}
 	return false;
+}
+
+Cube::Cube() : Cube(1, 1, 1)
+{
 }
