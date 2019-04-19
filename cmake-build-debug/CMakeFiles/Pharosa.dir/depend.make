@@ -31,6 +31,10 @@ CMakeFiles/Pharosa.dir/main.cpp.o: ../src/lib.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/Object.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/Object.tcc
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/Stage.h
+CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/bounding/All.h
+CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/bounding/BoundingBox.h
+CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/bounding/BoundingCube.h
+CMakeFiles/Pharosa.dir/main.cpp.o: ../src/scene/bounding/BoundingSphere.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/utils/funcs.hpp
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/utils/solvers/Linear.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/utils/solvers/Linear.tcc

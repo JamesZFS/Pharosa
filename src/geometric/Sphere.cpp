@@ -11,7 +11,7 @@ Sphere::Sphere(double radius_, const Pos &pos_, ElAg euler_angles_) :
 
 void Sphere::applyTransform()
 {
-	pos = mat.tra;
+	pos = mat.tra; // todo bug
 }
 
 bool Sphere::intersect(const Ray &ray, double &t) const

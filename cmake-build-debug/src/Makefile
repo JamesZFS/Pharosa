@@ -584,6 +584,87 @@ scene/Stage.cpp.s:
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.s
 .PHONY : scene/Stage.cpp.s
 
+scene/bounding/BoundingBox.o: scene/bounding/BoundingBox.cpp.o
+
+.PHONY : scene/bounding/BoundingBox.o
+
+# target to build an object file
+scene/bounding/BoundingBox.cpp.o:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o
+.PHONY : scene/bounding/BoundingBox.cpp.o
+
+scene/bounding/BoundingBox.i: scene/bounding/BoundingBox.cpp.i
+
+.PHONY : scene/bounding/BoundingBox.i
+
+# target to preprocess a source file
+scene/bounding/BoundingBox.cpp.i:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.i
+.PHONY : scene/bounding/BoundingBox.cpp.i
+
+scene/bounding/BoundingBox.s: scene/bounding/BoundingBox.cpp.s
+
+.PHONY : scene/bounding/BoundingBox.s
+
+# target to generate assembly for a file
+scene/bounding/BoundingBox.cpp.s:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.s
+.PHONY : scene/bounding/BoundingBox.cpp.s
+
+scene/bounding/BoundingCube.o: scene/bounding/BoundingCube.cpp.o
+
+.PHONY : scene/bounding/BoundingCube.o
+
+# target to build an object file
+scene/bounding/BoundingCube.cpp.o:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o
+.PHONY : scene/bounding/BoundingCube.cpp.o
+
+scene/bounding/BoundingCube.i: scene/bounding/BoundingCube.cpp.i
+
+.PHONY : scene/bounding/BoundingCube.i
+
+# target to preprocess a source file
+scene/bounding/BoundingCube.cpp.i:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.i
+.PHONY : scene/bounding/BoundingCube.cpp.i
+
+scene/bounding/BoundingCube.s: scene/bounding/BoundingCube.cpp.s
+
+.PHONY : scene/bounding/BoundingCube.s
+
+# target to generate assembly for a file
+scene/bounding/BoundingCube.cpp.s:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.s
+.PHONY : scene/bounding/BoundingCube.cpp.s
+
+scene/bounding/BoundingSphere.o: scene/bounding/BoundingSphere.cpp.o
+
+.PHONY : scene/bounding/BoundingSphere.o
+
+# target to build an object file
+scene/bounding/BoundingSphere.cpp.o:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o
+.PHONY : scene/bounding/BoundingSphere.cpp.o
+
+scene/bounding/BoundingSphere.i: scene/bounding/BoundingSphere.cpp.i
+
+.PHONY : scene/bounding/BoundingSphere.i
+
+# target to preprocess a source file
+scene/bounding/BoundingSphere.cpp.i:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.i
+.PHONY : scene/bounding/BoundingSphere.cpp.i
+
+scene/bounding/BoundingSphere.s: scene/bounding/BoundingSphere.cpp.s
+
+.PHONY : scene/bounding/BoundingSphere.s
+
+# target to generate assembly for a file
+scene/bounding/BoundingSphere.cpp.s:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.s
+.PHONY : scene/bounding/BoundingSphere.cpp.s
+
 utils/funcs.o: utils/funcs.cpp.o
 
 .PHONY : utils/funcs.o
@@ -698,6 +779,15 @@ help:
 	@echo "... scene/Stage.o"
 	@echo "... scene/Stage.i"
 	@echo "... scene/Stage.s"
+	@echo "... scene/bounding/BoundingBox.o"
+	@echo "... scene/bounding/BoundingBox.i"
+	@echo "... scene/bounding/BoundingBox.s"
+	@echo "... scene/bounding/BoundingCube.o"
+	@echo "... scene/bounding/BoundingCube.i"
+	@echo "... scene/bounding/BoundingCube.s"
+	@echo "... scene/bounding/BoundingSphere.o"
+	@echo "... scene/bounding/BoundingSphere.i"
+	@echo "... scene/bounding/BoundingSphere.s"
 	@echo "... utils/funcs.o"
 	@echo "... utils/funcs.i"
 	@echo "... utils/funcs.s"

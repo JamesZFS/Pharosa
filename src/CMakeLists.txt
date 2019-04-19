@@ -9,6 +9,7 @@ aux_source_directory(camera SRCS)
 aux_source_directory(core SRCS)
 aux_source_directory(geometric SRCS)
 aux_source_directory(scene SRCS)
+aux_source_directory(scene/bounding SRCS)
 aux_source_directory(utils SRCS)
 aux_source_directory(utils/solvers SRCS)
 

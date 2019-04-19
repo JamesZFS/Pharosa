@@ -12,7 +12,7 @@ Geometry::Geometry(const Pos &pos_, const ElAg &euler_angles_) : mat(pos_, euler
 //{
 //}
 
-Geometry &Geometry::replace(const Pos &pos_, const ElAg &euler_angles_)
+Geometry &Geometry::place(const Pos &pos_, const ElAg &euler_angles_)
 {
 	mat = TransMat(pos_, euler_angles_);
 	applyTransform();

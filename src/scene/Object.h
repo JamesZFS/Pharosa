@@ -7,7 +7,7 @@
 
 #include "../lib.h"
 #include "../core/Vec.h"
-#include "../core/Ray.hpp"
+#include "../core/Mat.h"
 #include "../geometric/All.h"
 
 // physical instance of an object, including its geometric and material attributes
@@ -31,6 +31,8 @@ struct Object
 
 	~Object();
 };
+
+typedef List<Object *> ObjectList;
 
 #include "Object.tcc"
 

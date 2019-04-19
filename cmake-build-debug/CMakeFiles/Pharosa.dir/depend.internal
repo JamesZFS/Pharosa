@@ -32,6 +32,10 @@ CMakeFiles/Pharosa.dir/main.cpp.o
  /Users/james/Test/CG/Pharosa/src/scene/Object.h
  /Users/james/Test/CG/Pharosa/src/scene/Object.tcc
  /Users/james/Test/CG/Pharosa/src/scene/Stage.h
+ /Users/james/Test/CG/Pharosa/src/scene/bounding/All.h
+ /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+ /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
+ /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
  /Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.h
  /Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.tcc

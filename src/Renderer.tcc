@@ -78,7 +78,7 @@ setupAlgorithm()
 	if (_illuminator == nullptr) {
 		_illuminator = new Render_Algorithm(*_stage, *_camera);
 	}
-	printf("loaded %ld objects in total.\n", _stage->getObjectCount());
+	printf("loaded %ld singletons in total.\n", _stage->getObjectCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		  camera().viewpoint().toString().data(), camera().orientation().toString().data());
 	printf("ready to render.\n");

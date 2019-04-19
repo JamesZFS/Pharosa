@@ -251,6 +251,24 @@
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/Stage.h">
 			<Option target="PharosaLib"/>
 		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp">
+			<Option target="PharosaLib"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h">
+			<Option target="PharosaLib"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp">
+			<Option target="PharosaLib"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h">
+			<Option target="PharosaLib"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp">
+			<Option target="PharosaLib"/>
+		</Unit>
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h">
+			<Option target="PharosaLib"/>
+		</Unit>
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/utils/funcs.cpp">
 			<Option target="PharosaLib"/>
 		</Unit>

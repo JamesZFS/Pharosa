@@ -68,10 +68,6 @@ Camera.h
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
 
-/Users/james/Test/CG/Pharosa/src/core/Mat.cpp
-Mat.h
-/Users/james/Test/CG/Pharosa/src/core/Mat.h
-
 /Users/james/Test/CG/Pharosa/src/core/Mat.h
 ../lib.h
 /Users/james/Test/CG/Pharosa/src/lib.h
@@ -106,19 +102,11 @@ Cube.h
 MeshObj.h
 /Users/james/Test/CG/Pharosa/src/geometric/MeshObj.h
 
-/Users/james/Test/CG/Pharosa/src/geometric/Cube.cpp
-Cube.h
-/Users/james/Test/CG/Pharosa/src/geometric/Cube.h
-
 /Users/james/Test/CG/Pharosa/src/geometric/Cube.h
 Geometry.h
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
 InfPlane.h
 /Users/james/Test/CG/Pharosa/src/geometric/InfPlane.h
-
-/Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp
-Geometry.h
-/Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
 
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
 ../lib.h
@@ -130,12 +118,6 @@ Geometry.h
 ../core/Ray.hpp
 /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
 
-/Users/james/Test/CG/Pharosa/src/geometric/InfPlane.cpp
-InfPlane.h
-/Users/james/Test/CG/Pharosa/src/geometric/InfPlane.h
-../scene/Object.h
-/Users/james/Test/CG/Pharosa/src/scene/Object.h
-
 /Users/james/Test/CG/Pharosa/src/geometric/InfPlane.h
 Geometry.h
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
@@ -144,19 +126,9 @@ Geometry.h
 
 /Users/james/Test/CG/Pharosa/src/geometric/MeshObj.h
 
-/Users/james/Test/CG/Pharosa/src/geometric/Sphere.cpp
-Sphere.h
-/Users/james/Test/CG/Pharosa/src/geometric/Sphere.h
-
 /Users/james/Test/CG/Pharosa/src/geometric/Sphere.h
 Geometry.h
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
-
-/Users/james/Test/CG/Pharosa/src/geometric/Triangle.cpp
-Triangle.h
-/Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
-../utils/solvers/Linear.h
-/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.h
 
 /Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
 Geometry.h
@@ -188,17 +160,13 @@ random
 omp.h
 -
 
-/Users/james/Test/CG/Pharosa/src/scene/Object.cpp
-Object.h
-/Users/james/Test/CG/Pharosa/src/scene/Object.h
-
 /Users/james/Test/CG/Pharosa/src/scene/Object.h
 ../lib.h
 /Users/james/Test/CG/Pharosa/src/lib.h
 ../core/Vec.h
 /Users/james/Test/CG/Pharosa/src/core/Vec.h
-../core/Ray.hpp
-/Users/james/Test/CG/Pharosa/src/core/Ray.hpp
+../core/Mat.h
+/Users/james/Test/CG/Pharosa/src/core/Mat.h
 ../geometric/All.h
 /Users/james/Test/CG/Pharosa/src/geometric/All.h
 Object.tcc
@@ -221,16 +189,30 @@ Stage.h
 /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
 Object.h
 /Users/james/Test/CG/Pharosa/src/scene/Object.h
+bounding/All.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/All.h
+
+/Users/james/Test/CG/Pharosa/src/scene/bounding/All.h
+BoundingBox.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+BoundingCube.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
+BoundingSphere.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+../Object.h
+/Users/james/Test/CG/Pharosa/src/scene/Object.h
+
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
+BoundingBox.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
+
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+BoundingBox.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
 
 /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 ../lib.h
 /Users/james/Test/CG/Pharosa/src/lib.h
-
-/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.h
-../../lib.h
-/Users/james/Test/CG/Pharosa/src/lib.h
-Linear.tcc
-/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.tcc
-
-/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.tcc
 

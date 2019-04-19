@@ -17,6 +17,9 @@ in 'src/', found sources:
 	geometric/Triangle.cpp
 	scene/Object.cpp
 	scene/Stage.cpp
+	scene/bounding/BoundingBox.cpp
+	scene/bounding/BoundingCube.cpp
+	scene/bounding/BoundingSphere.cpp
 	utils/funcs.cpp
 	utils/solvers/Linear.cpp
 

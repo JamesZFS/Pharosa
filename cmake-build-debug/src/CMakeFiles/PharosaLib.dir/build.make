@@ -278,9 +278,48 @@ src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/scene/Stage.cpp.s"
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/scene/Stage.cpp -o CMakeFiles/PharosaLib.dir/scene/Stage.cpp.s
 
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o: ../src/scene/bounding/BoundingBox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o -c /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.i"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp > CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.i
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.s"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.s
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o: ../src/scene/bounding/BoundingCube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o -c /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.i"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp > CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.i
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.s"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.s
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o: ../src/scene/bounding/BoundingSphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o -c /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.i"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp > CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.i
+
+src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.s"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp -o CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.s
+
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o: ../src/utils/funcs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o"
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o -c /Users/james/Test/CG/Pharosa/src/utils/funcs.cpp
 
 src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.i: cmake_force
@@ -293,7 +332,7 @@ src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.s: cmake_force
 
 src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
 src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o: ../src/utils/solvers/Linear.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o"
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o -c /Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.cpp
 
 src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.i: cmake_force
@@ -323,6 +362,9 @@ PharosaLib_OBJECTS = \
 "CMakeFiles/PharosaLib.dir/geometric/Triangle.cpp.o" \
 "CMakeFiles/PharosaLib.dir/scene/Object.cpp.o" \
 "CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o" \
+"CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o" \
+"CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o" \
+"CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o" \
 "CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o" \
 "CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o"
 
@@ -346,11 +388,14 @@ src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/geometric/Sphere.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/geometric/Triangle.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/scene/Object.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o
+src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o
+src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o
+src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/build.make
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX static library libPharosaLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking CXX static library libPharosaLib.a"
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/PharosaLib.dir/cmake_clean_target.cmake
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PharosaLib.dir/link.txt --verbose=$(VERBOSE)
 

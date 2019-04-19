@@ -30,7 +30,7 @@ struct Geometry
 	virtual ~Geometry() = default;
 
 	// 3D transformation, return *this
-	Geometry &replace(const Pos &pos_, const ElAg &euler_angles_);
+	Geometry &place(const Pos &pos_, const ElAg &euler_angles_);
 
 	Geometry &translate(const Pos &delta);
 
@@ -39,7 +39,7 @@ struct Geometry
 	// interfaces:
 	virtual void applyTransform() = 0;       // re-apply transform from transform matrix
 
-	/** standard intersection api.
+	/** standard intersection api. todo calculate normal at the same time when intersecting
 	 * @param ray
 	 * @param t : distance to first intersection point
 	 * @return true if intersected else false

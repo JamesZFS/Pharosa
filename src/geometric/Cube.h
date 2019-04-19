@@ -8,6 +8,7 @@
 #include "Geometry.h"
 #include "InfPlane.h"
 
+// Parallelepiped
 struct Cube : Geometry
 {
 	const Arr<Dir, 3> n;    // cache original normal

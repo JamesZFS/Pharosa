@@ -21,6 +21,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/james/Test/CG/Pharosa/src/geometric/Triangle.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/geometric/Triangle.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/scene/Object.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/scene/Object.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/scene/Stage.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/scene/Stage.cpp.o"
+  "/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingBox.cpp.o"
+  "/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingCube.cpp.o"
+  "/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/scene/bounding/BoundingSphere.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/utils/funcs.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/utils/funcs.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/utils/solvers/Linear.cpp.o"
   )

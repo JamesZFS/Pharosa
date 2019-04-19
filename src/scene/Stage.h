@@ -8,29 +8,37 @@
 #include "../lib.h"
 #include "../core/Ray.hpp"
 #include "Object.h"
-
-typedef List<Object *> ObjectList;
+#include "bounding/All.h"
 
 // Stage class, for i/o models and calculating ray intersection
 class Stage
 {
+#ifdef __DEV_STAGE__
+public:
+#else
 private:
-	ObjectList objects;	// using pointer to allow polymorphism
+#endif
+	ObjectList singletons;	// all singleton object ptrs, using pointer to allow polymorphism
+	BoundingBoxList bounding_boxes;	// all bounding boxes ptrs
 
 public:
 	Stage() = default;        // init an empty stage
 
 	~Stage();
 
-	size_t getObjectCount();	// count objects in total
+	size_t getObjectCount();	// count singletons in total
 
-	void fromJsonFile(const String &config_path);	// load objects from json file
+	void fromJsonFile(const String &config_path);	// load singletons from json file
 
 	void fromObjFile(const String &obj_path);      // load triangles from obj file
 
-	void fromObjectList(ObjectList &&objects_);	// load from list (! move constructor)
+	void fromList(ObjectList &singletons_);	// load from object ptr list (! move constructor)
+
+	void fromList(BoundingBoxList &bounding_boxes_); 	// from bounding box ptr list
 
 	void append(Object *object);	// append an object (affiliates it)
+
+	void append(BoundingBox *box);	// append a bounding box (affiliates it)
 
 //	void appendMeshes(TriangleGroup meshes);  // append mesh segments (affiliates it)todo
 	// meshes should be excluded from ObjectList and installed via appendMeshes method
