@@ -52,7 +52,7 @@ public:
 	 * @param verbose_step : steps to update progressbar, if 0 - no progressbar
 	 * @param checkpoint_dir : directory for storing checkpoint ppm images, if "" - don't save checkpoints
 	 */
-	void start(size_t n_epoch = 1, size_t verbose_step = 10000, const String &checkpoint_dir = "");
+	void start(size_t n_epoch = 1, size_t verbose_step = 10, const String &checkpoint_dir = "");
 
 	/** start a kinetic rendering
 	 *
@@ -63,7 +63,7 @@ public:
 	 * @param checkpoint_dir : directory for storing checkpoint ppm images for each frame, if "" - don't save checkpoints
 	 */
 	void startKinetic(size_t n_frame, void (*motion)(), size_t n_epoch = 1,
-					  size_t verbose_step = 10000, const String &checkpoint_dir = "");
+					  size_t verbose_step = 10, const String &checkpoint_dir = "");
 
 	// save ppm image
 	void save(const String &out_path);

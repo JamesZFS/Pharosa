@@ -58,7 +58,6 @@ inline T max3(const T &a, const T &b, const T &c)
 
 #ifdef __DEV_STAGE__
 	#define debug(...) printf(__VA_ARGS__)              // for dev
-	//#define prompt(...) fprintf(stderr, __VA_ARGS__)    // show progressbar info
 
 	// global params for debugging
 	extern size_t __counter__;
@@ -72,5 +71,6 @@ inline T max3(const T &a, const T &b, const T &c)
 
 #define warn(x) std::cerr << x << std::endl         // show error
 #define message(x) std::cout << x << std::endl        // show message
+#define barInfo(...) fprintf(stderr, __VA_ARGS__); fflush(stderr)    // show progressbar info
 
 #endif //PHAROSA_LIB_H

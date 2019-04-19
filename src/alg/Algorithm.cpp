@@ -26,7 +26,7 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 	computeEdgePixels();
 	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
 		printf("\r=== epoch %ld / %ld ===", epoch + 1, tot_epoch);
-		fflush(stdout);
+//		fflush(stdout);
 		#pragma omp parallel for schedule(dynamic, 1)
 		for (size_t j = 0; j < camera.height; ++j) {				// for each pixel
 			for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
@@ -44,7 +44,7 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 				}
 			}
 		}
-		if (checkpoint && (epoch - prev_epoch) % 500 == 0) {    // save checkpoints every 500 epochs
+		if (checkpoint/* && (epoch - prev_epoch) % 500 == 0*/) {    // save checkpoints every 500 epochs todo
 			Buffer out_path;
 			sprintf(out_path, "%s/epoch - %ld.ppm", checkpoint_dir.data(), epoch + 1);
 			camera.writePPM(out_path);
@@ -56,26 +56,37 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
 								size_t verbose_step, const String &checkpoint_dir)
 {
-	warn("Algorithm::renderVerbose() is not complete yet!");
 	// with progressbar
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	size_t tot_epoch = n_epoch + prev_epoch;
 
 	computeEdgePixels();
-	for (size_t epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
-		printf("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
+	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
+		printf("\n=== epoch %ld / %ld ===\n", epoch + 1, tot_epoch);
 		fflush(stdout);
-		camera.resetProgress();
-		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
-			for (size_t k = 0; k < N_SUBPIXEL; ++k) {
-				Ray &&ray = camera.shootRay();
-				camera.render(radiance(ray));
+		#pragma omp parallel for schedule(dynamic, 1)
+		for (size_t j = 0; j < camera.height; ++j) {				// for each pixel
+			if (j % verbose_step == 0) {
+				barInfo("\r %.1f %%", j * 100.0 / camera.height);	// progressbar :)
 			}
-			camera.updateProgress();
+			for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
+				if (is_edge[rank]) {									// MSAA - for 4 subpixels
+					Color color;
+					color += radiance(camera.shootRayAt(i - SUB_D1, j - SUB_D2));
+					color += radiance(camera.shootRayAt(i - SUB_D2, j + SUB_D1));
+					color += radiance(camera.shootRayAt(i + SUB_D2, j - SUB_D1));
+					color += radiance(camera.shootRayAt(i + SUB_D1, j + SUB_D2));
+					color /= 4;
+					camera.render(rank, color);
+				}
+				else {
+					camera.render(rank, radiance(camera.shootRayAt(i, j, 0.5)));	// just rand normal - 0.5
+				}
+			}
 		}
-		if (checkpoint) {    // save checkpoints
+		if (checkpoint/* && (epoch - prev_epoch) % 500 == 0*/) {    // save checkpoints every epoch todo
 			Buffer out_path;
-			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + N_SUBPIXEL);
+			sprintf(out_path, "%s/epoch - %ld.ppm", checkpoint_dir.data(), epoch + 1);
 			camera.writePPM(out_path);
 		}
 	}

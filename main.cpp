@@ -27,9 +27,6 @@ void Pharosa(int argc, char *argv[])
 	size_t n_epoch = (argc >= 2) ? (size_t) atoi(argv[1]) : 10;
 	String out_path = (argc >= 3) ? argv[2] : "test image.ppm";
 
-	// init random engine
-	Funcs::generator.seed((unsigned int) time(nullptr));
-
 	// ********************************************* define stage *********************************************
 	ball = new Object(Sphere(10, Pos(73, 10, 78)), Color::WHITE * .999, Emission::SPLENDID, Object::DIFF);
 	auto *front = new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, 200)), Color::YELLOW);//front
@@ -69,24 +66,24 @@ void Pharosa(int argc, char *argv[])
 //	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
 //	auto box = new BoundingCube(box_objs);
 	auto box = new BoundingCube();
-	box->translate({-10, -10, -20}).rotate({20 * DEG, 45 * DEG});
-	box->fromObjFile("res/block.obj", 0.8);
+	box->translate({-10, -20, -30});
+	box->fromObjFile("res/bunny.fine.obj", 100);
 	warn("box size: " << box->objects.size());
 
 	// ********************************************* init render engine *********************************************
 	RayCasting::LIGHT_DIR = Dir(-0.2, -1, +0.3);
 
-	Renderer<RayTracing<2>, BasicCamera> renderer;
+	Renderer<RayTracing<1>, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromList(singletons);
 	renderer.stage().append(box);
 
-	renderer.setupCamera(Pos(0, 0, -150), ElAg(M_PI, 0, 0), 1024, 768);
+	renderer.setupCamera(Pos(0, 0, -150), ElAg(M_PI, 0, 0), 1024, 768, "out/bunny/1.ppm", 1);
 //	renderer.camera().rotate(ElAg(0, -5 * DEG, 0));
 //	renderer.camera().translate({0, 0, -70});
 
 	// ********************************************* start rendering *********************************************
-	renderer.start(n_epoch, 0, "out/checkpoints");
+	renderer.start(n_epoch, 10, "out/bunny");
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	// ********************************************* save results *********************************************
@@ -95,6 +92,8 @@ void Pharosa(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+	// init random engine
+	Funcs::generator.seed((unsigned int) time(nullptr));
 	Pharosa(argc, argv);
 //	Test::matrix();
 	return 0;
