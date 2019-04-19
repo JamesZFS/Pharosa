@@ -55,7 +55,7 @@ bool Cube::intersect(const Ray &ray, double &t) const
 	for (const auto &s : slab) {    // todo acc
 		dn = ray.dir % s[0].n;    // d.n
 		if (fabs(dn) < EPS) { // parallel to some face
-			if (s[0].relationWith(ray.org) == s[1].relationWith(ray.org)) return false; //and outside the cube
+			if (s[0].above(ray.org) == s[1].above(ray.org)) return false; //and outside the cube
 		}
 
 		// assert: s[0].n == s[1].n

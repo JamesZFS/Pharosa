@@ -64,6 +64,12 @@ double Geometry::zMax()
 	return 0;
 }
 
+void Geometry::translateLocal(const Pos &delta)
+{
+	warn("Geometry::translateLocal() not implemented!");
+	exit(1);
+}
+
 //Geometry &Geometry::operator=(Geometry &&geo) noexcept
 //{
 //	mat = std::move(geo.mat);

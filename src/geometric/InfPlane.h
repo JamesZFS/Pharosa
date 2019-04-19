@@ -35,7 +35,7 @@ struct InfPlane : Geometry
 	inline bool hasSurfacePoint(const Pos &x) const override
 	{ return fabs((x - p) % n) < EPS; }
 
-	inline int relationWith(const Pos &x) const    // +1, -1, 0(on plane)
+	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)
 	{ return Funcs::sgn((x - p) % n); }
 };
 

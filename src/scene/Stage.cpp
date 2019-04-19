@@ -88,9 +88,14 @@ const Object * Stage::hitOf(const Ray &ray) const	// return hit without normal a
 	return hit;
 }
 
-size_t Stage::getObjectCount()
+size_t Stage::getSingletonCount()
 {
 	return singletons.size();
+}
+
+size_t Stage::getBoundingBoxCount()
+{
+	return bounding_boxes.size();
 }
 
 void Stage::fromList(BoundingBoxList &bounding_boxes_)

@@ -76,5 +76,6 @@ void BoundingBox::fromObjFile(const String &obj_path, double zoom_ratio, const C
 							  Object::ReflType reft)
 {
 	objects = std::move(Parser::parseObjFile(obj_path, zoom_ratio, color, emi, reft));
+//	objects = Parser::parseObjFile(obj_path, zoom_ratio, color, emi, reft);
 	findBounds();
 }

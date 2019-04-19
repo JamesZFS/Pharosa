@@ -12,11 +12,16 @@ class BoundingCube : public BoundingBox
 {
 private:
 	Cube cube;
+#ifdef __DEV_STAGE__
+	Object *ocube;	// todo only for debugging
+#endif
 
 public:
-	BoundingCube() = default;
+	BoundingCube();
 
-	BoundingCube(Cube &&cube_, ObjectList &objects_);
+	BoundingCube(ObjectList &objects_);
+
+	BoundingCube(Cube &&cube_, ObjectList &objects_);	// manual
 
 	void applyTransform() override;
 

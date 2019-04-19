@@ -114,41 +114,17 @@ Object.tcc
 Object.h
 /Users/james/Test/CG/Pharosa/src/scene/Object.h
 
-/Users/james/Test/CG/Pharosa/src/scene/Stage.cpp
-Stage.h
-/Users/james/Test/CG/Pharosa/src/scene/Stage.h
-../utils/funcs.hpp
-/Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
-
-/Users/james/Test/CG/Pharosa/src/scene/Stage.h
-../lib.h
-/Users/james/Test/CG/Pharosa/src/lib.h
-../core/Ray.hpp
-/Users/james/Test/CG/Pharosa/src/core/Ray.hpp
-Object.h
-/Users/james/Test/CG/Pharosa/src/scene/Object.h
-bounding/All.h
-/Users/james/Test/CG/Pharosa/src/scene/bounding/All.h
-
-/Users/james/Test/CG/Pharosa/src/scene/bounding/All.h
-BoundingBox.h
-/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
-BoundingCube.h
-/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
-BoundingSphere.h
-/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
-
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
 ../Object.h
 /Users/james/Test/CG/Pharosa/src/scene/Object.h
 ../../utils/Parsers.h
 /Users/james/Test/CG/Pharosa/src/utils/Parsers.h
 
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.cpp
+BoundingCube.h
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
-BoundingBox.h
-/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
 
-/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h
+/Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h
 BoundingBox.h
 /Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingBox.h
 

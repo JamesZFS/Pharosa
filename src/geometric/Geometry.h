@@ -52,6 +52,8 @@ struct Geometry
 	// determine if a point is on the surface of object
 	virtual bool hasSurfacePoint(const Pos &x) const = 0;
 
+	// todo code below is dirty
+	virtual void translateLocal(const Pos &delta);
 	virtual double xMin();
 	virtual double xMax();
 	virtual double yMin();

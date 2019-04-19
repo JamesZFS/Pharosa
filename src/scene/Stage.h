@@ -26,7 +26,9 @@ public:
 
 	~Stage();
 
-	size_t getObjectCount();	// count singletons in total
+	size_t getSingletonCount();	// count singletons in total
+
+	size_t getBoundingBoxCount();	// count BoundingBox in total
 
 	void fromJsonFile(const String &config_path);	// load singletons from json file
 

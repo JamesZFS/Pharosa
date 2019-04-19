@@ -59,24 +59,24 @@ void Pharosa(int argc, char *argv[])
 			new Object(Sphere(600, Pos(0, 681.6 - 21, 0), ElAg()), Color::BLACK, Emission(1, 1, 1), Object::DIFF), //Lite
 	};
 //
-//	ObjectList box_objs{
-//			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::REFR),
-//			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::DIFF),
-//			new Object(Sphere(3, Pos(10, 0, 0)), Color(0.5, 0.8, 1.0), Emission(), Object::SPEC),
-//			new Object(Sphere(3, Pos(-10, 0, 0)), Color(0.2, 0.9, 0.0), Emission(), Object::DIFF),
-//			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
-//	};
+	ObjectList box_objs{
+			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::REFR),
+			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::DIFF),
+			new Object(Sphere(3, Pos(10, 0, 0)), Color(0.5, 0.8, 1.0), Emission(), Object::SPEC),
+			new Object(Sphere(3, Pos(-10, 0, 0)), Color(0.2, 0.9, 0.0), Emission(), Object::DIFF),
+			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
+	};
 //	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
-//	auto box = new BoundingCube(Cube(20, 20, 10, Pos(-10, -10), ElAg()), box_objs);
-	auto box = new BoundingCube();
-	box->translate({20, -20, -50});
-	box->fromObjFile("res/cube.obj", 10);
+	auto box = new BoundingCube(box_objs);
+//	auto box = new BoundingCube();
+	box->translate({-10, -10, -20}).rotate({20 * DEG, 45 * DEG});
+//	box->fromObjFile("res/sphere.obj", 10);
 	warn("box size: " << box->objects.size());
 
 	// ********************************************* init render engine *********************************************
 	RayCasting::LIGHT_DIR = Dir(-0.2, -1, +0.3);
 
-	Renderer<RayTracing<>, BasicCamera> renderer;
+	Renderer<RayCasting, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromList(singletons);
 	renderer.stage().append(box);
