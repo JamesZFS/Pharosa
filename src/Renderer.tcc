@@ -49,8 +49,8 @@ setupStage(const String &config_path)
 
 template<typename Render_Algorithm, typename Camera_Type>
 void Renderer<Render_Algorithm, Camera_Type>::
-setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_,
-			const String &prev_path_, unsigned int prev_epoch_)
+setupCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_,
+			const String &prev_path_, size_t prev_epoch_)
 {
 	prev_epoch = prev_epoch_;
 	if (_camera != nullptr) delete _camera;
@@ -78,14 +78,14 @@ setupAlgorithm()
 	if (_illuminator == nullptr) {
 		_illuminator = new Render_Algorithm(*_stage, *_camera);
 	}
-	printf("loaded %d objects in total.\n", _stage->getObjectCount());
+	printf("loaded %ld objects in total.\n", _stage->getObjectCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		  camera().viewpoint().toString().data(), camera().orientation().toString().data());
 	printf("ready to render.\n");
 }
 
 template<typename Render_Algorithm, typename Camera_Type>
-void Renderer<Render_Algorithm, Camera_Type>::renderFrame(unsigned int n_epoch, unsigned int verbose_step,
+void Renderer<Render_Algorithm, Camera_Type>::renderFrame(size_t n_epoch, size_t verbose_step,
 														  const String &checkpoint_dir)
 {
 	if (verbose_step == 0)
@@ -95,8 +95,8 @@ void Renderer<Render_Algorithm, Camera_Type>::renderFrame(unsigned int n_epoch, 
 }
 
 template<typename Render_Algorithm, typename Camera_Type>
-void Renderer<Render_Algorithm, Camera_Type>::start(unsigned int n_epoch,
-													unsigned int verbose_step, const String &checkpoint_dir)
+void Renderer<Render_Algorithm, Camera_Type>::start(size_t n_epoch,
+													size_t verbose_step, const String &checkpoint_dir)
 {
 	setupAlgorithm();
 	printf("===== rendering start =====\n");
@@ -114,8 +114,8 @@ void Renderer<Render_Algorithm, Camera_Type>::start(unsigned int n_epoch,
 
 template<typename Render_Algorithm, typename Camera_Type>
 void Renderer<Render_Algorithm, Camera_Type>::
-startKinetic(unsigned int n_frame, void (*motion)(), unsigned int n_epoch,
-			 unsigned int verbose_step, const String &checkpoint_dir)
+startKinetic(size_t n_frame, void (*motion)(), size_t n_epoch,
+			 size_t verbose_step, const String &checkpoint_dir)
 {
 	if (prev_epoch > 0) {
 		warn("Error: before rendering kinetic images, you should not pre-read from previous image.\n");
@@ -129,13 +129,13 @@ startKinetic(unsigned int n_frame, void (*motion)(), unsigned int n_epoch,
 	printf("======= kinetic rendering start =======\n");
 
 	double since = omp_get_wtime();
-	for (unsigned int frame = 0; frame < n_frame; ++frame) {
-		printf("\n===== frame %d / %d =====\n", frame + 1, n_frame);
+	for (size_t frame = 0; frame < n_frame; ++frame) {
+		printf("\n===== frame %ld / %ld =====\n", frame + 1, n_frame);
 		renderFrame(n_epoch, verbose_step, "");
 		motion();    // deal with motion
 		if (checkpoint) {    // save checkpoint for each frame
 			Buffer out_path;
-			sprintf(out_path, "%s/frame - %d (samps = %d).ppm", checkpoint_dir.data(), frame + 1, n_epoch);
+			sprintf(out_path, "%s/frame - %ld (samps = %ld).ppm", checkpoint_dir.data(), frame + 1, n_epoch);
 			_camera->writePPM(out_path);
 		}
 	}

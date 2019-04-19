@@ -7,11 +7,11 @@
 
 #include "Camera.h"
 
-// mix several ppm files together
+// mix several ppm files together todo re-implement this
 class ImageMixer : public Camera
 {
 public:
-	ImageMixer(unsigned int width_ = 1024, unsigned int height_ = 768);
+	ImageMixer(size_t width_ = 1024, size_t height_ = 768);
 
 	Ray shootRayAt(double i, double j, double sigma) const override;
 

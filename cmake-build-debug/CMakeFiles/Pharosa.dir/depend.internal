@@ -16,7 +16,7 @@ CMakeFiles/Pharosa.dir/main.cpp.o
  /Users/james/Test/CG/Pharosa/src/camera/Camera.inl
  /Users/james/Test/CG/Pharosa/src/camera/DOFCamera.h
  /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
- /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+ /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.tcc
  /Users/james/Test/CG/Pharosa/src/core/Ray.hpp

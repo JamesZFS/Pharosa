@@ -4,13 +4,13 @@
 
 #include "../utils/funcs.hpp"
 
-template<unsigned int MAX_DEPTH>
+template<size_t MAX_DEPTH>
 RayTracing<MAX_DEPTH>::RayTracing(Stage &stage_, Camera &camera_) : Algorithm(stage_, camera_)
 {
 }
 
-template<unsigned int MAX_DEPTH>
-Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, unsigned int depth) const
+template<size_t MAX_DEPTH>
+Color RayTracing<MAX_DEPTH>::radiance(const Ray &ray, size_t depth) const
 {
 	using Funcs::randf;
 

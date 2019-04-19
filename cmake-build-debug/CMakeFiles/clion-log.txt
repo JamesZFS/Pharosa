@@ -6,7 +6,7 @@ in 'src/', found sources:
 	camera/Camera.cpp
 	camera/DOFCamera.cpp
 	camera/ImageMixer.cpp
-	camera/OrthographicCamera.cpp
+	camera/OrthoCamera.cpp
 	core/Mat.cpp
 	core/Vec.cpp
 	geometric/Cube.cpp

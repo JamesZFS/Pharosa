@@ -69,8 +69,8 @@ BasicCamera.h
 /Users/james/Test/CG/Pharosa/src/camera/BasicCamera.h
 DOFCamera.h
 /Users/james/Test/CG/Pharosa/src/camera/DOFCamera.h
-OrthographicCamera.h
-/Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+OrthoCamera.h
+/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
 ImageMixer.h
 /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
 
@@ -96,7 +96,7 @@ Camera.inl
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
 
-/Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
 

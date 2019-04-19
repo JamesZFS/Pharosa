@@ -10,7 +10,7 @@ src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o
  /Users/james/Test/CG/Pharosa/src/camera/Camera.inl
  /Users/james/Test/CG/Pharosa/src/camera/DOFCamera.h
  /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
- /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+ /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.tcc
  /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
@@ -37,7 +37,7 @@ src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o
  /Users/james/Test/CG/Pharosa/src/camera/Camera.inl
  /Users/james/Test/CG/Pharosa/src/camera/DOFCamera.h
  /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
- /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+ /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.h
  /Users/james/Test/CG/Pharosa/src/core/Mat.tcc
  /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
@@ -83,11 +83,11 @@ src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o
  /Users/james/Test/CG/Pharosa/src/core/Vec.h
  /Users/james/Test/CG/Pharosa/src/lib.h
  /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o
  /Users/james/Test/CG/Pharosa/src/camera/Camera.h
  /Users/james/Test/CG/Pharosa/src/camera/Camera.inl
- /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp
- /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h
+ /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp
+ /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
  /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
  /Users/james/Test/CG/Pharosa/src/core/Vec.h
  /Users/james/Test/CG/Pharosa/src/lib.h

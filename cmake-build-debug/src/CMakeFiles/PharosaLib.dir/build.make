@@ -135,18 +135,18 @@ src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.s"
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.cpp -o CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.s
 
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/camera/OrthographicCamera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o"
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o -c /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/camera/OrthoCamera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o -c /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp
 
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.i"
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp > CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.i
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.i"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp > CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.i
 
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.s"
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp -o CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.s
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.s"
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug/src && /usr/local/Cellar/gcc/8.3.0/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp -o CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.s
 
 src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o: src/CMakeFiles/PharosaLib.dir/flags.make
 src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o: ../src/core/Mat.cpp
@@ -312,7 +312,7 @@ PharosaLib_OBJECTS = \
 "CMakeFiles/PharosaLib.dir/camera/Camera.cpp.o" \
 "CMakeFiles/PharosaLib.dir/camera/DOFCamera.cpp.o" \
 "CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o" \
-"CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o" \
+"CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o" \
 "CMakeFiles/PharosaLib.dir/core/Mat.cpp.o" \
 "CMakeFiles/PharosaLib.dir/core/Vec.cpp.o" \
 "CMakeFiles/PharosaLib.dir/geometric/Cube.cpp.o" \
@@ -335,7 +335,7 @@ src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/BasicCamera.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/Camera.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/DOFCamera.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o
-src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o
+src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/core/Vec.cpp.o
 src/libPharosaLib.a: src/CMakeFiles/PharosaLib.dir/geometric/Cube.cpp.o

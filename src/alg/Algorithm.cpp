@@ -17,19 +17,19 @@ Algorithm::~Algorithm()
 #define SUB_D1 0.45
 #define SUB_D2 0.05
 
-void Algorithm::render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir)
+void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoint_dir)
 {
 	// without progressbar, fast version
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
-	unsigned int tot_epoch = n_epoch + prev_epoch;
+	size_t tot_epoch = n_epoch + prev_epoch;
 
 	computeEdgePixels();
-	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
-		printf("\r=== epoch %d / %d ===", epoch + 1, tot_epoch);
+	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
+		printf("\r=== epoch %ld / %ld ===", epoch + 1, tot_epoch);
 		fflush(stdout);
 		#pragma omp parallel for schedule(dynamic, 1)
-		for (unsigned int j = 0; j < camera.height; ++j) {				// for each pixel
-			for (unsigned int i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
+		for (size_t j = 0; j < camera.height; ++j) {				// for each pixel
+			for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
 				if (is_edge[rank]) {									// MSAA - for 4 subpixels
 					Color color;
 					color += radiance(camera.shootRayAt(i - SUB_D1, j - SUB_D2));
@@ -46,28 +46,28 @@ void Algorithm::render(unsigned int n_epoch, unsigned int prev_epoch, const Stri
 		}
 		if (checkpoint && (epoch - prev_epoch) % 500 == 0) {    // save checkpoints every 500 epochs
 			Buffer out_path;
-			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + 1);
+			sprintf(out_path, "%s/epoch - %ld.ppm", checkpoint_dir.data(), epoch + 1);
 			camera.writePPM(out_path);
 		}
 	}
 	printf("\n");
 }
 
-void Algorithm::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
-								unsigned int verbose_step, const String &checkpoint_dir)
+void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
+								size_t verbose_step, const String &checkpoint_dir)
 {
 	printf("not complete yet!");
 //	// with progressbar
 //	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
-//	unsigned int tot_epoch = n_epoch + prev_epoch;
+//	size_t tot_epoch = n_epoch + prev_epoch;
 //
 ////	computeEdgePixels();
-//	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
+//	for (size_t epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
 //		printf("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
 //		fflush(stdout);
 //		camera.resetProgress();
 //		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
-//			for (unsigned int k = 0; k < N_SUBPIXEL; ++k) {
+//			for (size_t k = 0; k < N_SUBPIXEL; ++k) {
 //				Ray &&ray = camera.shootRay();
 //				camera.render(radiance(ray));
 //			}
@@ -85,8 +85,8 @@ void Algorithm::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 void Algorithm::computeEdgePixels()
 {
 	#pragma omp parallel for schedule(dynamic, 1)		// OpenMP
-	for (unsigned int j = 0; j < camera.height; ++j) {
-		for (unsigned int i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
+	for (size_t j = 0; j < camera.height; ++j) {
+		for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
 			// four sub rays
 			const Object
 					*hit0 = stage.hitOf(camera.shootRayAt(i - SUB_D1, j - SUB_D2)),
@@ -104,7 +104,7 @@ void Algorithm::computeEdgePixels()
 		exit(1);
 	}
 	fout << "P3 " << camera.width << " " << camera.height << "\n255\n";
-	for (unsigned int rank = 0; rank < camera.size; ++rank) {
+	for (size_t rank = 0; rank < camera.size; ++rank) {
 		fout << (is_edge[rank] ? "0 0 0 " : "255 255 255 ");
 	}
 	fout.close();

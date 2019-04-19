@@ -9,7 +9,7 @@ src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/Camera.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/Camera.inl
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/DOFCamera.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/ImageMixer.h
-src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/OrthographicCamera.h
+src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/camera/OrthoCamera.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/core/Mat.h
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/core/Mat.tcc
 src/CMakeFiles/PharosaLib.dir/alg/Algorithm.cpp.o: ../src/core/Ray.hpp
@@ -36,7 +36,7 @@ src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/Camera.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/Camera.inl
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/DOFCamera.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/ImageMixer.h
-src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/OrthographicCamera.h
+src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/camera/OrthoCamera.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/core/Mat.h
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/core/Mat.tcc
 src/CMakeFiles/PharosaLib.dir/alg/RayCasting.cpp.o: ../src/core/Ray.hpp
@@ -83,14 +83,14 @@ src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o: ../src/core/Vec.h
 src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o: ../src/lib.h
 src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o: ../src/utils/funcs.hpp
 
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/camera/Camera.h
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/camera/Camera.inl
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/camera/OrthographicCamera.cpp
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/camera/OrthographicCamera.h
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/core/Ray.hpp
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/core/Vec.h
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/lib.h
-src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o: ../src/utils/funcs.hpp
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/camera/Camera.h
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/camera/Camera.inl
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/camera/OrthoCamera.cpp
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/camera/OrthoCamera.h
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/core/Ray.hpp
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/core/Vec.h
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/lib.h
+src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o: ../src/utils/funcs.hpp
 
 src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o: ../src/core/Mat.cpp
 src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o: ../src/core/Mat.h

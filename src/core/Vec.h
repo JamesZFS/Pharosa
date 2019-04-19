@@ -88,7 +88,7 @@ struct Vec
 	inline T mean() const
 	{ return (x + y + z) / 3; }
 
-	inline void putToArray(T *dst, unsigned int step = 1) const    // output to `dst`: an array of T
+	inline void putToArray(T *dst, size_t step = 1) const    // output to `dst`: an array of T
 	{
 		*(dst) = x;
 		*(dst += step) = y;

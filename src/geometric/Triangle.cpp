@@ -5,12 +5,9 @@
 #include "Triangle.h"
 #include "../utils/solvers/Linear.h"
 
-Triangle::Triangle(const Pos p_[3], const Pos &pos_, const ElAg &euler_angles_) :
-		Geometry(pos_, euler_angles_)
+Triangle::Triangle(Arr<Pos, 3> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_), p(p_)
 {
-	p[0] = p_[0];
-	p[1] = p_[1];
-	p[2] = p_[2];
 	applyTransform();
 }
 

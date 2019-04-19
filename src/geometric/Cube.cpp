@@ -4,7 +4,7 @@
 
 #include "Cube.h"
 
-Cube::Cube(Array<Dir, 3> &&n_, Array2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
+Cube::Cube(Arr<Dir, 3> &&n_, Arr2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
 		Geometry(pos_, euler_angles_), n(n_), p(p_)
 {
 	applyTransform();

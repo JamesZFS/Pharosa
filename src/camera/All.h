@@ -8,7 +8,7 @@
 #include "Camera.h"
 #include "BasicCamera.h"
 #include "DOFCamera.h"
-#include "OrthographicCamera.h"
+#include "OrthoCamera.h"
 #include "ImageMixer.h"
 
 #endif //PHAROSA_CAMERA_ALL_H

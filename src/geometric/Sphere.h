@@ -10,7 +10,7 @@
 struct Sphere : Geometry
 {
 	Pos pos;	// center
-	double rad, rad_2;	// radius, radius^2
+	const double rad, rad_2;	// radius, radius^2
 
 	Sphere(double radius_, const Pos &pos_, ElAg euler_angles_ = {});
 

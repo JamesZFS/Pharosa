@@ -185,10 +185,10 @@
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h">
 			<Option target="PharosaLib"/>
 		</Unit>
-		<Unit filename="/Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp">
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp">
 			<Option target="PharosaLib"/>
 		</Unit>
-		<Unit filename="/Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.h">
+		<Unit filename="/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h">
 			<Option target="PharosaLib"/>
 		</Unit>
 		<Unit filename="/Users/james/Test/CG/Pharosa/src/core/Mat.cpp">

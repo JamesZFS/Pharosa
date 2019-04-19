@@ -24,7 +24,7 @@ protected:
 	Camera &camera;
 
 	// interfaces:
-	virtual Color radiance(const Ray &ray, unsigned int depth) const = 0;    // ** main algorithm **
+	virtual Color radiance(const Ray &ray, size_t depth) const = 0;    // ** main algorithm **
 
 	inline Color radiance(const Ray &ray) const	// entrance
 	{ return radiance(ray, 0); }
@@ -36,10 +36,10 @@ public:
 
 	// ** rendering pipeline **
 	// do the rendering for n_epoch times
-	virtual void render(unsigned int n_epoch, unsigned int prev_epoch, const String &checkpoint_dir);
+	virtual void render(size_t n_epoch, size_t prev_epoch, const String &checkpoint_dir);
 
-	virtual void renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
-							   unsigned int verbose_step, const String &checkpoint_dir);
+	virtual void renderVerbose(size_t n_epoch, size_t prev_epoch,
+							   size_t verbose_step, const String &checkpoint_dir);
 };
 
 #endif //PHAROSA_ALGORITHM_H

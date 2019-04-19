@@ -5,13 +5,13 @@ void Camera::render(const Color &color)
 	++render_cnt[cur_rank];    // counts up rendering time of current pixel
 }
 
-void Camera::render(unsigned int rank, const Color &color)
+void Camera::render(size_t rank, const Color &color)
 {
 	img[rank] += color;
 	++render_cnt[rank];
 }
 
-void Camera::renderAt(unsigned int i, unsigned int j, const Color &color)
+void Camera::renderAt(size_t i, size_t j, const Color &color)
 {
 	auto rank = rankOf(i, j);
 	img[rank] += color;
@@ -21,7 +21,7 @@ void Camera::renderAt(unsigned int i, unsigned int j, const Color &color)
 #undef rankOf
 #undef checkCoordinate
 
-bool Camera::finishedVerbose(unsigned int n_step) const
+bool Camera::finishedVerbose(size_t n_step) const
 {
 	assert(n_step > 0);
 	if (cur_rank % n_step == 0) {

@@ -11,11 +11,11 @@
 template<typename T = double>
 struct Mat    // 3D matrix
 {
-	Array2D<T, 3, 3> el;
+	Arr2D<T, 3, 3> el;
 
 	Mat();	// init a 3x3 zero matrix
 
-	Mat(Array2D<T, 3, 3> &&a) noexcept;	// move from array
+	Mat(Arr2D<T, 3, 3> &&a) noexcept;	// move from array
 
 	Mat(T k);    // diag
 
@@ -29,8 +29,8 @@ struct Mat    // 3D matrix
 
 	Mat<T> &operator=(Mat &&b) noexcept;    // move
 
-	inline T at(unsigned int i, unsigned int j) const    // getter
-	{ return el[i][j]; }
+	inline T at(size_t i, size_t j) const    // getter
+	{ return el.at(i).at(j); }
 
 	Mat<T> operator+(const Mat<T> &B) const;    // pls mul
 

@@ -287,32 +287,32 @@ camera/ImageMixer.cpp.s:
 	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.s
 .PHONY : camera/ImageMixer.cpp.s
 
-camera/OrthographicCamera.o: camera/OrthographicCamera.cpp.o
+camera/OrthoCamera.o: camera/OrthoCamera.cpp.o
 
-.PHONY : camera/OrthographicCamera.o
+.PHONY : camera/OrthoCamera.o
 
 # target to build an object file
-camera/OrthographicCamera.cpp.o:
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o
-.PHONY : camera/OrthographicCamera.cpp.o
+camera/OrthoCamera.cpp.o:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o
+.PHONY : camera/OrthoCamera.cpp.o
 
-camera/OrthographicCamera.i: camera/OrthographicCamera.cpp.i
+camera/OrthoCamera.i: camera/OrthoCamera.cpp.i
 
-.PHONY : camera/OrthographicCamera.i
+.PHONY : camera/OrthoCamera.i
 
 # target to preprocess a source file
-camera/OrthographicCamera.cpp.i:
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.i
-.PHONY : camera/OrthographicCamera.cpp.i
+camera/OrthoCamera.cpp.i:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.i
+.PHONY : camera/OrthoCamera.cpp.i
 
-camera/OrthographicCamera.s: camera/OrthographicCamera.cpp.s
+camera/OrthoCamera.s: camera/OrthoCamera.cpp.s
 
-.PHONY : camera/OrthographicCamera.s
+.PHONY : camera/OrthoCamera.s
 
 # target to generate assembly for a file
-camera/OrthographicCamera.cpp.s:
-	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.s
-.PHONY : camera/OrthographicCamera.cpp.s
+camera/OrthoCamera.cpp.s:
+	cd /Users/james/Test/CG/Pharosa/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PharosaLib.dir/build.make src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.s
+.PHONY : camera/OrthoCamera.cpp.s
 
 core/Mat.o: core/Mat.cpp.o
 
@@ -665,9 +665,9 @@ help:
 	@echo "... camera/ImageMixer.o"
 	@echo "... camera/ImageMixer.i"
 	@echo "... camera/ImageMixer.s"
-	@echo "... camera/OrthographicCamera.o"
-	@echo "... camera/OrthographicCamera.i"
-	@echo "... camera/OrthographicCamera.s"
+	@echo "... camera/OrthoCamera.o"
+	@echo "... camera/OrthoCamera.i"
+	@echo "... camera/OrthoCamera.s"
 	@echo "... core/Mat.o"
 	@echo "... core/Mat.i"
 	@echo "... core/Mat.s"

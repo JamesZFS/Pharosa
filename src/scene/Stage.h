@@ -22,7 +22,7 @@ public:
 
 	~Stage();
 
-	unsigned int getObjectCount();	// count objects in total
+	size_t getObjectCount();	// count objects in total
 
 	void fromJsonFile(const String &config_path);	// load objects from json file
 

@@ -54,12 +54,12 @@ namespace Funcs
 #define C_GAMMA 0.45454545454545 // 1 / 2.2
 #define C_1_GAMMA 2.2 // 2.2 / 1
 
-	inline unsigned int gammaCorrection(double x)
+	inline size_t gammaCorrection(double x)
 	{
-		return (unsigned int) (pow(clamp(x), C_GAMMA) * 255);
+		return (size_t) (pow(clamp(x), C_GAMMA) * 255);
 	}
 
-	inline double inverseGammaCorrection(unsigned int y)
+	inline double inverseGammaCorrection(size_t y)
 	{
 		return pow(y * 1.0 / 255, C_1_GAMMA);
 	}

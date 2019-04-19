@@ -7,7 +7,7 @@
 
 double BasicCamera::PIXEL_SIZE = 0.1, BasicCamera::FOCUS = 140.0;
 
-BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
+BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_) :
 		Camera(pos_, euler_angles_, width_, height_)
 {
 }

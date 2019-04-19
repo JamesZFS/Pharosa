@@ -21,12 +21,12 @@ private:
 	Stage *_stage;
 	Camera *_camera;
 	Algorithm *_illuminator;
-	unsigned int prev_epoch;    // previous rendering times
+	size_t prev_epoch;    // previous rendering times
 
 	void setupAlgorithm();
 
 	// render one time frame
-	void renderFrame(unsigned int n_epoch, unsigned int verbose_step, const String &checkpoint_dir);
+	void renderFrame(size_t n_epoch, size_t verbose_step, const String &checkpoint_dir);
 
 public:
 	// init a Renderer with any type of Alg and Camera
@@ -43,8 +43,8 @@ public:
 	void setupStage(const String &config_path = "");
 
 	// setup stage by designating a stage config file path, can continue from a previous ppm image path
-	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768,
-					 const String &prev_path_ = "", unsigned int prev_epoch_ = 0);
+	void setupCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
+					 const String &prev_path_ = "", size_t prev_epoch_ = 0);
 
 	/** start rendering
 	 *
@@ -52,7 +52,7 @@ public:
 	 * @param verbose_step : steps to update progressbar, if 0 - no progressbar
 	 * @param checkpoint_dir : directory for storing checkpoint ppm images, if "" - don't save checkpoints
 	 */
-	void start(unsigned int n_epoch = 1, unsigned int verbose_step = 10000, const String &checkpoint_dir = "");
+	void start(size_t n_epoch = 1, size_t verbose_step = 10000, const String &checkpoint_dir = "");
 
 	/** start a kinetic rendering
 	 *
@@ -62,8 +62,8 @@ public:
 	 * @param verbose_step
 	 * @param checkpoint_dir : directory for storing checkpoint ppm images for each frame, if "" - don't save checkpoints
 	 */
-	void startKinetic(unsigned int n_frame, void (*motion)(), unsigned int n_epoch = 1,
-					  unsigned int verbose_step = 10000, const String &checkpoint_dir = "");
+	void startKinetic(size_t n_frame, void (*motion)(), size_t n_epoch = 1,
+					  size_t verbose_step = 10000, const String &checkpoint_dir = "");
 
 	// save ppm image
 	void save(const String &out_path);

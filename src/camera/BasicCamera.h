@@ -11,7 +11,7 @@
 class BasicCamera : public Camera
 {
 public:
-	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768);
 
 	Ray shootRayAt(double i, double j, double sigma) const override;
 

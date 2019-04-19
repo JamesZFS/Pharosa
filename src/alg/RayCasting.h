@@ -11,7 +11,7 @@
 class RayCasting : public Algorithm
 {
 protected:
-	Color radiance(const Ray &ray, unsigned int depth) const override;
+	Color radiance(const Ray &ray, size_t depth) const override;
 
 public:
 	RayCasting(Stage &stage_, Camera &camera_);

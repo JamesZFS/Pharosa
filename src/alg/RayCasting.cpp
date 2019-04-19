@@ -11,7 +11,7 @@ RayCasting::RayCasting(Stage &stage_, Camera &camera_) : Algorithm(stage_, camer
 {
 }
 
-Color RayCasting::radiance(const Ray &ray, unsigned int depth) const
+Color RayCasting::radiance(const Ray &ray, size_t depth) const
 {
 	Pos x;
 	Dir normal;

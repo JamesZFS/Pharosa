@@ -10,11 +10,11 @@
 
 struct Cube : Geometry
 {
-	Array<Dir, 3> n;	// cache original normal
-	Array2D<Pos, 3, 2> p;			// local crd of 6 planes
-	Array2D<InfPlane, 3, 2> slab;	// 3 slabs, 6 planes, each slap is two paralleled planes
+	const Arr<Dir, 3> n;	// cache original normal
+	const Arr2D<Pos, 3, 2> p;			// local crd of 6 planes
+	Arr2D<InfPlane, 3, 2> slab;	// 3 slabs, 6 planes, each slap is two paralleled planes
 
-	Cube(Array<Dir, 3> &&n_, Array2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_ = {});
+	Cube(Arr<Dir, 3> &&n_, Arr2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_ = {});
 
 //	Cube() // todo init from 3 points
 

@@ -15,7 +15,7 @@ CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/Camera.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/Camera.inl
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/DOFCamera.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/ImageMixer.h
-CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/OrthographicCamera.h
+CMakeFiles/Pharosa.dir/main.cpp.o: ../src/camera/OrthoCamera.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/core/Mat.h
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/core/Mat.tcc
 CMakeFiles/Pharosa.dir/main.cpp.o: ../src/core/Ray.hpp

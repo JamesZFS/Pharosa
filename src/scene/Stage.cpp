@@ -74,7 +74,7 @@ const Object * Stage::hitOf(const Ray &ray) const	// return hit without normal a
 	return hit;
 }
 
-unsigned int Stage::getObjectCount()
+size_t Stage::getObjectCount()
 {
-	return (unsigned int) objects.size();
+	return objects.size();
 }

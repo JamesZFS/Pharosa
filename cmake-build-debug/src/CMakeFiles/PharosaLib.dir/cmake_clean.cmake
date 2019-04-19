@@ -5,7 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PharosaLib.dir/camera/Camera.cpp.o"
   "CMakeFiles/PharosaLib.dir/camera/DOFCamera.cpp.o"
   "CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o"
-  "CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o"
+  "CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o"
   "CMakeFiles/PharosaLib.dir/core/Mat.cpp.o"
   "CMakeFiles/PharosaLib.dir/core/Vec.cpp.o"
   "CMakeFiles/PharosaLib.dir/geometric/Cube.cpp.o"

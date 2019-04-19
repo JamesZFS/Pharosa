@@ -8,11 +8,11 @@
 #include "Algorithm.h"
 
 // Ray Tracing algorithm
-template<unsigned int MAX_DEPTH = 5>	// depth limit to use R.R.
+template<size_t MAX_DEPTH = 5>	// depth limit to use R.R.
 class RayTracing : public Algorithm
 {
 protected:
-	Color radiance(const Ray &ray, unsigned int depth) const override;    // ** main algorithm **
+	Color radiance(const Ray &ray, size_t depth) const override;    // ** main algorithm **
 
 public:
 	RayTracing(Stage &stage_, Camera &camera_);

@@ -24,7 +24,7 @@ void motion()
 void Pharosa(int argc, char *argv[])
 {
 	// command line args:
-	unsigned int n_epoch = (argc >= 2) ? (unsigned int) atoi(argv[1]) : 10;
+	size_t n_epoch = (argc >= 2) ? (size_t) atoi(argv[1]) : 10;
 	String out_path = (argc >= 3) ? argv[2] : "test image.ppm";
 
 	// init random engine
@@ -45,16 +45,18 @@ void Pharosa(int argc, char *argv[])
 			front,
 			new Object(Sphere(10, Pos(0, 0, 10)), Color(0.2, 0.8, 1.0), Emission::NONE, Object::SPEC),
 			ball,    //Glas
-			new Object(Triangle(new Pos[3]{{0,  0,  0},
-										   {50, 0,  0},
-										   {0,  75, 0}}, Pos(0, -10, 10), ElAg()), {0.8, 0.6, 0.5},
+			new Object(Triangle({{
+										 {0, 0, 0},
+										 {50, 0, 0},
+										 {0, 75, 0}
+								 }}, Pos(0, -10, 10), ElAg()), {0.8, 0.6, 0.5},
 					   Emission(), Object::REFR),
-			new Object(Cube(Array<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
-							Array2D<Pos, 3, 2>{{
-													   {{{0, 0, 0}, {30, 0, 0}}},
-													   {{{0, 0, 0}, {0, 30, 0}}},
-													   {{{0, 0, 0}, {0, 0, 50}}}
-											   }},
+			new Object(Cube({Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+							{{
+									 {{{0, 0, 0}, {30, 0, 0}}},
+									 {{{0, 0, 0}, {0, 30, 0}}},
+									 {{{0, 0, 0}, {0, 0, 50}}}
+							 }},
 							Pos(10, 30, -20), ElAg(45 * DEG, 0 * DEG, 0)),
 					   Color(0.5, 0.5, 0.8), Emission::NONE),
 			new Object(Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12),
@@ -63,7 +65,7 @@ void Pharosa(int argc, char *argv[])
 
 	RayCasting::LIGHT_DIR = Dir(0, 0, 1);
 
-	Renderer<RayTracing<>, BasicCamera> renderer;
+	Renderer<RayCasting, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromObjectList(ObjectList(p, p + sizeof(p) / sizeof(Object *)));
 

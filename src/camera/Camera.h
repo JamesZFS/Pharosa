@@ -17,8 +17,8 @@ class Camera
 {
 private:
 	Color *img;            // rendered image, float [0, 1]
-	unsigned int *render_cnt;    // rendering times for each pixel
-	unsigned int cur_i, cur_j, cur_rank;    // current pixel to render, using screen coordinate sys
+	size_t *render_cnt;    // rendering times for each pixel
+	size_t cur_i, cur_j, cur_rank;    // current pixel to render, using screen coordinate sys
 
 protected:
 	Pos pos;        // position of the viewpoint
@@ -26,15 +26,15 @@ protected:
 	ElAg ea;        // euler angles cache
 
 public:
-	const unsigned int width, height, size;    // image width and height, n_pixel
+	const size_t width, height, size;    // image width and height, n_pixel
 	const double w_2, h_2;            // width / 2, height / 2
 
-	Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_ = 1024, unsigned int height_ = 768);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768);
 
 	virtual ~Camera();
 
 	// getter:
-	inline const Color &pixelAt(unsigned int i, unsigned int j) const    // img
+	inline const Color &pixelAt(size_t i, size_t j) const    // img
 	{ return img[rankOf(i, j)]; }
 
 	inline const Pos &viewpoint() const    // pos
@@ -46,9 +46,9 @@ public:
 	// setter:
 	inline void render(const Color &color);    // render incrementally
 
-	inline void render(unsigned int rank, const Color &color);    // render incrementally at given rank
+	inline void render(size_t rank, const Color &color);    // render incrementally at given rank
 
-	inline void renderAt(unsigned int i, unsigned int j, const Color &color);
+	inline void renderAt(size_t i, size_t j, const Color &color);
 
 	void rotate(const ElAg &euler_angles);	// rotate inc
 
@@ -59,7 +59,7 @@ public:
 	inline bool finished() const    // check whether the rendering progress is finished
 	{ return (cur_rank >= size); }
 
-	inline bool finishedVerbose(unsigned int n_step) const; // as above, with a progressbar displayed every n_step
+	inline bool finishedVerbose(size_t n_step) const; // as above, with a progressbar displayed every n_step
 
 	inline void updateProgress();    // current pixel rank++
 
@@ -68,7 +68,7 @@ public:
 
 	// io:
 	// load from previous rendered ppm file to continue, which was rendered n_epoch times
-	void readPPM(String prev_path, unsigned int prev_epoch);
+	void readPPM(String prev_path, size_t prev_epoch);
 
 	// output image into ppm format
 	void writePPM(String out_path) const;
@@ -76,7 +76,7 @@ public:
 	inline Ray shootRay() const    // shoot a ray iteratively. will stop when all pixels are traversed
 	{ return shootRayAt(cur_i, cur_j, 0.5); }
 
-	inline Ray shootRay(unsigned int rank) const    // shoot a ray at a given pixel rank
+	inline Ray shootRay(size_t rank) const    // shoot a ray at a given pixel rank
 	{ return shootRayAt(rank % width, rank / width, 0.5); }
 
 	// interface:

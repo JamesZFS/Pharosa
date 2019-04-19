@@ -9,11 +9,11 @@
 
 struct Triangle : Geometry
 {
-	Pos p[3];    // Three points in Object coordinate sys
-	Pos gp[3];    // points in Global coordinate sys
+	const Arr<Pos, 3> p;    // Three points in Object coordinate sys
+	Arr<Pos, 3> gp;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 
-	Triangle(const Pos p_[3], const Pos &pos_, const ElAg &euler_angles_);
+	Triangle(Arr<Pos, 3> &&p_, const Pos &pos_, const ElAg &euler_angles_);
 
 	void applyTransform() override;    // calculate gp according to p
 

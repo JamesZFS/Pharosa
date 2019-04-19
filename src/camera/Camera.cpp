@@ -5,14 +5,14 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 
-Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, unsigned int width_, unsigned int height_) :
+Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_) :
 		cur_i(0), cur_j(0), cur_rank(0),
 		pos(pos_), ex(Dir::X_AXIS), ey(Dir::Y_AXIS), ez(Dir::Z_AXIS), ea(euler_angles_),
 		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1)
 {
 	img = new Color[size];
-	render_cnt = new unsigned int[size];
-	memset(render_cnt, 0, size * sizeof(unsigned int));
+	render_cnt = new size_t[size];
+	memset(render_cnt, 0, size * sizeof(size_t));
 	// calculate basis vectors
 	ex.rotate(ea);
 	ey.rotate(ea);
@@ -25,7 +25,7 @@ Camera::~Camera()
 	delete[] render_cnt;
 }
 
-void Camera::readPPM(String prev_path, unsigned int prev_epoch)
+void Camera::readPPM(String prev_path, size_t prev_epoch)
 {
 	if (prev_epoch == 0) return;
 	if (!Funcs::endsWith(prev_path, ".ppm")) {
@@ -42,13 +42,13 @@ void Camera::readPPM(String prev_path, unsigned int prev_epoch)
 		exit(1);
 	}
 	String format;
-	unsigned int a, b, c;
+	size_t a, b, c;
 	fin >> format >> a >> b >> c;
 	assert(format == "P3");
 	assert(a == width);
 	assert(b == height);
 	assert(c == 255);
-	for (unsigned int i = 0; i < size; ++i) {
+	for (size_t i = 0; i < size; ++i) {
 		fin >> a >> b >> c;    // 0 - 255
 		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch;
 		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch;
@@ -73,12 +73,12 @@ void Camera::writePPM(String out_path) const
 		exit(1);
 	}
 	// write head
-	sprintf(buffer, "P3 %d %d \n%d \n", width, height, 255);
+	sprintf(buffer, "P3 %ld %ld \n%d \n", width, height, 255);
 	fout << buffer;
 	// write body
-	for (unsigned int i = 0; i < size; ++i) {
+	for (size_t i = 0; i < size; ++i) {
 		const Color p = img[i] / render_cnt[i];
-		sprintf(buffer, "%d %d %d ",
+		sprintf(buffer, "%ld %ld %ld ",
 				Funcs::gammaCorrection(p.r),
 				Funcs::gammaCorrection(p.g),
 				Funcs::gammaCorrection(p.b));

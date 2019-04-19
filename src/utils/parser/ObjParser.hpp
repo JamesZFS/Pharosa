@@ -26,7 +26,7 @@ TriangleGroup fromObjFile(const String &obj_path, double zoom_ratio, const Pos &
 	TriangleGroup meshes;    // result
 	char mark;
 	double x, y, z;
-	unsigned int a, b, c;
+	size_t a, b, c;
 	Pos p[3];
 	List<Pos> v;
 

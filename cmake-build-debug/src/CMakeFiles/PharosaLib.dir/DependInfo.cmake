@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/james/Test/CG/Pharosa/src/camera/Camera.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/camera/Camera.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/camera/DOFCamera.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/camera/DOFCamera.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/camera/ImageMixer.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/camera/ImageMixer.cpp.o"
-  "/Users/james/Test/CG/Pharosa/src/camera/OrthographicCamera.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/camera/OrthographicCamera.cpp.o"
+  "/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/camera/OrthoCamera.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/core/Mat.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/core/Mat.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/core/Vec.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/core/Vec.cpp.o"
   "/Users/james/Test/CG/Pharosa/src/geometric/Cube.cpp" "/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir/geometric/Cube.cpp.o"

@@ -81,9 +81,11 @@ namespace Test
 
 	void onSurface()
 	{
-		auto t = Triangle(new Pos[3]{{10,  0,  0},
-									 {0,   10, 0},
-									 {-10, 0,  0}}, Pos(0, 0, 10), Color());
+		auto t = Triangle(Arr<Pos, 3>{{
+											  {10, 0, 0},
+											  {0, 10, 0},
+											  {-10, 0, 0}
+									  }}, Pos(0, 0, 10), Color());
 		assert(!t.hasSurfacePoint(Pos(0, 12, 10)));
 		assert(t.hasSurfacePoint(Pos(0, 0, 10)));
 		assert(!t.hasSurfacePoint(Pos(1, 1, 11)));
@@ -93,10 +95,8 @@ namespace Test
 	{
 		double t0 = 0, t1 = 0, t2 = 0, t3 = 0, tr = 0, _;
 		long long N = 30000000;
-		Pos tp[3]{Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}};
-
-		auto cube = Cube(Array<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
-						 Array2D<Pos, 3, 2>{{
+		auto cube = Cube(Arr<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+						 Arr2D<Pos, 3, 2>{{
 													{{
 															 {0, 0, 0}, {30, 0, 0}
 													 }},
@@ -108,7 +108,7 @@ namespace Test
 													 }}
 											}},
 		Pos(10, 30, 20), ElAg(0, 10 * DEG, 0));
-		auto triangle = Triangle(tp, Pos(50, 0, 50), ElAg::NONROT);
+		auto triangle = Triangle({Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}}, Pos(50, 0, 50), ElAg::NONROT);
 		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg());
 		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0));
 
@@ -153,7 +153,7 @@ namespace Test
 	void matrix()
 	{
 		Mat<double> a(
-				Array2D<double, 3, 3>
+				Arr2D<double, 3, 3>
 						{{
 								 {{1, 2, 3}},
 								 {{0, 1, 0}},
