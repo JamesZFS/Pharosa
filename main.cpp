@@ -67,16 +67,16 @@ void Pharosa(int argc, char *argv[])
 			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
 	};
 //	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
-	auto box = new BoundingCube(box_objs);
-//	auto box = new BoundingCube();
+//	auto box = new BoundingCube(box_objs);
+	auto box = new BoundingCube();
 	box->translate({-10, -10, -20}).rotate({20 * DEG, 45 * DEG});
-//	box->fromObjFile("res/sphere.obj", 10);
+	box->fromObjFile("res/block.obj", 0.8);
 	warn("box size: " << box->objects.size());
 
 	// ********************************************* init render engine *********************************************
 	RayCasting::LIGHT_DIR = Dir(-0.2, -1, +0.3);
 
-	Renderer<RayCasting, BasicCamera> renderer;
+	Renderer<RayTracing<2>, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromList(singletons);
 	renderer.stage().append(box);

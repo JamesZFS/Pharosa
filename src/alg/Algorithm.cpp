@@ -56,30 +56,30 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
 								size_t verbose_step, const String &checkpoint_dir)
 {
-	printf("not complete yet!");
-//	// with progressbar
-//	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
-//	size_t tot_epoch = n_epoch + prev_epoch;
-//
-////	computeEdgePixels();
-//	for (size_t epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
-//		printf("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
-//		fflush(stdout);
-//		camera.resetProgress();
-//		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
-//			for (size_t k = 0; k < N_SUBPIXEL; ++k) {
-//				Ray &&ray = camera.shootRay();
-//				camera.render(radiance(ray));
-//			}
-//			camera.updateProgress();
-//		}
-//		if (checkpoint) {    // save checkpoints
-//			Buffer out_path;
-//			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + N_SUBPIXEL);
-//			camera.writePPM(out_path);
-//		}
-//	}
-//	printf("\n");
+	warn("Algorithm::renderVerbose() is not complete yet!");
+	// with progressbar
+	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
+	size_t tot_epoch = n_epoch + prev_epoch;
+
+	computeEdgePixels();
+	for (size_t epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
+		printf("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
+		fflush(stdout);
+		camera.resetProgress();
+		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
+			for (size_t k = 0; k < N_SUBPIXEL; ++k) {
+				Ray &&ray = camera.shootRay();
+				camera.render(radiance(ray));
+			}
+			camera.updateProgress();
+		}
+		if (checkpoint) {    // save checkpoints
+			Buffer out_path;
+			sprintf(out_path, "%s/epoch - %d.ppm", checkpoint_dir.data(), epoch + N_SUBPIXEL);
+			camera.writePPM(out_path);
+		}
+	}
+	printf("\n");
 }
 
 void Algorithm::computeEdgePixels()

@@ -9,7 +9,7 @@
 
 struct Triangle : Geometry
 {
-	const Arr<Pos, 3> p;    // Three points in Object coordinate sys
+	Arr<Pos, 3> p;    // Three points in Object coordinate sys
 	Arr<Pos, 3> gp;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 
@@ -35,6 +35,13 @@ struct Triangle : Geometry
 	inline double zMin() override;
 
 	inline double zMax() override;
+
+	inline void translateLocal(const Pos &delta) override
+	{
+		p[0] += delta;
+		p[1] += delta;
+		p[2] += delta;
+	}
 };
 
 double Triangle::xMin()

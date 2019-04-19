@@ -36,32 +36,38 @@ Geometry &Geometry::rotate(const ElAg &dea)
 // todo use pure virtual
 double Geometry::xMin()
 {
-	return 0;
+	warn("Geometry::xMin() not implemented!");
+	exit(1);
 }
 
 double Geometry::xMax()
 {
-	return 0;
+	warn("Geometry::xMax() not implemented!");
+	exit(1);
 }
 
 double Geometry::yMin()
 {
-	return 0;
+	warn("Geometry::yMin() not implemented!");
+	exit(1);
 }
 
 double Geometry::yMax()
 {
-	return 0;
+	warn("Geometry::yMax() not implemented!");
+	exit(1);
 }
 
 double Geometry::zMin()
 {
-	return 0;
+	warn("Geometry::zMin() not implemented!");
+	exit(1);
 }
 
 double Geometry::zMax()
 {
-	return 0;
+	warn("Geometry::zMax() not implemented!");
+	exit(1);
 }
 
 void Geometry::translateLocal(const Pos &delta)
