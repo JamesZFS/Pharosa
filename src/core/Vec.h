@@ -97,8 +97,8 @@ struct Vec
 
 	inline void report(bool endl = false) const
 	{
-		debug("(%5.2f, %5.2f, %5.2f)", x, y, z);
-		if (endl) debug("\n");
+		printf("(%5.2f, %5.2f, %5.2f)", x, y, z);
+		if (endl) printf("\n");
 	}
 
 	inline String toString() const

@@ -15,6 +15,7 @@
 #include <cstring>
 #include <cassert>
 #include <vector>
+#include <array>
 #include <string>
 #include <random>
 #include <omp.h>
@@ -22,11 +23,13 @@
 #define INF 1e20
 #define EPS 1e-4
 
+using std::printf;
+
 template<typename T>
 using List = std::vector<T>;
 
-template<typename T>
-using List2D = List<List<T> >;
+template<typename T, size_t n>
+using Array = std::array<T, n>;
 
 using String = std::string;
 
@@ -44,7 +47,7 @@ typedef char Buffer[256];
 #else	// when release
 	#undef assert
 	#define assert(...)
-	#define debug(...)
+	#define printf(...)
 
 #endif
 

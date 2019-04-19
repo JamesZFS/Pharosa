@@ -4,7 +4,7 @@
 *.out
 *.dll
 .idea/
-cmake-build-debug/
+cmake-build-printf/
 res/
 out/
 *.ppm

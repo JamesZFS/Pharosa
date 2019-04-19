@@ -23,12 +23,13 @@ TransMat::TransMat(const Pos &delta, const ElAg &ea) : tra(delta)
 			cos_b = cos(ea.beta), sin_b = sin(ea.beta),
 			cos_g = cos(ea.gamma), sin_g = sin(ea.gamma);
 
-	rot = Mat<double>
-			(List2D<double>
-					 {{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g},
-					  {cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b,  -cos_a * cos_g * sin_b + sin_a * sin_g},
-					  {-cos_b * sin_g,                        sin_b,          cos_b * cos_g}}
-			);
+	rot = Mat<double>(
+			Array3x3<double>{{
+				{{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g}},
+				{{cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b, -cos_a * cos_g * sin_b + sin_a * sin_g}},
+				{{-cos_b * sin_g, sin_b, cos_b * cos_g}}
+			}}
+	);
 }
 
 TransMat::TransMat(const Vec<double> &tra_, const Mat<double> &rot_) : tra(tra_), rot(rot_)
@@ -51,7 +52,7 @@ void TransMat::report() const
 {
 	tra.report(true);
 	rot.report();
-	debug("\n");
+	printf("\n");
 }
 
 TransMat::TransMat(TransMat &&mat) noexcept : tra(mat.tra), rot(std::move(mat.rot))

@@ -1,16 +1,15 @@
 template<typename T>
-Mat<T>::Mat() : el(List2D<T>(3, List<T>(3, 0)))
+Mat<T>::Mat() : el({})
 {
 }
 
 template<typename T>
-Mat<T>::Mat(List2D<T> &&a) noexcept : el(std::move(a))
+Mat<T>::Mat(Array3x3<T> &&a) noexcept : el(std::move(a))
 {
-	assert(el.size() == 3 && el[0].size() == 3 && el[1].size() == 3 && el[2].size() == 3); // noexcept
 }
 
 template<typename T>
-Mat<T>::Mat(T k) : el(List2D<T>(3, List<T>(3, 0)))   // init diag
+Mat<T>::Mat(T k) : el({})   // init diag
 {
 	el[0][0] = el[1][1] = el[2][2] = k;
 }
@@ -65,13 +64,13 @@ template<typename T>
 void Mat<T>::report() const
 {
 	for (int i = 0; i < 3; ++i) {
-		debug("[ ");
+		printf("[ ");
 		for (int j = 0; j < 3; ++j) {
-			debug("%5.2f  ", el[i][j]);
+			printf("%5.2f  ", el[i][j]);
 		}
-		debug("]\n");
+		printf("]\n");
 	}
-	debug("\n");
+	printf("\n");
 }
 
 template<typename T>
@@ -120,5 +119,5 @@ Mat<T> &Mat<T>::operator=(Mat &&b) noexcept
 template<typename T>
 void Mat<T>::reset()
 {
-	el = List2D<T>(3, List<T>(3, 0));
+	el.fill({});
 }

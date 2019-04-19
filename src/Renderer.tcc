@@ -78,10 +78,10 @@ setupAlgorithm()
 	if (_illuminator == nullptr) {
 		_illuminator = new Render_Algorithm(*_stage, *_camera);
 	}
-	debug("loaded %d objects in total.\n", _stage->getObjectCount());
-	debug("camera viewpoint at %s  orienting towards %s\n",
+	printf("loaded %d objects in total.\n", _stage->getObjectCount());
+	printf("camera viewpoint at %s  orienting towards %s\n",
 		  camera().viewpoint().toString().data(), camera().orientation().toString().data());
-	debug("ready to render.\n");
+	printf("ready to render.\n");
 }
 
 template<typename Render_Algorithm, typename Camera_Type>
@@ -99,13 +99,16 @@ void Renderer<Render_Algorithm, Camera_Type>::start(unsigned int n_epoch,
 													unsigned int verbose_step, const String &checkpoint_dir)
 {
 	setupAlgorithm();
-	debug("===== rendering start =====\n");
+	printf("===== rendering start =====\n");
+	if (checkpoint_dir.length() > 0) {
+		printf("writing to checkpoint \"%s\"", checkpoint_dir.data());
+	}
+
 	double since = omp_get_wtime();
-
 	renderFrame(n_epoch, verbose_step, checkpoint_dir);
-
 	auto elapse = lround(omp_get_wtime() - since);
-	debug("\n===== rendering finished in %ld min %ld sec =====\n", elapse / 60, elapse % 60);
+
+	printf("\n===== rendering finished in %ld min %ld sec =====\n", elapse / 60, elapse % 60);
 	prev_epoch += n_epoch;
 }
 
@@ -120,11 +123,14 @@ startKinetic(unsigned int n_frame, void (*motion)(), unsigned int n_epoch,
 	}
 	setupAlgorithm();
 	bool checkpoint = (checkpoint_dir.length() > 0);
-	debug("======= kinetic rendering start =======\n");
-	double since = omp_get_wtime();
+	if (checkpoint) {
+		printf("writing to checkpoint \"%s\"", checkpoint_dir.data());
+	}
+	printf("======= kinetic rendering start =======\n");
 
+	double since = omp_get_wtime();
 	for (unsigned int frame = 0; frame < n_frame; ++frame) {
-		debug("\n===== frame %d / %d =====\n", frame + 1, n_frame);
+		printf("\n===== frame %d / %d =====\n", frame + 1, n_frame);
 		renderFrame(n_epoch, verbose_step, "");
 		motion();    // deal with motion
 		if (checkpoint) {    // save checkpoint for each frame
@@ -133,9 +139,9 @@ startKinetic(unsigned int n_frame, void (*motion)(), unsigned int n_epoch,
 			_camera->writePPM(out_path);
 		}
 	}
-
 	auto elapse = lround(omp_get_wtime() - since);
-	debug("\n======= kinetic rendering finished in %ld min %ld sec =======\n", elapse / 60, elapse % 60);
+
+	printf("\n======= kinetic rendering finished in %ld min %ld sec =======\n", elapse / 60, elapse % 60);
 }
 
 template<typename Render_Algorithm, typename Camera_Type>
@@ -146,4 +152,5 @@ void Renderer<Render_Algorithm, Camera_Type>::save(const String &out_path)
 		exit(1);
 	}
 	_camera->writePPM(out_path);
+	printf("image written to \"%s\" \n", out_path.data());
 }

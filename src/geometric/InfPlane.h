@@ -12,7 +12,7 @@
 struct InfPlane : Geometry
 {
 	Pos p; 	// a point on infplane
-	Dir n_org, n;    // normal vector, in Global coordinate sys, default towards ez
+	Dir n;    // normal vector, in Global coordinate sys, default towards ez
 
 	InfPlane();
 

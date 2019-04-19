@@ -60,22 +60,22 @@ namespace Test
 	{
 		auto d = Dir(1, 0, 0);
 		auto ea = d.getEulerAngles();
-		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.x == 0 && ea.y == 0 && ea.z == M_PI_2);
 
 		d = Dir(1, 1, 0);
 		ea = d.getEulerAngles();
-		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.x == M_PI_4 && ea.y == 0 && ea.z == M_PI_2);
 
 		d = Dir(0, 0, 5);
 		ea = d.getEulerAngles();
-		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.y == 0 && ea.z == 0);
 
 		d = Dir(0, 0, -5);
 		ea = d.getEulerAngles();
-		debug("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
+		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.y == 0 && ea.z == M_PI);
 	}
 
@@ -109,52 +109,54 @@ namespace Test
 			Ray(Pos::random(0, 100), Dir::random());
 		}
 		tr = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-		debug("t_ref: %19.10f sec\n", tr);
+		printf("t_ref: %19.10f sec\n", tr);
 
 		since = clock();
 		for (long long i = 0; i < N; ++i) {
 			cube.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
 		}
 		t0 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-		debug("cube: %20.10f sec\n", t0 - tr);
+		printf("cube: %20.10f sec\n", t0 - tr);
 
 		since = clock();
 		for (long long i = 0; i < N; ++i) {
 			triangle.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
 		}
 		t1 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-		debug("triangle: %16.10f sec\n", t1 - tr);
+		printf("triangle: %16.10f sec\n", t1 - tr);
 
 		since = clock();
 		for (long long i = 0; i < N; ++i) {
 			sphere.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
 		}
 		t2 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-		debug("sphere: %18.10f sec\n", t2 - tr);
+		printf("sphere: %18.10f sec\n", t2 - tr);
 
 		since = clock();
 		for (long long i = 0; i < N; ++i) {
 			plane.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
 		}
 		t3 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-		debug("plane: %19.10f sec\n", t3 - tr);
+		printf("plane: %19.10f sec\n", t3 - tr);
 
 		fflush(stdout);
 	}
 
 	void matrix()
 	{
-		Mat<double> a(List2D<double>{
-				{1,  2, 3},
-				{0,  1, 0},
-				{-1, 0, 2}
-		});
+		Mat<double> a(
+				Array3x3<double>
+						{{
+								 {{1, 2, 3}},
+								 {{0, 1, 0}},
+								 {{-1, 0, 2}}
+						 }});
 		a.report();
 		auto b = a;
 		b *= b;
 		b.report();
 		(b * Vec<>(1, 2, 3)).report(true);
-		debug("\n\n");
+		printf("\n\n");
 
 		auto e = a + b;
 		e.report();
@@ -163,7 +165,7 @@ namespace Test
 		A.report();
 		B.report();
 		(B * A).report();
-		debug("\n");
+		printf("\n");
 		auto c = ((B * A) * Pos(0, 1, 0));
 		c.report(true);
 		assert(c == Pos(0, 1, 2));

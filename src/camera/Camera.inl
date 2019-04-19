@@ -25,7 +25,7 @@ bool Camera::finishedVerbose(unsigned int n_step) const
 {
 	assert(n_step > 0);
 	if (cur_rank % n_step == 0) {
-		debug("\r  progress:  %.1f %%", cur_rank * 100.0 / size);
+		printf("\r  progress:  %.1f %%", cur_rank * 100.0 / size);
 		fflush(stdout);
 	}
 	return (cur_rank >= size);

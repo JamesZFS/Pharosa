@@ -8,14 +8,17 @@
 #include "../lib.h"
 #include "Vec.h"
 
+template<typename T>
+using Array3x3 = Array<Array<T, 3>, 3>;
+
 template<typename T = double>
 struct Mat    // 3D matrix
 {
-	List2D<T> el;
+	Array3x3<T> el;
 
 	Mat();	// init a 3x3 zero matrix
 
-	Mat(List2D<T> &&a) noexcept;	// move from array
+	Mat(Array3x3<T> &&a) noexcept;	// move from array
 
 	Mat(T k);    // diag
 

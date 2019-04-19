@@ -25,7 +25,7 @@ void Algorithm::render(unsigned int n_epoch, unsigned int prev_epoch, const Stri
 
 	computeEdgePixels();
 	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
-		debug("\r=== epoch %d / %d ===", epoch + 1, tot_epoch);
+		printf("\r=== epoch %d / %d ===", epoch + 1, tot_epoch);
 		fflush(stdout);
 		#pragma omp parallel for schedule(dynamic, 1)
 		for (unsigned int j = 0; j < camera.height; ++j) {				// for each pixel
@@ -50,20 +50,20 @@ void Algorithm::render(unsigned int n_epoch, unsigned int prev_epoch, const Stri
 			camera.writePPM(out_path);
 		}
 	}
-	debug("\n");
+	printf("\n");
 }
 
 void Algorithm::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 								unsigned int verbose_step, const String &checkpoint_dir)
 {
-	debug("not complete yet!");
+	printf("not complete yet!");
 //	// with progressbar
 //	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 //	unsigned int tot_epoch = n_epoch + prev_epoch;
 //
 ////	computeEdgePixels();
 //	for (unsigned int epoch = prev_epoch; epoch < tot_epoch; epoch += N_SUBPIXEL) {
-//		debug("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
+//		printf("\n=== epoch %d - %d / %d ===\n", epoch + 1, epoch + N_SUBPIXEL, tot_epoch);
 //		fflush(stdout);
 //		camera.resetProgress();
 //		while (!camera.finishedVerbose(verbose_step)) {    // slight difference here
@@ -79,7 +79,7 @@ void Algorithm::renderVerbose(unsigned int n_epoch, unsigned int prev_epoch,
 //			camera.writePPM(out_path);
 //		}
 //	}
-//	debug("\n");
+//	printf("\n");
 }
 
 void Algorithm::computeEdgePixels()
@@ -96,7 +96,7 @@ void Algorithm::computeEdgePixels()
 			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);	// if hit different objs, mark as edge
 		}
 	}
-	// todo cancel debug
+	// todo cancel printf
 #ifdef __DEV_STAGE__
 	std::ofstream fout("is_edge.ppm");
 	if (!fout.is_open()) {

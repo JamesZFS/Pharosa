@@ -29,8 +29,7 @@ struct Object
 	Object(GeometryType &&geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
 		   ReflType refl_type_ = DIFF);    // init from a temporarily defined Geometry, copy it to stay long todo use move
 
-	inline ~Object()
-	{ delete geo; }
+	~Object();
 };
 
 #include "Object.tcc"

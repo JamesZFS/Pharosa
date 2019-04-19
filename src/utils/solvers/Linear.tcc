@@ -61,14 +61,14 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 		M[i][n] = b[i];
 	}
 
-	debug("before reduction:\n");
+	printf("before reduction:\n");
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n + 1; ++j) {
-			debug("%.2f ", M[i][j]);
+			printf("%.2f ", M[i][j]);
 		}
-		debug("\n");
+		printf("\n");
 	}
-	debug("\n");
+	printf("\n");
 
 	for (int k = 0; k < n; ++k) {    // n principle component
 		double col_max = fabs(M[k][k]), fm;
@@ -97,14 +97,14 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 		}
 	}
 
-	debug("after reduction:\n");
+	printf("after reduction:\n");
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n + 1; ++j) {
-			debug("%.2f ", M[i][j]);
+			printf("%.2f ", M[i][j]);
 		}
-		debug("\n");
+		printf("\n");
 	}
-	debug("\n");
+	printf("\n");
 
 	// regressive solving
 	for (int k = n - 1; k >= 0; --k) {
@@ -117,14 +117,14 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 		x[k] = M[k][n];
 	}
 
-	debug("after solving:\n");
+	printf("after solving:\n");
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n + 1; ++j) {
-			debug("%.2f ", M[i][j]);
+			printf("%.2f ", M[i][j]);
 		}
-		debug("\n");
+		printf("\n");
 	}
-	debug("\n");
+	printf("\n");
 
 	return true;    // solving success
 }

@@ -16,6 +16,8 @@ struct Cube : Geometry
 
 	Cube(const Dir n_[3], const Pos p_[3][2], const Pos &pos_, const ElAg &euler_angles_);
 
+//	Cube() // todo init from 3 points
+
 	void applyTransform() override;
 
 	bool intersect(const Ray &ray, double &t) const override;
