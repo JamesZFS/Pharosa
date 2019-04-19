@@ -19,7 +19,7 @@
 //void MeshObj::applyTransform()
 //{
 //	for (Triangle *triangle : meshes) {    // broadcast transformation to all meshes
-//		triangle->place(pos, ea);
+//		triangle->place(gp, ea);
 //	}
 //}
 //

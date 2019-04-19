@@ -32,8 +32,8 @@ void Pharosa(int argc, char *argv[])
 
 	// ********************************************* define stage *********************************************
 	ball = new Object(Sphere(10, Pos(73, 10, 78)), Color::WHITE * .999, Emission::SPLENDID, Object::DIFF);
-	auto *front = new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, 200)), Color::YELLOW);//front
-	auto *right = new Object(InfPlane(Dir(1, 0, 0), Pos(90, 0, 0)));//right
+//	auto *front = new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, 200)), Color::YELLOW);//front
+//	auto *right = new Object(InfPlane(Dir(1, 0, 0), Pos(90, 0, 0)));//right
 	/*auto *cube = new Object(
 			Cube({{Pos(20, 0, 0), Pos(0, 20, 0), Pos(0, 0, 60)}}, Pos(30, -30, -40),
 				 ElAg(45 * DEG, -10 * DEG, 10 * DEG)),
@@ -46,37 +46,37 @@ void Pharosa(int argc, char *argv[])
 	triangle->geo->translate({0, -30, 10}).rotate({-45 * DEG, 0, 180 * DEG});*/
 
 	ObjectList singletons{
-			new Object(InfPlane(Dir(0, 1, 0), Pos(0, -80, 0)), Color::RED * 0.5),//Botm
-			new Object(InfPlane(Dir(1, 0, 0), Pos(-90, 0, 0)), Color::BLUE * 0.5),//left
-			new Object(InfPlane(Dir(0, -1, 0), Pos(0, 82, 0))),//ceil
-			right,
-			front,
+//			new Object(InfPlane(Dir(0, 1, 0), Pos(0, -80, 0)), Color::RED * 0.5),//Botm
+//			new Object(InfPlane(Dir(1, 0, 0), Pos(-90, 0, 0)), Color::BLUE * 0.5),//left
+//			new Object(InfPlane(Dir(0, -1, 0), Pos(0, 82, 0))),//ceil
+			new Object(Sphere(100, Pos(0, 0, 0)), Color::WHITE, Emission(), Object::DIFF),	// outter
+//			right,
+//			front,
 //			cube,
 //			new Object(Sphere(3, Pos(0, 0, 0)), Color(0.2, 0.8, 1.0), Emission::NONE, Object::SPEC),	// origin
 //			ball,    //Glas
 //			triangle,
-			new Object(Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12),
-					   Object::DIFF) //Lite
+			new Object(Sphere(600, Pos(0, 681.6, 0), ElAg()), Color::BLACK, Emission(1, 1, 1), Object::DIFF) //Lite
 	};
 
 	ObjectList box_objs{
-			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::SPEC),
-//			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::SPEC),
-			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::SPEC),
+			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::REFR),
+			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::SPEC),
+			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
 	};
-	auto box = new BoundingSphere(Sphere(30, Pos(0, 0, 0)), box_objs);
+	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
 	warn("box size: " << box->objects.size());
-//	warn("sphere pos size: " << box->objects.size());
+//	warn("sphere gp size: " << box->objects.size());
 
 	// ********************************************* init render engine *********************************************
 	RayCasting::LIGHT_DIR = Dir(-0.2, -1, +0.3);
 
-	Renderer<RayCasting, BasicCamera> renderer;
+	Renderer<RayTracing<>, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromList(singletons);
 	renderer.stage().append(box);
 
-	renderer.setupCamera(Pos(0, 0, -200), ElAg(M_PI, 0, 0), 1024, 768);
+	renderer.setupCamera(Pos(0, 0, -100), ElAg(M_PI, 0, 0), 1024, 768);
 //	renderer.camera().rotate(ElAg(0, -5 * DEG, 0));
 //	renderer.camera().translate({0, 0, -70});
 

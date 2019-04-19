@@ -9,7 +9,8 @@
 
 struct Sphere : Geometry
 {
-	Pos pos;	// center
+	const Pos p; // center as local crd
+	Pos gp;	// center as global crd
 	const double rad, rad_2;	// radius, radius^2
 
 	Sphere(double radius_, const Pos &pos_, ElAg euler_angles_ = {});
@@ -21,7 +22,7 @@ struct Sphere : Geometry
 	Dir normalAt(const Pos &x) const override;
 
 	inline bool hasSurfacePoint(const Pos &x) const override
-	{ return (x - pos).sqr() - rad_2 < EPS; }
+	{ return (x - gp).sqr() - rad_2 < EPS; }
 };
 
 #endif //PHAROSA_SPHERE_H

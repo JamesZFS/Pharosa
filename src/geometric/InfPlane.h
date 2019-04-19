@@ -23,7 +23,7 @@ struct InfPlane : Geometry
 
 	void applyTransform() override;
 
-	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - pos) % normal == 0
+	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - gp) % normal == 0
 	{
 		double dn = ray.dir % n;
 		return (fabs(dn) < EPS ? false : ((t = (p - ray.org) % n / dn) > EPS));
