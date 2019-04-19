@@ -7,7 +7,24 @@
 Cube::Cube(Arr<Dir, 3> &&n_, Arr2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
 		Geometry(pos_, euler_angles_), n(n_), p(p_)
 {
-	applyTransform();
+	applyTransform();    // local to global slabs
+}
+
+// init from 3 vertices, ox, oy, oz. by default, the o in local crd sys is (0, 0, 0)
+Cube::Cube(Arr<Pos, 3> &&vertices_, const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_),
+		n{{
+				  vertices_[0] ^ vertices_[1], // n of oxy todo unitize?
+				  vertices_[1] ^ vertices_[2], // oyz
+				  vertices_[2] ^ vertices_[0], // ozx
+		  }},
+		p{{
+				  {{Pos::ORIGIN, vertices_[2]}}, // plane oxy, oxy'
+				  {{Pos::ORIGIN, vertices_[0]}}, // oyz, oyz'
+				  {{Pos::ORIGIN, vertices_[1]}}  // ozx, ozx'
+		  }}
+{
+	applyTransform();    // local to global slabs
 }
 
 void Cube::applyTransform()
@@ -23,8 +40,8 @@ void Cube::applyTransform()
 bool Cube::intersect(const Ray &ray, double &t) const
 {
 	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
-	for (const auto &s : slab) {	// todo acc
-		dn = ray.dir % s[0].n;	// d.n
+	for (const auto &s : slab) {    // todo acc
+		dn = ray.dir % s[0].n;    // d.n
 		if (fabs(dn) < EPS) { // parallel to some face
 			if (s[0].relationWith(ray.org) == s[1].relationWith(ray.org)) return false; //and outside the cube
 		}
@@ -37,8 +54,8 @@ bool Cube::intersect(const Ray &ray, double &t) const
 		tmin = std::max(tmin, ti_min);
 		tmax = std::min(tmax, ti_max);
 	}
-	return ((t = tmin) < tmax	// intersect at front?
-			? (tmin < EPS ? ((t = tmax) > EPS)	// intersect at back?
+	return ((t = tmin) < tmax    // intersect at front?
+			? (tmin < EPS ? ((t = tmax) > EPS)    // intersect at back?
 						  : true)
 			: false);
 }
@@ -48,7 +65,7 @@ Dir Cube::normalAt(const Pos &x) const
 	for (const auto &p :slab) {
 		if (p[0].hasSurfacePoint(x) || p[1].hasSurfacePoint(x)) return p[0].n;
 	}
-	assert(false);	// todo
+	assert(false);    // todo
 	return {};
 }
 

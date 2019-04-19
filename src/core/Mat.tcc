@@ -4,7 +4,7 @@ Mat<T>::Mat() : el({})
 }
 
 template<typename T>
-Mat<T>::Mat(Arr2D<T, 3, 3> &&a) noexcept : el(std::move(a))
+Mat<T>::Mat(Arr2D<T, 3, 3> &&a) noexcept : el(a)
 {
 }
 
@@ -105,14 +105,14 @@ Mat<T> Mat<T>::operator+=(const Mat<T> &B)
 }
 
 template<typename T>
-Mat<T>::Mat(Mat &&b) noexcept : el(std::move(b.el))
+Mat<T>::Mat(Mat &&b) noexcept : el(b.el)
 {
 }
 
 template<typename T>
 Mat<T> &Mat<T>::operator=(Mat &&b) noexcept
 {
-	el = std::move(b.el);
+	el = b.el;
 	return *this;
 }
 
