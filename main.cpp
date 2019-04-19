@@ -49,11 +49,13 @@ void Pharosa(int argc, char *argv[])
 										   {50, 0,  0},
 										   {0,  75, 0}}, Pos(0, -10, 10), ElAg()), {0.8, 0.6, 0.5},
 					   Emission(), Object::REFR),
-			new Object(Cube(new Dir[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
-							new Pos[3][2]{
-									{{0, 0, 0}, {30, 0,  0}},
-									{{0, 0, 0}, {0,  30, 0}},
-									{{0, 0, 0}, {0,  0,  50}}}, Pos(10, 30, -20), ElAg(45 * DEG, 0 * DEG, 0)),
+			new Object(Cube(Array<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+							Array2D<Pos, 3, 2>{{
+													   {{{0, 0, 0}, {30, 0, 0}}},
+													   {{{0, 0, 0}, {0, 30, 0}}},
+													   {{{0, 0, 0}, {0, 0, 50}}}
+											   }},
+							Pos(10, 30, -20), ElAg(45 * DEG, 0 * DEG, 0)),
 					   Color(0.5, 0.5, 0.8), Emission::NONE),
 			new Object(Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg()), Color::BLACK, Emission(12, 12, 12),
 					   Object::DIFF) //Lite
@@ -77,7 +79,7 @@ void Pharosa(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-//	Pharosa(argc, argv);
-	Test::matrix();
+	Pharosa(argc, argv);
+//	Test::matrix();
 	return 0;
 }

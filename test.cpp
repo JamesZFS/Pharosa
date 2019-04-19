@@ -93,13 +93,21 @@ namespace Test
 	{
 		double t0 = 0, t1 = 0, t2 = 0, t3 = 0, tr = 0, _;
 		long long N = 30000000;
-		Dir d[3]{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS};
-		Pos cp[3][2]{{{0, 0, 0}, {30, 0,  0}},
-					 {{0, 0, 0}, {0,  30, 0}},
-					 {{0, 0, 0}, {0,  0,  50}}};
 		Pos tp[3]{Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}};
 
-		auto cube = Cube(d, cp, Pos(10, 30, 20), ElAg(0, 10 * DEG, 0));
+		auto cube = Cube(Array<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
+						 Array2D<Pos, 3, 2>{{
+													{{
+															 {0, 0, 0}, {30, 0, 0}
+													 }},
+													{{
+															 {0, 0, 0}, {0, 30, 0}
+													 }},
+													{{
+															 {0, 0, 0}, {0, 0, 50}
+													 }}
+											}},
+		Pos(10, 30, 20), ElAg(0, 10 * DEG, 0));
 		auto triangle = Triangle(tp, Pos(50, 0, 50), ElAg::NONROT);
 		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg());
 		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0));
@@ -145,7 +153,7 @@ namespace Test
 	void matrix()
 	{
 		Mat<double> a(
-				Array3x3<double>
+				Array2D<double, 3, 3>
 						{{
 								 {{1, 2, 3}},
 								 {{0, 1, 0}},

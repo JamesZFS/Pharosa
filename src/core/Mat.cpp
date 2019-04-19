@@ -24,7 +24,7 @@ TransMat::TransMat(const Pos &delta, const ElAg &ea) : tra(delta)
 			cos_g = cos(ea.gamma), sin_g = sin(ea.gamma);
 
 	rot = Mat<double>(
-			Array3x3<double>{{
+			Array2D<double, 3, 3>{{
 				{{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g}},
 				{{cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b, -cos_a * cos_g * sin_b + sin_a * sin_g}},
 				{{-cos_b * sin_g, sin_b, cos_b * cos_g}}

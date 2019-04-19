@@ -4,7 +4,7 @@ Mat<T>::Mat() : el({})
 }
 
 template<typename T>
-Mat<T>::Mat(Array3x3<T> &&a) noexcept : el(std::move(a))
+Mat<T>::Mat(Array2D<T, 3, 3> &&a) noexcept : el(std::move(a))
 {
 }
 

@@ -4,20 +4,15 @@
 
 #include "Cube.h"
 
-Cube::Cube(const Dir n_[3], const Pos p_[3][2], const Pos &pos_, const ElAg &euler_angles_) :
-		Geometry(pos_, euler_angles_)
+Cube::Cube(Array<Dir, 3> &&n_, Array2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
+		Geometry(pos_, euler_angles_), n(n_), p(p_)
 {
-	for (int i = 0; i < 3; ++i) {	// cache
-		n[i] = n_[i];
-		p[i][0] = p_[i][0];
-		p[i][1] = p_[i][1];
-	}
 	applyTransform();
 }
 
 void Cube::applyTransform()
 {
-	for (int i = 0; i < 3; ++i) {
+	for (size_t i = 0; i < 3; ++i) {
 		Dir ni = mat.rot * n[i];
 		slab[i][0] = InfPlane(ni, mat * p[i][0]);
 		slab[i][1] = InfPlane(ni, mat * p[i][1]);

@@ -31,6 +31,9 @@ using List = std::vector<T>;
 template<typename T, size_t n>
 using Array = std::array<T, n>;
 
+template<typename T, size_t n0, size_t n1>
+using Array2D = Array<Array<T, n1>, n0>;
+
 using String = std::string;
 
 typedef char Buffer[256];
