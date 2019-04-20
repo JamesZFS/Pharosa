@@ -58,9 +58,11 @@ inline T max3(const T &a, const T &b, const T &c)
 
 #ifdef __DEV_STAGE__
 	#define debug(...) printf(__VA_ARGS__)              // for dev
+	#define safe_debug(...) if (__print_cnt__ < 1000) { printf(__VA_ARGS__); ++__print_cnt__; }
 
 	// global params for debugging
 	extern size_t __counter__;
+	extern size_t __print_cnt__;
 
 #else	// when release
 	#undef assert

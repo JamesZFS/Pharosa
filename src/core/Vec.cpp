@@ -20,7 +20,8 @@ const Color
 		Color::RED(1, 0, 0),
 		Color::GREEN(0, 1, 0),
 		Color::BLUE(0, 0, 1),
-		Color::YELLOW(1, 0.784, 0);
+		Color::YELLOW(1, 0.784, 0),
+		Color::BROWN(0.20, 0.08, 0.02);
 
 // common Emission
 const Emission

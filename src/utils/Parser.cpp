@@ -4,6 +4,9 @@
 
 #include "Parsers.h"
 
+#define FAIL { sprintf(buffer, "Error: got unidentified mark \"%s\", parsing stopped.", mark.data()); warn(buffer); fin.close(); exit(1); }
+#define SKIP_LINE { fin.getline(buffer, 200); break; }
+
 ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const Color &color,
 								const Emission &emi, Object::ReflType reft)    // load mesh segments from objects file
 {
@@ -19,22 +22,21 @@ ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const
 	}
 
 	ObjectList meshes;    // result
-	char mark;
+	String mark, temp;
+	char flag;
 	double x, y, z;
+	size_t ord[3];
+	List<Pos> v;
 #ifdef __DEV_STAGE__
 	double x_min = INF, x_max = -INF, y_min = INF, y_max = -INF, z_min = INF, z_max = -INF;
 #endif
-	size_t a, b, c;
-	List<Pos> v;
 
 	while (!fin.eof()) {
 		fin >> mark;
-		switch (mark) {
-			case '#':
-				fin.getline(buffer, 200);    // comment
-				break;
-
+		flag = mark[0];
+		switch (flag) {
 			case 'v':    // vertex (x, y, z)
+				if (mark.length() >= 2) FAIL
 				fin >> x >> y >> z;
 
 #ifdef __DEV_STAGE__
@@ -49,19 +51,31 @@ ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const
 #endif
 
 				v.emplace_back(x * zoom_ratio, y * zoom_ratio, z * zoom_ratio);
-				break;
+				SKIP_LINE
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
-				fin >> a >> b >> c;
-				--a, --b, --c;
-				meshes.push_back(new Object(Triangle({{v[a], v[b], v[c]}}, Pos()), color, emi, reft));
-				break;
+				for (size_t &i : ord) {
+					fin >> temp;
+					if (temp.find("//") == String::npos) {
+						i = std::stoul(temp);
+					}
+					else {    // like "9290//15997"
+						char *ptr;
+						i = std::strtoul(temp.data(), &ptr, 10);
+					}
+				}
+				meshes.push_back(new Object(Triangle({{v[ord[0]], v[ord[1]], v[ord[2]]}}, Pos()), color, emi, reft));
+				SKIP_LINE
 
-			default:
-				sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark);
-				warn(buffer);
-				fin.close();
-				exit(1);
+			case 'l':
+			case 'm':
+			case 'o':
+			case 's':
+			case 'u':
+			case '#':
+				SKIP_LINE
+
+			default: FAIL    // unidentified
 		}
 	}
 #ifdef __DEV_STAGE__
@@ -70,8 +84,13 @@ ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const
 	warn(" ymin = " << y_min << "  ymax = " << y_max);
 	warn(" zmin = " << z_min << "  zmax = " << z_max);
 	warn("\n");
+	warn("vn count = " << __counter__ << "\n");
+	fflush(stdout);
+	fflush(stderr);
 #endif
 
 	return std::move(meshes);
 //	return meshes;
 }
+
+#undef FAIL

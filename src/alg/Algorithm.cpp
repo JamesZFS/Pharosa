@@ -25,8 +25,8 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 
 	computeEdgePixels();
 	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
-		printf("\r=== epoch %ld / %ld ===", epoch + 1, tot_epoch);
-//		fflush(stdout);
+		barInfo("\r=== epoch %ld / %ld ===", epoch + 1, tot_epoch);
+		fflush(stdout);
 		#pragma omp parallel for schedule(dynamic, 1)
 		for (size_t j = 0; j < camera.height; ++j) {				// for each pixel
 			for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
@@ -60,7 +60,7 @@ void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	size_t tot_epoch = n_epoch + prev_epoch;
 
-	computeEdgePixels();
+//	computeEdgePixels(); todo
 	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
 		printf("\n=== epoch %ld / %ld ===\n", epoch + 1, tot_epoch);
 		fflush(stdout);

@@ -176,8 +176,13 @@ struct Dir : Pos        // direction, unitized vector
 
 	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
-		assert(x != 0 || y != 0 || z != 0); // todo?
-		this->unitize();
+		if (x == 0 && y == 0 && z == 0) {
+			safe_debug("bad dir\n");
+			z = 1;
+		} // todo?
+		else {
+			this->unitize();
+		}
 	}
 
 	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
@@ -228,7 +233,7 @@ struct RGB : Vec<double>        // RGB Vector
 		return *this;
 	}
 
-	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW;
+	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW, BROWN;
 	static const RGB NONE, GLOW, BRIGHT, SPLENDID;
 };
 

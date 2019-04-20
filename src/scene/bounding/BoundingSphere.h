@@ -18,6 +18,8 @@ public:
 	void applyTransform() override;
 
 	bool intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal) const override;
+
+	void findBounds() override;
 };
 
 

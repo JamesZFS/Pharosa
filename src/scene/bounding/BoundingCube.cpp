@@ -24,9 +24,6 @@ void BoundingCube::applyTransform()
 	cube.mat = mat;
 	cube.applyTransform();
 #ifdef __DEV_STAGE__
-	debug("BoundingCube::applyTransform() mat = \n");
-	mat.report();
-	debug("\n");
 	delete ocube;
 	ocube = new Object(Cube(cube),
 					   Color::WHITE, Emission(0.5, 0, 0), Object::REFR);

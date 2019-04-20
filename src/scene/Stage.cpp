@@ -75,17 +75,20 @@ bool Stage::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal
 
 const Object * Stage::hitOf(const Ray &ray) const	// return hit without normal and x todo
 {
-	// naive for loop calculation
-	// todo use OctTree
-	double t = INF, s;
+	// todo Stage::hitOf() is not complete yet!
+//	double t = INF, s;
 	const Object *hit = nullptr;
-	for (const Object *obj : singletons) {
-		if (obj->geo->intersect(ray, s) && s < t) {
-			t = s;
-			hit = obj;
-		}
-	}
+	Pos x;
+	Dir normal;
+	intersectAny(ray, hit, x, normal);
 	return hit;
+//	for (const Object *obj : singletons) {
+//		if (obj->geo->intersect(ray, s) && s < t) {
+//			t = s;
+//			hit = obj;
+//		}
+//	}
+//	return hit;
 }
 
 size_t Stage::getSingletonCount()

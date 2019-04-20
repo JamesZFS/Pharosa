@@ -23,3 +23,8 @@ bool BoundingSphere::intersectAny(const Ray &ray, double &t, const Object *&hit,
 {
 	return sphere.intersect(ray, t) && BoundingBox::intersectAny(ray, t, hit, x, normal);
 }
+
+void BoundingSphere::findBounds()
+{
+	warn("BoundingSphere::findBounds() not complete yet!\n");
+}
