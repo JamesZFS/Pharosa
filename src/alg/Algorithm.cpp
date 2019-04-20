@@ -23,7 +23,7 @@ void Algorithm::render(size_t n_epoch, size_t prev_epoch, const String &checkpoi
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	size_t tot_epoch = n_epoch + prev_epoch;
 
-	computeEdgePixels();
+	detectEdges();
 	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
 		barInfo("\r=== epoch %ld / %ld ===", epoch + 1, tot_epoch);
 		fflush(stdout);
@@ -60,7 +60,7 @@ void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
 	bool checkpoint = (checkpoint_dir.length() > 0);    // whether to save checkpoints
 	size_t tot_epoch = n_epoch + prev_epoch;
 
-//	computeEdgePixels(); todo
+//	detectEdges();
 	for (size_t epoch = prev_epoch; epoch < tot_epoch; ++epoch) {	// for samples
 		printf("\n=== epoch %ld / %ld ===\n", epoch + 1, tot_epoch);
 		fflush(stdout);
@@ -93,10 +93,13 @@ void Algorithm::renderVerbose(size_t n_epoch, size_t prev_epoch,
 	printf("\n");
 }
 
-void Algorithm::computeEdgePixels()
+void Algorithm::detectEdges()
 {
+	printf("detecting edges...\n");
+	fflush(stdout);
 	#pragma omp parallel for schedule(dynamic, 1)		// OpenMP
 	for (size_t j = 0; j < camera.height; ++j) {
+		barInfo("\r %.1f %%", j * 100.0 / camera.height);	// progressbar :)
 		for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
 			// four sub rays
 			const Object

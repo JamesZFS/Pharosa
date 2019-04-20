@@ -102,7 +102,7 @@ void Renderer<Render_Algorithm, Camera_Type>::start(size_t n_epoch,
 	setupAlgorithm();
 	printf("===== rendering start =====\n");
 	if (checkpoint_dir.length() > 0) {
-		printf("writing to checkpoint \"%s\"", checkpoint_dir.data());
+		printf("writing to checkpoint \"%s\"\n", checkpoint_dir.data());
 	}
 
 	double since = omp_get_wtime();
@@ -125,7 +125,7 @@ startKinetic(size_t n_frame, void (*motion)(), size_t n_epoch,
 	setupAlgorithm();
 	bool checkpoint = (checkpoint_dir.length() > 0);
 	if (checkpoint) {
-		printf("writing to checkpoint \"%s\"", checkpoint_dir.data());
+		printf("writing to checkpoint \"%s\"\n", checkpoint_dir.data());
 	}
 	printf("======= kinetic rendering start =======\n");
 

@@ -29,7 +29,7 @@ void Pharosa(int argc, char *argv[])
 	String out_path = (argc >= 3) ? argv[2] : "test image.ppm";
 
 	// ********************************************* define stage *********************************************
-	ball = new Object(Sphere(15, Pos(-60, -65, 30)), Color::WHITE * 0.98, Emission::NONE, Object::REFR);
+	ball = new Object(Sphere(10, Pos(-25, -65, -10)), Color::WHITE * 0.98, Emission::NONE, Object::REFR);
 
 	ObjectList singletons{
 			new Object(Sphere(600, Pos(0, 678, 0), ElAg()), Color(), Emission::SPLENDID), //Lite
@@ -37,7 +37,7 @@ void Pharosa(int argc, char *argv[])
 			new Object(InfPlane(Dir(0, -1, 0), Pos(0, 82, 0)), Color(0.9, 0.9, 0.9)),//ceil
 			new Object(InfPlane(Dir(1, 0, 0), Pos(-90, 0, 0)), Color(214, 69, 69) / 255.),//left red
 			new Object(InfPlane(Dir(1, 0, 0), Pos(90, 0, 0)), Color(64, 77, 255) / 255.),//right blue
-			new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, -200)), Color(0.8, 0.8, 0.8)),	// front gray
+			new Object(InfPlane(Dir(0, 0, 1), Pos(0, 0, -200)), Color(0.8, 0.8, 0.8), Emission(), Object::DIFF),	// front gray
 			ball,
 //			new Object(Sphere(100, Pos(0, 0, 0)), Color::WHITE, Emission(), Object::DIFF),	// outter
 //			cube,
@@ -56,26 +56,26 @@ void Pharosa(int argc, char *argv[])
 //	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
 //	auto box = new BoundingCube(box_objs);
 	auto box = new BoundingCube();
-	box->translate({30, -60, -30});
-//	box->fromObjFile("res/dragon0_1 - done.obj", 1);
-	box->fromObjFile("res/block.obj", 1);
+	box->translate({-20, -80, -40}).rotate({0, 0, 30 * DEG});
+	box->fromObjFile("res/dragon0_1 - done.obj", 40, Color(178, 255, 110) / 255.);
 	warn("box size: " << box->objects.size() << "\n");
 
 	// ********************************************* init render engine *********************************************
 	RayCasting::LIGHT_DIR = Dir(-0.2, -1, +0.3);
 
-	Renderer<RayTracing<2>, BasicCamera> renderer;
+//	Renderer<RayTracing<5>, BasicCamera> renderer;
+	Renderer<RayTracing<3>, BasicCamera> renderer;
 	renderer.setupStage();
 	renderer.stage().fromList(singletons);
 	renderer.stage().append(box);
 
-	renderer.setupCamera(Pos(0, 0, 280), ElAg(0, M_PI, 0), 1024, 768);
+	renderer.setupCamera(Pos(0, 0, 280), ElAg(0, 176 * DEG, 0), 1024, 768);
 //	renderer.camera().rotate(ElAg(0, -5 * DEG, 0));
 //	renderer.camera().translate({0, 0, -70});
 
 	// ********************************************* start rendering *********************************************
-//	renderer.start(n_epoch, 1, "out/dragon");
-	renderer.start(n_epoch, 1);
+	renderer.start(n_epoch, 1, "out/dragon");
+//	renderer.start(n_epoch, 1);
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	// ********************************************* save results *********************************************

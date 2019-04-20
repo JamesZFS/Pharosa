@@ -17,7 +17,7 @@ private:
 	bool *is_edge;	// if each pixel on the screen is edge of an object
 
 	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
-	void computeEdgePixels();
+	void detectEdges();
 
 protected:
 	Stage &stage;
