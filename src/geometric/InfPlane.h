@@ -12,7 +12,8 @@
 struct InfPlane : Geometry
 {
 	Pos p; 	// a point on infplane
-	Dir n;    // normal vector, in Global coordinate sys, default towards ez
+	Dir n;    // normal vector, in Global coordinate sys, default towards ez (A, B, C)
+	double D;	// A x + B y + C z + D == 0, D == -n.p
 
 	InfPlane() = default;
 
@@ -26,7 +27,7 @@ struct InfPlane : Geometry
 	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - gp) % normal == 0
 	{
 		double dn = ray.dir % n;
-		return (fabs(dn) < EPS ? false : ((t = (p - ray.org) % n / dn) > EPS));
+		return (fabs(dn) < EPS ? false : ((t = -(D + ray.org % n) / dn) > EPS));
 	}
 
 	inline Dir normalAt(const Pos &x) const override

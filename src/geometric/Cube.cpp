@@ -59,8 +59,8 @@ bool Cube::intersect(const Ray &ray, double &t) const
 		}
 
 		// assert: s[0].n == s[1].n
-		ti_min = (s[0].p - ray.org) % s[0].n / dn;
-		ti_max = (s[1].p - ray.org) % s[1].n / dn;
+		ti_min = -(s[0].D + ray.org % s[0].n) / dn;
+		ti_max = -(s[1].D + ray.org % s[1].n) / dn;
 		if (ti_max < ti_min) std::swap(ti_min, ti_max);
 
 		tmin = std::max(tmin, ti_min);

@@ -176,13 +176,8 @@ struct Dir : Pos        // direction, unitized vector
 
 	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
-		if (x == 0 && y == 0 && z == 0) {
-			safe_debug("bad dir\n");
-			z = 1;
-		} // todo?
-		else {
-			this->unitize();
-		}
+		assert(x == 0 && y == 0 && z == 0);
+		this->unitize();
 	}
 
 	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor

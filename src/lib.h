@@ -54,10 +54,13 @@ template <typename T>
 inline T max3(const T &a, const T &b, const T &c)
 { return std::max(std::max(a, b), c); }
 
+
+// ****************** compile options ******************
+#define __USE_OMP__
 #define __DEV_STAGE__
 
 #ifdef __DEV_STAGE__
-	#define debug(...) printf(__VA_ARGS__)              // for dev
+	#define debug(...) printf(__VA_ARGS__)
 	#define safe_debug(...) if (__print_cnt__ < 1000) { printf(__VA_ARGS__); ++__print_cnt__; }
 
 	// global params for debugging
@@ -67,9 +70,9 @@ inline T max3(const T &a, const T &b, const T &c)
 #else	// when release
 	#undef assert
 	#define assert(...)
-	#define printf(...)
 
 #endif
+// ****************** end of options ******************
 
 #define warn(x) std::cerr << x << std::endl         // show error
 #define message(x) std::cout << x << std::endl        // show message

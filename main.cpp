@@ -46,18 +46,17 @@ void Pharosa(int argc, char *argv[])
 //			triangle,
 	};
 //
-//	ObjectList box_objs{
-//			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::REFR),
-//			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::DIFF),
-//			new Object(Sphere(3, Pos(10, 0, 0)), Color(0.5, 0.8, 1.0), Emission(), Object::SPEC),
-//			new Object(Sphere(3, Pos(-10, 0, 0)), Color(0.2, 0.9, 0.0), Emission(), Object::DIFF),
-//			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
-//	};
-//	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
+	ObjectList box_objs{
+			new Object(Sphere(3, Pos(0, 10, 0)), Color(1.0, 0.2, 0.0), Emission(), Object::REFR),
+			new Object(Sphere(5, Pos(0, 0, 0)), Color(0.5, 0.2, 1.0), Emission(), Object::DIFF),
+			new Object(Sphere(3, Pos(10, 0, 0)), Color(0.5, 0.8, 1.0), Emission(), Object::SPEC),
+			new Object(Sphere(3, Pos(-10, 0, 0)), Color(0.2, 0.9, 0.0), Emission(), Object::DIFF),
+			new Object(Sphere(3, Pos(0, -10, 0)), Color(0.0, 0.9, 0.2), Emission(), Object::DIFF),
+	};
+	auto box = new BoundingSphere(Sphere(13, Pos(0, 0, 0)), box_objs);
 //	auto box = new BoundingCube(box_objs);
-	auto box = new BoundingCube();
-	box->translate({-20, -80, -40}).rotate({0, 0, 30 * DEG});
-	box->fromObjFile("res/dragon0_1 - done.obj", 40, Color(178, 255, 110) / 255.);
+//	auto box = new BoundingCube();
+//	box->fromObjFile("res/dragon0_1 - done.obj", 40, Color(178, 255, 110) / 255.);
 	warn("box size: " << box->objects.size() << "\n");
 
 	// ********************************************* init render engine *********************************************
@@ -74,8 +73,7 @@ void Pharosa(int argc, char *argv[])
 //	renderer.camera().translate({0, 0, -70});
 
 	// ********************************************* start rendering *********************************************
-	renderer.start(n_epoch, 1, "out/dragon");
-//	renderer.start(n_epoch, 1);
+	renderer.start(n_epoch, 1);
 //	renderer.startKinetic(5, motion, n_epoch, 0, "out/kinetic");
 
 	// ********************************************* save results *********************************************
