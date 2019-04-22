@@ -1,1 +1,0 @@
-/usr/local/Cellar/gcc/8.3.0/bin/g++-8   -O3 -fopenmp -Wall -MMD -std=c++14 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Pharosa.dir/main.cpp.o  -o Pharosa src/libPharosaLib.a 

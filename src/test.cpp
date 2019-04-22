@@ -1,13 +1,7 @@
 //
 // Created by James on 2019/4/9.
 //
-
-#include "src/lib.h"
-#include "src/utils/solvers/Linear.h"
-#include "src/utils/funcs.hpp"
-#include "src/core/Vec.h"
-#include "src/core/Mat.h"
-#include "src/geometric/All.h"
+#include "test.h"
 
 namespace Test
 {

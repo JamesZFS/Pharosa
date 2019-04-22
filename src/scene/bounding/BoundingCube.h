@@ -6,7 +6,7 @@
 #define PHAROSA_BOUNDINGCUBE_H
 
 
-#include "BoundingBox.h"
+#include "../BoundingBox.h"
 
 class BoundingCube : public BoundingBox
 {

@@ -4,8 +4,8 @@
  *  License: Department of Computer Science and Technology, Tsinghua University ®
  */
 
-#include "src/Renderer.hpp"
-#include "test.cpp"
+#include "Renderer.hpp"
+#include "test.h"
 
 using namespace std;
 

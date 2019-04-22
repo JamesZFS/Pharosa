@@ -5,7 +5,7 @@
 #ifndef PHAROSA_BOUNDINGSPHERE_H
 #define PHAROSA_BOUNDINGSPHERE_H
 
-#include "BoundingBox.h"
+#include "../BoundingBox.h"
 
 class BoundingSphere : public BoundingBox
 {

@@ -1,6 +1,0 @@
-/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/james/Test/CG/Pharosa/cmake-build-debug/CMakeFiles/Pharosa.dir
-/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
-/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/edit_cache.dir
-/Users/james/Test/CG/Pharosa/cmake-build-debug/src/CMakeFiles/PharosaLib.dir
