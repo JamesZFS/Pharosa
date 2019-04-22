@@ -176,7 +176,7 @@ struct Dir : Pos        // direction, unitized vector
 
 	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
-		assert(x == 0 && y == 0 && z == 0);
+		assert(x != 0 || y != 0 || z != 0);
 		this->unitize();
 	}
 

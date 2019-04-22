@@ -42,9 +42,21 @@ OrthoCamera.h
 ImageMixer.h
 /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
 
+/Users/james/Test/CG/Pharosa/src/camera/BasicCamera.cpp
+BasicCamera.h
+/Users/james/Test/CG/Pharosa/src/camera/BasicCamera.h
+../utils/funcs.hpp
+/Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
+
 /Users/james/Test/CG/Pharosa/src/camera/BasicCamera.h
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
+
+/Users/james/Test/CG/Pharosa/src/camera/Camera.cpp
+Camera.h
+/Users/james/Test/CG/Pharosa/src/camera/Camera.h
+../utils/funcs.hpp
+/Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
 ../lib.h
@@ -60,13 +72,27 @@ Camera.inl
 
 /Users/james/Test/CG/Pharosa/src/camera/DOFCamera.h
 
+/Users/james/Test/CG/Pharosa/src/camera/ImageMixer.cpp
+ImageMixer.h
+/Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
+
 /Users/james/Test/CG/Pharosa/src/camera/ImageMixer.h
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
 
+/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.cpp
+OrthoCamera.h
+/Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
+../utils/funcs.hpp
+/Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
+
 /Users/james/Test/CG/Pharosa/src/camera/OrthoCamera.h
 Camera.h
 /Users/james/Test/CG/Pharosa/src/camera/Camera.h
+
+/Users/james/Test/CG/Pharosa/src/core/Mat.cpp
+Mat.h
+/Users/james/Test/CG/Pharosa/src/core/Mat.h
 
 /Users/james/Test/CG/Pharosa/src/core/Mat.h
 ../lib.h
@@ -79,6 +105,10 @@ Mat.tcc
 /Users/james/Test/CG/Pharosa/src/core/Mat.tcc
 
 /Users/james/Test/CG/Pharosa/src/core/Ray.hpp
+Vec.h
+/Users/james/Test/CG/Pharosa/src/core/Vec.h
+
+/Users/james/Test/CG/Pharosa/src/core/Vec.cpp
 Vec.h
 /Users/james/Test/CG/Pharosa/src/core/Vec.h
 
@@ -112,6 +142,10 @@ Geometry.h
 InfPlane.h
 /Users/james/Test/CG/Pharosa/src/geometric/InfPlane.h
 
+/Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp
+Geometry.h
+/Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
+
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
 ../lib.h
 /Users/james/Test/CG/Pharosa/src/lib.h
@@ -136,9 +170,19 @@ Geometry.h
 
 /Users/james/Test/CG/Pharosa/src/geometric/MeshObj.h
 
+/Users/james/Test/CG/Pharosa/src/geometric/Sphere.cpp
+Sphere.h
+/Users/james/Test/CG/Pharosa/src/geometric/Sphere.h
+
 /Users/james/Test/CG/Pharosa/src/geometric/Sphere.h
 Geometry.h
 /Users/james/Test/CG/Pharosa/src/geometric/Geometry.h
+
+/Users/james/Test/CG/Pharosa/src/geometric/Triangle.cpp
+Triangle.h
+/Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
+../utils/solvers/Linear.h
+/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.h
 
 /Users/james/Test/CG/Pharosa/src/geometric/Triangle.h
 Geometry.h
@@ -255,4 +299,12 @@ Parsers.h
 /Users/james/Test/CG/Pharosa/src/utils/funcs.hpp
 ../lib.h
 /Users/james/Test/CG/Pharosa/src/lib.h
+
+/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.h
+../../lib.h
+/Users/james/Test/CG/Pharosa/src/lib.h
+Linear.tcc
+/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.tcc
+
+/Users/james/Test/CG/Pharosa/src/utils/solvers/Linear.tcc
 

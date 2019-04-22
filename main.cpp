@@ -57,6 +57,7 @@ void Pharosa(int argc, char *argv[])
 //	auto box = new BoundingCube(box_objs);
 //	auto box = new BoundingCube();
 //	box->fromObjFile("res/dragon0_1 - done.obj", 40, Color(178, 255, 110) / 255.);
+	box->translate({10, 10, 10});
 	warn("box size: " << box->objects.size() << "\n");
 
 	// ********************************************* init render engine *********************************************
