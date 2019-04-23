@@ -8,17 +8,17 @@
 #include "Algorithm.h"
 
 // Ray Tracing algorithm
-template<size_t MAX_DEPTH = 5>	// depth limit to use R.R.
 class RayTracing : public Algorithm
 {
 protected:
 	Color radiance(const Ray &ray, size_t depth) const override;    // ** main algorithm **
 
 public:
-	RayTracing(Stage &stage_, Camera &camera_);
+	const size_t max_depth;
 
+	RayTracing(Scene &scene_, Camera &camera_, size_t max_depth_ = 5);	// by default - depth = 5
+
+	void report() override;
 };
-
-#include "RayTracing.tcc"
 
 #endif //PHAROSA_RAYTRACING_H

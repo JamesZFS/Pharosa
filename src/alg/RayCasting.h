@@ -14,9 +14,9 @@ protected:
 	Color radiance(const Ray &ray, size_t depth) const override;
 
 public:
-	RayCasting(Stage &stage_, Camera &camera_);
-	
-	static Dir LIGHT_DIR;	// parallel light orientation
+	const Dir light_dir;	// parallel light orientation
+
+	RayCasting(Scene &scene_, Camera &camera_, const Dir &light_dir_ = Dir(-1, -1, -1));
 };
 
 #endif //PHAROSA_DIRECTIMAGING_H

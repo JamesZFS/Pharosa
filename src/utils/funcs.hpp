@@ -6,6 +6,8 @@
 #define PHAROSA_FUNCS_HPP
 
 #include "../lib.h"
+#include <random>
+
 
 namespace Funcs
 {

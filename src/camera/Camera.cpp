@@ -4,11 +4,14 @@
 
 #include "Camera.h"
 #include "../utils/funcs.hpp"
+#include "../utils/parsers/json.hpp"
 
-Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_) :
+
+Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_, double pixel_size_) :
 		cur_i(0), cur_j(0), cur_rank(0),
 		pos(pos_), ex(Dir::X_AXIS), ey(Dir::Y_AXIS), ez(Dir::Z_AXIS), ea(euler_angles_),
-		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1)
+		width(width_), height(height_), size(width_ * height_), w_2(width_ >> 1), h_2(height_ >> 1),
+		pixel_size(pixel_size_)
 {
 	img = new Color[size];
 	render_cnt = new size_t[size];
@@ -17,6 +20,12 @@ Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t
 	ex.rotate(ea);
 	ey.rotate(ea);
 	ez.rotate(ea);
+}
+
+Camera::Camera(const Json &json) :
+		Camera(Pos(json.at("pos")), ElAg(json.at("rot")),
+			   (size_t) json.value("width", 1024), (size_t) json.value("height", 768), json.value("pixel_size", 0.1))
+{
 }
 
 Camera::~Camera()

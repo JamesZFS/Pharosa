@@ -1,0 +1,56 @@
+{
+	"save_path": "test json.ppm",
+
+	"n_epoch": 20,
+	"verbose_step": 0,
+
+	"algorithm": {
+		"type": "ray tracing",
+		"max_depth": 2
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [0, 0, 280],
+		"rot": [0, 180, 0]
+	},
+
+	"scene":
+	[
+		{
+			"type": "group",
+			"color": [0, 200, 200],
+			"emission": [0, 0, 0],
+			"material": "DIFF",
+
+			"objects": "/Users/james/Test/CG/Pharosa/config/example/group geo.json",
+			"scale": 2.0,
+			"tra": [0, 0, 0],
+			"rot": [0, 90, 0]
+		},
+		{
+			"type": "obj",
+			"color": [100, 100, 0],
+			"emission": [0, 0, 10],
+			"material": "SPEC",
+			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
+			"scale": 2.0,
+			"tra": [0, 0, 0],
+			"rot": [0, 90, 0]
+		},
+		{
+			"type": "singleton",
+			"color": [0, 0, 255],
+			"emission": [0, 0, 0],
+			"material": "REFR",
+
+			"geometry":
+			{
+				"type": "infplane",
+				"point": [10, 10, 10],
+				"normal": [0, 0, 1]
+			}
+		}
+	]
+}

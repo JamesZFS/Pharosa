@@ -4,7 +4,7 @@
 
 #include "Algorithm.h"
 
-Algorithm::Algorithm(Stage &stage_, Camera &camera_) : stage(stage_), camera(camera_)
+Algorithm::Algorithm(Scene &scene_, Camera &camera_) : scene(scene_), camera(camera_)
 {
 	is_edge = new bool[camera.size];
 }
@@ -111,10 +111,10 @@ void Algorithm::detectEdges()
 		for (size_t i = 0, rank = j * camera.width; i < camera.width; ++i, ++rank) {
 			// four sub rays
 			const Object
-					*hit0 = stage.hitOf(camera.shootRayAt(i - SUB_D1, j - SUB_D2)),
-					*hit1 = stage.hitOf(camera.shootRayAt(i - SUB_D2, j + SUB_D1)),
-					*hit2 = stage.hitOf(camera.shootRayAt(i + SUB_D2, j - SUB_D1)),
-					*hit3 = stage.hitOf(camera.shootRayAt(i + SUB_D1, j + SUB_D2));
+					*hit0 = scene.hitOf(camera.shootRayAt(i - SUB_D1, j - SUB_D2)),
+					*hit1 = scene.hitOf(camera.shootRayAt(i - SUB_D2, j + SUB_D1)),
+					*hit2 = scene.hitOf(camera.shootRayAt(i + SUB_D2, j - SUB_D1)),
+					*hit3 = scene.hitOf(camera.shootRayAt(i + SUB_D1, j + SUB_D2));
 			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);    // if hit different objs, mark as edge
 		}
 	}
@@ -131,6 +131,11 @@ void Algorithm::detectEdges()
 	}
 	fout.close();
 #endif
+}
+
+void Algorithm::report()
+{
+	debug("Algorithm::report()\n");
 }
 
 #undef SUB_D1

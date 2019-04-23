@@ -11,13 +11,16 @@
 class BasicCamera : public Camera
 {
 public:
-	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768);
+	const double focus;
+
+	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
+				double pixel_size_ = 0.1, double focus_ = 140.0);
+
+	BasicCamera(const Json &json);
 
 	Ray shootRayAt(double i, double j, double sigma) const override;
 
 	Ray shootRayAt(double i, double j) const override;
-
-	static double PIXEL_SIZE, FOCUS;
 };
 
 #endif //PHAROSA_BASICCAMERA_H

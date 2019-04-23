@@ -3,6 +3,7 @@
 //
 
 #include "Vec.h"
+#include "../utils/parsers/json.hpp"
 
 // common Pos
 const Pos Pos::ORIGIN(0, 0, 0);
@@ -30,12 +31,26 @@ const Emission
 		Emission::BRIGHT(1.0, 1.0, 1.0),
 		Emission::SPLENDID(5.0, 5.0, 5.0);
 
+RGB::RGB(const Json &json) : RGB(json.at(0), json.at(1), json.at(2))
+{
+}
+
+
+ElAg::ElAg(const Json &json) :    // use degrees
+		ElAg(json.at(0).get<double>() * DEG, json.at(1).get<double>() * DEG, json.at(2).get<double>() * DEG)
+{
+}
+
 Pos &Pos::rotate(const ElAg &ea)
 {
 	rotateAlongY(ea.gamma);
 	rotateAlongX(ea.beta);
 	rotateAlongZ(ea.alpha);
 	return *this;
+}
+
+Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))	// construct from json
+{
 }
 
 void Dir::getOrthogonalBasis(Dir &ex, Dir &ey) const

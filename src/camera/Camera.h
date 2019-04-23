@@ -28,8 +28,12 @@ protected:
 public:
 	const size_t width, height, size;    // image width and height, n_pixel
 	const double w_2, h_2;            // width / 2, height / 2
+	const double pixel_size;
 
-	Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768);
+	Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
+		   double pixel_size_ = 0.1);
+
+	Camera(const Json &json);
 
 	virtual ~Camera();
 

@@ -17,6 +17,5 @@ foreach(lib ${LIBS})
     add_subdirectory(${lib})
 endforeach()
 
-add_executable(Pharosa ${SRCS})
-
-target_link_libraries(Pharosa ${LIBS})
+add_library(PharosaLib ${SRCS})
+target_link_libraries(PharosaLib ${LIBS})

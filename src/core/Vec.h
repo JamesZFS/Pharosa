@@ -7,6 +7,7 @@
 
 #include "../lib.h"
 #include "../utils/funcs.hpp"
+#include "../utils/parsers/json_fwd.hpp"
 
 // vector definition
 template<typename T = double>
@@ -116,6 +117,8 @@ struct ElAg : Vec<double>    // Euler angles (Z - alpha, X - beta, Y - gamma)
 	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
 	{}    // todo can use cosine, sine cache to boost
 
+	ElAg(const Json &json);	// from json, use degrees
+
 	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
@@ -140,6 +143,8 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	Pos(const Vec<double> &obj) : Pos(obj.x, obj.y, obj.z)    // copy constructor
 	{}
+
+	Pos(const Json &json);
 
 	inline void rotateAlongX(double theta)
 	{
@@ -180,6 +185,12 @@ struct Dir : Pos        // direction, unitized vector
 		this->unitize();
 	}
 
+	Dir(const Json &json) : Pos(json)
+	{
+		assert(x != 0 || y != 0 || z != 0);
+		this->unitize();
+	}
+
 	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
@@ -205,6 +216,8 @@ struct RGB : Vec<double>        // RGB Vector
 
 	RGB(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
 	{}
+
+	RGB(const Json &json);
 
 	RGB(const Vec<double> &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
@@ -234,7 +247,5 @@ struct RGB : Vec<double>        // RGB Vector
 
 typedef RGB Color;            // intrinsic color of an object
 typedef RGB Emission;        // RGB emission of an object
-
-#define DEG 0.0174532925199432957692369076848861271    // degree to rad
 
 #endif //PHAROSA_VEC_H

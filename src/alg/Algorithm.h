@@ -8,9 +8,9 @@
 #include "../lib.h"
 #include "../core/Ray.hpp"
 #include "../camera/All.h"
-#include "../scene/Stage.h"
+#include "../scene/Scene.h"
 
-// standard illumination algorithm, base class, can access stage and camera
+// standard illumination algorithm, base class, can access scene and camera
 class Algorithm
 {
 private:
@@ -20,7 +20,7 @@ private:
 	void detectEdges();
 
 protected:
-	Stage &stage;
+	Scene &scene;
 	Camera &camera;
 
 	// interfaces:
@@ -30,7 +30,7 @@ protected:
 	{ return radiance(ray, 0); }
 
 public:
-	Algorithm(Stage &stage_, Camera &camera_);
+	Algorithm(Scene &scene_, Camera &camera_);
 
 	virtual ~Algorithm();
 
@@ -40,6 +40,10 @@ public:
 
 	virtual void renderVerbose(size_t n_epoch, size_t prev_epoch,
 							   size_t verbose_step, const String &checkpoint_dir);
+
+#ifdef __DEV_STAGE__
+	virtual void report();
+#endif
 };
 
 #endif //PHAROSA_ALGORITHM_H

@@ -25,13 +25,13 @@
 //
 //bool MeshObj::intersect(const Ray &ray, double &t) const
 //{
-//	// this method should be done by Stage, whose `singletons` member can access this->meshes
+//	// this method should be done by Scene, whose `singletons` member can access this->meshes
 //	return false;
 //}
 //
 //Dir MeshObj::normalAt(const Pos &x) const
 //{
-//	// this method should be done by Stage, whose `singletons` member can access this->meshes
+//	// this method should be done by Scene, whose `singletons` member can access this->meshes
 //	warn("Error: method `MeshObj::normalAt` should never be called.\n");
 //	exit(1);
 //}

@@ -6,11 +6,8 @@
 #define PHAROSA_TEST_H
 
 #include "lib.h"
+#include "Renderer.h"
 #include "utils/solvers/Linear.h"
-#include "utils/funcs.hpp"
-#include "core/Vec.h"
-#include "core/Mat.h"
-#include "geometric/All.h"
 
 namespace Test
 {
@@ -24,6 +21,7 @@ namespace Test
 
 	void matrix();
 
+	void render(int argc, char *argv[]);
 }
 
 #endif //PHAROSA_TEST_H

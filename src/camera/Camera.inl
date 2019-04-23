@@ -17,8 +17,8 @@ void Camera::renderAt(size_t i, size_t j, const Color &color)
 	img[rank] += color;
 	++render_cnt[rank];
 }
-
 #undef rankOf
+
 #undef checkCoordinate
 
 bool Camera::finishedVerbose(size_t n_step) const
