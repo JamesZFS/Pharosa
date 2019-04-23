@@ -5,10 +5,10 @@
 #ifndef PHAROSA_OBJECT_H
 #define PHAROSA_OBJECT_H
 
-#include "../lib.h"
+#include "../defs.h"
 #include "../core/Vec.h"
 #include "../core/Mat.h"
-#include "../geometric/All.h"
+#include "../geometric/Geometry.h"
 
 // physical instance of an object, including its geometric and material attributes
 struct Object
@@ -29,11 +29,16 @@ struct Object
 	Object(GeometryType &&geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
 		   ReflType refl_type_ = DIFF);    // init from a temporarily defined Geometry, copy it to stay long todo use move
 
+
 	~Object();
 };
 
-typedef List<Object *> ObjectList;
+template<class GeometryType>
+Object::Object(GeometryType &&geo_, const Color &color_, const Emission &emission_, ReflType refl_type_) :
+		geo(new GeometryType(geo_)), color(color_), emi(emission_), reft(refl_type_)
+{
+}
 
-#include "Object.tcc"
+typedef List<Object *> ObjectList;
 
 #endif //PHAROSA_OBJECT_H

@@ -7,6 +7,7 @@
 
 
 #include "BoundingBox.h"
+#include "../../geometric/Cube.h"
 
 class BoundingCube : public BoundingBox
 {

@@ -3,10 +3,12 @@
 //
 
 #include "Algorithm.h"
+#include "../scene/Scene.h"
+#include "../camera/Camera.h"
+#include <fstream>
 
-Algorithm::Algorithm(Scene &scene_, Camera &camera_) : scene(scene_), camera(camera_)
+Algorithm::Algorithm(Scene &scene_, Camera &camera_) : scene(scene_), camera(camera_), is_edge(new bool[camera.size])
 {
-	is_edge = new bool[camera.size];
 }
 
 Algorithm::~Algorithm()

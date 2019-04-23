@@ -6,6 +6,10 @@
 #include "InfPlane.h"
 #include "../scene/Object.h"
 
+InfPlane::InfPlane() : D(0)
+{
+}
+
 InfPlane::InfPlane(const Pos &p_, const ElAg &euler_angles_) :
 		Geometry(p_, euler_angles_)
 {

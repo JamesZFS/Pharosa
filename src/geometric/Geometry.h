@@ -5,7 +5,7 @@
 #ifndef PHAROSA_GEOMETRY_H
 #define PHAROSA_GEOMETRY_H
 
-#include "../lib.h"
+#include "../defs.h"
 #include "../core/Vec.h"
 #include "../core/Mat.h"
 #include "../core/Ray.hpp"
@@ -54,11 +54,17 @@ struct Geometry
 
 	// todo code below is dirty
 	virtual void translateLocal(const Pos &delta);
+
 	virtual double xMin();
+
 	virtual double xMax();
+
 	virtual double yMin();
+
 	virtual double yMax();
+
 	virtual double zMin();
+
 	virtual double zMax();
 };
 

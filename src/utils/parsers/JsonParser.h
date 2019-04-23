@@ -5,7 +5,7 @@
 #ifndef PHAROSA_PARSER_H
 #define PHAROSA_PARSER_H
 
-#include "../../lib.h"
+#include "../../defs.h"
 #include "../../core/Vec.h"
 #include "../../scene/Object.h"
 #include "../../geometric/All.h"

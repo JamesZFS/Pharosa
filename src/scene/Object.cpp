@@ -3,6 +3,7 @@
 //
 
 #include "Object.h"
+#include "../geometric/All.h"
 
 Object::~Object()
 {

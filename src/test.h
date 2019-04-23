@@ -5,9 +5,7 @@
 #ifndef PHAROSA_TEST_H
 #define PHAROSA_TEST_H
 
-#include "lib.h"
-#include "Renderer.h"
-#include "utils/solvers/Linear.h"
+#include "defs.h"
 
 namespace Test
 {

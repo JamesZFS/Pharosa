@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "../utils/funcs.hpp"
 #include "../utils/parsers/json.hpp"
+#include <fstream>
 
 
 Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_, double pixel_size_) :

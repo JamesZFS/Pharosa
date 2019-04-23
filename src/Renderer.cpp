@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "utils/parsers/json.hpp"
 #include <omp.h>
+#include <fstream>
 
 Renderer::Renderer(const String &config_path)
 {

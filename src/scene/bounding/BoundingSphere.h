@@ -6,6 +6,7 @@
 #define PHAROSA_BOUNDINGSPHERE_H
 
 #include "BoundingBox.h"
+#include "../../geometric/Sphere.h"
 
 class BoundingSphere : public BoundingBox
 {

@@ -15,7 +15,7 @@ struct InfPlane : Geometry
 	Dir n;    // normal vector, in Global coordinate sys, default towards ez (A, B, C)
 	double D;	// A x + B y + C z + D == 0, D == -n.p
 
-	InfPlane() = default;
+	InfPlane();
 
 	InfPlane(const Pos &p_, const ElAg &euler_angles_);
 

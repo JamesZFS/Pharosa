@@ -3,6 +3,7 @@
 //
 
 #include "RayCasting.h"
+#include "../scene/Scene.h"
 #include "../utils/funcs.hpp"
 
 RayCasting::RayCasting(Scene &scene_, Camera &camera_, const Dir &light_dir_) :

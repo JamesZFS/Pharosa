@@ -5,10 +5,10 @@
 #ifndef PHAROSA_SCENE_H
 #define PHAROSA_SCENE_H
 
-#include "../lib.h"
+#include "../defs.h"
 #include "../core/Ray.hpp"
 #include "Object.h"
-#include "bounding/All.h"
+#include "bounding/BoundingBox.h"
 
 // Scene class, for i/o models and calculating ray intersection
 class Scene

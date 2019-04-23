@@ -5,9 +5,7 @@
 #ifndef PHAROSA_RENDERER_H
 #define PHAROSA_RENDERER_H
 
-#include "lib.h"
-#include "core/Vec.h"
-#include "core/Ray.hpp"
+#include "defs.h"
 #include "alg/All.h"
 #include "camera/All.h"
 #include "scene/Scene.h"

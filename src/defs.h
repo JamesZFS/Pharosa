@@ -2,14 +2,13 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef PHAROSA_LIB_H
-#define PHAROSA_LIB_H
+#ifndef PHAROSA_DEFS_H
+#define PHAROSA_DEFS_H
 
 #define _USE_MATH_DEFINES
 
 #include <cmath>
 #include <iostream>
-#include <fstream>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -17,7 +16,7 @@
 #include <vector>
 #include <array>
 #include <string>
-#include "utils/parsers/json_fwd.hpp"
+#include "utils/parsers/json_fwd.hpp"	// forward definition
 
 #define INF 1e20
 #define EPS 1e-4
@@ -84,4 +83,4 @@ extern size_t __print_cnt__;
 #define barInfo(...) fprintf(stderr, __VA_ARGS__); fflush(stderr)    // show progressbar info
 #define TERMINATE(...) { fprintf(stderr, __VA_ARGS__); exit(1); }	// exit with error info
 
-#endif //PHAROSA_LIB_H
+#endif //PHAROSA_DEFS_H

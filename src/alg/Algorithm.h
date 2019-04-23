@@ -5,28 +5,33 @@
 #ifndef PHAROSA_ALGORITHM_H
 #define PHAROSA_ALGORITHM_H
 
-#include "../lib.h"
+#include "../defs.h"
+#include "../core/Vec.h"
 #include "../core/Ray.hpp"
-#include "../camera/All.h"
-#include "../scene/Scene.h"
+
+class Camera;
+
+class Scene;
 
 // standard illumination algorithm, base class, can access scene and camera
 class Algorithm
 {
+protected:
+	Scene &scene;
+
 private:
-	bool *is_edge;	// if each pixel on the screen is edge of an object
+	Camera &camera;
+	bool *is_edge;    // if each pixel on the screen is edge of an object
 
 	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
 	void detectEdges();
 
 protected:
-	Scene &scene;
-	Camera &camera;
 
 	// interfaces:
 	virtual Color radiance(const Ray &ray, size_t depth) const = 0;    // ** main algorithm **
 
-	inline Color radiance(const Ray &ray) const	// entrance
+	inline Color radiance(const Ray &ray) const    // entrance
 	{ return radiance(ray, 0); }
 
 public:
@@ -42,7 +47,9 @@ public:
 							   size_t verbose_step, const String &checkpoint_dir);
 
 #ifdef __DEV_STAGE__
+
 	virtual void report();
+
 #endif
 };
 

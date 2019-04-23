@@ -5,7 +5,7 @@
 #ifndef PHAROSA_TRANSMAT_H
 #define PHAROSA_TRANSMAT_H
 
-#include "../lib.h"
+#include "../defs.h"
 #include "Vec.h"
 
 template<typename T = double>

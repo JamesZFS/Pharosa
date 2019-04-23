@@ -5,7 +5,7 @@
 #ifndef PHAROSA_OBJPARSER_H
 #define PHAROSA_OBJPARSER_H
 
-#include "../../lib.h"
+#include "../../defs.h"
 #include "../../core/Vec.h"
 #include "../../scene/Object.h"
 

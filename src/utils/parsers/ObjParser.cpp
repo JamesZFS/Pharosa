@@ -3,6 +3,9 @@
 //
 
 #include "ObjParser.h"
+#include "../../geometric/Triangle.h"
+#include <fstream>
+
 
 #define FAIL { sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark); warn(buffer); fin.close(); exit(1); }
 #define SKIP_LINE { fin.getline(buffer, 200); break; }
