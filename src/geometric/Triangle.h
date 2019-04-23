@@ -15,6 +15,8 @@ struct Triangle : Geometry
 
 	Triangle(Arr<Pos, 3> &&p_, const Pos &pos_, const ElAg &euler_angles_ = {});
 
+	Triangle(const Json &json);
+
 	void applyTransform() override;    // calculate gp according to p
 
 	bool intersect(const Ray &ray, double &t) const override;

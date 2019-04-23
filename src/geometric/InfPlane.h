@@ -19,6 +19,8 @@ struct InfPlane : Geometry
 
 	InfPlane(const Pos &p_, const ElAg &euler_angles_);
 
+	InfPlane(const Json &json);
+
 	// construct by specifying normal
 	InfPlane(const Dir &n_, const Pos &p_);
 

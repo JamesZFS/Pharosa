@@ -4,16 +4,29 @@
 
 #include <algorithm>
 
+namespace Parsing
+{
+	inline String lowerStr(const String &s)
+	{
+		String t;
+		std::transform(s.begin(), s.end(), std::back_inserter(t), tolower);
+		return t;
+	}
+
+	inline String &lowerStr_(String &s)	// lower in place
+	{
+		std::transform(s.begin(), s.end(), s.begin(), tolower);
+		return s;
+	}
+}
+
 namespace Map
 {
 	struct Case_Free_Comp
 	{
 		bool operator()(const String &s1, const String &s2)
 		{
-			String a, b;
-			std::transform(s1.begin(), s1.end(), std::back_inserter(a), tolower);
-			std::transform(s2.begin(), s2.end(), std::back_inserter(b), tolower);
-			return a < b;
+			return Parsing::lowerStr(s1) < Parsing::lowerStr(s2);
 		}
 	};
 
@@ -35,11 +48,12 @@ namespace Map
 	};
 
 	std::map<const String, const Object::ReflType, Case_Free_Comp> str_to_material = {
-			{"DIFF", Object::DIFF},
-			{"diffusive", Object::DIFF},
-			{"SPEC", Object::SPEC},
-			{"spec", Object::SPEC},
-			{"REFR", Object::REFR},
-			{"NONE", Object::NONE},
+			{"DIFF",       Object::DIFF},
+			{"diffusive",  Object::DIFF},
+			{"SPEC",       Object::SPEC},
+			{"specular",   Object::SPEC},
+			{"REFR",       Object::REFR},
+			{"refractive", Object::REFR},
+			{"NONE",       Object::NONE},
 	};
 }

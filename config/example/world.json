@@ -2,12 +2,14 @@
 	"save_path": "test json.ppm",
 
 	"n_epoch": 20,
+	"prev_path": "test json.ppm",
+	"prev_epoch": 20,
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "ray casting",
+		"type": "RT",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 2
+		"max_depth": 5
 	},
 
 	"camera": {
@@ -41,28 +43,28 @@
 			"rot": [0, 90, 0]
 		},
 		{
-			"type": "singleton",
-			"color": "White",
-			"emission": [0, 10, 0],
+			"color": [0.1, 0.1, 0.9],
 			"material": "REFR",
-
-			"geometry":
-			{
-				"type": "infplane",
-				"point": [10, 10, 10],
-				"normal": [0, 0, 1]
+			"geometry": {
+				"type": "cube",
+				"basis": [
+					[10, 0, 0],
+					[0, 20, 0],
+					[0, 0, 15]
+				],
+				"pos": [20, -50, 10]
 			}
 		},
 		{
-			"color": [1, 2, 3],
-			"emission": "bright",
+			"color": "green",
+			"emission": "none",
 			"material": "REFR",
 
 			"geometry":
 			{
-				"type": "infplane",
-				"point": [10, 10, 10],
-				"normal": [0, 0, 1]
+				"type": "sphere",
+				"radius": 10.5,
+				"pos": [-10, -10, 100]
 			}
 		}
 	]

@@ -22,6 +22,8 @@ struct Cube : Geometry
 	// init from 3 vertices, ox, oy, oz. by default, the o in local crd sys is (0, 0, 0)
 	Cube(Arr<Pos, 3> &&vertices_, const Pos &pos_ = {}, const ElAg &euler_angles_ = {});
 
+	Cube(const Json &json);
+
 	// init with a orthogonal cube
 	Cube(double length, double width, double height, const Pos &pos_ = {}, const ElAg &euler_angles_ = {});
 

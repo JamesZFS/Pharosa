@@ -15,6 +15,8 @@ struct Sphere : Geometry
 
 	Sphere(double radius_, const Pos &pos_, ElAg euler_angles_ = {});
 
+	Sphere(const Json &json);
+
 	void applyTransform() override;
 
 	bool intersect(const Ray &ray, double &t) const override;

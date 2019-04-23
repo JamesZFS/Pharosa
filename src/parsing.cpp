@@ -10,7 +10,9 @@
 #include "scene/Scene.h"
 #include "camera/All.h"
 #include "alg/All.h"
+#include "geometric/All.h"
 #include "Renderer.h"
+
 #include "parsing.inl"
 
 Renderer::Renderer(const String &config_path)
@@ -41,6 +43,7 @@ Renderer::Renderer(const String &config_path)
 	// camera
 	Json cam_json = json.at("camera");
 	type = cam_json.value("type", "basic");
+	Parsing::lowerStr_(type);
 	if (type == "basic") {
 		camera = new BasicCamera(cam_json);
 	}
@@ -108,11 +111,9 @@ BasicCamera::BasicCamera(const Json &json) :
 Scene::Scene(const Json &json)
 {
 	String type;
-	Object *object;
-	Geometry *geo;
 	for (const Json &item: json) {
 		type = item.value("type", "singleton");
-		// switch todo
+		Parsing::lowerStr_(type);
 		if (type == "singleton") {
 			debug("singleton\n");
 			singletons.push_back(new Object(item));
@@ -137,11 +138,55 @@ Object::Object(const Json &json)
 	try {
 		reft = Map::str_to_material.at(json.value("material", "DIFF"));
 	}
-	catch (std::out_of_range &) TERMINATE("Error, got invalid material type \"%s\".",
-			json["material"].get<String>().data());
+	catch (std::out_of_range &) {
+		TERMINATE("Error, got invalid material type \"%s\".", json["material"].get<String>().data());
+	}
 
 	// todo parse geo
+	geo = Geometry::acquire(json.at("geometry"));
 }
+
+// geometries
+Geometry *Geometry::acquire(const Json &json)
+{
+	String type = json.at("type");
+	Parsing::lowerStr_(type);
+	if (type == "cube") {
+		return new Cube(json);
+	}
+	else if (type == "infplane") {
+		return new InfPlane(json);
+	}
+	else if (type == "sphere") {
+		return new Sphere(json);
+	}
+	else if (type == "triangle") {
+		return new Triangle(json);
+	}
+	else TERMINATE("Error, got invalid geometry type \"%s\".", type.data());
+}
+
+Cube::Cube(const Json &json) :
+		Cube({{json.at("basis").at(0), json.at("basis").at(1), json.at("basis").at(2)}},
+			 Pos(json.at("pos")))
+{
+}
+
+InfPlane::InfPlane(const Json &json) :
+	InfPlane(Dir(json.at("normal")), Pos(json.at("point")))
+{
+}
+
+Sphere::Sphere(const Json &json) :
+		Sphere(json.at("radius"), Pos(json.at("pos")))
+{
+}
+
+Triangle::Triangle(const Json &json) :
+		Triangle({{json.at("points").at(0), json.at("points").at(1), json.at("points").at(2)}}, Pos(json.at("pos")))
+{
+}
+
 
 // vector
 Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))    // construct from json

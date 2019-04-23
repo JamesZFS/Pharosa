@@ -66,6 +66,8 @@ struct Geometry
 	virtual double zMin();
 
 	virtual double zMax();
+
+	static Geometry *acquire(const Json &json);	// new a geometry from json
 };
 
 #endif //PHAROSA_GEOMETRY_H

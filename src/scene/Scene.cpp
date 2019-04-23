@@ -24,7 +24,7 @@ void Scene::fromObjFile(const String &obj_path)
 
 void Scene::fromList(ObjectList &singletons_)
 {
-	singletons = std::move(singletons_);
+	singletons.insert(singletons.end(), singletons_.begin(), singletons_.end());
 }
 
 void Scene::append(Object *object)
