@@ -2,6 +2,7 @@
 // Created by James on 2019/4/23.
 // implement all parsing
 
+#include "defs.h"
 #include "utils/parsers/json.hpp"
 #include <fstream>
 
@@ -109,10 +110,10 @@ Scene::Scene(const Json &json)
 	Geometry *geo;
 	for (const Json &item: json) {
 		type = item.value("type", "singleton");
-
 		// switch todo
 		if (type == "singleton") {
-
+			debug("singleton\n");
+			singletons.push_back(new Object(item));
 		}
 		else if (type == "group") {
 
@@ -125,13 +126,77 @@ Scene::Scene(const Json &json)
 }
 
 
+Object::Object(const Json &json)
+{
+	color = json.value("color", Color::WHITE);
+	color.report(true);
+	emi = json.value("emission", Emission::NONE);
+	emi.report(true);
+	String material = json.value("material", "DIFF");
+	if (material == "DIFF") {
+		reft = Object::DIFF;
+	}
+	else if (material == "SPEC") {
+		reft = Object::SPEC;
+	}
+	else if (material == "REFR") {
+		reft = Object::REFR;
+	}
+	else TERMINATE("Error, got invalid material type.");
+
+	// todo parse geo
+}
+
 // vector
 Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))	// construct from json
 {
 }
 
-RGB::RGB(const Json &json) : RGB(json.at(0), json.at(1), json.at(2))
+RGB::RGB(const Json &json) : r(x), g(y), b(z)
 {
+	if (json.is_array()) {
+		x = json.at(0);
+		y = json.at(1);
+		z = json.at(2);
+	}
+	else if (json.is_string()) {	// default colors
+		String desc = json;
+		if (desc == "red" || desc == "R") {
+			*this = Color::RED;
+		}
+		else if (desc == "green" || desc == "G") {
+			*this = Color::GREEN;
+		}
+		else if (desc == "blue" || desc == "B") {
+			*this = Color::BLUE;
+		}
+		else if (desc == "white") {
+			*this = Color::WHITE;
+		}
+		else if (desc == "black") {
+			*this = Color::BLACK;
+		}
+		else if (desc == "brown") {
+			*this = Color::BROWN;
+		}
+		else if (desc == "yellow") {
+			*this = Color::YELLOW;
+		}
+		else if (desc == "none") {
+			*this = Emission::NONE;
+		}
+		else if (desc == "glow") {
+			*this = Emission::GLOW;
+		}
+		else if (desc == "bright") {
+			*this = Emission::BRIGHT;
+		}
+		else if (desc == "splendid") {
+			*this = Emission::SPLENDID;
+		}
+		else TERMINATE("Error, got unidentified desc \"%s\".", desc.data());
+	}
+	else TERMINATE("Error, got invalid color type.");
 }
 
 ElAg::ElAg(const Json &json) :    // use degrees

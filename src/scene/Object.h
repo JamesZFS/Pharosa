@@ -28,10 +28,11 @@ struct Object
 	Object(Geometry *geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
 		   ReflType refl_type_ = DIFF);
 
-	template<class GeometryType>
+	template<class GeometryType> //todo delete
 	Object(GeometryType &&geo_, const Color &color_ = Color::WHITE, const Emission &emission_ = Emission::NONE,
 		   ReflType refl_type_ = DIFF);    // init from a temporarily defined Geometry, copy it to stay long todo use move
 
+	Object(const Json &json);	// from json
 
 	~Object();
 };

@@ -42,7 +42,19 @@
 		},
 		{
 			"type": "singleton",
-			"color": [0, 0, 255],
+			"color": "white",
+			"emission": [0, 10, 0],
+			"material": "REFR",
+
+			"geometry":
+			{
+				"type": "infplane",
+				"point": [10, 10, 10],
+				"normal": [0, 0, 1]
+			}
+		},
+		{
+			"color": "blue",
 			"emission": [0, 0, 0],
 			"material": "REFR",
 
