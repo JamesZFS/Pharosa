@@ -5,11 +5,13 @@
 #include "defs.h"
 #include "utils/parsers/json.hpp"
 #include <fstream>
+#include <map>
 
 #include "scene/Scene.h"
 #include "camera/All.h"
 #include "alg/All.h"
 #include "Renderer.h"
+#include "parsing.inl"
 
 Renderer::Renderer(const String &config_path)
 {
@@ -70,7 +72,7 @@ Renderer::Renderer(const String &config_path)
 			algorithm = new RayCasting(*scene, *camera, Dir(alg_json.at("light_dir")));
 		}
 		catch (Json::out_of_range &) {
-			algorithm = new RayCasting(*scene, *camera);	// use default
+			algorithm = new RayCasting(*scene, *camera);    // use default
 		}
 	}
 	else if (type == "RayTracing" || type == "ray tracing" || type == "RT") {
@@ -78,7 +80,7 @@ Renderer::Renderer(const String &config_path)
 			algorithm = new RayTracing(*scene, *camera, (size_t) alg_json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			algorithm = new RayTracing(*scene, *camera);	// use default
+			algorithm = new RayTracing(*scene, *camera);    // use default
 		}
 	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
@@ -128,27 +130,21 @@ Scene::Scene(const Json &json)
 
 Object::Object(const Json &json)
 {
-	color = json.value("color", Color::WHITE);
+	color = RGB(json.value("color", Color::WHITE));
 	color.report(true);
-	emi = json.value("emission", Emission::NONE);
+	emi = RGB(json.value("emission", Emission::NONE));
 	emi.report(true);
-	String material = json.value("material", "DIFF");
-	if (material == "DIFF") {
-		reft = Object::DIFF;
+	try {
+		reft = Map::str_to_material.at(json.value("material", "DIFF"));
 	}
-	else if (material == "SPEC") {
-		reft = Object::SPEC;
-	}
-	else if (material == "REFR") {
-		reft = Object::REFR;
-	}
-	else TERMINATE("Error, got invalid material type.");
+	catch (std::out_of_range &) TERMINATE("Error, got invalid material type \"%s\".",
+			json["material"].get<String>().data());
 
 	// todo parse geo
 }
 
 // vector
-Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))	// construct from json
+Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))    // construct from json
 {
 }
 
@@ -159,44 +155,13 @@ RGB::RGB(const Json &json) : r(x), g(y), b(z)
 		y = json.at(1);
 		z = json.at(2);
 	}
-	else if (json.is_string()) {	// default colors
-		String desc = json;
-		if (desc == "red" || desc == "R") {
-			*this = Color::RED;
+	else if (json.is_string()) {    // default colors
+		try {
+			*this = *Map::str_to_rgb.at(json);
 		}
-		else if (desc == "green" || desc == "G") {
-			*this = Color::GREEN;
-		}
-		else if (desc == "blue" || desc == "B") {
-			*this = Color::BLUE;
-		}
-		else if (desc == "white") {
-			*this = Color::WHITE;
-		}
-		else if (desc == "black") {
-			*this = Color::BLACK;
-		}
-		else if (desc == "brown") {
-			*this = Color::BROWN;
-		}
-		else if (desc == "yellow") {
-			*this = Color::YELLOW;
-		}
-		else if (desc == "none") {
-			*this = Emission::NONE;
-		}
-		else if (desc == "glow") {
-			*this = Emission::GLOW;
-		}
-		else if (desc == "bright") {
-			*this = Emission::BRIGHT;
-		}
-		else if (desc == "splendid") {
-			*this = Emission::SPLENDID;
-		}
-		else TERMINATE("Error, got unidentified desc \"%s\".", desc.data());
+		catch (std::out_of_range &) TERMINATE("Error, got unidentified RGB \"%s\".", json.get<String>().data());
 	}
-	else TERMINATE("Error, got invalid color type.");
+	else TERMINATE("Error, got invalid RGB type.");
 }
 
 ElAg::ElAg(const Json &json) :    // use degrees

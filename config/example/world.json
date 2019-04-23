@@ -34,7 +34,7 @@
 			"type": "obj",
 			"color": [100, 100, 0],
 			"emission": [0, 0, 10],
-			"material": "SPEC",
+			"material": "spec",
 			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
 			"scale": 2.0,
 			"tra": [0, 0, 0],
@@ -42,7 +42,7 @@
 		},
 		{
 			"type": "singleton",
-			"color": "white",
+			"color": "White",
 			"emission": [0, 10, 0],
 			"material": "REFR",
 
@@ -54,8 +54,8 @@
 			}
 		},
 		{
-			"color": "blue",
-			"emission": [0, 0, 0],
+			"color": [1, 2, 3],
+			"emission": "bright",
 			"material": "REFR",
 
 			"geometry":

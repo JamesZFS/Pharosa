@@ -15,7 +15,7 @@ struct Object
 {
 	enum ReflType
 	{
-		DIFF, SPEC, REFR
+		DIFF, SPEC, REFR, NONE
 	};    // diffusive, reflective, refractive
 
 	Geometry *geo;    // geometric attributes

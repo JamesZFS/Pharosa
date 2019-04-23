@@ -79,16 +79,6 @@ namespace Funcs
 		auto idx = s.rfind(suffix);
 		return idx != String::npos && idx == (s.length() - suffix.length());
 	}
-
-	inline void toLower(String &s)
-	{
-//		transform(s.begin(), s.end(), s.begin(), ::tolower); todo
-	}
-
-	inline void toUpper(String &s)
-	{
-//		transform(s.begin(), s.end(), s.begin(), ::toupper);
-	}
 }
 
 #endif //PHAROSA_FUNCS_HPP

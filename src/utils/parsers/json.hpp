@@ -61,7 +61,7 @@ SOFTWARE.
 #include <ciso646> // and, not
 #include <forward_list> // forward_list
 #include <iterator> // inserter, front_inserter, end
-#include <map> // map
+#include <map> // Map
 #include <string> // string
 #include <tuple> // tuple, make_tuple
 #include <type_traits> // is_arithmetic, is_same, is_enum, underlying_type, is_convertible
@@ -812,7 +812,7 @@ using is_detected_convertible =
 #define INCLUDE_NLOHMANN_JSON_FWD_HPP_
 
 #include <cstdint> // int64_t, uint64_t
-#include <map> // map
+#include <map> // Map
 #include <memory> // allocator
 #include <string> // string
 #include <vector> // vector
@@ -4061,7 +4061,7 @@ class binary_reader
             case 0x9F: // array (indefinite length)
                 return get_cbor_array(std::size_t(-1));
 
-            // map (0x00..0x17 pairs of data items follow)
+            // Map (0x00..0x17 pairs of data items follow)
             case 0xA0:
             case 0xA1:
             case 0xA2:
@@ -4088,31 +4088,31 @@ class binary_reader
             case 0xB7:
                 return get_cbor_object(static_cast<std::size_t>(static_cast<unsigned int>(current) & 0x1Fu));
 
-            case 0xB8: // map (one-byte uint8_t for n follows)
+            case 0xB8: // Map (one-byte uint8_t for n follows)
             {
                 std::uint8_t len;
                 return get_number(input_format_t::cbor, len) and get_cbor_object(static_cast<std::size_t>(len));
             }
 
-            case 0xB9: // map (two-byte uint16_t for n follow)
+            case 0xB9: // Map (two-byte uint16_t for n follow)
             {
                 std::uint16_t len;
                 return get_number(input_format_t::cbor, len) and get_cbor_object(static_cast<std::size_t>(len));
             }
 
-            case 0xBA: // map (four-byte uint32_t for n follow)
+            case 0xBA: // Map (four-byte uint32_t for n follow)
             {
                 std::uint32_t len;
                 return get_number(input_format_t::cbor, len) and get_cbor_object(static_cast<std::size_t>(len));
             }
 
-            case 0xBB: // map (eight-byte uint64_t for n follow)
+            case 0xBB: // Map (eight-byte uint64_t for n follow)
             {
                 std::uint64_t len;
                 return get_number(input_format_t::cbor, len) and get_cbor_object(static_cast<std::size_t>(len));
             }
 
-            case 0xBF: // map (indefinite length)
+            case 0xBF: // Map (indefinite length)
                 return get_cbor_object(std::size_t(-1));
 
             case 0xF4: // false
@@ -4684,13 +4684,13 @@ class binary_reader
                 return get_number(input_format_t::msgpack, len) and get_msgpack_array(static_cast<std::size_t>(len));
             }
 
-            case 0xDE: // map 16
+            case 0xDE: // Map 16
             {
                 std::uint16_t len;
                 return get_number(input_format_t::msgpack, len) and get_msgpack_object(static_cast<std::size_t>(len));
             }
 
-            case 0xDF: // map 32
+            case 0xDF: // Map 32
             {
                 std::uint32_t len;
                 return get_number(input_format_t::msgpack, len) and get_msgpack_object(static_cast<std::size_t>(len));
@@ -10066,13 +10066,13 @@ class binary_writer
                 }
                 else if (N <= (std::numeric_limits<std::uint16_t>::max)())
                 {
-                    // map 16
+                    // Map 16
                     oa->write_character(to_char_type(0xDE));
                     write_number(static_cast<std::uint16_t>(N));
                 }
                 else if (N <= (std::numeric_limits<std::uint32_t>::max)())
                 {
-                    // map 32
+                    // Map 32
                     oa->write_character(to_char_type(0xDF));
                     write_number(static_cast<std::uint32_t>(N));
                 }
