@@ -89,6 +89,8 @@ public:
 
 	// shoot precise ray
 	virtual Ray shootRayAt(double i, double j) const = 0;
+
+	static Camera *acquire(const Json &json);	// from json
 };
 
 // inline methods:

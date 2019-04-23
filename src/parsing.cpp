@@ -40,59 +40,39 @@ Renderer::Renderer(const String &config_path)
 	verbose_step = json.value("verbose_step", 0);
 	Funcs::generator.seed((unsigned int) time(nullptr));
 
+	// scene
+	scene = new Scene(json.at("scene"));
+
 	// camera
-	Json cam_json = json.at("camera");
-	type = cam_json.value("type", "basic");
-	Parsing::lowerStr_(type);
-	if (type == "basic") {
-		camera = new BasicCamera(cam_json);
-	}
-	else if (type == "ortho") {
-		camera = new OrthoCamera(cam_json);
-	}
-	else if (type == "DOF") {
-		//	camera = new DOFCamera(cam_json);
-	}
-	else TERMINATE("Error: got unidentified camera type \"%s\".", type.data());
+	camera = Camera::acquire(json.at("camera"));
+
+	// algorithm
+	algorithm = Algorithm::acquire(json.at("algorithm"), *scene, *camera);
+	
 	// load checkpoint
 	if (prev_path.length() > 0) {
 		camera->readPPM(prev_path, prev_epoch);
 	}
-
-//	message(cam_json.dump(3));
-
-	// scene
-	Json scene_json = json.at("scene");
-	scene = new Scene(scene_json);
-
-//	message(scene_json.dump(3));
-
-	// algorithm
-	Json alg_json = json.at("algorithm");
-	type = alg_json.at("type");
-	if (type == "RayCasting" || type == "ray casting" || type == "RC") {
-		try {
-			algorithm = new RayCasting(*scene, *camera, Dir(alg_json.at("light_dir")));
-		}
-		catch (Json::out_of_range &) {
-			algorithm = new RayCasting(*scene, *camera);    // use default
-		}
-	}
-	else if (type == "RayTracing" || type == "ray tracing" || type == "RT") {
-		try {
-			algorithm = new RayTracing(*scene, *camera, (size_t) alg_json.at("max_depth"));
-		}
-		catch (Json::out_of_range &) {
-			algorithm = new RayTracing(*scene, *camera);    // use default
-		}
-	}
-	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
-
-	algorithm->info();
-//	message(alg_json.dump(3));
 }
 
 // camera
+Camera *Camera::acquire(const Json &json)
+{
+	String type = json.value("type", "basic");	// default
+	Parsing::lowerStr_(type);
+	if (type == "basic") {
+		return new BasicCamera(json);
+	}
+	else if (type == "ortho") {
+		return new OrthoCamera(json);
+	}
+	else if (type == "DOF") {
+		//	camera = new DOFCamera(json);
+	}
+	else TERMINATE("Error: got unidentified camera type \"%s\".", type.data());
+}
+
+
 Camera::Camera(const Json &json) :
 		Camera(Pos(json.at("pos")), ElAg(json.at("rot")),
 			   (size_t) json.value("width", 1024), (size_t) json.value("height", 768), json.value("pixel_size", 0.1))
@@ -106,6 +86,29 @@ BasicCamera::BasicCamera(const Json &json) :
 
 }
 
+// alogrithm
+Algorithm *Algorithm::acquire(const Json &json, Scene &scene, Camera &camera)
+{
+	String type = json.at("type");
+	Parsing::lowerStr_(type);
+	if (type == "ray casting" || type == "rc") {
+		try {
+			return new RayCasting(scene, camera, Dir(json.at("light_dir")));
+		}
+		catch (Json::out_of_range &) {
+			return new RayCasting(scene, camera);    // use default
+		}
+	}
+	else if (type == "ray tracing" || type == "rt") {
+		try {
+			return new RayTracing(scene, camera, (size_t) json.at("max_depth"));
+		}
+		catch (Json::out_of_range &) {
+			return new RayTracing(scene, camera);    // use default
+		}
+	}
+	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
+}
 
 // scene
 Scene::Scene(const Json &json)

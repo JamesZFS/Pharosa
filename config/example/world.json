@@ -1,13 +1,13 @@
 {
 	"save_path": "test json.ppm",
 
-	"n_epoch": 20,
+	"n_epoch": 10,
 	"prev_path": "test json.ppm",
-	"prev_epoch": 20,
+	"prev_epoch": 40,
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "RT",
+		"type": "rt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

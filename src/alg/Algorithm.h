@@ -47,6 +47,8 @@ public:
 							   size_t verbose_step, const String &checkpoint_dir);
 
 	virtual String info() = 0;
+
+	static Algorithm *acquire(const Json &json, Scene &scene, Camera &camera);
 };
 
 #endif //PHAROSA_ALGORITHM_H
