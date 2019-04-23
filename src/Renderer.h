@@ -6,9 +6,12 @@
 #define PHAROSA_RENDERER_H
 
 #include "defs.h"
-#include "alg/All.h"
-#include "camera/All.h"
-#include "scene/Scene.h"
+
+class Scene;
+
+class Camera;
+
+class Algorithm;
 
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Scene
 // todo move template declaration to setup functions
@@ -17,7 +20,7 @@ class Renderer
 #ifdef __DEV_STAGE__
 public:
 #else
-private:
+	private:
 #endif
 	Scene *scene;
 	Camera *camera;

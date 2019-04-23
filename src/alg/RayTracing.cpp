@@ -90,8 +90,9 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	}
 }
 
-void RayTracing::report()
+String RayTracing::info()
 {
-	Algorithm::report();
-	debug("RayTracing::report() max depth = %ld\n\n", max_depth);
+	Buffer buffer;
+	sprintf(buffer, "<Ray Tracing>  max depth = %ld", max_depth);
+	return buffer;
 }

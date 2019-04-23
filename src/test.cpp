@@ -3,6 +3,7 @@
 //
 #include "test.h"
 #include "Renderer.h"
+#include "scene/Scene.h"
 #include "geometric/All.h"
 #include "utils/solvers/Linear.h"
 #include "scene/bounding/BoundingSphere.h"

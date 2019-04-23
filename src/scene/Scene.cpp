@@ -3,7 +3,6 @@
 //
 
 #include "Scene.h"
-//#include "../utils/json.hpp"
 #include "../utils/funcs.hpp"
 //#include "../utils/Parser.h"
 
@@ -103,9 +102,4 @@ void Scene::fromList(BoundingBoxList &bounding_boxes_)
 void Scene::append(BoundingBox *box)
 {
 	bounding_boxes.push_back(box);
-}
-
-Scene::Scene(const Json &json)
-{
-	// todo
 }

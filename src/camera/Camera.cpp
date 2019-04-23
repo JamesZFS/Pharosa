@@ -4,7 +4,6 @@
 
 #include "Camera.h"
 #include "../utils/funcs.hpp"
-#include "../utils/parsers/json.hpp"
 #include <fstream>
 
 
@@ -21,12 +20,6 @@ Camera::Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t
 	ex.rotate(ea);
 	ey.rotate(ea);
 	ez.rotate(ea);
-}
-
-Camera::Camera(const Json &json) :
-		Camera(Pos(json.at("pos")), ElAg(json.at("rot")),
-			   (size_t) json.value("width", 1024), (size_t) json.value("height", 768), json.value("pixel_size", 0.1))
-{
 }
 
 Camera::~Camera()

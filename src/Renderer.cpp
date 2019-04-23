@@ -3,86 +3,11 @@
 //
 
 #include "Renderer.h"
-#include "utils/parsers/json.hpp"
+#include "scene/Scene.h"
+#include "camera/All.h"
+#include "alg/All.h"
+#include "utils/funcs.hpp"
 #include <omp.h>
-#include <fstream>
-
-Renderer::Renderer(const String &config_path)
-{
-	Json json;
-	std::ifstream fin;
-	fin.open(config_path, std::ios::in);
-
-	if (!fin.is_open()) {    // exception
-		fin.close();
-		TERMINATE("IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
-	}
-
-	fin >> json;
-	fin.close();
-
-	// parsing json
-	String type;
-
-	save_path = json.at("save_path");
-	checkpoint_dir = json.value("checkpoint_dir", "");    // get with default value
-	prev_path = json.value("prev_path", "");
-	n_epoch = json.at("n_epoch");
-	prev_epoch = json.value("prev_epoch", 0);
-	verbose_step = json.value("verbose_step", 0);
-	Funcs::generator.seed((unsigned int) time(nullptr));
-
-	// camera
-	Json cam_json = json.at("camera");
-	type = cam_json.value("type", "basic");
-	if (type == "basic") {
-		camera = new BasicCamera(cam_json);
-	}
-	else if (type == "ortho") {
-		camera = new OrthoCamera(cam_json);
-	}
-	else if (type == "DOF") {
-		//	camera = new DOFCamera(cam_json);
-	}
-	else TERMINATE("Error: got unidentified camera type \"%s\".", type.data());
-	// load checkpoint
-	if (prev_path.length() > 0) {
-		camera->readPPM(prev_path, prev_epoch);
-	}
-
-//	message(cam_json.dump(3));
-
-	// scene
-	Json scene_json = json.at("scene");
-	scene = new Scene(scene_json);
-
-//	message(scene_json.dump(3));
-
-	// algorithm
-	Json alg_json = json.at("algorithm");
-	type = alg_json.at("type");
-	if (type == "RayCasting" || type == "ray casting" || type == "RC") {
-		try {
-			algorithm = new RayCasting(*scene, *camera, Dir(alg_json.at("light_dir")));
-		}
-		catch (Json::out_of_range &) {
-			algorithm = new RayCasting(*scene, *camera);	// use default
-		}
-	}
-	else if (type == "RayTracing" || type == "ray tracing" || type == "RT") {
-		try {
-			algorithm = new RayTracing(*scene, *camera, (size_t) alg_json.at("max_depth"));
-		}
-		catch (Json::out_of_range &) {
-			algorithm = new RayTracing(*scene, *camera);	// use default
-		}
-	}
-	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
-
-	algorithm->report();
-//	message(alg_json.dump(3));
-}
-
 
 Renderer::~Renderer()
 {
@@ -97,11 +22,13 @@ void Renderer::checkIfReady()
 	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.\n");
 	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.\n");
 
+	printf("\n----------------------------------------------------------------\n");
 	printf("loaded %ld singletons, %ld bounding boxes in total.\n",
 		   scene->getSingletonCount(), scene->getBoundingBoxCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());
-	printf("ready to render.\n");
+	printf("algorithm info: %s", algorithm->info().data());
+	printf("\n---------------------- ready to render -------------------------\n\n");
 }
 
 

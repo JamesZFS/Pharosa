@@ -4,7 +4,6 @@
 
 #include "BasicCamera.h"
 #include "../utils/funcs.hpp"
-#include "../utils/parsers/json.hpp"
 
 BasicCamera::BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_, size_t height_,
 						 double pixel_size_, double focus_) :
@@ -41,8 +40,3 @@ Ray BasicCamera::shootRayAt(double i, double j) const
 	return {pos, dir};
 }
 
-BasicCamera::BasicCamera(const Json &json) :
-		Camera(json), focus(json.value("focus", 140.0))
-{
-
-}

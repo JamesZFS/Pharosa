@@ -135,10 +135,5 @@ void Algorithm::detectEdges()
 #endif
 }
 
-void Algorithm::report()
-{
-	debug("Algorithm::report()\n");
-}
-
 #undef SUB_D1
 #undef SUB_D2

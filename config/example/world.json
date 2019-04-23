@@ -5,7 +5,8 @@
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "ray tracing",
+		"type": "ray casting",
+		"light_dir": [-1, -2, -1],
 		"max_depth": 2
 	},
 

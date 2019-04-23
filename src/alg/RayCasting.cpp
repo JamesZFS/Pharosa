@@ -21,3 +21,8 @@ Color RayCasting::radiance(const Ray &ray, size_t depth) const
 	// return the RGB color of hit, assuming environment light is shooting towards (-1, -1, -1)
 	return hit->color * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + hit->emi;
 }
+
+String RayCasting::info()
+{
+	return "<Ray Casting>";
+}

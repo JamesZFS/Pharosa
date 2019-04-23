@@ -46,11 +46,7 @@ public:
 	virtual void renderVerbose(size_t n_epoch, size_t prev_epoch,
 							   size_t verbose_step, const String &checkpoint_dir);
 
-#ifdef __DEV_STAGE__
-
-	virtual void report();
-
-#endif
+	virtual String info() = 0;
 };
 
 #endif //PHAROSA_ALGORITHM_H
