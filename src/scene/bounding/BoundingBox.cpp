@@ -21,10 +21,10 @@ void BoundingBox::applyTransform()	// will apply the unified transform matrix to
 #ifdef __DEV_STAGE__
 	warn("BoundingBox::applyTransform()\n");
 #endif
-	for (auto *obj : objects) {
-		obj->geo->mat = mat;	// todo use matrix pointer
-		obj->geo->applyTransform();
-	}
+//	for (auto *obj : objects) {
+//		obj->geo->mat = mat;	// todo use matrix pointer
+//		obj->geo->applyTransform();
+//	}
 }
 
 BoundingBox &BoundingBox::place(const Pos &pos_, const ElAg &euler_angles_)
@@ -70,12 +70,4 @@ BoundingBox::~BoundingBox()
 	for (Object *obj : objects) {
 		delete obj;
 	}
-}
-
-void BoundingBox::fromObjFile(const String &obj_path, double zoom_ratio, const Color &color, const Emission &emi,
-							  Object::ReflType reft)
-{
-	objects = std::move(Parser::parseObjFile(obj_path, zoom_ratio, color, emi, reft));
-//	objects = Parser::parseObjFile(obj_path, zoom_ratio, color, emi, reft);
-	findBounds();
 }

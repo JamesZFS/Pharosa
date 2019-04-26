@@ -18,8 +18,6 @@ namespace Test
 	void intersect();
 
 	void matrix();
-
-	void render(int argc, char *argv[]);
 }
 
 #endif //PHAROSA_TEST_H

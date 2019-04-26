@@ -4,47 +4,37 @@
 
 #include "Cube.h"
 
-Cube::Cube(Arr<Dir, 3> &&n_, Arr2D<Pos, 3, 2> &&p_, const Pos &pos_, const ElAg &euler_angles_) :
-		Geometry(pos_, euler_angles_), n(n_), p(p_)
+// init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point pos
+Cube::Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o)
 {
-	applyTransform();    // local to global slabs
+	Arr<Dir, 3> n{ox ^ oy, oy ^ oz, oz ^ ox};
+	slab = {{
+					{{InfPlane(n[0], o), InfPlane(n[0], o + oz)}},    // plane oxy, oxy'
+					{{InfPlane(n[1], o), InfPlane(n[1], o + ox)}},    // oyz, oyz'
+					{{InfPlane(n[2], o), InfPlane(n[2], o + oy)}},    // ozx, ozx'
+			}};
 }
 
-// init from 3 vertices, ox, oy, oz. by default, the o in local crd sys is (0, 0, 0)
-Cube::Cube(Arr<Pos, 3> &&vertices_, const Pos &pos_, const ElAg &euler_angles_) :
-		Geometry(pos_, euler_angles_),
-		n{{
-				  vertices_[0] ^ vertices_[1], // n of oxy todo unitize?
-				  vertices_[1] ^ vertices_[2], // oyz
-				  vertices_[2] ^ vertices_[0], // ozx
-		  }},
-		p{{
-				  {{Pos::ORIGIN, vertices_[2]}}, // plane oxy, oxy'
-				  {{Pos::ORIGIN, vertices_[0]}}, // oyz, oyz'
-				  {{Pos::ORIGIN, vertices_[1]}}  // ozx, ozx'
-		  }}
+// init an orthogonal cube
+Cube::Cube(double length, double width, double height, const Pos &pos) :
+		slab{{
+					 {{InfPlane(Dir::Z_AXIS, pos), InfPlane(Dir::Z_AXIS, pos + Pos(0, 0, height))}}, // plane oxy, oxy'
+					 {{InfPlane(Dir::X_AXIS, pos), InfPlane(Dir::X_AXIS, pos + Pos(length, 0, 0))}}, // oyz, oyz'
+					 {{InfPlane(Dir::Y_AXIS, pos), InfPlane(Dir::Y_AXIS, pos + Pos(0, width, 0))}},  // ozx, ozx'
+			 }}
 {
-	applyTransform();    // local to global slabs
 }
 
-Cube::Cube(double length, double width, double height, const Pos &pos_, const ElAg &euler_angles_) :
-		Geometry(pos_, euler_angles_),
-		n{{Dir::Z_AXIS, Dir::X_AXIS, Dir::Y_AXIS}},
-		p{{
-				  {{Pos::ORIGIN, Pos(0, 0, height)}}, // plane oxy, oxy'
-				  {{Pos::ORIGIN, Pos(length, 0, 0)}}, // oyz, oyz'
-				  {{Pos::ORIGIN, Pos(0, width, 0)}}   // ozx, ozx'
-		  }}
+// init a unit cube
+Cube::Cube() : Cube(1, 1, 1)
 {
-	applyTransform();
 }
 
-void Cube::applyTransform()
+void Cube::applyTransform(TransMat mat)
 {
-	for (size_t i = 0; i < 3; ++i) {
-		Dir ni = mat.rot * n[i];
-		slab[i][0] = InfPlane(ni, mat * p[i][0]);
-		slab[i][1] = InfPlane(ni, mat * p[i][1]);
+	for (auto &s : slab) {
+		s[0].applyTransform(mat);
+		s[1].applyTransform(mat);
 	}
 }
 
@@ -87,8 +77,4 @@ bool Cube::hasSurfacePoint(const Pos &x) const
 		if (p[0].hasSurfacePoint(x) || p[1].hasSurfacePoint(x)) return true;
 	}
 	return false;
-}
-
-Cube::Cube() : Cube(1, 1, 1)
-{
 }

@@ -18,7 +18,7 @@ struct Vec
 	Vec(T x_ = 0, T y_ = 0, T z_ = 0) : x(x_), y(y_), z(z_)
 	{}
 
-	inline bool operator==(const Vec &b)const
+	inline bool operator==(const Vec &b) const
 	{ return (*this - b).sqr() < EPS; }
 
 	inline Vec operator+(const Vec &b) const
@@ -117,7 +117,7 @@ struct ElAg : Vec<double>    // Euler angles (Z - alpha, X - beta, Y - gamma)
 	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
 	{}    // todo can use cosine, sine cache to boost
 
-	ElAg(const Json &json);	// from json, use degrees
+	ElAg(const Json &json);    // from json, use degrees
 
 	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
@@ -145,6 +145,11 @@ struct Pos : Vec<double>    // 3D coordinate
 	{}
 
 	Pos(const Json &json);
+
+	inline Pos operator-() const
+	{ return {-x, -y, -z}; }
+
+	using Vec::operator-;
 
 	inline void rotateAlongX(double theta)
 	{
@@ -204,7 +209,8 @@ struct Dir : Pos        // direction, unitized vector
 
 	void getOrthogonalBasis(Dir &ex, Dir &ey) const;   // get orthogonal axis (ex, ey) from ez
 
-	inline ElAg getEulerAngles() const  // get euler angles according to vector, assuming original dir of this is (0, 0, 1)
+	// get euler angles according to vector, assuming original dir of this is (0, 0, 1)
+	inline ElAg getEulerAngles() const
 	{ return {atan2(y, x), 0, atan2(sqrt(x * x + y * y), z)}; }
 
 	const static Dir X_AXIS, Y_AXIS, Z_AXIS;

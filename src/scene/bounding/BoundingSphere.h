@@ -14,7 +14,7 @@ private:
 	Sphere sphere;
 
 public:
-	BoundingSphere(Sphere &&sphere_, ObjectList &objects_);
+//	BoundingSphere(Sphere &&sphere_, ObjectList &objects_);
 
 	void applyTransform() override;
 

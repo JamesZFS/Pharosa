@@ -38,13 +38,12 @@ Renderer::Renderer(const String &config_path)
 	n_epoch = json.at("n_epoch");
 	prev_epoch = json.value("prev_epoch", 0);
 	verbose_step = json.value("verbose_step", 0);
-	Funcs::generator.seed((unsigned int) time(nullptr));
-
-	// scene
-	scene = new Scene(json.at("scene"));
 
 	// camera
 	camera = Camera::acquire(json.at("camera"));
+
+	// scene
+	scene = Scene::acquire(json.at("scene"));
 
 	// algorithm
 	algorithm = Algorithm::acquire(json.at("algorithm"), *scene, *camera);
@@ -68,6 +67,7 @@ Camera *Camera::acquire(const Json &json)
 	}
 	else if (type == "DOF") {
 		//	camera = new DOFCamera(json);
+		return nullptr;
 	}
 	else TERMINATE("Error: got unidentified camera type \"%s\".", type.data());
 }
@@ -83,7 +83,10 @@ Camera::Camera(const Json &json) :
 BasicCamera::BasicCamera(const Json &json) :
 		Camera(json), focus(json.value("focus", 140.0))
 {
+}
 
+OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
+{
 }
 
 // alogrithm
@@ -111,76 +114,95 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene, Camera &camera)
 }
 
 // create scene from json
-Scene::Scene(const Json &json)
+Scene *Scene::acquire(const Json &json)   // json should be an array
 {
+	auto *self = new Scene;
 	String type;
 	Material *material, *sub_material;
 	Geometry *geo;
 	for (const Json &item: json) {	// for each item in the scene json list
 		// shared attributes
-		material = new Material(json);
-		materials.push_back(material);
-		TransMat trans_mat(json);
+		material = Material::acquire(item);
+		self->materials.push_back(material);
+		TransMat trans_mat(item);
 		type = item.value("type", "singleton");    // default as singleton
 		Parsing::lowerStr_(type);
+
 		if (type == "singleton") {	// switch different types
-			debug("singleton\n");
-			geo = Geometry::acquire(item.has("geo") ? item["geo"] : item); // new geo
-//			geo->applyTransform(trans_mat); todo
-			objects.push_back(new Object(geo, material));
+
+			geo = Geometry::acquire(item.at("geo")); // new geo
+			geo->applyTransform(trans_mat);
+			self->objects.push_back(new Object(geo, material));
+
 		}
 		else if (type == "group") {
+
 			Json group = item.at("objects");
 			if (group.is_string()) {	// specify by path
 				std::ifstream fin;
 				fin.open(group, std::ios::in);
-				if (!fin.is_open()) TERMINATE("Error, the specified group object path cannot be opened.");
+				if (!fin.is_open()) {
+					fin.close();
+					TERMINATE("Error, the specified group object path cannot be opened.");
+				}
 				fin >> group;
+				fin.close();
 			}
 			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
 			for (const Json &object: group) {	// parse each object in the group
 				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
-					sub_material = new Material(group);	// new a customized material
-					materials.push_back(sub_material);
+					sub_material = new Material;//::acquire(object);	// new a customized mtr
+					sub_material->color = object.has("color") ? Color(object["color"]) : material->color;
+					sub_material->emi = object.has("emission") ? Emission(object["emission"]) : material->emi;
+					sub_material->reft = object.has("reft") ? Map::str_to_reft[object["reft"]] : material->reft;
+					// todo texture
+					self->materials.push_back(sub_material);
 				}
 				else {
 					sub_material = material;
 				}
 				geo = Geometry::acquire(object.has("geo") ? object["geo"] : object);	// new geo
 				if (object.has("tra") || object.has("rot")) {
-//					geo->applyTransform(trans_mat * TransMat(object));
+					geo->applyTransform(trans_mat * TransMat(object));
 				}
 				else {
-//					geo->applyTransform(trans_mat);
+					geo->applyTransform(trans_mat);
 				}
-				objects.push_back(new Object(geo, sub_material));
+				self->objects.push_back(new Object(geo, sub_material));
 			}
+
 		}
 		else if (type == "obj" || type == "obj file") {
-			auto obj_objects = Parser::parseObjFile(item.at("path"), item.value("scale", 1.0), trans_mat, *material);
-			objects.insert(objects.end(), obj_objects.begin(), obj_objects.end());
+
+			auto obj_objects = Parser::parseObjFile(item.at("path"), item.value("scale", 1.0), trans_mat, material);
+			self->objects.insert(self->objects.end(), obj_objects.begin(), obj_objects.end());
+
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());
+
+		debug("\n");
 	}
+	return self;
 }
 
-// material
-Material::Material(const Json &json) : Material()
+Material *Material::acquire(const Json &json)
 {
+	auto self = new Material;
 	try {
-		color = Color(json.at("color"));
+		self->color = Color(json.at("color"));
 	}
 	catch (Json::out_of_range &) {}
 	try {
-		emi = Emission(json.at("emission"));
+		self->emi = Emission(json.at("emission"));
 	}
 	catch (Json::out_of_range &) {}
 	try {
-		reft = Map::str_to_material.at(json.value("reft", "DIFF"));
+		self->reft = Map::str_to_reft.at(json.value("reft", "DIFF"));
 	}
 	catch (std::out_of_range &) {
-		TERMINATE("Error, got invalid material type \"%s\".", json["material"].get<String>().data());
+		TERMINATE("Error, got invalid mtr type \"%s\".", json["mtr"].get<String>().data());
 	}
+	return self;
 }
 
 //Object::Object(const Json &json, const TransMat &trans)
@@ -188,10 +210,10 @@ Material::Material(const Json &json) : Material()
 //	color = RGB(json.value("color", Color::WHITE));
 //	emi = RGB(json.value("emission", Emission::NONE));
 //	try {
-//		reft = Map::str_to_material.at(json.value("reft", "DIFF"));
+//		reft = Map::str_to_reft.at(json.value("reft", "DIFF"));
 //	}
 //	catch (std::out_of_range &) {
-//		TERMINATE("Error, got invalid material type \"%s\".", json["material"].get<String>().data());
+//		TERMINATE("Error, got invalid mtr type \"%s\".", json["mtr"].get<String>().data());
 //	}
 //
 //	geo = Geometry::acquire(json.at("geo"));
@@ -203,42 +225,48 @@ Geometry *Geometry::acquire(const Json &json)
 	String type = json.at("type");
 	Parsing::lowerStr_(type);
 	if (type == "cube") {
-		return new Cube(json);
+		return Cube::acquire(json);
 	}
 	else if (type == "infplane") {
-		return new InfPlane(json);
+		return InfPlane::acquire(json);
 	}
 	else if (type == "sphere") {
-		return new Sphere(json);
+		return Sphere::acquire(json);
 	}
 	else if (type == "triangle") {
-		return new Triangle(json);
+		return Triangle::acquire(json);
 	}
 	else TERMINATE("Error, got invalid geometry type \"%s\".", type.data());
 }
 
-Cube::Cube(const Json &json) :
-		Cube({{json.at("basis").at(0), json.at("basis").at(1), json.at("basis").at(2)}},
-			 Pos(json.at("pos")))
+InfPlane *InfPlane::acquire(const Json &json)
 {
+	return new InfPlane(Dir(json.at("normal")), Pos(json.at("point")));
 }
 
-InfPlane::InfPlane(const Json &json) :
-		InfPlane(Dir(json.at("normal")), Pos(json.at("point")))
+Cube *Cube::acquire(const Json &json)
 {
+	if (json.has("basis")) {
+		return new Cube(Pos(json.at("basis").at(0)), Pos(json.at("basis").at(1)), Pos(json.at("basis").at(2)),
+						json.has("pos") ? Pos(json["pos"]) : Pos());
+	}
+	else {
+		return new Cube(json.value("length", 1.0), json.value("width", 1.0), json.value("height", 1.0),
+						json.has("pos") ? Pos(json["pos"]) : Pos());
+	}
 }
 
-Sphere::Sphere(const Json &json) :
-		Sphere(json.at("radius"), Pos(json.at("pos")))
+Sphere *Sphere::acquire(const Json &json)
 {
+	return new Sphere(json.value("radius", 1.0), json.has("pos") ? Pos(json["pos"]) : Pos());
 }
 
-Triangle::Triangle(const Json &json) :
-		Triangle({{json.at("points").at(0), json.at("points").at(1), json.at("points").at(2)}}, Pos(json.at("pos")))
+Triangle *Triangle::acquire(const Json &json)
 {
+	return new Triangle(json.at("points").at(0), json.at("points").at(1), json.at("points").at(2));
 }
 
-// vector
+// core: using constructor's name for expediency
 Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))    // construct from json
 {
 }
@@ -266,7 +294,6 @@ ElAg::ElAg(const Json &json) :    // use degrees
 
 // transform matrix
 TransMat::TransMat(const Json &json) :    // should have "tra" and "rot" key, if not - identical transform
-		TransMat(Pos(json.value("tra", {})), ElAg(json.value("rot", {})))
+		TransMat(json.has("tra") ? Pos(json["tra"]) : Pos(), json.has("rot") ? ElAg(json["rot"]) : ElAg())
 {
 }
-

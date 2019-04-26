@@ -11,29 +11,25 @@
 // Parallelepiped
 struct Cube : Geometry
 {
-	Arr<Dir, 3> n;    // cache original normal
-	Arr2D<Pos, 3, 2> p;            // local crd of 6 planes
 	Arr2D<InfPlane, 3, 2> slab;    // 3 slabs, 6 planes, each slap is two paralleled planes
 
 	Cube();	// unit cube
 
-	Cube(Arr<Dir, 3> &&n_, Arr2D<Pos, 3, 2> &&p_, const Pos &pos_ = {}, const ElAg &euler_angles_ = {});
+	// init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point pos
+	Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o = {});
 
-	// init from 3 vertices, ox, oy, oz. by default, the o in local crd sys is (0, 0, 0)
-	Cube(Arr<Pos, 3> &&vertices_, const Pos &pos_ = {}, const ElAg &euler_angles_ = {});
+	// init an orthogonal cube
+	Cube(double length, double width, double height, const Pos &pos = {});
 
-	Cube(const Json &json);
-
-	// init with a orthogonal cube
-	Cube(double length, double width, double height, const Pos &pos_ = {}, const ElAg &euler_angles_ = {});
-
-	void applyTransform() override;
+	void applyTransform(TransMat mat) override;
 
 	bool intersect(const Ray &ray, double &t) const override;
 
 	Dir normalAt(const Pos &x) const override;
 
 	bool hasSurfacePoint(const Pos &x) const override;
+
+	static Cube *acquire(const Json &json);
 };
 
 #endif //PHAROSA_CUBE_H

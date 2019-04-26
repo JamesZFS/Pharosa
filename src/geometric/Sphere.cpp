@@ -4,21 +4,21 @@
 
 #include "Sphere.h"
 
-Sphere::Sphere(double radius_, const Pos &pos_, ElAg euler_angles_) :
-		Geometry(pos_, euler_angles_), p(pos_), gp(pos_), rad(radius_), rad_2(radius_ * radius_)
+Sphere::Sphere(double radius_, const Pos &pos_) :
+		pos(pos_), rad(radius_), rad_2(radius_ * radius_)
 {
 }
 
-void Sphere::applyTransform()
+void Sphere::applyTransform(TransMat mat)
 {
-	gp = mat * p;
+	pos = mat * pos;
 }
 
 bool Sphere::intersect(const Ray &ray, double &t) const
 {
-	// Solve t^2*d.d + 2*t*(o-p).d + (o-p).(o-p)-R^2 = 0
-	Pos op = gp - ray.org;
-	double b = op % ray.dir, det = b * b - op.sqr() + rad * rad;
+	// Solve t^2*d.d + 2*t*(o-pos).d + (o-pos).(o-pos)-R^2 = 0
+	Pos op = pos - ray.org;
+	double b = op % ray.dir, det = b * b - op.sqr() + rad_2;
 	if (det < 0) return false;    // no solution
 	else det = sqrt(det);
 
@@ -29,5 +29,5 @@ bool Sphere::intersect(const Ray &ray, double &t) const
 
 Dir Sphere::normalAt(const Pos &x) const
 {
-	return x - gp;    // from center to x
+	return x - pos;    // from center to x
 }

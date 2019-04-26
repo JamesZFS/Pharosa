@@ -4,7 +4,7 @@
 
 #include "Material.h"
 
-Material::Material() : color(Color::WHITE), emi(Emission::NONE), reft(Object::DIFF)
+Material::Material() : color(Color::WHITE), emi(Emission::NONE), reft(DIFF)
 {
 
 }

@@ -8,22 +8,26 @@
 
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
-#include "Object.h"
 
-// physical material of an object
+// physical mtr of an object
 struct Material
 {
+	enum ReflType
+	{
+		DIFF, SPEC, REFR, NONE
+	};
+
 	Color color;
 	Emission emi;
-	Object::ReflType reft;    // diffusive, reflective, refractive, todo we will implement BRDF here later
+	ReflType reft;    // diffusive, reflective, refractive, todo we will implement BRDF here later
 
-	// texture
+	// todo texture
 
 	Material();	// dark white DIFF
 
-	Material(const Json &json);
-
 	void BRDF(const Ray &in, const Dir &normal, Ray &out);
+
+	static Material *acquire(const Json &json);
 };
 
 

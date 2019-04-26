@@ -18,9 +18,9 @@ Renderer::~Renderer()
 
 void Renderer::checkIfReady()
 {
-	if (scene == nullptr) TERMINATE("Error: scene is not setup yet.\n");
-	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.\n");
-	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.\n");
+	if (scene == nullptr) TERMINATE("Error: scene is not setup yet.");
+	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.");
+	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.");
 
 	printf("\n----------------------------------------------------------------\n");
 	printf("loaded %ld objects, %ld bounding boxes in total.\n",
@@ -60,8 +60,7 @@ void Renderer::start()
 void Renderer::startKinetic(size_t n_frame, void (*motion)())
 {
 	if (prev_epoch > 0) {
-		warn("Error: before rendering kinetic images, you should not pre-read from previous image.\n");
-		exit(1);
+		TERMINATE("Error: before rendering kinetic images, you should not pre-read from previous image.");
 	}
 	checkIfReady();
 
@@ -89,7 +88,7 @@ void Renderer::startKinetic(size_t n_frame, void (*motion)())
 
 void Renderer::save()
 {
-	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.\n");
+	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.");
 	camera->writePPM(save_path);
 	printf("image written to \"%s\" \n", save_path.data());
 }

@@ -9,15 +9,12 @@
 
 struct Triangle : Geometry
 {
-	Arr<Pos, 3> p;    // Three points in Object coordinate sys
-	Arr<Pos, 3> gp;    // points in Global coordinate sys
+	Arr<Pos, 3> p;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 
-	Triangle(Arr<Pos, 3> &&p_, const Pos &pos_, const ElAg &euler_angles_ = {});
+	Triangle(const Pos &A, const Pos &B, const Pos &C);
 
-	Triangle(const Json &json);
-
-	void applyTransform() override;    // calculate gp according to p
+	void applyTransform(TransMat mat) override;    // calculate pos according to pos
 
 	bool intersect(const Ray &ray, double &t) const override;
 
@@ -38,42 +35,37 @@ struct Triangle : Geometry
 
 	inline double zMax() override;
 
-	inline void translateLocal(const Pos &delta) override
-	{
-		p[0] += delta;
-		p[1] += delta;
-		p[2] += delta;
-	}
+	static Triangle *acquire(const Json &json);
 };
 
 double Triangle::xMin()
 {
-	return min3(gp[0].x, gp[1].x, gp[2].x);
+	return min3(p[0].x, p[1].x, p[2].x);
 }
 
 double Triangle::xMax()
 {
-	return max3(gp[0].x, gp[1].x, gp[2].x);
+	return max3(p[0].x, p[1].x, p[2].x);
 }
 
 double Triangle::yMin()
 {
-	return min3(gp[0].y, gp[1].y, gp[2].y);
+	return min3(p[0].y, p[1].y, p[2].y);
 }
 
 double Triangle::yMax()
 {
-	return max3(gp[0].y, gp[1].y, gp[2].y);
+	return max3(p[0].y, p[1].y, p[2].y);
 }
 
 double Triangle::zMin()
 {
-	return min3(gp[0].z, gp[1].z, gp[2].z);
+	return min3(p[0].z, p[1].z, p[2].z);
 }
 
 double Triangle::zMax()
 {
-	return max3(gp[0].z, gp[1].z, gp[2].z);
+	return max3(p[0].z, p[1].z, p[2].z);
 }
 
 #endif //PHAROSA_TRIANGLE_H

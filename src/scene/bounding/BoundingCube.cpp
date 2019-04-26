@@ -13,21 +13,21 @@ BoundingCube::BoundingCube(ObjectList &objects_) : BoundingBox(objects_)
 	findBounds();
 }
 
-BoundingCube::BoundingCube(Cube &&cube_, ObjectList &objects_) :
-		BoundingBox(objects_, cube_.mat), cube(cube_)
-{
-}
+//BoundingCube::BoundingCube(Cube &&cube_, ObjectList &objects_) :
+//		BoundingBox(objects_, cube_.mat), cube(cube_)
+//{
+//}
 
 void BoundingCube::applyTransform()
 {
-	BoundingBox::applyTransform();
-	cube.mat = mat;
-	cube.applyTransform();
-#ifdef __DEV_STAGE__
-	delete ocube;
-	ocube = new Object(Cube(cube),
-					   Color::WHITE, Emission(0.5, 0, 0), Object::REFR);
-#endif
+//	BoundingBox::applyTransform();
+//	cube.mat = mat;
+//	cube.applyTransform();
+//#ifdef __DEV_STAGE__
+//	delete ocube;
+//	ocube = new Object(Cube(cube),
+//					   Color::WHITE, Emission(0.5, 0, 0), Object::REFR);
+//#endif
 }
 
 bool BoundingCube::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal) const
@@ -70,9 +70,9 @@ void BoundingCube::findBounds()
 	const Pos delta(-x_min, -y_min, -z_min);
 //	mat = TransMat(delta);
 	// translate objects to 0 - length | width | height
-	for (auto *obj : objects) {
-		obj->geo->translateLocal(delta);
-	}
+//	for (auto *obj : objects) {
+//		obj->geo->translateLocal(delta);
+//	}
 	debug("\n");
 	applyTransform(); // todo local crd problem
 

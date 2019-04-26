@@ -47,13 +47,13 @@ namespace Map
 			{"splendid", &Emission::SPLENDID},
 	};
 
-	std::map<const String, const Object::ReflType, Case_Free_Comp> str_to_material = {
-			{"DIFF",       Object::DIFF},
-			{"diffusive",  Object::DIFF},
-			{"SPEC",       Object::SPEC},
-			{"specular",   Object::SPEC},
-			{"REFR",       Object::REFR},
-			{"refractive", Object::REFR},
-			{"NONE",       Object::NONE},
+	std::map<const String, const Material::ReflType, Case_Free_Comp> str_to_reft = {
+			{"DIFF",       Material::DIFF},
+			{"diffusive",  Material::DIFF},
+			{"SPEC",       Material::SPEC},
+			{"specular",   Material::SPEC},
+			{"REFR",       Material::REFR},
+			{"refractive", Material::REFR},
+			{"NONE",       Material::NONE},
 	};
 }

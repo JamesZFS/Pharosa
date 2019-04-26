@@ -4,8 +4,9 @@
  *  License: Department of Computer Science and Technology, Tsinghua University ®
  */
 
-//#include "src/Renderer.h"
-#include "src/test.h"
+#include "src/Renderer.h"
+#include "src/utils/funcs.hpp"
+//#include "src/test.h"
 using namespace std;
 
 #ifdef __DEV_STAGE__
@@ -17,8 +18,20 @@ size_t __print_cnt__ = 0;
 int main(int argc, char *argv[])
 {
 	// init random engine
-//	if (argc < 2) TERMINATE("usage: Pharosa <json_config_path>");
-//	Renderer renderer(argv[1]);
-	Test::render(argc, argv);
+	Funcs::generator.seed((unsigned int) time(nullptr));
+
+	// **************** parse cmd args ****************
+	if (argc < 2) TERMINATE("usage: Pharosa <json_config_path>");
+	const String config_path = argv[1];
+
+	// **************** init render engine ****************
+	Renderer renderer(config_path);
+
+	// **************** start rendering ****************
+	renderer.start();
+
+	// **************** save results ****************
+	renderer.save();
+
 	return 0;
 }

@@ -29,7 +29,3 @@ Ray OrthoCamera::shootRayAt(double i, double j) const
 
 	return {pos + ex * xs + ey * ys, ez};
 }
-
-OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
-{
-}

@@ -32,10 +32,6 @@ public:
 
 	virtual ~BoundingBox();
 
-	// load from obj file
-	void fromObjFile(const String &obj_path, double zoom_ratio = 1.0, const Color &color = Color::WHITE,
-					 const Emission &emi = Emission::NONE, Object::ReflType reft = Object::DIFF);
-
 	BoundingBox &place(const Pos &pos_, const ElAg &euler_angles_);
 
 	BoundingBox &translate(const Pos &delta);

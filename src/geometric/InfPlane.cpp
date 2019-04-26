@@ -6,25 +6,18 @@
 #include "InfPlane.h"
 #include "../scene/Object.h"
 
-InfPlane::InfPlane() : D(0)
-{
-}
-
-InfPlane::InfPlane(const Pos &p_, const ElAg &euler_angles_) :
-		Geometry(p_, euler_angles_)
-{
-	applyTransform();
-}
-
 InfPlane::InfPlane(const Dir &n_, const Pos &p_) :
-		Geometry(p_, n_.getEulerAngles()), p(p_), n(n_), D(-(p % n))
+		p(p_), n(n_), D(-(p % n))
 {
-
 }
 
-void InfPlane::applyTransform()
+InfPlane::InfPlane() : InfPlane(Dir::Z_AXIS, Pos::ORIGIN)
 {
-	p = mat.tra;
-	n = mat.rot * Dir::Z_AXIS;
+}
+
+void InfPlane::applyTransform(TransMat mat)
+{
+	p = mat * p;
+	n = mat.rot * n;
 	D = -(p % n);
 }

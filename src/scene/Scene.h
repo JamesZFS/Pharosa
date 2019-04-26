@@ -16,32 +16,30 @@ class Scene
 #ifdef __DEV_STAGE__
 public:
 #else
-private:
+	private:
 #endif
-	ObjectList objects;	// all singleton object ptrs, using pointer to allow polymorphism
-	BoundingBoxList bounding_boxes;	// all bounding boxes ptrs
-	List<Material *> materials;	// material is shared while geometry belongs to objects
+	ObjectList objects;    // all singleton object ptrs, using pointer to allow polymorphism
+	BoundingBoxList bounding_boxes;    // all bounding boxes ptrs
+	List<Material *> materials;    // mtr is shared while geometry belongs to objects
 
 public:
 	Scene() = default;        // init an empty scene
 
-	Scene(const Json &json);	// init from json
-
 	~Scene();
 
-	size_t getSingletonCount();	// count objects in total
+	size_t getSingletonCount();    // count objects in total
 
-	size_t getBoundingBoxCount();	// count BoundingBox in total
-	
+	size_t getBoundingBoxCount();    // count BoundingBox in total
+
 	void fromObjFile(const String &obj_path);      // load triangles from obj file
 
-	void fromList(ObjectList &singletons_);	// load from object ptr list (! move constructor)
+	void fromList(ObjectList &singletons_);    // load from object ptr list (! move constructor)
 
-	void fromList(BoundingBoxList &bounding_boxes_); 	// from bounding box ptr list
+	void fromList(BoundingBoxList &bounding_boxes_);    // from bounding box ptr list
 
-	void append(Object *object);	// append an object (affiliates it)
+	void append(Object *object);    // append an object (affiliates it)
 
-	void append(BoundingBox *box);	// append a bounding box (affiliates it)
+	void append(BoundingBox *box);    // append a bounding box (affiliates it)
 
 //	void appendMeshes(TriangleGroup meshes);  // append mesh segments (affiliates it)todo
 	// meshes should be excluded from ObjectList and installed via appendMeshes method
@@ -55,7 +53,9 @@ public:
 	 */
 	bool intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const;
 
-	const Object * hitOf(const Ray &ray) const;	// compute only the first hit target of ray
+	const Object *hitOf(const Ray &ray) const;    // compute only the first hit target of ray
+
+	static Scene *acquire(const Json &json);    // load from json
 };
 
 #endif //PHAROSA_SCENE_H

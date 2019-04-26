@@ -1,25 +1,27 @@
 [
 	{
-		"type": "sphere",
 		"pos": [0, 768, 0],
 		"color": [0, 0, 255],
-		"emission": [100, 100, 100],
+		"emission": "glow",
 		"reft": "SPEC",
 		"geo": {
-			"radius": 10
+			"type": "sphere",
+			"radius": 10,
+			"pos": [0, 0, 0]
 		}
 	},
 	{
 		"type": "triangle",
-		"points": [[0, 0, 80], [80, 0, 0], [0, 80, 0]]
+		"color": "red",
+		"points": [[0, 20, 0], [20, 0, 0], [0, 0, 0]],
+		"rot": [45, 0, 0],
+		"tra": [10, 10, 20]
 	},
 	{
 		"type": "cube",
-		"basis": [
-			[10, 0, 0],
-			[0, 20, 0],
-			[0, 0, 15]
-		],
-		"pos": [-10, -10, -10]
+		"length": 10,
+		"width": 10,
+		"height": 10,
+		"pos": [-30, 10, 10]
 	}
 ]

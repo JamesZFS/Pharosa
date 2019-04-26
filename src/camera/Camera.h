@@ -41,7 +41,7 @@ public:
 	inline const Color &pixelAt(size_t i, size_t j) const    // img
 	{ return img[rankOf(i, j)]; }
 
-	inline const Pos &viewpoint() const    // gp
+	inline const Pos &viewpoint() const    // pos
 	{ return pos; }
 
 	inline const Dir &orientation() const    // ez

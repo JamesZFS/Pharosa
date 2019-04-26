@@ -13,20 +13,16 @@ struct InfPlane : Geometry
 {
 	Pos p; 	// a point on infplane
 	Dir n;    // normal vector, in Global coordinate sys, default towards ez (A, B, C)
-	double D;	// A x + B y + C z + D == 0, D == -n.p
+	double D;	// A x + B y + C z + D == 0, D == -n.pos
 
-	InfPlane();
+	InfPlane();	// plane facing towards z-axis at origin
 
-	InfPlane(const Pos &p_, const ElAg &euler_angles_);
-
-	InfPlane(const Json &json);
-
-	// construct by specifying normal
+	// construct by specifying normal and point
 	InfPlane(const Dir &n_, const Pos &p_);
 
-	void applyTransform() override;
+	void applyTransform(TransMat mat) override;
 
-	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - gp) % normal == 0
+	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - pos) % normal == 0
 	{
 		double dn = ray.dir % n;
 		return (fabs(dn) < EPS ? false : ((t = -(D + ray.org % n) / dn) > EPS));
@@ -40,6 +36,8 @@ struct InfPlane : Geometry
 
 	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)
 	{ return Funcs::sgn((x - p) % n); }
+
+	static InfPlane *acquire(const Json &json);
 };
 
 #endif //PHAROSA_INFPLANE_H

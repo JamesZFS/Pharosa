@@ -22,7 +22,7 @@ public:
 
 	BoundingCube(ObjectList &objects_);
 
-	BoundingCube(Cube &&cube_, ObjectList &objects_);	// manual
+//	BoundingCube(Cube &&cube_, ObjectList &objects_);	// manual
 
 	void applyTransform() override;
 

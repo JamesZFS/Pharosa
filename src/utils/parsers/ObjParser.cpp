@@ -11,7 +11,7 @@
 #define SKIP_LINE { fin.getline(buffer, 200); break; }
 
 ObjectList Parser::parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
-								const Material &material)// load mesh segments from objects file
+								const Material *material)// load mesh segments from objects file
 {
 
 	std::ifstream fin;
@@ -54,16 +54,13 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 				z_max = max2(z_max, z);
 #endif
 
-				v.emplace_back(trans_mat * (x * scale),
-							   trans_mat * (y * scale),
-							   trans_mat * (z * scale));
+				v.push_back(trans_mat * Pos(x * scale, y * scale, z * scale));
 				SKIP_LINE
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
 				--a, --b, --c;
-				meshes.push_back(
-						new Object(Triangle({{v[a], v[b], v[c]}}, Pos()), material.color, material.emi, material.reft));
+				meshes.push_back(new Object(new Triangle(v[a], v[b], v[c]), material));
 				SKIP_LINE
 
 			default: FAIL
