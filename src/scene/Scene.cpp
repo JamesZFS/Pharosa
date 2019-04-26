@@ -9,11 +9,14 @@
 
 Scene::~Scene()
 {
-	for (Object *obj : singletons) {
+	for (Object *obj : objects) {
 		delete obj;
 	}
 	for (BoundingBox *box: bounding_boxes) {
 		delete box;
+	}
+	for (Material *material: materials) {
+		delete material;
 	}
 }
 
@@ -24,17 +27,17 @@ void Scene::fromObjFile(const String &obj_path)
 
 void Scene::fromList(ObjectList &singletons_)
 {
-	singletons.insert(singletons.end(), singletons_.begin(), singletons_.end());
+	objects.insert(objects.end(), singletons_.begin(), singletons_.end());
 }
 
 void Scene::append(Object *object)
 {
-	singletons.push_back(object);
+	objects.push_back(object);
 }
 
 //void Scene::appendMeshes(TriangleGroup meshes)
 //{
-//	singletons.insert(singletons.end(), meshes.begin(), meshes.end());
+//	objects.insert(objects.end(), meshes.begin(), meshes.end());
 //}
 
 bool Scene::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const
@@ -50,7 +53,7 @@ bool Scene::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal
 		}
 	}
 
-	for (const Object *obj : singletons) {
+	for (const Object *obj : objects) {
 		if (obj->geo->intersect(ray, t) && t < ts) {
 			ts = t;
 			if (t < tb) hit = obj;
@@ -75,7 +78,7 @@ const Object * Scene::hitOf(const Ray &ray) const	// return hit without normal a
 	Dir normal;
 	intersectAny(ray, hit, x, normal);
 	return hit;
-//	for (const Object *obj : singletons) {
+//	for (const Object *obj : objects) {
 //		if (obj->geo->intersect(ray, s) && s < t) {
 //			t = s;
 //			hit = obj;
@@ -86,7 +89,7 @@ const Object * Scene::hitOf(const Ray &ray) const	// return hit without normal a
 
 size_t Scene::getSingletonCount()
 {
-	return singletons.size();
+	return objects.size();
 }
 
 size_t Scene::getBoundingBoxCount()

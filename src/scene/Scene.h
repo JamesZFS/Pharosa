@@ -18,8 +18,9 @@ public:
 #else
 private:
 #endif
-	ObjectList singletons;	// all singleton object ptrs, using pointer to allow polymorphism
+	ObjectList objects;	// all singleton object ptrs, using pointer to allow polymorphism
 	BoundingBoxList bounding_boxes;	// all bounding boxes ptrs
+	List<Material *> materials;	// material is shared while geometry belongs to objects
 
 public:
 	Scene() = default;        // init an empty scene
@@ -28,7 +29,7 @@ public:
 
 	~Scene();
 
-	size_t getSingletonCount();	// count singletons in total
+	size_t getSingletonCount();	// count objects in total
 
 	size_t getBoundingBoxCount();	// count BoundingBox in total
 	

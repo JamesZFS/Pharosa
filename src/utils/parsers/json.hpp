@@ -20715,6 +20715,10 @@ class basic_json
         }
     }
 
+    inline bool has(const std::string key) const  // if this has key
+    {
+        return find(key) != this->end();
+    }
     /// @}
 };
 } // namespace nlohmann

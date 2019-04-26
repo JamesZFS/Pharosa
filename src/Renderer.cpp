@@ -23,7 +23,7 @@ void Renderer::checkIfReady()
 	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.\n");
 
 	printf("\n----------------------------------------------------------------\n");
-	printf("loaded %ld singletons, %ld bounding boxes in total.\n",
+	printf("loaded %ld objects, %ld bounding boxes in total.\n",
 		   scene->getSingletonCount(), scene->getBoundingBoxCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());

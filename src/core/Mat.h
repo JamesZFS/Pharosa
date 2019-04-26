@@ -69,6 +69,8 @@ struct TransMat
 
 	TransMat(const Vec<double> &tra_, const Mat<double> &rot_);
 
+	TransMat(const Json &json);	// init from json
+
 	TransMat(const TransMat &mat) = default;	// copy
 
 	TransMat(TransMat &&mat) noexcept;	// move

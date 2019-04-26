@@ -48,7 +48,7 @@ Renderer::Renderer(const String &config_path)
 
 	// algorithm
 	algorithm = Algorithm::acquire(json.at("algorithm"), *scene, *camera);
-	
+
 	// load checkpoint
 	if (prev_path.length() > 0) {
 		camera->readPPM(prev_path, prev_epoch);
@@ -58,7 +58,7 @@ Renderer::Renderer(const String &config_path)
 // camera
 Camera *Camera::acquire(const Json &json)
 {
-	String type = json.value("type", "basic");	// default
+	String type = json.value("type", "basic");    // default
 	Parsing::lowerStr_(type);
 	if (type == "basic") {
 		return new BasicCamera(json);
@@ -110,44 +110,92 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene, Camera &camera)
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
 }
 
-// scene
+// create scene from json
 Scene::Scene(const Json &json)
 {
 	String type;
-	for (const Json &item: json) {
-		type = item.value("type", "singleton");
+	Material *material, *sub_material;
+	Geometry *geo;
+	for (const Json &item: json) {	// for each item in the scene json list
+		// shared attributes
+		material = new Material(json);
+		materials.push_back(material);
+		TransMat trans_mat(json);
+		type = item.value("type", "singleton");    // default as singleton
 		Parsing::lowerStr_(type);
-		if (type == "singleton") {
+		if (type == "singleton") {	// switch different types
 			debug("singleton\n");
-			singletons.push_back(new Object(item));
+			geo = Geometry::acquire(item.has("geo") ? item["geo"] : item); // new geo
+//			geo->applyTransform(trans_mat); todo
+			objects.push_back(new Object(geo, material));
 		}
 		else if (type == "group") {
-
+			Json group = item.at("objects");
+			if (group.is_string()) {	// specify by path
+				std::ifstream fin;
+				fin.open(group, std::ios::in);
+				if (!fin.is_open()) TERMINATE("Error, the specified group object path cannot be opened.");
+				fin >> group;
+			}
+			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
+			for (const Json &object: group) {	// parse each object in the group
+				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
+					sub_material = new Material(group);	// new a customized material
+					materials.push_back(sub_material);
+				}
+				else {
+					sub_material = material;
+				}
+				geo = Geometry::acquire(object.has("geo") ? object["geo"] : object);	// new geo
+				if (object.has("tra") || object.has("rot")) {
+//					geo->applyTransform(trans_mat * TransMat(object));
+				}
+				else {
+//					geo->applyTransform(trans_mat);
+				}
+				objects.push_back(new Object(geo, sub_material));
+			}
 		}
 		else if (type == "obj" || type == "obj file") {
-
+			auto obj_objects = Parser::parseObjFile(item.at("path"), item.value("scale", 1.0), trans_mat, *material);
+			objects.insert(objects.end(), obj_objects.begin(), obj_objects.end());
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());
 	}
 }
 
-
-Object::Object(const Json &json)
+// material
+Material::Material(const Json &json) : Material()
 {
-	color = RGB(json.value("color", Color::WHITE));
-	color.report(true);
-	emi = RGB(json.value("emission", Emission::NONE));
-	emi.report(true);
 	try {
-		reft = Map::str_to_material.at(json.value("material", "DIFF"));
+		color = Color(json.at("color"));
+	}
+	catch (Json::out_of_range &) {}
+	try {
+		emi = Emission(json.at("emission"));
+	}
+	catch (Json::out_of_range &) {}
+	try {
+		reft = Map::str_to_material.at(json.value("reft", "DIFF"));
 	}
 	catch (std::out_of_range &) {
 		TERMINATE("Error, got invalid material type \"%s\".", json["material"].get<String>().data());
 	}
-
-	// todo parse geo
-	geo = Geometry::acquire(json.at("geometry"));
 }
+
+//Object::Object(const Json &json, const TransMat &trans)
+//{
+//	color = RGB(json.value("color", Color::WHITE));
+//	emi = RGB(json.value("emission", Emission::NONE));
+//	try {
+//		reft = Map::str_to_material.at(json.value("reft", "DIFF"));
+//	}
+//	catch (std::out_of_range &) {
+//		TERMINATE("Error, got invalid material type \"%s\".", json["material"].get<String>().data());
+//	}
+//
+//	geo = Geometry::acquire(json.at("geo"));
+//}
 
 // geometries
 Geometry *Geometry::acquire(const Json &json)
@@ -176,7 +224,7 @@ Cube::Cube(const Json &json) :
 }
 
 InfPlane::InfPlane(const Json &json) :
-	InfPlane(Dir(json.at("normal")), Pos(json.at("point")))
+		InfPlane(Dir(json.at("normal")), Pos(json.at("point")))
 {
 }
 
@@ -189,7 +237,6 @@ Triangle::Triangle(const Json &json) :
 		Triangle({{json.at("points").at(0), json.at("points").at(1), json.at("points").at(2)}}, Pos(json.at("pos")))
 {
 }
-
 
 // vector
 Pos::Pos(const Json &json) : Pos(json.at(0), json.at(1), json.at(2))    // construct from json
@@ -216,3 +263,10 @@ ElAg::ElAg(const Json &json) :    // use degrees
 		ElAg(json.at(0).get<double>() * DEG, json.at(1).get<double>() * DEG, json.at(2).get<double>() * DEG)
 {
 }
+
+// transform matrix
+TransMat::TransMat(const Json &json) :    // should have "tra" and "rot" key, if not - identical transform
+		TransMat(Pos(json.value("tra", {})), ElAg(json.value("rot", {})))
+{
+}
+

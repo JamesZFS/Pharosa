@@ -10,9 +10,10 @@
 #define FAIL { sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark); warn(buffer); fin.close(); exit(1); }
 #define SKIP_LINE { fin.getline(buffer, 200); break; }
 
-ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const Color &color,
-								const Emission &emi, Object::ReflType reft)    // load mesh segments from objects file
+ObjectList Parser::parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
+								const Material &material)// load mesh segments from objects file
 {
+
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
 
@@ -36,8 +37,8 @@ ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const
 	while (!fin.eof()) {
 		fin >> mark;
 		switch (mark) {
-			case '#':	// comment
-				SKIP_LINE
+			case '#':    // comment
+			SKIP_LINE
 
 			case 'v':    // vertex (x, y, z)
 				fin >> x >> y >> z;
@@ -53,17 +54,19 @@ ObjectList Parser::parseObjFile(const String &obj_path, double zoom_ratio, const
 				z_max = max2(z_max, z);
 #endif
 
-				v.emplace_back(x * zoom_ratio, y * zoom_ratio, z * zoom_ratio);
+				v.emplace_back(trans_mat * (x * scale),
+							   trans_mat * (y * scale),
+							   trans_mat * (z * scale));
 				SKIP_LINE
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
 				--a, --b, --c;
-				meshes.push_back(new Object(Triangle({{v[a], v[b], v[c]}}, Pos()), color, emi, reft));
+				meshes.push_back(
+						new Object(Triangle({{v[a], v[b], v[c]}}, Pos()), material.color, material.emi, material.reft));
 				SKIP_LINE
 
-			default:
-				FAIL
+			default: FAIL
 		}
 	}
 #ifdef __DEV_STAGE__

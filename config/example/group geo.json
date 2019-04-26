@@ -2,10 +2,12 @@
 	{
 		"type": "sphere",
 		"pos": [0, 768, 0],
-		"radius": 10,
 		"color": [0, 0, 255],
 		"emission": [100, 100, 100],
-		"material": "SPEC"
+		"reft": "SPEC",
+		"geo": {
+			"radius": 10
+		}
 	},
 	{
 		"type": "triangle",

@@ -14,3 +14,8 @@ Object::~Object()
 {
 	delete geo;
 }
+
+Object::Object(Geometry *geo_, Material *material_) : geo(geo_), material(material_)
+{
+
+}

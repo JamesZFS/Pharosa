@@ -52,7 +52,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 
 			// Ideal mirror reflection, todo use I = ks ( V . R )^n model
 		case Object::SPEC: {
-			return obj.emi + color.mul(radiance(Ray(x, ray.dir - nl * 2 * (nl % ray.dir)), depth));
+			return obj.emi + color.mul(radiance(Ray(x, ray.dir - nl * (nl % ray.dir * 2)), depth));
 		}
 
 			// Ideal dielectric refraction
