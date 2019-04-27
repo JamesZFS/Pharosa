@@ -1,49 +1,40 @@
 {
-	"save_path": "test json.ppm",
-
-	"n_epoch": 30,
-	"prev_path": "test json.ppm",
-	"prev_epoch": 10,
+	"save_path": "test 4-27.ppm",
+	"n_epoch": 10,
+	"prev_path": "",
+	"prev_epoch": 0,
 	"verbose_step": 0,
-
 	"algorithm": {
 		"type": "rt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
-
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
 		"pos": [0, 0, 280],
 		"rot": [0, 180, 0]
 	},
-
-	"scene":
-	[
+	"scene": [
 		{
 			"type": "group",
 			"color": [0, 200, 200],
 			"emission": [0, 0, 0],
 			"reft": "DIFF",
-
 			"objects": "/Users/james/Test/CG/Pharosa/config/example/group geo.json",
 			"scale": 2.0,
 			"tra": [-40, -30, 10],
 			"rot": [0, 30, 10]
 		},
-
 		{
 			"name": "blue one",
 			"color": [0.1, 0.1, 0.9],
 			"reft": "REFR",
 			"geo": {
 				"type": "cube",
-
 				"length": 10,
 				"width": 20,
 				"height": 40,
-
 				"pos": [0, -30, -20]
 			},
 			"rot": [0, 0, 45],
@@ -55,57 +46,62 @@
 			"emission": "none",
 			"reft": "REFR",
 			"rot": [0, 45, 0],
-			"geo":
-			{
+			"geo": {
 				"type": "sphere",
 				"radius": 10.5,
 				"pos": [30, 10, 10]
 			}
 		},
 		{
-			"name": "back wall",
-			"color": "brown",
-			"geo": {
-				"type": "infplane",
-				"normal": [0, 0, 1],
-				"point": [0, 0, -60]
-			}
-		},
-		{
-			"name": "floor",
-			"color": "WHITE",
-			"geo": {
-				"type": "infplane",
-				"normal": [0, 1, 0],
-				"point": [0, -60, 0]
-			}
-		},
-		{
-			"name": "ceiling",
-			"color": "WHITE",
-			"geo": {
-				"type": "infplane",
-				"normal": [0, 1, 0],
-				"point": [0, 80, 0]
-			}
-		},
-		{
-			"name": "left",
-			"color": [0.8, 0.4, 0.4],
-			"geo": {
-				"type": "infplane",
-				"normal": [1, 0, 0],
-				"point": [-80, 0, 0]
-			}
-		},
-		{
-			"name": "right",
-			"color": [0.4, 0.4, 0.8],
-			"geo": {
-				"type": "infplane",
-				"normal": [1, 0, 0],
-				"point": [80, 0, 0]
-			}
+			"name": "walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -60]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
 		},
 		{
 			"name": "light bulb",

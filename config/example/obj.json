@@ -1,0 +1,93 @@
+{
+	"title": "test obj file",
+	"save_path": "test 4-27.ppm",
+	"n_epoch": 5,
+	"prev_path": "",
+	"prev_epoch": 0,
+	"verbose_step": 1,
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [0, 0, 280],
+		"rot": [0, 180, 0]
+	},
+	"algorithm": {
+		"type": "rc",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+	"scene": [
+		{
+			"type": "obj",
+			"color": "blue",
+			"emission": "none",
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
+			"scale": 10,
+			"tra": [0, 0, 0],
+			"rot": [0, 30, 20]
+		},
+		{
+			"color": [0.3, 0.3, 0.3],
+			"geo": {
+				"type": "triangle",
+				"points": [
+					[0, 0, 0],
+					[40, 0, 0],
+					[0, 40, 0]
+				]
+			}
+		},
+		{
+			"name": "walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -60]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		}
+	]
+}

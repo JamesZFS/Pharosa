@@ -122,10 +122,11 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 	Geometry *geo;
 	for (const Json &item: json) {	// for each item in the scene json list
 		// shared attributes
-		material = Material::acquire(item);
+		material = Material::acquire(item);			// material
 		self->materials.push_back(material);
-		TransMat trans_mat(item);
-		type = item.value("type", "singleton");    // default as singleton
+		TransMat trans_mat(item);					// transform
+		// todo texture
+		type = item.value("type", "singleton");    	// item type
 		Parsing::lowerStr_(type);
 
 		if (type == "singleton") {	// switch different types
@@ -180,7 +181,6 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());
 
-		debug("\n");
 	}
 	return self;
 }

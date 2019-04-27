@@ -19,10 +19,8 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 
 	Buffer buffer;
 	if (!fin.is_open()) {
-		sprintf(buffer, "Error: obj_path \"%s\" cannot be opened, parsing stopped.", obj_path.data());
-		warn(buffer);
 		fin.close();
-		exit(1);
+		TERMINATE("Error: obj_path \"%s\" cannot be opened, parsing stopped.", obj_path.data());
 	}
 
 	ObjectList meshes;    // result
@@ -35,7 +33,9 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 	List<Pos> v;
 
 	while (!fin.eof()) {
+		mark = '.';
 		fin >> mark;
+		if (mark == '.') continue; // no input
 		switch (mark) {
 			case '#':    // comment
 			SKIP_LINE
@@ -55,12 +55,15 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 #endif
 
 				v.push_back(trans_mat * Pos(x * scale, y * scale, z * scale));
+				v.back().report(true);
 				SKIP_LINE
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
 				--a, --b, --c;
-				meshes.push_back(new Object(new Triangle(v[a], v[b], v[c]), material));
+				debug("%ld %ld %ld\n", a, b, c);
+				v.at(a).report(), v.at(b).report(), v.at(c).report(true);
+				meshes.push_back(new Object(new Triangle(v.at(a), v.at(b), v.at(c)), material));
 				SKIP_LINE
 
 			default: FAIL
@@ -74,8 +77,8 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 	warn("\n");
 #endif
 
-	return std::move(meshes);
-//	return meshes;
+//	return std::move(meshes);
+	return meshes;
 }
 
 #undef FAIL

@@ -1,0 +1,19 @@
+{
+	"type": "obj",
+	"reft": "diff",
+	"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
+	"scale": 30.0,
+	"tra": [20, -20, 30],
+	"rot": [0, 45, 0]
+}
+{
+	"geo": {
+		"type": "triangle",
+		"points": [
+			[20, 0, 0],
+			[0, 20, 0],
+			[0, 0, 0]
+		]
+	},
+	"rot": [0, 90, 0]
+}

@@ -7,6 +7,7 @@
 
 Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}
 {
+	(n = (p[1] - p[0]) ^ (p[2] - p[0])).unitize();
 }
 
 void Triangle::applyTransform(TransMat mat)
@@ -14,7 +15,7 @@ void Triangle::applyTransform(TransMat mat)
 	p[0] = mat * p[0];
 	p[1] = mat * p[1];
 	p[2] = mat * p[2];
-	(n = (p[0] - p[1]) ^ (p[0] - p[2])).unitize();
+	(n = (p[1] - p[0]) ^ (p[2] - p[0])).unitize();
 }
 
 
