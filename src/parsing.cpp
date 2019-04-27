@@ -30,31 +30,29 @@ Renderer::Renderer(const String &config_path)
 	fin >> json;
 	fin.close();
 
-	// parsing json
-	String type;
-
+	// parsing generic
 	String save_path = json.at("save_path");
 	if (Funcs::endsWith(save_path, ".ppm")) {
 		save_ppm_path = save_path;
-		save_cp_path = save_path.replace(save_path.size() - 4, 4, ".cp");
+		save_cpt_path = save_path.replace(save_path.size() - 4, 4, ".cpt");
 	}
 	else {
 		save_ppm_path = save_path + ".ppm";
-		save_cp_path = save_path + ".cp";
+		save_cpt_path = save_path + ".cpt";
 	}
 	String prev_path = json.value("prev_path", "");
 	if (prev_path.length() > 0) {
 		if (Funcs::endsWith(prev_path, ".ppm")) {
 			prev_ppm_path = prev_path;
-			prev_cp_path = prev_path.replace(prev_path.size() - 4, 4, ".cp");
+			prev_cpt_path = prev_path.replace(prev_path.size() - 4, 4, ".cpt");
 		}
 		else {
 			prev_ppm_path = prev_path + ".ppm";
-			prev_cp_path = prev_path + ".cp";
+			prev_cpt_path = prev_path + ".cpt";
 		}
 	}
 	else {
-		prev_ppm_path = prev_cp_path = "";
+		prev_ppm_path = prev_cpt_path = "";
 	}
 
 	n_epoch = json.at("n_epoch");
@@ -68,12 +66,10 @@ Renderer::Renderer(const String &config_path)
 	scene = Scene::acquire(json.at("scene"));
 
 	// algorithm
-	algorithm = Algorithm::acquire(json.at("algorithm"), *scene, *camera);
+	algorithm = Algorithm::acquire(json.at("algorithm"), *scene);
 
 	// load checkpoint
-	if (prev_path.length() > 0) {
-		camera->readPPM(prev_ppm_path);
-	}
+	getReady();
 }
 
 // camera
@@ -118,18 +114,18 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 	Parsing::lowerStr_(type);
 	if (type == "ray casting" || type == "rc") {
 		try {
-			return new RayCasting(scene, camera, Dir(json.at("light_dir")));
+			return new RayCasting(scene, Dir(json.at("light_dir")));
 		}
 		catch (Json::out_of_range &) {
-			return new RayCasting(scene, camera);    // use default
+			return new RayCasting(scene);    // use default
 		}
 	}
 	else if (type == "ray tracing" || type == "rt") {
 		try {
-			return new RayTracing(scene, camera, (size_t) json.at("max_depth"));
+			return new RayTracing(scene, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new RayTracing(scene, camera);    // use default
+			return new RayTracing(scene);    // use default
 		}
 	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());

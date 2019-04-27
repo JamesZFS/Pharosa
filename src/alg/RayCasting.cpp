@@ -22,7 +22,7 @@ Color RayCasting::radiance(const Ray &ray, size_t depth) const
 	return hit->mtr->color * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + hit->mtr->emi;
 }
 
-String RayCasting::info()
+String RayCasting::info() const
 {
 	return "<Ray Casting>";
 }

@@ -16,11 +16,23 @@ Renderer::~Renderer()
 	delete camera;
 }
 
+void Renderer::getReady()
+{
+	if (prev_ppm_path.length() > 0) {
+		camera->readPPM(prev_ppm_path, prev_cpt_path);
+		printf("loaded previous status from \"%s\"\n", prev_ppm_path.data());
+	}
+	delete is_edge;
+	is_edge = new bool[camera->size];
+	memset(is_edge, false, camera->size * sizeof(bool));
+}
+
 void Renderer::checkIfReady()
 {
-	if (scene == nullptr) TERMINATE("Error: scene is not setup yet.");
-	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.");
-	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.");
+	if (scene == nullptr) TERMINATE("Error: scene is not setup yet.")
+	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.")
+	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.")
+	if (is_edge == nullptr) TERMINATE("Error: is_edge is not setup yet.")
 
 	printf("\n----------------------------------------------------------------\n");
 	printf("loaded %ld objects, %ld bounding boxes in total.\n",
@@ -34,7 +46,7 @@ void Renderer::checkIfReady()
 void Renderer::renderFrame()
 {
 	if (verbose_step == 0)
-		render();	// todo callback
+		render();
 	else
 		renderVerbose();
 }
@@ -54,7 +66,7 @@ void Renderer::start()
 
 void Renderer::startKinetic(size_t n_frame, void (*motion)())
 {
-//	if (prev_cp_path.length() > 0) {
+//	if (prev_cpt_path.length() > 0) {
 //		TERMINATE("Error: before rendering kinetic images, you should not pre-read from previous image.");
 //	}
 //	checkIfReady();
@@ -80,15 +92,15 @@ void Renderer::startKinetic(size_t n_frame, void (*motion)())
 void Renderer::save() const
 {
 	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.");
-	camera->writePPM(save_ppm_path, save_cp_path);
+	camera->writePPM(save_ppm_path, save_cpt_path);
 	printf("image written to \"%s\" \n", save_ppm_path.data());
 }
 
 void Renderer::saveProgress(size_t cur_epoch) const
 {
-	if (cur_epoch % save_step > 0) return;
-	camera->writePPM(save_ppm_path, save_cp_path);
-	barInfo("  \t progress saved to \"%s\"", save_ppm_path.data());
+	if (save_step == 0 || cur_epoch % save_step > 0) return;
+	camera->writePPM(save_ppm_path, save_cpt_path);
+	barInfo("\t progress saved to \"%s\"\n", save_ppm_path.data());
 }
 
 #define SUB_D1 0.45
@@ -111,13 +123,10 @@ void Renderer::render()
 		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
 			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
 				if (is_edge[rank]) {                                    // MSAA - for 4 subpixels
-					Color color;
-					color += algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2));
-					color += algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1));
-					color += algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1));
-					color += algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2));
-					color /= 4;
-					camera->render(rank, color);
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2)));
 				}
 				else {
 					camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // just rand normal - 0.5
@@ -132,13 +141,13 @@ void Renderer::render()
 void Renderer::renderVerbose()
 {
 	// with progressbar
-	
+
 	detectEdges();
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
 		auto eta = lround((omp_get_wtime() - since) * (n_epoch - epoch) / epoch);
-		barInfo("\r=== epoch %ld / %ld ===  eta: %ld min %ld sec", epoch + 1, n_epoch, eta / 60, eta % 60);
+		barInfo("=== epoch %ld / %ld ===  eta: %ld min %ld sec\n", epoch + 1, n_epoch, eta / 60, eta % 60);
 
 #ifdef __USE_OMP__
 #pragma omp parallel for schedule(dynamic, 1)
@@ -150,13 +159,10 @@ void Renderer::renderVerbose()
 			}
 			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
 				if (is_edge[rank]) {                                    // MSAA - for 4 subpixels
-					Color color;
-					color += algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2));
-					color += algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1));
-					color += algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1));
-					color += algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2));
-					color /= 4;
-					camera->render(rank, color);
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1)));
+					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2)));
 				}
 				else {
 					camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // just rand normal - 0.5
@@ -164,8 +170,8 @@ void Renderer::renderVerbose()
 			}
 		}
 		saveProgress(epoch + 1);
+		barInfo("\n");
 	}
-	printf("\n");
 }
 
 void Renderer::detectEdges()

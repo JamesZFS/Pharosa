@@ -18,7 +18,7 @@ public:
 
 	RayTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
 
-	String info() override;
+	String info() const override;
 };
 
 #endif //PHAROSA_RAYTRACING_H

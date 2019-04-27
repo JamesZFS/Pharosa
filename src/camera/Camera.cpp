@@ -28,38 +28,42 @@ Camera::~Camera()
 	delete[] render_cnt;
 }
 
-void Camera::readPPM(const String &in_path)
+void Camera::readPPM(const String &ppm_path, const String &cpt_path)
 {
-	std::fstream fin;
-	fin.open(in_path, std::ios::in);
+	std::fstream fppm, fcpt;
+	fppm.open(ppm_path, std::ios::in);
+	fcpt.open(cpt_path, std::ios::in);	// checkpoint
 
-	if (!fin.is_open()) TERMINATE("Error: in_path \"%s\" cannot be opened, reading stopped.", in_path.data())
+	if (!fppm.is_open()) TERMINATE("Error: ppm_path \"%s\" cannot be opened, reading stopped.", ppm_path.data())
+	if (!fcpt.is_open()) TERMINATE("Error: cpt_path \"%s\" cannot be opened, reading stopped.", cpt_path.data())
 
 	String format;
-	size_t a, b, c;
-	ch
-	fin >> format >> a >> b >> c;
+	size_t a, b, c, cpt_cnt;	// prev render cnt
+	fppm >> format >> a >> b >> c;
 	assert(format == "P3");
 	assert(a == width);
 	assert(b == height);
 	assert(c == 255);
 	for (size_t i = 0; i < size; ++i) {
-		fin >> a >> b >> c;    // 0 - 255
-		img[i].r += Funcs::inverseGammaCorrection(a) * cp_cnt;
-		img[i].g += Funcs::inverseGammaCorrection(b) * cp_cnt;
-		img[i].b += Funcs::inverseGammaCorrection(c) * cp_cnt;
+		fppm >> a >> b >> c;    // 0 - 255
+		fcpt >> cpt_cnt;
+		img[i].r += Funcs::inverseGammaCorrection(a) * cpt_cnt;
+		img[i].g += Funcs::inverseGammaCorrection(b) * cpt_cnt;
+		img[i].b += Funcs::inverseGammaCorrection(c) * cpt_cnt;
+		render_cnt[i] += cpt_cnt;
 	}
-	fin.close();
+	fppm.close();
+	fcpt.close();
 }
 
-void Camera::writePPM(const String &ppm_path, const String &cp_path) const
+void Camera::writePPM(const String &ppm_path, const String &cpt_path) const
 {
-	std::ofstream fppm, fcp;
+	std::ofstream fppm, fcpt;
 	fppm.open(ppm_path, std::ios::out | std::ios::trunc);
-	fcp.open(cp_path, std::ios::out | std::ios::trunc);
+	fcpt.open(cpt_path, std::ios::out | std::ios::trunc);
 
 	if (!fppm.is_open()) TERMINATE("Error: ppm_path \"%s\" cannot be opened, writing stopped.", ppm_path.data())
-	if (!fcp.is_open()) TERMINATE("Error: cp_path \"%s\" cannot be opened, writing stopped.", cp_path.data())
+	if (!fcpt.is_open()) TERMINATE("Error: cpt_path \"%s\" cannot be opened, writing stopped.", cpt_path.data())
 
 	Buffer buffer;
 	// write head
@@ -73,10 +77,10 @@ void Camera::writePPM(const String &ppm_path, const String &cp_path) const
 				Funcs::gammaCorrection(p.g),
 				Funcs::gammaCorrection(p.b));
 		fppm << buffer;
-		fcp << render_cnt[i] << " ";
+		fcpt << render_cnt[i] << " ";
 	}
 	fppm.close();
-	fcp.close();
+	fcpt.close();
 }
 
 void Camera::rotate(const ElAg &euler_angles)

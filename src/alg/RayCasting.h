@@ -18,7 +18,7 @@ public:
 
 	RayCasting(Scene &scene_, const Dir &light_dir_ = Dir(-1, -1, -1));
 
-	String info() override;
+	String info() const override;
 };
 
 #endif //PHAROSA_DIRECTIMAGING_H

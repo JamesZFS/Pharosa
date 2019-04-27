@@ -63,10 +63,10 @@ public:
 
 	// io:
 	// load from previous rendered ppm file to continue
-	void readPPM(const String &in_path);
+	void readPPM(const String &ppm_path, const String &cpt_path);
 
-	// output image into ppm format
-	void writePPM(const String &ppm_path, const String &cp_path) const;
+	// output image into ppm format and checkpoint
+	void writePPM(const String &ppm_path, const String &cpt_path) const;
 
 	inline Ray shootRay() const;    // shoot a ray iteratively. will stop when all pixels are traversed
 

@@ -90,7 +90,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	}
 }
 
-String RayTracing::info()
+String RayTracing::info() const
 {
 	Buffer buffer;
 	sprintf(buffer, "<Ray Tracing>  max depth = %ld", max_depth);
