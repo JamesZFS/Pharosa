@@ -5,9 +5,9 @@
 #include "Triangle.h"
 #include "../utils/solvers/Linear.h"
 
-Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}
+Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}, n((B - A) ^ (C - A))
 {
-	(n = (p[1] - p[0]) ^ (p[2] - p[0])).unitize();
+	n.unitize();
 }
 
 void Triangle::applyTransform(TransMat mat)

@@ -23,8 +23,8 @@
 			"emission": "none",
 			"reft": "diff",
 			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
-			"scale": 10,
-			"tra": [0, 0, 0],
+			"scale": 20,
+			"tra": [10, 0, 0],
 			"rot": [0, 30, 20]
 		},
 		{

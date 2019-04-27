@@ -7,8 +7,8 @@
 #include "../utils/funcs.hpp"
 #include <omp.h>
 
-RayTracing::RayTracing(Scene &scene_, Camera &camera_, size_t max_depth_) :
-		Algorithm(scene_, camera_), max_depth(max_depth_)
+RayTracing::RayTracing(Scene &scene_, size_t max_depth_) :
+		Algorithm(scene_), max_depth(max_depth_)
 {
 
 }

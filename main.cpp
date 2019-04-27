@@ -33,5 +33,11 @@ int main(int argc, char *argv[])
 	// **************** save results ****************
 	renderer.save();
 
+#ifdef __DEV_STAGE__
+	debug("\n -- debug info -- \n");
+	debug("  counter   = %ld\n", __counter__);
+	debug("  print_cnt = %ld\n", __print_cnt__);
+#endif
+
 	return 0;
 }

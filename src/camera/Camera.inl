@@ -1,4 +1,7 @@
 
+#define rankOf(i, j) ((j) * width + (i))
+#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
+
 void Camera::render(const Color &color)
 {
 	img[cur_rank] += color;
@@ -17,9 +20,6 @@ void Camera::renderAt(size_t i, size_t j, const Color &color)
 	img[rank] += color;
 	++render_cnt[rank];
 }
-#undef rankOf
-
-#undef checkCoordinate
 
 bool Camera::finishedVerbose(size_t n_step) const
 {
@@ -42,3 +42,46 @@ void Camera::updateProgress()
 		}
 	}
 }
+
+bool Camera::finished() const
+{
+	return (cur_rank >= size);
+}
+
+void Camera::resetProgress()
+{
+	cur_i = cur_j = cur_rank = 0;
+}
+
+void Camera::translate(const Pos &delta)
+{
+	pos += delta;
+}
+
+Ray Camera::shootRay() const
+{
+	return shootRayAt(cur_i, cur_j, 0.5);
+}
+
+Ray Camera::shootRay(size_t rank) const
+{
+	return shootRayAt(rank % width, rank / width, 0.5);
+}
+
+const Color &Camera::pixelAt(size_t i, size_t j) const
+{
+	return img[rankOf(i, j)];
+}
+
+const Pos &Camera::viewpoint() const
+{
+	return pos;
+}
+
+const Dir &Camera::orientation() const
+{
+	return ez;
+}
+
+#undef rankOf
+#undef checkCoordinate

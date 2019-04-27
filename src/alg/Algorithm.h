@@ -9,46 +9,26 @@
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
 
-class Camera;
-
 class Scene;
 
 // standard illumination algorithm, base class, can access scene and camera
 class Algorithm
 {
 protected:
-	Scene &scene;
-
-private:
-	Camera &camera;
-	bool *is_edge;    // if each pixel on the screen is edge of an object
-
-	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
-	void detectEdges();
-
-protected:
+	const Scene &scene;
 
 	// interfaces:
 	virtual Color radiance(const Ray &ray, size_t depth) const = 0;    // ** main algorithm **
 
-	inline Color radiance(const Ray &ray) const    // entrance
-	{ return radiance(ray, 0); }
-
 public:
-	Algorithm(Scene &scene_, Camera &camera_);
-
-	virtual ~Algorithm();
-
-	// ** rendering pipeline **
-	// do the rendering for n_epoch times
-	virtual void render(size_t n_epoch, size_t prev_epoch, const String &checkpoint_dir);
-
-	virtual void renderVerbose(size_t n_epoch, size_t prev_epoch,
-							   size_t verbose_step, const String &checkpoint_dir);
+	Algorithm(const Scene &scene_);
 
 	virtual String info() = 0;
 
-	static Algorithm *acquire(const Json &json, Scene &scene, Camera &camera);
+	inline Color radiance(const Ray &ray) const    // entrance
+	{ return radiance(ray, 0); }
+
+	static Algorithm *acquire(const Json &json, Scene &scene);
 };
 
 #endif //PHAROSA_ALGORITHM_H

@@ -5,7 +5,6 @@
 #include "defs.h"
 #include "utils/parsers/json.hpp"
 #include <fstream>
-#include <map>
 
 #include "scene/Scene.h"
 #include "camera/All.h"
@@ -14,6 +13,8 @@
 #include "Renderer.h"
 
 #include "parsing.inl"
+#include "alg/Algorithm.h"
+
 
 Renderer::Renderer(const String &config_path)
 {
@@ -32,11 +33,32 @@ Renderer::Renderer(const String &config_path)
 	// parsing json
 	String type;
 
-	save_path = json.at("save_path");
-	checkpoint_dir = json.value("checkpoint_dir", "");    // get with default value
-	prev_path = json.value("prev_path", "");
+	String save_path = json.at("save_path");
+	if (Funcs::endsWith(save_path, ".ppm")) {
+		save_ppm_path = save_path;
+		save_cp_path = save_path.replace(save_path.size() - 4, 4, ".cp");
+	}
+	else {
+		save_ppm_path = save_path + ".ppm";
+		save_cp_path = save_path + ".cp";
+	}
+	String prev_path = json.value("prev_path", "");
+	if (prev_path.length() > 0) {
+		if (Funcs::endsWith(prev_path, ".ppm")) {
+			prev_ppm_path = prev_path;
+			prev_cp_path = prev_path.replace(prev_path.size() - 4, 4, ".cp");
+		}
+		else {
+			prev_ppm_path = prev_path + ".ppm";
+			prev_cp_path = prev_path + ".cp";
+		}
+	}
+	else {
+		prev_ppm_path = prev_cp_path = "";
+	}
+
 	n_epoch = json.at("n_epoch");
-	prev_epoch = json.value("prev_epoch", 0);
+	save_step = json.value("save_step", 0);
 	verbose_step = json.value("verbose_step", 0);
 
 	// camera
@@ -50,7 +72,7 @@ Renderer::Renderer(const String &config_path)
 
 	// load checkpoint
 	if (prev_path.length() > 0) {
-		camera->readPPM(prev_path, prev_epoch);
+		camera->readPPM(prev_ppm_path);
 	}
 }
 
@@ -90,7 +112,7 @@ OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
 }
 
 // alogrithm
-Algorithm *Algorithm::acquire(const Json &json, Scene &scene, Camera &camera)
+Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 {
 	String type = json.at("type");
 	Parsing::lowerStr_(type);
@@ -175,8 +197,8 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		}
 		else if (type == "obj" || type == "obj file") {
 
-			auto obj_objects = Parser::parseObjFile(item.at("path"), item.value("scale", 1.0), trans_mat, material);
-			self->objects.insert(self->objects.end(), obj_objects.begin(), obj_objects.end());
+			auto obj_objects = Parser::parseMeshes(item.at("path"), item.value("scale", 1.0), trans_mat, material);
+			self->objects.insert(self->objects.end(), obj_objects->begin(), obj_objects->end());
 
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());
@@ -204,20 +226,6 @@ Material *Material::acquire(const Json &json)
 	}
 	return self;
 }
-
-//Object::Object(const Json &json, const TransMat &trans)
-//{
-//	color = RGB(json.value("color", Color::WHITE));
-//	emi = RGB(json.value("emission", Emission::NONE));
-//	try {
-//		reft = Map::str_to_reft.at(json.value("reft", "DIFF"));
-//	}
-//	catch (std::out_of_range &) {
-//		TERMINATE("Error, got invalid mtr type \"%s\".", json["mtr"].get<String>().data());
-//	}
-//
-//	geo = Geometry::acquire(json.at("geo"));
-//}
 
 // geometries
 Geometry *Geometry::acquire(const Json &json)

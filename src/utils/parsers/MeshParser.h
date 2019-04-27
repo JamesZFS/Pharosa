@@ -2,8 +2,8 @@
 // Created by James on 2019/4/22.
 //
 
-#ifndef PHAROSA_OBJPARSER_H
-#define PHAROSA_OBJPARSER_H
+#ifndef PHAROSA_MESHPARSER_H
+#define PHAROSA_MESHPARSER_H
 
 #include "../../defs.h"
 #include "../../core/Vec.h"
@@ -11,8 +11,8 @@
 
 namespace Parser
 {
-	ObjectList *parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
-							 const Material *material);    // load mesh segments from objects file
+	ObjectList *parseMeshes(const String &obj_path, double scale, const TransMat &trans_mat,
+							const Material *material);    // load mesh segments from objects file
 }
 
-#endif //PHAROSA_OBJPARSER_H
+#endif //PHAROSA_MESHPARSER_H

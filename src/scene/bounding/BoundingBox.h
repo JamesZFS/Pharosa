@@ -6,7 +6,7 @@
 #define PHAROSA_BOUNDINGBOX_H
 
 #include "../Object.h"
-#include "../../utils/parsers/ObjParser.h"
+#include "../../utils/parsers/MeshParser.h"
 
 /** abstract class
  * A bounding box is a composition of objects, which should delegates

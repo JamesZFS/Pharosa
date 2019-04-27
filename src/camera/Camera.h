@@ -9,9 +9,6 @@
 #include "../core/Ray.hpp"
 #include "../core/Vec.h"
 
-#define rankOf(i, j) ((j) * width + (i))
-#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
-
 // standard camera api, base class
 class Camera
 {
@@ -38,14 +35,11 @@ public:
 	virtual ~Camera();
 
 	// getter:
-	inline const Color &pixelAt(size_t i, size_t j) const    // img
-	{ return img[rankOf(i, j)]; }
+	inline const Color &pixelAt(size_t i, size_t j) const;    // img
 
-	inline const Pos &viewpoint() const    // pos
-	{ return pos; }
+	inline const Pos &viewpoint() const;    // pos
 
-	inline const Dir &orientation() const    // ez
-	{ return ez; }
+	inline const Dir &orientation() const;    // ez
 
 	// setter:
 	inline void render(const Color &color);    // render incrementally
@@ -56,32 +50,27 @@ public:
 
 	void rotate(const ElAg &euler_angles);	// rotate inc
 
-	inline void translate(const Pos &delta)	// move inc
-	{ pos += delta; }
+	inline void translate(const Pos &delta);	// move inc
 
 	// iterators:
-	inline bool finished() const    // check whether the rendering progress is finished
-	{ return (cur_rank >= size); }
+	inline bool finished() const;    // check whether the rendering progress is finished
 
 	inline bool finishedVerbose(size_t n_step) const; // as above, with a progressbar displayed every n_step
 
 	inline void updateProgress();    // current pixel rank++
 
-	inline void resetProgress()   // reset shooting progress
-	{ cur_i = cur_j = cur_rank = 0; }
+	inline void resetProgress();   // reset shooting progress
 
 	// io:
-	// load from previous rendered ppm file to continue, which was rendered n_epoch times
-	void readPPM(String prev_path, size_t prev_epoch);
+	// load from previous rendered ppm file to continue
+	void readPPM(const String &in_path);
 
 	// output image into ppm format
-	void writePPM(String out_path) const;
+	void writePPM(const String &ppm_path, const String &cp_path) const;
 
-	inline Ray shootRay() const    // shoot a ray iteratively. will stop when all pixels are traversed
-	{ return shootRayAt(cur_i, cur_j, 0.5); }
+	inline Ray shootRay() const;    // shoot a ray iteratively. will stop when all pixels are traversed
 
-	inline Ray shootRay(size_t rank) const    // shoot a ray at a given pixel rank
-	{ return shootRayAt(rank % width, rank / width, 0.5); }
+	inline Ray shootRay(size_t rank) const;    // shoot a ray at a given pixel rank
 
 	// interface:
 	// shoot ray at (i, j), offset deferring normal dist 0 - sigma

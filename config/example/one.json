@@ -1,21 +1,34 @@
 {
-	"save_path": "test 4-27.ppm",
+	"save_path": "one.ppm",
 	"n_epoch": 10,
 	"prev_path": "",
-	"prev_epoch": 0,
+	"save_step": 2,
 	"verbose_step": 0,
+
 	"algorithm": {
 		"type": "rt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
+
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
 		"pos": [0, 0, 280],
 		"rot": [0, 180, 0]
 	},
+
 	"scene": [
+		{
+			"type": "obj",
+			"color": "Yellow",
+			"emission": "none",
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
+			"scale": 20,
+			"tra": [-30, 30, 0],
+			"rot": [0, 30, 20]
+		},
 		{
 			"type": "group",
 			"color": [0, 200, 200],

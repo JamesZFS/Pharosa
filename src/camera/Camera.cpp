@@ -28,24 +28,16 @@ Camera::~Camera()
 	delete[] render_cnt;
 }
 
-void Camera::readPPM(String prev_path, size_t prev_epoch)
+void Camera::readPPM(const String &in_path)
 {
-	if (prev_epoch == 0) return;
-	if (!Funcs::endsWith(prev_path, ".ppm")) {
-		prev_path += ".ppm";
-	}
 	std::fstream fin;
-	fin.open(prev_path, std::ios::in);
+	fin.open(in_path, std::ios::in);
 
-	Buffer buffer;
-	if (!fin.is_open()) {
-		sprintf(buffer, "Error: prev_path \"%s\" cannot be opened, reading stopped.", prev_path.data());
-		warn(buffer);
-		fin.close();
-		exit(1);
-	}
+	if (!fin.is_open()) TERMINATE("Error: in_path \"%s\" cannot be opened, reading stopped.", in_path.data())
+
 	String format;
 	size_t a, b, c;
+	ch
 	fin >> format >> a >> b >> c;
 	assert(format == "P3");
 	assert(a == width);
@@ -53,31 +45,26 @@ void Camera::readPPM(String prev_path, size_t prev_epoch)
 	assert(c == 255);
 	for (size_t i = 0; i < size; ++i) {
 		fin >> a >> b >> c;    // 0 - 255
-		img[i].r += Funcs::inverseGammaCorrection(a) * prev_epoch;
-		img[i].g += Funcs::inverseGammaCorrection(b) * prev_epoch;
-		img[i].b += Funcs::inverseGammaCorrection(c) * prev_epoch;
-		render_cnt[i] += prev_epoch;
+		img[i].r += Funcs::inverseGammaCorrection(a) * cp_cnt;
+		img[i].g += Funcs::inverseGammaCorrection(b) * cp_cnt;
+		img[i].b += Funcs::inverseGammaCorrection(c) * cp_cnt;
 	}
+	fin.close();
 }
 
-void Camera::writePPM(String out_path) const
+void Camera::writePPM(const String &ppm_path, const String &cp_path) const
 {
-	if (!Funcs::endsWith(out_path, ".ppm")) {
-		out_path += ".ppm";
-	}
-	std::ofstream fout;
-	fout.open(out_path, std::ios::out | std::ios::trunc);
+	std::ofstream fppm, fcp;
+	fppm.open(ppm_path, std::ios::out | std::ios::trunc);
+	fcp.open(cp_path, std::ios::out | std::ios::trunc);
+
+	if (!fppm.is_open()) TERMINATE("Error: ppm_path \"%s\" cannot be opened, writing stopped.", ppm_path.data())
+	if (!fcp.is_open()) TERMINATE("Error: cp_path \"%s\" cannot be opened, writing stopped.", cp_path.data())
 
 	Buffer buffer;
-	if (!fout.is_open()) {
-		sprintf(buffer, "Error: out_path \"%s\" cannot be opened, writing stopped.", out_path.data());
-		warn(buffer);
-		fout.close();
-		exit(1);
-	}
 	// write head
 	sprintf(buffer, "P3 %ld %ld \n%d \n", width, height, 255);
-	fout << buffer;
+	fppm << buffer;
 	// write body
 	for (size_t i = 0; i < size; ++i) {
 		const Color p = img[i] / render_cnt[i];
@@ -85,11 +72,12 @@ void Camera::writePPM(String out_path) const
 				Funcs::gammaCorrection(p.r),
 				Funcs::gammaCorrection(p.g),
 				Funcs::gammaCorrection(p.b));
-		fout << buffer;
+		fppm << buffer;
+		fcp << render_cnt[i] << " ";
 	}
-	fout.close();
+	fppm.close();
+	fcp.close();
 }
-
 
 void Camera::rotate(const ElAg &euler_angles)
 {

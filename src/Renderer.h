@@ -14,7 +14,6 @@ class Camera;
 class Algorithm;
 
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Scene
-// todo move template declaration to setup functions
 class Renderer
 {
 #ifdef __DEV_STAGE__
@@ -26,23 +25,34 @@ public:
 	Camera *camera;
 	Algorithm *algorithm;
 
-	String save_path;
-	String checkpoint_dir;
-	String prev_path;
-	/**
-	 * n_epoch : epochs to render
-	 * prev_epoch : previous rendering times
-	 * verbose_step : steps to update progressbar, if 0 - no progressbar
-	 * checkpoint_dir : directory for storing checkpoint ppm images, if "" - don't save checkpoints
-	 */
-	size_t n_epoch;
-	size_t prev_epoch;
-	size_t verbose_step;
+	// path to save ppm file, will also write checkpoint to `save_path.cp`
+	String save_ppm_path;
+	String save_cp_path;
+	// path to load previously rendered ppm file, will also try to load checkpoint from `prev_path.cp`
+	String prev_ppm_path;
+	String prev_cp_path;
+
+	size_t n_epoch;			// epochs to render
+	size_t save_step;		// save every `save_step` epoch, if 0 - no saving through out rendering
+	size_t verbose_step;	// steps to update progressbar, if 0 - no progressbar
+
+	bool *is_edge;    // if each pixel on the screen is edge of an object
 
 	void checkIfReady();
 
 	// render one time frame
 	void renderFrame();
+
+	void saveProgress(size_t cur_epoch) const;	// save progress without checking
+
+	// ** rendering pipeline **
+	// do the rendering for n_epoch times, callback each epoch
+	void render();
+
+	void renderVerbose();
+
+	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
+	void detectEdges();
 
 public:
 	Renderer(const String &config_path);    // init from json
@@ -60,7 +70,7 @@ public:
 	void startKinetic(size_t n_frame, void (*motion)());
 
 	// save ppm image
-	void save();
+	void save() const;
 };
 
 #endif //PHAROSA_RENDERER_H

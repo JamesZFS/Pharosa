@@ -16,7 +16,7 @@ protected:
 public:
 	const size_t max_depth;
 
-	RayTracing(Scene &scene_, Camera &camera_, size_t max_depth_ = 5);	// by default - depth = 5
+	RayTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
 
 	String info() override;
 };

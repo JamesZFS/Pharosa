@@ -16,7 +16,7 @@ protected:
 public:
 	const Dir light_dir;	// parallel light orientation
 
-	RayCasting(Scene &scene_, Camera &camera_, const Dir &light_dir_ = Dir(-1, -1, -1));
+	RayCasting(Scene &scene_, const Dir &light_dir_ = Dir(-1, -1, -1));
 
 	String info() override;
 };
