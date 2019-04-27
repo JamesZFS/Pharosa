@@ -13,7 +13,8 @@
 ObjectList *Parser::parseMeshes(const String &obj_path, double scale, const TransMat &trans_mat,
 								const Material *material)// load mesh segments from objects file
 {
-
+	printf("parsing meshes from %s", obj_path.data());
+	fflush(stdout);
 	std::ifstream fin;
 	fin.open(obj_path, std::ios::in);
 

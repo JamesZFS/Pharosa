@@ -17,6 +17,7 @@ size_t __print_cnt__ = 0;
 
 int main(int argc, char *argv[])
 {
+	message("initializing...");
 	// init random engine
 	Funcs::generator.seed((unsigned int) time(nullptr));
 

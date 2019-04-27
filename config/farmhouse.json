@@ -1,0 +1,94 @@
+{
+	"save_path": "farmhouse.ppm",
+	"n_epoch": 5,
+	"prev_path": "",
+	"save_step": 1,
+	"verbose_step": 10,
+
+	"algorithm": {
+		"type": "rt",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [0, 0, 280],
+		"rot": [0, 180, 0]
+	},
+
+	"scene": [
+		{
+			"type": "obj",
+			"color": "Brown",
+			"emission": "none",
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/farmhouse 2 - done.obj",
+			"scale": 20,
+			"tra": [0, -50, 0],
+			"rot": [0, 0, 70]
+		},
+		// cornell box walls
+		{
+			"name": "walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -60]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "light bulb",
+			"emission": "splendid",
+			"geo": {
+				"type": "sphere",
+				"radius": 50,
+				"pos": [0, 120, 0]
+			}
+		}
+	]
+}

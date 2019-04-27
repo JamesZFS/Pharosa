@@ -11,8 +11,8 @@ src_name = os.path.basename(src_path)
 src_dir = os.path.dirname(src_path)
 trg_name = src_name.replace('.', ' - done.')
 
-skipset = {'l', 'm', 'o', 's', 'u', '#'}
-ord_pattern = re.compile('(\d+)//\d+')
+skipset = {'vn', 'vt', 'l ', 'mt', 'o ', 's ', 'us', 'g '}
+ord_pattern = re.compile('(\d+)/\d*/\d+')   # v / vt / vn
 
 os.chdir(src_dir)
 
@@ -22,17 +22,22 @@ with open(src_name, 'r') as f:
 new = []
 
 for line in lines:
-    if line[0] in skipset: continue
-    if line.startswith('vn'): continue
+    if line.startswith('#'): continue
+    mark = line[:2]
+    if mark in skipset: continue
 
-    if line[0] == 'v':
+    if mark == 'v ':
         new.append(line.strip())
-    elif line[0] == 'f':
+    elif mark == 'f ':
         mt = ord_pattern.findall(line)
-        assert len(mt) == 3
+        try:
+            assert len(mt) == 3
+        except AssertionError as e:
+            print(line)
+            raise e
         new.append('f %s %s %s' % (mt[0], mt[1], mt[2]))
     else:
-        raise ValueError(line[0])
+        raise ValueError(mark)
 
 with open(trg_name, 'w') as f:
     f.write('\n'.join(new) + '\n')

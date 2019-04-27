@@ -1,0 +1,96 @@
+{
+	// this is an example of rendering an obj
+	"save_path": "triangles.ppm",
+	"n_epoch": 20,
+	"prev_path": "",
+	"save_step": 3,
+	"verbose_step": 10,
+
+	"algorithm": {
+		"type": "rt",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [0, 0, 280],
+		"rot": [0, 180, 0]
+	},
+
+	"scene": [
+		{
+			"type": "obj",
+			"color": "Yellow",
+			"emission": "none",
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/triangles - done.obj",
+			"scale": 20,
+			"tra": [-30, 30, 0],
+			"rot": [0, 30, 20]
+		},
+		{
+			// walls of the cornell box
+			"name": "walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -60]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			// light source
+			"name": "light bulb",
+			"emission": "splendid",
+			"geo": {
+				"type": "sphere",
+				"radius": 50,
+				"pos": [0, 120, 0]
+			}
+		}
+	]
+}

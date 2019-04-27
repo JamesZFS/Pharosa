@@ -1,7 +1,7 @@
 [
 	{
-// this is a comment
-		type: "sphere",
+		// this is a comment
+		"type": "sphere",
 		"pos": [10, 10, 10],
 		"radius": 2,
 		"color": [1, 0, 0],
@@ -12,11 +12,10 @@
 	{
 		"type": "triangle",
 		"pos": [0, -10, -10],
-		"points":
-		[
+		"points": [
 			[0, 0, 1],
 			[1, 0, 0],
-			[0, 1, 0],
+			[0, 1, 0]
 		],
 		"color": "blue",
 		"emission": "bright",
