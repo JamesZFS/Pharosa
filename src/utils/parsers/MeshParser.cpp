@@ -10,7 +10,7 @@
 #define FAIL { sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark); warn(buffer); fin.close(); exit(1); }
 #define SKIP_LINE { fin.getline(buffer, 200); break; }
 
-ObjectList Parser::parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
+ObjectList *Parser::parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
 								const Material *material)// load mesh segments from objects file
 {
 
@@ -23,7 +23,8 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 		TERMINATE("Error: obj_path \"%s\" cannot be opened, parsing stopped.", obj_path.data());
 	}
 
-	ObjectList meshes;    // result
+	auto *meshes = new ObjectList;    // result
+	Triangle *mesh;
 	char mark;
 	double x, y, z;
 #ifdef __DEV_STAGE__
@@ -42,7 +43,6 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 
 			case 'v':    // vertex (x, y, z)
 				fin >> x >> y >> z;
-
 #ifdef __DEV_STAGE__
 				x_min = min2(x_min, x);
 				x_max = max2(x_max, x);
@@ -53,17 +53,15 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 				z_min = min2(z_min, z);
 				z_max = max2(z_max, z);
 #endif
-
-				v.push_back(trans_mat * Pos(x * scale, y * scale, z * scale));
+				v.emplace_back(x * scale, y * scale, z * scale);    // new point with scaling
 				v.back().report(true);
 				SKIP_LINE
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
-				--a, --b, --c;
-				debug("%ld %ld %ld\n", a, b, c);
-				v.at(a).report(), v.at(b).report(), v.at(c).report(true);
-				meshes.push_back(new Object(new Triangle(v.at(a), v.at(b), v.at(c)), material));
+				mesh = new Triangle(v.at(--a), v.at(--b), v.at(--c));    // new a mesh
+				mesh->applyTransform(trans_mat);                         // transform
+				meshes->push_back(new Object(mesh, material));            // save
 				SKIP_LINE
 
 			default: FAIL
@@ -77,7 +75,6 @@ ObjectList Parser::parseObjFile(const String &obj_path, double scale, const Tran
 	warn("\n");
 #endif
 
-//	return std::move(meshes);
 	return meshes;
 }
 

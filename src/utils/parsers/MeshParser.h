@@ -11,8 +11,8 @@
 
 namespace Parser
 {
-	ObjectList parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
-							const Material *material);    // load mesh segments from objects file
+	ObjectList *parseObjFile(const String &obj_path, double scale, const TransMat &trans_mat,
+							 const Material *material);    // load mesh segments from objects file
 }
 
 #endif //PHAROSA_OBJPARSER_H
