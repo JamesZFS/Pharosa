@@ -18,7 +18,7 @@ Renderer::~Renderer()
 
 void Renderer::getReady()
 {
-	if (prev_ppm_path.length() > 0) {
+	if (prev_ppm_path.length() > 0) {	// load from checkpoint
 		camera->readPPM(prev_ppm_path, prev_cpt_path);
 		printf("loaded previous status from \"%s\"\n", prev_ppm_path.data());
 	}
@@ -35,8 +35,8 @@ void Renderer::checkIfReady()
 	if (is_edge == nullptr) TERMINATE("Error: is_edge is not setup yet.")
 
 	printf("\n----------------------------------------------------------------\n");
-	printf("loaded %ld objects, %ld bounding boxes in total.\n",
-		   scene->getSingletonCount(), scene->getBoundingBoxCount());
+	printf("loaded %ld objects, %ld triangle meshes in total.\n",
+		   scene->getSingletonCount(), scene->getMeshCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());
 	printf("algorithm info: %s", algorithm->info().data());
@@ -54,7 +54,7 @@ void Renderer::renderFrame()
 void Renderer::start()
 {
 	checkIfReady();
-
+	scene->buildKDTree();
 	printf("===== rendering start =====\n");
 
 	double since = omp_get_wtime();

@@ -11,13 +11,10 @@
 #include "../core/Ray.hpp"
 
 
+// abstract class
 struct Geometry
 {
 	Geometry() = default;
-
-	Geometry(const Geometry &geo) = default;  // copy
-
-	Geometry &operator=(const Geometry &geo) = default;    // copy
 
 	virtual ~Geometry() = default;
 
@@ -37,18 +34,6 @@ struct Geometry
 	// todo code below is dirty
 	// determine if a point is on the surface of object
 	virtual bool hasSurfacePoint(const Pos &x) const = 0;
-
-	virtual double xMin();
-
-	virtual double xMax();
-
-	virtual double yMin();
-
-	virtual double yMax();
-
-	virtual double zMin();
-
-	virtual double zMax();
 
 	static Geometry *acquire(const Json &json);	// new a geometry from json
 };

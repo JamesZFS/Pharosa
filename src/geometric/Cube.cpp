@@ -38,14 +38,14 @@ void Cube::applyTransform(TransMat mat)
 	}
 }
 
-// ** core function
+// !! core function
 bool Cube::intersect(const Ray &ray, double &t) const
 {
 	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
 	for (const auto &s : slab) {    // todo acc
 		dn = ray.dir % s[0].n;    // d.n
-		if (fabs(dn) < EPS) { // parallel to some face
-			if (s[0].above(ray.org) == s[1].above(ray.org)) return false; //and outside the cube
+		if (fabs(dn) < EPS && s[0].above(ray.org) == s[1].above(ray.org)) { // parallel to some face
+			return false; //and outside the cube
 		}
 
 		// assert: s[0].n == s[1].n
@@ -62,6 +62,7 @@ bool Cube::intersect(const Ray &ray, double &t) const
 			: false);
 }
 
+// !!
 Dir Cube::normalAt(const Pos &x) const
 {
 	for (const auto &p :slab) {
@@ -71,6 +72,7 @@ Dir Cube::normalAt(const Pos &x) const
 	return {};
 }
 
+// !!
 bool Cube::hasSurfacePoint(const Pos &x) const
 {
 	for (const auto &p :slab) {

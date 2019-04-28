@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -Wall -MMD")
 
 aux_source_directory(. DIR_SRCS)
-aux_source_directory(bounding DIR_SRCS)
 
 message("in 'src/scene/', found sources:")
 foreach(src_file ${DIR_SRCS})

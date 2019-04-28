@@ -3,14 +3,15 @@
 // implement all parsing
 
 #include "defs.h"
-#include "utils/parsers/json.hpp"
 #include <fstream>
-
 #include "scene/Scene.h"
+
 #include "camera/All.h"
 #include "alg/All.h"
 #include "geometric/All.h"
 #include "Renderer.h"
+#include "utils/parsers/json.hpp"
+#include "utils/parsers/MeshParser.h"
 
 #include "parsing.inl"
 #include "alg/Algorithm.h"
@@ -194,7 +195,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		else if (type == "obj" || type == "obj file") {
 
 			auto obj_objects = Parser::parseMeshes(item.at("path"), item.value("scale", 1.0), trans_mat, material);
-			self->objects.insert(self->objects.end(), obj_objects->begin(), obj_objects->end());
+			self->meshes.insert(self->objects.end(), obj_objects->begin(), obj_objects->end());
 
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());

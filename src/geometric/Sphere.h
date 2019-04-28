@@ -23,24 +23,6 @@ struct Sphere : Geometry
 	inline bool hasSurfacePoint(const Pos &x) const override
 	{ return (x - pos).sqr() - rad_2 < EPS; }
 
-	inline double xMin() override
-	{ return pos.x - rad; }
-
-	inline double xMax() override
-	{ return pos.x + rad; }
-
-	inline double yMin() override
-	{ return pos.y - rad; }
-
-	inline double yMax() override
-	{ return pos.y + rad; }
-
-	inline double zMin() override
-	{ return pos.z - rad; }
-
-	inline double zMax() override
-	{ return pos.z + rad; }
-
 	static Sphere *acquire(const Json &json);
 };
 

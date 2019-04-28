@@ -23,49 +23,56 @@ struct Triangle : Geometry
 
 	bool hasSurfacePoint(const Pos &x) const override;
 
-	inline double xMin() override;	// left most
+	inline double xMin() const;	// left most
 
-	inline double xMax() override; // right most
+	inline double xMax() const; // right most
 
-	inline double yMin() override;
+	inline double yMin() const;
 
-	inline double yMax() override;
+	inline double yMax() const;
 
-	inline double zMin() override;
+	inline double zMin() const;
 
-	inline double zMax() override;
+	inline double zMax() const;
+
+	inline Pos center() const;	// get center point
 
 	static Triangle *acquire(const Json &json);
 };
 
-double Triangle::xMin()
+double Triangle::xMin() const
 {
 	return min3(p[0].x, p[1].x, p[2].x);
 }
 
-double Triangle::xMax()
+double Triangle::xMax() const
 {
 	return max3(p[0].x, p[1].x, p[2].x);
 }
 
-double Triangle::yMin()
+double Triangle::yMin() const
 {
 	return min3(p[0].y, p[1].y, p[2].y);
 }
 
-double Triangle::yMax()
+double Triangle::yMax() const
 {
 	return max3(p[0].y, p[1].y, p[2].y);
 }
 
-double Triangle::zMin()
+double Triangle::zMin() const
 {
 	return min3(p[0].z, p[1].z, p[2].z);
 }
 
-double Triangle::zMax()
+double Triangle::zMax() const
 {
 	return max3(p[0].z, p[1].z, p[2].z);
+}
+
+Pos Triangle::center() const
+{
+	return (p[0] + p[1] + p[2]) / 3;
 }
 
 #endif //PHAROSA_TRIANGLE_H

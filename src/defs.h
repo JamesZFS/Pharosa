@@ -70,6 +70,7 @@ inline T max3(const T &a, const T &b, const T &c)
 // global params for debugging
 extern size_t __counter__;
 extern size_t __print_cnt__;
+extern size_t __max_depth__;
 
 #else	// when release
 #undef assert
