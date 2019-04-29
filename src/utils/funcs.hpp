@@ -81,4 +81,6 @@ namespace Funcs
 	}
 }
 
+#define WITH_PROB(p) (Funcs::randf() < (p))
+
 #endif //PHAROSA_FUNCS_HPP

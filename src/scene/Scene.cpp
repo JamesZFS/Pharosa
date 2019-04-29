@@ -59,6 +59,7 @@ void Scene::buildKDTree()
 	message("building KD-Tree...");
 	kd_root = new KDNode(meshes);
 	message("KD-Tree built. max depth = " << __max_depth__);
+	debug("  match counter   = %ld\n", __counter__);
 }
 
 size_t Scene::getSingletonCount()

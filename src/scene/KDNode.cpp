@@ -67,7 +67,7 @@ bool KDNode::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x,
 	return l_hit || r_hit;
 }
 
-#define MATCH_THRESHOLD 0.8
+#define MATCH_THRESHOLD 0.5
 
 // !
 void KDNode::build(const ObjectList &triangles, size_t depth)

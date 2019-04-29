@@ -1,6 +1,6 @@
 {
 	"save_path": "bunny - 0.8.ppm",
-	"n_epoch": 100,
+	"n_epoch": 50,
 	"save_step": 0,
 	"verbose_step": 0,
 

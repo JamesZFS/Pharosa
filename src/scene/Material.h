@@ -6,6 +6,7 @@
 #define PHAROSA_MATERIAL_H
 
 
+#include "../defs.h"
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
 
@@ -25,7 +26,7 @@ struct Material
 
 	Material();	// dark white DIFF
 
-	void BRDF(const Ray &in, const Dir &normal, Ray &out);
+	void BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
 
 	static Material *acquire(const Json &json);
 };

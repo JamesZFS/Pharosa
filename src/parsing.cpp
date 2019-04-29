@@ -15,6 +15,7 @@
 
 #include "parsing.inl"
 #include "alg/Algorithm.h"
+#include "scene/Material.h"
 
 
 Renderer::Renderer(const String &config_path)

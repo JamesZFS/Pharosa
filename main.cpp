@@ -37,7 +37,6 @@ int main(int argc, char *argv[])
 
 #ifdef __DEV_STAGE__
 	debug("\n -- debug info -- \n");
-	debug("  counter   = %ld\n", __counter__);
 	debug("  print_cnt = %ld\n", __print_cnt__);
 	debug("  max_depth = %ld\n", __max_depth__);
 #endif
