@@ -5,10 +5,16 @@
 #include "KDNode.h"
 #include "../geometric/Triangle.h"
 
+KDNode::KDNode() : box(nullptr), tris(nullptr), l_child(nullptr), r_child(nullptr)
+{
+
+}
+
 // !
-KDNode::KDNode(const ObjectList &triangles)
+KDNode::KDNode(const ObjectList &triangles) : KDNode()
 {
 	build(triangles, 0);    // build from root
+	box->report();
 }
 
 KDNode::~KDNode()
@@ -20,14 +26,24 @@ KDNode::~KDNode()
 }
 
 // !!
-bool KDNode::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal) const
+bool KDNode::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal, size_t depth) const
 {
 	// check bounding box first:
+	if (tris == nullptr) {
+		Buffer buffer;
+		sprintf(buffer, "tris = null at depth = %ld\n", depth);
+		throw String(buffer);
+	}
+	if (box == nullptr) {
+		Buffer buffer;
+		sprintf(buffer, "box =  null at depth = %ld\n", depth);
+		throw String(buffer);
+	}
 	if (tris->empty() || !box->intersect(ray)) return false;
 
 	// leaf case:
-	if (l_child == nullptr) {
-		assert(r_child == nullptr);
+	if (l_child == nullptr || r_child == nullptr) {
+		assert(l_child == nullptr && r_child == nullptr);
 		bool intersected = false;
 		double ti;
 		// enumerate each tri:
@@ -46,8 +62,12 @@ bool KDNode::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x,
 	}
 
 	// normal case, recurse:
-	return l_child->intersectAny(ray, t, hit, x, normal) || r_child->intersectAny(ray, t, hit, x, normal);
+	bool l_hit = l_child->intersectAny(ray, t, hit, x, normal, depth + 1);
+	bool r_hit = r_child->intersectAny(ray, t, hit, x, normal, depth + 1);
+	return l_hit || r_hit;
 }
+
+#define MATCH_THRESHOLD 0.8
 
 // !
 void KDNode::build(const ObjectList &triangles, size_t depth)
@@ -87,8 +107,8 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 	}
 
 	// ???
-	if (l_tris->empty() && !r_tris->empty()) *l_tris = *r_tris;
-	if (r_tris->empty() && !l_tris->empty()) *r_tris = *l_tris;
+//	if (l_tris->empty() && !r_tris->empty()) *l_tris = *r_tris;
+//	if (r_tris->empty() && !l_tris->empty()) *r_tris = *l_tris;
 
 	// stop subdividing condition:
 	float n_match = 0;
@@ -102,7 +122,7 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 		}
 	}
 
-	if (n_match / l_tris->size() < 0.5 && n_match / r_tris->size() < 0.5) {
+	if (n_match / l_tris->size() < MATCH_THRESHOLD && n_match / r_tris->size() < MATCH_THRESHOLD) {
 		l_child = new KDNode;
 		l_child->build(*l_tris, depth + 1);
 		r_child = new KDNode;
@@ -110,3 +130,5 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 	}
 	// else: stop dividing
 }
+
+#undef MATCH_THRESHOLD

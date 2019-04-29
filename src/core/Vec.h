@@ -187,6 +187,12 @@ struct Dir : Pos        // direction, unitized vector
 	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
 		assert(x != 0 || y != 0 || z != 0);
+//		if (x == 0 && y == 0 && z == 0) {
+//			z = 1;
+//			x = 1;
+//			y = 1;
+//			__print_cnt__++;
+//		}
 		this->unitize();
 	}
 
@@ -207,7 +213,13 @@ struct Dir : Pos        // direction, unitized vector
 		return *this;
 	}
 
-	void getOrthogonalBasis(Dir &ex, Dir &ey) const;   // get orthogonal axis (ex, ey) from ez
+	inline void getOrthogonalBasis(Dir &ex, Dir &ey) const   // get orthogonal axis (ex, ey) from ez
+	{
+		ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
+		ey = *this ^ ex;
+		ex.unitize();
+		ey.unitize();
+	}
 
 	// get euler angles according to vector, assuming original dir of this is (0, 0, 1)
 	inline ElAg getEulerAngles() const

@@ -1,0 +1,102 @@
+{
+	"save_path": "bunny - 0.8.ppm",
+	"n_epoch": 100,
+	"save_step": 0,
+	"verbose_step": 0,
+
+	"algorithm": {
+		"type": "rt",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [-20, -40, 200],
+		"rot": [0, 185, 5]
+	},
+
+	"scene": [
+		{
+			"name": "bunny",
+			"type": "obj",
+			"color": [0.8, 0.8, 0.8],
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/bunny.fine.obj",
+			"scale": 250,
+			"tra": [0, -70, -20],
+			"rot": [0, 0, 50]
+		},
+		{
+			"reft": "refr",
+			"geo": {
+				"type": "sphere",
+				"radius": 14,
+				"pos": [-12, -10, 0]
+			}
+		},
+		{
+			"name": "cornell walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -200]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "light source",
+			"emission": "splendid",
+			"geo": {
+				"type": "cube",
+				"pos": [-30, 76, -30],
+				"length": 60,
+				"width": 20,
+				"height": 60
+			}
+		}
+	]
+}

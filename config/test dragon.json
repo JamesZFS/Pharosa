@@ -1,7 +1,95 @@
 {
-	"name": "$name$",
-	"version": "$version$",
-	"dependencies": {
-		$END$
-	}
+	"save_path": "dragon.ppm",
+	"n_epoch": 200,
+	"prev_path": "dragon.ppm",
+	"save_step": 10,
+	"verbose_step": 0,
+
+	"algorithm": {
+		"type": "rt",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [-20, -40, 180],
+		"rot": [0, 185, 5]
+	},
+
+	"scene": [
+		{
+			"name": "dragon",
+			"type": "obj",
+			"color": [0.4, 0.0, 0.02],
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
+			"scale": 30,
+			"tra": [0, -40, 0],
+			"rot": [0, 0, 50]
+		},
+		{
+			"name": "cornell walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -200]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"reft": "spec",
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"reft": "spec",
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "light bulb",
+			"emission": "splendid",
+			"geo": {
+				"type": "sphere",
+				"radius": 70,
+				"pos": [0, 130, -40]
+			}
+		}
+	]
 }

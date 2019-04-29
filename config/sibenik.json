@@ -1,0 +1,41 @@
+{
+	"save_path": "Sibenik.ppm",
+	"n_epoch": 1,
+	"prev_path": "",
+	"save_step": 0,
+	"verbose_step": 10,
+
+	"algorithm": {
+		"type": "rc",
+		"light_dir": [-1, -1, -2],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"pos": [-500, 0, 800],
+
+		"rot": [-90, -120, 0]
+	},
+
+	"scene": [
+		{
+			"type": "obj",
+			"color": [0.92, 0.95, 0.9],
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/sibenik - done.obj",
+			"scale": 100,
+			"rot": [5, 90, -2]
+		},
+		{
+			"name": "light source",
+			"emission": "splendid",
+			"geo": {
+				"type": "sphere",
+				"radius": 50,
+				"pos": [200, 0, 100]
+			}
+		}
+	]
+}

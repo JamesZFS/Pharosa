@@ -16,6 +16,7 @@ struct Geometry
 {
 	Geometry() = default;
 
+
 	virtual ~Geometry() = default;
 
 	// interfaces:
@@ -35,7 +36,7 @@ struct Geometry
 	// determine if a point is on the surface of object
 	virtual bool hasSurfacePoint(const Pos &x) const = 0;
 
-	static Geometry *acquire(const Json &json);	// new a geometry from json
+	static Geometry *acquire(const Json &json);    // new a geometry from json
 };
 
 #endif //PHAROSA_GEOMETRY_H

@@ -1,12 +1,12 @@
 {
 	"save_path": "farmhouse.ppm",
-	"n_epoch": 20,
-	"prev_path": "farmhouse.ppm",
-	"save_step": 3,
-	"verbose_step": 10,
+	"n_epoch": 1,
+	"prev_path": "",
+	"save_step": 0,
+	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "rt",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -14,24 +14,23 @@
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
-		"pos": [0, -40, 180],
-		"rot": [0, 185, 0]
+		"pos": [0, 0, 200],
+		"rot": [0, 170, 0]
 	},
 
 	"scene": [
 		{
 			"type": "obj",
 			"color": "Brown",
-			"emission": "none",
+			"emission": [0.1, 0.1, 0.1],
 			"reft": "diff",
 			"path": "/Users/james/Test/CG/Pharosa/res/farmhouse 2 - done.obj",
-			"scale": 10,
+			"scale": 60,
 			"tra": [0, -60, 0],
-			"rot": [0, 0, 50]
+			"rot": [0, 0, 10]
 		},
-		// cornell box walls
 		{
-			"name": "walls",
+			"name": "cornell walls",
 			"type": "group",
 			"objects": [
 				{

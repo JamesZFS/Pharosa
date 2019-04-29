@@ -21,13 +21,13 @@ private:
 	void build(const ObjectList &triangles, size_t depth);
 
 public:
-	KDNode() = default;    // empty node
+	KDNode();    // empty node
 
 	KDNode(const ObjectList &triangles);    // build KD-node
 
 	~KDNode();
 
-	bool intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal) const;
+	bool intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal, size_t depth) const;
 };
 
 // typedef List<Object *> ObjectList;

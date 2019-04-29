@@ -24,7 +24,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	if (!scene.intersectAny(ray, hit, x, normal)) return Color::BLACK; // if miss, return black
 
 	const Object &obj = *hit;    // the hit object
-	Dir nl = normal % ray.dir < 0 ? normal : normal * -1;    // regularized normal, against in direction
+	Dir nl = normal % ray.dir < 0 ? normal : -normal;    // regularized normal, against in direction
 	Color color = obj.mtr->color;    // color to render
 	double p = color.max();    // max color component as refl_t
 
@@ -47,17 +47,17 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 			ez.getOrthogonalBasis(ex, ey);
 
 			Dir d = ex * cos(r1) * r2s + ey * sin(r1) * r2s + ez * sqrt(1 - r2);
-			return obj.mtr->emi + color.mul(radiance(Ray(x, d), depth));
+			return obj.mtr->emi + color.mul(radiance(Ray(x + nl * EPS, d), depth));
 		}
 
 			// Ideal mirror reflection, todo use I = ks ( V . R )^n model
 		case Material::SPEC: {
-			return obj.mtr->emi + color.mul(radiance(Ray(x, ray.dir - nl * (nl % ray.dir * 2)), depth));
+			return obj.mtr->emi + color.mul(radiance(Ray(x + nl * EPS, ray.dir - nl * (nl % ray.dir * 2)), depth));
 		}
 
-			// Ideal dielectric refraction
+			// Ideal dielectric refraction, normal will be used instead of nl
 		case Material::REFR: {
-			Ray reflRay(x, ray.dir - normal * 2 * (normal % ray.dir));
+			Ray reflRay(x + nl * EPS, ray.dir - normal * 2 * (normal % ray.dir));
 			bool into = (normal % nl) > 0;                // Ray from outside going in?
 			double nc = 1, nt = 1.5, nnt = into ? nc / nt : nt / nc;
 			double ddn = ray.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
@@ -67,7 +67,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 			}
 
 			Dir &&d = ray.dir * nnt - nl * (ddn * nnt + sqrt(cos2t));
-			Ray r_out(x, d);
+			Ray r_out(x - nl * EPS, d);
 			double a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_out.dir % normal);
 			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
 			double Tr = 1 - Re, P = .25 + .5 * Re, RP = Re / P;

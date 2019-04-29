@@ -8,7 +8,7 @@ import cv2
 from jsmin import jsmin
 
 if len(sys.argv) < 2:
-    print('用法：python renderer_helper.py <config_json_path>')
+    print('usage: python renderer_helper.py <config_json_path>')
     exit(1)
 
 EXE_PATH = '/Users/james/Test/CG/Pharosa/cmake-build-debug/Pharosa'

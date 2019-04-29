@@ -40,7 +40,8 @@ bool Scene::intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal
 	if (hit) normal = hit->geo->normalAt(x);
 	// for KD-Tree
 	assert(kd_root != nullptr);
-	return hit || kd_root->intersectAny(ray, t, hit, x, normal);
+	kd_root->intersectAny(ray, t, hit, x, normal, 0);
+	return hit;
 }
 
 const Object *Scene::hitOf(const Ray &ray) const    // return hit without normal and x
@@ -57,7 +58,7 @@ void Scene::buildKDTree()
 	delete kd_root;
 	message("building KD-Tree...");
 	kd_root = new KDNode(meshes);
-	message("KD-Tree built.");
+	message("KD-Tree built. max depth = " << __max_depth__);
 }
 
 size_t Scene::getSingletonCount()

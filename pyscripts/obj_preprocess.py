@@ -3,7 +3,7 @@ import os
 import re
 
 if len(sys.argv) < 2:
-    print('用法：python obj_preprocess.py <src_obj_path>')
+    print('usage: python obj_preprocess.py <src_obj_path>')
     exit(1)
 
 src_path = sys.argv[1]

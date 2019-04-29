@@ -37,11 +37,3 @@ Pos &Pos::rotate(const ElAg &ea)
 	rotateAlongZ(ea.alpha);
 	return *this;
 }
-
-void Dir::getOrthogonalBasis(Dir &ex, Dir &ey) const
-{
-	ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
-	ey = *this ^ ex;
-	ex.unitize();
-	ey.unitize();
-}
