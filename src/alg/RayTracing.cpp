@@ -8,7 +8,6 @@
 RayTracing::RayTracing(Scene &scene_, size_t max_depth_) :
 		Algorithm(scene_), max_depth(max_depth_)
 {
-
 }
 
 Color RayTracing::radiance(const Ray &ray, size_t depth) const
@@ -35,13 +34,14 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	List<double> w_outs;    // weight of each out ray
 
 	// compute multiple out rays:
-	obj.mtr->BRDF(r_in, normal, depth, r_outs, w_outs);
+	obj.mtr->BRDF(r_in, normal, ++depth, r_outs, w_outs);
 
 	// weighted sum up:
 	Color receiving = {0, 0, 0};
 	for (size_t i = 0; i < r_outs.size(); ++i) {
-		receiving += radiance(r_outs.at(i), depth + 1) * w_outs.at(i);        // ** recurse
+		receiving += radiance(r_outs[i], depth) * w_outs[i];        // ** recurse
 	}
+	r_outs.clear(); w_outs.clear();
 	return obj.mtr->emi + color.mul(receiving);
 }
 

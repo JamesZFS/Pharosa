@@ -60,7 +60,6 @@ inline T max3(const T &a, const T &b, const T &c)
 
 
 // ****************** compile options ******************
-#define __USE_OMP__
 #define __DEV_STAGE__
 
 #ifdef __DEV_STAGE__

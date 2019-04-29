@@ -13,18 +13,18 @@
 // physical mtr of an object
 struct Material
 {
-	enum ReflType
-	{
-		DIFF, SPEC, REFR, NONE
-	};
-
 	Color color;
 	Emission emi;
-	ReflType reft;    // diffusive, reflective, refractive, todo we will implement BRDF here later
+
+	// diffusive, reflective, refractive ratio
+	double diff;
+	double spec;
+	double refr;
+	double n_refr;	// refraction ratio
 
 	// todo texture
 
-	Material();	// dark white DIFF
+	Material();	// dark white pure diffusive
 
 	void BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
 

@@ -172,10 +172,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
 			for (const Json &object: group) {	// parse each object in the group
 				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
-					sub_material = new Material;//::acquire(object);	// new a customized mtr
-					sub_material->color = object.has("color") ? Color(object["color"]) : material->color;
-					sub_material->emi = object.has("emission") ? Emission(object["emission"]) : material->emi;
-					sub_material->reft = object.has("reft") ? Map::str_to_reft[object["reft"]] : material->reft;
+					sub_material = Material::acquire(object);	// new a customized mtr
 					// todo texture
 					self->materials.push_back(sub_material);
 				}
@@ -208,20 +205,12 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 Material *Material::acquire(const Json &json)
 {
 	auto self = new Material;
-	try {
-		self->color = Color(json.at("color"));
-	}
-	catch (Json::out_of_range &) {}
-	try {
-		self->emi = Emission(json.at("emission"));
-	}
-	catch (Json::out_of_range &) {}
-	try {
-		self->reft = Map::str_to_reft.at(json.value("reft", "DIFF"));
-	}
-	catch (std::out_of_range &) {
-		TERMINATE("Error, got invalid mtr type \"%s\".", json["mtr"].get<String>().data());
-	}
+	if (json.has("color")) self->color = Color(json["color"]);
+	if (json.has("emission")) self->emi = Emission(json["emission"]);
+	if (json.has("diff")) self->diff = json["diff"];
+	if (json.has("spec")) self->spec = json["spec"];
+	if (json.has("refr")) self->refr = json["refr"];
+	if (json.has("n_refr")) self->refr = json["n_refr"];
 	return self;
 }
 

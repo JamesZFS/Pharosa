@@ -1,8 +1,8 @@
 {
-	"save_path": "bunny - BRDF 2.ppm",
+	"save_path": "bunny ultimate",
 	"n_epoch": 10,
 	"save_step": 0,
-	"prev_path": "bunny - BRDF 2.ppm",
+	"prev_path": "bunny ultimate",
 	"verbose_step": 0,
 
 	"algorithm": {
@@ -23,14 +23,18 @@
 			"name": "bunny",
 			"type": "obj",
 			"color": [0.8, 0.8, 0.8],
-			"reft": "diff",
+			"diff": 0.9,
+			"spec": 0.1,
 			"path": "/Users/james/Test/CG/Pharosa/res/bunny.fine.obj",
 			"scale": 250,
 			"tra": [0, -70, -20],
 			"rot": [0, 0, 50]
 		},
 		{
-			"reft": "refr",
+			"diff": 0,
+			"spec": 0.1,
+			"refr": 0.9,
+			"n_refr": 1.3,
 			"geo": {
 				"type": "sphere",
 				"radius": 14,
@@ -44,6 +48,8 @@
 				{
 					"name": "back wall",
 					"color": "WHITE",
+					"diff": 0.8,
+					"spec": 0.2,
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],

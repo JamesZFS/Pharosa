@@ -6,6 +6,7 @@
 #define PHAROSA_RENDERER_H
 
 #include "defs.h"
+#define __USE_OMP__
 
 class Scene;
 
