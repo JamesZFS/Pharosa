@@ -30,9 +30,9 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 		else return obj.mtr->emi; // R.R. the darker the obj is, the more likely to stop radiating
 	}
 
-	Ray r_in(x, ray.dir);	// move the ray to start from intersection point
+	Ray r_in(x, ray.dir);    // move the ray to start from intersection point
 	List<Ray> r_outs;
-	List<double> w_outs;	// weight of each out ray
+	List<double> w_outs;    // weight of each out ray
 
 	// compute multiple out rays:
 	obj.mtr->BRDF(r_in, normal, depth, r_outs, w_outs);
@@ -40,7 +40,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	// weighted sum up:
 	Color receiving = {0, 0, 0};
 	for (size_t i = 0; i < r_outs.size(); ++i) {
-		receiving += radiance(r_outs[i], depth + 1) * w_outs.at(i);		// ** recurse
+		receiving += radiance(r_outs.at(i), depth + 1) * w_outs.at(i);        // ** recurse
 	}
 	return obj.mtr->emi + color.mul(receiving);
 }

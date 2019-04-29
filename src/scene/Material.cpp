@@ -42,31 +42,30 @@ void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_out
 
 			// Ideal dielectric refraction, normal will be used instead of nl
 		case Material::REFR: {
-			Ray r_R(r_in.org + nl * EPS, r_in.dir - normal * 2 * (normal % r_in.dir));    // reflection
+			Ray r_R(r_in.org + nl * EPS, r_in.dir - nl * (nl % r_in.dir * 2));    // reflection
 			bool into = (normal % nl) > 0;                // Ray from outside going r_in?
 			double nc = 1, nt = 1.5, nnt = into ? nc / nt : nt / nc;
 			double ddn = r_in.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
 			if (cos2t < 0) {    // Total internal reflection
-				r_outs.push_back(r_R);    // only reflection term
+				r_outs.push_back(r_R);
 				w_outs.push_back(1.0);
 				return;
 			}
-
-			Ray r_T = Ray(r_in.org - nl * EPS, r_in.org * nnt - nl * (ddn * nnt + sqrt(cos2t))); // refraction
+			Ray r_T(r_in.org - nl * EPS, r_in.dir * nnt - nl * (ddn * nnt + sqrt(cos2t)));
 			double a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % normal);
 			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
-			double Tr = 1 - Re, P = .25 + .5 * Re;
-			double RP = Re / P, TP = Tr / (1 - P);
-			(depth > 4)
-			? WITH_PROB(P)   // Russian roulette
-			  ? r_outs.push_back(r_R), w_outs.push_back(RP)
-			  : r_outs.push_back(r_T), w_outs.push_back(TP)
+			double Tr = 1 - Re, P = .25 + .5 * Re, RP = Re / P;
+			double TP = Tr / (1 - P);
+			(depth > 2)
+			? (WITH_PROB(P)   // Russian roulette
+			   ? r_outs.push_back(r_R), w_outs.push_back(RP)
+			   : r_outs.push_back(r_T), w_outs.push_back(TP))
 			: r_outs.push_back(r_R), w_outs.push_back(Re), r_outs.push_back(r_T), w_outs.push_back(Tr);
 			return;
 		}
 
-		default: {	// exception
+		default: {    // exception
 			TERMINATE("Warning: got invalid reft value \"%d\", rendering as black.\n", reft);
 		}
 	}
