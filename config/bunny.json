@@ -1,7 +1,8 @@
 {
-	"save_path": "bunny - 0.8.ppm",
-	"n_epoch": 50,
+	"save_path": "bunny - BRDF.ppm",
+	"n_epoch": 20,
 	"save_step": 0,
+	"#prev_path": "bunny - BRDF.ppm",
 	"verbose_step": 0,
 
 	"algorithm": {

@@ -58,7 +58,7 @@ void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_out
 			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
 			double Tr = 1 - Re, P = .25 + .5 * Re;
 			double RP = Re / P, TP = Tr / (1 - P);
-			(depth > 2)
+			(depth > 4)
 			? WITH_PROB(P)   // Russian roulette
 			  ? r_outs.push_back(r_R), w_outs.push_back(RP)
 			  : r_outs.push_back(r_T), w_outs.push_back(TP)

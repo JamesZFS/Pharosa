@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="87" />
-    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="152" />
-    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="194" />
+    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="88" />
+    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="153" />
+    <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="195" />
     <bookmark url="file://$PROJECT_DIR$/src/Renderer.cpp" line="68" />
     <bookmark url="file://$PROJECT_DIR$/src/Renderer.cpp" line="195" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/BoundingBox.cpp" line="35" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="85" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="108" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="55" />
     <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="41" />
     <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="39" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="74" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="16" />
     <bookmark url="file://$PROJECT_DIR$/main.cpp" line="22" />
     <bookmark url="file://$PROJECT_DIR$/src/core/Vec.h" line="188" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" line="21" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/Material.cpp" line="18" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" line="19" />
+    <bookmark url="file://$PROJECT_DIR$/src/scene/Material.cpp" line="19" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" line="42" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="Pharosa" targetName="utils" />
-      <config projectName="Pharosa" targetName="alg" />
       <config projectName="Pharosa" targetName="scene" />
-      <config projectName="Pharosa" targetName="camera" />
-      <config projectName="Pharosa" targetName="geometric" />
       <config projectName="Pharosa" targetName="PharosaLib" />
+      <config projectName="Pharosa" targetName="camera" />
+      <config projectName="Pharosa" targetName="utils" />
       <config projectName="Pharosa" targetName="Pharosa" />
       <config projectName="Pharosa" targetName="core" />
+      <config projectName="Pharosa" targetName="geometric" />
+      <config projectName="Pharosa" targetName="alg" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -38,14 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bunny.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/bunny.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/KDNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/KDNode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Material.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -193,9 +183,9 @@
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="3" />
+          <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -206,18 +196,18 @@
           <entry key="bitset" value="2" />
           <entry key="cmake" value="1" />
           <entry key="cp" value="1" />
-          <entry key="cpp" value="847" />
+          <entry key="cpp" value="849" />
           <entry key="cstdio" value="1" />
           <entry key="d" value="5" />
           <entry key="fstream" value="2" />
           <entry key="gitignore" value="6" />
-          <entry key="h" value="981" />
-          <entry key="hpp" value="135" />
+          <entry key="h" value="983" />
+          <entry key="hpp" value="137" />
           <entry key="inl" value="24" />
           <entry key="iostream" value="1" />
           <entry key="istream" value="5" />
           <entry key="josn" value="1" />
-          <entry key="json" value="57" />
+          <entry key="json" value="58" />
           <entry key="obj" value="7" />
           <entry key="ppm" value="151" />
           <entry key="py" value="32" />
@@ -232,9 +222,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="58" />
           <entry key="Image" value="151" />
-          <entry key="JSON" value="55" />
+          <entry key="JSON" value="56" />
           <entry key="Makefile" value="23" />
-          <entry key="ObjectiveC" value="2073" />
+          <entry key="ObjectiveC" value="2079" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="Python" value="28" />
           <entry key="Scratch" value="4" />
@@ -244,14 +234,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="305" />
-          <entry key="cpp" value="61070" />
+          <entry key="cpp" value="62140" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="36" />
-          <entry key="h" value="22832" />
-          <entry key="hpp" value="4485" />
+          <entry key="h" value="22889" />
+          <entry key="hpp" value="4561" />
           <entry key="inl" value="1132" />
           <entry key="istream" value="1" />
-          <entry key="json" value="5338" />
+          <entry key="json" value="5378" />
           <entry key="mm" value="519" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -265,9 +255,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
           <entry key="Doxygen file" value="25" />
-          <entry key="JSON" value="5306" />
+          <entry key="JSON" value="5346" />
           <entry key="Makefile" value="305" />
-          <entry key="ObjectiveC" value="91948" />
+          <entry key="ObjectiveC" value="93151" />
           <entry key="PLAIN_TEXT" value="307" />
           <entry key="Python" value="2864" />
           <entry key="Scratch" value="457" />
@@ -281,15 +271,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
@@ -301,8 +282,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state relative-caret-position="364">
+              <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/bunny.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -310,8 +309,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+            <state relative-caret-position="348">
+              <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
               <folding>
                 <element signature="e#40#63#0" expanded="true" />
               </folding>
@@ -319,11 +318,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+            <state relative-caret-position="306">
+              <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+              <folding>
+                <element signature="e#41#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="657">
+              <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -332,19 +343,16 @@
         <entry file="file://$PROJECT_DIR$/src/defs.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+              <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-              <folding>
-                <element signature="e#41#62#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -362,9 +370,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saveProgress</find>
-      <find>cp_</find>
-      <find>.cp</find>
       <find>PIL</find>
       <find>Image</find>
       <find>show</find>
@@ -392,6 +397,9 @@
       <find>ray</find>
       <find>color.mul(</find>
       <find>operator</find>
+      <find>d</find>
+      <find>r_outs</find>
+      <find>randf</find>
     </findStrings>
     <replaceStrings>
       <replace>Array2D&lt;T, 3, 3&gt;</replace>
@@ -432,7 +440,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/camera/Camera.cpp" />
         <option value="$PROJECT_DIR$/src/camera/Camera.h" />
         <option value="$PROJECT_DIR$/src/Renderer.h" />
@@ -458,7 +465,6 @@
         <option value="$PROJECT_DIR$/src/geometric/Cube.cpp" />
         <option value="$PROJECT_DIR$/src/scene/BoundingBox.h" />
         <option value="$PROJECT_DIR$/src/scene/BoundingBox.cpp" />
-        <option value="$PROJECT_DIR$/src/parsing.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Scene.h" />
         <option value="$PROJECT_DIR$/src/test.cpp" />
         <option value="$PROJECT_DIR$/config/example/one.json" />
@@ -477,10 +483,12 @@
         <option value="$PROJECT_DIR$/src/Renderer.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Scene.cpp" />
         <option value="$PROJECT_DIR$/src/scene/KDNode.cpp" />
-        <option value="$PROJECT_DIR$/config/bunny.json" />
         <option value="$PROJECT_DIR$/src/scene/Object.h" />
         <option value="$PROJECT_DIR$/src/core/Vec.h" />
         <option value="$PROJECT_DIR$/src/scene/Material.h" />
+        <option value="$PROJECT_DIR$/src/parsing.cpp" />
+        <option value="$PROJECT_DIR$/src/utils/funcs.hpp" />
+        <option value="$PROJECT_DIR$/config/bunny.json" />
         <option value="$PROJECT_DIR$/src/alg/RayTracing.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Material.cpp" />
       </list>
@@ -1127,6 +1135,7 @@
       <workItem from="1556422558216" duration="18909000" />
       <workItem from="1556448283620" duration="174000" />
       <workItem from="1556505385303" duration="11268000" />
+      <workItem from="1556529335891" duration="2722000" />
     </task>
     <task id="LOCAL-00001" summary="[hotfix]">
       <created>1555925747860</created>
@@ -1139,7 +1148,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="420607000" />
+    <option name="totallyTimeSpent" value="423329000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1152,13 +1161,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.23962805" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.24320458" />
       <window_info id="Structure" order="1" sideWeight="0.46632123" side_tool="true" weight="0.22818312" />
       <window_info id="Favorites" order="2" sideWeight="0.50401604" side_tool="true" weight="0.13876967" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32771084" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.30240965" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.30240965" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928468" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1253,8 +1263,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/geometric/OrthoCube.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/geometric/OrthoCube.h" />
     <entry file="file://$PROJECT_DIR$/src/scene/bounding/BoundingCube.cpp" />
     <entry file="file://$PROJECT_DIR$/src/geometric/Geometry.cpp" />
     <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
@@ -1296,9 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
           <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="e#41#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1428,17 +1433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
-          <folding>
-            <element signature="e#0#2#0" />
-            <element signature="e#63#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/Triangle.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -1464,9 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#92#112#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1481,13 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1511,27 +1495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/bunny.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="25" column="58" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -1543,16 +1506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <element signature="e#91#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1563,24 +1516,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/defs.h">
+    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="122">
+          <caret line="226" selection-start-line="226" selection-end-line="226" />
+          <folding>
+            <element signature="e#0#2#0" />
+            <element signature="e#63#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/defs.h">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0/include/c++/8.3.0/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="426" column="6" selection-start-line="426" selection-start-column="6" selection-end-line="426" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bunny.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        <state relative-caret-position="348">
+          <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
           <folding>
             <element signature="e#40#63#0" expanded="true" />
           </folding>
@@ -1589,8 +1602,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+        <state relative-caret-position="306">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
           <folding>
             <element signature="e#41#62#0" expanded="true" />
           </folding>

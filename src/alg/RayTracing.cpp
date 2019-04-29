@@ -33,14 +33,14 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	Ray r_in(x, ray.dir);	// move the ray to start from intersection point
 	List<Ray> r_outs;
 	List<double> w_outs;	// weight of each out ray
-	
+
 	// compute multiple out rays:
 	obj.mtr->BRDF(r_in, normal, depth, r_outs, w_outs);
 
 	// weighted sum up:
 	Color receiving = {0, 0, 0};
 	for (size_t i = 0; i < r_outs.size(); ++i) {
-		receiving += radiance(r_outs[i], depth + 1) * w_outs[i];		// ** recurse
+		receiving += radiance(r_outs[i], depth + 1) * w_outs.at(i);		// ** recurse
 	}
 	return obj.mtr->emi + color.mul(receiving);
 }
