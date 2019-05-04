@@ -13,9 +13,6 @@ class BasicCamera : public Camera
 public:
 	const double focus;
 
-	BasicCamera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
-				double pixel_size_ = 0.1, double focus_ = 140.0);
-
 	BasicCamera(const Json &json);
 
 	Ray shootRayAt(double i, double j, double sigma) const override;

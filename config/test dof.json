@@ -1,0 +1,127 @@
+{
+	"save_path": "out/dof/test rt.ppm",
+	"n_epoch": 20,
+
+	"algorithm": {
+		"type": "rt",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+
+	"camera": {
+		"type": "DOF",
+		"width": 1024, "height": 768,
+		"pixel_size": 0.1, "focus": 50.0, "length": 25.0,
+		"pos": [0, 0, 280],
+		"rot": [0, 180, 0]
+	},
+
+	"scene": [
+		{
+			"type": "obj",
+			"color": "Yellow",
+			"emission": "none",
+			"reft": "diff",
+			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
+			"scale": 20,
+			"tra": [-30, 30, 0],
+			"rot": [0, 30, 20]
+		},
+		{
+			"type": "group",
+			"color": [0, 200, 200],
+			"emission": [0, 0, 0],
+			"reft": "DIFF",
+			"objects": "/Users/james/Test/CG/Pharosa/config/example/group geo.json",
+			"scale": 2.0,
+			"tra": [-40, -30, 10],
+			"rot": [0, 30, 10]
+		},
+		{
+			"name": "blue one",
+			"color": [0.1, 0.1, 0.9],
+			"reft": "REFR",
+			"geo": {
+				"type": "cube",
+				"length": 10,
+				"width": 20,
+				"height": 40,
+				"pos": [0, -30, -20]
+			},
+			"rot": [0, 0, 45],
+			"tra": [0, -20, 40]
+		},
+		{
+			"name": "green sphere",
+			"color": "green",
+			"emission": "none",
+			"reft": "REFR",
+			"rot": [0, 45, 0],
+			"geo": {
+				"type": "sphere",
+				"radius": 10.5,
+				"pos": [30, 10, 10]
+			}
+		},
+		{
+			"name": "walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"color": "brown",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -60]
+					}
+				},
+				{
+					"name": "floor",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.8, 0.4, 0.4],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-80, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.4, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [80, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "light bulb",
+			"emission": "splendid",
+			"geo": {
+				"type": "sphere",
+				"radius": 20,
+				"pos": [0, 80, 0]
+			}
+		}
+	]
+}

@@ -5,6 +5,8 @@
 #include "Material.h"
 #include "../utils/funcs.hpp"
 
+using Funcs::randf;
+
 
 Material::Material() : color(Color::WHITE), emi(Emission::NONE), diff(1), spec(0), refr(0), n_refr(1.5)
 {
@@ -14,7 +16,6 @@ Material::Material() : color(Color::WHITE), emi(Emission::NONE), diff(1), spec(0
 // !! notice normal is pointing outside
 void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
 {
-	using Funcs::randf;
 
 	Dir nl = normal % r_in.dir < 0 ? normal : -normal;    // regularized normal, against r_in direction
 
@@ -29,7 +30,7 @@ void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_out
 		double I_n_samp = 1.0 / n_samp;
 		for (int i = 0; i < n_samp; ++i) {
 			double r1 = randf(2 * M_PI), r2 = randf(), r2s = sqrt(r2);
-			Dir &&d = ex * cos(r1) * r2s + ey * sin(r1) * r2s + ez * sqrt(1 - r2);
+			Dir &&d = ex * (cos(r1) * r2s) + ey * (sin(r1) * r2s) + ez * sqrt(1 - r2);
 			r_outs.emplace_back(Ray(r_in.org + nl * EPS, d));
 			w_outs.emplace_back(I_n_samp);
 		}

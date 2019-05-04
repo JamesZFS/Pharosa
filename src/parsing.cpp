@@ -85,9 +85,8 @@ Camera *Camera::acquire(const Json &json)
 	else if (type == "ortho") {
 		return new OrthoCamera(json);
 	}
-	else if (type == "DOF") {
-		//	camera = new DOFCamera(json);
-		return nullptr;
+	else if (type == "dof") {
+		return new DOFCamera(json);
 	}
 	else TERMINATE("Error: got unidentified camera type \"%s\".", type.data());
 }
@@ -106,6 +105,13 @@ BasicCamera::BasicCamera(const Json &json) :
 }
 
 OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
+{
+}
+
+
+DOFCamera::DOFCamera(const Json &json) :
+		Camera(json), length(json.value("length", 20.0)), focus(json.value("focus", 10.0)),
+		beta(-focus / (length - focus)), u_v(length * length / (length - focus))
 {
 }
 

@@ -5,12 +5,6 @@
 #include "OrthoCamera.h"
 #include "../utils/funcs.hpp"
 
-OrthoCamera::OrthoCamera(const Pos &pos_, const ElAg &euler_angles_,
-						 size_t width_, size_t height_, double pixel_size_) :
-		Camera(pos_, euler_angles_, width_, height_, pixel_size_)
-{
-}
-
 Ray OrthoCamera::shootRayAt(double i, double j, double sigma) const
 {
 	using Funcs::randfNormal;

@@ -14,6 +14,7 @@
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
+		"pixel_size": 0.1, "focus": 140.0,
 		"pos": [-20, -20, 380],
 		"rot": [0, 180, 5]
 	},
