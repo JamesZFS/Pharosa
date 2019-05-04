@@ -1,9 +1,9 @@
 {
-	"save_path": "dragon.ppm",
+	"save_path": "out/dragon/dragon 4-30.ppm",
 	"n_epoch": 200,
-	"prev_path": "dragon.ppm",
+	"prev_path": "out/dragon/dragon 4-30.ppm",
 	"save_step": 10,
-	"verbose_step": 0,
+	"verbose_step": 50,
 
 	"algorithm": {
 		"type": "rt",
@@ -14,20 +14,22 @@
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
-		"pos": [-20, -40, 180],
-		"rot": [0, 185, 5]
+		"pos": [-20, -20, 380],
+		"rot": [0, 180, 5]
 	},
 
 	"scene": [
 		{
 			"name": "dragon",
 			"type": "obj",
-			"color": [0.4, 0.0, 0.02],
-			"reft": "diff",
+			"color": [0.3, 0.95, 0.4],
+			"diff": 0.98,
+			"spec": 0.01,
+			"refr": 0.01,
 			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
-			"scale": 30,
-			"tra": [0, -40, 0],
-			"rot": [0, 0, 50]
+			"scale": 40,
+			"tra": [0, -30, 0],
+			"rot": [0, 0, 34]
 		},
 		{
 			"name": "cornell walls",
@@ -45,6 +47,8 @@
 				{
 					"name": "floor",
 					"color": "brown",
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
@@ -63,7 +67,8 @@
 				{
 					"name": "left",
 					"color": [0.8, 0.4, 0.4],
-					"reft": "spec",
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -73,7 +78,8 @@
 				{
 					"name": "right",
 					"color": [0.4, 0.4, 0.8],
-					"reft": "spec",
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -83,12 +89,12 @@
 			]
 		},
 		{
-			"name": "light bulb",
-			"emission": "splendid",
+			"name": "light source",
+			"emission": [12, 11, 10],
 			"geo": {
-				"type": "sphere",
-				"radius": 70,
-				"pos": [0, 130, -40]
+				"type": "cube",
+				"pos": [-40, 78, -60],
+				"length": 80, "width": 20, "height": 80
 			}
 		}
 	]

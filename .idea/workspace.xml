@@ -6,8 +6,6 @@
     <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="192" />
     <bookmark url="file://$PROJECT_DIR$/src/Renderer.cpp" line="68" />
     <bookmark url="file://$PROJECT_DIR$/src/Renderer.cpp" line="195" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="41" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="39" />
     <bookmark url="file://$PROJECT_DIR$/main.cpp" line="22" />
     <bookmark url="file://$PROJECT_DIR$/src/core/Vec.h" line="188" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/RayTracing.cpp" line="18" />
@@ -15,14 +13,14 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="Pharosa" targetName="utils" />
-      <config projectName="Pharosa" targetName="alg" />
       <config projectName="Pharosa" targetName="scene" />
-      <config projectName="Pharosa" targetName="camera" />
-      <config projectName="Pharosa" targetName="geometric" />
       <config projectName="Pharosa" targetName="PharosaLib" />
+      <config projectName="Pharosa" targetName="camera" />
+      <config projectName="Pharosa" targetName="utils" />
       <config projectName="Pharosa" targetName="Pharosa" />
       <config projectName="Pharosa" targetName="core" />
+      <config projectName="Pharosa" targetName="geometric" />
+      <config projectName="Pharosa" targetName="alg" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -32,14 +30,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/bunny.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/bunny.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Renderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayTracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing.inl" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing.inl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/test dragon.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test dragon.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scene/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Material.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -178,18 +171,18 @@
     <session id="612171128">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="20" />
+          <entry key="project.closed" value="22" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -211,7 +204,7 @@
           <entry key="iostream" value="1" />
           <entry key="istream" value="5" />
           <entry key="josn" value="1" />
-          <entry key="json" value="60" />
+          <entry key="json" value="61" />
           <entry key="obj" value="7" />
           <entry key="ppm" value="151" />
           <entry key="py" value="32" />
@@ -226,7 +219,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="58" />
           <entry key="Image" value="151" />
-          <entry key="JSON" value="58" />
+          <entry key="JSON" value="59" />
           <entry key="Makefile" value="23" />
           <entry key="ObjectiveC" value="2093" />
           <entry key="PLAIN_TEXT" value="24" />
@@ -238,14 +231,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="305" />
-          <entry key="cpp" value="63342" />
+          <entry key="cpp" value="63343" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="36" />
           <entry key="h" value="23023" />
           <entry key="hpp" value="4561" />
           <entry key="inl" value="1132" />
           <entry key="istream" value="1" />
-          <entry key="json" value="5514" />
+          <entry key="json" value="5856" />
           <entry key="mm" value="519" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -259,9 +252,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
           <entry key="Doxygen file" value="25" />
-          <entry key="JSON" value="5482" />
+          <entry key="JSON" value="5824" />
           <entry key="Makefile" value="305" />
-          <entry key="ObjectiveC" value="94487" />
+          <entry key="ObjectiveC" value="94488" />
           <entry key="PLAIN_TEXT" value="307" />
           <entry key="Python" value="2864" />
           <entry key="Scratch" value="457" />
@@ -277,7 +270,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1405">
+            <state relative-caret-position="98">
               <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
@@ -304,7 +297,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="461">
               <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
             </state>
           </provider>
@@ -313,8 +306,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state>
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -322,8 +315,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
+            <state relative-caret-position="358">
+              <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
               <folding>
                 <element signature="e#0#2#0" />
                 <element signature="e#63#80#0" expanded="true" />
@@ -335,8 +328,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parsing.inl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="58" column="6" selection-start-line="50" selection-start-column="31" selection-end-line="58" selection-end-column="6" />
+            <state relative-caret-position="334">
+              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -344,17 +337,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state relative-caret-position="110">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/bunny.json">
+        <entry file="file://$PROJECT_DIR$/config/test dragon.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="392">
+              <caret line="28" column="70" lean-forward="true" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -470,7 +463,6 @@
         <option value="$PROJECT_DIR$/src/scene/KDNode.h" />
         <option value="$PROJECT_DIR$/config/dragon.json" />
         <option value="$PROJECT_DIR$/config/package.json" />
-        <option value="$PROJECT_DIR$/config/test dragon.json" />
         <option value="$PROJECT_DIR$/config/triangles.json" />
         <option value="$PROJECT_DIR$/src/geometric/Geometry.h" />
         <option value="$PROJECT_DIR$/src/geometric/Triangle.cpp" />
@@ -490,9 +482,10 @@
         <option value="$PROJECT_DIR$/src/alg/RayTracing.cpp" />
         <option value="$PROJECT_DIR$/src/parsing.inl" />
         <option value="$PROJECT_DIR$/src/scene/Material.h" />
-        <option value="$PROJECT_DIR$/src/scene/Material.cpp" />
         <option value="$PROJECT_DIR$/src/parsing.cpp" />
         <option value="$PROJECT_DIR$/config/bunny.json" />
+        <option value="$PROJECT_DIR$/src/scene/Material.cpp" />
+        <option value="$PROJECT_DIR$/config/test dragon.json" />
       </list>
     </option>
   </component>
@@ -945,7 +938,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Geom&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp&#10;Mesh&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/MeshParser.cpp&#10;two.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/two.ppm&#10;two&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;parsing&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.inl&#10;one&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/one.ppm&#10;is_ed&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/is_edge.ppm&#10;ObjPar&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/ObjParser.cpp&#10;4-27&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test 4-27.ppm&#10;funcs&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/funcs.cpp&#10;tes&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;main.c&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;main&#9;null&#9;null&#10;test&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;testppm&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test json.ppm&#10;gitig&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;renderver&#9;null&#9;null&#10;compute&#9;null&#9;null&#10;renderVer&#9;null&#9;null&#10;hitof&#9;null&#9;null&#10;render&#9;null&#9;null&#10;stage&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/Stage.cpp&#10;boundingcub&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h&#10;bound&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h&#10;mat&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/core/Mat.h&#10;array3x&#9;null&#9;null&#10;cmake&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/CMakeLists.txt&#10;lib&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/lib.h&#10;trans&#9;null&#9;null&#10;tra&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/alg/RayTracing.tcc&#10;elag&#9;null&#9;null&#10;rotate&#9;null&#9;null&#10;replace&#9;null&#9;null&#10;writePP&#9;null&#9;null&#10;writePPM&#9;null&#9;null&#10;readPPM&#9;null&#9;null&#10;rendere&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/Renderer.cpp&#10;cmak&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/CMakeLists.txt&#10;small&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/smallpt.cpp&#10;setupC&#9;null&#9;null&#10;make&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/Makefile&#10;radiance&#9;null&#9;null&#10;inf&#9;null&#9;null&#10;intersect&#9;null&#9;null&#10;Sphere&#9;null&#9;null&#10;makef&#9;FILE&#9;file:///Users/james/Test/CG/JRT/Makefile&#10;lib.h&#9;FILE&#9;file:///Users/james/Test/CG/JRT/src/lib.h&#10;RT&#9;FILE&#9;file:///Users/james/Test/CG/JRT/src/alg/RayTracing.cpp&#10;delete&#9;null&#9;null&#10;write&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value=".gitign&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;Geom&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp&#10;Mesh&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/MeshParser.cpp&#10;two.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/two.ppm&#10;two&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;parsing&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.inl&#10;one&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/one.ppm&#10;is_ed&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/is_edge.ppm&#10;ObjPar&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/ObjParser.cpp&#10;4-27&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test 4-27.ppm&#10;funcs&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/funcs.cpp&#10;tes&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;main.c&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;main&#9;null&#9;null&#10;test&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;testppm&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test json.ppm&#10;gitig&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;renderver&#9;null&#9;null&#10;compute&#9;null&#9;null&#10;renderVer&#9;null&#9;null&#10;hitof&#9;null&#9;null&#10;render&#9;null&#9;null&#10;stage&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/Stage.cpp&#10;boundingcub&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingCube.h&#10;bound&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/scene/bounding/BoundingSphere.h&#10;mat&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/core/Mat.h&#10;array3x&#9;null&#9;null&#10;cmake&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/CMakeLists.txt&#10;lib&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/lib.h&#10;trans&#9;null&#9;null&#10;tra&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/alg/RayTracing.tcc&#10;elag&#9;null&#9;null&#10;rotate&#9;null&#9;null&#10;replace&#9;null&#9;null&#10;writePP&#9;null&#9;null&#10;writePPM&#9;null&#9;null&#10;readPPM&#9;null&#9;null&#10;rendere&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/Renderer.cpp&#10;cmak&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/CMakeLists.txt&#10;small&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/smallpt.cpp&#10;setupC&#9;null&#9;null&#10;make&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/Makefile&#10;radiance&#9;null&#9;null&#10;inf&#9;null&#9;null&#10;intersect&#9;null&#9;null&#10;Sphere&#9;null&#9;null&#10;makef&#9;FILE&#9;file:///Users/james/Test/CG/JRT/Makefile&#10;lib.h&#9;FILE&#9;file:///Users/james/Test/CG/JRT/src/lib.h&#10;RT&#9;FILE&#9;file:///Users/james/Test/CG/JRT/src/alg/RayTracing.cpp&#10;delete&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -983,7 +976,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Pharosa">
-    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/bunny.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
+    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/test dragon.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1082,11 +1075,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Pharosa" />
       <item itemvalue="Makefile.Compare" />
       <item itemvalue="Makefile.Run" />
       <item itemvalue="Makefile.Build" />
       <item itemvalue="Makefile.Clean" />
-      <item itemvalue="Application.Pharosa" />
       <item itemvalue="Makefile.Makefile" />
       <item itemvalue="Python.scratch" />
       <item itemvalue="Python.obj_preprocess" />
@@ -1138,6 +1131,7 @@
       <workItem from="1556448283620" duration="174000" />
       <workItem from="1556505385303" duration="11268000" />
       <workItem from="1556529335891" duration="2722000" />
+      <workItem from="1556556561638" duration="2833000" />
     </task>
     <task id="LOCAL-00001" summary="[hotfix]">
       <created>1555925747860</created>
@@ -1150,7 +1144,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="429658000" />
+    <option name="totallyTimeSpent" value="432758000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1163,14 +1157,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.24320458" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.24678111" />
       <window_info id="Structure" order="1" sideWeight="0.46632123" side_tool="true" weight="0.22818312" />
       <window_info id="Favorites" order="2" sideWeight="0.50401604" side_tool="true" weight="0.13876967" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32771084" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.30240965" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.30240965" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928468" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1341,9 +1334,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/one.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/one.ppm" />
     <entry file="file://$PROJECT_DIR$/src/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -1372,13 +1363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/test dragon.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1494,9 +1478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
           <caret line="54" column="30" lean-forward="true" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding>
-            <element signature="e#41#60#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1534,13 +1515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/defs.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -1555,38 +1529,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parsing.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="58" column="6" selection-start-line="50" selection-start-column="31" selection-end-line="58" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1405">
+        <state relative-caret-position="98">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1597,10 +1543,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/bunny.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
+        <state relative-caret-position="358">
+          <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
           <folding>
             <element signature="e#0#2#0" />
             <element signature="e#63#80#0" expanded="true" />
@@ -1608,10 +1568,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/bunny.json">
+    <entry file="file://$PROJECT_DIR$/src/parsing.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        <state relative-caret-position="334">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/RayTracing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Material.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Material.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test dragon.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="28" column="70" lean-forward="true" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
         </state>
       </provider>
     </entry>

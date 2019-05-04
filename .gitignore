@@ -9,4 +9,5 @@ res/
 out/
 opencv/
 *.ppm
+*.png
 *.cpt

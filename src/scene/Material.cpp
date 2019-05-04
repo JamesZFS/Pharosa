@@ -24,7 +24,7 @@ void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_out
 		const Dir &ez = nl;
 		ez.getOrthogonalBasis(ex, ey);
 
-		int n_samp = max2(1, int(4 / depth));    // todo
+		int n_samp = max2(1, int(2 / depth));    // todo
 //			int n_samp = 1;
 		double I_n_samp = 1.0 / n_samp;
 		for (int i = 0; i < n_samp; ++i) {
