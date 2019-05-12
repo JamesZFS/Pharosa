@@ -14,10 +14,10 @@ Material::Material() : color(Color::WHITE), emi(Emission::NONE), diff(1), spec(0
 }
 
 // !! notice normal is pointing outside
-void Material::BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
+void Material::BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
 {
 
-	Dir nl = normal % r_in.dir < 0 ? normal : -normal;    // regularized normal, against r_in direction
+	Dir nl = normal % r_in.dir < 0 ? Pos(normal) : -normal;    // regularized normal, against r_in direction
 
 	// diffusive reflection, todo use I = kd ( L . N ) model
 	if WITH_PROB(diff) {

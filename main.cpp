@@ -18,10 +18,6 @@ size_t __max_depth__ = 0;
 
 int main(int argc, char *argv[])
 {
-	message("initializing...");
-	// init random engine
-	Funcs::generator.seed((unsigned int) time(nullptr));
-
 	// **************** parse cmd args ****************
 	if (argc < 2) TERMINATE("usage: Pharosa <json_config_path>");
 	const String config_path = argv[1];

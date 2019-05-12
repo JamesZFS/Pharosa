@@ -1,8 +1,9 @@
 {
 	"save_path": "bunny ultimate",
-	"n_epoch": 10,
-	"save_step": 2,
-	"verbose_step": 10,
+	"prev_path": "bunny ultimate",
+	"n_epoch": 50,
+	"save_step": 5,
+	"verbose_step": 0,
 
 	"algorithm": {
 		"type": "pt",

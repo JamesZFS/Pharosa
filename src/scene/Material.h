@@ -26,7 +26,7 @@ struct Material
 
 	Material();	// dark white pure diffusive
 
-	void BRDF(const Ray &r_in, Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
+	void BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
 
 	static Material *acquire(const Json &json);
 };

@@ -34,7 +34,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	List<double> w_outs;    // weight of each out ray
 
 	// compute multiple out rays:
-	obj.mtr->BRDF(r_in, normal, ++depth, r_outs, w_outs);
+	obj.mtr->BSDF(r_in, normal, ++depth, r_outs, w_outs);
 
 	// weighted sum up:
 	Color receiving = {0, 0, 0};
