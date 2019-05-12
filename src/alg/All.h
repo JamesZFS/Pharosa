@@ -7,6 +7,6 @@
 
 #include "Algorithm.h"
 #include "RayCasting.h"
-#include "RayTracing.h"
+#include "PathTracing.h"
 
 #endif //PHAROSA_ALG_ALL_H

@@ -2,8 +2,8 @@
 // Created by James on 2019/4/2.
 //
 
-#ifndef PHAROSA_RAYTRACING_H
-#define PHAROSA_RAYTRACING_H
+#ifndef PHAROSA_PATHTRACING_H
+#define PHAROSA_PATHTRACING_H
 
 #include "Algorithm.h"
 
@@ -21,4 +21,4 @@ public:
 	String info() const override;
 };
 
-#endif //PHAROSA_RAYTRACING_H
+#endif //PHAROSA_PATHTRACING_H

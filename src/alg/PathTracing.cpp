@@ -2,7 +2,7 @@
 // Created by James on 2019/4/2.
 //
 
-#include "RayTracing.h"
+#include "PathTracing.h"
 #include "../scene/Scene.h"
 
 RayTracing::RayTracing(Scene &scene_, size_t max_depth_) :

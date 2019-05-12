@@ -128,7 +128,7 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 			return new RayCasting(scene);    // use default
 		}
 	}
-	else if (type == "ray tracing" || type == "rt") {
+	else if (type == "path tracing" || type == "pt") {
 		try {
 			return new RayTracing(scene, (size_t) json.at("max_depth"));
 		}
