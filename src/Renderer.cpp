@@ -110,7 +110,7 @@ void Renderer::render()
 {
 // without progressbar, fast version
 
-	detectEdges();
+//	detectEdges();
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
@@ -142,7 +142,7 @@ void Renderer::renderVerbose()
 {
 	// with progressbar
 
-	detectEdges();
+//	detectEdges();
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
@@ -193,15 +193,15 @@ void Renderer::detectEdges()
 			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);    // if hit different objs, mark as edge
 		}
 	}
-#ifdef __DEV_STAGE__
-	std::ofstream fout("is_edge.ppm");
-	if (!fout.is_open()) TERMINATE("not open is_edge");
-	fout << "P3 " << camera->width << " " << camera->height << "\n255\n";
-	for (size_t rank = 0; rank < camera->size; ++rank) {
-		fout << (is_edge[rank] ? "0 0 0 " : "255 255 255 ");
-	}
-	fout.close();
-#endif
+//#ifdef __DEV_STAGE__
+//	std::ofstream fout("is_edge.ppm");
+//	if (!fout.is_open()) TERMINATE("not open is_edge");
+//	fout << "P3 " << camera->width << " " << camera->height << "\n255\n";
+//	for (size_t rank = 0; rank < camera->size; ++rank) {
+//		fout << (is_edge[rank] ? "0 0 0 " : "255 255 255 ");
+//	}
+//	fout.close();
+//#endif
 }
 
 #undef SUB_D1

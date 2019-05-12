@@ -100,7 +100,7 @@ Camera::Camera(const Json &json) :
 
 
 BasicCamera::BasicCamera(const Json &json) :
-		Camera(json), focus(json.value("focus", 140.0))
+		Camera(json), length(json.value("length", 140.0))
 {
 }
 
@@ -110,8 +110,8 @@ OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
 
 
 DOFCamera::DOFCamera(const Json &json) :
-		Camera(json), length(json.value("length", 20.0)), focus(json.value("focus", 10.0)),
-		beta(-focus / (length - focus)), u_v(length * length / (length - focus))
+		Camera(json),
+		length(json.value("length", 20.0)), focus(json.value("focus", 10.0)), aperture(json.value("aperture", 1.0))
 {
 }
 

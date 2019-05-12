@@ -11,11 +11,9 @@
 class BasicCamera : public Camera
 {
 public:
-	const double focus;
+	const double length;
 
 	BasicCamera(const Json &json);
-
-	Ray shootRayAt(double i, double j, double sigma) const override;
 
 	Ray shootRayAt(double i, double j) const override;
 };

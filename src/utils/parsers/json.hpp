@@ -11451,7 +11451,7 @@ inline void grisu2_round(char* buf, int len, std::uint64_t dist, std::uint64_t d
     assert(rest <= delta);
     assert(ten_k > 0);
 
-    //               <--------------------------- delta ---->
+    //               <--------------------------- aperture ---->
     //                                  <---- dist --------->
     // --------------[------------------+-------------------]--------------
     //               M-                 w                   M+
@@ -11494,7 +11494,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     // number V = buffer * 10^decimal_exponent in the range [M-, M+]. The diyfp's
     // w, M- and M+ share the same exponent e, which satisfies alpha <= e <= gamma.
     //
-    //               <--------------------------- delta ---->
+    //               <--------------------------- aperture ---->
     //                                  <---- dist --------->
     // --------------[------------------+-------------------]--------------
     //               M-                 w                   M+
@@ -11545,7 +11545,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     //
     // but stop as soon as
     //
-    //      rest * 2^e = (d[n-1]...d[0] * 2^-e + p2) * 2^e <= delta * 2^e
+    //      rest * 2^e = (d[n-1]...d[0] * 2^-e + p2) * 2^e <= aperture * 2^e
 
     int n = k;
     while (n > 0)
@@ -11578,7 +11578,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
         //      p1 + p2 * 2^e = (p1 * 2^-e + p2) * 2^e = rest * 2^e
         //
         // Note:
-        // Since rest and delta share the same exponent e, it suffices to
+        // Since rest and aperture share the same exponent e, it suffices to
         // compare the significands.
         const std::uint64_t rest = (std::uint64_t{p1} << -one.e) + p2;
         if (rest <= delta)
@@ -11645,7 +11645,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     //         = buffer + 10^-m * (d + r * 2^e)
     //         = (buffer * 10^m + d) * 10^-m + 10^-m * r * 2^e
     //
-    // and stop as soon as 10^-m * r * 2^e <= delta * 2^e
+    // and stop as soon as 10^-m * r * 2^e <= aperture * 2^e
 
     assert(p2 > delta);
 
@@ -11680,9 +11680,9 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
 
         // Check if enough digits have been generated.
         //
-        //      10^-m * p2 * 2^e <= delta * 2^e
-        //              p2 * 2^e <= 10^m * delta * 2^e
-        //                    p2 <= 10^m * delta
+        //      10^-m * p2 * 2^e <= aperture * 2^e
+        //              p2 * 2^e <= 10^m * aperture * 2^e
+        //                    p2 <= 10^m * aperture
         delta *= 10;
         dist  *= 10;
         if (p2 <= delta)
@@ -11696,7 +11696,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     decimal_exponent -= m;
 
     // 1 ulp in the decimal representation is now 10^-m.
-    // Since delta and dist are now scaled by 10^m, we need to do the
+    // Since aperture and dist are now scaled by 10^m, we need to do the
     // same with ulp in order to keep the units in sync.
     //
     //      10^m * 10^-m = 1 = 2^-e * 2^e = ten_m * 2^e

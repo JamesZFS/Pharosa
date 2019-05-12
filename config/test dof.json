@@ -1,84 +1,65 @@
 {
-	"save_path": "out/dof/test rt.ppm",
-	"n_epoch": 20,
+	"save_path": "out/dof/dragon rc.ppm",
+	"n_epoch": 10,
+	"save_step": 0,
 
 	"algorithm": {
-		"type": "rt",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
 
 	"camera": {
 		"type": "DOF",
+		"pos": [-20, -20, 380],
+		"rot": [0, 180, 5],
 		"width": 1024, "height": 768,
-		"pixel_size": 0.1, "focus": 50.0, "length": 25.0,
-		"pos": [0, 0, 280],
-		"rot": [0, 180, 0]
+		"pixel_size": 0.1, "focus": 130.0, "length": 140.0, "aperture": 2.5
 	},
 
 	"scene": [
 		{
+			"name": "dragon far",
 			"type": "obj",
-			"color": "Yellow",
-			"emission": "none",
-			"reft": "diff",
-			"path": "/Users/james/Test/CG/Pharosa/res/cube.obj",
-			"scale": 20,
-			"tra": [-30, 30, 0],
-			"rot": [0, 30, 20]
+			"color": [0.3, 0.95, 0.4],
+			"diff": 0.98,
+			"spec": 0.01,
+			"refr": 0.01,
+			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
+			"scale": 40,
+			"tra": [20, -30, 0],
+			"rot": [0, 0, 34]
 		},
 		{
-			"type": "group",
-			"color": [0, 200, 200],
-			"emission": [0, 0, 0],
-			"reft": "DIFF",
-			"objects": "/Users/james/Test/CG/Pharosa/config/example/group geo.json",
-			"scale": 2.0,
-			"tra": [-40, -30, 10],
-			"rot": [0, 30, 10]
+			"name": "dragon close",
+			"type": "obj",
+			"color": [0.90, 0.30, 0.4],
+			"diff": 0.98,
+			"spec": 0.01,
+			"refr": 0.01,
+			"path": "/Users/james/Test/CG/Pharosa/res/sphere.obj",
+			"scale": 40,
+			"tra": [-40, -30, 120],
+			"rot": [0, 0, 158]
 		},
 		{
-			"name": "blue one",
-			"color": [0.1, 0.1, 0.9],
-			"reft": "REFR",
-			"geo": {
-				"type": "cube",
-				"length": 10,
-				"width": 20,
-				"height": 40,
-				"pos": [0, -30, -20]
-			},
-			"rot": [0, 0, 45],
-			"tra": [0, -20, 40]
-		},
-		{
-			"name": "green sphere",
-			"color": "green",
-			"emission": "none",
-			"reft": "REFR",
-			"rot": [0, 45, 0],
-			"geo": {
-				"type": "sphere",
-				"radius": 10.5,
-				"pos": [30, 10, 10]
-			}
-		},
-		{
-			"name": "walls",
+			"name": "cornell walls",
 			"type": "group",
 			"objects": [
 				{
 					"name": "back wall",
-					"color": "brown",
+					"color": "WHITE",
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],
-						"point": [0, 0, -60]
+						"point": [0, 0, -200]
 					}
 				},
 				{
 					"name": "floor",
-					"color": "WHITE",
+					"color": "brown",
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
@@ -97,6 +78,8 @@
 				{
 					"name": "left",
 					"color": [0.8, 0.4, 0.4],
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -106,6 +89,8 @@
 				{
 					"name": "right",
 					"color": [0.4, 0.4, 0.8],
+					"diff": 0.5,
+					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -115,12 +100,12 @@
 			]
 		},
 		{
-			"name": "light bulb",
-			"emission": "splendid",
+			"name": "light source",
+			"emission": [12, 11, 10],
 			"geo": {
-				"type": "sphere",
-				"radius": 20,
-				"pos": [0, 80, 0]
+				"type": "cube",
+				"pos": [-40, 78, -60],
+				"length": 80, "width": 20, "height": 80
 			}
 		}
 	]

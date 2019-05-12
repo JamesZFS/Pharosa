@@ -12,8 +12,6 @@ class OrthoCamera : public Camera
 public:
 	OrthoCamera(const Json &json);
 
-	Ray shootRayAt(double i, double j, double sigma) const override;
-
 	Ray shootRayAt(double i, double j) const override;
 };
 

@@ -74,7 +74,7 @@ public:
 
 	// interface:
 	// shoot ray at (i, j), offset deferring normal dist 0 - sigma
-	virtual Ray shootRayAt(double i, double j, double sigma) const = 0;
+	inline Ray shootRayAt(double i, double j, double sigma) const;
 
 	// shoot precise ray
 	virtual Ray shootRayAt(double i, double j) const = 0;

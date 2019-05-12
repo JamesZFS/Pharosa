@@ -11,13 +11,9 @@
 class DOFCamera : public Camera
 {
 public:
-	const double length, focus;	// u, f
-	const double beta, u_v;		// -y'/y, u+v
+	const double length, focus, aperture;	// length of camera, distance to focus plane, random circle range
 
 	DOFCamera(const Json &json);
-
-	inline Ray shootRayAt(double i, double j, double sigma) const override
-	{ return shootRayAt(i, j); }
 
 	Ray shootRayAt(double i, double j) const override;
 };

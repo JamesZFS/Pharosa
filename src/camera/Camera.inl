@@ -83,5 +83,10 @@ const Dir &Camera::orientation() const
 	return ez;
 }
 
+Ray Camera::shootRayAt(double i, double j, double sigma) const
+{
+	return shootRayAt(i + Funcs::randfNormal(0, sigma), j + Funcs::randfNormal(0, sigma));
+}
+
 #undef rankOf
 #undef checkCoordinate
