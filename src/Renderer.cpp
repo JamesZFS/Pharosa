@@ -18,13 +18,10 @@ Renderer::~Renderer()
 
 void Renderer::getReady()
 {
-	if (prev_ppm_path.length() > 0) {	// load from checkpoint
+	if (prev_ppm_path.length() > 0) {    // load from checkpoint
 		camera->readPPM(prev_ppm_path, prev_cpt_path);
 		printf("loaded previous status from \"%s\"\n", prev_ppm_path.data());
 	}
-	delete is_edge;
-	is_edge = new bool[camera->size];
-	memset(is_edge, false, camera->size * sizeof(bool));
 }
 
 void Renderer::checkIfReady()
@@ -32,7 +29,6 @@ void Renderer::checkIfReady()
 	if (scene == nullptr) TERMINATE("Error: scene is not setup yet.")
 	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.")
 	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.")
-	if (is_edge == nullptr) TERMINATE("Error: is_edge is not setup yet.")
 
 	printf("\n----------------------------------------------------------------\n");
 	printf("loaded %ld objects, %ld triangle meshes in total.\n",
@@ -103,9 +99,6 @@ void Renderer::saveProgress(size_t cur_epoch) const
 	barInfo("\t progress saved to \"%s\"\n", save_ppm_path.data());
 }
 
-#define SUB_D1 0.45
-#define SUB_D2 0.05
-
 void Renderer::render()
 {
 // without progressbar, fast version
@@ -122,15 +115,7 @@ void Renderer::render()
 #endif
 		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
 			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
-				if (is_edge[rank]) {                                    // MSAA - for 4 subpixels
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2)));
-				}
-				else {
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // just rand normal - 0.5
-				}
+				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
 		saveProgress(epoch + 1);
@@ -142,7 +127,6 @@ void Renderer::renderVerbose()
 {
 	// with progressbar
 
-//	detectEdges();
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
@@ -158,51 +142,10 @@ void Renderer::renderVerbose()
 				barInfo("\r %.1f %%", j * 100.0 / camera->height);    // progressbar :)
 			}
 			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
-				if (is_edge[rank]) {                                    // MSAA - for 4 subpixels
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D1, j - SUB_D2)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i - SUB_D2, j + SUB_D1)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D2, j - SUB_D1)));
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i + SUB_D1, j + SUB_D2)));
-				}
-				else {
-					camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // just rand normal - 0.5
-				}
+				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
 		saveProgress(epoch + 1);
 		barInfo("\n");
 	}
 }
-
-void Renderer::detectEdges()
-{
-	printf("detecting edges...\n");
-	fflush(stdout);
-#ifdef __USE_OMP__
-#pragma omp parallel for schedule(dynamic, 1)        // OpenMP
-#endif
-	for (size_t j = 0; j < camera->height; ++j) {
-		barInfo("\r %.1f %%", j * 100.0 / camera->height);    // progressbar :)
-		for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
-			// four sub rays
-			const Object
-					*hit0 = scene->hitOf(camera->shootRayAt(i - SUB_D1, j - SUB_D2)),
-					*hit1 = scene->hitOf(camera->shootRayAt(i - SUB_D2, j + SUB_D1)),
-					*hit2 = scene->hitOf(camera->shootRayAt(i + SUB_D2, j - SUB_D1)),
-					*hit3 = scene->hitOf(camera->shootRayAt(i + SUB_D1, j + SUB_D2));
-			is_edge[rank] = !(hit0 == hit1 && hit0 == hit2 && hit0 == hit3);    // if hit different objs, mark as edge
-		}
-	}
-//#ifdef __DEV_STAGE__
-//	std::ofstream fout("is_edge.ppm");
-//	if (!fout.is_open()) TERMINATE("not open is_edge");
-//	fout << "P3 " << camera->width << " " << camera->height << "\n255\n";
-//	for (size_t rank = 0; rank < camera->size; ++rank) {
-//		fout << (is_edge[rank] ? "0 0 0 " : "255 255 255 ");
-//	}
-//	fout.close();
-//#endif
-}
-
-#undef SUB_D1
-#undef SUB_D2

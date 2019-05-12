@@ -37,8 +37,6 @@ public:
 	size_t save_step;		// save every `save_step` epoch, if 0 - no saving through out rendering
 	size_t verbose_step;	// steps to update progressbar, if 0 - no progressbar
 
-	bool *is_edge;    // if each pixel on the screen is edge of an object
-
 	void getReady();
 
 	void checkIfReady();
@@ -53,9 +51,6 @@ public:
 	void render();
 
 	void renderVerbose();
-
-	// pre-compute object edges via shooting 4 subpixels for each pixel on screen
-	void detectEdges();
 
 public:
 	Renderer(const String &config_path);    // init from json

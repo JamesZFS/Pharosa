@@ -100,7 +100,8 @@ Camera::Camera(const Json &json) :
 
 
 BasicCamera::BasicCamera(const Json &json) :
-		Camera(json), length(json.value("length", 140.0))
+		Camera(json), length(json.value("length", 140.0)),
+		ez_length(ez * length), pos_ez_length(pos + ez_length)
 {
 }
 
@@ -111,7 +112,8 @@ OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
 
 DOFCamera::DOFCamera(const Json &json) :
 		Camera(json),
-		length(json.value("length", 20.0)), focus(json.value("focus", 10.0)), aperture(json.value("aperture", 1.0))
+		length(json.value("length", 20.0)), focus(json.value("focus", 10.0)), aperture(json.value("aperture", 1.0)),
+		f_l(focus / length), pos_ez_length(pos + ez * length), ez_focus(ez * focus)
 {
 }
 
@@ -199,7 +201,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		else if (type == "obj" || type == "obj file") {
 
 			auto obj_objects = Parser::parseMeshes(item.at("path"), item.value("scale", 1.0), trans_mat, material);
-			self->meshes.insert(self->objects.end(), obj_objects->begin(), obj_objects->end());
+			self->meshes.insert(self->meshes.end(), obj_objects->begin(), obj_objects->end());
 
 		}
 		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());

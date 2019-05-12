@@ -12,6 +12,9 @@ class DOFCamera : public Camera
 {
 public:
 	const double length, focus, aperture;	// length of camera, distance to focus plane, random circle range
+	// cache:
+	const double f_l;	// focus / length
+	const Pos pos_ez_length, ez_focus;	// pos + ez * length, ez * focus
 
 	DOFCamera(const Json &json);
 

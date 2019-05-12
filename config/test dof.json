@@ -1,20 +1,20 @@
 {
-	"save_path": "out/dof/dragon rc.ppm",
-	"n_epoch": 10,
-	"save_step": 0,
+	"save_path": "out/dof/dragon pt basic.ppm",
+	"n_epoch": 50,
+	"save_step": 5,
 
 	"algorithm": {
-		"type": "rc",
+		"type": "path tracing",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
 
 	"camera": {
-		"type": "DOF",
+		"type": "basic",
 		"pos": [-20, -20, 380],
 		"rot": [0, 180, 5],
 		"width": 1024, "height": 768,
-		"pixel_size": 0.1, "focus": 130.0, "length": 140.0, "aperture": 2.5
+		"pixel_size": 0.1, "focus": 130.0, "length": 130.0, "aperture": 0.8
 	},
 
 	"scene": [
@@ -27,20 +27,20 @@
 			"refr": 0.01,
 			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
 			"scale": 40,
-			"tra": [20, -30, 0],
-			"rot": [0, 0, 34]
+			"tra": [40, -30, 0],
+			"rot": [0, 0, 20]
 		},
 		{
 			"name": "dragon close",
 			"type": "obj",
-			"color": [0.90, 0.30, 0.4],
-			"diff": 0.98,
-			"spec": 0.01,
-			"refr": 0.01,
-			"path": "/Users/james/Test/CG/Pharosa/res/sphere.obj",
+			"color": [0.95, 0.95, 0.96],
+			"diff": 0.0,
+			"spec": 0.0,
+			"refr": 1.0,
+			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
 			"scale": 40,
 			"tra": [-40, -30, 120],
-			"rot": [0, 0, 158]
+			"rot": [0, 0, 168]
 		},
 		{
 			"name": "cornell walls",
