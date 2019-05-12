@@ -20,7 +20,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 
 	const Object &obj = *hit;    // the hit object
 
-	Color color = obj.mtr->color;
+	Color color = obj.mtr->color;	// todo use color from texture
 	double P = color.max();    // max color component as refl_t
 
 	// stop tracing when depth too large or color too dim:
@@ -41,7 +41,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	for (size_t i = 0; i < r_outs.size(); ++i) {
 		receiving += radiance(r_outs[i], depth) * w_outs[i];        // ** recurse
 	}
-	r_outs.clear(); w_outs.clear();
+//	r_outs.clear(), w_outs.clear();
 	return obj.mtr->emi + color.mul(receiving);
 }
 

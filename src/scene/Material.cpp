@@ -16,7 +16,6 @@ Material::Material() : color(Color::WHITE), emi(Emission::NONE), diff(1), spec(0
 // !! notice normal is pointing outside
 void Material::BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
 {
-
 	Dir nl = normal % r_in.dir < 0 ? Pos(normal) : -normal;    // regularized normal, against r_in direction
 
 	// diffusive reflection, todo use I = kd ( L . N ) model
@@ -31,7 +30,7 @@ void Material::BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> 
 		for (int i = 0; i < n_samp; ++i) {
 			double r1 = randf(2 * M_PI), r2 = randf(), r2s = sqrt(r2);
 			Dir &&d = ex * (cos(r1) * r2s) + ey * (sin(r1) * r2s) + ez * sqrt(1 - r2);
-			r_outs.emplace_back(Ray(r_in.org + nl * EPS, d));
+			r_outs.emplace_back(r_in.org + nl * EPS, d);
 			w_outs.emplace_back(I_n_samp);
 		}
 	}

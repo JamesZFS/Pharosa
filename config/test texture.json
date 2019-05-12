@@ -1,10 +1,10 @@
 {
-	"save_path": "out/dof/dragon pt2.ppm",
-	"n_epoch": 50,
+	"save_path": "out/texture/test.ppm",
+	"n_epoch": 10,
 	"save_step": 5,
 
 	"algorithm": {
-		"type": "path tracing",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -18,30 +18,6 @@
 	},
 
 	"scene": [
-		{
-			"name": "dragon far",
-			"type": "obj",
-			"color": [0.3, 0.95, 0.4],
-			"diff": 0.98,
-			"spec": 0.01,
-			"refr": 0.01,
-			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
-			"scale": 40,
-			"tra": [40, -30, 0],
-			"rot": [0, 0, 20]
-		},
-		{
-			"name": "dragon close",
-			"type": "obj",
-			"color": [0.95, 0.95, 0.96],
-			"diff": 0.0,
-			"spec": 0.0,
-			"refr": 1.0,
-			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
-			"scale": 40,
-			"tra": [-40, -30, 120],
-			"rot": [0, 0, 168]
-		},
 		{
 			"name": "cornell walls",
 			"type": "group",

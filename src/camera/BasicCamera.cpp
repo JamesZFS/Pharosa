@@ -13,4 +13,3 @@ Ray BasicCamera::shootRayAt(double i, double j) const
 	auto && tmp = ex * xs + ey * ys;
 	return {pos_ez_length + tmp, ez_length + tmp};
 }
-
