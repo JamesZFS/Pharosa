@@ -121,3 +121,19 @@ void Mat<T>::reset()
 {
 	el.fill({});
 }
+
+template<typename T>
+void Mat<T>::assignHorz(const Pos &a0, const Pos &a1, const Pos &a2)
+{
+	el[0][0] = a0.x, el[0][1] = a0.y, el[0][2] = a0.z;
+	el[1][0] = a1.x, el[1][1] = a1.y, el[1][2] = a1.z;
+	el[2][0] = a2.x, el[2][1] = a2.y, el[2][2] = a2.z;
+}
+
+template<typename T>
+void Mat<T>::assignVert(const Pos &a0, const Pos &a1, const Pos &a2)
+{
+	el[0][0] = a0.x, el[0][1] = a1.x, el[0][2] = a2.x;
+	el[1][0] = a0.y, el[1][1] = a1.y, el[1][2] = a2.y;
+	el[2][0] = a0.z, el[2][1] = a1.z, el[2][2] = a2.z;
+}

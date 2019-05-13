@@ -23,6 +23,10 @@ struct Mat    // 3D matrix
 
 	Mat(Mat &&b) noexcept;	// move
 
+	void assignHorz(const Pos &a0, const Pos &a1, const Pos &a2); 	// assign horizontal vectors
+
+	void assignVert(const Pos &a0, const Pos &a1, const Pos &a2);	// assign vertical vectors
+
 	void reset();	// reset to zero
 
 	Mat<T> &operator=(const Mat &b) = default;    // copy

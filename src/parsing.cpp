@@ -16,6 +16,8 @@
 #include "scene/Material.h"
 
 #include "parsing.inl"
+#include "geometric/Geometry.h"
+
 
 Renderer::Renderer(const String &config_path) : Renderer()
 {

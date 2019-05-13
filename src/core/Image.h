@@ -24,10 +24,7 @@ public:
 	{ return data[i][j]; }
 
 	inline const Color &sampleAt(double x, double y)
-	{ return data[size_t(x) % width][size_t(y) % height]; }
-
-	inline const Color &sampleAt(const Pos &pos)
-	{ return data[lround(pos.x + pos.z) % width][lround(pos.y + pos.z) % height]; }
+	{ return data[lround(x) % width][lround(y) % height]; }
 
 	/** read from PPM file
 	 * input: ppm_path

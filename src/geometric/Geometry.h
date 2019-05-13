@@ -16,7 +16,6 @@ struct Geometry
 {
 	Geometry() = default;
 
-
 	virtual ~Geometry() = default;
 
 	// interfaces:
@@ -31,6 +30,9 @@ struct Geometry
 
 	// calculate normal vector at surface point x
 	virtual Dir normalAt(const Pos &x) const = 0;
+
+	// get texture coordinate
+	virtual void getUV(const Pos &pos, double &u, double &v) = 0;
 
 	// todo code below is dirty
 	// determine if a point is on the surface of object

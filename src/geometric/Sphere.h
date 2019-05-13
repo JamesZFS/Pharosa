@@ -9,7 +9,7 @@
 
 struct Sphere : Geometry
 {
-	Pos pos;    // center as global crd
+	Pos c;    // center as global crd
 	const double rad, rad_2;    // radius, radius^2
 
 	Sphere(double radius_, const Pos &pos_ = {});
@@ -21,7 +21,13 @@ struct Sphere : Geometry
 	Dir normalAt(const Pos &x) const override;
 
 	inline bool hasSurfacePoint(const Pos &x) const override
-	{ return (x - pos).sqr() - rad_2 < EPS; }
+	{ return (x - c).sqr() - rad_2 < EPS; }
+
+	void getUV(const Pos &pos, double &u, double &v) override
+	{
+		ElAg &&ea = Dir(pos - c).getEulerAngles();
+		u = ea.alpha, v = ea.gamma;
+	}
 
 	static Sphere *acquire(const Json &json);
 };

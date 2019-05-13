@@ -13,7 +13,9 @@ struct InfPlane : Geometry
 {
 	Pos p; 	// a point on infplane
 	Dir n;    // normal vector, in Global coordinate sys, default towards ez (A, B, C)
-	double D;	// A x + B y + C z + D == 0, D == -n.pos
+	double D;	// A x + B y + C z + D == 0, D == -n.c
+
+	Pos cu, cv;	// cache to compute texture crd
 
 	InfPlane();	// plane facing towards z-axis at origin
 
@@ -22,7 +24,7 @@ struct InfPlane : Geometry
 
 	void applyTransform(TransMat mat) override;
 
-	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - pos) % normal == 0
+	inline bool intersect(const Ray &ray, double &t) const override // solve (ray.org + t ray.dir - c) % normal == 0
 	{
 		double dn = ray.dir % n;
 		return (fabs(dn) < EPS ? false : ((t = -(D + ray.org % n) / dn) > EPS));
@@ -36,6 +38,9 @@ struct InfPlane : Geometry
 
 	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)
 	{ return Funcs::sgn((x - p) % n); }
+
+	inline void getUV(const Pos &pos, double &u, double &v) override
+	{ u = cu % pos, v = cv % pos; }
 
 	static InfPlane *acquire(const Json &json);
 };

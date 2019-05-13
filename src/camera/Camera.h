@@ -35,7 +35,7 @@ public:
 	virtual ~Camera() = default;
 
 	// getter:
-	inline const Pos &viewpoint() const;    // pos
+	inline const Pos &viewpoint() const;    // c
 
 	inline const Dir &orientation() const;    // ez
 

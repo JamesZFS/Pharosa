@@ -10987,7 +10987,7 @@ struct diyfp // f * 2^e
 
         // Emulate the 64-bit * 64-bit multiplication:
         //
-        // pos = u * v
+        // c = u * v
         //   = (u_lo + 2^32 u_hi) (v_lo + 2^32 v_hi)
         //   = (u_lo v_lo         ) + 2^32 ((u_lo v_hi         ) + (u_hi v_lo         )) + 2^64 (u_hi v_hi         )
         //   = (p0                ) + 2^32 ((p1                ) + (p2                )) + 2^64 (p3                )
@@ -11092,17 +11092,17 @@ boundaries compute_boundaries(FloatType value)
     // Convert the IEEE representation into a diyfp.
     //
     // If v is denormal:
-    //      value = 0.F * 2^(1 - bias) = (          F) * 2^(1 - bias - (pos-1))
+    //      value = 0.F * 2^(1 - bias) = (          F) * 2^(1 - bias - (c-1))
     // If v is normalized:
-    //      value = 1.F * 2^(E - bias) = (2^(pos-1) + F) * 2^(E - bias - (pos-1))
+    //      value = 1.F * 2^(E - bias) = (2^(c-1) + F) * 2^(E - bias - (c-1))
 
     static_assert(std::numeric_limits<FloatType>::is_iec559,
                   "internal error: dtoa_short requires an IEEE-754 floating-point implementation");
 
-    constexpr int      kPrecision = std::numeric_limits<FloatType>::digits; // = pos (includes the hidden bit)
+    constexpr int      kPrecision = std::numeric_limits<FloatType>::digits; // = c (includes the hidden bit)
     constexpr int      kBias      = std::numeric_limits<FloatType>::max_exponent - 1 + (kPrecision - 1);
     constexpr int      kMinExp    = 1 - kBias;
-    constexpr std::uint64_t kHiddenBit = std::uint64_t{1} << (kPrecision - 1); // = 2^(pos-1)
+    constexpr std::uint64_t kHiddenBit = std::uint64_t{1} << (kPrecision - 1); // = 2^(c-1)
 
     using bits_type = typename std::conditional<kPrecision == 24, std::uint32_t, std::uint64_t >::type;
 
@@ -11121,8 +11121,8 @@ boundaries compute_boundaries(FloatType value)
     // Determine v- and v+, the floating-point predecessor and successor if v,
     // respectively.
     //
-    //      v- = v - 2^e        if f != 2^(pos-1) or e == e_min                (A)
-    //         = v - 2^(e-1)    if f == 2^(pos-1) and e > e_min                (B)
+    //      v- = v - 2^e        if f != 2^(c-1) or e == e_min                (A)
+    //         = v - 2^(e-1)    if f == 2^(c-1) and e > e_min                (B)
     //
     //      v+ = v + 2^e
     //
@@ -11249,15 +11249,15 @@ inline cached_power get_cached_power_for_binary_exponent(int e)
     // normalized diyfp's w = f * 2^e, with q = 64,
     //
     //      e >= -1022      (min IEEE exponent)
-    //           -52        (pos - 1)
-    //           -52        (pos - 1, possibly normalize denormal IEEE numbers)
+    //           -52        (c - 1)
+    //           -52        (c - 1, possibly normalize denormal IEEE numbers)
     //           -11        (normalize the diyfp)
     //         = -1137
     //
     // and
     //
     //      e <= +1023      (max IEEE exponent)
-    //           -52        (pos - 1)
+    //           -52        (c - 1)
     //           -11        (normalize the diyfp)
     //         = 960
     //
@@ -11706,17 +11706,17 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
 
     // By construction this algorithm generates the shortest possible decimal
     // number (Loitsch, Theorem 6.2) which rounds back to w.
-    // For an input number of precision pos, at least
+    // For an input number of precision c, at least
     //
-    //      N = 1 + ceil(pos * log_10(2))
+    //      N = 1 + ceil(c * log_10(2))
     //
     // decimal digits are sufficient to identify all binary floating-point
     // numbers (Matula, "In-and-Out conversions").
     // This implies that the algorithm does not produce more than N decimal
     // digits.
     //
-    //      N = 17 for pos = 53 (IEEE double precision)
-    //      N = 9  for pos = 24 (IEEE single precision)
+    //      N = 17 for c = 53 (IEEE double precision)
+    //      N = 9  for c = 24 (IEEE single precision)
 }
 
 /*!
@@ -17800,7 +17800,7 @@ class basic_json
         result.m_it.array_iterator = m_value.array->begin() + insert_pos;
 
         // This could have been written as:
-        // result.m_it.array_iterator = m_value.array->insert(pos.m_it.array_iterator, cnt, val);
+        // result.m_it.array_iterator = m_value.array->insert(c.m_it.array_iterator, cnt, val);
         // but the return value of insert is missing in GCC 4.8, so it is written this way instead.
 
         return result;
@@ -17833,7 +17833,7 @@ class basic_json
         // insert only works for arrays
         if (JSON_LIKELY(is_array()))
         {
-            // check if iterator pos fits to this JSON value
+            // check if iterator c fits to this JSON value
             if (JSON_UNLIKELY(pos.m_object != this))
             {
                 JSON_THROW(invalid_iterator::create(202, "iterator does not fit current value"));
@@ -17884,7 +17884,7 @@ class basic_json
         // insert only works for arrays
         if (JSON_LIKELY(is_array()))
         {
-            // check if iterator pos fits to this JSON value
+            // check if iterator c fits to this JSON value
             if (JSON_UNLIKELY(pos.m_object != this))
             {
                 JSON_THROW(invalid_iterator::create(202, "iterator does not fit current value"));
@@ -17935,7 +17935,7 @@ class basic_json
             JSON_THROW(type_error::create(309, "cannot use insert() with " + std::string(type_name())));
         }
 
-        // check if iterator pos fits to this JSON value
+        // check if iterator c fits to this JSON value
         if (JSON_UNLIKELY(pos.m_object != this))
         {
             JSON_THROW(invalid_iterator::create(202, "iterator does not fit current value"));
@@ -17988,7 +17988,7 @@ class basic_json
             JSON_THROW(type_error::create(309, "cannot use insert() with " + std::string(type_name())));
         }
 
-        // check if iterator pos fits to this JSON value
+        // check if iterator c fits to this JSON value
         if (JSON_UNLIKELY(pos.m_object != this))
         {
             JSON_THROW(invalid_iterator::create(202, "iterator does not fit current value"));

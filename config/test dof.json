@@ -1,11 +1,10 @@
 {
-	"save_path": "out/dof/dragon with texture 3.ppm",
-	"prev_path": "out/dof/dragon with texture 3.ppm",
-	"n_epoch": 100,
+	"save_path": "out/dof/dragon with texture 4.ppm",
+	"n_epoch": 10,
 	"save_step": 5,
 
 	"algorithm": {
-		"type": "pt",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -59,7 +58,12 @@
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],
-						"point": [0, 0, -200]
+						"point": [0, 0, -200],
+						"t_map": [
+							[[-100, -80, -200], [0, 0]],
+							[[100, -80, -200], [800, 0]],
+							[[100, 80, -200], [800, 500]]
+						]
 					}
 				},
 				{

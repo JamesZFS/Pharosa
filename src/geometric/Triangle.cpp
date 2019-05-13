@@ -8,6 +8,9 @@
 Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}, n((B - A) ^ (C - A))
 {
 	n.unitize();
+	Dir ex, ey;
+	n.getOrthogonalBasis(ex, ey);
+	cu = ex, cv = ey;
 }
 
 void Triangle::applyTransform(TransMat mat)
@@ -16,22 +19,15 @@ void Triangle::applyTransform(TransMat mat)
 	p[1] = mat * p[1];
 	p[2] = mat * p[2];
 	(n = (p[1] - p[0]) ^ (p[2] - p[0])).unitize();
+	Dir ex, ey;
+	n.getOrthogonalBasis(ex, ey);
+	cu = ex, cv = ey;
 }
 
 
 bool Triangle::intersect(const Ray &ray, double &t) const
 {
 	// solve Ro + t Rd = (1 - beta - gamma) P0 + beta P1 + gamma P2
-	/*double __A[3][3] = {
-			{ray.dir.x, pos[0].x - pos[1].x, pos[0].x - pos[2].x},
-			{ray.dir.y, pos[0].y - pos[1].y, pos[0].y - pos[2].y},
-			{ray.dir.z, pos[0].z - pos[1].z, pos[0].z - pos[2].z},
-	};
-	double __b[3] =
-			{pos[0].x - ray.org.x,
-			 pos[0].y - ray.org.y,
-			 pos[0].z - ray.org.z},
-			__beta, __gamma;	// cache for computing intersection*/
 	double A[3][3], b[3], beta, gamma;
 	ray.dir.putToArray(&A[0][0], 3);
 	(p[0] - p[1]).putToArray(&A[0][1], 3);
@@ -56,5 +52,5 @@ bool Triangle::hasSurfacePoint(const Pos &x) const
 		return (k[0] >= 0 && k[1] >= 0 && k[1] >= 0 && fabs(k[0] + k[1] + k[2] - 1) < EPS);
 	}
 	return false;
-//	return (fabs(x % ((pos[0] - pos[1]) ^ (pos[0] - pos[2]))) < EPS);	// three points in a plane, todo some bugs
+//	return (fabs(x % ((c[0] - c[1]) ^ (c[0] - c[2]))) < EPS);	// three points in a plane, todo some bugs
 }

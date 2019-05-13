@@ -12,9 +12,11 @@ struct Triangle : Geometry
 	Arr<Pos, 3> p;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 
+	Pos cu, cv;	// cache to compute texture
+
 	Triangle(const Pos &A, const Pos &B, const Pos &C);
 
-	void applyTransform(TransMat mat) override;    // calculate pos according to pos
+	void applyTransform(TransMat mat) override;    // calculate c according to c
 
 	bool intersect(const Ray &ray, double &t) const override;
 
@@ -23,56 +25,31 @@ struct Triangle : Geometry
 
 	bool hasSurfacePoint(const Pos &x) const override;
 
-	inline double xMin() const;	// left most
+	void getUV(const Pos &pos, double &u, double &v) override
+	{ u = cu % pos, cv = cv % pos; }
 
-	inline double xMax() const; // right most
+	inline double xMin() const    // left most
+	{ return min3(p[0].x, p[1].x, p[2].x); }
 
-	inline double yMin() const;
+	inline double xMax() const // right most
+	{ return max3(p[0].x, p[1].x, p[2].x); }
 
-	inline double yMax() const;
+	inline double yMin() const
+	{ return min3(p[0].y, p[1].y, p[2].y); }
 
-	inline double zMin() const;
+	inline double yMax() const
+	{ return max3(p[0].y, p[1].y, p[2].y); }
 
-	inline double zMax() const;
+	inline double zMin() const
+	{ return min3(p[0].z, p[1].z, p[2].z); }
 
-	inline Pos center() const;	// get center point
+	inline double zMax() const
+	{ return max3(p[0].z, p[1].z, p[2].z); }
+
+	inline Pos center() const	// get center point
+	{ return (p[0] + p[1] + p[2]) / 3; }
 
 	static Triangle *acquire(const Json &json);
 };
-
-double Triangle::xMin() const
-{
-	return min3(p[0].x, p[1].x, p[2].x);
-}
-
-double Triangle::xMax() const
-{
-	return max3(p[0].x, p[1].x, p[2].x);
-}
-
-double Triangle::yMin() const
-{
-	return min3(p[0].y, p[1].y, p[2].y);
-}
-
-double Triangle::yMax() const
-{
-	return max3(p[0].y, p[1].y, p[2].y);
-}
-
-double Triangle::zMin() const
-{
-	return min3(p[0].z, p[1].z, p[2].z);
-}
-
-double Triangle::zMax() const
-{
-	return max3(p[0].z, p[1].z, p[2].z);
-}
-
-Pos Triangle::center() const
-{
-	return (p[0] + p[1] + p[2]) / 3;
-}
 
 #endif //PHAROSA_TRIANGLE_H

@@ -20,12 +20,24 @@ struct Object
 	~Object();
 
 	// 3D transformation, return *this
-
 	Object &translate(const Pos &delta);
 
 	Object &rotate(const ElAg &ea);
 
-	Object &rotate(const ElAg &ea, const Pos &pos);    // rotate along pos
+	Object &rotate(const ElAg &ea, const Pos &pos);    // rotate along c
+
+	// color getter
+	inline Color colorAt(const Pos &pos) const    // get texture color at pos
+	{
+		if (mtr->texture) {
+			double u, v;
+			geo->getUV(pos, u, v);
+			return mtr->color.mul(mtr->texture->sampleAt(u * mtr->scale, v * mtr->scale));
+		}
+		else {
+			return mtr->color;
+		}
+	}
 };
 
 typedef List<Object *> ObjectList;

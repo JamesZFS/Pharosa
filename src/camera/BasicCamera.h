@@ -13,7 +13,7 @@ class BasicCamera : public Camera
 public:
 	const double length;
 	// cache:
-	const Pos ez_length, pos_ez_length;	// ez * length, pos + ez * length
+	const Pos ez_length, pos_ez_length;	// ez * length, c + ez * length
 
 	BasicCamera(const Json &json);
 

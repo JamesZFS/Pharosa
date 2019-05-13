@@ -30,9 +30,6 @@ struct Material
 
 	void BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
 
-	inline Color colorAt(const Pos &pos) const	// exact color at P should be `color.mul(texture.sampleAt(P)))`
-	{ return texture ? Color(color.mul(texture->sampleAt(pos * scale))) : color; }
-
 	static Material *acquire(const Json &json);
 };
 
