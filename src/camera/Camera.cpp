@@ -24,4 +24,3 @@ void Camera::writePPM(const String &ppm_path) const
 {
 	img.writePPM(ppm_path, render_cnt);
 }
-

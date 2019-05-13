@@ -19,7 +19,7 @@ Color RayCasting::radiance(const Ray &ray, size_t depth) const
 	if (!scene.intersectAny(ray, hit, x, normal)) return Color::BLACK;
 	Dir nl = normal % ray.dir >= 0 ? normal : normal * -1;    // regularized normal, parallel to incidence
 	// return the RGB color of hit, assuming environment light is shooting towards (-1, -1, -1)
-	return hit->mtr->color * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + hit->mtr->emi;
+	return hit->mtr->colorAt(x) * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + hit->mtr->emi;
 }
 
 String RayCasting::info() const

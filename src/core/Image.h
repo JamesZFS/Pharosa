@@ -11,17 +11,23 @@
 class Image
 {
 private:
-	List2D<Color> data;	// width * height
+	List2D<Color> data;    // width * height
 	size_t width, height;
 public:
-	Image(const String &ppm_path);	// create from ppm
+	Image(const String &ppm_path);    // create from ppm
 
-	Image(size_t width_, size_t height_);	// create an empty image
+	Image(size_t width_, size_t height_);    // create an empty image
 
 	void setup(size_t width_, size_t height_);
 
-	inline Color &at(size_t i, size_t j)	// get pixel without index checking
+	inline Color &at(size_t i, size_t j)    // get pixel without index checking
 	{ return data[i][j]; }
+
+	inline const Color &sampleAt(double x, double y)
+	{ return data[size_t(x) % width][size_t(y) % height]; }
+
+	inline const Color &sampleAt(const Pos &pos)
+	{ return data[lround(pos.x + pos.z) % width][lround(pos.y + pos.z) % height]; }
 
 	/** read from PPM file
 	 * input: ppm_path

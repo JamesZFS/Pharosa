@@ -9,6 +9,7 @@
 #include "../defs.h"
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
+#include "../core/Image.h"
 
 // physical mtr of an object
 struct Material
@@ -22,11 +23,15 @@ struct Material
 	double refr;
 	double n_refr;	// refraction ratio
 
-	// todo texture
+	Image *texture; // texture ppm
+	double scale;	// texture_scale
 
-	Material();	// dark white pure diffusive
+	Material();	// dark white pure diffusive without texture
 
 	void BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
+
+	inline Color colorAt(const Pos &pos) const	// exact color at P should be `color.mul(texture.sampleAt(P)))`
+	{ return texture ? Color(color.mul(texture->sampleAt(pos * scale))) : color; }
 
 	static Material *acquire(const Json &json);
 };

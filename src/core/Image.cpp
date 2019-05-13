@@ -9,8 +9,8 @@
 
 Image::Image(const String &ppm_path)
 {
-	size_t width_, height_, render_cnt_;
-	readPPM(ppm_path, width_, height_, render_cnt_);
+	size_t render_cnt_;
+	readPPM(ppm_path, width, height, render_cnt_);
 }
 
 Image::Image(size_t width_, size_t height_)
@@ -26,6 +26,7 @@ void Image::writePPM(const String &ppm_path, size_t render_cnt) const
 	if (!fout.is_open()) TERMINATE("Error: ppm_path \"%s\" cannot be opened, writing stopped.", ppm_path.data())
 
 	// write head
+	assert(render_cnt > 0);
 	fout << "P3 " << width << " " << height << "\n255 # render_cnt = " << render_cnt << "\n";
 	// write body
 	for (size_t j = 0; j < height; ++j) {
@@ -65,14 +66,12 @@ void Image::readPPM(const String &ppm_path, size_t &width_, size_t &height_, siz
 		stream >> render_cnt_;
 	}
 	else {
-		render_cnt_ = 0;
+		render_cnt_ = 1;
 	}
-	if (data.empty()) {    // size unassigned
+	if (data.empty())    // size unassigned
 		setup(width_, height_);
-	}
-	else {        // size assigned
+	else        // size assigned
 		assert(width_ == width && height_ == height);
-	}
 	// read body
 	size_t r, g, b;
 	for (size_t j = 0; j < height; ++j) {

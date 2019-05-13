@@ -8,9 +8,11 @@
 using Funcs::randf;
 
 
-Material::Material() : color(Color::WHITE), emi(Emission::NONE), diff(1), spec(0), refr(0), n_refr(1.5)
+Material::Material() :
+		color(Color::WHITE), emi(Emission::NONE),
+		diff(1), spec(0), refr(0), n_refr(1.5),
+		texture(nullptr), scale(1.0)
 {
-
 }
 
 // !! notice normal is pointing outside

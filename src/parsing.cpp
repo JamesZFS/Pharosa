@@ -1,6 +1,6 @@
 //
 // Created by James on 2019/4/23.
-// implement all parsing
+// implement all parsing methods here
 
 #include "defs.h"
 #include <fstream>
@@ -12,10 +12,10 @@
 #include "Renderer.h"
 #include "utils/parsers/json.hpp"
 #include "utils/parsers/MeshParser.h"
-
-#include "parsing.inl"
 #include "alg/Algorithm.h"
 #include "scene/Material.h"
+
+#include "parsing.inl"
 
 Renderer::Renderer(const String &config_path) : Renderer()
 {
@@ -34,6 +34,7 @@ Renderer::Renderer(const String &config_path) : Renderer()
 void Renderer::setup(const Json &json)
 {
 	clear();
+	printf("loading...\n");
 	// parsing generic
 	save_path = json.at("save_path");
 	if (!Funcs::endsWith(save_path, ".ppm")) {
@@ -140,7 +141,6 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		material = Material::acquire(item);            // material
 		self->materials.push_back(material);
 		TransMat trans_mat(item);                    // transform
-		// todo texture
 		type = item.value("type", "singleton");        // item type
 		Parsing::lowerStr_(type);
 
@@ -168,7 +168,6 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 			for (const Json &object: group) {    // parse each object in the group
 				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
 					sub_material = Material::acquire(object);    // new a customized mtr
-					// todo texture
 					self->materials.push_back(sub_material);
 				}
 				else {
@@ -199,13 +198,22 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 
 Material *Material::acquire(const Json &json)
 {
-	auto self = new Material;
+	auto self = new Material;	// default material
 	if (json.has("color")) self->color = Color(json["color"]);
 	if (json.has("emission")) self->emi = Emission(json["emission"]);
 	if (json.has("diff")) self->diff = json["diff"];
 	if (json.has("spec")) self->spec = json["spec"];
 	if (json.has("refr")) self->refr = json["refr"];
 	if (json.has("n_refr")) self->refr = json["n_refr"];
+	if (json.has("texture")) {
+		if (json["texture"].is_string()) {
+			self->texture = new Image(String(json["texture"]));
+		}
+		else {
+			self->texture = new Image(String(json["texture"].at("path")));
+			self->scale = json["texture"].value("scale", 1.0);
+		}
+	}
 	return self;
 }
 
