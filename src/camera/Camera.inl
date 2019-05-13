@@ -1,26 +1,7 @@
 
-#define rankOf(i, j) ((j) * width + (i))
-#define checkCoordinate(i, j) assert(0 <= (i) && (i) < width && 0 <= (j) && (j) < height)
-
-void Camera::render(size_t rank, const Color &color)
+void Camera::render(size_t i, size_t j, const Color &color)
 {
-	img[rank] += color;
-}
-
-void Camera::renderAt(size_t i, size_t j, const Color &color)
-{
-	auto rank = rankOf(i, j);
-	img[rank] += color;
-}
-
-Ray Camera::shootRay(size_t rank) const
-{
-	return shootRayAt(rank % width, rank / width, 0.5);
-}
-
-const Color &Camera::pixelAt(size_t i, size_t j) const
-{
-	return img[rankOf(i, j)];
+	img.at(i, j) += color;
 }
 
 const Pos &Camera::viewpoint() const
@@ -56,6 +37,7 @@ void Camera::step()
 	++render_cnt;
 }
 
-
-#undef rankOf
-#undef checkCoordinate
+size_t Camera::renderCount() const
+{
+	return render_cnt;
+}

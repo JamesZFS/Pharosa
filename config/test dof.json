@@ -1,5 +1,6 @@
 {
-	"save_path": "out/dof/dragon rc test.ppm",
+	"save_path": "out/dof/dragon rc test 3.ppm",
+	"prev_path": "out/dof/dragon rc test 3.ppm",
 	"n_epoch": 5,
 	"save_step": 0,
 
@@ -21,7 +22,7 @@
 		{
 			"name": "dragon far",
 			"type": "obj",
-			"color": [0.3, 0.95, 0.4],
+			"color": [1.0, 0.95, 0.4],
 			"diff": 0.98,
 			"spec": 0.01,
 			"refr": 0.01,
@@ -33,7 +34,7 @@
 		{
 			"name": "dragon close",
 			"type": "obj",
-			"color": [0.95, 0.95, 0.96],
+			"color": [0.01, 0.95, 0.96],
 			"diff": 0.0,
 			"spec": 0.0,
 			"refr": 1.0,

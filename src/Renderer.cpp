@@ -41,7 +41,8 @@ void Renderer::getReady()
 {
 	if (prev_path.length() > 0) {    // load from checkpoint
 		camera->readPPM(prev_path);
-		printf("loaded previous status from \"%s\"\n", prev_path.data());
+		printf("\033[32mloaded previous status from \"%s\", previous render count = %ld\n\033[0m",
+			   prev_path.data(), camera->renderCount());
 	}
 }
 
@@ -51,13 +52,13 @@ void Renderer::checkIfReady()
 	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.")
 	if (algorithm == nullptr) TERMINATE("Error: algorithm is not setup yet.")
 
-	printf("\n----------------------------------------------------------------\n");
+	printf("\033[34m\n----------------------------------------------------------------\n");
 	printf("loaded %ld objects, %ld triangle meshes in total.\n",
 		   scene->getSingletonCount(), scene->getMeshCount());
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());
 	printf("algorithm info: %s", algorithm->info().data());
-	printf("\n---------------------- ready to render -------------------------\n\n");
+	printf("\n\033[1;34m---------------------- ready to render -------------------------\n\n\033[0m");
 }
 
 void Renderer::renderFrame()
@@ -72,13 +73,13 @@ void Renderer::start()
 {
 	checkIfReady();
 	scene->buildKDTree();
-	printf("===== rendering start =====\n");
+	printf("\033[1;36m===== rendering start =====\n\033[0m");
 
 	double since = omp_get_wtime();
 	renderFrame();
 	auto elapse = lround(omp_get_wtime() - since);
 
-	printf("\n===== rendering finished in %ld min %ld sec =====\n", elapse / 60, elapse % 60);
+	printf("\033[1;36m\n===== rendering finished in %ld min %ld sec =====\n\033[0m", elapse / 60, elapse % 60);
 }
 
 void Renderer::startKinetic(size_t n_frame, void (*motion)())
@@ -110,14 +111,14 @@ void Renderer::save() const
 {
 	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.")
 	camera->writePPM(save_path);
-	printf("image written to \"%s\" \n", save_path.data());
+	printf("\033[32mimage written to \"%s\" \n\033[0m", save_path.data());
 }
 
 void Renderer::saveProgress(size_t cur_epoch) const
 {
 	if (save_step == 0 || cur_epoch % save_step > 0) return;
 	camera->writePPM(save_path);
-	printf("\033[94m\t progress saved to \"%s\"\n\033[0m", save_path.data());
+	printf("\033[32m\t progress saved to \"%s\"\n\033[0m", save_path.data());
 }
 
 // !!
@@ -133,9 +134,9 @@ void Renderer::render()
 #ifdef __USE_OMP__
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
-		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel todo
-			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
-				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
+		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
+			for (size_t i = 0; i < camera->width; ++i) {
+				camera->render(i, j, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
 		camera->step();
@@ -162,8 +163,8 @@ void Renderer::renderVerbose()
 			if (j % verbose_step == 0) {
 				barInfo("\r %.1f %%", j * 100.0 / camera->height);    // progressbar :)
 			}
-			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
-				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
+			for (size_t i = 0; i < camera->width; ++i) {
+				camera->render(i, j, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
 		camera->step();

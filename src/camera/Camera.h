@@ -8,44 +8,41 @@
 #include "../defs.h"
 #include "../core/Ray.hpp"
 #include "../core/Vec.h"
+#include "../core/Image.h"
 
 // standard camera api, base class
 class Camera
 {
 private:
-	Color *img;            // rendered image, float [0, 1]
+	Image img;
 	size_t render_cnt;     // rendering times
 
 protected:
 	Pos pos;        // position of the viewpoint
-	Dir ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
 	ElAg ea;        // euler angles cache
+	Dir ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
+	const double w_2, h_2;            // width / 2, height / 2
 
 public:
-	const size_t width, height, size;    // image width and height, n_pixel
-	const double w_2, h_2;            // width / 2, height / 2
-	const double pixel_size;
+	const size_t width, height;		// image size
+	const double pixel_size;		// physical size of a pixel
 
 	Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
 		   double pixel_size_ = 0.1);
 
 	Camera(const Json &json);
 
-	virtual ~Camera();
+	virtual ~Camera() = default;
 
 	// getter:
-	inline const Color &pixelAt(size_t i, size_t j) const;    // img
-
 	inline const Pos &viewpoint() const;    // pos
 
 	inline const Dir &orientation() const;    // ez
 
+	inline size_t renderCount() const;
+
 	// setter:
-	inline void render(const Color &color);    // render incrementally
-
-	inline void render(size_t rank, const Color &color);    // render incrementally at given rank
-
-	inline void renderAt(size_t i, size_t j, const Color &color);
+	inline void render(size_t i, size_t j, const Color &color);
 
 	inline void rotate(const ElAg &euler_angles);	// rotate inc
 
@@ -59,8 +56,6 @@ public:
 
 	// output image into ppm format and checkpoint
 	void writePPM(const String &ppm_path) const;
-
-	inline Ray shootRay(size_t rank) const;    // shoot a ray at a given pixel rank
 
 	// interface:
 	// shoot ray at (i, j), offset deferring normal dist 0 - sigma
