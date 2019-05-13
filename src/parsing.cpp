@@ -17,44 +17,31 @@
 #include "alg/Algorithm.h"
 #include "scene/Material.h"
 
-
-Renderer::Renderer(const String &config_path)
+Renderer::Renderer(const String &config_path) : Renderer()
 {
 	Json json;
 	std::ifstream fin;
 	fin.open(config_path, std::ios::in);
-
 	if (!fin.is_open()) {    // exception
 		fin.close();
 		TERMINATE("IO Error: config_path \"%s\" cannot be opened, reading stopped.", config_path.data());
 	}
-
 	fin >> json;
 	fin.close();
+	setup(json);
+}
 
+void Renderer::setup(const Json &json)
+{
+	clear();
 	// parsing generic
-	String save_path = json.at("save_path");
-	if (Funcs::endsWith(save_path, ".ppm")) {
-		save_ppm_path = save_path;
-		save_cpt_path = save_path.replace(save_path.size() - 4, 4, ".cpt");
+	save_path = json.at("save_path");
+	if (!Funcs::endsWith(save_path, ".ppm")) {
+		save_path += ".ppm";
 	}
-	else {
-		save_ppm_path = save_path + ".ppm";
-		save_cpt_path = save_path + ".cpt";
-	}
-	String prev_path = json.value("prev_path", "");
-	if (prev_path.length() > 0) {
-		if (Funcs::endsWith(prev_path, ".ppm")) {
-			prev_ppm_path = prev_path;
-			prev_cpt_path = prev_path.replace(prev_path.size() - 4, 4, ".cpt");
-		}
-		else {
-			prev_ppm_path = prev_path + ".ppm";
-			prev_cpt_path = prev_path + ".cpt";
-		}
-	}
-	else {
-		prev_ppm_path = prev_cpt_path = "";
+	prev_path = json.value("prev_path", "");
+	if (prev_path.length() > 0 && !Funcs::endsWith(prev_path, ".ppm")) {
+		prev_path += ".ppm";
 	}
 
 	n_epoch = json.at("n_epoch");
@@ -148,16 +135,16 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 	String type;
 	Material *material, *sub_material;
 	Geometry *geo;
-	for (const Json &item: json) {	// for each item in the scene json list
+	for (const Json &item: json) {    // for each item in the scene json list
 		// shared attributes
-		material = Material::acquire(item);			// material
+		material = Material::acquire(item);            // material
 		self->materials.push_back(material);
-		TransMat trans_mat(item);					// transform
+		TransMat trans_mat(item);                    // transform
 		// todo texture
-		type = item.value("type", "singleton");    	// item type
+		type = item.value("type", "singleton");        // item type
 		Parsing::lowerStr_(type);
 
-		if (type == "singleton") {	// switch different types
+		if (type == "singleton") {    // switch different types
 
 			geo = Geometry::acquire(item.at("geo")); // new geo
 			geo->applyTransform(trans_mat);
@@ -167,7 +154,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		else if (type == "group") {
 
 			Json group = item.at("objects");
-			if (group.is_string()) {	// specify by path
+			if (group.is_string()) {    // specify by path
 				std::ifstream fin;
 				fin.open(group, std::ios::in);
 				if (!fin.is_open()) {
@@ -178,16 +165,16 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 				fin.close();
 			}
 			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
-			for (const Json &object: group) {	// parse each object in the group
+			for (const Json &object: group) {    // parse each object in the group
 				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
-					sub_material = Material::acquire(object);	// new a customized mtr
+					sub_material = Material::acquire(object);    // new a customized mtr
 					// todo texture
 					self->materials.push_back(sub_material);
 				}
 				else {
 					sub_material = material;
 				}
-				geo = Geometry::acquire(object.has("geo") ? object["geo"] : object);	// new geo
+				geo = Geometry::acquire(object.has("geo") ? object["geo"] : object);    // new geo
 				if (object.has("tra") || object.has("rot")) {
 					geo->applyTransform(trans_mat * TransMat(object));
 				}

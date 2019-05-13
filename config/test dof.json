@@ -1,10 +1,10 @@
 {
-	"save_path": "out/dof/dragon pt2.ppm",
-	"n_epoch": 50,
-	"save_step": 5,
+	"save_path": "out/dof/dragon rc test.ppm",
+	"n_epoch": 5,
+	"save_step": 0,
 
 	"algorithm": {
-		"type": "path tracing",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

@@ -14,8 +14,7 @@ class Camera
 {
 private:
 	Color *img;            // rendered image, float [0, 1]
-	size_t *render_cnt;    // rendering times for each pixel
-	size_t cur_i, cur_j, cur_rank;    // current pixel to render, using screen coordinate sys
+	size_t render_cnt;     // rendering times
 
 protected:
 	Pos pos;        // position of the viewpoint
@@ -48,27 +47,18 @@ public:
 
 	inline void renderAt(size_t i, size_t j, const Color &color);
 
-	void rotate(const ElAg &euler_angles);	// rotate inc
+	inline void rotate(const ElAg &euler_angles);	// rotate inc
 
 	inline void translate(const Pos &delta);	// move inc
 
-	// iterators:
-	inline bool finished() const;    // check whether the rendering progress is finished
-
-	inline bool finishedVerbose(size_t n_step) const; // as above, with a progressbar displayed every n_step
-
-	inline void updateProgress();    // current pixel rank++
-
-	inline void resetProgress();   // reset shooting progress
+	inline void step();   // ++render_cnt
 
 	// io:
 	// load from previous rendered ppm file to continue
-	void readPPM(const String &ppm_path, const String &cpt_path);
+	void readPPM(const String &ppm_path);
 
 	// output image into ppm format and checkpoint
-	void writePPM(const String &ppm_path, const String &cpt_path) const;
-
-	inline Ray shootRay() const;    // shoot a ray iteratively. will stop when all pixels are traversed
+	void writePPM(const String &ppm_path) const;
 
 	inline Ray shootRay(size_t rank) const;    // shoot a ray at a given pixel rank
 

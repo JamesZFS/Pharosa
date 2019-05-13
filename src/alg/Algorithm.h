@@ -23,6 +23,8 @@ protected:
 public:
 	Algorithm(const Scene &scene_);
 
+	virtual ~Algorithm() = default;
+
 	virtual String info() const = 0;
 
 	inline Color radiance(const Ray &ray) const    // entrance

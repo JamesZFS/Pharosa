@@ -10,17 +10,38 @@
 #include <fstream>
 #include <omp.h>
 
+Renderer::Renderer() : scene(nullptr), camera(nullptr), algorithm(nullptr)
+{
+
+}
+
+Renderer::Renderer(const Json &json) : Renderer()
+{
+	setup(json);
+}
+
 Renderer::~Renderer()
+{
+	clear();
+}
+
+void Renderer::clear()
 {
 	delete scene;
 	delete camera;
+	delete algorithm;
+	scene = nullptr;
+	camera = nullptr;
+	algorithm = nullptr;
+	save_path = prev_path = "";
+	n_epoch = save_step = verbose_step = 0;
 }
 
 void Renderer::getReady()
 {
-	if (prev_ppm_path.length() > 0) {    // load from checkpoint
-		camera->readPPM(prev_ppm_path, prev_cpt_path);
-		printf("loaded previous status from \"%s\"\n", prev_ppm_path.data());
+	if (prev_path.length() > 0) {    // load from checkpoint
+		camera->readPPM(prev_path);
+		printf("loaded previous status from \"%s\"\n", prev_path.data());
 	}
 }
 
@@ -87,23 +108,22 @@ void Renderer::startKinetic(size_t n_frame, void (*motion)())
 
 void Renderer::save() const
 {
-	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.");
-	camera->writePPM(save_ppm_path, save_cpt_path);
-	printf("image written to \"%s\" \n", save_ppm_path.data());
+	if (camera == nullptr) TERMINATE("Error: camera is not setup yet.")
+	camera->writePPM(save_path);
+	printf("image written to \"%s\" \n", save_path.data());
 }
 
 void Renderer::saveProgress(size_t cur_epoch) const
 {
 	if (save_step == 0 || cur_epoch % save_step > 0) return;
-	camera->writePPM(save_ppm_path, save_cpt_path);
-	barInfo("\t progress saved to \"%s\"\n", save_ppm_path.data());
+	camera->writePPM(save_path);
+	printf("\033[94m\t progress saved to \"%s\"\n\033[0m", save_path.data());
 }
 
+// !!
 void Renderer::render()
 {
-// without progressbar, fast version
-
-//	detectEdges();
+	// without progressbar, faster version
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
@@ -113,20 +133,21 @@ void Renderer::render()
 #ifdef __USE_OMP__
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
-		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
+		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel todo
 			for (size_t i = 0, rank = j * camera->width; i < camera->width; ++i, ++rank) {
 				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
+		camera->step();
 		saveProgress(epoch + 1);
 	}
 	printf("\n");
 }
 
+// !!
 void Renderer::renderVerbose()
 {
 	// with progressbar
-
 	double since = omp_get_wtime();
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
@@ -137,7 +158,7 @@ void Renderer::renderVerbose()
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
 
-		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
+		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel todo
 			if (j % verbose_step == 0) {
 				barInfo("\r %.1f %%", j * 100.0 / camera->height);    // progressbar :)
 			}
@@ -145,6 +166,7 @@ void Renderer::renderVerbose()
 				camera->render(rank, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
 			}
 		}
+		camera->step();
 		saveProgress(epoch + 1);
 		barInfo("\n");
 	}

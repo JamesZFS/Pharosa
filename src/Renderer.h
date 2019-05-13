@@ -6,6 +6,7 @@
 #define PHAROSA_RENDERER_H
 
 #include "defs.h"
+
 #define __USE_OMP__
 
 class Scene;
@@ -17,25 +18,19 @@ class Algorithm;
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Scene
 class Renderer
 {
-#ifdef __DEV_STAGE__
-public:
-#else
-	private:
-#endif
+private:
 	Scene *scene;
 	Camera *camera;
 	Algorithm *algorithm;
 
 	// path to save ppm file, will also write checkpoint to `save_path.cpt`
-	String save_ppm_path;
-	String save_cpt_path;
+	String save_path;
 	// path to load previously rendered ppm file, will also try to load checkpoint from `prev_path.cpt`
-	String prev_ppm_path;
-	String prev_cpt_path;
+	String prev_path;
 
-	size_t n_epoch;			// epochs to render
-	size_t save_step;		// save every `save_step` epoch, if 0 - no saving through out rendering
-	size_t verbose_step;	// steps to update progressbar, if 0 - no progressbar
+	size_t n_epoch;            // epochs to render
+	size_t save_step;        // save every `save_step` epoch, if 0 - no saving through out rendering
+	size_t verbose_step;    // steps to update progressbar, if 0 - no progressbar
 
 	void getReady();
 
@@ -44,7 +39,7 @@ public:
 	// render one time frame
 	void renderFrame();
 
-	void saveProgress(size_t cur_epoch) const;	// save progress without checking
+	void saveProgress(size_t cur_epoch) const;    // save progress without checking
 
 	// ** rendering pipeline **
 	// do the rendering for n_epoch times, callback each epoch
@@ -53,9 +48,17 @@ public:
 	void renderVerbose();
 
 public:
+	Renderer();
+
 	Renderer(const String &config_path);    // init from json
 
+	Renderer(const Json &json);
+
 	~Renderer();
+
+	void setup(const Json &json);    // re-setup from json
+
+	void clear();
 
 	// start rendering
 	void start();
