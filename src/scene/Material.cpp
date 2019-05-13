@@ -11,7 +11,8 @@ using Funcs::randf;
 Material::Material() :
 		color(Color::WHITE), emi(Emission::NONE),
 		diff(1), spec(0), refr(0), n_refr(1.5),
-		texture(nullptr), scale(1.0)
+		texture(nullptr),
+		Auu(1), Auv(0), Auc(0), Avu(0), Avv(1), Avc(0)
 {
 }
 

@@ -23,8 +23,7 @@ public:
 	inline Color &at(size_t i, size_t j)    // get pixel without index checking
 	{ return data[i][j]; }
 
-	inline const Color &sampleAt(double x, double y)
-	{ return data[lround(x) % width][lround(y) % height]; }
+	const Color &get(double x, double y) const;
 
 	/** read from PPM file
 	 * input: ppm_path

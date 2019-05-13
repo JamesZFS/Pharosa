@@ -32,7 +32,7 @@ struct Object
 		if (mtr->texture) {
 			double u, v;
 			geo->getUV(pos, u, v);
-			return mtr->color.mul(mtr->texture->sampleAt(u * mtr->scale, v * mtr->scale));
+			return mtr->textureAt(u, v);
 		}
 		else {
 			return mtr->color;

@@ -91,3 +91,12 @@ void Image::setup(size_t width_, size_t height_)
 	data.resize(width_, List<Color>(height_, Color::BLACK));
 	width = width_, height = height_;
 }
+
+const Color &Image::get(double x, double y) const
+{
+	size_t i = lround(x) % width, j = lround(y) % height;
+	if (i < 0) i += width;
+	if (j < 0) j += height;
+//	return data[i][j];
+	return data.at(i).at(j);
+}

@@ -1,22 +1,19 @@
 {
-	"save_path": "out/dof/dragon with texture 4.ppm",
-	"n_epoch": 10,
-	"save_step": 5,
-
+	"save_path": "out/dof/dragon with texture 5 rc clear.ppm",
+	"n_epoch": 5,
+	"save_step": 0,
 	"algorithm": {
 		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
-
 	"camera": {
-		"type": "dof",
+		"type": "basic",
 		"pos": [-20, -20, 380],
 		"rot": [0, 180, 5],
 		"width": 1024, "height": 768,
 		"pixel_size": 0.1, "length": 130.0, "focus": 250.0, "aperture": 0.8
 	},
-
 	"scene": [
 		{
 			"name": "dragon far",
@@ -34,16 +31,22 @@
 			"rot": [0, 0, 20]
 		},
 		{
-			"name": "dragon close",
-			"type": "obj",
-			"color": [0.95, 0.95, 0.96],
-			"diff": 0.0,
-			"spec": 0.0,
-			"refr": 1.0,
-			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
-			"scale": 40,
-			"tra": [-40, -30, 120],
-			"rot": [0, 0, 168]
+			"name": "sphere",
+			"type": "singleton",
+			"diff": 0.8,
+			"spec": 0.2,
+			"texture": {
+				"path": "res/marble.ppm",
+				"mat": [
+					[30, 0, 100],
+					[0, 20, 500]
+				]
+			},
+			"geo": {
+				"type": "sphere",
+				"pos": [-40, -30, 100],
+				"radius": 20
+			}
 		},
 		{
 			"name": "cornell walls",
@@ -52,24 +55,21 @@
 				{
 					"name": "back wall",
 					"texture": {
-						"path":"res/bamboo.ppm",
-						"scale": 2.0
+						"path": "res/bamboo.ppm",
+						"mat": [
+							[0, 2, 9],
+							[2, 0, 100]
+						]
 					},
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],
-						"point": [0, 0, -200],
-						"t_map": [
-							[[-100, -80, -200], [0, 0]],
-							[[100, -80, -200], [800, 0]],
-							[[100, 80, -200], [800, 500]]
-						]
+						"point": [0, 0, -200]
 					}
 				},
 				{
 					"name": "floor",
 					"texture": "res/floor1.ppm",
-
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -80,7 +80,7 @@
 				},
 				{
 					"name": "ceiling",
-					"color": "WHITE",
+					"texture": "res/floor2.ppm",
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
@@ -89,7 +89,7 @@
 				},
 				{
 					"name": "left",
-					"color": [0.8, 0.8, 0.7],
+					"texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -100,20 +100,20 @@
 				},
 				{
 					"name": "right",
-					"color": [0.8, 0.8, 0.7],
+					"texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
-						"point": [110, 0, 0]
+						"point": [130, 0, 0]
 					}
 				}
 			]
 		},
 		{
 			"name": "light source",
-			"emission": [11.5, 11, 11],
+			"emission": [16, 15, 15],
 			"geo": {
 				"type": "cube",
 				"pos": [-40, 78, -60],

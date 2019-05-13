@@ -208,12 +208,26 @@ Material *Material::acquire(const Json &json)
 	if (json.has("refr")) self->refr = json["refr"];
 	if (json.has("n_refr")) self->refr = json["n_refr"];
 	if (json.has("texture")) {
-		if (json["texture"].is_string()) {
-			self->texture = new Image(String(json["texture"]));
+		const Json &t_json = json["texture"];
+		if (t_json.is_string()) {
+			self->texture = new Image(String(t_json));
 		}
 		else {
-			self->texture = new Image(String(json["texture"].at("path")));
-			self->scale = json["texture"].value("scale", 1.0);
+			self->texture = new Image(String(t_json.at("path")));
+			if (t_json.has("scale")) {
+				double scale = t_json["scale"];
+				self->Auu = scale;
+				self->Avv = scale;
+			}
+			if (t_json.has("mat")) {
+				const Json &mat = t_json["mat"];
+				self->Auu = mat.at(0).at(0);
+				self->Auv = mat.at(0).at(1);
+				self->Auc = mat.at(0).at(2);
+				self->Avu = mat.at(1).at(0);
+				self->Avv = mat.at(1).at(1);
+				self->Avc = mat.at(1).at(2);
+			}
 		}
 	}
 	return self;

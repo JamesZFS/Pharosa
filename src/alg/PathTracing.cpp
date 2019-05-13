@@ -20,7 +20,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 
 	const Object &obj = *hit;    // the hit object
 
-	auto color = obj.colorAt(x);	// todo texture sampling
+	auto color = obj.colorAt(x);	// get texture from color
 	double P = color.max();    // max color component as refl_t
 
 	// stop tracing when depth too large or color too dim:

@@ -24,11 +24,14 @@ struct Material
 	double n_refr;	// refraction ratio
 
 	Image *texture; // texture ppm
-	double scale;	// texture_scale
+	double Auu, Auv, Auc, Avu, Avv, Avc;	// transform matrix of (u, v)
 
 	Material();	// dark white pure diffusive without texture
 
 	void BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
+
+	inline Color textureAt(double u, double v) const
+	{ return texture->get(Auu * u + Auv * v + Auc, Avu * u + Avv * v + Avc); }
 
 	static Material *acquire(const Json &json);
 };
