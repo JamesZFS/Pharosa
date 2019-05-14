@@ -5,7 +5,7 @@
 #ifndef PHAROSA_RENDERER_H
 #define PHAROSA_RENDERER_H
 
-#include "defs.h"
+#include "Pharosa.h"
 
 #define __USE_OMP__
 

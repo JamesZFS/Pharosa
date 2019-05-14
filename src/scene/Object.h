@@ -5,7 +5,7 @@
 #ifndef PHAROSA_OBJECT_H
 #define PHAROSA_OBJECT_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "Material.h"
 #include "../geometric/Geometry.h"
 

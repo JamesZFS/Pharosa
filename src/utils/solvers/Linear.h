@@ -5,7 +5,7 @@
 #ifndef PHAROSA_LINEAR_H
 #define PHAROSA_LINEAR_H
 
-#include "../../defs.h"
+#include "../../Pharosa.h"
 
 namespace Linear
 {

@@ -5,7 +5,7 @@
 #ifndef PHAROSA_IMAGE_H
 #define PHAROSA_IMAGE_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "Vec.h"
 
 class Image

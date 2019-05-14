@@ -5,7 +5,7 @@
 #ifndef PHAROSA_GEOMETRY_H
 #define PHAROSA_GEOMETRY_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../core/Vec.h"
 #include "../core/Mat.h"
 #include "../core/Ray.hpp"

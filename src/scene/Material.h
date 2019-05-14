@@ -6,7 +6,7 @@
 #define PHAROSA_MATERIAL_H
 
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
 #include "../core/Image.h"

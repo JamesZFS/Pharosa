@@ -2,7 +2,7 @@
 // Created by James on 2019/4/23.
 // implement all parsing methods here
 
-#include "defs.h"
+#include "Pharosa.h"
 #include <fstream>
 #include "scene/Scene.h"
 

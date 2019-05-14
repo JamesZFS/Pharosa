@@ -5,7 +5,7 @@
 #ifndef PHAROSA_FUNCS_HPP
 #define PHAROSA_FUNCS_HPP
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include <random>
 
 

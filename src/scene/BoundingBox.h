@@ -8,7 +8,7 @@
 #ifndef PHAROSA_BOUNDINGBOX_H
 #define PHAROSA_BOUNDINGBOX_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "Object.h"
 
 // Bounding cube parallel to oxy, oyz, ozx

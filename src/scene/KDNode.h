@@ -5,7 +5,7 @@
 #ifndef PHAROSA_KDNODE_H
 #define PHAROSA_KDNODE_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "BoundingBox.h"
 #include "Object.h"
 

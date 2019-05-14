@@ -5,7 +5,7 @@
 #ifndef PHAROSA_SCENE_H
 #define PHAROSA_SCENE_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../core/Ray.hpp"
 #include "Object.h"
 

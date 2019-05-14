@@ -2,8 +2,8 @@
 // Created by think on 2019/4/1.
 //
 
-#ifndef PHAROSA_DEFS_H
-#define PHAROSA_DEFS_H
+#ifndef PHAROSA_PHAROSA_H
+#define PHAROSA_PHAROSA_H
 
 #define _USE_MATH_DEFINES
 
@@ -82,4 +82,4 @@ extern size_t __max_depth__;
 #define barInfo(...) fprintf(stderr, __VA_ARGS__); fflush(stderr)    // show progressbar info
 #define TERMINATE(...) { fprintf(stderr, __VA_ARGS__); exit(1); }	// exit with error info
 
-#endif //PHAROSA_DEFS_H
+#endif //PHAROSA_PHAROSA_H

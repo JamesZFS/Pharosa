@@ -6,6 +6,7 @@
 #include "scene/Scene.h"
 #include "geometric/All.h"
 #include "utils/solvers/Linear.h"
+#include "core/Polynomial.h"
 
 namespace Test
 {
@@ -77,77 +78,6 @@ namespace Test
 		assert(ea.y == 0 && ea.z == M_PI);
 	}
 
-	void onSurface()
-	{
-//		auto t = Triangle(Arr<Pos, 3>{{
-//											  {10, 0, 0},
-//											  {0, 10, 0},
-//											  {-10, 0, 0}
-//									  }}, Pos(0, 0, 10), Color());
-//		assert(!t.hasSurfacePoint(Pos(0, 12, 10)));
-//		assert(t.hasSurfacePoint(Pos(0, 0, 10)));
-//		assert(!t.hasSurfacePoint(Pos(1, 1, 11)));
-	}
-
-	void intersect()
-	{
-//		double t0 = 0, t1 = 0, t2 = 0, t3 = 0, tr = 0, _;
-//		long long N = 30000000;
-//		auto cube = Cube(Arr<Dir, 3>{Dir::X_AXIS, Dir::Y_AXIS, Dir::Z_AXIS},
-//						 Arr2D<Pos, 3, 2>{{
-//													{{
-//															 {0, 0, 0}, {30, 0, 0}
-//													 }},
-//													{{
-//															 {0, 0, 0}, {0, 30, 0}
-//													 }},
-//													{{
-//															 {0, 0, 0}, {0, 0, 50}
-//													 }}
-//											}},
-//		Pos(10, 30, 20), ElAg(0, 10 * DEG, 0));
-//		auto triangle = Triangle({Pos(0, 0, 80), {80, 0, 0}, {0, 80, 0}}, Pos(50, 0, 50), ElAg::NONROT);
-//		auto sphere = Sphere(600, Pos(50, 681.6 - .27, 81.6), ElAg());
-//		auto plane = InfPlane(Dir(0, -1, 0), Pos(0, 81.6, 0));
-//
-//		clock_t since = clock();
-//		for (long long i = 0; i < N; ++i) {
-//			Ray(Pos::random(0, 100), Dir::random());
-//		}
-//		tr = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-//		printf("t_ref: %19.10f sec\n", tr);
-//
-//		since = clock();
-//		for (long long i = 0; i < N; ++i) {
-//			cube.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
-//		}
-//		t0 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-//		printf("cube: %20.10f sec\n", t0 - tr);
-//
-//		since = clock();
-//		for (long long i = 0; i < N; ++i) {
-//			triangle.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
-//		}
-//		t1 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-//		printf("triangle: %16.10f sec\n", t1 - tr);
-//
-//		since = clock();
-//		for (long long i = 0; i < N; ++i) {
-//			sphere.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
-//		}
-//		t2 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-//		printf("sphere: %18.10f sec\n", t2 - tr);
-//
-//		since = clock();
-//		for (long long i = 0; i < N; ++i) {
-//			plane.intersect(Ray(Pos::random(0, 100), Dir::random()), _);
-//		}
-//		t3 = (clock() - since) * 1.0 / CLOCKS_PER_SEC;
-//		printf("plane: %19.10f sec\n", t3 - tr);
-//
-//		fflush(stdout);
-	}
-
 	void matrix()
 	{
 		Mat<double> a(
@@ -175,5 +105,38 @@ namespace Test
 		auto c = ((B * A) * Pos(0, 1, 0));
 		c.report(true);
 		assert(c == Pos(0, 1, 2));
+	}
+
+	void polynomial()
+	{
+		Polynomial f({1, 2, 3});
+		f.report();
+		assert(f(0.0) == 1);
+		assert(f(1.0) == 6);
+		assert(f(-2.0) == 9);
+		f -= Polynomial({-1.0, -1, 0, 0, 2});
+		assert(f.order() == 4);
+		f.report();
+		(f + Polynomial({0, 1})).report();
+		assert(f[-1] == 0);
+		assert(f[1] == 3);
+		message("Poly Mul:");
+		Polynomial g({2, 0, 0});
+		f *= g;
+		f.report();
+		f.set(0, 0);
+		g.set(2, 1);
+		assert(f[0] == 0);
+		(f * g).report();
+		f = Polynomial({1, 1});
+		(g = f * f * f * f).report();
+		assert(g.order() == 4);
+		assert(g[0] == 1 && g[1] == 4 && g[2] == 6 && g[3] == 4 && g[4] == 1);
+		(g * 2).report();
+		assert((g * 2.)[0] == 2);
+		g *= 3;
+		assert(g[3] == 12);
+		message("Binomial:");
+		Polynomial::binomial(2, -2, 11).report();
 	}
 }

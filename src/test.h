@@ -5,7 +5,7 @@
 #ifndef PHAROSA_TEST_H
 #define PHAROSA_TEST_H
 
-#include "defs.h"
+#include "Pharosa.h"
 
 namespace Test
 {
@@ -13,11 +13,9 @@ namespace Test
 
 	void coordinateConvert();
 
-	void onSurface();
-
-	void intersect();
-
 	void matrix();
+
+	void polynomial();
 }
 
 #endif //PHAROSA_TEST_H

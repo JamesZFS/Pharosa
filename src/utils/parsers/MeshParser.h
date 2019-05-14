@@ -5,7 +5,7 @@
 #ifndef PHAROSA_MESHPARSER_H
 #define PHAROSA_MESHPARSER_H
 
-#include "../../defs.h"
+#include "../../Pharosa.h"
 #include "../../core/Vec.h"
 #include "../../scene/Object.h"
 

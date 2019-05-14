@@ -5,7 +5,7 @@
 #ifndef PHAROSA_ALGORITHM_H
 #define PHAROSA_ALGORITHM_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../core/Vec.h"
 #include "../core/Ray.hpp"
 

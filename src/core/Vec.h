@@ -5,7 +5,7 @@
 #ifndef PHAROSA_VEC_H
 #define PHAROSA_VEC_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../utils/funcs.hpp"
 #include "../utils/parsers/json_fwd.hpp"
 

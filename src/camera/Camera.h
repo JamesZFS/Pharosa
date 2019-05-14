@@ -5,7 +5,7 @@
 #ifndef PHAROSA_CAMERA_H
 #define PHAROSA_CAMERA_H
 
-#include "../defs.h"
+#include "../Pharosa.h"
 #include "../core/Ray.hpp"
 #include "../core/Vec.h"
 #include "../core/Image.h"
