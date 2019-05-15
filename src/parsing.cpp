@@ -17,7 +17,7 @@
 
 #include "parsing.inl"
 #include "geometric/Geometry.h"
-#include "geometric/PolyRevolution.h"
+#include "geometric/PolyRev.h"
 
 
 Renderer::Renderer(const String &config_path) : Renderer()
@@ -252,8 +252,11 @@ Geometry *Geometry::acquire(const Json &json)
 	else if (type == "triangle") {
 		return Triangle::acquire(json);
 	}
-	else if (type == "poly revolution") {
-		return PolyRevolution::acquire(json);
+	else if (type == "poly revolution" || type == "poly rev") {
+		return PolyRev::acquire(json);
+	}
+	else if (type == "bezier revolution" || type == "bezier rev") {
+		return BezierRev::acquire(json);
 	}
 	else TERMINATE("Error, got invalid geometry type \"%s\".", type.data());
 }
@@ -285,11 +288,15 @@ Triangle *Triangle::acquire(const Json &json)
 	return new Triangle(json.at("points").at(0), json.at("points").at(1), json.at("points").at(2));
 }
 
-PolyRevolution *PolyRevolution::acquire(const Json &json)
+PolyRev *PolyRev::acquire(const Json &json)
 {
 	List<double> &&x_coeffs = json.at("x_coeffs"), &&y_coeffs = json.at("y_coeffs");
-//	return new PolyRevolution(Polynomial(x_coeffs), Polynomial(y_coeffs)); todo
-	return new PolyRevolution(Polynomial(x_coeffs), Polynomial(y_coeffs));
+	return new PolyRev(x_coeffs, y_coeffs);
+}
+
+BezierRev *BezierRev::acquire(const Json &json)
+{
+	return new BezierRev(json.at("control_points"));
 }
 
 // core: using constructor's name for expediency

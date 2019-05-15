@@ -372,7 +372,7 @@ namespace Test
 				return F.derivative(x);
 			}
 		};
-		PolyRevolution surface(Polynomial(-50, 100), Polynomial(100, 0));
+		PolyRev surface(Polynomial(-50, 100), Polynomial(100, 0));
 		surface.phi.report();
 		surface.psi.report();
 		surface.psi_2.report();

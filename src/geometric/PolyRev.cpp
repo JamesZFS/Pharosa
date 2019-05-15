@@ -2,7 +2,7 @@
 // Created by James on 2019/5/15.
 //
 
-#include "PolyRevolution.h"
+#include "PolyRev.h"
 #include "../core/Ray.hpp"
 #include "../utils/solvers/NonLinear.h"
 #include "../scene/Intersection.hpp"
@@ -73,25 +73,25 @@ struct MFun //: NonLinear::MonoFun
 	}
 };
 
-PolyRevolution::PolyRevolution(Polynomial &&phi_, Polynomial &&psi_) :
+PolyRev::PolyRev(Polynomial &&phi_, Polynomial &&psi_) :
 		phi(std::move(phi_)), psi(std::move(psi_)), psi_2(psi * psi)
 {
 
 }
 
-//PolyRevolution::PolyRevolution(List<double> &&x_coeffs, List<double> &&y_coeffs) :
+//PolyRev::PolyRev(List<double> &&x_coeffs, List<double> &&y_coeffs) :
 //	phi(x_coeffs), psi(y_coeffs)
 //{
 //
 //}
 
 
-void PolyRevolution::applyTransform(TransMat mat_)
+void PolyRev::applyTransform(TransMat mat_)
 {
 	mat = mat_;
 }
 
-bool PolyRevolution::intersect(const Ray &ray, double &t, Intersection &isect) const
+bool PolyRev::intersect(const Ray &ray, double &t, Intersection &isect) const
 {
 	Ray ray_local(mat | ray.org, mat.rot | ray.dir);    // to local todo
 	Polynomial
@@ -118,7 +118,7 @@ bool PolyRevolution::intersect(const Ray &ray, double &t, Intersection &isect) c
 	return true;
 }
 
-//void PolyRevolution::getNormal(const Pos &pos, Dir &normal) const
+//void PolyRev::getNormal(const Pos &pos, Dir &normal) const
 //{
 //	Pos x_local = mat | pos;
 //	MFun f(phi, x_local.x);
@@ -131,7 +131,7 @@ bool PolyRevolution::intersect(const Ray &ray, double &t, Intersection &isect) c
 //	normal = mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
 //}
 //
-//void PolyRevolution::getUV(const Pos &pos, double &u, double &v)
+//void PolyRev::getUV(const Pos &pos, double &u, double &v)
 //{
 //	Pos x_local = mat | pos;
 //	MFun f(phi, x_local.x);

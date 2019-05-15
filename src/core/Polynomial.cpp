@@ -3,6 +3,7 @@
 //
 
 #include "Polynomial.h"
+#include "../utils/funcs.hpp"
 
 Polynomial::Polynomial() : Polynomial(0)
 {
@@ -68,7 +69,7 @@ Polynomial Polynomial::operator+(const Polynomial &other) const
 {
 	Polynomial res(max2(n, other.n));
 	for (size_t i = 0; i <= res.n; ++i) {
-		res.a[i] = a[i] + other.a[i];
+		res.a[i] = (*this)[i] + other[i];
 	}
 	res.trim();
 	res.compDerivatives();
@@ -79,7 +80,7 @@ Polynomial Polynomial::operator-(const Polynomial &other) const
 {
 	Polynomial res(max2(n, other.n));
 	for (size_t i = 0; i <= res.n; ++i) {
-		res.a[i] = a[i] - other.a[i];
+		res.a[i] = (*this)[i] - other[i];
 	}
 	res.trim();
 	res.compDerivatives();
@@ -90,7 +91,7 @@ Polynomial &Polynomial::operator+=(const Polynomial &other)
 {
 	if (n < other.n) extendTo(other.n);
 	for (size_t i = 0; i <= n; ++i) {
-		a[i] += other.a[i];
+		a[i] += other[i];
 	}
 	trim();
 	compDerivatives();
@@ -101,7 +102,7 @@ Polynomial &Polynomial::operator-=(const Polynomial &other)
 {
 	if (n < other.n) extendTo(other.n);
 	for (size_t i = 0; i <= n; ++i) {
-		a[i] -= other.a[i];
+		a[i] += other[i];
 	}
 	trim();
 	compDerivatives();
@@ -186,15 +187,6 @@ Polynomial &Polynomial::operator*=(double k)
 	return *this;
 }
 
-unsigned long long factorial[11] = {
-		1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800
-};
-
-inline double combination(unsigned char n, unsigned char m)	// (n m)
-{
-	return 1.0 * factorial[n] / (1.0 * factorial[m] * factorial[n - m]);
-}
-
 Polynomial Polynomial::binomial(double a, double b, unsigned char n)
 {
 	assert(n < 11);
@@ -206,7 +198,7 @@ Polynomial Polynomial::binomial(double a, double b, unsigned char n)
 	else {
 		double a_n_i = pow(a, n), b_i = 1;    // a^(n-i), b^i
 		for (unsigned char i = 0; i <= n; ++i) {
-			res.a[i] = combination(n, i) * a_n_i * b_i;
+			res.a[i] = Funcs::binomial(n, i) * a_n_i * b_i;
 			a_n_i /= a, b_i *= b;
 		}
 	}

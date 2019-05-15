@@ -10,6 +10,7 @@
 #include "Triangle.h"
 #include "InfPlane.h"
 #include "Cube.h"
-#include "PolyRevolution.h"
+#include "PolyRev.h"
+#include "BezierRev.h"
 
 #endif //PHAROSA_SCENE_ALL_H

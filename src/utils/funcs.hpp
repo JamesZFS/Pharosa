@@ -79,6 +79,14 @@ namespace Funcs
 		auto idx = s.rfind(suffix);
 		return idx != String::npos && idx == (s.length() - suffix.length());
 	}
+
+	extern double factorial[11];
+
+	inline double binomial(unsigned char n, unsigned char m)	// (n m)
+	{
+		assert(0 <= n && n < 11 && 0 <= m && m <= n);	// todo
+		return factorial[n] / (factorial[m] * factorial[n - m]);
+	}
 }
 
 #define WITH_PROB(p) (Funcs::randf() < (p))

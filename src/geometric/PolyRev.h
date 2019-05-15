@@ -10,14 +10,16 @@
 #include "../core/Mat.h"
 
 // revolution solid of polynomial, assuming the revolution is along X-axis
-struct PolyRevolution : Geometry
+struct PolyRev : Geometry
 {
 	Polynomial phi, psi;    // parametric eqa (x = phi(u), y^2 + z^2 = psi(u)^2)
 	Polynomial psi_2;	// cache psi^2
 
 	TransMat mat;    // transform matrix from global to local
 
-	PolyRevolution(Polynomial &&phi_, Polynomial &&psi_);
+	PolyRev() = default;
+
+	PolyRev(Polynomial &&phi_, Polynomial &&psi_);
 
 	void applyTransform(TransMat mat_) override;
 
@@ -25,7 +27,7 @@ struct PolyRevolution : Geometry
 
 //	void getNormal(const Pos &pos, Dir &normal) const override;
 
-	static PolyRevolution *acquire(const Json &json);
+	static PolyRev *acquire(const Json &json);
 };
 
 
