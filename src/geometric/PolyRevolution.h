@@ -19,6 +19,8 @@ struct PolyRevolution : Geometry
 
 	PolyRevolution(Polynomial &&phi_, Polynomial &&psi_);
 
+//	PolyRevolution(List<double> &&x_coeffs, List<double> &&y_coeffs);
+
 	void applyTransform(TransMat mat_) override;
 
 	bool intersect(const Ray &ray, double &t) const override;
@@ -26,6 +28,8 @@ struct PolyRevolution : Geometry
 	Dir normalAt(const Pos &x) const override;
 
 	void getUV(const Pos &pos, double &u, double &v) override;
+
+	static PolyRevolution *acquire(const Json &json);
 };
 
 

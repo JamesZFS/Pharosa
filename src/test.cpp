@@ -332,11 +332,11 @@ namespace Test
 	void main()
 	{
 		double since = clock();
-		linear();
-		coordinateConvert();
-		matrix();
-		polynomial();
-		Newton();
+//		linear();
+//		coordinateConvert();
+//		matrix();
+//		polynomial();
+//		Newton();
 		Newton2D();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}

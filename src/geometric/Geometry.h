@@ -35,6 +35,8 @@ struct Geometry
 	virtual void getUV(const Pos &pos, double &u, double &v) = 0;
 
 	static Geometry *acquire(const Json &json);    // new a geometry from json
+
+	/// todo max min xyz
 };
 
 #endif //PHAROSA_GEOMETRY_H

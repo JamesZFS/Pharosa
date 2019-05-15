@@ -3,7 +3,8 @@
 //
 
 #include "Linear.h"
-#define MAX_ITER 10000
+#define MAX_ITER 1000
+#define __PRINT_N_ITER__
 
 namespace NonLinear
 {
@@ -18,7 +19,9 @@ namespace NonLinear
 				return false;    // singular
 			x0 -= s0, x1 -= s1;    // step
 			if (fabs(x0 - x0_prev) < tol && fabs(x1 - x1_prev) < tol) {
+#ifdef __PRINT_N_ITER__
 				safe_debug("# iter = %ld\n", i);
+#endif
 				return true;    // inf norm
 			}
 			x0_prev = x0, x1_prev = x1;
@@ -37,7 +40,9 @@ namespace NonLinear
 				return false;    // singular
 			x0 -= s0, x1 -= s1;    // step
 			if (fabs(f0(x0, x1)) < eps && fabs(f1(x0, x1)) < eps) {
+#ifdef __PRINT_N_ITER__
 				safe_debug("# iter = %ld\n", i);
+#endif
 				return true;    // inf norm
 			}
 		}
@@ -53,7 +58,9 @@ namespace NonLinear
 			if (fabs(d) < EPS) return false;
 			x -= f(x) / d;
 			if (fabs(x - x_prev) < tol) {
+#ifdef __PRINT_N_ITER__
 				safe_debug("# iter = %ld\n", i);
+#endif
 				return true;
 			}
 			x_prev = x;
@@ -70,7 +77,9 @@ namespace NonLinear
 			if (fabs(d) < EPS) return false;
 			x -= f(x) / d;
 			if (fabs(f(x)) < eps) {
+#ifdef __PRINT_N_ITER__
 				safe_debug("# iter = %ld\n", i);
+#endif
 				return true;
 			}
 		}

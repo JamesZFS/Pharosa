@@ -1,0 +1,111 @@
+{
+	"save_path": "out/Bezier/curve.ppm",
+	"n_epoch": 1,
+	"save_step": 0,
+	"verbose_step": 10,
+	"algorithm": {
+		"type": "rc",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 5
+	},
+	"camera": {
+		"type": "basic",
+		"pos": [0, 0, 400],
+		"rot": [0, 180, 0],
+		"width": 1024, "height": 768,
+		"pixel_size": 0.1, "length": 130.0, "focus": 250.0, "aperture": 0.8
+	},
+	"scene": [
+		{
+			"color":[0.9, 0.9, 1.0],
+			"geo": {
+				"type": "poly revolution",
+				"exp": "{0. + 200. u, 48000. u^2 - 9.6*10^6 u^3 + 4.8*10^8 u^4}",
+				"x_coeffs": [0, 200],
+				"y_coeffs": [0, 0, 48000, -9.6e6, 4.8e8]
+			}
+		},
+		{
+			"type": "skip",
+			"color":[0.8, 0.8, 1.0],
+			"geo": {
+				"type": "poly revolution",
+				"exp": "{t, 50}",
+				"x_coeffs": [0, 1],
+				"y_coeffs": [50]
+			}
+		},
+		{
+			"name": "cornell walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "back wall",
+					"texture": {
+						"path": "res/bamboo.ppm",
+						"mat": [
+							[0, 2, 9],
+							[2, 0, 100]
+						]
+					},
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -200]
+					}
+				},
+				{
+					"name": "floor",
+					"texture": "res/floor1.ppm",
+					"diff": 0.5,
+					"spec": 0.5,
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -60, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"texture": "res/floor2.ppm",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"texture": "res/floor3.ppm",
+					"diff": 0.5,
+					"spec": 0.5,
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-110, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"texture": "res/floor3.ppm",
+					"diff": 0.5,
+					"spec": 0.5,
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [130, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "light source",
+			"emission": [16, 15, 15],
+			"geo": {
+				"type": "cube",
+				"pos": [-40, 78, -60],
+				"length": 80, "width": 20, "height": 80
+			}
+		}
+	]
+}

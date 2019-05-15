@@ -19,6 +19,13 @@ Polynomial::Polynomial(List<double> &&coeffs) : n(coeffs.size() - 1), a(std::mov
 	compDerivatives();
 }
 
+Polynomial::Polynomial(const List<double> &coeffs) : n(coeffs.size() - 1), a(coeffs), d(n, 0.)
+{
+	assert(n >= 0);
+	trim();
+	compDerivatives();
+}
+
 Polynomial::Polynomial(Polynomial &&other) noexcept : n(other.n), a(std::move(other.a)), d(std::move(other.d))
 {
 }
@@ -133,7 +140,7 @@ void Polynomial::set(size_t i, double k)
 	assert(i >= 0);
 	if (i > n) extendTo(i);
 	a[i] = k;
-	d[i - 1] = i * k;
+	if (i > 0) d[i - 1] = i * k;
 }
 
 Polynomial Polynomial::operator*(const Polynomial &other) const
