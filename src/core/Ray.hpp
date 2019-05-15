@@ -7,7 +7,7 @@
 
 #include "Vec.h"
 
-// ray definition
+// L1 definition
 struct Ray
 {
 	Pos org;

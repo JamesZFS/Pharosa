@@ -9,11 +9,11 @@
 
 namespace Linear
 {
-	// Solve2D A x == b (n_dim == n, A: matrix)
+	// Solve2DTol A x == b (n_dim == n, A: matrix)
 	template<int n>
 	bool Solve(double (&A)[n][n], double (&b)[n], double (&x)[n]);
 
-	// Solve2D A x == b (n_dim == n, A: matrix) for debuging use
+	// Solve2DTol A x == b (n_dim == n, A: matrix) for debuging use
 	template<int n>
 	bool SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n]);
 

@@ -11,7 +11,7 @@
 
 class KDNode;
 
-// Scene class, for i/o models and calculating ray intersection
+// Scene class, for i/o models and calculating L1 intersection
 class Scene
 {
 private:
@@ -44,7 +44,7 @@ public:
 	 */
 	bool intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const;
 
-	const Object *hitOf(const Ray &ray) const;    // compute only the first hit target of ray
+	const Object *hitOf(const Ray &ray) const;    // compute only the first hit target of L1
 
 	static Scene *acquire(const Json &json);    // load from json
 };

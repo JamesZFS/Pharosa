@@ -12,9 +12,10 @@
 // revolution solid of polynomial, assuming the revolution is along X-axis
 struct PolyRevolution : Geometry
 {
-	Polynomial phi, psi;	// parametric eqa (x = phi(u), y^2 + z^2 = psi(u)^2)
+	Polynomial phi, psi;    // parametric eqa (x = phi(u), y^2 + z^2 = psi(u)^2)
+	Polynomial psi_2;	// cache psi^2
 
-	TransMat mat;	// transform matrix from global to local
+	TransMat mat;    // transform matrix from global to local
 
 	PolyRevolution(Polynomial &&phi_, Polynomial &&psi_);
 

@@ -29,9 +29,9 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 		else return obj.mtr->emi; // R.R. the darker the obj is, the more likely to stop radiating
 	}
 
-	Ray r_in(x, ray.dir);    // move the ray to start from intersection point
+	Ray r_in(x, ray.dir);    // move the L1 to start from intersection point
 	List<Ray> r_outs;
-	List<double> w_outs;    // weight of each out ray
+	List<double> w_outs;    // weight of each out L1
 
 	// compute multiple out rays:
 	obj.mtr->BSDF(r_in, normal, ++depth, r_outs, w_outs);

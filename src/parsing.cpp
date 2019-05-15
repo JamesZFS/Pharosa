@@ -112,7 +112,7 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 {
 	String type = json.at("type");
 	Parsing::lowerStr_(type);
-	if (type == "ray casting" || type == "rc") {
+	if (type == "L1 casting" || type == "rc") {
 		try {
 			return new RayCasting(scene, Dir(json.at("light_dir")));
 		}

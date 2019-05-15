@@ -188,21 +188,31 @@ namespace Test
 				return -2 * (x1 - 2);
 			}
 		};
-		for (int i = 0; i < 3000000; ++i) {
+		double since = clock();
+		for (int i = 0; i < 1000000; ++i) {
 			double x0 = 0.1, x1 = 0.1;
-			NonLinear::Solve2D(Fun0(), Fun1(), x0, x1, 0.0001);
+			NonLinear::Solve2DTol(Fun0(), Fun1(), x0, x1, 0.0001);
 //		printf("x0 = %.4f\nx1 = %.4f", x0, x1);
 			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
 		}
+		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
+		since = clock();
+		for (int i = 0; i < 1000000; ++i) {
+			double x0 = 0.1, x1 = 0.1;
+			NonLinear::Solve2DEps(Fun0(), Fun1(), x0, x1, 0.0001);
+//		printf("x0 = %.4f\nx1 = %.4f", x0, x1);
+			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
+		}
+		printf("solve with eps in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 
 	void main()
 	{
 		double since = clock();
-//		linear();
-//		coordinateConvert();
-//		matrix();
-//		polynomial();
+		linear();
+		coordinateConvert();
+		matrix();
+		polynomial();
 		Newton();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}

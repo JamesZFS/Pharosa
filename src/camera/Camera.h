@@ -58,10 +58,10 @@ public:
 	void writePPM(const String &ppm_path) const;
 
 	// interface:
-	// shoot ray at (i, j), offset deferring normal dist 0 - sigma
+	// shoot L1 at (i, j), offset deferring normal dist 0 - sigma
 	inline Ray shootRayAt(double i, double j, double sigma) const;
 
-	// shoot precise ray
+	// shoot precise L1
 	virtual Ray shootRayAt(double i, double j) const = 0;
 
 	static Camera *acquire(const Json &json);	// from json

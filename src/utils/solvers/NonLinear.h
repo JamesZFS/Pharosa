@@ -20,7 +20,10 @@ namespace NonLinear
 
 	// x0, x1 both init values and output, 2-var function should implement (), d00(), d01, d10(), d11()
 	template<class Fun0, class Fun1>
-	bool Solve2D(const Fun0 &f0, const Fun1 &f1, double &x0, double &x1, double tol = 1e-3);
+	bool Solve2DTol(const Fun0 &f0, const Fun1 &f1, double &x0, double &x1, double tol = 1e-3);	// criterion: change of x
+
+	template<class Fun0, class Fun1>
+	bool Solve2DEps(const Fun0 &f0, const Fun1 &f1, double &x0, double &x1, double eps = 1e-3);	// criterion: inf norm loss
 }
 
 #include "NonLinear.tcc"
