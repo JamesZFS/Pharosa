@@ -72,8 +72,11 @@ bool Cube::intersect(const Ray &ray, double &t, Intersection &isect) const
 void Cube::getNormal(const Pos &pos, Dir &normal) const
 {
 	for (const auto &p :slab) {
-		if (p[0].testPoint(pos) || p[1].testPoint(pos)) normal = p[0].n;
+		if (p[0].testPoint(pos) || p[1].testPoint(pos)) {
+			normal = p[0].n;
+			return;
+		}
 	}
-	TERMINATE("Cube::getNormal() should not reach the end")    // todo
+	TERMINATE("Cube::getNormal() should not reach the end")
 }
 

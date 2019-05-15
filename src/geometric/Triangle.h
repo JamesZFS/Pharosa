@@ -6,8 +6,9 @@
 #define PHAROSA_TRIANGLE_H
 
 #include "Geometry.h"
+#include "Finite.h"
 
-struct Triangle : Geometry
+struct Triangle : Geometry, Finite
 {
 	Arr<Pos, 3> p;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
@@ -26,25 +27,26 @@ struct Triangle : Geometry
 	void getUV(const Pos &pos, double &u, double &v) const override
 	{ u = cu % pos, v = cv % pos; }
 
-	inline double xMin() const    // left most
+	// override Finite:
+	inline double xMin() const override    // left most
 	{ return min3(p[0].x, p[1].x, p[2].x); }
 
-	inline double xMax() const // right most
+	inline double xMax() const override // right most
 	{ return max3(p[0].x, p[1].x, p[2].x); }
 
-	inline double yMin() const
+	inline double yMin() const override
 	{ return min3(p[0].y, p[1].y, p[2].y); }
 
-	inline double yMax() const
+	inline double yMax() const override
 	{ return max3(p[0].y, p[1].y, p[2].y); }
 
-	inline double zMin() const
+	inline double zMin() const override
 	{ return min3(p[0].z, p[1].z, p[2].z); }
 
-	inline double zMax() const
+	inline double zMax() const override
 	{ return max3(p[0].z, p[1].z, p[2].z); }
 
-	inline Pos center() const	// get center point
+	inline Pos center() const override	// get center point
 	{ return (p[0] + p[1] + p[2]) / 3; }
 
 	static Triangle *acquire(const Json &json);

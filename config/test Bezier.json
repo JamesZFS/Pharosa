@@ -1,10 +1,10 @@
 {
-	"save_path": "out/Bezier/curve refactor.ppm",
-	"n_epoch": 5,
+	"save_path": "out/Bezier/curve refactor pt.ppm",
+	"n_epoch": 20,
 	"save_step": 0,
 	"verbose_step": 10,
 	"algorithm": {
-		"type": "rc",
+		"type": "pt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

@@ -3,7 +3,7 @@
 //
 
 #include "KDNode.h"
-#include "../geometric/Triangle.h"
+#include "../geometric/Finite.h"
 #include "Intersection.hpp"
 
 KDNode::KDNode() : box(nullptr), tris(nullptr), l_child(nullptr), r_child(nullptr)
@@ -40,6 +40,7 @@ void KDNode::intersect(const Ray &ray, double &t, Intersection &isect) const
 				isect.hit = obj;
 			}
 		}
+		return;
 	}
 
 	// common case, recurse:
@@ -54,7 +55,7 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 {
 	__max_depth__ = max2(__max_depth__, depth);
 	box = new BoundingBox(triangles);    // bound all triangles
-	tris = new ObjectList(triangles);    // copy triangle ptrs
+	tris = new ObjectList(triangles);    // copy Finite ptrs
 
 	// base case:
 	if (tris->size() <= 1) return;
@@ -62,7 +63,7 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 	// get center point of all tris:
 	Pos center;
 	for (auto obj: *tris) {
-		auto tr = dynamic_cast<Triangle *>(obj->geo);
+		auto tr = dynamic_cast<Finite *>(obj->geo);
 		assert(tr != nullptr);
 		center += tr->center();
 	}
@@ -72,7 +73,7 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 	auto l_tris = new ObjectList, r_tris = new ObjectList;
 	auto cur_axis = box->getLongestAxis();
 	for (auto obj: *tris) {
-		auto tr = dynamic_cast<Triangle *>(obj->geo);
+		auto tr = dynamic_cast<Finite *>(obj->geo);
 		switch (cur_axis) {
 			case BoundingBox::X:
 				tr->center().x <= center.x ? l_tris->push_back(obj) : r_tris->push_back(obj);
