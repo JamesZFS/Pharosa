@@ -1,7 +1,8 @@
 {
-	"save_path": "out/Bezier/curve pt.ppm",
-	"n_epoch": 5,
-	"save_step": 1,
+	"save_path": "out/Bezier/curve pt diff.ppm",
+	"prev_path": "out/Bezier/curve pt diff.ppm",
+	"n_epoch": 30,
+	"save_step": 5,
 	"verbose_step": 10,
 	"algorithm": {
 		"type": "pt",
@@ -13,7 +14,7 @@
 		"pos": [0, 0, 600],
 		"rot": [0, 180, 0],
 		"width": 800, "height": 500,
-		"pixel_size": 0.1, "length": 130.0, "focus": 250.0, "aperture": 0.8
+		"pixel_size": 0.05, "length": 130.0, "focus": 250.0, "aperture": 0.8
 	},
 	"scene": [
 		{
@@ -28,6 +29,9 @@
 		},
 		{
 			"type": "skip",
+			"diff": 0,
+			"refr": 1,
+			"spec": 0,
 			"color":[0.8, 0.8, 1.0],
 			"rot": [0, 0, -80],
 			"geo": {
@@ -84,7 +88,7 @@
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
-						"point": [-110, 0, 0]
+						"point": [-130, 0, 0]
 					}
 				},
 				{
