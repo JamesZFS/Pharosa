@@ -48,6 +48,8 @@ struct Mat    // 3D matrix
 
 	inline Vec<T> operator*(const Vec<T> &b) const;    // mul vector
 
+	inline Vec<T> operator|(const Vec<T> &b) const;		// transpose mul vector
+
 	void report() const;
 };
 
@@ -89,6 +91,9 @@ struct TransMat
 
 	inline Vec<double> operator*(const Vec<double> &x) const    // apply transform to a vec
 	{ return tra + rot * x; }
+
+	inline Vec<double> operator|(const Vec<double> &x) const 	// inverse transform
+	{ return rot | (x - tra); }
 
 	void report() const;
 };

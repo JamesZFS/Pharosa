@@ -30,8 +30,6 @@ struct Cube : Geometry
 	inline void getUV(const Pos &pos, double &u, double &v) override
 	{ slab[0][0].getUV(pos, u, v); }
 
-	bool hasSurfacePoint(const Pos &x) const override;
-
 	static Cube *acquire(const Json &json);
 };
 

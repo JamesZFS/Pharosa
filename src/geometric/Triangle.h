@@ -23,8 +23,6 @@ struct Triangle : Geometry
 	inline Dir normalAt(const Pos &x) const override
 	{ return n; }
 
-	bool hasSurfacePoint(const Pos &x) const override;
-
 	void getUV(const Pos &pos, double &u, double &v) override
 	{ u = cu % pos, cv = cv % pos; }
 

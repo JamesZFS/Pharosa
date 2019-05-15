@@ -36,6 +36,8 @@ public:
 
 	double operator()(double x) const;	// return f(x)
 
+	double derivative(double x) const; 	// return f'(x)
+
 	Polynomial &operator=(const Polynomial &other) = default;
 
 	Polynomial operator+(const Polynomial &other) const;

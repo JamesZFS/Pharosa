@@ -34,10 +34,6 @@ struct Geometry
 	// get texture coordinate
 	virtual void getUV(const Pos &pos, double &u, double &v) = 0;
 
-	// todo code below is dirty
-	// determine if a point is on the surface of object
-	virtual bool hasSurfacePoint(const Pos &x) const = 0;
-
 	static Geometry *acquire(const Json &json);    // new a geometry from json
 };
 

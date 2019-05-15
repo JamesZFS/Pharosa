@@ -33,7 +33,7 @@ struct InfPlane : Geometry
 	inline Dir normalAt(const Pos &x) const override
 	{ return n; }
 
-	inline bool hasSurfacePoint(const Pos &x) const override
+	inline bool testPoint(const Pos &x) const
 	{ return fabs((x - p) % n) < EPS; }
 
 	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)

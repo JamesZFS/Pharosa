@@ -20,9 +20,6 @@ struct Sphere : Geometry
 
 	Dir normalAt(const Pos &x) const override;
 
-	inline bool hasSurfacePoint(const Pos &x) const override
-	{ return (x - c).sqr() - rad_2 < EPS; }
-
 	void getUV(const Pos &pos, double &u, double &v) override
 	{
 		ElAg &&ea = Dir(pos - c).getEulerAngles();

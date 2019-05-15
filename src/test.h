@@ -16,6 +16,10 @@ namespace Test
 	void matrix();
 
 	void polynomial();
+
+	void Newton();
+
+	void main();
 }
 
 #endif //PHAROSA_TEST_H

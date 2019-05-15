@@ -16,7 +16,7 @@ void Sphere::applyTransform(TransMat mat)
 
 bool Sphere::intersect(const Ray &ray, double &t) const
 {
-	// Solve t^2*d.d + 2*t*(o-c).d + (o-c).(o-c)-R^2 = 0
+	// Solve2D t^2*d.d + 2*t*(o-c).d + (o-c).(o-c)-R^2 = 0
 	Pos op = c - ray.org;
 	double b = op % ray.dir, det = b * b - op.sqr() + rad_2;
 	if (det < 0) return false;    // no solution

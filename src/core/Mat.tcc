@@ -61,6 +61,14 @@ Vec<T> Mat<T>::operator*(const Vec<T> &b) const
 }
 
 template<typename T>
+Vec<T> Mat<T>::operator|(const Vec<T> &b) const
+{
+	return {el[0][0] * b.x + el[1][0] * b.y + el[2][0] * b.z,
+			el[0][1] * b.x + el[1][1] * b.y + el[2][1] * b.z,
+			el[0][2] * b.x + el[1][2] * b.y + el[2][2] * b.z};
+}
+
+template<typename T>
 void Mat<T>::report() const
 {
 	for (int i = 0; i < 3; ++i) {

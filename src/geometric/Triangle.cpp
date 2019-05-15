@@ -39,18 +39,3 @@ bool Triangle::intersect(const Ray &ray, double &t) const
 	}
 	return false;    // cannot solve or root is not unique
 }
-
-bool Triangle::hasSurfacePoint(const Pos &x) const
-{
-	double A[3][3], k[3], b[3];
-	p[0].putToArray(&A[0][0], 3);
-	p[1].putToArray(&A[0][1], 3);
-	p[2].putToArray(&A[0][2], 3);
-	x.putToArray(b);
-
-	if (Linear::Solve3D(A, b, k)) {
-		return (k[0] >= 0 && k[1] >= 0 && k[1] >= 0 && fabs(k[0] + k[1] + k[2] - 1) < EPS);
-	}
-	return false;
-//	return (fabs(x % ((c[0] - c[1]) ^ (c[0] - c[2]))) < EPS);	// three points in a plane, todo some bugs
-}

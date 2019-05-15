@@ -21,7 +21,6 @@ Polynomial::Polynomial(List<double> &&coeffs) : n(coeffs.size() - 1), a(std::mov
 
 Polynomial::Polynomial(Polynomial &&other) noexcept : n(other.n), a(std::move(other.a)), d(std::move(other.d))
 {
-
 }
 
 double Polynomial::operator()(double x) const
@@ -32,6 +31,18 @@ double Polynomial::operator()(double x) const
 		res = res * x + a[i];
 	}
 	res = res * x + a[0];
+	return res;
+}
+
+double Polynomial::derivative(double x) const
+{
+	if (n == 0) return 0;
+	if (n == 1) return d[0];
+	double res = 0;
+	for (size_t i = n - 1; i > 0; --i) {
+		res = res * x + d[i];
+	}
+	res = res * x + d[0];
 	return res;
 }
 

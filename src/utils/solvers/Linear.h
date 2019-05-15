@@ -9,11 +9,11 @@
 
 namespace Linear
 {
-	// Solve A b == x (n_dim == n, A: matrix)
+	// Solve2D A x == b (n_dim == n, A: matrix)
 	template<int n>
 	bool Solve(double (&A)[n][n], double (&b)[n], double (&x)[n]);
 
-	// Solve A b == x (n_dim == n, A: matrix) for debuging use
+	// Solve2D A x == b (n_dim == n, A: matrix) for debuging use
 	template<int n>
 	bool SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n]);
 
@@ -25,6 +25,9 @@ namespace Linear
 	bool Solve3D(double (&A)[3][3], double (&b)[3], double (&x)[3]);
 
 	bool Solve3D(double (&A)[3][3], double (&b)[3], double &x0, double &x1, double &x2);
+
+	// solve A x == b
+	inline bool Solve2D(double A00, double A01, double A10, double A11, double b0, double b1, double &x0, double &x1);
 }
 
 #include "Linear.tcc"

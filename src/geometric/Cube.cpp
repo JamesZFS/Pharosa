@@ -66,17 +66,9 @@ bool Cube::intersect(const Ray &ray, double &t) const
 Dir Cube::normalAt(const Pos &x) const
 {
 	for (const auto &p :slab) {
-		if (p[0].hasSurfacePoint(x) || p[1].hasSurfacePoint(x)) return p[0].n;
+		if (p[0].testPoint(x) || p[1].testPoint(x)) return p[0].n;
 	}
 	assert(false);    // todo
 	return {};
 }
 
-// !!
-bool Cube::hasSurfacePoint(const Pos &x) const
-{
-	for (const auto &p :slab) {
-		if (p[0].hasSurfacePoint(x) || p[1].hasSurfacePoint(x)) return true;
-	}
-	return false;
-}

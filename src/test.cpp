@@ -7,6 +7,7 @@
 #include "geometric/All.h"
 #include "utils/solvers/Linear.h"
 #include "core/Polynomial.h"
+#include "utils/solvers/NonLinear.h"
 
 namespace Test
 {
@@ -137,6 +138,77 @@ namespace Test
 		g *= 3;
 		assert(g[3] == 12);
 		message("Binomial:");
-		Polynomial::binomial(2, -2, 11).report();
+		auto h = Polynomial::binomial(2, -2, 10);
+		h.report();
+		assert(h.derivative(2.0) == 10 * pow(-2, 10));
+		assert(Polynomial().derivative(1.0) == 0);
+		assert(Polynomial({2, 0}).derivative(1.0) == 0);
+		assert(Polynomial({1, -2}).derivative(10) == -2);
+		assert(Polynomial({1, 2, 3}).derivative(1) == 8);
+	}
+
+	void Newton()
+	{
+		struct Fun
+		{
+			virtual double operator()(double x0, double x1) const = 0;
+
+			virtual double d0(double x0, double x1) const = 0;
+
+			virtual double d1(double x0, double x1) const = 0;
+		};
+		struct Fun0 : Fun
+		{
+			double operator()(double x0, double x1) const override
+			{
+				return 2. * x0 - 0.5 * x1;
+			}
+
+			double d0(double x0, double x1) const override
+			{
+				return 2.;
+			}
+
+			double d1(double x0, double x1) const override
+			{
+				return -0.5;
+			}
+		};
+		struct Fun1 : Fun
+		{
+			Polynomial f;
+
+			Fun1() : f({0, 0, 0, 92.16, -460.8, 829.44, -645.12, 184.32})
+			{}
+
+			double operator()(double x0, double x1) const override
+			{
+				return 23.04 * pow(1. - 1. * x0, 4) * pow(x0, 4) - pow(-2 + x1, 2);
+			}
+
+			double d0(double x0, double x1) const override
+			{
+				return f(x0);
+			}
+
+			double d1(double x0, double x1) const override
+			{
+				return -2 * (x1 - 2);
+			}
+		};
+		double x0 = 0.1, x1 = 0.1;
+		NonLinear::Solve2D(Fun0(), Fun1(), x0, x1);
+		printf("x0 = %.4f\nx1 = %.4f", x0, x1);
+		assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
+	}
+
+	void main()
+	{
+		linear();
+		coordinateConvert();
+		matrix();
+		polynomial();
+		Newton();
+		printf("\n\033[32m[ Passed Test ]\033[0m\n");
 	}
 }
