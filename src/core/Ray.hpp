@@ -17,6 +17,9 @@ struct Ray
 
 	Ray(const Pos &org_, const Dir &dir_) : org(org_), dir(dir_)
 	{}
+
+	inline Pos travels(double t) const
+	{ return org + dir * t; }
 };
 
 #endif //PHAROSA_RAY_HPP

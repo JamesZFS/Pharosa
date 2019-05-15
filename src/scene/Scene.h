@@ -7,6 +7,7 @@
 
 #include "../Pharosa.h"
 #include "../core/Ray.hpp"
+#include "Intersection.hpp"
 #include "Object.h"
 
 class KDNode;
@@ -36,15 +37,11 @@ public:
 	 * @param ray
 	 *
 	 * output:
-	 * @param hit : pointer of object first hit
-	 * @param x : hitting point
-	 * @param normal : normal vector of hitting point
+	 * @param isect : intersection info
 	 *
 	 * @return true if intersects any object else false
 	 */
-	bool intersectAny(const Ray &ray, const Object *&hit, Pos &x, Dir &normal) const;
-
-	const Object *hitOf(const Ray &ray) const;    // compute only the first hit target of L1
+	bool intersectAny(const Ray &ray, Intersection &isect) const;
 
 	static Scene *acquire(const Json &json);    // load from json
 };

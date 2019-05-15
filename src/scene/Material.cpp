@@ -17,7 +17,7 @@ Material::Material() :
 }
 
 // !! notice normal is pointing outside
-void Material::BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
+void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
 {
 	Dir nl = normal % r_in.dir < 0 ? Pos(normal) : -normal;    // regularized normal, against r_in direction
 

@@ -25,19 +25,6 @@ struct Object
 	Object &rotate(const ElAg &ea);
 
 	Object &rotate(const ElAg &ea, const Pos &pos);    // rotate along c
-
-	// color getter
-	inline Color colorAt(const Pos &pos) const    // get texture color at pos
-	{
-		if (mtr->texture) {
-			double u, v;
-			geo->getUV(pos, u, v);
-			return mtr->textureAt(u, v);
-		}
-		else {
-			return mtr->color;
-		}
-	}
 };
 
 typedef List<Object *> ObjectList;

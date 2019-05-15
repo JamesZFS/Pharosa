@@ -27,7 +27,7 @@ public:
 
 	~KDNode();
 
-	bool intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal, size_t depth) const;
+	void intersect(const Ray &ray, double &t, Intersection &isect) const;	// update first intersection
 };
 
 // typedef List<Object *> ObjectList;

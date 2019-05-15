@@ -23,11 +23,11 @@ struct Cube : Geometry
 
 	void applyTransform(TransMat mat) override;
 
-	bool intersect(const Ray &ray, double &t) const override;
+	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
 
-	Dir normalAt(const Pos &x) const override;
+	void getNormal(const Pos &pos, Dir &normal) const override;
 
-	inline void getUV(const Pos &pos, double &u, double &v) override
+	inline void getUV(const Pos &pos, double &u, double &v) const override
 	{ slab[0][0].getUV(pos, u, v); }
 
 	static Cube *acquire(const Json &json);

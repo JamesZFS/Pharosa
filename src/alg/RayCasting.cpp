@@ -13,13 +13,11 @@ RayCasting::RayCasting(Scene &scene_, const Dir &light_dir_) :
 
 Color RayCasting::radiance(const Ray &ray, size_t depth) const
 {
-	Pos x;
-	Dir normal;
-	const Object *hit = nullptr;
-	if (!scene.intersectAny(ray, hit, x, normal)) return Color::BLACK;
-	Dir nl = normal % ray.dir >= 0 ? normal : normal * -1;    // regularized normal, parallel to incidence
+	Intersection isect;
+	if (!scene.intersectAny(ray, isect)) return Color::BLACK;
+	Dir nl = isect.normal % ray.dir >= 0 ? isect.normal : isect.normal * -1;    // regularized normal, parallel to incidence
 	// return the RGB color of hit, assuming environment light is shooting towards (-1, -1, -1)
-	return hit->colorAt(x) * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + hit->mtr->emi;
+	return isect.getColor() * (0.1 + 0.9 * Funcs::clamp(light_dir % nl)) + isect.getEmission();
 }
 
 String RayCasting::info() const

@@ -10,6 +10,7 @@
 #include "../core/Mat.h"
 #include "../core/Ray.hpp"
 
+struct Intersection;
 
 // abstract class
 struct Geometry
@@ -21,22 +22,29 @@ struct Geometry
 	// interfaces:
 	virtual void applyTransform(TransMat mat) = 0;   // apply transform from transform matrix
 
-	/** standard intersection api. todo calculate normal at the same time when intersecting
+	/** standard intersection api. update first intersection
+	 * input:
 	 * @param ray
+	 * @param t : current minimal time
+	 * @param isect : current intersection
+	 * output:
 	 * @param t : distance to first intersection point
-	 * @return true if intersected else false
+	 * @param isect : intersection info
+	 * @return true if intersected ahead of t else false
 	 */
-	virtual bool intersect(const Ray &ray, double &t) const = 0;
+	virtual bool intersect(const Ray &ray, double &t, Intersection &isect) const = 0;
 
 	// calculate normal vector at surface point x
-	virtual Dir normalAt(const Pos &x) const = 0;
+	virtual void getNormal(const Pos &pos, Dir &normal) const
+	{}
 
 	// get texture coordinate
-	virtual void getUV(const Pos &pos, double &u, double &v) = 0;
+	virtual void getUV(const Pos &pos, double &u, double &v) const
+	{}
 
 	static Geometry *acquire(const Json &json);    // new a geometry from json
 
-	/// todo max min xyz
+	/// todo max min xyz in another class
 };
 
 #endif //PHAROSA_GEOMETRY_H

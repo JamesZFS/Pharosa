@@ -18,13 +18,13 @@ struct Triangle : Geometry
 
 	void applyTransform(TransMat mat) override;    // calculate c according to c
 
-	bool intersect(const Ray &ray, double &t) const override;
+	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
 
-	inline Dir normalAt(const Pos &x) const override
-	{ return n; }
+	inline void getNormal(const Pos &pos, Dir &normal) const override
+	{ normal = n; }
 
-	void getUV(const Pos &pos, double &u, double &v) override
-	{ u = cu % pos, cv = cv % pos; }
+	void getUV(const Pos &pos, double &u, double &v) const override
+	{ u = cu % pos, v = cv % pos; }
 
 	inline double xMin() const    // left most
 	{ return min3(p[0].x, p[1].x, p[2].x); }

@@ -3,6 +3,7 @@
 //
 
 #include "Cube.h"
+#include "../scene/Intersection.hpp"
 
 // init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point c
 Cube::Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o)
@@ -39,7 +40,7 @@ void Cube::applyTransform(TransMat mat)
 }
 
 // !! core function
-bool Cube::intersect(const Ray &ray, double &t) const
+bool Cube::intersect(const Ray &ray, double &t, Intersection &isect) const
 {
 	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
 	for (const auto &s : slab) {    // todo acc
@@ -56,19 +57,23 @@ bool Cube::intersect(const Ray &ray, double &t) const
 		tmin = std::max(tmin, ti_min);
 		tmax = std::min(tmax, ti_max);
 	}
-	return ((t = tmin) < tmax    // intersect at front?
-			? (tmin < EPS ? ((t = tmax) > EPS)    // intersect at back?
-						  : true)
-			: false);
+	if (tmin > tmax) return false;    // intersect at front?
+
+	double ti;
+	ti = tmin > EPS
+		 ? tmin
+		 : tmax > EPS ? tmax : INF;  // intersect at back?
+	if (ti >= t) return false;
+	t = ti;    // update
+	return true;
 }
 
 // !!
-Dir Cube::normalAt(const Pos &x) const
+void Cube::getNormal(const Pos &pos, Dir &normal) const
 {
 	for (const auto &p :slab) {
-		if (p[0].testPoint(x) || p[1].testPoint(x)) return p[0].n;
+		if (p[0].testPoint(pos) || p[1].testPoint(pos)) normal = p[0].n;
 	}
-	assert(false);    // todo
-	return {};
+	TERMINATE("Cube::getNormal() should not reach the end")    // todo
 }
 

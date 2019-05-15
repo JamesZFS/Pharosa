@@ -28,9 +28,10 @@ struct Material
 
 	Material();	// dark white pure diffusive without texture
 
-	void BSDF(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
+	// input r_in, normal and get r_outs, w_outs
+	void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
 
-	inline Color textureAt(double u, double v) const
+	inline const Color &textureAt(double u, double v) const
 	{ return texture->get(Auu * u + Auv * v + Auc, Avu * u + Avv * v + Avc); }
 
 	static Material *acquire(const Json &json);

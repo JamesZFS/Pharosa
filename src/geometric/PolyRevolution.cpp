@@ -5,6 +5,7 @@
 #include "PolyRevolution.h"
 #include "../core/Ray.hpp"
 #include "../utils/solvers/NonLinear.h"
+#include "../scene/Intersection.hpp"
 
 //struct Fun0 : NonLinear::BinFun
 //{
@@ -90,7 +91,7 @@ void PolyRevolution::applyTransform(TransMat mat_)
 	mat = mat_;
 }
 
-bool PolyRevolution::intersect(const Ray &ray, double &t) const
+bool PolyRevolution::intersect(const Ray &ray, double &t, Intersection &isect) const
 {
 	Ray ray_local(mat | ray.org, mat.rot | ray.dir);    // to local todo
 	Polynomial
@@ -100,32 +101,45 @@ bool PolyRevolution::intersect(const Ray &ray, double &t) const
 	L1 = L1 * L1 + L2 * L2;
 	BFun f0(phi, L0);
 	BFun f1(psi_2, L1);
-	double u;
-	return NonLinear::Solve2DTol(f0, f1, u = Funcs::randf(1.0), t = 0.0, 1e-2) && 0 <= u && u <= 1 && t > EPS;  // Newton Iteration
+	double u = Funcs::randf(1.0), ti = 0.0;
+	// Newton Iteration
+	if (!NonLinear::Solve2DTol(f0, f1, u, ti, 1e-2) || u < 0 || 1 < u || ti < EPS || ti >= t) return false;
+
+	// update:
+	t = ti;
+	double
+			y = ray_local.org.y + t * ray_local.dir.y, z = ray_local.org.z + t * ray_local.dir.z,
+			psi_u = psi(u), phi_p_u = phi.derivative(u),
+			cos_v = y / psi_u, sin_v = z / psi_u;
+
+	isect.normal = mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);
+	isect.u = u;
+	isect.v = atan2(sin_v, cos_v);
+	return true;
 }
 
-Dir PolyRevolution::normalAt(const Pos &x) const
-{
-//	return {0, 0, 1};
-	Pos x_local = mat | x;
-	MFun f(phi, x_local.x);
-	double u, cos_v, sin_v, psi_u, phi_p_u;
-	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));
-	psi_u = psi(u);
-	phi_p_u = phi.derivative(u);
-	cos_v = x_local.y / psi_u;
-	sin_v = x_local.z / psi_u;
-	return mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
-}
-
-void PolyRevolution::getUV(const Pos &pos, double &u, double &v)
-{
-	Pos x_local = mat | pos;
-	MFun f(phi, x_local.x);
-	double cos_v, sin_v, psi_u;
-	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));
-	psi_u = psi(u);
-	cos_v = x_local.y / psi_u;
-	sin_v = x_local.z / psi_u;
-	v = atan2(sin_v, cos_v);
-}
+//void PolyRevolution::getNormal(const Pos &pos, Dir &normal) const
+//{
+////	return {0, 0, 1};
+//	Pos x_local = mat | pos;
+//	MFun f(phi, x_local.x);
+//	double u, cos_v, sin_v, psi_u, phi_p_u;
+//	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));	// solve for u
+//	psi_u = psi(u);
+//	phi_p_u = phi.derivative(u);
+//	cos_v = x_local.y / psi_u;
+//	sin_v = x_local.z / psi_u;
+//	return mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
+//}
+//
+//void PolyRevolution::getUV(const Pos &pos, double &u, double &v)
+//{
+//	Pos x_local = mat | pos;
+//	MFun f(phi, x_local.x);
+//	double cos_v, sin_v, psi_u;
+//	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));
+//	psi_u = psi(u);
+//	cos_v = x_local.y / psi_u;
+//	sin_v = x_local.z / psi_u;
+//	v = atan2(sin_v, cos_v);
+//}

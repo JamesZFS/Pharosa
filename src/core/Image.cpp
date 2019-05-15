@@ -97,6 +97,5 @@ const Color &Image::get(double x, double y) const
 	size_t i = lround(x) % width, j = lround(y) % height;
 	if (i < 0) i += width;
 	if (j < 0) j += height;
-//	return data[i][j];
-	return data.at(i).at(j);
+	return data[i][j];
 }

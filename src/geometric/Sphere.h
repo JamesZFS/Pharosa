@@ -16,11 +16,12 @@ struct Sphere : Geometry
 
 	void applyTransform(TransMat mat) override;
 
-	bool intersect(const Ray &ray, double &t) const override;
+	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
 
-	Dir normalAt(const Pos &x) const override;
+	void getNormal(const Pos &pos, Dir &normal) const override
+	{ normal = pos - c; }
 
-	void getUV(const Pos &pos, double &u, double &v) override
+	void getUV(const Pos &pos, double &u, double &v) const override
 	{
 		ElAg &&ea = Dir(pos - c).getEulerAngles();
 		u = ea.alpha, v = ea.gamma;

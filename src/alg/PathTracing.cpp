@@ -13,35 +13,31 @@ RayTracing::RayTracing(Scene &scene_, size_t max_depth_) :
 Color RayTracing::radiance(const Ray &ray, size_t depth) const
 {
 	// calculate intersection:
-	Pos x;    // hitting point
-	Dir normal;
-	const Object *hit = nullptr;
-	if (!scene.intersectAny(ray, hit, x, normal)) return Color::BLACK; // if miss, return black
+	Intersection isect;
+	if (!scene.intersectAny(ray, isect)) return Color::BLACK; // if miss, return black
 
-	const Object &obj = *hit;    // the hit object
-
-	auto color = obj.colorAt(x);	// get texture from color
+	Color color = isect.getColor();	// get texture from color
 	double P = color.max();    // max color component as refl_t
 
 	// stop tracing when depth too large or color too dim:
 	if (depth >= max_depth || P < EPS) {    // depth limit
 		if (depth < (max_depth << 1) && WITH_PROB(P)) color /= P;
-		else return obj.mtr->emi; // R.R. the darker the obj is, the more likely to stop radiating
+		else return isect.getEmission(); // R.R. the darker the obj is, the more likely to stop radiating
 	}
 
-	Ray r_in(x, ray.dir);    // move the L1 to start from intersection point
+	Ray r_in(isect.pos, ray.dir);    // move the L1 to start from intersection point
 	List<Ray> r_outs;
 	List<double> w_outs;    // weight of each out L1
 
 	// compute multiple out rays:
-	obj.mtr->BSDF(r_in, normal, ++depth, r_outs, w_outs);
+	isect.scatter(r_in, isect.normal, ++depth, r_outs, w_outs);
 
 	// weighted sum up:
 	Color receiving = {0, 0, 0};
 	for (size_t i = 0; i < r_outs.size(); ++i) {
 		receiving += radiance(r_outs[i], depth) * w_outs[i];        // ** recurse
 	}
-	return obj.mtr->emi + color.mul(receiving);
+	return isect.getEmission() + color.mul(receiving);
 }
 
 String RayTracing::info() const

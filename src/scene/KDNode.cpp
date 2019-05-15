@@ -4,6 +4,7 @@
 
 #include "KDNode.h"
 #include "../geometric/Triangle.h"
+#include "Intersection.hpp"
 
 KDNode::KDNode() : box(nullptr), tris(nullptr), l_child(nullptr), r_child(nullptr)
 {
@@ -26,45 +27,24 @@ KDNode::~KDNode()
 }
 
 // !!
-bool KDNode::intersectAny(const Ray &ray, double &t, const Object *&hit, Pos &x, Dir &normal, size_t depth) const
+void KDNode::intersect(const Ray &ray, double &t, Intersection &isect) const
 {
 	// check bounding box first:
-	if (tris == nullptr) {
-		Buffer buffer;
-		sprintf(buffer, "tris = null at depth = %ld\n", depth);
-		throw String(buffer);
-	}
-	if (box == nullptr) {
-		Buffer buffer;
-		sprintf(buffer, "box =  null at depth = %ld\n", depth);
-		throw String(buffer);
-	}
-	if (tris->empty() || !box->intersect(ray)) return false;
+	if (tris->empty() || !box->intersect(ray)) return;    // degenerate case
 
 	// leaf case:
 	if (l_child == nullptr || r_child == nullptr) {
-		assert(l_child == nullptr && r_child == nullptr);
-		bool intersected = false;
-		double ti;
 		// enumerate each tri:
-		for (auto obj : *tris) {
-			if (obj->geo->intersect(ray, ti)) {
-				intersected = true;
-				if (ti < t) {    // *** update first intersection
-					t = ti;
-					hit = obj;
-					x = ray.org + ray.dir * t;
-					normal = obj->geo->normalAt(x);
-				}
+		for (const Object *obj : *tris) {
+			if (obj->geo->intersect(ray, t, isect)) {    // *** update first intersection
+				isect.hit = obj;
 			}
 		}
-		return intersected;
 	}
 
-	// normal case, recurse:
-	bool l_hit = l_child->intersectAny(ray, t, hit, x, normal, depth + 1);
-	bool r_hit = r_child->intersectAny(ray, t, hit, x, normal, depth + 1);
-	return l_hit || r_hit;
+	// common case, recurse:
+	l_child->intersect(ray, t, isect);
+	r_child->intersect(ray, t, isect);
 }
 
 #define MATCH_THRESHOLD 0.5

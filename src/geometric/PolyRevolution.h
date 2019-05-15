@@ -23,11 +23,7 @@ struct PolyRevolution : Geometry
 
 	void applyTransform(TransMat mat_) override;
 
-	bool intersect(const Ray &ray, double &t) const override;
-
-	Dir normalAt(const Pos &x) const override;
-
-	void getUV(const Pos &pos, double &u, double &v) override;
+	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
 
 	static PolyRevolution *acquire(const Json &json);
 };
