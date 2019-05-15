@@ -4,12 +4,13 @@
     <bookmark url="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" line="18" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" line="22" />
     <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="291" />
-    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="121" />
-    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="108" />
-    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="116" />
+    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="122" />
+    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="109" />
+    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="117" />
     <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="94" />
     <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="103" />
     <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="101" />
+    <bookmark url="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" line="108" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -30,15 +31,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/test Bezier.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test Bezier.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Polynomial.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Polynomial.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Polynomial.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Polynomial.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -91,11 +85,11 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="false">
+            <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="464">
-                    <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+                  <state relative-caret-position="309">
+                    <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
                     <folding>
                       <element signature="e#396#1517#0" />
                     </folding>
@@ -124,11 +118,11 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="414">
-                    <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+                  <state relative-caret-position="448">
+                    <caret line="109" column="26" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
                     <folding>
                       <element signature="e#41#68#0" expanded="true" />
                     </folding>
@@ -140,7 +134,7 @@
               <entry file="file://$PROJECT_DIR$/src/core/Polynomial.cpp">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="493">
-                    <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+                    <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
                   </state>
                 </provider>
               </entry>
@@ -334,14 +328,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="305" />
-          <entry key="cpp" value="80184" />
+          <entry key="cpp" value="80233" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
           <entry key="h" value="30595" />
           <entry key="hpp" value="4821" />
           <entry key="inl" value="1277" />
           <entry key="istream" value="1" />
-          <entry key="json" value="7951" />
+          <entry key="json" value="8067" />
           <entry key="mm" value="545" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -355,9 +349,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
           <entry key="Doxygen file" value="29" />
-          <entry key="JSON" value="7919" />
+          <entry key="JSON" value="8035" />
           <entry key="Makefile" value="305" />
-          <entry key="ObjectiveC" value="120262" />
+          <entry key="ObjectiveC" value="120311" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="537" />
@@ -391,11 +385,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state relative-caret-position="171">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding>
                 <element signature="e#243#268#0" expanded="true" />
               </folding>
@@ -433,11 +427,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/Mat.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="94" column="84" selection-start-line="94" selection-start-column="84" selection-end-line="94" selection-end-column="84" />
+            <state relative-caret-position="167">
+              <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -580,11 +574,11 @@
         <option value="$PROJECT_DIR$/src/test.h" />
         <option value="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/config/test Bezier.json" />
         <option value="$PROJECT_DIR$/src/core/Polynomial.h" />
         <option value="$PROJECT_DIR$/src/core/Polynomial.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" />
         <option value="$PROJECT_DIR$/src/test.cpp" />
+        <option value="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" />
+        <option value="$PROJECT_DIR$/config/test Bezier.json" />
       </list>
     </option>
   </component>
@@ -1287,7 +1281,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="524980000" />
+    <option name="totallyTimeSpent" value="525983000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1689,13 +1683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Mat.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="94" column="84" selection-start-line="94" selection-start-column="84" selection-end-line="94" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.tcc">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1730,32 +1717,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding>
-            <element signature="e#396#1517#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="183" column="51" selection-start-line="183" selection-start-column="51" selection-end-line="183" selection-end-column="51" />
           <folding>
             <element signature="e#76#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRevolution.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-          <folding>
-            <element signature="e#108#129#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1770,17 +1737,7 @@
     <entry file="file://$PROJECT_DIR$/src/core/Polynomial.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
-          <folding>
-            <element signature="e#41#68#0" expanded="true" />
-          </folding>
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1803,10 +1760,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        <state relative-caret-position="171">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding>
             <element signature="e#243#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRevolution.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding>
+            <element signature="e#108#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Mat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRevolution.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="109" column="26" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+          <folding>
+            <element signature="e#41#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="e#396#1517#0" />
           </folding>
         </state>
       </provider>

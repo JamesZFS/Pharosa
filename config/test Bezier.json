@@ -1,10 +1,10 @@
 {
-	"save_path": "out/Bezier/curve.ppm",
-	"n_epoch": 1,
-	"save_step": 0,
+	"save_path": "out/Bezier/curve pt.ppm",
+	"n_epoch": 5,
+	"save_step": 1,
 	"verbose_step": 10,
 	"algorithm": {
-		"type": "rc",
+		"type": "pt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -17,23 +17,24 @@
 	},
 	"scene": [
 		{
-			"type": "skip",
 			"color":[0.9, 0.9, 1.0],
+			"rot": [90, 0, 0],
 			"geo": {
 				"type": "poly revolution",
-				"exp": "{0. + 200. u, 48000. u^2 - 9.6*10^6 u^3 + 4.8*10^8 u^4}",
-				"x_coeffs": [0, 200],
-				"y_coeffs": [0, 0, 48000, -9.6e6, 4.8e8]
+				"exp": "{0. + 20. u, 480. u^2 - 9600. u^3 + 48000. u^4}",
+				"x_coeffs": [-100, 200],
+				"y_coeffs": [0, 0, 480, -960, 480]
 			}
 		},
 		{
+			"type": "skip",
 			"color":[0.8, 0.8, 1.0],
-			"rot": [0, 0, 45],
+			"rot": [0, 0, -80],
 			"geo": {
 				"type": "poly revolution",
 				"exp": "{t, 50}",
-				"x_coeffs": [-50, 100],
-				"y_coeffs": [50]
+				"x_coeffs": [-50, 300],
+				"y_coeffs": [0, 0, 50]
 			}
 		},
 		{

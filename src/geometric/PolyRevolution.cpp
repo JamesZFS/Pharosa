@@ -92,7 +92,7 @@ void PolyRevolution::applyTransform(TransMat mat_)
 
 bool PolyRevolution::intersect(const Ray &ray, double &t) const
 {
-	Ray ray_local(mat | ray.org, mat | ray.dir);    // to local todo
+	Ray ray_local(mat | ray.org, mat.rot | ray.dir);    // to local todo
 	Polynomial
 			L0(ray_local.org.x, ray_local.dir.x),
 			L1(ray_local.org.y, ray_local.dir.y),
@@ -106,6 +106,7 @@ bool PolyRevolution::intersect(const Ray &ray, double &t) const
 
 Dir PolyRevolution::normalAt(const Pos &x) const
 {
+//	return {0, 0, 1};
 	Pos x_local = mat | x;
 	MFun f(phi, x_local.x);
 	double u, cos_v, sin_v, psi_u, phi_p_u;
@@ -114,7 +115,7 @@ Dir PolyRevolution::normalAt(const Pos &x) const
 	phi_p_u = phi.derivative(u);
 	cos_v = x_local.y / psi_u;
 	sin_v = x_local.z / psi_u;
-	return mat * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
+	return mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
 }
 
 void PolyRevolution::getUV(const Pos &pos, double &u, double &v)
