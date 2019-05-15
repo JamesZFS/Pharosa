@@ -2,12 +2,12 @@
 // Created by James on 2019/5/15.
 //
 
+#include "NonLinear.h"
 #include "Linear.h"
 
 namespace NonLinear
 {
-	template<class Fun0, class Fun1>
-	bool Solve2D(const Fun0 &f0, const Fun1 &f1, double &x0, double &x1, double tol)
+	bool Solve2D(const BinFun &f0, const BinFun &f1, double &x0, double &x1, double tol)
 	{
 		double s0, s1, x0_prev = x0, x1_prev = x1;
 		while (true) {    // Newton iteration
