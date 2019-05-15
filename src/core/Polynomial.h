@@ -29,6 +29,8 @@ public:
 
 	Polynomial(const List<double> &coeffs);
 
+	Polynomial(double a0, double a1);
+
 	Polynomial(Polynomial &&other) noexcept;	// move
 
 	inline auto operator[](size_t i) const	// getter

@@ -3,6 +3,7 @@
 //
 
 #include "Linear.h"
+
 #define MAX_ITER 1000
 #define __PRINT_N_ITER__
 
@@ -15,18 +16,19 @@ namespace NonLinear
 		for (size_t i = 0; i < MAX_ITER; ++i) {    // Newton iteration
 			// Jacobi
 			if (!Linear::Solve2D(f0.d0(x0, x1), f0.d1(x0, x1), f1.d0(x0, x1), f1.d1(x0, x1),
-								 f0(x0, x1), f1(x0, x1), s0, s1))
+								 f0(x0, x1), f1(x0, x1), s0, s1)) {
+				safe_debug("singular,  # iter = %ld\n", i);
 				return false;    // singular
+			}
 			x0 -= s0, x1 -= s1;    // step
 			if (fabs(x0 - x0_prev) < tol && fabs(x1 - x1_prev) < tol) {
-#ifdef __PRINT_N_ITER__
-				safe_debug("# iter = %ld\n", i);
-#endif
+				safe_debug("solved, # iter = %ld\n", i);
 				return true;    // inf norm
 			}
 			x0_prev = x0, x1_prev = x1;
 		}
-		return false;	// still not converged yet
+		safe_debug("not converged\n");
+		return false;    // still not converged yet
 	}
 
 	template<class Fun0, class Fun1>
@@ -36,16 +38,17 @@ namespace NonLinear
 		for (size_t i = 0; i < MAX_ITER; ++i) {    // Newton iteration
 			// Jacobi
 			if (!Linear::Solve2D(f0.d0(x0, x1), f0.d1(x0, x1), f1.d0(x0, x1), f1.d1(x0, x1),
-								 f0(x0, x1), f1(x0, x1), s0, s1))
+								 f0(x0, x1), f1(x0, x1), s0, s1)) {
+				safe_debug("singular,  # iter = %ld\n", i);
 				return false;    // singular
+			}
 			x0 -= s0, x1 -= s1;    // step
 			if (fabs(f0(x0, x1)) < eps && fabs(f1(x0, x1)) < eps) {
-#ifdef __PRINT_N_ITER__
-				safe_debug("# iter = %ld\n", i);
-#endif
+				safe_debug("solved, # iter = %ld\n", i);
 				return true;    // inf norm
 			}
 		}
+		safe_debug("not converged\n");
 		return false;
 	}
 

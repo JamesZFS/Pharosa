@@ -122,7 +122,7 @@ namespace Test
 		f -= Polynomial({-1.0, -1, 0, 0, 2});
 		assert(f.order() == 4);
 		f.report();
-		(f + Polynomial({0, 1})).report();
+		(f + Polynomial(0, 1)).report();
 		assert(f[-1] == 0);
 		assert(f[1] == 3);
 		message("Poly Mul:");
@@ -133,7 +133,7 @@ namespace Test
 		g.set(2, 1);
 		assert(f[0] == 0);
 		(f * g).report();
-		f = Polynomial({1, 1});
+		f = Polynomial(1, 1);
 		(g = f * f * f * f).report();
 		assert(g.order() == 4);
 		assert(g[0] == 1 && g[1] == 4 && g[2] == 6 && g[3] == 4 && g[4] == 1);
@@ -146,8 +146,8 @@ namespace Test
 		h.report();
 		assert(h.derivative(2.0) == 10 * pow(-2, 10));
 		assert(Polynomial().derivative(1.0) == 0);
-		assert(Polynomial({2, 0}).derivative(1.0) == 0);
-		assert(Polynomial({1, -2}).derivative(10) == -2);
+		assert(Polynomial(2, 0).derivative(1.0) == 0);
+		assert(Polynomial(1, -2).derivative(10) == -2);
 		assert(Polynomial({1, 2, 3}).derivative(1) == 8);
 	}
 
@@ -329,6 +329,86 @@ namespace Test
 		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 
+	void intersectRev()
+	{
+		struct BFun //: NonLinear::BinFun
+		{
+			const Polynomial &F, &G;
+
+			BFun(const Polynomial &F_, const Polynomial &G_) : F(F_), G(G_)    // F(x0) - G(x1)
+			{}
+
+			inline double operator()(double x0, double x1) const
+			{
+				return F(x0) - G(x1);
+			}
+
+			inline double d0(double x0, double x1) const
+			{
+				return F.derivative(x0);
+			}
+
+			inline double d1(double x0, double x1) const
+			{
+				return -G.derivative(x1);
+			}
+		};
+
+		struct MFun //: NonLinear::MonoFun
+		{
+			const Polynomial &F;
+			const double b;
+
+			MFun(const Polynomial &F_, double b_) : F(F_), b(b_)
+			{}
+
+			inline double operator()(double x) const
+			{
+				return F(x) - b;
+			}
+
+			inline double d(double x) const
+			{
+				return F.derivative(x);
+			}
+		};
+		PolyRevolution surface(Polynomial(-50, 100), Polynomial(100, 0));
+		surface.phi.report();
+		surface.psi.report();
+		surface.psi_2.report();
+		Ray ray({0, 0, 400}, {0, 50, -400});    // to local
+		Polynomial L0, L1, L2;
+		L0.set(0, ray.org.x), L0.set(1, ray.dir.x);
+		L1.set(0, ray.org.y), L1.set(1, ray.dir.y);
+		L2.set(0, ray.org.z), L2.set(1, ray.dir.z);
+		auto P = L1 * L1 + L2 * L2;
+//		debug("\nL0:\n");
+//		L0.report();
+//		debug("\nL1:\n");
+//		L1.report();
+//		debug("\nL2:\n");
+//		L2.report();
+		BFun f0(surface.phi, L0);
+		BFun f1(surface.psi_2, P);
+		assertApproxEqual(f0(0.5, 0), 0);
+		assertApproxEqual(f0(0.5, 1), 0);
+//		message(L1(310.087));
+//		message(L2(310.087));
+//		message((L1 * L1 + L2 * L2)(310.087));
+//		message(f1.G(310.087));
+//		message("psi^2:\n");
+//		surface.psi_2.report();
+//		message("test psi^2 = " << f1.F(0.5) << "\n");
+//		message("psi^2 - (L1^2 + L2^2)(t) = " << f1.F(0.5) - (L1 * L1 + L2 * L2)(310.087) << "\n");
+//		message(f1(0.5, 310.087));
+//		assertApproxEqual(f1(0.8, 1.2), 0);
+		double u, t;
+		bool solved = NonLinear::Solve2DEps(f0, f1, u = 0.5, t = 1.2, 1e-2); //&& 0 <= u && u <= 1 && t > EPS;
+		debug("\nu = %.4f.  t = %.4f\n", u, t);
+		(ray.org + ray.dir * t).report(true);
+		assert(solved);
+	}
+
 	void main()
 	{
 		double since = clock();
@@ -337,7 +417,8 @@ namespace Test
 //		matrix();
 //		polynomial();
 //		Newton();
-		Newton2D();
+//		Newton2D();
+		intersectRev();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 }

@@ -26,6 +26,10 @@ Polynomial::Polynomial(const List<double> &coeffs) : n(coeffs.size() - 1), a(coe
 	compDerivatives();
 }
 
+Polynomial::Polynomial(double a0, double a1) : n(1), a{a0, a1}, d{a1}
+{
+}
+
 Polynomial::Polynomial(Polynomial &&other) noexcept : n(other.n), a(std::move(other.a)), d(std::move(other.d))
 {
 }

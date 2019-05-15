@@ -92,15 +92,16 @@ void PolyRevolution::applyTransform(TransMat mat_)
 
 bool PolyRevolution::intersect(const Ray &ray, double &t) const
 {
-	Ray ray_local(mat | ray.org, mat | ray.dir);    // to local
-	Polynomial L0, L1, L2;
-	L0.set(0, ray_local.org.x), L0.set(1, ray_local.dir.x);
-	L1.set(0, ray_local.org.y), L1.set(1, ray_local.dir.y);
-	L2.set(0, ray_local.org.z), L2.set(1, ray_local.dir.z);
+	Ray ray_local(mat | ray.org, mat | ray.dir);    // to local todo
+	Polynomial
+			L0(ray_local.org.x, ray_local.dir.x),
+			L1(ray_local.org.y, ray_local.dir.y),
+			L2(ray_local.org.z, ray_local.dir.z);
+	L1 = L1 * L1 + L2 * L2;
 	BFun f0(phi, L0);
-	BFun f1(psi_2, L1 * L1 + L2 * L2);
+	BFun f1(psi_2, L1);
 	double u;
-	return NonLinear::Solve2DTol(f0, f1, u = Funcs::randf(1.0), t = 0.0);    // Newton Iteration for solving
+	return NonLinear::Solve2DTol(f0, f1, u = Funcs::randf(1.0), t = 0.0, 1e-2) && 0 <= u && u <= 1 && t > EPS;  // Newton Iteration
 }
 
 Dir PolyRevolution::normalAt(const Pos &x) const

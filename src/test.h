@@ -21,6 +21,8 @@ namespace Test
 
 	void Newton();
 
+	void intersectRev();
+
 	void main();
 }
 
