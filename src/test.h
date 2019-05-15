@@ -17,6 +17,8 @@ namespace Test
 
 	void polynomial();
 
+	void Newton2D();
+
 	void Newton();
 
 	void main();

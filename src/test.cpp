@@ -11,6 +11,8 @@
 
 using Funcs::randf;
 
+#define assertApproxEqual(x, y) assert(fabs((x) - (y)) < EPS)
+
 namespace Test
 {
 
@@ -149,56 +151,56 @@ namespace Test
 		assert(Polynomial({1, 2, 3}).derivative(1) == 8);
 	}
 
-	void Newton()
+	void Newton2D()
 	{
-		struct Fun0 : NonLinear::BinFun
+		struct Fun0// : NonLinear::BinFun
 		{
-			double operator()(double x0, double x1) const override
+			double operator()(double x0, double x1) const
 			{
 				return 2. * x0 - 0.5 * x1;
 			}
 
-			double d0(double x0, double x1) const override
+			double d0(double x0, double x1) const
 			{
 				return 2.;
 			}
 
-			double d1(double x0, double x1) const override
+			double d1(double x0, double x1) const
 			{
 				return -0.5;
 			}
 		};
-		struct Fun1 : NonLinear::BinFun
+		struct Fun1// : NonLinear::BinFun
 		{
 			Polynomial f;
 
 			Fun1() : f({0, 0, 0, 92.16, -460.8, 829.44, -645.12, 184.32})
 			{}
 
-			double operator()(double x0, double x1) const override
+			double operator()(double x0, double x1) const
 			{
 				return 23.04 * pow(1. - 1. * x0, 4) * pow(x0, 4) - pow(-2 + x1, 2);
 			}
 
-			double d0(double x0, double x1) const override
+			double d0(double x0, double x1) const
 			{
 				return f(x0);
 			}
 
-			double d1(double x0, double x1) const override
+			double d1(double x0, double x1) const
 			{
 				return -2 * (x1 - 2);
 			}
 		};
 		double x0, x1;
 		double since = clock();
-		for (int i = 0; i < 1000000; ++i) {
+		for (int i = 0; i < 2000000; ++i) {
 			NonLinear::Solve2DTol(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
 			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
 		}
 		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 		since = clock();
-		for (int i = 0; i < 1000000; ++i) {
+		for (int i = 0; i < 2000000; ++i) {
 			NonLinear::Solve2DEps(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
 			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
 		}
@@ -251,19 +253,93 @@ namespace Test
 		solvable = NonLinear::Solve2DEps(Fun2(), Fun3(0), x0 = randf(), x1 = randf());
 		assert(solvable);
 		assert(fabs(x0 - 0.707) < 0.001 && fabs(x1 - 0.707) < 0.001);
-		solvable = NonLinear::Solve2DTol(Fun2(), Fun3(0), x0 = -randf(), x1 = -randf());
+		solvable = NonLinear::Solve2DTol(Fun2(), Fun3(0), x0 = randf(-100000, -500), x1 = randf(-100000, -500));
 		assert(solvable);
 		assert(fabs(x0 + 0.707) < 0.001 && fabs(x1 + 0.707) < 0.001);
+	}
+
+	void Newton()
+	{
+		struct Fun0 //: NonLinear::MonoFun    // solvable
+		{
+			double operator()(double x) const    // solution: x == 2 || x == 4 || x == -0.7667
+			{
+				return pow(2, x) - x * x;
+			}
+
+			double d(double x) const
+			{
+				return pow(2, x) * log(2) - 2 * x;
+			}
+		};
+		struct Fun1 //: NonLinear::MonoFun    // unsolvable
+		{
+			double operator()(double x) const
+			{
+				return pow(2, x) - x;
+			}
+
+			double d(double x) const
+			{
+				return pow(2, x) * log(2) - 1;
+			}
+		};
+
+		double x;
+		bool solvable = NonLinear::SolveTol(Fun0(), x = 0.1);
+		assert(solvable);
+		assertApproxEqual(x, -0.7667);
+		solvable = NonLinear::SolveEps(Fun0(), x = 0.1, 1e-5);
+		assert(solvable);
+		assertApproxEqual(x, -0.7667);
+
+		solvable = NonLinear::SolveTol(Fun0(), x = 2.1);
+		assert(solvable);
+		assertApproxEqual(x, 2.0);
+		solvable = NonLinear::SolveEps(Fun0(), x = 2.1, 1e-5);
+		assert(solvable);
+		assertApproxEqual(x, 2.0);
+
+		solvable = NonLinear::SolveTol(Fun0(), x = 1e3);
+		assert(solvable);
+		assertApproxEqual(x, 4.0);
+		solvable = NonLinear::SolveEps(Fun0(), x = 1e3, 1e-5);
+		assert(solvable);
+		assertApproxEqual(x, 4.0);
+
+		solvable = NonLinear::SolveTol(Fun1(), x = randf());
+		assert(!solvable);
+		solvable = NonLinear::SolveEps(Fun1(), x = randf());
+		assert(!solvable);
+
+		double since = clock();
+		for (int i = 0; i < 10000000; ++i) {
+			solvable = NonLinear::SolveEps(Fun0(), x = randf(1.5, 2.5), 1e-4);
+			assert(solvable);
+			assertApproxEqual(x, 2.0);
+		}
+		printf("solve with eps in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
+
+		since = clock();
+		for (int i = 0; i < 10000000; ++i) {
+			solvable = NonLinear::SolveTol(Fun0(), x = randf(1.5, 2.5), 1e-2);
+			assert(solvable);
+			assertApproxEqual(x, 2.0);
+		}
+		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 
 	void main()
 	{
 		double since = clock();
-//		linear();
-//		coordinateConvert();
-//		matrix();
-//		polynomial();
+		linear();
+		coordinateConvert();
+		matrix();
+		polynomial();
 		Newton();
+		Newton2D();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 }
+
+#undef assertApproxEqual
