@@ -9,6 +9,8 @@
 #include "core/Polynomial.h"
 #include "utils/solvers/NonLinear.h"
 
+using Funcs::randf;
+
 namespace Test
 {
 
@@ -188,31 +190,79 @@ namespace Test
 				return -2 * (x1 - 2);
 			}
 		};
+		double x0, x1;
 		double since = clock();
 		for (int i = 0; i < 1000000; ++i) {
-			double x0 = 0.1, x1 = 0.1;
-			NonLinear::Solve2DTol(Fun0(), Fun1(), x0, x1, 0.0001);
-//		printf("x0 = %.4f\nx1 = %.4f", x0, x1);
+			NonLinear::Solve2DTol(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
 			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
 		}
 		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 		since = clock();
 		for (int i = 0; i < 1000000; ++i) {
-			double x0 = 0.1, x1 = 0.1;
-			NonLinear::Solve2DEps(Fun0(), Fun1(), x0, x1, 0.0001);
-//		printf("x0 = %.4f\nx1 = %.4f", x0, x1);
+			NonLinear::Solve2DEps(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
 			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
 		}
 		printf("solve with eps in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
+
+		// test singular case
+		struct Fun2 : NonLinear::BinFun
+		{
+			double operator()(double x0, double x1) const override
+			{
+				return x0 * x0 + x1 * x1 - 1;
+			}
+
+			double d0(double x0, double x1) const override
+			{
+				return 2 * x0;
+			}
+
+			double d1(double x0, double x1) const override
+			{
+				return 2 * x1;
+			}
+		};
+		struct Fun3 : NonLinear::BinFun
+		{
+			const double c;
+
+			Fun3(const double c_) : c(c_)
+			{}
+
+			double operator()(double x0, double x1) const override
+			{
+				return x0 - x1 + c;
+			}
+
+			double d0(double x0, double x1) const override
+			{
+				return 1;
+			}
+
+			double d1(double x0, double x1) const override
+			{
+				return -1;
+			}
+		};
+		bool solvable = NonLinear::Solve2DEps(Fun2(), Fun3(2), x0 = randf(), x1 = randf());
+		assert(!solvable);
+		solvable = NonLinear::Solve2DTol(Fun2(), Fun3(-1.8), x0 = randf(), x1 = randf());
+		assert(!solvable);
+		solvable = NonLinear::Solve2DEps(Fun2(), Fun3(0), x0 = randf(), x1 = randf());
+		assert(solvable);
+		assert(fabs(x0 - 0.707) < 0.001 && fabs(x1 - 0.707) < 0.001);
+		solvable = NonLinear::Solve2DTol(Fun2(), Fun3(0), x0 = -randf(), x1 = -randf());
+		assert(solvable);
+		assert(fabs(x0 + 0.707) < 0.001 && fabs(x1 + 0.707) < 0.001);
 	}
 
 	void main()
 	{
 		double since = clock();
-		linear();
-		coordinateConvert();
-		matrix();
-		polynomial();
+//		linear();
+//		coordinateConvert();
+//		matrix();
+//		polynomial();
 		Newton();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}

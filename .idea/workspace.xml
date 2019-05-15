@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/core/Vec.h" line="188" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" line="18" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" line="22" />
   </component>
@@ -24,23 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/Camera.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/camera/DOFCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/DOFCamera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Ray.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Ray.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/InfPlane.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/InfPlane.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/PolyRevolution.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/PolyRevolution.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/Sphere.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Sphere.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/Linear.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/Linear.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/NonLinear.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/NonLinear.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -216,7 +200,7 @@
           <entry key="obj" value="7" />
           <entry key="ppm" value="166" />
           <entry key="py" value="42" />
-          <entry key="tcc" value="73" />
+          <entry key="tcc" value="74" />
           <entry key="tpp" value="7" />
           <entry key="txt" value="61" />
           <entry key="utility" value="1" />
@@ -229,7 +213,7 @@
           <entry key="Image" value="166" />
           <entry key="JSON" value="78" />
           <entry key="Makefile" value="23" />
-          <entry key="ObjectiveC" value="2367" />
+          <entry key="ObjectiveC" value="2368" />
           <entry key="PLAIN_TEXT" value="27" />
           <entry key="Python" value="37" />
           <entry key="Scratch" value="5" />
@@ -239,7 +223,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="305" />
-          <entry key="cpp" value="76326" />
+          <entry key="cpp" value="76849" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
           <entry key="h" value="30103" />
@@ -251,7 +235,7 @@
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
           <entry key="py" value="4816" />
-          <entry key="tcc" value="2378" />
+          <entry key="tcc" value="2382" />
           <entry key="tpp" value="11" />
           <entry key="txt" value="1866" />
         </counts>
@@ -262,7 +246,7 @@
           <entry key="Doxygen file" value="29" />
           <entry key="JSON" value="7483" />
           <entry key="Makefile" value="305" />
-          <entry key="ObjectiveC" value="115434" />
+          <entry key="ObjectiveC" value="115961" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="537" />
@@ -299,8 +283,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="215" column="17" lean-forward="true" selection-start-line="215" selection-start-column="17" selection-end-line="215" selection-end-column="17" />
+            <state relative-caret-position="272">
+              <caret line="203" column="9" lean-forward="true" selection-start-line="203" selection-start-column="9" selection-end-line="203" selection-end-column="9" />
               <folding>
                 <element signature="e#39#56#0" expanded="true" />
               </folding>
@@ -311,8 +295,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="259">
+              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
               <folding>
                 <element signature="e#93#117#0" expanded="true" />
                 <element signature="e#643#667#0" expanded="true" />
@@ -322,10 +306,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.tcc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="172" column="17" selection-start-line="172" selection-start-column="17" selection-end-line="172" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="309">
+              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
               <folding>
                 <element signature="e#472#496#0" expanded="true" />
                 <element signature="e#620#644#0" expanded="true" />
@@ -499,7 +492,6 @@
         <option value="$PROJECT_DIR$/src/core/Mat.tcc" />
         <option value="$PROJECT_DIR$/src/core/Mat.h" />
         <option value="$PROJECT_DIR$/src/utils/solvers/NonLinear.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.h" />
         <option value="$PROJECT_DIR$/src/test.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
@@ -509,6 +501,7 @@
         <option value="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" />
         <option value="$PROJECT_DIR$/src/utils/solvers/NonLinear.h" />
         <option value="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" />
+        <option value="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" />
         <option value="$PROJECT_DIR$/src/test.cpp" />
       </list>
     </option>
@@ -1188,7 +1181,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="508714000" />
+    <option name="totallyTimeSpent" value="509846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1595,13 +1588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.tcc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="169" column="7" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1638,13 +1624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/Geometry.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1674,8 +1653,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state relative-caret-position="309">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding>
             <element signature="e#472#496#0" expanded="true" />
             <element signature="e#620#644#0" expanded="true" />
@@ -1683,10 +1662,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.tcc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="172" column="17" selection-start-line="172" selection-start-column="17" selection-end-line="172" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="259">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding>
             <element signature="e#93#117#0" expanded="true" />
             <element signature="e#643#667#0" expanded="true" />
@@ -1706,8 +1699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="215" column="17" lean-forward="true" selection-start-line="215" selection-start-column="17" selection-end-line="215" selection-end-column="17" />
+        <state relative-caret-position="272">
+          <caret line="203" column="9" lean-forward="true" selection-start-line="203" selection-start-column="9" selection-end-line="203" selection-end-column="9" />
           <folding>
             <element signature="e#39#56#0" expanded="true" />
           </folding>

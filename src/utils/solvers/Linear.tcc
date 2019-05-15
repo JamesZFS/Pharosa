@@ -170,7 +170,7 @@ bool Linear::SolveInPlace(double (&M)[n][n + 1])
 bool Linear::Solve2D(double A00, double A01, double A10, double A11, double b0, double b1, double &x0, double &x1)
 {
 	double det = A00 * A11 - A01 * A10;
-	if (det < EPS) return false;	// singular
+	if (fabs(det) < EPS) return false;	// singular
 	x0 = (A11 * b0 - A01 * b1) / det;
 	x1 = (A00 * b1 - A10 * b0) / det;
 	return true;
