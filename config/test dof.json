@@ -1,6 +1,5 @@
 {
-	"save_path": "out/dof/dragon with texture 5 pt clear refactor.ppm",
-	"prev_path": "out/dof/dragon with texture 5 pt clear refactor.ppm",
+	"save_path": "out/dof/dragon with refactored sampling.ppm",
 	"n_epoch": 20,
 	"save_step": 4,
 	"algorithm": {

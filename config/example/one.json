@@ -1,12 +1,11 @@
 {
-	"save_path": "one.ppm",
-	"n_epoch": 3,
-	"prev_path": "",
-	"save_step": 0,
+	"save_path": "one 5.ppm",
+	"n_epoch": 20,
+	"save_step": 5,
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "rt",
+		"type": "pt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

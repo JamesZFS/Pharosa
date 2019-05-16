@@ -4,9 +4,10 @@
 
 #include "Material.h"
 #include "../utils/funcs.hpp"
+#include "../utils/sampling.h"
 
 using Funcs::randf;
-
+using Funcs::randfNormal;
 
 Material::Material() :
 		color(Color::WHITE), emi(Emission::NONE),
@@ -31,17 +32,21 @@ void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ra
 //			int n_samp = 1;
 		double I_n_samp = 1.0 / n_samp;
 		for (int i = 0; i < n_samp; ++i) {
-			double r1 = randf(2 * M_PI), r2 = randf(), r2s = sqrt(r2);
-			Dir &&d = ex * (cos(r1) * r2s) + ey * (sin(r1) * r2s) + ez * sqrt(1 - r2);
-			r_outs.emplace_back(r_in.org + nl * EPS, d);
-			w_outs.emplace_back(I_n_samp);
+			auto samp = Sampling::cosineOnHemisphere({randf(), randf()});
+			r_outs.emplace_back(r_in.org + nl * EPS, Dir(ex * samp.x + ey * samp.y + ez * samp.z));
+			w_outs.push_back(I_n_samp);
 		}
 	}
 
 	// mirror reflection, todo use I = ks ( V . R )^n model
 	if WITH_PROB(spec) {
-		r_outs.emplace_back(Ray(r_in.org + nl * EPS, r_in.dir - nl * (nl % r_in.dir * 2)));
-		w_outs.emplace_back(1.0);
+//		r_outs.push_back(r);
+//		w_outs.push_back(0.5);
+		r_outs.emplace_back(
+				r_in.org + nl * EPS,
+				r_in.dir - nl * (nl % r_in.dir * 2) +
+				Pos(randfNormal(0, 0.5), randfNormal(0, 0.5), randfNormal(0, 0.5)));
+		w_outs.push_back(1.0);
 	}
 
 	// dielectric refraction, normal will be used instead of nl
