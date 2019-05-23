@@ -73,7 +73,7 @@ Polynomial Polynomial::operator+(const Polynomial &other) const
 	}
 	res.trim();
 	res.compDerivatives();
-	return std::move(res);
+	return res;
 }
 
 Polynomial Polynomial::operator-(const Polynomial &other) const
@@ -84,7 +84,7 @@ Polynomial Polynomial::operator-(const Polynomial &other) const
 	}
 	res.trim();
 	res.compDerivatives();
-	return std::move(res);
+	return res;
 }
 
 Polynomial &Polynomial::operator+=(const Polynomial &other)
@@ -158,7 +158,7 @@ Polynomial Polynomial::operator*(const Polynomial &other) const
 	}
 	res.trim();
 	res.compDerivatives();
-	return std::move(res);
+	return res;
 }
 
 Polynomial &Polynomial::operator*=(const Polynomial &other)
@@ -174,7 +174,7 @@ Polynomial Polynomial::operator*(double k) const
 		res.a[i] = a[i] * k;
 	}
 	res.compDerivatives();
-	return std::move(res);
+	return res;
 }
 
 Polynomial &Polynomial::operator*=(double k)
@@ -203,5 +203,5 @@ Polynomial Polynomial::binomial(double a, double b, unsigned char n)
 		}
 	}
 	res.compDerivatives();
-	return std::move(res);
+	return res;
 }

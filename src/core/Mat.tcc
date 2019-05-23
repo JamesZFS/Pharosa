@@ -27,7 +27,7 @@ Mat<T> Mat<T>::operator*(const Mat<T> &B) const
 	C.el[2][0] = el[2][0] * B.el[0][0] + el[2][1] * B.el[1][0] + el[2][2] * B.el[2][0];
 	C.el[2][1] = el[2][0] * B.el[0][1] + el[2][1] * B.el[1][1] + el[2][2] * B.el[2][1];
 	C.el[2][2] = el[2][0] * B.el[0][2] + el[2][1] * B.el[1][2] + el[2][2] * B.el[2][2];
-	return std::move(C);
+	return C;
 }
 
 template<typename T>
@@ -94,7 +94,7 @@ Mat<T> Mat<T>::operator+(const Mat<T> &B) const
 	C.el[2][0] = el[2][0] + B.el[2][0];
 	C.el[2][1] = el[2][1] + B.el[2][1];
 	C.el[2][2] = el[2][2] + B.el[2][2];
-	return std::move(C);
+	return C;
 }
 
 template<typename T>

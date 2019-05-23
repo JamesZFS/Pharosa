@@ -1,8 +1,8 @@
 {
-	"save_path": "two spec sigma = 0.5 .ppm",
-	"#prev_path": "two.ppm",
-	"n_epoch": 30,
-	"save_step": 4,
+	"save_path": "two 5-22 Phong n=4.ppm",
+	"prev_path": "two 5-22 Phong n=4.ppm",
+	"n_epoch": 200,
+	"save_step": 20,
 
 	"algorithm": {
 		"type": "pt",
@@ -73,7 +73,8 @@
 				},
 				{
 					"name": "floor",
-					"color": [0.95, 1.0, 0.7],
+					"texture": "res/floor1.ppm",
+					"#color": [0.95, 1.0, 0.7],
 					"diff": 0.6,
 					"spec": 0.4,
 					"geo": {
@@ -113,7 +114,7 @@
 		},
 		{
 			"name": "light bulb",
-			"emission": [10, 10, 11],
+			"emission": [15, 15, 15],
 			"geo": {
 				"type": "sphere",
 				"radius": 20,

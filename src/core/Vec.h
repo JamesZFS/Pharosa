@@ -174,6 +174,15 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	Pos &rotate(const ElAg &ea);    // Euler rotation, in place. Z -> X -> Y
 
+	inline Pos getCoordAs(const Pos &e1, const Pos &e2, const Pos &e3)    // coordinate transform
+	{
+		return {
+				e1.x * x + e1.y * y + e1.z * z,
+				e2.x * x + e2.y * y + e2.z * z,
+				e3.x * x + e3.y * y + e3.z * z,
+		};
+	}
+
 	static inline Pos random(double lower = 0.0, double upper = 1.0)
 	{ return {Funcs::randf(lower, upper), Funcs::randf(lower, upper), Funcs::randf(lower, upper)}; }
 

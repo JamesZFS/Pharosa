@@ -131,7 +131,7 @@ void Renderer::render()
 		auto eta = lround((omp_get_wtime() - since) * (n_epoch - epoch) / epoch);
 		barInfo("\r=== epoch %ld / %ld ===  eta: %ld min %ld sec", epoch + 1, n_epoch, eta / 60, eta % 60);
 
-#ifdef __USE_OMP__
+#if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
 		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
@@ -155,7 +155,7 @@ void Renderer::renderVerbose()
 		auto eta = lround((omp_get_wtime() - since) * (n_epoch - epoch) / epoch);
 		barInfo("=== epoch %ld / %ld ===  eta: %ld min %ld sec\n", epoch + 1, n_epoch, eta / 60, eta % 60);
 
-#ifdef __USE_OMP__
+#if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
 

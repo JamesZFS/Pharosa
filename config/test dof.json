@@ -1,14 +1,15 @@
 {
-	"save_path": "out/dof/dragon with refactored sampling.ppm",
-	"n_epoch": 20,
-	"save_step": 4,
+	"save_path": "out/dof/dragon 5-20.ppm",
+	"prev_path": "out/dof/dragon 5-20.ppm",
+	"n_epoch": 300,
+	"save_step": 10,
 	"algorithm": {
 		"type": "pt",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 5
+		"max_depth": 6
 	},
 	"camera": {
-		"type": "basic",
+		"type": "dof",
 		"pos": [-20, -20, 380],
 		"rot": [0, 180, 5],
 		"width": 1024, "height": 768,
@@ -53,7 +54,7 @@
 			"type": "group",
 			"objects": [
 				{
-					"name": "back wall",
+					"name": "front wall",
 					"texture": {
 						"path": "res/bamboo.ppm",
 						"mat": [
@@ -65,6 +66,15 @@
 						"type": "infplane",
 						"normal": [0, 0, 1],
 						"point": [0, 0, -200]
+					}
+				},
+				{
+					"name": "back wall",
+					"color": "white",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, 300]
 					}
 				},
 				{
@@ -84,7 +94,7 @@
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
-						"point": [0, 80, 0]
+						"point": [0, 120, 0]
 					}
 				},
 				{
@@ -116,8 +126,8 @@
 			"emission": [16, 15, 15],
 			"geo": {
 				"type": "cube",
-				"pos": [-40, 78, -60],
-				"length": 80, "width": 20, "height": 80
+				"pos": [-60, 118, -60],
+				"length": 120, "width": 20, "height": 120
 			}
 		}
 	]

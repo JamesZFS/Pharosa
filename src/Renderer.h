@@ -7,7 +7,7 @@
 
 #include "Pharosa.h"
 
-#define __USE_OMP__
+#define OMP_ON 1
 
 class Scene;
 
