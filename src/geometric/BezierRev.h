@@ -15,6 +15,9 @@ struct BezierRev : PolyRev, Finite
 
 	BezierRev(List<Arr<real, 2>> &&control_pts_);
 
+	Type type() const override
+	{ return BEZIERREV; }
+
 	// todo
 	real xMin() const override;
 

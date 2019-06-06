@@ -22,6 +22,9 @@ struct InfPlane : Geometry
 	// construct by specifying normal and point
 	InfPlane(const Dir &n_, const Pos &p_);
 
+	Type type() const override
+	{ return INFPLANE; }
+
 	void applyTransform(TransMat mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;

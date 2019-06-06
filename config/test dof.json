@@ -1,6 +1,6 @@
 {
-	"save_path": "out/dof/dragon 7-6 explicit.ppm",
-	"n_epoch": 50,
+	"save_path": "out/dof/dragon 7-6 []() explicit.ppm",
+	"n_epoch": 150,
 	"save_step": 10,
 	"algorithm": {
 		"type": "pt",
@@ -122,6 +122,15 @@
 		},
 		{
 			"name": "light source",
+			"emission": [16, 15, 15],
+			"geo": {
+				"type": "cube",
+				"pos": [-60, 118, -60],
+				"length": 80, "width": 20, "height": 80
+			}
+		},
+		{
+			"name": "light bulb",
 			"emission": [16, 15, 15],
 			"geo": {
 				"type": "sphere",

@@ -15,9 +15,14 @@ struct Intersection;
 // abstract class
 struct Geometry
 {
-	Geometry() = default;
+	enum Type
+	{
+		SPHERE, TRIANGLE, CUBE, INFPLANE, POLYREV, BEZIERREV
+	};
 
 	virtual ~Geometry() = default;
+
+	virtual Type type() const = 0;
 
 	// interfaces:
 	virtual void applyTransform(TransMat mat) = 0;   // apply transform from transform matrix

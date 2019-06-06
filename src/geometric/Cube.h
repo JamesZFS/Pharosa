@@ -21,6 +21,9 @@ struct Cube : Geometry
 	// init an orthogonal cube
 	Cube(real length, real width, real height, const Pos &pos = {});
 
+	Type type() const override
+	{ return CUBE; }
+
 	void applyTransform(TransMat mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;

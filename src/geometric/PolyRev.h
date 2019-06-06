@@ -21,6 +21,9 @@ struct PolyRev : Geometry
 
 	PolyRev(Polynomial &&phi_, Polynomial &&psi_);
 
+	Type type() const override
+	{ return POLYREV; }
+
 	void applyTransform(TransMat mat_) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;

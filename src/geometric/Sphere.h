@@ -14,6 +14,9 @@ struct Sphere : Geometry
 
 	Sphere(real radius_, const Pos &pos_ = {});
 
+	Type type() const override
+	{ return SPHERE; }
+
 	void applyTransform(TransMat mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;

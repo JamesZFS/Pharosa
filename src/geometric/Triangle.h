@@ -17,6 +17,9 @@ struct Triangle : Geometry, Finite
 
 	Triangle(const Pos &A, const Pos &B, const Pos &C);
 
+	Type type() const override
+	{ return TRIANGLE; }
+
 	void applyTransform(TransMat mat) override;    // calculate c according to c
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
