@@ -17,9 +17,6 @@ class Algorithm
 protected:
 	const Scene &scene;
 
-	// interfaces:
-	virtual Color radiance(const Ray &ray, size_t depth) const = 0;    // ** main algorithm **
-
 public:
 	Algorithm(const Scene &scene_);
 
@@ -27,8 +24,7 @@ public:
 
 	virtual String info() const = 0;
 
-	inline Color radiance(const Ray &ray) const    // entrance
-	{ return radiance(ray, 0); }
+	virtual Color radiance(const Ray &ray) const = 0;    // entrance
 
 	static Algorithm *acquire(const Json &json, Scene &scene);
 };

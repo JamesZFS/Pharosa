@@ -10,13 +10,12 @@
 // render directly the RGB color of an object
 class RayCasting : public Algorithm
 {
-protected:
-	Color radiance(const Ray &ray, size_t depth) const override;
-
 public:
 	const Dir light_dir;	// parallel light orientation
 
 	RayCasting(Scene &scene_, const Dir &light_dir_ = Dir(-1, -1, -1));
+
+	Color radiance(const Ray &ray) const override;
 
 	String info() const override;
 };

@@ -54,8 +54,8 @@ bool Cube::intersect(const Ray &ray, real &t, Intersection &isect) const
 		ti_max = -(s[1].D + ray.org % s[1].n) / dn;
 		if (ti_max < ti_min) std::swap(ti_min, ti_max);
 
-		tmin = std::max(tmin, ti_min);
-		tmax = std::min(tmax, ti_max);
+		tmin = max2(tmin, ti_min);
+		tmax = min2(tmax, ti_max);
 	}
 	if (tmin > tmax) return false;    // intersect at front?
 

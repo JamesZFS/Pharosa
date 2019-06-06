@@ -11,7 +11,7 @@ RayCasting::RayCasting(Scene &scene_, const Dir &light_dir_) :
 {
 }
 
-Color RayCasting::radiance(const Ray &ray, size_t depth) const
+Color RayCasting::radiance(const Ray &ray) const
 {
 	Intersection isect;
 	if (!scene.intersectAny(ray, isect)) return Color::BLACK;
