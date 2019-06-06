@@ -1,6 +1,6 @@
 {
-	"save_path": "out/three/explicit up.ppm",
-	"n_epoch": 50,
+	"save_path": "out/three/explicit up -.ppm",
+	"n_epoch": 10,
 	"save_step": 10,
 
 	"algorithm": {

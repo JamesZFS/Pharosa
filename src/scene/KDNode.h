@@ -14,16 +14,16 @@ class KDNode
 {
 private:
 	BoundingBox *box;
-	ObjectList *tris;
+	ObjectList *objs;
 	KDNode *l_child;
 	KDNode *r_child;
 
-	void build(const ObjectList &triangles, size_t depth);
+	void build(const ObjectList &finite_objs, size_t depth);
 
 public:
 	KDNode();    // empty node
 
-	KDNode(const ObjectList &triangles);    // build KD-node
+	KDNode(const ObjectList &finite_objs);    // build KD-node
 
 	~KDNode();
 

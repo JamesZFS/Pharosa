@@ -16,7 +16,7 @@ class KDNode;
 class Scene
 {
 private:
-	ObjectList objects;    // all singleton object ptrs, using pointer to allow polymorphism
+	ObjectList objects; // all singleton object ptrs, using pointer to allow polymorphism
 	ObjectList meshes;	// store triangles parsed from mesh file
 	List<Material *> materials;    // mtr is shared while geometry belongs to objects
 	KDNode *kd_root;	// root of KD-tree

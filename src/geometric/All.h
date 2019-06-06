@@ -12,5 +12,6 @@
 #include "Cube.h"
 #include "PolyRev.h"
 #include "BezierRev.h"
+#include "Finite.h"
 
 #endif //PHAROSA_SCENE_ALL_H

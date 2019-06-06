@@ -19,38 +19,3 @@ BezierRev::BezierRev(List<Arr<real, 2>> &&control_pts_) : PolyRev(), ctrl_pts(st
 	psi.report();
 	debug("\n");
 }
-
-real BezierRev::xMin() const
-{
-	return 0;
-}
-
-real BezierRev::xMax() const
-{
-	return 0;
-}
-
-real BezierRev::yMin() const
-{
-	return 0;
-}
-
-real BezierRev::yMax() const
-{
-	return 0;
-}
-
-real BezierRev::zMin() const
-{
-	return 0;
-}
-
-real BezierRev::zMax() const
-{
-	return 0;
-}
-
-Pos BezierRev::center() const
-{
-	return Pos();
-}

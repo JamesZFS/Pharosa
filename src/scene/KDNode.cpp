@@ -6,22 +6,22 @@
 #include "../geometric/Finite.h"
 #include "Intersection.hpp"
 
-KDNode::KDNode() : box(nullptr), tris(nullptr), l_child(nullptr), r_child(nullptr)
+KDNode::KDNode() : box(nullptr), objs(nullptr), l_child(nullptr), r_child(nullptr)
 {
 
 }
 
 // !
-KDNode::KDNode(const ObjectList &triangles) : KDNode()
+KDNode::KDNode(const ObjectList &finite_objs) : KDNode()
 {
-	build(triangles, 0);    // build from root
+	build(finite_objs, 0);    // build from root
 	box->report();
 }
 
 KDNode::~KDNode()
 {
 	delete box;
-	delete tris;
+	delete objs;
 	delete l_child;	// delete recursively
 	delete r_child;
 }
@@ -30,12 +30,12 @@ KDNode::~KDNode()
 void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
 	// check bounding box first:
-	if (tris->empty() || !box->intersect(ray)) return;    // degenerate case
+	if (objs->empty() || !box->intersect(ray)) return;    // degenerate case
 
 	// leaf case:
 	if (l_child == nullptr || r_child == nullptr) {
 		// enumerate each tri:
-		for (const Object *obj : *tris) {
+		for (const Object *obj : *objs) {
 			if (obj->geo->intersect(ray, t, isect)) {    // *** update first intersection
 				isect.hit = obj;
 			}
@@ -51,50 +51,46 @@ void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 #define MATCH_THRESHOLD 0.5
 
 // !
-void KDNode::build(const ObjectList &triangles, size_t depth)
+void KDNode::build(const ObjectList &finite_objs, size_t depth)
 {
 	__max_depth__ = max2(__max_depth__, depth);
-	box = new BoundingBox(triangles);    // bound all triangles
-	tris = new ObjectList(triangles);    // copy Finite ptrs
+	box = new BoundingBox(finite_objs);    // bound all finite_objs
+	objs = new ObjectList(finite_objs);    // copy Finite ptrs
 
 	// base case:
-	if (tris->size() <= 1) return;
+	if (objs->size() <= 1) return;
 
-	// get center point of all tris:
+	// get center point of all objs:
 	Pos center;
-	for (auto obj: *tris) {
+	for (auto obj: *objs) {
 		auto tr = dynamic_cast<Finite *>(obj->geo);
 		assert(tr != nullptr);
 		center += tr->center();
 	}
-	center /= tris->size();
+	center /= objs->size();
 
-	// sort tris to left or right range:
-	auto l_tris = new ObjectList, r_tris = new ObjectList;
+	// sort objs to left or right range:
+	auto l_objs = new ObjectList, r_objs = new ObjectList;
 	auto cur_axis = box->getLongestAxis();
-	for (auto obj: *tris) {
-		auto tr = dynamic_cast<Finite *>(obj->geo);
+	for (auto obj: *objs) {
+		auto shape = dynamic_cast<Finite *>(obj->geo);
 		switch (cur_axis) {
 			case BoundingBox::X:
-				tr->center().x <= center.x ? l_tris->push_back(obj) : r_tris->push_back(obj);
+				shape->center().x <= center.x ? l_objs->push_back(obj) : r_objs->push_back(obj);
 				break;
 			case BoundingBox::Y:
-				tr->center().y <= center.y ? l_tris->push_back(obj) : r_tris->push_back(obj);
+				shape->center().y <= center.y ? l_objs->push_back(obj) : r_objs->push_back(obj);
 				break;
 			case BoundingBox::Z:
-				tr->center().z <= center.z ? l_tris->push_back(obj) : r_tris->push_back(obj);
+				shape->center().z <= center.z ? l_objs->push_back(obj) : r_objs->push_back(obj);
 				break;
 		}
 	}
 
-	// ???
-//	if (l_tris->empty() && !r_tris->empty()) *l_tris = *r_tris;
-//	if (r_tris->empty() && !l_tris->empty()) *r_tris = *l_tris;
-
 	// stop subdividing condition:
 	float n_match = 0;
-	for (auto lo : *l_tris) {
-		for (auto ro : *r_tris) {
+	for (auto lo : *l_objs) {
+		for (auto ro : *r_objs) {
 			if (lo == ro) {
 				++n_match;    // found match
 				++__counter__;
@@ -103,11 +99,11 @@ void KDNode::build(const ObjectList &triangles, size_t depth)
 		}
 	}
 
-	if (n_match / l_tris->size() < MATCH_THRESHOLD && n_match / r_tris->size() < MATCH_THRESHOLD) {
+	if (n_match / l_objs->size() < MATCH_THRESHOLD && n_match / r_objs->size() < MATCH_THRESHOLD) {
 		l_child = new KDNode;
-		l_child->build(*l_tris, depth + 1);
+		l_child->build(*l_objs, depth + 1);
 		r_child = new KDNode;
-		r_child->build(*r_tris, depth + 1);
+		r_child->build(*r_objs, depth + 1);
 	}
 	// else: stop dividing
 }

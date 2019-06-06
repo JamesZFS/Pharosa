@@ -3,7 +3,7 @@
 //
 
 #include "BoundingBox.h"
-#include "../geometric/Triangle.h"
+#include "../geometric/Finite.h"
 
 BoundingBox::BoundingBox() : xmin(INF), xmax(-INF), ymin(INF), ymax(-INF), zmin(INF), zmax(-INF)
 {
@@ -11,17 +11,17 @@ BoundingBox::BoundingBox() : xmin(INF), xmax(-INF), ymin(INF), ymax(-INF), zmin(
 }
 
 // !
-BoundingBox::BoundingBox(const ObjectList &triangles) : BoundingBox()
+BoundingBox::BoundingBox(const ObjectList &finite_objs) : BoundingBox()
 {
-	for (auto obj : triangles) {
-		auto tr = dynamic_cast<Triangle *>(obj->geo);    // down-casting
-		assert(tr != nullptr);
-		xmin = min2(xmin, tr->xMin());
-		xmax = max2(xmax, tr->xMax());
-		ymin = min2(ymin, tr->yMin());
-		ymax = max2(ymax, tr->yMax());
-		zmin = min2(zmin, tr->zMin());
-		zmax = max2(zmax, tr->zMax());
+	for (auto obj : finite_objs) {
+		auto shape = dynamic_cast<Finite *>(obj->geo);    // down-casting
+		assert(shape != nullptr);
+		xmin = min2(xmin, shape->xMin());
+		xmax = max2(xmax, shape->xMax());
+		ymin = min2(ymin, shape->yMin());
+		ymax = max2(ymax, shape->yMax());
+		zmin = min2(zmin, shape->zMin());
+		zmax = max2(zmax, shape->zMax());
 	}
 }
 

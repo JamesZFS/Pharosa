@@ -6,8 +6,9 @@
 #define PHAROSA_SPHERE_H
 
 #include "Geometry.h"
+#include "Finite.h"
 
-struct Sphere : Geometry
+struct Sphere : Geometry, Finite
 {
 	Pos c;    // center as global crd
 	const real rad, rad_2;    // radius, radius^2
@@ -29,6 +30,27 @@ struct Sphere : Geometry
 		ElAg &&ea = Dir(pos - c).getEulerAngles();
 		u = ea.alpha, v = ea.gamma;
 	}
+
+	real xMin() const override
+	{ return c.x - rad; }
+
+	real xMax() const override
+	{ return c.x + rad; }
+
+	real yMin() const override
+	{ return c.y - rad; }
+
+	real yMax() const override
+	{ return c.y + rad; }
+
+	real zMin() const override
+	{ return c.z - rad; }
+
+	real zMax() const override
+	{ return c.z + rad; }
+
+	Pos center() const override
+	{ return c; }
 
 	static Sphere *acquire(const Json &json);
 };

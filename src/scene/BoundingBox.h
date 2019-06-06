@@ -24,7 +24,7 @@ public:
 
 	BoundingBox();
 
-	BoundingBox(const ObjectList &triangles);
+	BoundingBox(const ObjectList &finite_objs);
 
 	bool intersect(const Ray &ray) const;
 
