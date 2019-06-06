@@ -20,7 +20,7 @@ public:
 	PathTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
 
 	Color radiance(const Ray &ray) const override
-	{ return _radiance(ray, 0); }
+	{ return _radiance(ray, 0, true); }
 
 	String info() const override;
 };

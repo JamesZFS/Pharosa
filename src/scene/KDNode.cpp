@@ -22,7 +22,7 @@ KDNode::~KDNode()
 {
 	delete box;
 	delete tris;
-	delete l_child;
+	delete l_child;	// delete recursively
 	delete r_child;
 }
 

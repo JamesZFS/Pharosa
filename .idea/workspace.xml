@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/core/Vec.h" line="294" />
+    <bookmark url="file://$PROJECT_DIR$/src/core/Vec.h" line="22" />
+    <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="17" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
       <config projectName="Pharosa" targetName="scene" />
@@ -21,12 +26,16 @@
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="[hotfix]">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/example/two.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/example/two.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/Algorithm.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/Algorithm.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Renderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayCasting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayCasting.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayCasting.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayCasting.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/Cube.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Cube.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Vec.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Vec.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Intersection.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Intersection.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/KDNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/KDNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/sampling.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/sampling.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/sampling.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/sampling.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -190,18 +199,18 @@
           <entry key="cmake" value="1" />
           <entry key="cmath" value="1" />
           <entry key="cp" value="1" />
-          <entry key="cpp" value="1077" />
+          <entry key="cpp" value="1085" />
           <entry key="cstdio" value="1" />
           <entry key="d" value="5" />
           <entry key="fstream" value="2" />
           <entry key="gitignore" value="10" />
-          <entry key="h" value="1210" />
-          <entry key="hpp" value="161" />
+          <entry key="h" value="1224" />
+          <entry key="hpp" value="165" />
           <entry key="inl" value="32" />
           <entry key="iostream" value="1" />
           <entry key="istream" value="5" />
           <entry key="josn" value="1" />
-          <entry key="json" value="96" />
+          <entry key="json" value="98" />
           <entry key="obj" value="7" />
           <entry key="ppm" value="193" />
           <entry key="py" value="42" />
@@ -216,9 +225,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="66" />
           <entry key="Image" value="193" />
-          <entry key="JSON" value="94" />
+          <entry key="JSON" value="96" />
           <entry key="Makefile" value="26" />
-          <entry key="ObjectiveC" value="2585" />
+          <entry key="ObjectiveC" value="2611" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Python" value="37" />
           <entry key="Scratch" value="5" />
@@ -228,14 +237,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="332" />
-          <entry key="cpp" value="86361" />
+          <entry key="cpp" value="88113" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
-          <entry key="h" value="32668" />
-          <entry key="hpp" value="5532" />
+          <entry key="h" value="33238" />
+          <entry key="hpp" value="5590" />
           <entry key="inl" value="1277" />
           <entry key="istream" value="1" />
-          <entry key="json" value="9123" />
+          <entry key="json" value="9135" />
           <entry key="mm" value="604" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -248,10 +257,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
-          <entry key="Doxygen file" value="34" />
-          <entry key="JSON" value="9091" />
+          <entry key="Doxygen file" value="38" />
+          <entry key="JSON" value="9103" />
           <entry key="Makefile" value="332" />
-          <entry key="ObjectiveC" value="129359" />
+          <entry key="ObjectiveC" value="131735" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="537" />
@@ -267,38 +276,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/example/two.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/RayCasting.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/geometric/Cube.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-              <folding>
-                <element signature="e#40#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/include/c++/8.3.0/bits/stl_algobase.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="218" column="4" selection-start-line="218" selection-start-column="4" selection-end-line="218" selection-end-column="4" />
+            <state relative-caret-position="136">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -307,16 +286,16 @@
         <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="45" column="105" selection-start-line="45" selection-start-column="105" selection-end-line="45" selection-end-column="105" />
+            <state relative-caret-position="305">
+              <caret line="63" column="85" selection-start-line="63" selection-start-column="85" selection-end-line="63" selection-end-column="85" />
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
                 <element signature="e#2046#2569#0" />
@@ -326,13 +305,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+        <entry file="file://$PROJECT_DIR$/src/utils/sampling.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#97#120#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="578">
+              <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -340,8 +316,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/explicit.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="203" column="13" selection-start-line="203" selection-start-column="13" selection-end-line="203" selection-end-column="13" />
+            <state relative-caret-position="245">
+              <caret line="193" column="28" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -349,11 +343,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Vec.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+            <state relative-caret-position="167">
+              <caret line="279" column="21" selection-start-line="279" selection-start-column="21" selection-end-line="279" selection-end-column="21" />
               <folding>
                 <element signature="e#210#229#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -371,10 +383,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>u</find>
-      <find>isect.pos</find>
-      <find>cube</find>
-      <find>tr</find>
       <find>Triangle</find>
       <find>poly</find>
       <find>trans_mat</find>
@@ -401,9 +409,12 @@
       <find>fabs</find>
       <find>depth</find>
       <find>radiance(</find>
+      <find>xi.y</find>
+      <find>r_in</find>
+      <find>isect</find>
+      <find>_radiance</find>
     </findStrings>
     <replaceStrings>
-      <replace>scene-&gt;</replace>
       <replace>.cpt</replace>
       <replace>PHAROSA_KDNODE_H</replace>
       <replace>ym</replace>
@@ -433,6 +444,7 @@
       <replace>atan2f</replace>
       <replace>fabsf</replace>
       <replace>_radiance(</replace>
+      <replace>xi[1]</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/core</dir>
@@ -448,18 +460,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/geometric/Sphere.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/Triangle.cpp" />
         <option value="$PROJECT_DIR$/src/geometric/PolyRevolution.h" />
         <option value="$PROJECT_DIR$/src/geometric/PolyRevolution.cpp" />
-        <option value="$PROJECT_DIR$/src/scene/Intersection.hpp" />
         <option value="$PROJECT_DIR$/src/geometric/InfPlane.h" />
         <option value="$PROJECT_DIR$/src/geometric/Triangle.h" />
         <option value="$PROJECT_DIR$/src/geometric/Finite.h" />
-        <option value="$PROJECT_DIR$/src/scene/KDNode.cpp" />
         <option value="$PROJECT_DIR$/src/geometric/All.h" />
         <option value="$PROJECT_DIR$/src/geometric/BezierRev.h" />
         <option value="$PROJECT_DIR$/src/geometric/PolyRev.h" />
@@ -476,15 +487,11 @@
         <option value="$PROJECT_DIR$/forward.cpp" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.h" />
         <option value="$PROJECT_DIR$/Design.mindnode/contents.xml" />
-        <option value="$PROJECT_DIR$/src/utils/sampling.h" />
         <option value="$PROJECT_DIR$/src/utils/funcs.hpp" />
         <option value="$PROJECT_DIR$/src/utils/parsers/MeshParser.h" />
         <option value="$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/sampling.cpp" />
         <option value="$PROJECT_DIR$/src/utils/funcs.cpp" />
         <option value="$PROJECT_DIR$/src/core/Mat.cpp" />
-        <option value="$PROJECT_DIR$/src/Renderer.cpp" />
-        <option value="$PROJECT_DIR$/src/core/Vec.h" />
         <option value="$PROJECT_DIR$/src/camera/Camera.cpp" />
         <option value="$PROJECT_DIR$/src/utils/solvers/Linear.tcc" />
         <option value="$PROJECT_DIR$/src/scene/Material.cpp" />
@@ -495,13 +502,21 @@
         <option value="$PROJECT_DIR$/src/Pharosa.h" />
         <option value="$PROJECT_DIR$/src/constants.h" />
         <option value="$PROJECT_DIR$/src/constants.cpp" />
-        <option value="$PROJECT_DIR$/src/alg/Algorithm.h" />
         <option value="$PROJECT_DIR$/src/alg/RayCasting.h" />
         <option value="$PROJECT_DIR$/src/alg/RayCasting.cpp" />
+        <option value="$PROJECT_DIR$/src/geometric/Cube.cpp" />
+        <option value="$PROJECT_DIR$/src/Renderer.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.h" />
+        <option value="$PROJECT_DIR$/src/scene/KDNode.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/Algorithm.h" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.cpp" />
+        <option value="$PROJECT_DIR$/src/utils/sampling.h" />
+        <option value="$PROJECT_DIR$/src/utils/sampling.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Intersection.hpp" />
+        <option value="$PROJECT_DIR$/src/core/Vec.h" />
         <option value="$PROJECT_DIR$/src/alg/PathTracing.h" />
         <option value="$PROJECT_DIR$/config/example/two.json" />
         <option value="$PROJECT_DIR$/src/alg/PathTracing.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/Cube.cpp" />
       </list>
     </option>
   </component>
@@ -889,7 +904,25 @@
               <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="geometric" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scene" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -1157,7 +1190,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="569537000" />
+    <option name="totallyTimeSpent" value="573367000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1181,10 +1214,10 @@
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49928468" visible="true" weight="0.3385542" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.36626506" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.30240965" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50143063" side_tool="true" weight="0.30240965" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32771084" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.35180724" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.33975902" />
@@ -1289,79 +1322,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/two 5-22 Phong n=4.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smallpt.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="197" column="21" lean-forward="true" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin18/8.3.0/include-fixed/math.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="705" column="72" lean-forward="true" selection-start-line="705" selection-start-column="72" selection-end-line="705" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/sampling.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/sampling.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parsers/MeshParser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/funcs.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Polynomial.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-543" />
@@ -1374,6 +1334,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#40#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1429,23 +1392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Vec.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-          <folding>
-            <element signature="e#210#229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
@@ -1471,6 +1417,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+          <folding>
+            <element signature="e#41#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1485,13 +1434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-237">
           <caret line="198" column="82" selection-start-line="198" selection-start-column="82" selection-end-line="198" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="285" column="45" selection-start-line="285" selection-start-column="45" selection-end-line="285" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1528,44 +1470,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/explicit.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="203" column="13" selection-start-line="203" selection-start-column="13" selection-end-line="203" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="153" column="37" selection-start-line="153" selection-start-column="37" selection-end-line="153" selection-end-column="37" />
-          <folding>
-            <element signature="e#40#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#97#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1576,13 +1484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/example/two.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/RayCasting.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1590,24 +1491,6 @@
           <folding>
             <element signature="e#40#63#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="45" column="105" selection-start-line="45" selection-start-column="105" selection-end-line="45" selection-end-column="105" />
-          <folding>
-            <element signature="e#40#64#0" expanded="true" />
-            <element signature="e#2046#2569#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/include/c++/8.3.0/bits/stl_algobase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="218" column="4" selection-start-line="218" selection-start-column="4" selection-end-line="218" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1628,12 +1511,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/include/c++/8.3.0/bits/stl_algobase.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="218" column="4" selection-start-line="218" selection-start-column="4" selection-end-line="218" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/Cube.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+        <state relative-caret-position="485">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding>
             <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="189" column="27" selection-start-line="189" selection-start-column="27" selection-end-line="189" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/KDNode.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+          <folding>
+            <element signature="e#97#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/KDNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/sampling.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Vec.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="279" column="21" selection-start-line="279" selection-start-column="21" selection-end-line="279" selection-end-column="21" />
+          <folding>
+            <element signature="e#210#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/example/two.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/sampling.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/explicit.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="193" column="28" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="63" column="85" selection-start-line="63" selection-start-column="85" selection-end-line="63" selection-end-column="85" />
+          <folding>
+            <element signature="e#40#64#0" expanded="true" />
+            <element signature="e#2046#2569#0" />
           </folding>
         </state>
       </provider>

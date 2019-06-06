@@ -5,6 +5,7 @@
 #include "PathTracing.h"
 #include "../scene/Scene.h"
 #include "../utils/sampling.h"
+#include "../geometric/Sphere.h"
 
 using Funcs::randf;
 
@@ -51,7 +52,23 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 		 * make sure the ray doesn't hit another object, even if that is a light source too.
 		 * take the hit light source's emission into I_in
 		 */
-
+		for (auto &ls : scene.getLightSources()) {
+			auto s = dynamic_cast<Sphere *>(ls->geo);
+			if (!s) continue;	// deal only with sphere
+			Pos OS = s->c - r_in.org;
+			real dist = OS.norm();
+			Dir sz = OS / dist, sx, sy;
+			sz.getOrthogonalBasis(sx, sy);
+			real sin_theta_max = s->rad / dist;
+			real cos_theta_max = sqrtf(max2(0.f, 1 - sin_theta_max * sin_theta_max));
+			auto sub_samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
+			Ray r_sub(r_in.org + nl * EPS, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
+			Intersection isect_sub;
+			assert(scene.intersectAny(r_sub, isect_sub));
+			if (isect_sub.hit != ls) continue;	// a shadow ray
+			I_in += ls->mtr->emi * ((nl % r_sub.dir) * 2 * (1 - cos_theta_max));
+			// notice: uniform sampling, so divided by Pi already
+		}
 	}
 
 	// mirror reflection, Phong model: I = ks ( V . R )^n model
@@ -81,7 +98,7 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 		real ddn = r_in.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
 		if (cos2t < 0) {    // total internal reflection
-			I_in += _radiance(r_R, depth + 1, false);
+			I_in += _radiance(r_R, depth + 1);
 		}
 		else {        // refraction and reflection
 			Ray r_T(r_in.org - nl * EPS, r_in.dir * nnt - nl * (ddn * nnt + sqrtf(cos2t)));
@@ -97,7 +114,7 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 		}
 	}
 
-	return isect.getEmission() * flag + color.mul(I_in);	// be careful of flag here
+	return (flag ? isect.getEmission() : Color::BLACK) + color.mul(I_in);    // be careful of flag here
 }
 
 String PathTracing::info() const

@@ -9,20 +9,13 @@
 
 namespace Sampling
 {
-	struct Vec2f
-	{
-		real x, y;
-
-		Vec2f() : x(0), y(0) {}
-
-		Vec2f(real x_, real y_) : x(x_), y (y_) {}
-	};
-
 	Vec3f uniformOnHemisphere(const Vec2f &xi);
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi);
 
-	Vec2f concentricOnDisk(const Vec2f &xi);
+	Vec2f uniformOnDisk(const Vec2f &xi);
+
+	Vec3f uniformOnSphereCap(real cos_theta_max, const Vec2f &xi);
 };
 
 #endif //PHAROSA_SAMPLING_H

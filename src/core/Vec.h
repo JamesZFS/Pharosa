@@ -18,6 +18,15 @@ struct Vec
 	Vec(T x_ = 0, T y_ = 0, T z_ = 0) : x(x_), y(y_), z(z_)
 	{}
 
+	inline real operator[](size_t i) const
+	{
+		assert(i < 3);
+		return *(&x + i);
+	}
+
+	inline bool hasPositivePart() const
+	{ return x > 0 || y > 0 || z > 0; }
+
 	inline bool operator==(const Vec &b) const
 	{ return (*this - b).sqr() < EPS; }
 
@@ -270,6 +279,22 @@ struct RGB : Vec<real>        // RGB Vector
 
 	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW, BROWN;
 	static const RGB NONE, GLOW, BRIGHT, SPLENDID;
+};
+
+// 2D float vector
+struct Vec2f
+{
+	real x, y;
+
+	Vec2f() : x(0), y(0) {}
+
+	Vec2f(real x_, real y_) : x(x_), y (y_) {}
+
+	inline real operator[](size_t i) const
+	{
+		assert(i < 2);
+		return *(&x + i);
+	}
 };
 
 typedef RGB Color;            // intrinsic color of an object

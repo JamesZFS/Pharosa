@@ -13,13 +13,13 @@ Scene::Scene() : kd_root(nullptr)
 
 Scene::~Scene()
 {
-	for (Object *obj : objects) {
+	for (Object *obj : objects)
 		delete obj;
-	}
-	for (Material *material: materials) {
+//	for (Object *obj : meshes)
+//		delete obj;
+	for (Material *material: materials)
 		delete material;
-	}
-	delete kd_root;
+	delete kd_root;	// delete kd tree
 }
 
 // !!
@@ -44,13 +44,26 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect) const
 	return true;
 }
 
-void Scene::buildKDTree()
+void Scene::prepare()
 {
+	// build KD tree
 	delete kd_root;
 	message("building KD-Tree...");
 	kd_root = new KDNode(meshes);
 	message("KD-Tree built. max depth = " << __max_depth__);
 	debug("  match counter   = %ld\n", __counter__);
+
+	// find light sources
+	light_sources.clear();
+	for (const auto &obj : objects) {
+		if (obj->mtr->emi.hasPositivePart())
+			light_sources.push_back(obj);
+	}
+	for (const auto &obj : meshes) {
+		if (obj->mtr->emi.hasPositivePart())
+			light_sources.push_back(obj);
+	}
+	printf("found %ld light sources in total.\n", light_sources.size());
 }
 
 size_t Scene::getSingletonCount()
@@ -61,4 +74,9 @@ size_t Scene::getSingletonCount()
 size_t Scene::getMeshCount()
 {
 	return meshes.size();
+}
+
+const List<const Object *> &Scene::getLightSources() const
+{
+	return light_sources;
 }

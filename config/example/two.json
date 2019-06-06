@@ -1,7 +1,7 @@
 {
-	"save_path": "two 6-6 ref f.ppm",
+	"save_path": "two 6-6 explicit +.ppm",
 	"#prev_path": "two 6-6 .ppm",
-	"n_epoch": 100,
+	"n_epoch": 30,
 	"save_step": 10,
 
 	"algorithm": {

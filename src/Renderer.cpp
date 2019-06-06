@@ -72,7 +72,7 @@ void Renderer::renderFrame()
 void Renderer::start()
 {
 	checkIfReady();
-	scene->buildKDTree();
+	scene->prepare();
 	printf("\033[1;36m===== rendering start =====\n\033[0m");
 
 	double since = omp_get_wtime();

@@ -8,23 +8,23 @@ namespace Sampling
 {
 	Vec3f uniformOnHemisphere(const Vec2f &xi)
 	{
-		auto r = sqrtf(max2(0.f, 1 - xi.x * xi.x));
-		auto phi = 2 * M_PIF * xi.y;
-		return {r * cosf(phi), r * sinf(phi), xi.x};
+		auto sin_theta = sqrtf(max2(0.f, 1 - xi[0] * xi[0]));
+		auto phi = 2 * M_PIF * xi[1];
+		return {sin_theta * cosf(phi), sin_theta * sinf(phi), xi[0]};
 	}
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi)
 	{
-//		auto r = sqrtf(xi.x);
-//		auto phi = 2 * M_PIF * xi.y;
-//		return {r * cosf(phi), r * sinf(phi), sqrtf(max2(0., 1 - xi.x))};
-		auto p = concentricOnDisk(xi);
+//		auto r = sqrtf(xi[0]);
+//		auto phi = 2 * M_PIF * xi[1];
+//		return {r * cosf(phi), r * sinf(phi), sqrtf(max2(0., 1 - xi[0]))};
+		auto p = uniformOnDisk(xi);
 		return {p.x, p.y, sqrtf(max2(0.f, 1 - p.x * p.x - p.y * p.y))};
 	}
 
-	Vec2f concentricOnDisk(const Vec2f &xi)
+	Vec2f uniformOnDisk(const Vec2f &xi)
 	{
-		Vec2f xi_offset = {2 * xi.x - 1, 2 * xi.y - 1};	// map to [-1, 1]^2
+		Vec2f xi_offset = {2 * xi[0] - 1, 2 * xi[1] - 1};	// map to [-1, 1]^2
 		if (xi_offset.x == 0 && xi_offset.y == 0) return {0, 0};
 		real phi, r;
 		if (fabsf(xi_offset.x) > fabsf(xi_offset.y)) {
@@ -36,5 +36,13 @@ namespace Sampling
 			phi = M_PI_2F - xi_offset.x / xi_offset.y * M_PI_4F;
 		}
 		return {r * cosf(phi), r * sinf(phi)};
+	}
+
+	Vec3f uniformOnSphereCap(real cos_theta_max, const Vec2f &xi)
+	{
+		auto cos_theta = 1 - xi[0] + xi[0] * cos_theta_max;
+		auto sin_theta = sqrtf(max2(0.f, 1 - cos_theta * cos_theta));
+		auto phi = 2 * M_PIF * xi[1];
+		return {sin_theta * cosf(phi), sin_theta * sinf(phi), cos_theta};
 	}
 }

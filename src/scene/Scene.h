@@ -17,20 +17,23 @@ class Scene
 {
 private:
 	ObjectList objects;    // all singleton object ptrs, using pointer to allow polymorphism
-	List<Material *> materials;    // mtr is shared while geometry belongs to objects
 	ObjectList meshes;	// store triangles parsed from mesh file
+	List<Material *> materials;    // mtr is shared while geometry belongs to objects
 	KDNode *kd_root;	// root of KD-tree
+	List<const Object *> light_sources;	// all objects with positive emission
 
 public:
 	Scene();        	// init an empty scene
 
 	~Scene();
 
-	void buildKDTree();		// build KD-Tree from kd_root for meshes
+	void prepare();		// build KD-Tree from kd_root for meshes, and find all light sources
 
 	size_t getSingletonCount();    // count objects in total
 
 	size_t getMeshCount();    // count BoundingBox in total
+
+	const List<const Object *> &getLightSources() const;  // get all objects with positive emission
 
 	/** judge and calculate first intersection with all objects
 	 * input:

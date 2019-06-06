@@ -11,9 +11,9 @@
 // struct for describing surface intersection
 struct Intersection
 {
-	const Object *hit;    // hit what
-	Pos pos;
-	Dir normal;
+	const Object *hit;    // hit which object
+	Pos pos;	// intersection point
+	Dir normal;	// intersection normal
 	real u, v;    // (u, v) coordinate
 
 	Intersection() : hit(nullptr), u(0), v(0)
