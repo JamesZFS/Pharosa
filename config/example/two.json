@@ -1,8 +1,8 @@
 {
-	"save_path": "two 5-22 Phong n=4.ppm",
-	"prev_path": "two 5-22 Phong n=4.ppm",
+	"save_path": "two 6-6 Phong n=4.ppm",
+	"prev_path": "two 6-6 Phong n=4.ppm",
 	"n_epoch": 200,
-	"save_step": 20,
+	"save_step": 30,
 
 	"algorithm": {
 		"type": "pt",
