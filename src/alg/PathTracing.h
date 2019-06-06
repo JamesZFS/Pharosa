@@ -8,7 +8,7 @@
 #include "Algorithm.h"
 
 // Ray Tracing algorithm
-class RayTracing : public Algorithm
+class PathTracing : public Algorithm
 {
 protected:
 	Color radiance(const Ray &ray, size_t depth) const override;    // ** main algorithm **
@@ -16,7 +16,7 @@ protected:
 public:
 	const size_t max_depth;
 
-	RayTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
+	PathTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
 
 	String info() const override;
 };

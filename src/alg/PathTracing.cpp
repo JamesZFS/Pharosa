@@ -5,12 +5,12 @@
 #include "PathTracing.h"
 #include "../scene/Scene.h"
 
-RayTracing::RayTracing(Scene &scene_, size_t max_depth_) :
+PathTracing::PathTracing(Scene &scene_, size_t max_depth_) :
 		Algorithm(scene_), max_depth(max_depth_)
 {
 }
 
-Color RayTracing::radiance(const Ray &ray, size_t depth) const
+Color PathTracing::radiance(const Ray &ray, size_t depth) const
 {
 	// calculate intersection:
 	Intersection isect;
@@ -40,7 +40,7 @@ Color RayTracing::radiance(const Ray &ray, size_t depth) const
 	return isect.getEmission() + color.mul(receiving);
 }
 
-String RayTracing::info() const
+String PathTracing::info() const
 {
 	Buffer buffer;
 	sprintf(buffer, "<Ray Tracing>  max depth = %ld", max_depth);

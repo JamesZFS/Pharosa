@@ -7,11 +7,17 @@ CPP=g++-8	# use on mac
 CPPFLAGS=-O3 -fopenmp -Wall -MMD -std=c++14      # multiple threads version on mac
 #CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
 
-Pharosa.out: src/main.cpp Makefile
+Pharosa: src/main.cpp Makefile
 	$(CPP) $(CPPFLAGS) main.cpp -o Pharosa.out
 
-smallpt.out: smallpt.cpp Makefile
+smallpt: smallpt.cpp Makefile
 	$(CPP) $(CPPFLAGS) smallpt.cpp -o smallpt.out
+
+explicit: explicit.cpp Makefile
+	$(CPP) $(CPPFLAGS) explicit.cpp -o explicit.out
+
+forward: forward.cpp Makefile
+	$(CPP) $(CPPFLAGS) forward.cpp -o forward.out
 
 clean:
 #	del *.o *.d	# on win

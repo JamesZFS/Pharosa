@@ -123,10 +123,10 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 	}
 	else if (type == "path tracing" || type == "pt") {
 		try {
-			return new RayTracing(scene, (size_t) json.at("max_depth"));
+			return new PathTracing(scene, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new RayTracing(scene);    // use default
+			return new PathTracing(scene);    // use default
 		}
 	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());

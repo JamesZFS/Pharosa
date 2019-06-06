@@ -3,7 +3,7 @@
 //
 
 // Linear solvers solver
-// Solve2DTol A b == x (n_dim == n, A: matrix)
+// Solve2D A b == x (n_dim == n, A: matrix)
 template<int n>
 bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
 {
@@ -49,7 +49,7 @@ bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
 	return true;    // solving success
 }
 
-// Solve2DTol A b == x (n_dim == n, A: matrix) for debuging use
+// Solve2D A b == x (n_dim == n, A: matrix) for debuging use
 template<int n>
 bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 {
