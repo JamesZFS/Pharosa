@@ -11,7 +11,7 @@
 
 using Funcs::randf;
 
-#define assertApproxEqual(x, y) assert(fabs((x) - (y)) < EPS)
+#define assertApproxEqual(x, y) assert(fabsf((x) - (y)) < EPS)
 
 namespace Test
 {
@@ -21,18 +21,18 @@ namespace Test
 		using namespace std;
 		using namespace Linear;
 
-		double A[3][3] = {
-				{-2.86854, 0.712385, -2.0962},
-				{-1.70362, -4.42166, -4.19973},
-				{-4.72415, 2.76108,  -1.30315}
+		real  A[3][3] = {
+				{-2.86854f, 0.712385f, -2.0962f},
+				{-1.70362f, -4.42166f, -4.19973f},
+				{-4.72415f, 2.76108f,  -1.30315f}
 		};
-		double b[3] = {-3.02974, 2.1059, 1.67481};
-		double M[3][4] = {
-				{-2.86854, 0.712385, -2.0962,  -3.02974},
-				{-1.70362, -4.42166, -4.19973, 2.1059},
-				{-4.72415, 2.76108,  -1.30315, 1.67481}
+		real  b[3] = {-3.02974f, 2.1059f, 1.67481f};
+		real  M[3][4] = {
+				{-2.86854f, 0.712385f, -2.0962f,  -3.02974f},
+				{-1.70362f, -4.42166f, -4.19973f, 2.1059f},
+				{-4.72415f, 2.76108f,  -1.30315f, 1.67481f}
 		};
-		double x[3];
+		real  x[3];
 
 		int N = 50000000;
 		double t[3] = {0, 0, 0};
@@ -65,12 +65,12 @@ namespace Test
 		auto d = Dir(1, 0, 0);
 		auto ea = d.getEulerAngles();
 		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
-		assert(ea.x == 0 && ea.y == 0 && ea.z == M_PI_2);
+		assert(ea.x == 0 && ea.y == 0 && ea.z == M_PI_2F);
 
 		d = Dir(1, 1, 0);
 		ea = d.getEulerAngles();
 		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
-		assert(ea.x == M_PI_4 && ea.y == 0 && ea.z == M_PI_2);
+		assert(ea.x == M_PI_4F && ea.y == 0 && ea.z == M_PI_2F);
 
 		d = Dir(0, 0, 5);
 		ea = d.getEulerAngles();
@@ -80,13 +80,13 @@ namespace Test
 		d = Dir(0, 0, -5);
 		ea = d.getEulerAngles();
 		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
-		assert(ea.y == 0 && ea.z == M_PI);
+		assert(ea.y == 0 && ea.z == M_PIF);
 	}
 
 	void matrix()
 	{
-		Mat<double> a(
-				Arr2D<double, 3, 3>
+		Mat<real > a(
+				Arr2D<real , 3, 3>
 						{{
 								 {{1, 2, 3}},
 								 {{0, 1, 0}},
@@ -102,7 +102,7 @@ namespace Test
 		auto e = a + b;
 		e.report();
 
-		TransMat A(ElAg(0, M_PI_2, 0)), B(Pos(0, 1, 1));
+		TransMat A(ElAg(0, M_PI_2F, 0)), B(Pos(0, 1, 1));
 		A.report();
 		B.report();
 		(B * A).report();
@@ -116,10 +116,10 @@ namespace Test
 	{
 		Polynomial f({1, 2, 3});
 		f.report();
-		assert(f(0.0) == 1);
-		assert(f(1.0) == 6);
-		assert(f(-2.0) == 9);
-		f -= Polynomial({-1.0, -1, 0, 0, 2});
+		assert(f(0.0f) == 1);
+		assert(f(1.0f) == 6);
+		assert(f(-2.0f) == 9);
+		f -= Polynomial({-1.0f, -1, 0, 0, 2});
 		assert(f.order() == 4);
 		f.report();
 		(f + Polynomial(0, 1)).report();
@@ -144,7 +144,7 @@ namespace Test
 		message("Binomial:");
 		auto h = Polynomial::binomial(2, -2, 10);
 		h.report();
-		assert(h.derivative(2.0) == 10 * pow(-2, 10));
+		assert(h.derivative(2.0) == 10 * powf(-2, 10));
 		assert(Polynomial().derivative(1.0) == 0);
 		assert(Polynomial(2, 0).derivative(1.0) == 0);
 		assert(Polynomial(1, -2).derivative(10) == -2);
@@ -155,93 +155,93 @@ namespace Test
 	{
 		struct Fun0// : NonLinear::BinFun
 		{
-			double operator()(double x0, double x1) const
+			real  operator()(real  x0, real  x1) const
 			{
-				return 2. * x0 - 0.5 * x1;
+				return 2.f * x0 - 0.5f * x1;
 			}
 
-			double d0(double x0, double x1) const
+			real  d0(real  x0, real  x1) const
 			{
-				return 2.;
+				return 2.f;
 			}
 
-			double d1(double x0, double x1) const
+			real  d1(real  x0, real  x1) const
 			{
-				return -0.5;
+				return -0.5f;
 			}
 		};
 		struct Fun1// : NonLinear::BinFun
 		{
 			Polynomial f;
 
-			Fun1() : f({0, 0, 0, 92.16, -460.8, 829.44, -645.12, 184.32})
+			Fun1() : f({0, 0, 0, 92.16f, -460.8f, 829.44f, -645.12f, 184.32f})
 			{}
 
-			double operator()(double x0, double x1) const
+			real  operator()(real  x0, real  x1) const
 			{
-				return 23.04 * pow(1. - 1. * x0, 4) * pow(x0, 4) - pow(-2 + x1, 2);
+				return 23.04f * powf(1.f - 1.f * x0, 4) * powf(x0, 4) - powf(-2 + x1, 2);
 			}
 
-			double d0(double x0, double x1) const
+			real  d0(real  x0, real  x1) const
 			{
 				return f(x0);
 			}
 
-			double d1(double x0, double x1) const
+			real  d1(real  x0, real  x1) const
 			{
 				return -2 * (x1 - 2);
 			}
 		};
-		double x0, x1;
-		double since = clock();
+		real  x0, x1;
+		real  since = clock();
 		for (int i = 0; i < 2000000; ++i) {
 			NonLinear::Solve2DTol(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
-			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
+			assert(fabsf(x0 - 0.428072f) < 0.001f && fabsf(x1 - 1.71229f) < 0.001f);
 		}
 		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 		since = clock();
 		for (int i = 0; i < 2000000; ++i) {
 			NonLinear::Solve2DEps(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
-			assert(fabs(x0 - 0.428072) < 0.001 && fabs(x1 - 1.71229) < 0.001);
+			assert(fabsf(x0 - 0.428072f) < 0.001f && fabsf(x1 - 1.71229f) < 0.001f);
 		}
 		printf("solve with eps in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 
 		// test singular case
 		struct Fun2 : NonLinear::BinFun
 		{
-			double operator()(double x0, double x1) const override
+			real  operator()(real  x0, real  x1) const override
 			{
 				return x0 * x0 + x1 * x1 - 1;
 			}
 
-			double d0(double x0, double x1) const override
+			real  d0(real  x0, real  x1) const override
 			{
 				return 2 * x0;
 			}
 
-			double d1(double x0, double x1) const override
+			real  d1(real  x0, real  x1) const override
 			{
 				return 2 * x1;
 			}
 		};
 		struct Fun3 : NonLinear::BinFun
 		{
-			const double c;
+			const real  c;
 
-			Fun3(const double c_) : c(c_)
+			Fun3(const real  c_) : c(c_)
 			{}
 
-			double operator()(double x0, double x1) const override
+			real  operator()(real  x0, real  x1) const override
 			{
 				return x0 - x1 + c;
 			}
 
-			double d0(double x0, double x1) const override
+			real  d0(real  x0, real  x1) const override
 			{
 				return 1;
 			}
 
-			double d1(double x0, double x1) const override
+			real  d1(real  x0, real  x1) const override
 			{
 				return -1;
 			}
@@ -252,71 +252,71 @@ namespace Test
 		assert(!solvable);
 		solvable = NonLinear::Solve2DEps(Fun2(), Fun3(0), x0 = randf(), x1 = randf());
 		assert(solvable);
-		assert(fabs(x0 - 0.707) < 0.001 && fabs(x1 - 0.707) < 0.001);
+		assert(fabsf(x0 - 0.707) < 0.001 && fabsf(x1 - 0.707) < 0.001);
 		solvable = NonLinear::Solve2DTol(Fun2(), Fun3(0), x0 = randf(-100000, -500), x1 = randf(-100000, -500));
 		assert(solvable);
-		assert(fabs(x0 + 0.707) < 0.001 && fabs(x1 + 0.707) < 0.001);
+		assert(fabsf(x0 + 0.707) < 0.001 && fabsf(x1 + 0.707) < 0.001);
 	}
 
 	void Newton()
 	{
 		struct Fun0 //: NonLinear::MonoFun    // solvable
 		{
-			double operator()(double x) const    // solution: x == 2 || x == 4 || x == -0.7667
+			real  operator()(real  x) const    // solution: x == 2 || x == 4 || x == -0.7667
 			{
-				return pow(2, x) - x * x;
+				return powf(2, x) - x * x;
 			}
 
-			double d(double x) const
+			real  d(real  x) const
 			{
-				return pow(2, x) * log(2) - 2 * x;
+				return powf(2, x) * logf(2) - 2 * x;
 			}
 		};
 		struct Fun1 //: NonLinear::MonoFun    // unsolvable
 		{
-			double operator()(double x) const
+			real  operator()(real  x) const
 			{
-				return pow(2, x) - x;
+				return powf(2, x) - x;
 			}
 
-			double d(double x) const
+			real  d(real  x) const
 			{
-				return pow(2, x) * log(2) - 1;
+				return powf(2, x) * logf(2) - 1;
 			}
 		};
 
-		double x;
+		real  x;
 		bool solvable = NonLinear::SolveTol(Fun0(), x = 0.1);
 		assert(solvable);
-		assertApproxEqual(x, -0.7667);
+		assertApproxEqual(x, -0.7667f);
 		solvable = NonLinear::SolveEps(Fun0(), x = 0.1, 1e-5);
 		assert(solvable);
-		assertApproxEqual(x, -0.7667);
+		assertApproxEqual(x, -0.7667f);
 
 		solvable = NonLinear::SolveTol(Fun0(), x = 2.1);
 		assert(solvable);
-		assertApproxEqual(x, 2.0);
+		assertApproxEqual(x, 2.0f);
 		solvable = NonLinear::SolveEps(Fun0(), x = 2.1, 1e-5);
 		assert(solvable);
-		assertApproxEqual(x, 2.0);
+		assertApproxEqual(x, 2.0f);
 
 		solvable = NonLinear::SolveTol(Fun0(), x = 1e3);
 		assert(solvable);
-		assertApproxEqual(x, 4.0);
+		assertApproxEqual(x, 4.0f);
 		solvable = NonLinear::SolveEps(Fun0(), x = 1e3, 1e-5);
 		assert(solvable);
-		assertApproxEqual(x, 4.0);
+		assertApproxEqual(x, 4.0f);
 
 		solvable = NonLinear::SolveTol(Fun1(), x = randf());
 		assert(!solvable);
 		solvable = NonLinear::SolveEps(Fun1(), x = randf());
 		assert(!solvable);
 
-		double since = clock();
+		real  since = clock();
 		for (int i = 0; i < 10000000; ++i) {
 			solvable = NonLinear::SolveEps(Fun0(), x = randf(1.5, 2.5), 1e-4);
 			assert(solvable);
-			assertApproxEqual(x, 2.0);
+			assertApproxEqual(x, 2.0f);
 		}
 		printf("solve with eps in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 
@@ -324,7 +324,7 @@ namespace Test
 		for (int i = 0; i < 10000000; ++i) {
 			solvable = NonLinear::SolveTol(Fun0(), x = randf(1.5, 2.5), 1e-2);
 			assert(solvable);
-			assertApproxEqual(x, 2.0);
+			assertApproxEqual(x, 2.0f);
 		}
 		printf("solve with tol in %.4f sec\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
@@ -338,17 +338,17 @@ namespace Test
 			BFun(const Polynomial &F_, const Polynomial &G_) : F(F_), G(G_)    // F(x0) - G(x1)
 			{}
 
-			inline double operator()(double x0, double x1) const
+			inline real  operator()(real  x0, real  x1) const
 			{
 				return F(x0) - G(x1);
 			}
 
-			inline double d0(double x0, double x1) const
+			inline real  d0(real  x0, real  x1) const
 			{
 				return F.derivative(x0);
 			}
 
-			inline double d1(double x0, double x1) const
+			inline real  d1(real  x0, real  x1) const
 			{
 				return -G.derivative(x1);
 			}
@@ -357,17 +357,17 @@ namespace Test
 		struct MFun //: NonLinear::MonoFun
 		{
 			const Polynomial &F;
-			const double b;
+			const real  b;
 
-			MFun(const Polynomial &F_, double b_) : F(F_), b(b_)
+			MFun(const Polynomial &F_, real  b_) : F(F_), b(b_)
 			{}
 
-			inline double operator()(double x) const
+			inline real  operator()(real  x) const
 			{
 				return F(x) - b;
 			}
 
-			inline double d(double x) const
+			inline real  d(real  x) const
 			{
 				return F.derivative(x);
 			}
@@ -402,7 +402,7 @@ namespace Test
 //		message("psi^2 - (L1^2 + L2^2)(t) = " << f1.F(0.5) - (L1 * L1 + L2 * L2)(310.087) << "\n");
 //		message(f1(0.5, 310.087));
 //		assertApproxEqual(f1(0.8, 1.2), 0);
-		double u, t;
+		real  u, t;
 		bool solved = NonLinear::Solve2DEps(f0, f1, u = 0.5, t = 1.2, 1e-2); //&& 0 <= u && u <= 1 && t > EPS;
 		debug("\nu = %.4f.  t = %.4f\n", u, t);
 		(ray.travels(t).report(true));
@@ -411,7 +411,7 @@ namespace Test
 
 	void main()
 	{
-		double since = clock();
+		real  since = clock();
 //		linear();
 //		coordinateConvert();
 //		matrix();

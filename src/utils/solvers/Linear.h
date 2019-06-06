@@ -11,23 +11,23 @@ namespace Linear
 {
 	// Solve2DTol A x == b (n_dim == n, A: matrix)
 	template<int n>
-	bool Solve(double (&A)[n][n], double (&b)[n], double (&x)[n]);
+	bool Solve(real (&A)[n][n], real (&b)[n], real (&x)[n]);
 
 	// Solve2DTol A x == b (n_dim == n, A: matrix) for debuging use
 	template<int n>
-	bool SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n]);
+	bool SolveDebug(real (&A)[n][n], real (&b)[n], real (&x)[n]);
 
 	// M: expanded Matrix (n x n+1)
 	template<int n>
-	bool SolveInPlace(double (&M)[n][n + 1]);
+	bool SolveInPlace(real (&M)[n][n + 1]);
 
 	// solve 3 dim linear eqls, fastest version
-	bool Solve3D(double (&A)[3][3], double (&b)[3], double (&x)[3]);
+	bool Solve3D(real (&A)[3][3], real (&b)[3], real (&x)[3]);
 
-	bool Solve3D(double (&A)[3][3], double (&b)[3], double &x0, double &x1, double &x2);
+	bool Solve3D(real (&A)[3][3], real (&b)[3], real &x0, real &x1, real &x2);
 
 	// solve A x == b
-	inline bool Solve2D(double A00, double A01, double A10, double A11, double b0, double b1, double &x0, double &x1);
+	inline bool Solve2D(real A00, real A01, real A10, real A11, real b0, real b1, real &x0, real &x1);
 }
 
 #include "Linear.tcc"

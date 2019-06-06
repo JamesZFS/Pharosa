@@ -5,7 +5,7 @@
 #include "BezierRev.h"
 #include "../utils/funcs.hpp"
 
-BezierRev::BezierRev(List<Arr<double, 2>> &&control_pts_) : PolyRev(), ctrl_pts(std::move(control_pts_))
+BezierRev::BezierRev(List<Arr<real, 2>> &&control_pts_) : PolyRev(), ctrl_pts(std::move(control_pts_))
 {
 	auto n = (unsigned char) (ctrl_pts.size() - 1);
 	for (unsigned char i = 0; i <= n; ++i) {
@@ -20,32 +20,32 @@ BezierRev::BezierRev(List<Arr<double, 2>> &&control_pts_) : PolyRev(), ctrl_pts(
 	debug("\n");
 }
 
-double BezierRev::xMin() const
+real BezierRev::xMin() const
 {
 	return 0;
 }
 
-double BezierRev::xMax() const
+real BezierRev::xMax() const
 {
 	return 0;
 }
 
-double BezierRev::yMin() const
+real BezierRev::yMin() const
 {
 	return 0;
 }
 
-double BezierRev::yMax() const
+real BezierRev::yMax() const
 {
 	return 0;
 }
 
-double BezierRev::zMin() const
+real BezierRev::zMin() const
 {
 	return 0;
 }
 
-double BezierRev::zMax() const
+real BezierRev::zMax() const
 {
 	return 0;
 }

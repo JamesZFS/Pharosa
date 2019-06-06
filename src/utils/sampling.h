@@ -9,14 +9,13 @@
 
 namespace Sampling
 {
-	using Vec3f = Vec<double>;
 	struct Vec2f
 	{
-		double x, y;
+		real x, y;
 
 		Vec2f() : x(0), y(0) {}
 
-		Vec2f(double x_, double y_) : x(x_), y (y_) {}
+		Vec2f(real x_, real y_) : x(x_), y (y_) {}
 	};
 
 	Vec3f uniformOnHemisphere(const Vec2f &xi);

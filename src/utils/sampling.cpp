@@ -8,33 +8,33 @@ namespace Sampling
 {
 	Vec3f uniformOnHemisphere(const Vec2f &xi)
 	{
-		auto r = sqrt(max2(0., 1 - xi.x * xi.x));
-		auto phi = 2 * M_PI * xi.y;
-		return {r * cos(phi), r * sin(phi), xi.x};
+		auto r = sqrtf(max2(0.f, 1 - xi.x * xi.x));
+		auto phi = 2 * M_PIF * xi.y;
+		return {r * cosf(phi), r * sinf(phi), xi.x};
 	}
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi)
 	{
-//		auto r = sqrt(xi.x);
-//		auto phi = 2 * M_PI * xi.y;
-//		return {r * cos(phi), r * sin(phi), sqrt(max2(0., 1 - xi.x))};
+//		auto r = sqrtf(xi.x);
+//		auto phi = 2 * M_PIF * xi.y;
+//		return {r * cosf(phi), r * sinf(phi), sqrtf(max2(0., 1 - xi.x))};
 		auto p = concentricOnDisk(xi);
-		return {p.x, p.y, sqrt(max2(0., 1 - p.x * p.x - p.y * p.y))};
+		return {p.x, p.y, sqrtf(max2(0.f, 1 - p.x * p.x - p.y * p.y))};
 	}
 
 	Vec2f concentricOnDisk(const Vec2f &xi)
 	{
 		Vec2f xi_offset = {2 * xi.x - 1, 2 * xi.y - 1};	// map to [-1, 1]^2
 		if (xi_offset.x == 0 && xi_offset.y == 0) return {0, 0};
-		double phi, r;
-		if (fabs(xi_offset.x) > fabs(xi_offset.y)) {
+		real phi, r;
+		if (fabsf(xi_offset.x) > fabsf(xi_offset.y)) {
 			r = xi_offset.x;
-			phi = xi_offset.y / xi_offset.x * M_PI_4;
+			phi = xi_offset.y / xi_offset.x * M_PI_4F;
 		}
 		else {
 			r = xi_offset.y;
-			phi = M_PI_2 - xi_offset.x / xi_offset.y * M_PI_4;
+			phi = M_PI_2F - xi_offset.x / xi_offset.y * M_PI_4F;
 		}
-		return {r * cos(phi), r * sin(phi)};
+		return {r * cosf(phi), r * sinf(phi)};
 	}
 }

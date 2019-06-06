@@ -27,7 +27,7 @@ public:
 
 	~KDNode();
 
-	void intersect(const Ray &ray, double &t, Intersection &isect) const;	// update first intersection
+	void intersect(const Ray &ray, real &t, Intersection &isect) const;	// update first intersection
 };
 
 // typedef List<Object *> ObjectList;

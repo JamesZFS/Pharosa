@@ -85,13 +85,13 @@ Camera *Camera::acquire(const Json &json)
 
 Camera::Camera(const Json &json) :
 		Camera(Pos(json.at("pos")), ElAg(json.at("rot")),
-			   (size_t) json.value("width", 1024), (size_t) json.value("height", 768), json.value("pixel_size", 0.1))
+			   (size_t) json.value("width", 1024), (size_t) json.value("height", 768), json.value("pixel_size", 0.1f))
 {
 }
 
 
 BasicCamera::BasicCamera(const Json &json) :
-		Camera(json), length(json.value("length", 140.0)),
+		Camera(json), length(json.value("length", 140.0f)),
 		ez_length(ez * length), pos_ez_length(pos + ez_length)
 {
 }
@@ -103,7 +103,7 @@ OrthoCamera::OrthoCamera(const Json &json) : Camera(json)
 
 DOFCamera::DOFCamera(const Json &json) :
 		Camera(json),
-		length(json.value("length", 20.0)), focus(json.value("focus", 10.0)), aperture(json.value("aperture", 1.0)),
+		length(json.value("length", 20.0f)), focus(json.value("focus", 10.0f)), aperture(json.value("aperture", 1.0f)),
 		f_l(focus / length), pos_ez_length(pos + ez * length), ez_focus(ez * focus)
 {
 }
@@ -189,7 +189,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		}
 		else if (type == "obj" || type == "obj file") {
 
-			auto obj_objects = Parser::parseMeshes(item.at("path"), item.value("scale", 1.0), trans_mat, material);
+			auto obj_objects = Parser::parseMeshes(item.at("path"), item.value("scale", 1.0f), trans_mat, material);
 			self->meshes.insert(self->meshes.end(), obj_objects->begin(), obj_objects->end());
 
 		}
@@ -217,7 +217,7 @@ Material *Material::acquire(const Json &json)
 		else {
 			self->texture = new Image(String(t_json.at("path")));
 			if (t_json.has("scale")) {
-				double scale = t_json["scale"];
+				real  scale = t_json["scale"];
 				self->Auu = scale;
 				self->Avv = scale;
 			}
@@ -273,14 +273,14 @@ Cube *Cube::acquire(const Json &json)
 						json.has("pos") ? Pos(json["pos"]) : Pos());
 	}
 	else {
-		return new Cube(json.value("length", 1.0), json.value("width", 1.0), json.value("height", 1.0),
+		return new Cube(json.value("length", 1.0f), json.value("width", 1.0f), json.value("height", 1.0f),
 						json.has("pos") ? Pos(json["pos"]) : Pos());
 	}
 }
 
 Sphere *Sphere::acquire(const Json &json)
 {
-	return new Sphere(json.value("radius", 1.0), json.has("pos") ? Pos(json["pos"]) : Pos());
+	return new Sphere(json.value("radius", 1.0f), json.has("pos") ? Pos(json["pos"]) : Pos());
 }
 
 Triangle *Triangle::acquire(const Json &json)
@@ -290,7 +290,7 @@ Triangle *Triangle::acquire(const Json &json)
 
 PolyRev *PolyRev::acquire(const Json &json)
 {
-	List<double> &&x_coeffs = json.at("x_coeffs"), &&y_coeffs = json.at("y_coeffs");
+	List<real > &&x_coeffs = json.at("x_coeffs"), &&y_coeffs = json.at("y_coeffs");
 	return new PolyRev(x_coeffs, y_coeffs);
 }
 
@@ -321,7 +321,7 @@ RGB::RGB(const Json &json) : r(x), g(y), b(z)
 }
 
 ElAg::ElAg(const Json &json) :    // use degrees
-		ElAg(json.at(0).get<double>() * DEG, json.at(1).get<double>() * DEG, json.at(2).get<double>() * DEG)
+		ElAg(json.at(0).get<real >() * DEG, json.at(1).get<real >() * DEG, json.at(2).get<real >() * DEG)
 {
 }
 

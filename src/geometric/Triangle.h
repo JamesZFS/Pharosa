@@ -19,31 +19,31 @@ struct Triangle : Geometry, Finite
 
 	void applyTransform(TransMat mat) override;    // calculate c according to c
 
-	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
+	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
 	inline void getNormal(const Pos &pos, Dir &normal) const override
 	{ normal = n; }
 
-	void getUV(const Pos &pos, double &u, double &v) const override
+	void getUV(const Pos &pos, real &u, real &v) const override
 	{ u = cu % pos, v = cv % pos; }
 
 	// override Finite:
-	inline double xMin() const override    // left most
+	inline real xMin() const override    // left most
 	{ return min3(p[0].x, p[1].x, p[2].x); }
 
-	inline double xMax() const override // right most
+	inline real xMax() const override // right most
 	{ return max3(p[0].x, p[1].x, p[2].x); }
 
-	inline double yMin() const override
+	inline real yMin() const override
 	{ return min3(p[0].y, p[1].y, p[2].y); }
 
-	inline double yMax() const override
+	inline real yMax() const override
 	{ return max3(p[0].y, p[1].y, p[2].y); }
 
-	inline double zMin() const override
+	inline real zMin() const override
 	{ return min3(p[0].z, p[1].z, p[2].z); }
 
-	inline double zMax() const override
+	inline real zMax() const override
 	{ return max3(p[0].z, p[1].z, p[2].z); }
 
 	inline Pos center() const override	// get center point

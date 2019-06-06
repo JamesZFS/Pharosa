@@ -1,12 +1,12 @@
 {
-	"save_path": "bunny ultimate",
-	"prev_path": "bunny ultimate",
+	"save_path": "bunny ultimate float",
+	"#prev_path": "bunny ultimate",
 	"n_epoch": 50,
 	"save_step": 5,
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "pt",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

@@ -27,7 +27,7 @@ KDNode::~KDNode()
 }
 
 // !!
-void KDNode::intersect(const Ray &ray, double &t, Intersection &isect) const
+void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
 	// check bounding box first:
 	if (tris->empty() || !box->intersect(ray)) return;    // degenerate case

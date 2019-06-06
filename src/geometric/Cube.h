@@ -19,15 +19,15 @@ struct Cube : Geometry
 	Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o = {});
 
 	// init an orthogonal cube
-	Cube(double length, double width, double height, const Pos &pos = {});
+	Cube(real length, real width, real height, const Pos &pos = {});
 
 	void applyTransform(TransMat mat) override;
 
-	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
+	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
 	void getNormal(const Pos &pos, Dir &normal) const override;
 
-	inline void getUV(const Pos &pos, double &u, double &v) const override
+	inline void getUV(const Pos &pos, real &u, real &v) const override
 	{ slab[0][0].getUV(pos, u, v); }
 
 	static Cube *acquire(const Json &json);

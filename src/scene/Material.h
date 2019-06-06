@@ -18,20 +18,20 @@ struct Material
 	Emission emi;
 
 	// diffusive, reflective, refractive ratio
-	double diff;
-	double spec;
-	double refr;
-	double n_refr;	// refraction ratio
+	real diff;
+	real spec;
+	real refr;
+	real n_refr;	// refraction ratio
 
 	Image *texture; // texture ppm
-	double Auu, Auv, Auc, Avu, Avv, Avc;	// transform matrix of (u, v)
+	real Auu, Auv, Auc, Avu, Avv, Avc;	// transform matrix of (u, v)
 
 	Material();	// dark white pure diffusive without texture
 
 	// input r_in, normal and get r_outs, w_outs
-	void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const;
+	void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<real> &w_outs) const;
 
-	inline const Color &textureAt(double u, double v) const
+	inline const Color &textureAt(real u, real v) const
 	{ return texture->get(Auu * u + Auv * v + Auc, Avu * u + Avv * v + Avc); }
 
 	static Material *acquire(const Json &json);

@@ -29,12 +29,12 @@ void InfPlane::applyTransform(TransMat mat)
 	cu = ex, cv = ey;
 }
 
-bool InfPlane::intersect(const Ray &ray, double &t, Intersection &isect) const
+bool InfPlane::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
 	// solve (L1.org + t L1.dir - c) % normal == 0
-	double dn = ray.dir % n;
-	if (fabs(dn) < EPS) return false;
-	double ti = -(D + ray.org % n) / dn;
+	real dn = ray.dir % n;
+	if (fabsf(dn) < EPS) return false;
+	real ti = -(D + ray.org % n) / dn;
 	if (ti < EPS || ti >= t) return false;
 	t = ti;	// update
 	return true;

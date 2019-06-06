@@ -14,7 +14,7 @@ struct Intersection
 	const Object *hit;    // hit what
 	Pos pos;
 	Dir normal;
-	double u, v;    // (u, v) coordinate
+	real u, v;    // (u, v) coordinate
 
 	Intersection() : hit(nullptr), u(0), v(0)
 	{};
@@ -26,7 +26,7 @@ struct Intersection
 	inline const Color &getEmission() const    // get texture color at pos
 	{ return hit->mtr->emi; }
 
-	inline void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
+	inline void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<real> &w_outs) const
 	{ hit->mtr->scatter(r_in, normal, depth, r_outs, w_outs); }
 
 	inline void complementData()

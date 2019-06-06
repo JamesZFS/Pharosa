@@ -11,7 +11,7 @@
 
 namespace Parser
 {
-	ObjectList *parseMeshes(const String &obj_path, double scale, const TransMat &trans_mat,
+	ObjectList *parseMeshes(const String &obj_path, real scale, const TransMat &trans_mat,
 							const Material *material);    // load mesh segments from objects file
 }
 

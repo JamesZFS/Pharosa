@@ -1,6 +1,6 @@
 {
-	"save_path": "two 6-6 Phong n=4.ppm",
-	"prev_path": "two 6-6 Phong n=4.ppm",
+	"save_path": "two 6-6 float.ppm",
+	"#prev_path": "two 6-6 float.ppm",
 	"n_epoch": 200,
 	"save_step": 30,
 

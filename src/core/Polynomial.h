@@ -11,8 +11,8 @@ class Polynomial
 {
 private:
 	size_t n;	// order of polynomial
-	List<double> a;	// coeffs
-	List<double> d;	// derivatives
+	List<real> a;	// coeffs
+	List<real> d;	// derivatives
 
 	void compDerivatives();
 
@@ -25,22 +25,22 @@ public:
 
 	explicit Polynomial(size_t order);	// f(x) = 0
 
-	Polynomial(List<double> &&coeffs);
+	Polynomial(List<real> &&coeffs);
 
-	Polynomial(const List<double> &coeffs);
+	Polynomial(const List<real> &coeffs);
 
-	Polynomial(double a0, double a1);
+	Polynomial(real a0, real a1);
 
 	Polynomial(Polynomial &&other) noexcept;	// move
 
 	inline auto operator[](size_t i) const	// getter
 	{ return (0 <= i && i <= n) ? a[i] : 0; }
 
-	void set(size_t i, double k); 	// setter
+	void set(size_t i, real k); 	// setter
 
-	double operator()(double x) const;	// return f(x)
+	real operator()(real x) const;	// return f(x)
 
-	double derivative(double x) const; 	// return f'(x)
+	real derivative(real x) const; 	// return f'(x)
 
 	Polynomial &operator=(const Polynomial &other) = default;
 
@@ -56,16 +56,16 @@ public:
 
 	Polynomial &operator*=(const Polynomial &other);
 
-	Polynomial operator*(double k) const;
+	Polynomial operator*(real k) const;
 
-	Polynomial &operator*=(double k);
+	Polynomial &operator*=(real k);
 
 	void report() const;
 
 	inline size_t order() const
 	{ return n; }
 
-	static Polynomial binomial(double a, double b, unsigned char n); // (a + b x)^n  (n at most = 10)
+	static Polynomial binomial(real a, real b, unsigned char n); // (a + b x)^n  (n at most = 10)
 };
 
 

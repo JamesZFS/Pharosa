@@ -18,7 +18,7 @@ Material::Material() :
 }
 
 // !! notice normal is pointing outside
-void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<double> &w_outs) const
+void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<real> &w_outs) const
 {
 	Dir nl = normal % r_in.dir < 0 ? Pos(normal) : -normal;    // regularized normal, against r_in direction
 
@@ -30,7 +30,7 @@ void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ra
 
 //		int n_samp = max2(1, int(2 / depth));    // todo
 		int n_samp = 1;
-		double inv_n_samp = 1.0 / n_samp;
+		real inv_n_samp = 1.0f / n_samp;
 		for (int i = 0; i < n_samp; ++i) {
 			// importance sampling cosine dist:
 			auto samp = Sampling::cosineOnHemisphere({randf(), randf()});
@@ -39,8 +39,8 @@ void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ra
 			// naive sampling:
 //			auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
 //			r_outs.emplace_back(r_in.org + nl * EPS, Dir(ex * samp.x + ey * samp.y + ez * samp.z));
-//			double theta = atan2(sqrt(samp.x * samp.x + samp.y * samp.y), samp.z);
-//			w_outs.push_back(inv_n_samp * cos(theta) * 2);
+//			real theta = atan2f(sqrtf(samp.x * samp.x + samp.y * samp.y), samp.z);
+//			w_outs.push_back(inv_n_samp * cosf(theta) * 2);
 		}
 	}
 
@@ -57,32 +57,32 @@ void Material::scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ra
 		Dir R = ex * samp.x + ey * samp.y + ez * samp.z;
 		r_outs.emplace_back(r_in.org + nl * EPS, R);
 		// n = 2:
-//		w_outs.push_back(pow(V % R, 2) * 3);
+//		w_outs.push_back(powf(V % R, 2) * 3);
 		// n = 3:
-//		double alpha = Dir(V.getCoordAs(ex, ey, ez)).getEulerAngles().gamma;
-//		double K = 16 / (cos(alpha) * (5 - cos(2 * alpha)));
-//		w_outs.push_back(pow(V % R, 3) * K);
+//		real alpha = Dir(V.getCoordAs(ex, ey, ez)).getEulerAngles().gamma;
+//		real K = 16 / (cosf(alpha) * (5 - cosf(2 * alpha)));
+//		w_outs.push_back(powf(V % R, 3) * K);
 		// n = 4:
-		w_outs.push_back(pow(V % R, 4) * 5);
+		w_outs.push_back(powf(V % R, 4) * 5);
 	}
 
 	// dielectric refraction, normal will be used instead of nl
 	if WITH_PROB(refr) {
 		Ray r_R(r_in.org + nl * EPS, r_in.dir - nl * (nl % r_in.dir * 2));    // reflection
 		bool into = (normal % nl) > 0;                // Ray from outside going r_in?
-		double nc = 1, nt = n_refr, nnt = into ? nc / nt : nt / nc;
-		double ddn = r_in.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
+		real nc = 1, nt = n_refr, nnt = into ? nc / nt : nt / nc;
+		real ddn = r_in.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
 		if (cos2t < 0) {    // Total internal reflection
 			r_outs.push_back(r_R);
 			w_outs.push_back(1.0);
 		}
 		else {
-			Ray r_T(r_in.org - nl * EPS, r_in.dir * nnt - nl * (ddn * nnt + sqrt(cos2t)));
-			double a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % normal);
-			double R0 = a * a / (b * b), Re = R0 + (1 - R0) * pow(c, 5);
-			double Tr = 1 - Re, P = .25 + .5 * Re, RP = Re / P;
-			double TP = Tr / (1 - P);
+			Ray r_T(r_in.org - nl * EPS, r_in.dir * nnt - nl * (ddn * nnt + sqrtf(cos2t)));
+			real a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % normal);
+			real R0 = a * a / (b * b), Re = R0 + (1 - R0) * powf(c, 5);
+			real Tr = 1 - Re, P = .25f + .5f * Re, RP = Re / P;
+			real TP = Tr / (1 - P);
 			(depth > 2)
 			? (WITH_PROB(P)   // Russian roulette
 			   ? r_outs.push_back(r_R), w_outs.push_back(RP)

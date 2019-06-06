@@ -15,9 +15,9 @@
 class BoundingBox
 {
 private:
-	double xmin, xmax;
-	double ymin, ymax;
-	double zmin, zmax;
+	real xmin, xmax;
+	real ymin, ymax;
+	real zmin, zmax;
 
 public:
 	enum Axis {X = 0, Y = 1, Z = 2};

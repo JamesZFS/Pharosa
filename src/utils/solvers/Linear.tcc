@@ -5,9 +5,9 @@
 // Linear solvers solver
 // Solve2D A b == x (n_dim == n, A: matrix)
 template<int n>
-bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
+bool Linear::Solve(real (&A)[n][n], real (&b)[n], real (&x)[n])
 {
-	double M[n][n + 1];        // expand to (n+1) cols
+	real M[n][n + 1];        // expand to (n+1) cols
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
 			M[i][j] = A[i][j];
@@ -15,10 +15,10 @@ bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
 		M[i][n] = b[i];
 	}
 	for (int k = 0; k < n; ++k) {    // n principle component
-		double col_max = fabs(M[k][k]), fm;
+		real col_max = fabsf(M[k][k]), fm;
 		int maxi = k;
 		for (int i = k + 1; i < n; ++i) {    // find the max in k-th col
-			if ((fm = fabs(M[i][k])) > col_max) {
+			if ((fm = fabsf(M[i][k])) > col_max) {
 				col_max = fm;
 				maxi = i;
 			}
@@ -33,7 +33,7 @@ bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
 
 		// perform reduction
 		for (int i = k + 1; i < n; ++i) {
-			double r = -M[i][k] / M[k][k];
+			real r = -M[i][k] / M[k][k];
 			for (int j = k + 1; j < n + 1; ++j) {
 				M[i][j] += r * M[k][j];
 			}
@@ -51,9 +51,9 @@ bool Linear::Solve(double (&A)[n][n], double (&b)[n], double (&x)[n])
 
 // Solve2D A b == x (n_dim == n, A: matrix) for debuging use
 template<int n>
-bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
+bool Linear::SolveDebug(real (&A)[n][n], real (&b)[n], real (&x)[n])
 {
-	double M[n][n + 1];  // expand to (n+1) cols
+	real M[n][n + 1];  // expand to (n+1) cols
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n; ++j) {
 			M[i][j] = A[i][j];
@@ -71,10 +71,10 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 	printf("\n");
 
 	for (int k = 0; k < n; ++k) {    // n principle component
-		double col_max = fabs(M[k][k]), fm;
+		real col_max = fabsf(M[k][k]), fm;
 		int maxi = k;
 		for (int i = k + 1; i < n; ++i) {    // find the max in k-th col
-			if ((fm = fabs(M[i][k])) > col_max) {
+			if ((fm = fabsf(M[i][k])) > col_max) {
 				col_max = fm;
 				maxi = i;
 			}
@@ -89,7 +89,7 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 
 		// perform reduction
 		for (int i = k + 1; i < n; ++i) {
-			double r = -M[i][k] / M[k][k];
+			real r = -M[i][k] / M[k][k];
 			M[i][k] = 0;
 			for (int j = k + 1; j < n + 1; ++j) {
 				M[i][j] += r * M[k][j];
@@ -131,13 +131,13 @@ bool Linear::SolveDebug(double (&A)[n][n], double (&b)[n], double (&x)[n])
 
 // M: expanded Matrix (n x n+1)
 template<int n>
-bool Linear::SolveInPlace(double (&M)[n][n + 1])
+bool Linear::SolveInPlace(real (&M)[n][n + 1])
 {
 	for (int k = 0; k < n; ++k) {    // n principle component
-		double col_max = fabs(M[k][k]), fm;
+		real col_max = fabsf(M[k][k]), fm;
 		int maxi = k;
 		for (int i = k + 1; i < n; ++i) {    // find the max in k-th col
-			if ((fm = fabs(M[i][k])) > col_max) {
+			if ((fm = fabsf(M[i][k])) > col_max) {
 				col_max = fm;
 				maxi = i;
 			}
@@ -151,7 +151,7 @@ bool Linear::SolveInPlace(double (&M)[n][n + 1])
 		}
 		// perform reduction
 		for (int i = k + 1; i < n; ++i) {
-			double r = -M[i][k] / M[k][k];
+			real r = -M[i][k] / M[k][k];
 			for (int j = k + 1; j < n + 1; ++j) {
 				M[i][j] += r * M[k][j];
 			}
@@ -167,10 +167,10 @@ bool Linear::SolveInPlace(double (&M)[n][n + 1])
 	return true;
 }
 
-bool Linear::Solve2D(double A00, double A01, double A10, double A11, double b0, double b1, double &x0, double &x1)
+bool Linear::Solve2D(real A00, real A01, real A10, real A11, real b0, real b1, real &x0, real &x1)
 {
-	double det = A00 * A11 - A01 * A10;
-	if (fabs(det) < EPS) return false;	// singular
+	real det = A00 * A11 - A01 * A10;
+	if (fabsf(det) < EPS) return false;	// singular
 	x0 = (A11 * b0 - A01 * b1) / det;
 	x1 = (A00 * b1 - A10 * b0) / det;
 	return true;

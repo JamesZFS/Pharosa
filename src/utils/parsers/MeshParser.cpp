@@ -7,10 +7,14 @@
 #include <fstream>
 
 
-#define FAIL { sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark); warn(buffer); fin.close(); exit(1); }
+#define FAIL { \
+sprintf(buffer, "Error: got unidentified mark \"%c\", parsing stopped.", mark); \
+warn(buffer); \
+fin.close(); \
+exit(1); }
 #define SKIP_LINE { fin.getline(buffer, 200); break; }
 
-ObjectList *Parser::parseMeshes(const String &obj_path, double scale, const TransMat &trans_mat,
+ObjectList *Parser::parseMeshes(const String &obj_path, real scale, const TransMat &trans_mat,
 								const Material *material)// load mesh segments from objects file
 {
 	printf("parsing meshes from %s", obj_path.data());
@@ -27,9 +31,9 @@ ObjectList *Parser::parseMeshes(const String &obj_path, double scale, const Tran
 	Triangle *mesh;
 	char mark;
 	Buffer buffer;
-	double x, y, z;
+	real x, y, z;
 #ifdef __DEV_STAGE__
-	double x_min = INF, x_max = -INF, y_min = INF, y_max = -INF, z_min = INF, z_max = -INF;
+	real x_min = INF, x_max = -INF, y_min = INF, y_max = -INF, z_min = INF, z_max = -INF;
 #endif
 	size_t a, b, c;
 	List<Pos> v;

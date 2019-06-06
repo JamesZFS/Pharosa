@@ -7,17 +7,17 @@
 
 #include "Camera.h"
 
-//template <double PX = 1.0>
+//template <real PX = 1.0>
 class BasicCamera : public Camera
 {
 public:
-	const double length;
+	const real length;
 	// cache:
 	const Pos ez_length, pos_ez_length;	// ez * length, c + ez * length
 
 	BasicCamera(const Json &json);
 
-	Ray shootRayAt(double i, double j) const override;
+	Ray shootRayAt(real i, real j) const override;
 };
 
 #endif //PHAROSA_BASICCAMERA_H

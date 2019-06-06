@@ -17,7 +17,7 @@ Cube::Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o)
 }
 
 // init an orthogonal cube
-Cube::Cube(double length, double width, double height, const Pos &pos) :
+Cube::Cube(real length, real width, real height, const Pos &pos) :
 		slab{{
 					 {{InfPlane(Dir::Z_AXIS, pos), InfPlane(Dir::Z_AXIS, pos + Pos(0, 0, height))}}, // plane oxy, oxy'
 					 {{InfPlane(Dir::X_AXIS, pos), InfPlane(Dir::X_AXIS, pos + Pos(length, 0, 0))}}, // oyz, oyz'
@@ -40,12 +40,12 @@ void Cube::applyTransform(TransMat mat)
 }
 
 // !! core function
-bool Cube::intersect(const Ray &ray, double &t, Intersection &isect) const
+bool Cube::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
-	double tmax = INF, tmin = -INF, ti_max, ti_min, dn;
+	real tmax = INF, tmin = -INF, ti_max, ti_min, dn;
 	for (const auto &s : slab) {    // todo acc
 		dn = ray.dir % s[0].n;    // d.n
-		if (fabs(dn) < EPS && s[0].above(ray.org) == s[1].above(ray.org)) { // parallel to some face
+		if (fabsf(dn) < EPS && s[0].above(ray.org) == s[1].above(ray.org)) { // parallel to some face
 			return false; //and outside the cube
 		}
 
@@ -59,7 +59,7 @@ bool Cube::intersect(const Ray &ray, double &t, Intersection &isect) const
 	}
 	if (tmin > tmax) return false;    // intersect at front?
 
-	double ti;
+	real ti;
 	ti = tmin > EPS
 		 ? tmin
 		 : tmax > EPS ? tmax : INF;  // intersect at back?
@@ -77,6 +77,6 @@ void Cube::getNormal(const Pos &pos, Dir &normal) const
 			return;
 		}
 	}
-	TERMINATE("Cube::getNormal() should not reach the end")
+	TERMINATE("\nCube::getNormal() should not reach the end!\n")
 }
 

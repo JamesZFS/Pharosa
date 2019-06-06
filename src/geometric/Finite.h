@@ -11,17 +11,17 @@
 // size finite class, interface
 struct Finite
 {
-	virtual double xMin() const = 0;// left most
+	virtual real xMin() const = 0;// left most
 
-	virtual double xMax() const = 0;// right most
+	virtual real xMax() const = 0;// right most
 
-	virtual double yMin() const = 0;
+	virtual real yMin() const = 0;
 
-	virtual double yMax() const = 0;
+	virtual real yMax() const = 0;
 
-	virtual double zMin() const = 0;
+	virtual real zMin() const = 0;
 
-	virtual double zMax() const = 0;
+	virtual real zMax() const = 0;
 
 	virtual Pos center() const = 0;// get center point
 };

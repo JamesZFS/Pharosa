@@ -13,7 +13,7 @@ class ImageMixer : public Camera
 public:
 	ImageMixer(size_t width_ = 1024, size_t height_ = 768);
 
-	Ray shootRayAt(double i, double j) const override;
+	Ray shootRayAt(real i, real j) const override;
 };
 
 #endif //PHAROSA_IMAGEMIXER_H

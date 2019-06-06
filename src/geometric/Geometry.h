@@ -32,14 +32,14 @@ struct Geometry
 	 * @param isect : intersection info
 	 * @return true if intersected ahead of t else false
 	 */
-	virtual bool intersect(const Ray &ray, double &t, Intersection &isect) const = 0;
+	virtual bool intersect(const Ray &ray, real &t, Intersection &isect) const = 0;
 
 	// calculate normal vector at surface point x
 	virtual void getNormal(const Pos &pos, Dir &normal) const
 	{}
 
 	// get texture coordinate
-	virtual void getUV(const Pos &pos, double &u, double &v) const
+	virtual void getUV(const Pos &pos, real &u, real &v) const
 	{}
 
 	static Geometry *acquire(const Json &json);    // new a geometry from json

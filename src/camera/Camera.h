@@ -21,14 +21,14 @@ protected:
 	Pos pos;        // position of the viewpoint
 	ElAg ea;        // euler angles cache
 	Dir ex, ey, ez;    // orthogonal basis vectors, where ex ^ ey = ez, ez is the direction the cam faces
-	const double w_2, h_2;            // width / 2, height / 2
+	const real w_2, h_2;            // width / 2, height / 2
 
 public:
 	const size_t width, height;		// image size
-	const double pixel_size;		// physical size of a pixel
+	const real pixel_size;		// physical size of a pixel
 
 	Camera(const Pos &pos_, const ElAg &euler_angles_, size_t width_ = 1024, size_t height_ = 768,
-		   double pixel_size_ = 0.1);
+		   real pixel_size_ = 0.1);
 
 	Camera(const Json &json);
 
@@ -59,10 +59,10 @@ public:
 
 	// interface:
 	// shoot L1 at (i, j), offset deferring normal dist 0 - sigma
-	inline Ray shootRayAt(double i, double j, double sigma) const;
+	inline Ray shootRayAt(real i, real j, real sigma) const;
 
 	// shoot precise L1
-	virtual Ray shootRayAt(double i, double j) const = 0;
+	virtual Ray shootRayAt(real i, real j) const = 0;
 
 	static Camera *acquire(const Json &json);	// from json
 };

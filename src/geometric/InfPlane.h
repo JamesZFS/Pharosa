@@ -13,7 +13,7 @@ struct InfPlane : Geometry
 {
 	Pos p; 	// a point on infplane
 	Dir n;    // normal vector, in Global coordinate sys, default towards ez (A, B, C)
-	double D;	// A x + B y + C z + D == 0, D == -n.c
+	real D;	// A x + B y + C z + D == 0, D == -n.c
 
 	Pos cu, cv;	// cache to compute texture crd
 
@@ -24,15 +24,15 @@ struct InfPlane : Geometry
 
 	void applyTransform(TransMat mat) override;
 
-	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
+	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
 	inline bool testPoint(const Pos &x) const
-	{ return fabs((x - p) % n) < EPS; }
+	{ return fabsf((x - p) % n) < EPS; }
 
 	inline void getNormal(const Pos &pos, Dir &normal) const override
 	{ normal = n; }
 
-	inline void getUV(const Pos &pos, double &u, double &v) const override
+	inline void getUV(const Pos &pos, real &u, real &v) const override
 	{ u = cu % pos, v = cv % pos; }
 
 	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)

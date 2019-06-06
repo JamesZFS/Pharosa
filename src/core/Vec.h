@@ -10,7 +10,7 @@
 #include "../utils/parsers/json_fwd.hpp"
 
 // vector definition
-template<typename T = double>
+template<typename T = real>
 struct Vec
 {
 	T x, y, z;
@@ -69,7 +69,7 @@ struct Vec
 	{ return {x * b.x, y * b.y, z * b.z}; }
 
 	inline T norm()    // Euclidean norm
-	{ return sqrt(x * x + y * y + z * z); }
+	{ return sqrtf(x * x + y * y + z * z); }
 
 	inline T sqr()    // square
 	{ return x * x + y * y + z * z; }
@@ -110,16 +110,16 @@ struct Vec
 	}
 };
 
-struct ElAg : Vec<double>    // Euler angles (Z - alpha, X - beta, Y - gamma)
+struct ElAg : Vec<real>    // Euler angles (Z - alpha, X - beta, Y - gamma)
 {
-	double &alpha, &beta, &gamma;
+	real &alpha, &beta, &gamma;
 
-	ElAg(double a_ = 0, double b_ = 0, double g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
+	ElAg(real a_ = 0, real b_ = 0, real g_ = 0) : Vec(a_, b_, g_), alpha(x), beta(y), gamma(z)
 	{}    // todo can use cosine, sine cache to boost
 
 	ElAg(const Json &json);    // from json, use degrees
 
-	ElAg(const Vec<double> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
+	ElAg(const Vec<real> &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
 	ElAg(const ElAg &obj) : ElAg(obj.x, obj.y, obj.z)    // copy constructor
@@ -136,12 +136,12 @@ struct ElAg : Vec<double>    // Euler angles (Z - alpha, X - beta, Y - gamma)
 	static const ElAg NONROT;
 };
 
-struct Pos : Vec<double>    // 3D coordinate
+struct Pos : Vec<real>    // 3D coordinate
 {
-	Pos(double x_ = 0, double y_ = 0, double z_ = 0) : Vec(x_, y_, z_)
+	Pos(real x_ = 0, real y_ = 0, real z_ = 0) : Vec(x_, y_, z_)
 	{}
 
-	Pos(const Vec<double> &obj) : Pos(obj.x, obj.y, obj.z)    // copy constructor
+	Pos(const Vec<real> &obj) : Pos(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
 	Pos(const Json &json);
@@ -151,24 +151,24 @@ struct Pos : Vec<double>    // 3D coordinate
 
 	using Vec::operator-;
 
-	inline void rotateAlongX(double theta)
+	inline void rotateAlongX(real theta)
 	{
-		double y_ = cos(theta) * y - sin(theta) * z;
-		z = sin(theta) * y + cos(theta) * z;
+		real y_ = cosf(theta) * y - sinf(theta) * z;
+		z = sinf(theta) * y + cosf(theta) * z;
 		y = y_;
 	}
 
-	inline void rotateAlongY(double theta)
+	inline void rotateAlongY(real theta)
 	{
-		double z_ = cos(theta) * z - sin(theta) * x;
-		x = sin(theta) * z + cos(theta) * x;
+		real z_ = cosf(theta) * z - sinf(theta) * x;
+		x = sinf(theta) * z + cosf(theta) * x;
 		z = z_;
 	}
 
-	inline void rotateAlongZ(double theta)
+	inline void rotateAlongZ(real theta)
 	{
-		double x_ = cos(theta) * x - sin(theta) * y;
-		y = sin(theta) * x + cos(theta) * y;
+		real x_ = cosf(theta) * x - sinf(theta) * y;
+		y = sinf(theta) * x + cosf(theta) * y;
 		x = x_;
 	}
 
@@ -183,7 +183,7 @@ struct Pos : Vec<double>    // 3D coordinate
 		};
 	}
 
-	static inline Pos random(double lower = 0.0, double upper = 1.0)
+	static inline Pos random(real lower = 0.0, real upper = 1.0)
 	{ return {Funcs::randf(lower, upper), Funcs::randf(lower, upper), Funcs::randf(lower, upper)}; }
 
 	static const Pos ORIGIN;
@@ -193,7 +193,7 @@ struct Dir : Pos        // direction, unitized vector
 {
 	Dir() = default;
 
-	Dir(double x_, double y_, double z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
+	Dir(real x_, real y_, real z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
 		assert(x != 0 || y != 0 || z != 0);
 //		if (x == 0 && y == 0 && z == 0) {
@@ -211,20 +211,20 @@ struct Dir : Pos        // direction, unitized vector
 		this->unitize();
 	}
 
-	Dir(const Vec<double> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	Dir(const Vec<real> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
 	Dir(const Dir &obj) = default;    // copy constructor
 
 	inline Dir &unitize()    // to unit vector
 	{
-		*this /= sqrt(x * x + y * y + z * z);
+		*this /= sqrtf(x * x + y * y + z * z);
 		return *this;
 	}
 
 	inline void getOrthogonalBasis(Dir &ex, Dir &ey) const   // get orthogonal axis (ex, ey) from ez
 	{
-		ex = (fabs(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
+		ex = (fabsf(x) > .1 ? Pos(0, 1, 0) : Pos(1, 0, 0)) ^ *this; // .1 is the max threshold value for ez.x
 		ey = *this ^ ex;
 		ex.unitize();
 		ey.unitize();
@@ -232,21 +232,21 @@ struct Dir : Pos        // direction, unitized vector
 
 	// get euler angles according to vector, assuming original dir of this is (0, 0, 1)
 	inline ElAg getEulerAngles() const
-	{ return {atan2(y, x), 0, atan2(sqrt(x * x + y * y), z)}; }
+	{ return {atan2f(y, x), 0, atan2f(sqrtf(x * x + y * y), z)}; }
 
 	const static Dir X_AXIS, Y_AXIS, Z_AXIS;
 };
 
-struct RGB : Vec<double>        // RGB Vector
+struct RGB : Vec<real>        // RGB Vector
 {
-	double &r, &g, &b;
+	real &r, &g, &b;
 
-	RGB(double r_ = 0, double g_ = 0, double b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
+	RGB(real r_ = 0, real g_ = 0, real b_ = 0) : Vec(r_, g_, b_), r(x), g(y), b(z)
 	{}
 
 	RGB(const Json &json);
 
-	RGB(const Vec<double> &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
+	RGB(const Vec<real> &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
 	{}
 
 	RGB(const RGB &obj) : RGB(obj.x, obj.y, obj.z)    // copy constructor
@@ -274,5 +274,6 @@ struct RGB : Vec<double>        // RGB Vector
 
 typedef RGB Color;            // intrinsic color of an object
 typedef RGB Emission;        // RGB emission of an object
+using Vec3f = Vec<double>;
 
 #endif //PHAROSA_VEC_H

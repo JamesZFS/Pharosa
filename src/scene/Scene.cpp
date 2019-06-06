@@ -25,7 +25,7 @@ Scene::~Scene()
 // !!
 bool Scene::intersectAny(const Ray &ray, Intersection &isect) const
 {
-	double t = INF;    // intersection
+	real t = INF;    // intersection
 	isect.hit = nullptr;
 	// for singletons
 	for (const Object *obj : objects) {

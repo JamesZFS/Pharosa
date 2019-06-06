@@ -8,7 +8,7 @@
 #include "../Pharosa.h"
 #include "Vec.h"
 
-template<typename T = double>
+template<typename T = real>
 struct Mat    // 3D matrix
 {
 	Arr2D<T, 3, 3> el;
@@ -63,7 +63,7 @@ struct Mat    // 3D matrix
 struct TransMat
 {
 	Pos tra;    // translation vector
-	Mat<double> rot;    // rotation matrix
+	Mat<real> rot;    // rotation matrix
 
 	TransMat();			// identical transformation
 
@@ -73,7 +73,7 @@ struct TransMat
 
 	TransMat(const Pos &delta, const ElAg &ea);	// rotate then translate
 
-	TransMat(const Vec<double> &tra_, const Mat<double> &rot_);
+	TransMat(const Vec<real> &tra_, const Mat<real> &rot_);
 
 	TransMat(const Json &json);	// init from json
 
@@ -89,10 +89,10 @@ struct TransMat
 
 	TransMat operator*(const TransMat &B) const;    // mat mul
 
-	inline Vec<double> operator*(const Vec<double> &x) const    // apply transform to a vec
+	inline Vec<real> operator*(const Vec<real> &x) const    // apply transform to a vec
 	{ return tra + rot * x; }
 
-	inline Vec<double> operator|(const Vec<double> &x) const 	// inverse transform
+	inline Vec<real> operator|(const Vec<real> &x) const 	// inverse transform
 	{ return rot | (x - tra); }
 
 	void report() const;

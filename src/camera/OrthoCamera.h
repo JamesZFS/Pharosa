@@ -12,7 +12,7 @@ class OrthoCamera : public Camera
 public:
 	OrthoCamera(const Json &json);
 
-	Ray shootRayAt(double i, double j) const override;
+	Ray shootRayAt(real i, real j) const override;
 };
 
 #endif //PHAROSA_ORTHOCAMERA_H

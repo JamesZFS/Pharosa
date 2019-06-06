@@ -9,25 +9,25 @@ Polynomial::Polynomial() : Polynomial(0)
 {
 }
 
-Polynomial::Polynomial(size_t order) : n(order), a(order + 1, 0.), d(order, 0.)
+Polynomial::Polynomial(size_t order) : n(order), a(order + 1, 0.f), d(order, 0.f)
 {
 }
 
-Polynomial::Polynomial(List<double> &&coeffs) : n(coeffs.size() - 1), a(std::move(coeffs)), d(n, 0.)
-{
-	assert(n >= 0);
-	trim();
-	compDerivatives();
-}
-
-Polynomial::Polynomial(const List<double> &coeffs) : n(coeffs.size() - 1), a(coeffs), d(n, 0.)
+Polynomial::Polynomial(List<real> &&coeffs) : n(coeffs.size() - 1), a(std::move(coeffs)), d(n, 0.f)
 {
 	assert(n >= 0);
 	trim();
 	compDerivatives();
 }
 
-Polynomial::Polynomial(double a0, double a1) : n(1), a{a0, a1}, d{a1}
+Polynomial::Polynomial(const List<real> &coeffs) : n(coeffs.size() - 1), a(coeffs), d(n, 0.f)
+{
+	assert(n >= 0);
+	trim();
+	compDerivatives();
+}
+
+Polynomial::Polynomial(real a0, real a1) : n(1), a{a0, a1}, d{a1}
 {
 }
 
@@ -35,10 +35,10 @@ Polynomial::Polynomial(Polynomial &&other) noexcept : n(other.n), a(std::move(ot
 {
 }
 
-double Polynomial::operator()(double x) const
+real Polynomial::operator()(real x) const
 {
 	if (n == 0) return a[0];
-	double res = 0;
+	real res = 0;
 	for (size_t i = n; i > 0; --i) {
 		res = res * x + a[i];
 	}
@@ -46,11 +46,11 @@ double Polynomial::operator()(double x) const
 	return res;
 }
 
-double Polynomial::derivative(double x) const
+real Polynomial::derivative(real x) const
 {
 	if (n == 0) return 0;
 	if (n == 1) return d[0];
-	double res = 0;
+	real res = 0;
 	for (size_t i = n - 1; i > 0; --i) {
 		res = res * x + d[i];
 	}
@@ -140,7 +140,7 @@ void Polynomial::report() const
 	debug("\n");
 }
 
-void Polynomial::set(size_t i, double k)
+void Polynomial::set(size_t i, real k)
 {
 	assert(i >= 0);
 	if (i > n) extendTo(i);
@@ -166,7 +166,7 @@ Polynomial &Polynomial::operator*=(const Polynomial &other)
 	return *this = *this * other;
 }
 
-Polynomial Polynomial::operator*(double k) const
+Polynomial Polynomial::operator*(real k) const
 {
 	if (k == 0) return Polynomial();
 	Polynomial res(n);
@@ -177,7 +177,7 @@ Polynomial Polynomial::operator*(double k) const
 	return res;
 }
 
-Polynomial &Polynomial::operator*=(double k)
+Polynomial &Polynomial::operator*=(real k)
 {
 	if (k == 0) return *this = Polynomial();
 	for (auto &ai: a) {
@@ -187,16 +187,16 @@ Polynomial &Polynomial::operator*=(double k)
 	return *this;
 }
 
-Polynomial Polynomial::binomial(double a, double b, unsigned char n)
+Polynomial Polynomial::binomial(real a, real b, unsigned char n)
 {
 	assert(n < 11);
-	if (b == 0) return Polynomial(List<double>{pow(a, n)});
+	if (b == 0) return Polynomial(List<real>{powf(a, n)});
 	Polynomial res(n);
 	if (a == 0) {
-		res.a[n] = pow(b, n);
+		res.a[n] = powf(b, n);
 	}
 	else {
-		double a_n_i = pow(a, n), b_i = 1;    // a^(n-i), b^i
+		real a_n_i = powf(a, n), b_i = 1;    // a^(n-i), b^i
 		for (unsigned char i = 0; i <= n; ++i) {
 			res.a[i] = Funcs::binomial(n, i) * a_n_i * b_i;
 			a_n_i /= a, b_i *= b;

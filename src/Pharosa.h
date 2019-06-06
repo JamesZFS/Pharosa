@@ -16,11 +16,8 @@
 #include <vector>
 #include <array>
 #include <string>
-#include "utils/parsers/json_fwd.hpp"	// forward definition
-
-#define INF 1e20
-#define EPS 1e-4
-#define DEG 0.0174532925199432957692369076848861271    // degree to rad
+#include "utils/parsers/json_fwd.hpp"    // forward definition
+#include "constants.h"
 
 using std::printf;
 
@@ -82,6 +79,6 @@ extern size_t __max_depth__;
 #define warn(x) std::cerr << x << std::endl         // show error
 #define message(x) std::cout << x << std::endl        // show message
 #define barInfo(...) fprintf(stderr, __VA_ARGS__); fflush(stderr)    // show progressbar info
-#define TERMINATE(...) { fprintf(stderr, __VA_ARGS__); exit(1); }	// exit with error info
+#define TERMINATE(...) { fprintf(stderr, __VA_ARGS__); exit(1); }    // exit with error info
 
 #endif //PHAROSA_PHAROSA_H

@@ -23,7 +23,7 @@ struct PolyRev : Geometry
 
 	void applyTransform(TransMat mat_) override;
 
-	bool intersect(const Ray &ray, double &t, Intersection &isect) const override;
+	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
 //	void getNormal(const Pos &pos, Dir &normal) const override;
 

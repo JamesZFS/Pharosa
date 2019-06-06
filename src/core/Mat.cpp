@@ -18,12 +18,12 @@ TransMat::TransMat(const ElAg &ea) : TransMat(Pos::ORIGIN, ea)
 
 TransMat::TransMat(const Pos &delta, const ElAg &ea) : tra(delta)
 {
-	double
-			cos_a = cos(ea.alpha), sin_a = sin(ea.alpha),
-			cos_b = cos(ea.beta), sin_b = sin(ea.beta),
-			cos_g = cos(ea.gamma), sin_g = sin(ea.gamma);
+	real
+			cos_a = cosf(ea.alpha), sin_a = sinf(ea.alpha),
+			cos_b = cosf(ea.beta), sin_b = sinf(ea.beta),
+			cos_g = cosf(ea.gamma), sin_g = sinf(ea.gamma);
 
-	rot = Mat<double>(
+	rot = Mat<real>(
 			{{
 					 {{cos_a * cos_g - sin_a * sin_b * sin_g, -cos_b * sin_a, cos_g * sin_a * sin_b + cos_a * sin_g}},
 					 {{cos_g * sin_a + cos_a * sin_b * sin_g, cos_a * cos_b, -cos_a * cos_g * sin_b + sin_a * sin_g}},
@@ -32,7 +32,7 @@ TransMat::TransMat(const Pos &delta, const ElAg &ea) : tra(delta)
 	);
 }
 
-TransMat::TransMat(const Vec<double> &tra_, const Mat<double> &rot_) : tra(tra_), rot(rot_)
+TransMat::TransMat(const Vec<real> &tra_, const Mat<real> &rot_) : tra(tra_), rot(rot_)
 {
 }
 

@@ -11,22 +11,22 @@
 // revolution solid of polynomial, assuming the revolution is along X-axis
 struct BezierRev : PolyRev, Finite
 {
-	List<Arr<double, 2>> ctrl_pts;
+	List<Arr<real, 2>> ctrl_pts;
 
-	BezierRev(List<Arr<double, 2>> &&control_pts_);
+	BezierRev(List<Arr<real, 2>> &&control_pts_);
 
 	// todo
-	double xMin() const override;
+	real xMin() const override;
 
-	double xMax() const override;
+	real xMax() const override;
 
-	double yMin() const override;
+	real yMin() const override;
 
-	double yMax() const override;
+	real yMax() const override;
 
-	double zMin() const override;
+	real zMin() const override;
 
-	double zMax() const override;
+	real zMax() const override;
 
 	Pos center() const override;
 

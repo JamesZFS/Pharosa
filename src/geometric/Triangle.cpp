@@ -25,16 +25,16 @@ void Triangle::applyTransform(TransMat mat)
 }
 
 
-bool Triangle::intersect(const Ray &ray, double &t, Intersection &isect) const
+bool Triangle::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
 	// solve Ro + t Rd = (1 - beta - gamma) P0 + beta P1 + gamma P2
-	double A[3][3], b[3], beta, gamma;
+	real A[3][3], b[3], beta, gamma;
 	ray.dir.putToArray(&A[0][0], 3);
 	(p[0] - p[1]).putToArray(&A[0][1], 3);
 	(p[0] - p[2]).putToArray(&A[0][2], 3);
 	(p[0] - ray.org).putToArray(b);
 
-	double ti;
+	real ti;
 	if (!Linear::Solve3D(A, b, ti, beta, gamma)) return false;    // cannot solve or root is not unique
 	// solvable and has only root
 	if (ti < EPS || beta < 0 || 1 < beta || gamma < 0 || 1 < gamma || 1 < beta + gamma || ti >= t) return false;
