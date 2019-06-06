@@ -3,7 +3,6 @@
 // implement all parsing methods here
 
 #include "Pharosa.h"
-#include <fstream>
 #include "scene/Scene.h"
 
 #include "camera/All.h"
@@ -18,6 +17,8 @@
 #include "parsing.inl"
 #include "geometric/Geometry.h"
 #include "geometric/PolyRev.h"
+
+#include <fstream>
 
 
 Renderer::Renderer(const String &config_path) : Renderer()
@@ -124,6 +125,14 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 	else if (type == "path tracing" || type == "pt") {
 		try {
 			return new PathTracing(scene, (size_t) json.at("max_depth"));
+		}
+		catch (Json::out_of_range &) {
+			return new PathTracing(scene);    // use default
+		}
+	}
+	else if (type == "path tracing explicit" || type == "pte") {
+		try {
+			return new PTE(scene, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
 			return new PathTracing(scene);    // use default

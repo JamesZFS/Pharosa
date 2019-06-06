@@ -52,7 +52,6 @@ void Scene::prepare()
 	message("building KD-Tree...");
 	ObjectList remove_list;
 	for (Object *obj : objects) {
-		printf("for %s\n", obj->name.data());
 		auto shape = dynamic_cast<Finite *>(obj->geo);
 		if (shape) {
 			meshes.push_back(obj);
@@ -60,7 +59,6 @@ void Scene::prepare()
 		}
 	}
 	for (Object *obj : remove_list) {
-		printf("remove %s\n", obj->name.data());
 		auto it = std::find(objects.begin(), objects.end(), obj);
 		objects.erase(it);
 	}

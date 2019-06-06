@@ -1,10 +1,10 @@
 {
-	"save_path": "out/three/explicit up -.ppm",
-	"n_epoch": 10,
+	"save_path": "out/three/obstacle pte 100.ppm",
+	"n_epoch": 100,
 	"save_step": 10,
 
 	"algorithm": {
-		"type": "pt",
+		"type": "pte",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -111,11 +111,21 @@
 		},
 		{
 			"name": "light bulb",
-			"emission": [15, 15, 15],
+			"emission": [30, 30, 30],
 			"geo": {
 				"type": "sphere",
-				"radius": 20,
+				"radius": 5,
 				"pos": [0, 80, 0]
+			}
+		},
+		{
+			"name": "obstacle",
+			"geo": {
+				"type": "cube",
+				"pos": [-20, 65, -20],
+				"length": 40,
+				"width": 3,
+				"height": 40
 			}
 		}
 	]
