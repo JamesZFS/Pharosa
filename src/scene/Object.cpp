@@ -5,7 +5,7 @@
 #include "Object.h"
 #include "../geometric/All.h"
 
-Object::Object(Geometry *geo_, const Material *material_) : geo(geo_), mtr(material_)
+Object::Object(Geometry *geo_, const Material *material_, const String &name_) : geo(geo_), mtr(material_), name(name_)
 {
 
 }

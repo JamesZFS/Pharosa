@@ -1,7 +1,6 @@
 {
-	"save_path": "out/dof/dragon 5-20.ppm",
-	"prev_path": "out/dof/dragon 5-20.ppm",
-	"n_epoch": 300,
+	"save_path": "out/dof/dragon 7-6 explicit.ppm",
+	"n_epoch": 50,
 	"save_step": 10,
 	"algorithm": {
 		"type": "pt",
@@ -125,9 +124,9 @@
 			"name": "light source",
 			"emission": [16, 15, 15],
 			"geo": {
-				"type": "cube",
-				"pos": [-60, 118, -60],
-				"length": 120, "width": 20, "height": 120
+				"type": "sphere",
+				"pos": [0, 210, 0],
+				"radius": 100
 			}
 		}
 	]

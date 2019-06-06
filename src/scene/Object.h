@@ -14,8 +14,9 @@ struct Object
 {
 	Geometry *geo;    // geometric attributes
 	const Material *mtr;    // material attributes
+	const String name;	// for debug
 
-	Object(Geometry *geo_, const Material *material_);
+	Object(Geometry *geo_, const Material *material_, const String &name_ = "");
 
 	~Object();
 

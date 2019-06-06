@@ -108,12 +108,12 @@ DOFCamera::DOFCamera(const Json &json) :
 {
 }
 
-// alogrithm
+// algorithm
 Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 {
 	String type = json.at("type");
 	Parsing::lowerStr_(type);
-	if (type == "L1 casting" || type == "rc") {
+	if (type == "ray casting" || type == "rc") {
 		try {
 			return new RayCasting(scene, Dir(json.at("light_dir")));
 		}
@@ -136,7 +136,7 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 Scene *Scene::acquire(const Json &json)   // json should be an array
 {
 	auto *self = new Scene;
-	String type;
+	String type, name;
 	Material *material, *sub_material;
 	Geometry *geo;
 	for (const Json &item: json) {    // for each item in the scene json list
@@ -146,12 +146,13 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 		TransMat trans_mat(item);                    // transform
 		type = item.value("type", "singleton");        // item type
 		Parsing::lowerStr_(type);
+		name = item.value("name", "");
 
 		if (type == "singleton") {    // switch different types
 
 			geo = Geometry::acquire(item.at("geo")); // new geo
 			geo->applyTransform(trans_mat);
-			self->objects.push_back(new Object(geo, material));
+			self->objects.push_back(new Object(geo, material, name));
 
 		}
 		else if (type == "group") {
@@ -183,7 +184,8 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 				else {
 					geo->applyTransform(trans_mat);
 				}
-				self->objects.push_back(new Object(geo, sub_material));
+				String name_ = object.value("name", name);
+				self->objects.push_back(new Object(geo, sub_material, name_));
 			}
 
 		}

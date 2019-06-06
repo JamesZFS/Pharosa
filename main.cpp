@@ -11,6 +11,7 @@ using namespace std;
 
 #ifdef __DEV_STAGE__
 size_t __counter__ = 0;
+real __debug__ = 0;
 size_t __print_cnt__ = 0;
 size_t __max_depth__ = 0;
 
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
 	debug("  print_cnt = %ld\n", __print_cnt__);
 	debug("  max_depth = %ld\n", __max_depth__);
 	debug("  counter   = %ld\n", __counter__);
+	debug("  debug     = %f\n", __debug__ / __counter__);
 #endif
 
 	return 0;

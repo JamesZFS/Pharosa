@@ -1,7 +1,6 @@
 {
-	"save_path": "two 6-6 com.ppm",
-	"#prev_path": "two 6-6 .ppm",
-	"n_epoch": 30,
+	"save_path": "out/three/explicit up.ppm",
+	"n_epoch": 50,
 	"save_step": 10,
 
 	"algorithm": {
@@ -12,9 +11,9 @@
 
 	"camera": {
 		"type": "basic",
-		"width": 800, "height": 700,
+		"width": 1024, "height": 768,
 		"pos": [0, 0, 280],
-		"rot": [0, 170, 0]
+		"rot": [0, 180, 0]
 	},
 
 	"scene": [
@@ -35,9 +34,9 @@
 			"name": "green sphere",
 			"color": "green",
 			"emission": "none",
-			"refr": 1.0,
 			"diff": 0,
 			"spec": 0,
+			"refr": 1.0,
 			"rot": [0, 45, 0],
 			"geo": {
 				"type": "sphere",
@@ -48,8 +47,8 @@
 		{
 			"name": "white sphere",
 			"color": "white",
-			"spec": 0.7,
-			"diff": 0.3,
+			"spec": 1.0,
+			"diff": 0,
 			"refr": 0,
 			"rot": [0, 45, 0],
 			"geo": {
@@ -75,8 +74,6 @@
 					"name": "floor",
 					"texture": "res/floor1.ppm",
 					"#color": [0.95, 1.0, 0.7],
-					"diff": 0.6,
-					"spec": 0.4,
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],

@@ -6,6 +6,7 @@
 #include "../scene/Scene.h"
 #include "../utils/sampling.h"
 #include "../geometric/Sphere.h"
+#include "../geometric/InfPlane.h"
 
 using Funcs::randf;
 
@@ -44,7 +45,8 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 	if WITH_PROB(material.diff) {
 		// importance sampling cosine dist:
 		auto samp = Sampling::cosineOnHemisphere({randf(), randf()});
-		I_in += _radiance({r_in.org + nl * EPS, ex * samp.x + ey * samp.y + ez * samp.z}, depth + 1, true);
+		Ray r_out(r_in.org + nl * EPS, ex * samp.x + ey * samp.y + ez * samp.z);
+		I_in += _radiance(r_out, depth + 1, false);
 
 		/** todo specially sample light sources:
 		 * for all sphere light sources
@@ -52,7 +54,7 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 		 * make sure the ray doesn't hit another object, even if that is a light source too.
 		 * take the hit light source's emission into I_in
 		 */
-		for (auto &ls : scene.getLightSources()) {
+		for (const Object *ls : scene.getLightSources()) {
 			auto s = dynamic_cast<Sphere *>(ls->geo);
 			if (!s) continue;	// deal only with sphere
 			Pos OS = s->c - r_in.org;
@@ -60,12 +62,22 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 			Dir sz = OS / dist, sx, sy;
 			sz.getOrthogonalBasis(sx, sy);
 			real sin_theta_max = s->rad / dist;
+			if (sin_theta_max > 1) {
+				continue;
+//				auto shape = dynamic_cast<InfPlane*>(isect.hit->geo);
+//				assert(isect.hit == ls || (shape && isect.hit->name == "ceiling"));
+			}
 			real cos_theta_max = sqrtf(max2(0.f, 1 - sin_theta_max * sin_theta_max));
 			auto sub_samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
 			Ray r_sub(r_in.org + nl * EPS, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
 			Intersection isect_sub;
 			assert(scene.intersectAny(r_sub, isect_sub));
 			if (isect_sub.hit != ls) continue;	// a shadow ray
+			if (nl % r_sub.dir <= 0) {
+				continue;
+//				(isect.hit->name == "light bulb" || isect.hit->name == "ceiling");
+			}
+
 			I_in += ls->mtr->emi * ((nl % r_sub.dir) * 2 * (1 - cos_theta_max));
 			// notice: uniform sampling, so divided by Pi already
 		}
@@ -73,8 +85,9 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth, bool flag) const
 
 	// mirror reflection, Phong model: I = ks ( V . R )^n model
 	if WITH_PROB(material.spec) {
+		Ray r_R(r_in.org + nl * EPS, r_in.dir - nl * (nl % r_in.dir * 2));
 		// without Phong-model:
-		I_in += _radiance({r_in.org + nl * EPS, r_in.dir - nl * (nl % r_in.dir * 2)}, depth + 1);
+		I_in += _radiance(r_R, depth + 1);
 		// naive sampling of Phong-model:
 		/*auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
 		Dir V = r_in.dir - nl * (nl % r_in.dir * 2);
