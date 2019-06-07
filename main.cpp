@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	debug("  print_cnt = %ld\n", __print_cnt__);
 	debug("  max_depth = %ld\n", __max_depth__);
 	debug("  counter   = %ld\n", __counter__);
-	debug("  debug     = %f\n", __debug__ / __counter__);
+	debug("  debug     = %f\n", __debug__);
 #endif
 
 	return 0;

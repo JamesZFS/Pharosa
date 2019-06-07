@@ -2,8 +2,8 @@
 // Created by James on 2019/5/15.
 //
 
-#ifndef PHAROSA_INTERSECTION_HPP
-#define PHAROSA_INTERSECTION_HPP
+#ifndef PHAROSA_INTERSECTION_H
+#define PHAROSA_INTERSECTION_H
 
 #include "../Pharosa.h"
 #include "Object.h"
@@ -26,14 +26,20 @@ struct Intersection
 	inline const Color &getEmission() const    // get texture color at pos
 	{ return hit->mtr->emi; }
 
-	inline void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<real> &w_outs) const
-	{ hit->mtr->scatter(r_in, normal, depth, r_outs, w_outs); }
-
 	inline void complementData()
 	{
 		hit->geo->getNormal(pos, normal);
 		if (hit->mtr->texture) hit->geo->getUV(pos, u, v);
 	}
+
+	enum ScatterType {
+		DIFFUSE,
+		SPECULAR,
+		REFRACTION
+	};
+	// generate a new sample ray from r_in, returns the out ray and the weight for that sample
+	// return: the scattering type
+	ScatterType scatter(const Ray &r_in, Ray &r_out, real &w_out) const;
 };
 
-#endif //PHAROSA_INTERSECTION_HPP
+#endif //PHAROSA_INTERSECTION_H

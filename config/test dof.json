@@ -1,10 +1,10 @@
 {
-	"save_path": "out/dof/6-7 test refactor.ppm",
-	"n_epoch": 10,
+	"save_path": "out/dof/6-7 test refactor pt.ppm",
+	"n_epoch": 30,
 	"save_step": 5,
-	"verbose_step": 1,
+	"verbose_step": 0,
 	"algorithm": {
-		"type": "ptf",
+		"type": "pt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 6
 	},

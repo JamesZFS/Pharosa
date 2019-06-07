@@ -5,7 +5,7 @@
 
 #include "InfPlane.h"
 #include "../scene/Object.h"
-#include "../scene/Intersection.hpp"
+#include "../scene/Intersection.h"
 
 InfPlane::InfPlane(const Dir &n_, const Pos &p_) :
 		p(p_), n(n_), D(-(p % n))

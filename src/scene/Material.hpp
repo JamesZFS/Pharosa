@@ -2,8 +2,8 @@
 // Created by James on 2019/4/26.
 //
 
-#ifndef PHAROSA_MATERIAL_H
-#define PHAROSA_MATERIAL_H
+#ifndef PHAROSA_MATERIAL_HPP
+#define PHAROSA_MATERIAL_HPP
 
 
 #include "../Pharosa.h"
@@ -26,10 +26,13 @@ struct Material
 	Image *texture; // texture ppm
 	real Auu, Auv, Auc, Avu, Avv, Avc;	// transform matrix of (u, v)
 
-	Material();	// dark white pure diffusive without texture
-
-	// input r_in, normal and get r_outs, w_outs
-	void scatter(const Ray &r_in, const Dir &normal, size_t depth, List<Ray> &r_outs, List<real> &w_outs) const;
+	Material() :	// dark white pure diffusive without texture
+			color(Color::WHITE), emi(Emission::NONE),
+			diff(1), spec(0), refr(0), n_refr(1.5),
+			texture(nullptr),
+			Auu(1), Auv(0), Auc(0), Avu(0), Avv(1), Avc(0)
+	{
+	}
 
 	inline const Color &textureAt(real u, real v) const
 	{ return texture->get(Auu * u + Auv * v + Auc, Avu * u + Avv * v + Avc); }
@@ -38,4 +41,4 @@ struct Material
 };
 
 
-#endif //PHAROSA_MATERIAL_H
+#endif //PHAROSA_MATERIAL_HPP

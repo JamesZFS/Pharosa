@@ -5,7 +5,7 @@
 #include "PolyRev.h"
 #include "../core/Ray.hpp"
 #include "../utils/solvers/NonLinear.h"
-#include "../scene/Intersection.hpp"
+#include "../scene/Intersection.h"
 
 //struct Fun0 : NonLinear::BinFun
 //{

@@ -4,7 +4,7 @@
 
 #include "KDNode.h"
 #include "../geometric/Finite.h"
-#include "Intersection.hpp"
+#include "Intersection.h"
 
 KDNode::KDNode() : box(nullptr), objs(nullptr), l_child(nullptr), r_child(nullptr)
 {

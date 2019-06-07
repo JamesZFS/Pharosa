@@ -7,7 +7,7 @@
 
 #include "../Pharosa.h"
 #include "../core/Ray.hpp"
-#include "Intersection.hpp"
+#include "Intersection.h"
 #include "Object.h"
 
 class KDNode;

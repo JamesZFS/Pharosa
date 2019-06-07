@@ -6,7 +6,7 @@
 #define PHAROSA_OBJECT_H
 
 #include "../Pharosa.h"
-#include "Material.h"
+#include "Material.hpp"
 #include "../geometric/Geometry.h"
 
 // physical instance of an object, including its geometric and material attributes

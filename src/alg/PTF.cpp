@@ -49,35 +49,26 @@ Color PTF::radiance(const Ray &ray) const
 		beta *= color;    // accumulate throughput
 
 		// update incoming ray origin
-		r.org = isect.pos;
-		Dir &n = isect.normal;
-		Dir nl = n % r.dir < 0 ? n : -n; // regularized normal, against r direction
-		auto &material = *isect.hit->mtr;
+		real w_out;
+		Ray r_out;
+		// sample one new ray
+		auto scatter_type = isect.scatter(r, r_out, w_out);
 
-		// update incoming ray direction using R.R.
-		// assuming diff + spec + refr = 1
-		P = randf();
-		if ((P -= material.diff) <= 0) { // Diffuse Reflection
-			Dir ex, ey;
-			const Dir &ez = nl;
-			ez.getOrthogonalBasis(ex, ey);
-			// importance sampling cosine dist:
-			auto samp = Sampling::cosineOnHemisphere({randf(), randf()});
-			r.dir = ex * samp.x + ey * samp.y + ez * samp.z;
-			r.offset(EPS);
-
-			/** specially sample light sources:
-			 * for all sphere light sources
-			 * sphere-cap-ly sample a ray from current intersection
-			 * make sure the ray doesn't hit another object, even if that is a light source too.
-			 * take the hit light source's emission into I_in
-			 */
+		/** specially sample light sources:
+		 * for all sphere light sources
+		 * sphere-cap-ly sample a ray from current intersection
+	 	 * make sure the ray doesn't hit another object, even if that is a light source too.
+		 * take the hit light source's emission into I_in
+		 */
+		if (scatter_type == Intersection::DIFFUSE) {
 			flag = false;
+			Dir &n = isect.normal;
+			Dir nl = n % r.dir < 0 ? n : -n; // regularized normal, against r direction
 			for (const Object *ls : scene.getLightSources()) {
 				if (ls->geo->type() != Geometry::SPHERE)
 					continue;    // deal only with sphere
 				auto s = (Sphere *) ls->geo;
-				Pos OS = s->c - r.org;
+				Pos OS = s->c - isect.pos + nl * EPS;
 				real dist = OS.norm();
 				Dir sz = OS / dist, sx, sy;
 				sz.getOrthogonalBasis(sx, sy);
@@ -86,7 +77,8 @@ Color PTF::radiance(const Ray &ray) const
 					continue;    // unwanted sample
 				real cos_theta_max = sqrtf(max2(0.f, 1 - sin_theta_max * sin_theta_max));
 				auto sub_samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
-				Ray r_sub(r.org + nl * EPS, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
+				Ray r_sub(isect.pos, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
+				r_sub.offset(EPS);
 				Intersection isect_sub;
 				if (!scene.intersectAny(r_sub, isect_sub)) {    // some precision bug
 					++__counter__;
@@ -98,38 +90,12 @@ Color PTF::radiance(const Ray &ray) const
 				// notice: uniform sampling, so divided by Pi already
 			}
 		}
-		else if ((P -= material.spec) <= 0) { // Ideal Specular Reflection
+		else
 			flag = true;
-			r.dir -= nl * (nl % r.dir * 2);
-			r.offset(EPS);
-		}
-		else { // Refraction
-			assert(P <= material.refr);
-			flag = true;
-			Ray r_R(r.org, r.dir - nl * (nl % r.dir * 2));    // reflection
-			r_R.offset(EPS);
-			bool into = (n % nl) > 0;                // Ray from outside going in?
-			real nc = 1, nt = material.n_refr, nnt = into ? nc / nt : nt / nc;
-			real ddn = r.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
-			if (cos2t < 0) {    // total internal reflection
-				r = r_R;
-			}
-			else {        // refraction and reflection
-				Ray r_T(r.org - nl * EPS, r.dir * nnt - nl * (ddn * nnt + sqrtf(cos2t)));
-				real a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % n);
-				real R0 = a * a / (b * b), Re = R0 + (1 - R0) * powf(c, 5);
-				real Tr = 1 - Re, P_ = .25f + .5f * Re, RP = Re / P_;
-				real TP = Tr / (1 - P_);
-				if WITH_PROB(P_) { // Russian roulette, debranching
-					r = r_R;
-					beta *= RP;
-				}
-				else {
-					r = r_T;
-					beta *= TP;
-				}
-			}
-		} // incoming ray update
+
+		r = r_out;
+		beta *= w_out;
+		// next iter...
 	}
 	return L;
 }

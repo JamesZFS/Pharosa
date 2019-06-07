@@ -12,7 +12,7 @@
 #include "utils/parsers/json.hpp"
 #include "utils/parsers/MeshParser.h"
 #include "alg/Algorithm.h"
-#include "scene/Material.h"
+#include "scene/Material.hpp"
 
 #include "parsing.inl"
 #include "geometric/Geometry.h"

@@ -22,6 +22,11 @@ public:
 
 	String info() const override;
 
+	void start(size_t n_epoch,
+			   const std::function<void(size_t)> &pre_epoch_callback,
+			   const std::function<void(size_t)> &in_epoch_callback,
+			   const std::function<void(size_t)> &post_epoch_callback) override;
+
 	Color radiance(const Ray &ray) const override;
 };
 

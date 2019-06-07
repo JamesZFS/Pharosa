@@ -3,7 +3,7 @@
 //
 
 #include "Cube.h"
-#include "../scene/Intersection.hpp"
+#include "../scene/Intersection.h"
 
 // init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point c
 Cube::Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o)
