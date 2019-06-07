@@ -4,8 +4,8 @@
 #CPP=g++		# use on win
 CPP=g++-8	# use on mac
 #CPPFLAGS=-O3 -fopenmp -static -lpthread -Wall -MMD -std=c++14      # multiple threads version on win
-CPPFLAGS=-O3 -fopenmp -Wall -MMD -std=c++14      # multiple threads version on mac
-#CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
+#CPPFLAGS=-O3 -fopenmp -Wall -MMD -std=c++14      # multiple threads version on mac
+CPPFLAGS=-O3 -Wall -MMD -std=c++14    # one thread version
 
 Pharosa: src/main.cpp Makefile
 	$(CPP) $(CPPFLAGS) main.cpp -o Pharosa.out

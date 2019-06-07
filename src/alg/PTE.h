@@ -16,7 +16,7 @@ private:
 	// flag - whether to consider self emission term in current layer
 
 public:
-	PTE(Scene &scene_, size_t max_depth_);
+	PTE(Scene &scene_, size_t max_depth_ = 5);
 
 	Color radiance(const Ray &ray) const override
 	{ return _radiance(ray, 0, true); }

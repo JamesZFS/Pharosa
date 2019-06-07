@@ -63,6 +63,14 @@ struct Vec
 		return *this;
 	}
 
+	inline Vec &operator*=(const Vec &b)
+	{
+		x *= b.x;
+		y *= b.y;
+		z *= b.z;
+		return *this;
+	}
+
 	inline Vec operator/(T k) const    // div number
 	{ return {x / k, y / k, z / k}; }
 

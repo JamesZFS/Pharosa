@@ -405,7 +405,7 @@ namespace Test
 		real  u, t;
 		bool solved = NonLinear::Solve2DEps(f0, f1, u = 0.5, t = 1.2, 1e-2); //&& 0 <= u && u <= 1 && t > EPS;
 		debug("\nu = %.4f.  t = %.4f\n", u, t);
-		(ray.travels(t).report(true));
+		(ray.posAfter(t).report(true));
 		assert(solved);
 	}
 

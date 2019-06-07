@@ -16,11 +16,11 @@ const ElAg ElAg::NONROT(0, 0, 0);
 // common colors
 const Color
 		Color::BLACK(0, 0, 0),
-		Color::WHITE(1, 1, 1),
-		Color::RED(1, 0, 0),
-		Color::GREEN(0, 1, 0),
-		Color::BLUE(0, 0, 1),
-		Color::YELLOW(1, 0.784, 0),
+		Color::WHITE(0.99, 0.99, 0.99),
+		Color::RED(0.99, 0, 0),
+		Color::GREEN(0, 0.99, 0),
+		Color::BLUE(0, 0, 0.99),
+		Color::YELLOW(0.99, 0.784, 0),
 		Color::BROWN(0.20, 0.08, 0.02);
 
 // common Emission

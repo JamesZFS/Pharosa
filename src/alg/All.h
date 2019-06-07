@@ -9,6 +9,7 @@
 #include "RayCasting.h"
 #include "PathTracing.h"
 #include "PTE.h"
+#include "PTF.h"
 #include "PhotonMapping.h"
 
 #endif //PHAROSA_ALG_ALL_H

@@ -11,6 +11,8 @@
 class PathTracing : public Algorithm
 {
 protected:
+	const static size_t DEPTH_LIMIT;	// in case not encounter stack overflow, but possibly introduce bias
+
 	const size_t max_depth;
 
 	Color _radiance(const Ray &ray, size_t depth) const;

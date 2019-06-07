@@ -41,7 +41,7 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect) const
 	if (!isect.hit) return false;
 
 	// intersected:
-	isect.pos = ray.travels(t);
+	isect.pos = ray.posAfter(t);
 	isect.complementData();
 	return true;
 }

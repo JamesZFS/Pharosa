@@ -135,7 +135,15 @@ Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
 			return new PTE(scene, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new PathTracing(scene);    // use default
+			return new PTE(scene);    // use default
+		}
+	}
+	else if (type == "path tracing forward" || type == "ptf") {
+		try {
+			return new PTF(scene, (size_t) json.at("max_depth"));
+		}
+		catch (Json::out_of_range &) {
+			return new PTF(scene);    // use default
 		}
 	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
