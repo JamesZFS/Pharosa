@@ -23,11 +23,15 @@ protected:
 	Camera &camera;
 
 	/** specially sample one **sphere** light source:
+	 * sample uniformly according to light size
 	 * sphere-cap-ly sample a ray from current intersection
 	 * make sure the ray doesn't hit another object, even if that is a light source too.
 	 * take the hit light source's emission into I_in
 	 */
-	Color getDirectLighting(const Intersection &isect) const;
+	Color LdLowerVar(const Intersection &isect) const;
+
+	// sample uniformly according to light number
+	Color LdFaster(const Intersection &isect) const;
 
 public:
 	Algorithm(const Scene &scene_, Camera &camera_);
