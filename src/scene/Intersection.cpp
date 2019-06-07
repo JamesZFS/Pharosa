@@ -14,7 +14,6 @@ Intersection::ScatterType Intersection::scatter(const Ray &r_in, Ray &r_out, rea
 	// assuming diff + spec + refr = 1
 	auto P = randf();
 	auto &material = *hit->mtr;
-	Dir nl = normal % r_in.dir < 0 ? Pos(normal) : -normal; // regularized normal, against r_in direction
 	ScatterType type;
 
 	if ((P -= material.diff) <= 0) { // diffusive reflection
@@ -50,7 +49,7 @@ Intersection::ScatterType Intersection::scatter(const Ray &r_in, Ray &r_out, rea
 		assert(P <= material.refr);
 		type = REFRACTION;
 		Ray r_R(pos, r_in.dir - nl * (nl % r_in.dir * 2));    // reflection
-		bool into = (normal % nl) > 0;                // Ray from outside going in?
+		bool into = (n % nl) > 0;                // Ray from outside going in?
 		real nc = 1, nt = material.n_refr, nnt = into ? nc / nt : nt / nc;
 		real ddn = r_in.dir % nl, cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
@@ -59,7 +58,7 @@ Intersection::ScatterType Intersection::scatter(const Ray &r_in, Ray &r_out, rea
 		}
 		else {        // refraction and reflection
 			Ray r_T(pos, r_in.dir * nnt - nl * (ddn * nnt + sqrtf(cos2t)));
-			real a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % normal);
+			real a = nt - nc, b = nt + nc, c = 1 - (into ? -ddn : r_T.dir % n);
 			real R0 = a * a / (b * b), Re = R0 + (1 - R0) * powf(c, 5);
 			real Tr = 1 - Re, P_ = .25f + .5f * Re, RP = Re / P_;
 			real TP = Tr / (1 - P_);

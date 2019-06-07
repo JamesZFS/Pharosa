@@ -38,7 +38,7 @@ Color PathTracing::_radiance(const Ray &ray, size_t depth) const
 	isect.scatter(ray, r_out, w_out);	// sample one out ray
 	Color L_in = _radiance(r_out, depth + 1) * w_out;
 
-	return isect.getEmission() + color.mul(L_in);    // be careful of flag here
+	return isect.getEmission() + color.mul(L_in);
 }
 
 String PathTracing::info() const

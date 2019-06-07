@@ -1,12 +1,12 @@
 {
-	"save_path": "out/dof/6-7 test refactor pt.ppm",
-	"n_epoch": 30,
-	"save_step": 5,
+	"save_path": "out/dof/6-7 test refactor ptf ++.ppm",
+	"n_epoch": 300,
+	"save_step": 20,
 	"verbose_step": 0,
 	"algorithm": {
-		"type": "pt",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 6
+		"max_depth": 7
 	},
 	"camera": {
 		"type": "dof",

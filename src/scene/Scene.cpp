@@ -25,7 +25,7 @@ Scene::~Scene()
 }
 
 // !!
-bool Scene::intersectAny(const Ray &ray, Intersection &isect) const
+bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only) const
 {
 	real t = INF;    // intersection
 	isect.hit = nullptr;
@@ -40,8 +40,10 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect) const
 	kd_root->intersect(ray, t, isect);
 	if (!isect.hit) return false;
 
-	// intersected:
+	// if intersected:
+	if (comp_hit_only) return true;
 	isect.pos = ray.posAfter(t);
+	isect.r_in = ray;
 	isect.complementData();
 	return true;
 }

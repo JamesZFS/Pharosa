@@ -43,7 +43,7 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 
 	// compute total incoming radiance:
 	Color L_in = {0, 0, 0};
-	Dir &n = isect.normal;
+	Dir &n = isect.n;
 	Dir nl = n % r_in.dir < 0 ? n : -n; // regularized normal, against r_in direction
 	auto &material = *isect.hit->mtr;
 

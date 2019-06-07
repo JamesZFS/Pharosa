@@ -38,13 +38,14 @@ public:
 	/** judge and calculate first intersection with all objects
 	 * input:
 	 * @param ray
+	 * @param comp_hit_only
 	 *
 	 * output:
 	 * @param isect : intersection info
 	 *
 	 * @return true if intersects any object else false
 	 */
-	bool intersectAny(const Ray &ray, Intersection &isect) const;
+	bool intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only = false) const;
 
 	static Scene *acquire(const Json &json);    // load from json
 };

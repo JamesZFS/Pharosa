@@ -13,7 +13,9 @@ struct Intersection
 {
 	const Object *hit;    // hit which object
 	Pos pos;	// intersection point
-	Dir normal;	// intersection normal
+	Ray r_in;	//
+	Dir n;		// intersection normal
+	Dir nl;	    // regularized normal, against r direction
 	real u, v;    // (u, v) coordinate
 
 	Intersection() : hit(nullptr), u(0), v(0)
@@ -28,8 +30,9 @@ struct Intersection
 
 	inline void complementData()
 	{
-		hit->geo->getNormal(pos, normal);
+		hit->geo->getNormal(pos, n);
 		if (hit->mtr->texture) hit->geo->getUV(pos, u, v);
+		nl = n % r_in.dir < 0 ? n : -n;
 	}
 
 	enum ScatterType {

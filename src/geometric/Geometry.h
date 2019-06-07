@@ -39,7 +39,7 @@ struct Geometry
 	 */
 	virtual bool intersect(const Ray &ray, real &t, Intersection &isect) const = 0;
 
-	// calculate normal vector at surface point x
+	// calculate n vector at surface point x
 	virtual void getNormal(const Pos &pos, Dir &normal) const
 	{}
 
