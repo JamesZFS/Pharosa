@@ -12,8 +12,8 @@ using Funcs::randf;
 
 const size_t PathTracing::DEPTH_LIMIT = 50;
 
-PathTracing::PathTracing(Scene &scene_, size_t max_depth_) :
-		Algorithm(scene_), max_depth(max_depth_)
+PathTracing::PathTracing(const Scene &scene_,  Camera &camera_, size_t max_depth_) :
+		Algorithm(scene_, camera_), max_depth(max_depth_)
 {
 }
 

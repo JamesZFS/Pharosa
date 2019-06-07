@@ -10,7 +10,7 @@
 
 using Funcs::randf;
 
-PTE::PTE(Scene &scene_, size_t max_depth_) : PathTracing(scene_, max_depth_)
+PTE::PTE(const Scene &scene_, Camera &camera_, size_t max_depth_) : PathTracing(scene_, camera_, max_depth_)
 {
 
 }
@@ -28,7 +28,7 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 	Intersection isect;
 	if (!scene.intersectAny(ray, isect)) return Color::BLACK; // if miss, return black
 	if (isect.hit->geo->type() != Geometry::SPHERE)
-		flag = true;	// since we deal only with sphere
+		flag = true;    // since we deal only with sphere
 
 	Color color = isect.getColor();    // get texture from color
 	real P = color.max();    // max color component as refl_t
@@ -67,15 +67,15 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 		 */
 		for (const Object *ls : scene.getLightSources()) {
 			if (ls->geo->type() != Geometry::SPHERE)
-				continue;	// deal only with sphere
-			auto s = (Sphere *)ls->geo;
+				continue;    // deal only with sphere
+			auto s = (Sphere *) ls->geo;
 			Pos OS = s->c - r_in.org;
 			real dist = OS.norm();
 			Dir sz = OS / dist, sx, sy;
 			sz.getOrthogonalBasis(sx, sy);
 			real sin_theta_max = s->rad / dist;
 			if (sin_theta_max > 1)
-				continue;	// unwanted sample
+				continue;    // unwanted sample
 			real cos_theta_max = sqrtf(max2(0.f, 1 - sin_theta_max * sin_theta_max));
 			auto sub_samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
 			Ray r_sub(r_in.org + nl * EPS, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
@@ -85,7 +85,7 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 				continue;
 			}
 			if (isect_sub.hit != ls || nl % r_sub.dir <= 0)
-				continue;	// a shadow ray
+				continue;    // a shadow ray
 			L_in += ls->mtr->emi * ((nl % r_sub.dir) * 2 * (1 - cos_theta_max));
 			// notice: uniform sampling, so divided by Pi already
 		}

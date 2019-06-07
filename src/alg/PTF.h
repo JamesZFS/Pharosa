@@ -11,7 +11,7 @@
 class PTF : public PathTracing
 {
 public:
-	PTF(Scene &scene_, size_t max_depth_ = 5);
+	PTF(const Scene &scene_, Camera &camera_, size_t max_depth_ = 5);
 
 	Color radiance(const Ray &ray) const override;
 

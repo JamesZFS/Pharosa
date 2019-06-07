@@ -7,7 +7,6 @@
 #include "camera/All.h"
 #include "alg/All.h"
 #include "utils/funcs.hpp"
-#include <fstream>
 #include <omp.h>
 
 Renderer::Renderer() : scene(nullptr), camera(nullptr), algorithm(nullptr)
@@ -41,7 +40,7 @@ void Renderer::getReady()
 {
 	if (prev_path.length() > 0) {    // load from checkpoint
 		camera->readPPM(prev_path);
-		printf("\033[32mloaded previous status from \"%s\", previous render count = %ld\n\033[0m",
+		printf("\033[32mloaded previous status from \"%s\", previous draw count = %ld\n\033[0m",
 			   prev_path.data(), camera->renderCount());
 	}
 }
@@ -58,7 +57,7 @@ void Renderer::checkIfReady()
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());
 	printf("algorithm info: %s", algorithm->info().data());
-	printf("\n\033[1;34m---------------------- ready to render -------------------------\n\n\033[0m");
+	printf("\n\033[1;34m---------------------- ready to draw -------------------------\n\n\033[0m");
 }
 
 void Renderer::renderFrame()
@@ -114,61 +113,49 @@ void Renderer::save() const
 	printf("\033[32mimage written to \"%s\" \n\033[0m", save_path.data());
 }
 
-void Renderer::saveProgress(size_t cur_epoch) const
+void Renderer::maybeSaveProgress(size_t cur_epoch) const
 {
 	if (save_step == 0 || cur_epoch % save_step > 0) return;
 	camera->writePPM(save_path);
-	printf("\033[32m\t progress saved to \"%s\"\n\033[0m", save_path.data());
+	printf("\033[32m  progress saved to \"%s\"\n\033[0m", save_path.data());
 }
 
 // !!
 void Renderer::render()
 {
 	// without progressbar, faster version
-	double since = omp_get_wtime();
-
-	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
-		auto eta = lround((omp_get_wtime() - since) * (n_epoch - epoch) / epoch);
-		barInfo("\r=== epoch %ld / %ld ===  eta: %ld min %ld sec", epoch + 1, n_epoch, eta / 60, eta % 60);
-
-#if OMP_ON
-#pragma omp parallel for schedule(dynamic, 1)
-#endif
-		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel
-			for (size_t i = 0; i < camera->width; ++i) {
-				camera->render(i, j, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
-			}
-		}
-		camera->step();
-		saveProgress(epoch + 1);
-	}
-	printf("\n");
+	auto since = omp_get_wtime();
+	algorithm->start(
+			n_epoch,
+			[this, since](size_t cur_epoch) {
+				auto eta = lround((omp_get_wtime() - since) * (n_epoch - cur_epoch) / cur_epoch);
+				barInfo("\r=== epoch %ld / %ld ===  eta: %ld min %ld sec", cur_epoch + 1, n_epoch, eta / 60, eta % 60)
+			},
+			[](size_t) {},
+			[this](size_t cur_epoch) { maybeSaveProgress(cur_epoch); }
+	);
 }
 
 // !!
 void Renderer::renderVerbose()
 {
 	// with progressbar
-	double since = omp_get_wtime();
-
-	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {    // for samples
-		auto eta = lround((omp_get_wtime() - since) * (n_epoch - epoch) / epoch);
-		barInfo("=== epoch %ld / %ld ===  eta: %ld min %ld sec\n", epoch + 1, n_epoch, eta / 60, eta % 60);
-
-#if OMP_ON
-#pragma omp parallel for schedule(dynamic, 1)
-#endif
-
-		for (size_t j = 0; j < camera->height; ++j) {                // for each pixel todo
-			if (j % verbose_step == 0) {
-				barInfo("\r %.1f %%", j * 100.0 / camera->height);    // progressbar :)
+	auto since = omp_get_wtime();
+	algorithm->start(
+			n_epoch,
+			// callbeck before eppch
+			[this, since](size_t cur_epoch) {
+				auto eta = lround((omp_get_wtime() - since) * (n_epoch - cur_epoch) / cur_epoch);
+				barInfo("=== epoch %ld / %ld ===  eta: %ld min %ld sec\n", cur_epoch + 1, n_epoch, eta / 60, eta % 60)
+			},
+			// callback inside epoch
+			[this](size_t cur_j) {
+				if (cur_j % verbose_step == 0) barInfo("\r %.1f %%", 1.f * cur_j / camera->height * 100)
+			},
+			// callback after epoch
+			[this](size_t cur_epoch) {
+				barInfo("\n");
+				maybeSaveProgress(cur_epoch);
 			}
-			for (size_t i = 0; i < camera->width; ++i) {
-				camera->render(i, j, algorithm->radiance(camera->shootRayAt(i, j, 0.5)));    // rand normal AA
-			}
-		}
-		camera->step();
-		saveProgress(epoch + 1);
-		barInfo("\n");
-	}
+	);
 }

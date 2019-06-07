@@ -1,9 +1,10 @@
 {
-	"save_path": "out/dof/dragon 7-6 () test finite.ppm",
+	"save_path": "out/dof/6-7 test refactor.ppm",
 	"n_epoch": 10,
-	"save_step": 10,
+	"save_step": 5,
+	"verbose_step": 1,
 	"algorithm": {
-		"type": "pt",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 6
 	},

@@ -42,7 +42,7 @@ public:
 	inline size_t renderCount() const;
 
 	// setter:
-	inline void render(size_t i, size_t j, const Color &color);
+	inline void draw(size_t i, size_t j, const Color &color);
 
 	inline void rotate(const ElAg &euler_angles);	// rotate inc
 

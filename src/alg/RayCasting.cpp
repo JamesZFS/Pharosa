@@ -6,8 +6,8 @@
 #include "../scene/Scene.h"
 #include "../utils/funcs.hpp"
 
-RayCasting::RayCasting(Scene &scene_, const Dir &light_dir_) :
-	Algorithm(scene_), light_dir(light_dir_)
+RayCasting::RayCasting(const Scene &scene_, Camera &camera_, const Dir &light_dir_) :
+		Algorithm(scene_, camera_), light_dir(light_dir_)
 {
 }
 

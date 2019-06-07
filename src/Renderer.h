@@ -7,8 +7,6 @@
 
 #include "Pharosa.h"
 
-#define OMP_ON 1
-
 class Scene;
 
 class Camera;
@@ -39,7 +37,7 @@ private:
 	// render one time frame
 	void renderFrame();
 
-	void saveProgress(size_t cur_epoch) const;    // save progress without checking
+	void maybeSaveProgress(size_t cur_epoch) const;    // save progress without checking
 
 	// ** rendering pipeline **
 	// do the rendering for n_epoch times, callback each epoch

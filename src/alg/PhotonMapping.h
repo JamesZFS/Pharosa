@@ -10,10 +10,13 @@
 
 class PhotonMapping : public Algorithm
 {
-private:
+protected:
+	const size_t n_iteration;
+	const size_t n_photon_per_iter;
+	const size_t max_depth;
 
 public:
-	PhotonMapping(const Scene &scene_);
+	PhotonMapping(const Scene &scene_, Camera &camera_, size_t n_iteration_, size_t n_photon_per_iter_, size_t max_depth_);
 
 	~PhotonMapping() override;
 

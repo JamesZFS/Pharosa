@@ -18,7 +18,7 @@ protected:
 	Color _radiance(const Ray &ray, size_t depth) const;
 
 public:
-	PathTracing(Scene &scene_, size_t max_depth_ = 5);	// by default - depth = 5
+	PathTracing(const Scene &scene_, Camera &camera_, size_t max_depth_ = 5);	// by default - depth = 5
 
 	Color radiance(const Ray &ray) const override
 	{ return _radiance(ray, 0); }

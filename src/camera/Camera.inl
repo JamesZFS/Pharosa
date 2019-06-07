@@ -1,5 +1,5 @@
 
-void Camera::render(size_t i, size_t j, const Color &color)
+void Camera::draw(size_t i, size_t j, const Color &color)
 {
 	img.at(i, j) += color;
 }

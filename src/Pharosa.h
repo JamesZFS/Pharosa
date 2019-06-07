@@ -79,7 +79,7 @@ extern size_t __max_depth__;
 
 #define warn(x) std::cerr << x << std::endl         // show error
 #define message(x) std::cout << x << std::endl        // show message
-#define barInfo(...) fprintf(stderr, __VA_ARGS__); fflush(stderr)    // show progressbar info
+#define barInfo(...) { fprintf(stderr, __VA_ARGS__); fflush(stderr); }   // show progressbar info
 #define TERMINATE(...) { fprintf(stderr, __VA_ARGS__); exit(1); }    // exit with error info
 
 #endif //PHAROSA_PHAROSA_H

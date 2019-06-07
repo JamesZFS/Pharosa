@@ -60,7 +60,7 @@ void Renderer::setup(const Json &json)
 	scene = Scene::acquire(json.at("scene"));
 
 	// algorithm
-	algorithm = Algorithm::acquire(json.at("algorithm"), *scene);
+	algorithm = Algorithm::acquire(json.at("algorithm"), *scene, *camera);
 
 	// load checkpoint
 	getReady();
@@ -110,40 +110,40 @@ DOFCamera::DOFCamera(const Json &json) :
 }
 
 // algorithm
-Algorithm *Algorithm::acquire(const Json &json, Scene &scene)
+Algorithm *Algorithm::acquire(const Json &json, const Scene &scene, Camera &camera)
 {
 	String type = json.at("type");
 	Parsing::lowerStr_(type);
 	if (type == "ray casting" || type == "rc") {
 		try {
-			return new RayCasting(scene, Dir(json.at("light_dir")));
+			return new RayCasting(scene, camera, Dir(json.at("light_dir")));
 		}
 		catch (Json::out_of_range &) {
-			return new RayCasting(scene);    // use default
+			return new RayCasting(scene, camera);    // use default
 		}
 	}
 	else if (type == "path tracing" || type == "pt") {
 		try {
-			return new PathTracing(scene, (size_t) json.at("max_depth"));
+			return new PathTracing(scene, camera, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new PathTracing(scene);    // use default
+			return new PathTracing(scene, camera);    // use default
 		}
 	}
 	else if (type == "path tracing explicit" || type == "pte") {
 		try {
-			return new PTE(scene, (size_t) json.at("max_depth"));
+			return new PTE(scene, camera, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new PTE(scene);    // use default
+			return new PTE(scene, camera);    // use default
 		}
 	}
 	else if (type == "path tracing forward" || type == "ptf") {
 		try {
-			return new PTF(scene, (size_t) json.at("max_depth"));
+			return new PTF(scene, camera, (size_t) json.at("max_depth"));
 		}
 		catch (Json::out_of_range &) {
-			return new PTF(scene);    // use default
+			return new PTF(scene, camera);    // use default
 		}
 	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
