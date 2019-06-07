@@ -13,7 +13,7 @@ class PTE : public PathTracing
 {
 private:
 	Color _radiance(const Ray &ray, size_t depth, bool flag = true) const;    // ** main algorithm **
-	// flag - whether to consider self emission term in current layer
+	// flag - whether to consider self emission term in current depth
 
 public:
 	PTE(Scene &scene_, size_t max_depth_ = 5);

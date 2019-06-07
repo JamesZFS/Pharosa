@@ -26,9 +26,9 @@ const Color
 // common Emission
 const Emission
 		Emission::NONE(0, 0, 0),
-		Emission::GLOW(0.5, 0.5, 0.5),
-		Emission::BRIGHT(1.0, 1.0, 1.0),
-		Emission::SPLENDID(5.0, 5.0, 5.0);
+		Emission::GLOW(3.0, 3.0, 3.0),
+		Emission::BRIGHT(8.0, 8.0, 8.0),
+		Emission::SPLENDID(15.0, 15.0, 15.0);
 
 Pos &Pos::rotate(const ElAg &ea)
 {

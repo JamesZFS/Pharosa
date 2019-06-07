@@ -26,22 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="[hotfix]">
-      <change afterPath="$PROJECT_DIR$/src/alg/PTF.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/alg/PTF.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/example/three.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/example/three.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/All.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/All.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/PTE.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PTE.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/PTE.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PTE.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Ray.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Ray.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alg/PTF.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PTF.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Vec.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Vec.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Vec.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Vec.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -85,8 +74,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="525">
-                    <caret line="69" selection-start-line="69" selection-end-line="70" />
+                  <state relative-caret-position="314">
+                    <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
                     <folding>
                       <element signature="e#40#56#0" expanded="true" />
                     </folding>
@@ -239,12 +228,12 @@
           <entry key="cmake" value="1" />
           <entry key="cmath" value="1" />
           <entry key="cp" value="1" />
-          <entry key="cpp" value="1126" />
+          <entry key="cpp" value="1129" />
           <entry key="cstdio" value="1" />
           <entry key="d" value="5" />
           <entry key="fstream" value="2" />
           <entry key="gitignore" value="10" />
-          <entry key="h" value="1273" />
+          <entry key="h" value="1274" />
           <entry key="hpp" value="170" />
           <entry key="inl" value="32" />
           <entry key="iostream" value="1" />
@@ -267,7 +256,7 @@
           <entry key="Image" value="193" />
           <entry key="JSON" value="106" />
           <entry key="Makefile" value="27" />
-          <entry key="ObjectiveC" value="2706" />
+          <entry key="ObjectiveC" value="2710" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Python" value="38" />
           <entry key="Scratch" value="5" />
@@ -277,14 +266,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="332" />
-          <entry key="cpp" value="91903" />
+          <entry key="cpp" value="92062" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
-          <entry key="h" value="34040" />
+          <entry key="h" value="34046" />
           <entry key="hpp" value="5683" />
           <entry key="inl" value="1277" />
           <entry key="istream" value="1" />
-          <entry key="json" value="9841" />
+          <entry key="json" value="9870" />
           <entry key="mm" value="604" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -297,10 +286,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
-          <entry key="Doxygen file" value="38" />
-          <entry key="JSON" value="9809" />
+          <entry key="Doxygen file" value="39" />
+          <entry key="JSON" value="9838" />
           <entry key="Makefile" value="332" />
-          <entry key="ObjectiveC" value="136420" />
+          <entry key="ObjectiveC" value="136584" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="537" />
@@ -316,8 +305,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -331,11 +320,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="168">
+              <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
                 <element signature="e#1816#2339#0" />
@@ -345,40 +334,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/example/three.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Vec.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="247">
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/alg/PTE.cpp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/example/three.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
-              <folding>
-                <element signature="e#40#56#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -437,16 +405,15 @@
       <find>remove</find>
       <find>ray</find>
       <find>r_out</find>
-      <find>r_in</find>
-      <find>color</find>
       <find>P</find>
       <find>TP</find>
       <find>max_depth</find>
       <find>depth =</find>
       <find>whi</find>
+      <find>color</find>
+      <find>r_in</find>
     </findStrings>
     <replaceStrings>
-      <replace>.cpt</replace>
       <replace>PHAROSA_KDNODE_H</replace>
       <replace>ym</replace>
       <replace>.y</replace>
@@ -476,6 +443,7 @@
       <replace>fabsf</replace>
       <replace>_radiance(</replace>
       <replace>xi[1]</replace>
+      <replace>r</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/core</dir>
@@ -539,17 +507,17 @@
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/forward.cpp" />
         <option value="$PROJECT_DIR$/src/alg/All.h" />
-        <option value="$PROJECT_DIR$/src/alg/PTE.h" />
         <option value="$PROJECT_DIR$/src/parsing.cpp" />
         <option value="$PROJECT_DIR$/src/alg/PTF.h" />
         <option value="$PROJECT_DIR$/src/core/Vec.h" />
         <option value="$PROJECT_DIR$/src/core/Ray.hpp" />
         <option value="$PROJECT_DIR$/src/alg/PathTracing.h" />
-        <option value="$PROJECT_DIR$/src/alg/PTF.cpp" />
-        <option value="$PROJECT_DIR$/src/core/Vec.cpp" />
         <option value="$PROJECT_DIR$/src/alg/PathTracing.cpp" />
-        <option value="$PROJECT_DIR$/config/example/three.json" />
+        <option value="$PROJECT_DIR$/src/alg/PTE.h" />
         <option value="$PROJECT_DIR$/src/alg/PTE.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/PTF.cpp" />
+        <option value="$PROJECT_DIR$/config/example/three.json" />
+        <option value="$PROJECT_DIR$/src/core/Vec.cpp" />
       </list>
     </option>
   </component>
@@ -1198,7 +1166,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="594989000" />
+    <option name="totallyTimeSpent" value="596492000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1553,24 +1521,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/explicit.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="211" column="46" selection-start-line="211" selection-start-column="46" selection-end-line="211" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/All.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PTE.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1656,20 +1610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Vec.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/funcs.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -1679,45 +1619,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/example/three.json">
+    <entry file="file://$PROJECT_DIR$/src/alg/PTE.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding>
-            <element signature="e#40#64#0" expanded="true" />
-            <element signature="e#1816#2339#0" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="69" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="69" selection-start-line="69" selection-end-line="70" />
+        <state relative-caret-position="314">
+          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
           <folding>
             <element signature="e#40#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/explicit.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="201" column="12" lean-forward="true" selection-start-line="201" selection-start-column="12" selection-end-line="201" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/PTE.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+        <state relative-caret-position="363">
+          <caret line="117" column="9" lean-forward="true" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
           <folding>
             <element signature="e#40#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/example/three.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Vec.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+          <folding>
+            <element signature="e#40#64#0" expanded="true" />
+            <element signature="e#1816#2339#0" />
           </folding>
         </state>
       </provider>

@@ -59,7 +59,7 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 		Ray r_out(r_in.org + nl * EPS, ex * samp.x + ey * samp.y + ez * samp.z);
 		L_in += _radiance(r_out, depth + 1, false);
 
-		/** todo specially sample light sources:
+		/** specially sample light sources:
 		 * for all sphere light sources
 		 * sphere-cap-ly sample a ray from current intersection
 		 * make sure the ray doesn't hit another object, even if that is a light source too.
