@@ -22,8 +22,7 @@ protected:
 	const Scene &scene;
 	Camera &camera;
 
-	/** specially sample all **sphere** light sources:
-	 * for all sphere light sources
+	/** specially sample one **sphere** light source:
 	 * sphere-cap-ly sample a ray from current intersection
 	 * make sure the ray doesn't hit another object, even if that is a light source too.
 	 * take the hit light source's emission into I_in

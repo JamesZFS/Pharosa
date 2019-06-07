@@ -6,7 +6,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="19" />
     <bookmark url="file://$PROJECT_DIR$/src/alg/PathTracing.cpp" line="39" />
     <bookmark url="file://$PROJECT_DIR$/src/geometric/Sphere.h" line="37" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="41" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="62" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -27,20 +27,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="[hotfix]">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test dof.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test dof.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/example/three.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/example/three.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/Algorithm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/Algorithm.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/Algorithm.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/Algorithm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PTE.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PTE.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PTF.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PTF.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/PathTracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PathTracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alg/RayCasting.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/RayCasting.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/Geometry.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Geometry.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometric/PolyRev.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/PolyRev.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Intersection.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Intersection.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Intersection.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Intersection.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -204,18 +194,18 @@
           <entry key="cmake" value="1" />
           <entry key="cmath" value="1" />
           <entry key="cp" value="1" />
-          <entry key="cpp" value="1173" />
+          <entry key="cpp" value="1178" />
           <entry key="cstdio" value="1" />
           <entry key="d" value="5" />
           <entry key="fstream" value="2" />
           <entry key="gitignore" value="10" />
-          <entry key="h" value="1309" />
+          <entry key="h" value="1316" />
           <entry key="hpp" value="174" />
           <entry key="inl" value="34" />
           <entry key="iostream" value="1" />
           <entry key="istream" value="5" />
           <entry key="josn" value="1" />
-          <entry key="json" value="114" />
+          <entry key="json" value="117" />
           <entry key="obj" value="7" />
           <entry key="ppm" value="193" />
           <entry key="py" value="43" />
@@ -230,9 +220,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="66" />
           <entry key="Image" value="193" />
-          <entry key="JSON" value="112" />
+          <entry key="JSON" value="115" />
           <entry key="Makefile" value="27" />
-          <entry key="ObjectiveC" value="2795" />
+          <entry key="ObjectiveC" value="2807" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Python" value="38" />
           <entry key="Scratch" value="5" />
@@ -242,14 +232,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="332" />
-          <entry key="cpp" value="94778" />
+          <entry key="cpp" value="95888" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
-          <entry key="h" value="35059" />
+          <entry key="h" value="35092" />
           <entry key="hpp" value="5822" />
           <entry key="inl" value="1277" />
           <entry key="istream" value="1" />
-          <entry key="json" value="9976" />
+          <entry key="json" value="10009" />
           <entry key="mm" value="604" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
@@ -263,10 +253,10 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="1848" />
-          <entry key="Doxygen file" value="53" />
-          <entry key="JSON" value="9944" />
+          <entry key="Doxygen file" value="54" />
+          <entry key="JSON" value="9977" />
           <entry key="Makefile" value="332" />
-          <entry key="ObjectiveC" value="140438" />
+          <entry key="ObjectiveC" value="141580" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="537" />
@@ -281,55 +271,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
+        <entry file="file://$PROJECT_DIR$/src/alg/PhotonMapping.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="137" selection-start-line="137" selection-end-line="137" />
-              <folding>
-                <element signature="e#40#61#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
+        <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="340">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
               <folding>
-                <element signature="e#40#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/Intersection.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-              <folding>
-                <element signature="e#40#65#0" expanded="true" />
+                <element signature="e#40#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/example/three.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+              <folding>
+                <element signature="e#97#120#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+              <folding>
+                <element signature="e#91#112#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pharosa.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+            <state relative-caret-position="805">
+              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
               </folding>
@@ -338,33 +346,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/Intersection.h">
+        <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="255">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/Scene.h">
+        <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="47" column="68" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="85" />
+            <state relative-caret-position="256">
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
               <folding>
-                <element signature="e#89#112#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-              <folding>
-                <element signature="e#40#62#0" expanded="true" />
+                <element signature="e#40#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -383,7 +379,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>xi.y</find>
       <find>_radiance</find>
       <find>radiance</find>
       <find>L1</find>
@@ -413,6 +408,7 @@
       <find>nl</find>
       <find>hit</find>
       <find>isect</find>
+      <find>cos_theta_max</find>
     </findStrings>
     <replaceStrings>
       <replace>PHAROSA_KDNODE_H</replace>
@@ -468,7 +464,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/example/two.json" />
         <option value="$PROJECT_DIR$/src/scene/Object.h" />
         <option value="$PROJECT_DIR$/src/scene/Object.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
@@ -507,18 +502,19 @@
         <option value="$PROJECT_DIR$/src/scene/Material.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Material.h" />
         <option value="$PROJECT_DIR$/src/scene/Material.hpp" />
-        <option value="$PROJECT_DIR$/config/example/three.json" />
         <option value="$PROJECT_DIR$/src/Renderer.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Intersection.h" />
-        <option value="$PROJECT_DIR$/src/alg/Algorithm.h" />
-        <option value="$PROJECT_DIR$/src/alg/Algorithm.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Intersection.cpp" />
         <option value="$PROJECT_DIR$/src/alg/PTF.cpp" />
-        <option value="$PROJECT_DIR$/config/test dof.json" />
         <option value="$PROJECT_DIR$/src/parsing.cpp" />
         <option value="$PROJECT_DIR$/src/alg/PathTracing.cpp" />
         <option value="$PROJECT_DIR$/src/scene/Scene.h" />
         <option value="$PROJECT_DIR$/src/scene/Scene.cpp" />
+        <option value="$PROJECT_DIR$/config/test dof.json" />
+        <option value="$PROJECT_DIR$/src/constants.h" />
+        <option value="$PROJECT_DIR$/src/alg/Algorithm.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/Algorithm.h" />
+        <option value="$PROJECT_DIR$/config/example/three.json" />
       </list>
     </option>
   </component>
@@ -982,7 +978,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Pharosa">
-    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/test dof.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
+    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/example/three.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1184,7 +1180,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="610386000" />
+    <option name="totallyTimeSpent" value="613551000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1197,7 +1193,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.24749643" />
       <window_info id="Structure" order="1" sideWeight="0.46632123" side_tool="true" weight="0.22818312" />
@@ -1207,7 +1202,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49928468" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49928468" weight="0.3385542" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49928468" visible="true" weight="0.3385542" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.28433734" />
@@ -1225,33 +1220,6 @@
       <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" sideWeight="0.50159234" side_tool="true" weight="0.32904148" />
       <window_info anchor="right" id="PlantUML" order="6" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5344828" visible="true" weight="0.24749643" />
-      <window_info id="Structure" order="1" sideWeight="0.46632123" side_tool="true" weight="0.22818312" />
-      <window_info id="Favorites" order="2" sideWeight="0.50401604" side_tool="true" weight="0.13876967" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32771084" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49928468" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49928468" weight="0.3385542" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.32891566" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.36626506" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50143063" side_tool="true" weight="0.30240965" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32771084" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.35180724" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.33975902" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32891566" />
-      <window_info anchor="bottom" id="Statistic" order="14" weight="0.45903614" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" sideWeight="0.49840763" weight="0.3297568" />
-      <window_info anchor="right" id="make" order="4" weight="0.32904148" />
-      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" sideWeight="0.50159234" side_tool="true" weight="0.32904148" />
-      <window_info anchor="right" id="PlantUML" order="6" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1316,21 +1284,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scene/KDNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/InfPlane.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/StochasticProgressivePhotonMapping.cpp" />
     <entry file="file://$PROJECT_DIR$/src/alg/StochasticProgressivePhotonMapping.h" />
     <entry file="file:///anaconda3/lib/python3.6/site-packages/zmq/ssh/forward.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1496,34 +1449,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/example/three.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="17" lean-forward="true" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Image.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pharosa.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
-          <folding>
-            <element signature="e#120#136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PhotonMapping.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1551,37 +1480,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-          <folding>
-            <element signature="e#97#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding>
-            <element signature="e#40#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1597,16 +1499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-          <folding>
-            <element signature="e#40#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -1617,13 +1509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/test dof.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1631,33 +1516,6 @@
           <folding>
             <element signature="e#76#96#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="e#40#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-          <folding>
-            <element signature="e#40#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1677,21 +1535,137 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Scene.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="47" column="68" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="85" />
+        <state relative-caret-position="578">
+          <caret line="46" column="7" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
           <folding>
             <element signature="e#89#112#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding>
+            <element signature="e#40#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PathTracing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="e#40#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test dof.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PhotonMapping.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pharosa.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin18/8.3.0/include-fixed/math.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="709" column="58" lean-forward="true" selection-start-line="709" selection-start-column="8" selection-end-line="709" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        <state relative-caret-position="805">
+          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="e#40#58#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+          <folding>
+            <element signature="e#91#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+          <folding>
+            <element signature="e#97#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="e#40#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/example/three.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
         </state>
       </provider>
     </entry>
