@@ -6,7 +6,15 @@
 
 namespace Sampling
 {
-	Vec3f uniformOnHemisphere(const Vec2f &xi)
+	Vec3f uniformOnSphere(const Vec2f &xi)
+	{
+		auto cos_theta = 1 - 2 * xi[0];  // [-1, 1]
+		auto sin_theta = sqrtf(max2(0.f, 1 - cos_theta * cos_theta));
+		auto phi = 2 * M_PIF * xi[1];
+		return {sin_theta * cosf(phi), sin_theta * sinf(phi), cos_theta};
+	}
+
+	Vec3f uniformOnHemiSphere(const Vec2f &xi)
 	{
 		auto sin_theta = sqrtf(max2(0.f, 1 - xi[0] * xi[0]));
 		auto phi = 2 * M_PIF * xi[1];

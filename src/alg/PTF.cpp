@@ -4,9 +4,6 @@
 
 #include "PTF.h"
 #include "../scene/Scene.h"
-#include "../utils/sampling.h"
-#include "../geometric/Sphere.h"
-#include "../geometric/InfPlane.h"
 
 using Funcs::randf;
 
@@ -22,7 +19,7 @@ String PTF::info() const
 	return buffer;
 }
 
-// forward version of Path Tracing Explicit, without branching or recursion
+// forward version of Path Tracing Explicit, without branching or recursion, still bias free
 Color PTF::radiance(const Ray &ray) const
 {
 	size_t depth;
@@ -56,9 +53,10 @@ Color PTF::radiance(const Ray &ray) const
 		// sample one new ray
 		auto scatter_type = isect.scatter(r, r_out, w_out);
 
+		// account for direct light radiance Ld
 		if (scatter_type == Intersection::DIFFUSE) {
 			flag = false;
-//			L += beta.mul(LdLowerVar(isect));  // slower version, lower variance
+//			L += beta.mul(LdSlower(isect));  // slower version, lower variance
 			L += beta.mul(LdFaster(isect));  // faster version, higher variance
 		}
 		else

@@ -39,7 +39,7 @@ public:
 
 	inline const Dir &orientation() const;    // ez
 
-	inline size_t renderCount() const;
+	inline size_t drawCount() const;
 
 	// setter:
 	inline void draw(size_t i, size_t j, const Color &color);

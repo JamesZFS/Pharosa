@@ -19,6 +19,8 @@
 #include "utils/parsers/json_fwd.hpp"    // forward definition
 #include "constants.h"
 
+#define NOT_USED(x) ((void)(x))
+
 using std::printf;
 
 using Json = nlohmann::json;
@@ -67,8 +69,10 @@ inline T max3(const T &a, const T &b, const T &c)
 // global params for debugging
 extern size_t __counter__;
 extern real __debug__;
+extern size_t __match_cnt__;
 extern size_t __print_cnt__;
-extern size_t __max_depth__;
+extern size_t __kdnode_max_depth__;
+extern size_t __kdgrid_max_depth__;
 
 #else	// when release
 #undef assert

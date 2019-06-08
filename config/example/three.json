@@ -1,6 +1,7 @@
 {
-	"save_path": "out/three/test refactored ptf 50 direct sample++++.ppm",
-	"n_epoch": 50,
+	"save_path": "out/three/test refactored ptf 200 direct sample++++.ppm",
+	"prev_path": "out/three/test refactored ptf 100 direct sample++++.ppm",
+	"n_epoch": 100,
 	"save_step": 10,
 
 	"algorithm": {

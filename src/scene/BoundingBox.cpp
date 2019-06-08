@@ -25,6 +25,19 @@ BoundingBox::BoundingBox(const ObjectList &finite_objs) : BoundingBox()
 	}
 }
 
+BoundingBox::BoundingBox(VPPtrList::iterator begin, VPPtrList::iterator end)
+{
+	for (auto it = begin; it != end; ++it) {
+		auto vp = *it;
+		xmin = min2(xmin, vp->pos.x);
+		xmax = max2(xmax, vp->pos.x);
+		ymin = min2(ymin, vp->pos.y);
+		ymax = max2(ymax, vp->pos.y);
+		zmin = min2(zmin, vp->pos.z);
+		zmax = max2(zmax, vp->pos.z);
+	}
+}
+
 // !!
 bool BoundingBox::intersect(const Ray &ray) const
 {
@@ -63,4 +76,24 @@ void BoundingBox::report() const
 	debug("ymin, ymax = %.2f, %.2f\n", ymin, ymax);
 	debug("zmin, zmax = %.2f, %.2f\n", zmin, zmax);
 	debug("\n");
+}
+
+bool BoundingBox::outsideSphere(const Pos &pos, real r) const
+{
+	if (xmin <= pos.x && pos.x <= xmax &&
+		ymin <= pos.y && pos.y <= ymax &&
+		zmin <= pos.z && pos.z <= zmax)
+		return false;
+	real dx = min2(fabsf(pos.x - xmin), fabsf(pos.x - xmax));
+	real dy = min2(fabsf(pos.y - ymin), fabsf(pos.y - ymax));
+	real dz = min2(fabsf(pos.z - zmin), fabsf(pos.z - zmax));
+	return dx * dx + dy * dy + dz * dz > r * r;
+}
+
+bool BoundingBox::insideSphere(const Pos &pos, real r) const
+{
+	real dx = max2(fabsf(pos.x - xmin), fabsf(pos.x - xmax));
+	real dy = max2(fabsf(pos.y - ymin), fabsf(pos.y - ymax));
+	real dz = max2(fabsf(pos.z - zmin), fabsf(pos.z - zmax));
+	return dx * dx + dy * dy + dz * dz <= r * r;
 }

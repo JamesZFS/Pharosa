@@ -11,6 +11,8 @@
 
 #include <functional>
 
+#define OMP_ON 0
+
 class Scene;
 class Camera;
 class Intersection;
@@ -28,7 +30,7 @@ protected:
 	 * make sure the ray doesn't hit another object, even if that is a light source too.
 	 * take the hit light source's emission into I_in
 	 */
-	Color LdLowerVar(const Intersection &isect) const;
+	Color LdSlower(const Intersection &isect) const;
 
 	// sample uniformly according to light number
 	Color LdFaster(const Intersection &isect) const;
@@ -45,7 +47,8 @@ public:
 
 	virtual String info() const = 0;
 
-	virtual Color radiance(const Ray &ray) const = 0;    // main
+	virtual Color radiance(const Ray &ray) const     // main
+	{ TERMINATE("Algorithm::radiance() method not implemented!\n") }
 
 	static Algorithm *acquire(const Json &json, const Scene &scene, Camera &camera);
 };

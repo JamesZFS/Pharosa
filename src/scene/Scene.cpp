@@ -66,7 +66,7 @@ void Scene::prepare()
 	}
 	delete kd_root;
 	kd_root = new KDNode(meshes);
-	message("KD-Tree built. max depth = " << __max_depth__);
+	message("KD-Tree built. max depth = " << __kdnode_max_depth__);
 	debug("  match counter   = %ld\n", __counter__);
 	__counter__ = 0;
 

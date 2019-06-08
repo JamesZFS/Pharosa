@@ -52,6 +52,12 @@ struct Sphere : Geometry, Finite
 	Pos center() const override
 	{ return c; }
 
+	real area() const
+	{ return 4 * M_PIF * rad_2; }
+
+	real volume() const
+	{ return 4.f / 3.f * M_PIF * rad_2 * rad; }
+
 	static Sphere *acquire(const Json &json);
 };
 

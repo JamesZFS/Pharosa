@@ -146,6 +146,14 @@ Algorithm *Algorithm::acquire(const Json &json, const Scene &scene, Camera &came
 			return new PTF(scene, camera);    // use default
 		}
 	}
+	else if (type == "Stochastic Progressive Photon Mapping" || type == "sppm") {
+		try {
+			return new SPPM(scene, camera, (size_t) json.at("n_photon_per_iter"), (size_t) json.at("max_depth"));
+		}
+		catch (Json::out_of_range &) {
+			return new SPPM(scene, camera);    // use default
+		}
+	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
 }
 

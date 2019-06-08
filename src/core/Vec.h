@@ -163,6 +163,14 @@ struct Pos : Vec<real>    // 3D coordinate
 
 	Pos(const Json &json);
 
+	inline Pos &operator=(const Vec<real> vecf)
+	{
+		x = vecf.x;
+		y = vecf.y;
+		z = vecf.z;
+		return *this;
+	}
+
 	inline Pos operator-() const
 	{ return {-x, -y, -z}; }
 
@@ -285,6 +293,9 @@ struct RGB : Vec<real>        // RGB Vector
 		return *this;
 	}
 
+	inline bool isBlack()
+	{ return r < EPS && g < EPS && b < EPS; }
+
 	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW, BROWN;
 	static const RGB NONE, GLOW, BRIGHT, SPLENDID;
 };
@@ -294,9 +305,11 @@ struct Vec2f
 {
 	real x, y;
 
-	Vec2f() : x(0), y(0) {}
+	Vec2f() : x(0), y(0)
+	{}
 
-	Vec2f(real x_, real y_) : x(x_), y (y_) {}
+	Vec2f(real x_, real y_) : x(x_), y(y_)
+	{}
 
 	inline real operator[](size_t i) const
 	{
@@ -307,6 +320,6 @@ struct Vec2f
 
 typedef RGB Color;            // intrinsic color of an object
 typedef RGB Emission;        // RGB emission of an object
-using Vec3f = Vec<double>;
+using Vec3f = Vec<real>;
 
 #endif //PHAROSA_VEC_H

@@ -10,6 +10,6 @@
 #include "PathTracing.h"
 #include "PTE.h"
 #include "PTF.h"
-#include "PhotonMapping.h"
+#include "SPPM.h"
 
 #endif //PHAROSA_ALG_ALL_H

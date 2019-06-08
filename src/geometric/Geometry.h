@@ -47,6 +47,10 @@ struct Geometry
 	virtual void getUV(const Pos &pos, real &u, real &v) const
 	{}
 
+//	virtual real getRadius() const = 0; todo
+
+//	virtual Pos getCenter() const = 0; todo
+
 	static Geometry *acquire(const Json &json);    // new a geometry from json
 
 	/// todo max min xyz in another class

@@ -1,12 +1,11 @@
 {
-	"save_path": "out/dragon/dragon 4-30.ppm",
-	"n_epoch": 200,
-	"prev_path": "out/dragon/dragon 4-30.ppm",
+	"save_path": "out/dragon/dragon 6-8.ppm",
+	"n_epoch": 10,
 	"save_step": 10,
-	"verbose_step": 50,
+	"verbose_step": 10,
 
 	"algorithm": {
-		"type": "rt",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

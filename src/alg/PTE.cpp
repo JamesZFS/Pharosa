@@ -80,10 +80,8 @@ Color PTE::_radiance(const Ray &ray, size_t depth, bool flag) const
 			auto sub_samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
 			Ray r_sub(r_in.org + nl * EPS, sx * sub_samp.x + sy * sub_samp.y + sz * sub_samp.z);
 			Intersection isect_sub;
-			if (!scene.intersectAny(r_sub, isect_sub)) {
-				++__counter__;
+			if (!scene.intersectAny(r_sub, isect_sub))
 				continue;
-			}
 			if (isect_sub.hit != ls || nl % r_sub.dir <= 0)
 				continue;    // a shadow ray
 			L_in += ls->mtr->emi * ((nl % r_sub.dir) * 2 * (1 - cos_theta_max));

@@ -13,7 +13,9 @@ using namespace std;
 size_t __counter__ = 0;
 real __debug__ = 0;
 size_t __print_cnt__ = 0;
-size_t __max_depth__ = 0;
+size_t __match_cnt__ = 0;
+size_t __kdnode_max_depth__ = 0;
+size_t __kdgrid_max_depth__ = 0;
 
 #endif
 
@@ -36,8 +38,10 @@ int main(int argc, char *argv[])
 #ifdef __DEV_STAGE__
 	debug("\n -- debug info -- \n");
 	debug("  print_cnt = %ld\n", __print_cnt__);
-	debug("  max_depth = %ld\n", __max_depth__);
+	debug("  kdnode max_depth = %ld\n", __kdnode_max_depth__);
+	debug("  kdgrid max_depth = %ld\n", __kdgrid_max_depth__);
 	debug("  counter   = %ld\n", __counter__);
+	debug("  match cnt = %ld\n", __match_cnt__);
 	debug("  debug     = %f\n", __debug__);
 #endif
 

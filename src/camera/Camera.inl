@@ -37,7 +37,7 @@ void Camera::step()
 	++render_cnt;
 }
 
-size_t Camera::renderCount() const
+size_t Camera::drawCount() const
 {
 	return render_cnt;
 }

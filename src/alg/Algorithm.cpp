@@ -10,15 +10,13 @@
 
 #include <omp.h>
 
-#define OMP_ON 1
-
 using Funcs::randf;
 
 Algorithm::Algorithm(const Scene &scene_, Camera &camera_) : scene(scene_), camera(camera_)
 {
 }
 
-Color Algorithm::LdLowerVar(const Intersection &isect) const
+Color Algorithm::LdSlower(const Intersection &isect) const
 {
 	auto &lights = scene.getLightSources();
 	List<real> omegas, cos_theta_maxes;
@@ -60,10 +58,8 @@ Color Algorithm::LdLowerVar(const Intersection &isect) const
 		return Color::BLACK;    // shadow ray
 	r_out.offset(EPS);
 	Intersection nxt_isect;
-	if (!scene.intersectAny(r_out, nxt_isect, true)) {    // some precision bug
-		++__counter__;
+	if (!scene.intersectAny(r_out, nxt_isect, true))    // a missing sample
 		return Color::BLACK;
-	}
 	if (nxt_isect.hit != lights[i])
 		return Color::BLACK;    // shadow ray
 
@@ -81,7 +77,7 @@ Color Algorithm::LdFaster(const Intersection &isect) const
 	auto light = lights.at((size_t) randf(0, N));
 	if (light->geo->type() != Geometry::SPHERE)
 		return Color::BLACK;    // deal only with sphere
-	auto s = (Sphere *) light->geo;
+	auto s = (Sphere *) light->geo;	// todo support more shapes
 	Pos OS = s->c - isect.pos + isect.nl * EPS;
 	real dist = OS.norm();
 	Dir sz = OS / dist, sx, sy;
@@ -96,10 +92,8 @@ Color Algorithm::LdFaster(const Intersection &isect) const
 		return Color::BLACK;    // shadow ray
 	r_out.offset(EPS);
 	Intersection nxt_isect;
-	if (!scene.intersectAny(r_out, nxt_isect, true)) {    // some precision bug
-		++__counter__;
+	if (!scene.intersectAny(r_out, nxt_isect, true))    // a missing sample
 		return Color::BLACK;
-	}
 	if (nxt_isect.hit != light)
 		return Color::BLACK;    // shadow ray
 

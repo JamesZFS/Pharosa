@@ -41,7 +41,7 @@ void Renderer::getReady()
 	if (prev_path.length() > 0) {    // load from checkpoint
 		camera->readPPM(prev_path);
 		printf("\033[32mloaded previous status from \"%s\", previous draw count = %ld\n\033[0m",
-			   prev_path.data(), camera->renderCount());
+			   prev_path.data(), camera->drawCount());
 	}
 }
 

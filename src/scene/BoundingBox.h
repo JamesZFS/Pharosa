@@ -10,6 +10,7 @@
 
 #include "../Pharosa.h"
 #include "Object.h"
+#include "../alg/VisiblePoint.h"
 
 // Bounding cube parallel to oxy, oyz, ozx
 class BoundingBox
@@ -26,7 +27,13 @@ public:
 
 	BoundingBox(const ObjectList &finite_objs);
 
+	BoundingBox(VPPtrList::iterator begin, VPPtrList::iterator end);
+
 	bool intersect(const Ray &ray) const;
+
+	bool outsideSphere(const Pos &pos, real r) const;
+
+	bool insideSphere(const Pos &pos, real r) const;
 
 	Axis getLongestAxis() const;
 

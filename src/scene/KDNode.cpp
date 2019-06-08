@@ -22,7 +22,7 @@ KDNode::~KDNode()
 {
 	delete box;
 	delete objs;
-	delete l_child;	// delete recursively
+	delete l_child;    // delete recursively
 	delete r_child;
 }
 
@@ -32,7 +32,7 @@ void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 	// check bounding box first:
 	if (objs->empty() || !box->intersect(ray)) return;    // degenerate case
 
-	// leaf case:
+	// leaf case: todo possible accelerate by eliminating obj list
 	if (l_child == nullptr || r_child == nullptr) {
 		// enumerate each tri:
 		for (const Object *obj : *objs) {
@@ -48,12 +48,10 @@ void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 	r_child->intersect(ray, t, isect);
 }
 
-#define MATCH_THRESHOLD 0.5
-
 // !
 void KDNode::build(const ObjectList &finite_objs, size_t depth)
 {
-	__max_depth__ = max2(__max_depth__, depth);
+	__kdnode_max_depth__ = max2(__kdnode_max_depth__, depth);
 	box = new BoundingBox(finite_objs);    // bound all finite_objs
 	objs = new ObjectList(finite_objs);    // copy Finite ptrs
 
@@ -63,9 +61,9 @@ void KDNode::build(const ObjectList &finite_objs, size_t depth)
 	// get center point of all objs:
 	Pos center;
 	for (auto obj: *objs) {
-		auto tr = dynamic_cast<Finite *>(obj->geo);
-		assert(tr != nullptr);
-		center += tr->center();
+		auto shape = dynamic_cast<Finite *>(obj->geo);
+		assert(shape != nullptr);
+		center += shape->center();
 	}
 	center /= objs->size();
 
@@ -87,25 +85,9 @@ void KDNode::build(const ObjectList &finite_objs, size_t depth)
 		}
 	}
 
-	// stop subdividing condition:
-	float n_match = 0;
-	for (auto lo : *l_objs) {
-		for (auto ro : *r_objs) {
-			if (lo == ro) {
-				++n_match;    // found match
-				++__counter__;
-				break;
-			}
-		}
-	}
-
-	if (n_match / l_objs->size() < MATCH_THRESHOLD && n_match / r_objs->size() < MATCH_THRESHOLD) {
-		l_child = new KDNode;
-		l_child->build(*l_objs, depth + 1);
-		r_child = new KDNode;
-		r_child->build(*r_objs, depth + 1);
-	}
-	// else: stop dividing
+	// recursively build
+	l_child = new KDNode;
+	l_child->build(*l_objs, depth + 1);
+	r_child = new KDNode;
+	r_child->build(*r_objs, depth + 1);
 }
-
-#undef MATCH_THRESHOLD

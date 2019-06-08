@@ -9,7 +9,9 @@
 
 namespace Sampling
 {
-	Vec3f uniformOnHemisphere(const Vec2f &xi);
+	Vec3f uniformOnSphere(const Vec2f &xi);
+
+	Vec3f uniformOnHemiSphere(const Vec2f &xi);
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi);
 
