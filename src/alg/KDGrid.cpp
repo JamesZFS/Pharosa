@@ -43,7 +43,7 @@ void KDGrid::build(VPPtrList::iterator begin, VPPtrList::iterator end, size_t de
 	vps = new VPPtrList(begin, end);    // copy Finite ptrs
 
 	// base case:
-	if (vps->size() <= 10) return;
+	if (vps->size() <= 5) return;
 
 	// sort vps to left or right range:
 	auto cur_axis = box->getLongestAxis();
@@ -77,7 +77,7 @@ bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out)
 		assert((l_child == nullptr) == (r_child == nullptr));
 		bool found;
 		std::for_each(vps->begin(), vps->end(), [&](VisiblePoint *vp) {
-			if ((vp->pos - pos).sqr() <= vp->r * vp->r) {    // filter unwanted
+			if (!vp->beta.isBlack() && (vp->pos - pos).sqr() <= vp->r * vp->r) {    // filter unwanted
 				found = true;
 				vps_out.push_back(vp);
 			}

@@ -8,8 +8,13 @@
 #include "utils/solvers/Linear.h"
 #include "core/Polynomial.h"
 #include "utils/solvers/NonLinear.h"
+#include "alg/KDGrid.h"
+
+#include <set>
+#include <algorithm>
 
 using Funcs::randf;
+using namespace std;
 
 #define assertApproxEqual(x, y) assert(fabsf((x) - (y)) < EPS)
 
@@ -21,18 +26,18 @@ namespace Test
 		using namespace std;
 		using namespace Linear;
 
-		real  A[3][3] = {
+		real A[3][3] = {
 				{-2.86854f, 0.712385f, -2.0962f},
 				{-1.70362f, -4.42166f, -4.19973f},
 				{-4.72415f, 2.76108f,  -1.30315f}
 		};
-		real  b[3] = {-3.02974f, 2.1059f, 1.67481f};
-		real  M[3][4] = {
+		real b[3] = {-3.02974f, 2.1059f, 1.67481f};
+		real M[3][4] = {
 				{-2.86854f, 0.712385f, -2.0962f,  -3.02974f},
 				{-1.70362f, -4.42166f, -4.19973f, 2.1059f},
 				{-4.72415f, 2.76108f,  -1.30315f, 1.67481f}
 		};
-		real  x[3];
+		real x[3];
 
 		int N = 50000000;
 		double t[3] = {0, 0, 0};
@@ -85,8 +90,8 @@ namespace Test
 
 	void matrix()
 	{
-		Mat<real > a(
-				Arr2D<real , 3, 3>
+		Mat<real> a(
+				Arr2D<real, 3, 3>
 						{{
 								 {{1, 2, 3}},
 								 {{0, 1, 0}},
@@ -155,17 +160,17 @@ namespace Test
 	{
 		struct Fun0// : NonLinear::BinFun
 		{
-			real  operator()(real  x0, real  x1) const
+			real operator()(real x0, real x1) const
 			{
 				return 2.f * x0 - 0.5f * x1;
 			}
 
-			real  d0(real  x0, real  x1) const
+			real d0(real x0, real x1) const
 			{
 				return 2.f;
 			}
 
-			real  d1(real  x0, real  x1) const
+			real d1(real x0, real x1) const
 			{
 				return -0.5f;
 			}
@@ -177,23 +182,23 @@ namespace Test
 			Fun1() : f({0, 0, 0, 92.16f, -460.8f, 829.44f, -645.12f, 184.32f})
 			{}
 
-			real  operator()(real  x0, real  x1) const
+			real operator()(real x0, real x1) const
 			{
 				return 23.04f * powf(1.f - 1.f * x0, 4) * powf(x0, 4) - powf(-2 + x1, 2);
 			}
 
-			real  d0(real  x0, real  x1) const
+			real d0(real x0, real x1) const
 			{
 				return f(x0);
 			}
 
-			real  d1(real  x0, real  x1) const
+			real d1(real x0, real x1) const
 			{
 				return -2 * (x1 - 2);
 			}
 		};
-		real  x0, x1;
-		real  since = clock();
+		real x0, x1;
+		real since = clock();
 		for (int i = 0; i < 2000000; ++i) {
 			NonLinear::Solve2DTol(Fun0(), Fun1(), x0 = randf(), x1 = 0, 0.0001);
 			assert(fabsf(x0 - 0.428072f) < 0.001f && fabsf(x1 - 1.71229f) < 0.001f);
@@ -209,39 +214,39 @@ namespace Test
 		// test singular case
 		struct Fun2 : NonLinear::BinFun
 		{
-			real  operator()(real  x0, real  x1) const override
+			real operator()(real x0, real x1) const override
 			{
 				return x0 * x0 + x1 * x1 - 1;
 			}
 
-			real  d0(real  x0, real  x1) const override
+			real d0(real x0, real x1) const override
 			{
 				return 2 * x0;
 			}
 
-			real  d1(real  x0, real  x1) const override
+			real d1(real x0, real x1) const override
 			{
 				return 2 * x1;
 			}
 		};
 		struct Fun3 : NonLinear::BinFun
 		{
-			const real  c;
+			const real c;
 
-			Fun3(const real  c_) : c(c_)
+			Fun3(const real c_) : c(c_)
 			{}
 
-			real  operator()(real  x0, real  x1) const override
+			real operator()(real x0, real x1) const override
 			{
 				return x0 - x1 + c;
 			}
 
-			real  d0(real  x0, real  x1) const override
+			real d0(real x0, real x1) const override
 			{
 				return 1;
 			}
 
-			real  d1(real  x0, real  x1) const override
+			real d1(real x0, real x1) const override
 			{
 				return -1;
 			}
@@ -262,30 +267,30 @@ namespace Test
 	{
 		struct Fun0 //: NonLinear::MonoFun    // solvable
 		{
-			real  operator()(real  x) const    // solution: x == 2 || x == 4 || x == -0.7667
+			real operator()(real x) const    // solution: x == 2 || x == 4 || x == -0.7667
 			{
 				return powf(2, x) - x * x;
 			}
 
-			real  d(real  x) const
+			real d(real x) const
 			{
 				return powf(2, x) * logf(2) - 2 * x;
 			}
 		};
 		struct Fun1 //: NonLinear::MonoFun    // unsolvable
 		{
-			real  operator()(real  x) const
+			real operator()(real x) const
 			{
 				return powf(2, x) - x;
 			}
 
-			real  d(real  x) const
+			real d(real x) const
 			{
 				return powf(2, x) * logf(2) - 1;
 			}
 		};
 
-		real  x;
+		real x;
 		bool solvable = NonLinear::SolveTol(Fun0(), x = 0.1);
 		assert(solvable);
 		assertApproxEqual(x, -0.7667f);
@@ -312,7 +317,7 @@ namespace Test
 		solvable = NonLinear::SolveEps(Fun1(), x = randf());
 		assert(!solvable);
 
-		real  since = clock();
+		real since = clock();
 		for (int i = 0; i < 10000000; ++i) {
 			solvable = NonLinear::SolveEps(Fun0(), x = randf(1.5, 2.5), 1e-4);
 			assert(solvable);
@@ -338,17 +343,17 @@ namespace Test
 			BFun(const Polynomial &F_, const Polynomial &G_) : F(F_), G(G_)    // F(x0) - G(x1)
 			{}
 
-			inline real  operator()(real  x0, real  x1) const
+			inline real operator()(real x0, real x1) const
 			{
 				return F(x0) - G(x1);
 			}
 
-			inline real  d0(real  x0, real  x1) const
+			inline real d0(real x0, real x1) const
 			{
 				return F.derivative(x0);
 			}
 
-			inline real  d1(real  x0, real  x1) const
+			inline real d1(real x0, real x1) const
 			{
 				return -G.derivative(x1);
 			}
@@ -357,17 +362,17 @@ namespace Test
 		struct MFun //: NonLinear::MonoFun
 		{
 			const Polynomial &F;
-			const real  b;
+			const real b;
 
-			MFun(const Polynomial &F_, real  b_) : F(F_), b(b_)
+			MFun(const Polynomial &F_, real b_) : F(F_), b(b_)
 			{}
 
-			inline real  operator()(real  x) const
+			inline real operator()(real x) const
 			{
 				return F(x) - b;
 			}
 
-			inline real  d(real  x) const
+			inline real d(real x) const
 			{
 				return F.derivative(x);
 			}
@@ -402,23 +407,63 @@ namespace Test
 //		message("psi^2 - (L1^2 + L2^2)(t) = " << f1.F(0.5) - (L1 * L1 + L2 * L2)(310.087) << "\n");
 //		message(f1(0.5, 310.087));
 //		assertApproxEqual(f1(0.8, 1.2), 0);
-		real  u, t;
+		real u, t;
 		bool solved = NonLinear::Solve2DEps(f0, f1, u = 0.5, t = 1.2, 1e-2); //&& 0 <= u && u <= 1 && t > EPS;
 		debug("\nu = %.4f.  t = %.4f\n", u, t);
 		(ray.posAfter(t).report(true));
 		assert(solved);
 	}
 
+	void kdgrid()
+	{
+		List<Pos> poses(1024 * 768);
+		for (auto &pos:poses) {
+			pos = Pos(randf(-100, 100), randf(-50, 80), randf(0, 800));
+		};
+		VPPtrList vps(poses.size());
+		for (size_t i = 0; i < vps.size(); ++i) {
+			vps[i] = new VisiblePoint;
+			vps[i]->pos = poses.at(i);
+			vps[i]->beta = {1, 1, 1};
+			vps[i]->r = randf(0.5, 5);
+		}
+		KDGrid *kd_root;
+		kd_root = new KDGrid(vps);
+		debug("\n\033[34m[ kdgrid max_depth = %ld ]\033[0m\n", __kdgrid_max_depth__);
+		VPPtrList vps_out;
+		Pos pos = {0, 0, 0};
+		kd_root->query(pos, 10, vps_out);
+		set<VisiblePoint *> s_out, s_ans;
+		shuffle(vps.begin(), vps.end(), Funcs::generator);
+		for (auto vp : vps) {
+			if (!vp->beta.isBlack() && (vp->pos - pos).norm() <= vp->r) {
+				s_ans.insert(vp);
+//				vp->pos.report(false);
+//				cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
+			}
+		}
+		for (auto vp : vps_out) {
+			s_out.insert(vp);
+//			vp->pos.report(false);
+//			cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
+		}
+		cout << "expected: " << s_ans.size() << " vps" << endl;
+		cout << "output:   " << s_out.size() << " vps" << endl;
+		assert(s_out == s_ans);
+		delete kd_root;
+	}
+
 	void main()
 	{
-		real  since = clock();
+		real since = clock();
 //		linear();
 //		coordinateConvert();
 //		matrix();
 //		polynomial();
 //		Newton();
 //		Newton2D();
-		intersectRev();
+//		intersectRev();
+		kdgrid();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}
 }

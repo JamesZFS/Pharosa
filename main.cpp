@@ -21,29 +21,29 @@ size_t __kdgrid_max_depth__ = 0;
 
 int main(int argc, char *argv[])
 {
-//	Test::main();
+	Test::main();
 	// **************** parse cmd args ****************
-	if (argc < 2) TERMINATE("usage: Pharosa <json_config_path>");
-	const String config_path = argv[1];
-
-	// **************** init render engine ****************
-	Renderer renderer(config_path);
-
-	// **************** start rendering ****************
-	renderer.start();
-
-	// **************** save results ****************
-	renderer.save();
-
-#ifdef __DEV_STAGE__
-	debug("\n -- debug info -- \n");
-	debug("  print_cnt = %ld\n", __print_cnt__);
-	debug("  kdnode max_depth = %ld\n", __kdnode_max_depth__);
-	debug("  kdgrid max_depth = %ld\n", __kdgrid_max_depth__);
-	debug("  counter   = %ld\n", __counter__);
-	debug("  match cnt = %ld\n", __match_cnt__);
-	debug("  debug     = %f\n", __debug__);
-#endif
+//	if (argc < 2) TERMINATE("usage: Pharosa <json_config_path>");
+//	const String config_path = argv[1];
+//
+//	// **************** init render engine ****************
+//	Renderer renderer(config_path);
+//
+//	// **************** start rendering ****************
+//	renderer.start();
+//
+//	// **************** save results ****************
+//	renderer.save();
+//
+//#ifdef __DEV_STAGE__
+//	debug("\n -- debug info -- \n");
+//	debug("  print_cnt = %ld\n", __print_cnt__);
+//	debug("  kdnode max_depth = %ld\n", __kdnode_max_depth__);
+//	debug("  kdgrid max_depth = %ld\n", __kdgrid_max_depth__);
+//	debug("  counter   = %ld\n", __counter__);
+//	debug("  match cnt = %ld\n", __match_cnt__);
+//	debug("  debug     = %f\n", __debug__);
+//#endif
 
 	return 0;
 }

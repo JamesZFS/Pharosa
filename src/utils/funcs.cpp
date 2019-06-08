@@ -7,6 +7,7 @@
 namespace Funcs
 {
 	std::default_random_engine generator((unsigned int) clock());
+//	std::default_random_engine generator(0);
 	std::uniform_real_distribution<real> uniform_distribution(0.0, 1.0);
 	std::normal_distribution<real> normal_distribution(0.0, 1.0);
 

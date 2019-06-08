@@ -1,11 +1,10 @@
 {
-	"save_path": "out/three/test refactored ptf 200 direct sample++++.ppm",
-	"prev_path": "out/three/test refactored ptf 100 direct sample++++.ppm",
+	"save_path": "out/three_sppm/1.ppm",
 	"n_epoch": 100,
 	"save_step": 10,
 
 	"algorithm": {
-		"type": "ptf",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

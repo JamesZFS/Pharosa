@@ -23,6 +23,8 @@ namespace Test
 
 	void intersectRev();
 
+	void kdgrid();
+
 	void main();
 }
 

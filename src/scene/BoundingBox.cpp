@@ -80,13 +80,9 @@ void BoundingBox::report() const
 
 bool BoundingBox::outsideSphere(const Pos &pos, real r) const
 {
-	if (xmin <= pos.x && pos.x <= xmax &&
-		ymin <= pos.y && pos.y <= ymax &&
-		zmin <= pos.z && pos.z <= zmax)
-		return false;
-	real dx = min2(fabsf(pos.x - xmin), fabsf(pos.x - xmax));
-	real dy = min2(fabsf(pos.y - ymin), fabsf(pos.y - ymax));
-	real dz = min2(fabsf(pos.z - zmin), fabsf(pos.z - zmax));
+	real dx = xmin <= pos.x && pos.x <= xmax ? 0 : min2(fabsf(pos.x - xmin), fabsf(pos.x - xmax));
+	real dy = ymin <= pos.y && pos.y <= ymax ? 0 : min2(fabsf(pos.y - ymin), fabsf(pos.y - ymax));
+	real dz = zmin <= pos.z && pos.z <= zmax ? 0 : min2(fabsf(pos.z - zmin), fabsf(pos.z - zmax));
 	return dx * dx + dy * dy + dz * dz > r * r;
 }
 

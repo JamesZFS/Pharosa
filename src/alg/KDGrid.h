@@ -12,7 +12,7 @@
 // a KD tree that contains visible points (as weak refrence)
 class KDGrid
 {
-private:
+public:
 	BoundingBox *box;
 	VPPtrList *vps;		// weak ptrs
 	KDGrid *l_child;

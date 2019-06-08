@@ -61,7 +61,7 @@ void SPPM::start(size_t n_epoch,
 			}
 		}
 
-		message("\nNoew building KD tree...\n");
+		message("\nNow building KD tree...\n");
 		buildKDTree();
 
 		// pass 2:
@@ -221,7 +221,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		Color beta_new = beta * w_new;
 		// Possibly terminate photon path with Russian roulette
 		real P = beta_new.max() / beta.max();
-		assert(0 < P && P <= 1);
+		assert(0 <= P && P <= 1);
 		if WITH_PROB(P)
 			beta = beta_new / P;
 		else
