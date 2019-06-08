@@ -148,7 +148,8 @@ Algorithm *Algorithm::acquire(const Json &json, const Scene &scene, Camera &came
 	}
 	else if (type == "Stochastic Progressive Photon Mapping" || type == "sppm") {
 		try {
-			return new SPPM(scene, camera, (size_t) json.at("n_photon_per_iter"), (size_t) json.at("max_depth"));
+			return new SPPM(scene, camera, (size_t) json.at("n_photon_per_iter"), (size_t) json.at("max_depth"),
+							(real) json.at("init_radius"));
 		}
 		catch (Json::out_of_range &) {
 			return new SPPM(scene, camera);    // use default
@@ -229,7 +230,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 
 Material *Material::acquire(const Json &json)
 {
-	auto self = new Material;	// default material
+	auto self = new Material;    // default material
 	if (json.has("color")) self->color = Color(json["color"]);
 	if (json.has("emission")) self->emi = Emission(json["emission"]);
 	if (json.has("diff")) self->diff = json["diff"];
@@ -244,7 +245,7 @@ Material *Material::acquire(const Json &json)
 		else {
 			self->texture = new Image(String(t_json.at("path")));
 			if (t_json.has("scale")) {
-				real  scale = t_json["scale"];
+				real scale = t_json["scale"];
 				self->Auu = scale;
 				self->Avv = scale;
 			}
@@ -317,7 +318,7 @@ Triangle *Triangle::acquire(const Json &json)
 
 PolyRev *PolyRev::acquire(const Json &json)
 {
-	List<real > &&x_coeffs = json.at("x_coeffs"), &&y_coeffs = json.at("y_coeffs");
+	List<real> &&x_coeffs = json.at("x_coeffs"), &&y_coeffs = json.at("y_coeffs");
 	return new PolyRev(x_coeffs, y_coeffs);
 }
 
@@ -348,7 +349,7 @@ RGB::RGB(const Json &json) : r(x), g(y), b(z)
 }
 
 ElAg::ElAg(const Json &json) :    // use degrees
-		ElAg(json.at(0).get<real >() * DEG, json.at(1).get<real >() * DEG, json.at(2).get<real >() * DEG)
+		ElAg(json.at(0).get<real>() * DEG, json.at(1).get<real>() * DEG, json.at(2).get<real>() * DEG)
 {
 }
 

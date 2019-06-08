@@ -11,11 +11,11 @@
 using Funcs::randf;
 
 SPPM::SPPM(const Scene &scene_, Camera &camera_,
-							 size_t n_photon_per_iter_, size_t max_depth_) :
+		   size_t n_photon_per_iter_, size_t max_depth_, real init_radius_) :
 		Algorithm(scene_, camera_),
-		n_photon_per_iter(n_photon_per_iter_), max_depth(max_depth_)
+		n_photon_per_iter(n_photon_per_iter_), max_depth(max_depth_), init_radius(init_radius_),
+		kd_root(nullptr)
 {
-
 }
 
 SPPM::~SPPM()
@@ -29,17 +29,18 @@ String SPPM::info() const
 }
 
 void SPPM::start(size_t n_epoch,
-						  const std::function<void(size_t)> &pre_epoch_callback,
-						  const std::function<void(size_t)> &in_epoch_callback,
-						  const std::function<void(size_t)> &post_epoch_callback)
+				 const std::function<void(size_t)> &pre_epoch_callback,
+				 const std::function<void(size_t)> &in_epoch_callback,
+				 const std::function<void(size_t)> &post_epoch_callback)
 {
-
 	// init vps
 	visible_points.assign(camera.width, List<VisiblePoint>(camera.height));    // width x height
-	assert(visible_points.size() == camera.width);
-	assert(visible_points[0].size() == camera.height);
-
-	real r_bound = 1.f;    // upper bound of r todo
+	for (size_t j = 0; j < camera.height; ++j) {
+		for (size_t i = 0; i < camera.width; ++i) {
+			visible_points[i][j].r = init_radius;
+		}
+	}
+	real r_bound = init_radius;    // upper bound of r
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {
 		pre_epoch_callback(epoch);
@@ -115,7 +116,7 @@ void SPPM::start(size_t n_epoch,
 			for (size_t i = 0; i < camera.width; ++i) {
 				auto &vp = visible_points[i][j];
 				real N_new = vp.N + gamma * vp.M;
-				real r_new = vp.r * sqrtf(N_new / (vp.N + vp.M));
+				real r_new = N_new > 0 ? vp.r * sqrtf(N_new / (vp.N + vp.M)) : vp.r;
 				Color tau_new = (vp.tau + vp.Phi) * ((r_new * r_new) / (vp.r * vp.r));
 
 				vp.N = N_new;
@@ -125,6 +126,7 @@ void SPPM::start(size_t n_epoch,
 				vp.M = 0;
 				vp.Phi = {0, 0, 0};
 				vp.beta = {0, 0, 0};
+				r_bound = min2(r_bound, vp.r);
 			}
 		}
 		post_epoch_callback(epoch + 1);
@@ -138,6 +140,7 @@ void SPPM::start(size_t n_epoch,
 			auto &vp = visible_points[i][j];
 			Color L = vp.Ld / n_epoch +
 					  vp.tau / (n_epoch * n_photon_per_iter * M_PIF * vp.r * vp.r);
+//			safe_debug("tau = %f %f %f\n", vp.tau.x, vp.tau.y, vp.tau.z)
 			camera.draw(i, j, L);
 		}
 	}
@@ -167,6 +170,7 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 		// account for direct lighting and break loop if diffuse
 		if (scatter_type == Intersection::DIFFUSE) {
 			flag = true;
+			vp.pos = isect.pos;
 			vp.Ld += vp.beta.mul(LdFaster(isect));
 			break;
 		}
@@ -220,12 +224,12 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		isect.scatter(ri, r_new, w_new);
 		Color beta_new = beta * w_new;
 		// Possibly terminate photon path with Russian roulette
-		real P = beta_new.max() / beta.max();
-		assert(0 <= P && P <= 1);
-		if WITH_PROB(P)
-			beta = beta_new / P;
-		else
-			break;
+//		real P = min2(1.f, beta_new.max() / beta.max());
+//		safe_debug("%f\n", P);
+//		if WITH_PROB(P)
+//			beta = beta_new / P;
+//		else
+//			break;
 
 		// into next iter
 		ri = r_new;

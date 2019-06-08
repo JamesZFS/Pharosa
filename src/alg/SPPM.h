@@ -28,6 +28,7 @@ class SPPM : public Algorithm
 protected:
 	const size_t n_photon_per_iter;
 	const size_t max_depth;
+	const real init_radius;
 	List2D<VisiblePoint> visible_points;    // owned by this class, camera.width x camera.height
 	KDGrid *kd_root;
 
@@ -39,7 +40,7 @@ protected:
 
 public:
 	SPPM(const Scene &scene_, Camera &camera_,
-		 size_t n_photon_per_iter_ = 1000, size_t max_depth_ = 5);
+		 size_t n_photon_per_iter_ = 1000, size_t max_depth_ = 5, real init_radius_ = 1.f);
 
 	~SPPM() override;
 

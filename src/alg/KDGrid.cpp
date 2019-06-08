@@ -43,7 +43,7 @@ void KDGrid::build(VPPtrList::iterator begin, VPPtrList::iterator end, size_t de
 	vps = new VPPtrList(begin, end);    // copy Finite ptrs
 
 	// base case:
-	if (vps->size() <= 5) return;
+	if (vps->size() <= 10) return;
 
 	// sort vps to left or right range:
 	auto cur_axis = box->getLongestAxis();
@@ -67,8 +67,9 @@ void KDGrid::build(VPPtrList::iterator begin, VPPtrList::iterator end, size_t de
 	r_child->build(begin + mid, end, depth + 1);
 }
 
-bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out)
+bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out, size_t depth)
 {
+	__kdgrid_max_depth__ = max2(__kdgrid_max_depth__, depth);
 	if (box->outsideSphere(pos, r_bound)) {  // base case 1
 		return false;
 	}
@@ -84,7 +85,7 @@ bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out)
 		});
 		return found;
 	}
-	bool fl = l_child->query(pos, r_bound, vps_out);
-	bool fr = r_child->query(pos, r_bound, vps_out);
+	bool fl = l_child->query(pos, r_bound, vps_out, depth + 1);
+	bool fr = r_child->query(pos, r_bound, vps_out, depth + 1);
 	return fl || fr;
 }
