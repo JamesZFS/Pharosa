@@ -1,11 +1,11 @@
 {
-	"save_path": "out/sppm/sppm 10.ppm",
-	"n_epoch": 10,
-	"verbose_step": 20,
-	"save_step": 1,
+	"save_path": "out/sppm/ptf 20+.ppm",
+	"n_epoch": 20,
+	"verbose_step": 0,
+	"save_step": 0,
 
 	"algorithm": {
-		"type": "sppm",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 10000,
@@ -21,8 +21,11 @@
 
 	"scene": [
 		{
-			"name": "blue cube",
-			"color": [0.1, 0.1, 0.9],
+			"name": "glass cube",
+			"color": [0.8, 0.8, 0.95],
+			"diff": 0,
+			"spec": 0,
+			"refr": 1.0,
 			"geo": {
 				"type": "cube",
 				"length": 10,

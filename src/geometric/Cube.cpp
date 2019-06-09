@@ -72,8 +72,12 @@ bool Cube::intersect(const Ray &ray, real &t, Intersection &isect) const
 void Cube::getNormal(const Pos &pos, Dir &normal) const
 {
 	for (const auto &p :slab) {
-		if (p[0].testPoint(pos) || p[1].testPoint(pos)) {
-			normal = p[0].n;
+		if (p[0].testPoint(pos)) {
+			normal = -p[0].n;
+			return;
+		}
+		if (p[1].testPoint(pos)) {
+			normal = p[1].n;
 			return;
 		}
 	}
