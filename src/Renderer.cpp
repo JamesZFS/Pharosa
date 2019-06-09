@@ -57,7 +57,7 @@ void Renderer::checkIfReady()
 	printf("camera viewpoint at %s  orienting towards %s\n",
 		   camera->viewpoint().toString().data(), camera->orientation().toString().data());
 	printf("algorithm info: %s", algorithm->info().data());
-	printf("\n\033[1;34m---------------------- ready to draw -------------------------\n\n\033[0m");
+	printf("\n\033[1;34m---------------------- ready to render -------------------------\n\n\033[0m");
 }
 
 void Renderer::renderFrame()
@@ -113,9 +113,8 @@ void Renderer::save() const
 	printf("\033[32mimage written to \"%s\" \n\033[0m", save_path.data());
 }
 
-void Renderer::maybeSaveProgress(size_t cur_epoch) const
+void Renderer::saveProgress(size_t) const
 {
-	if (save_step == 0 || cur_epoch % save_step > 0) return;
 	camera->writePPM(save_path);
 	printf("\033[32m  progress saved to \"%s\"\n\033[0m", save_path.data());
 }
@@ -126,13 +125,13 @@ void Renderer::render()
 	// without progressbar, faster version
 	auto since = omp_get_wtime();
 	algorithm->start(
-			n_epoch,
+			n_epoch, save_step,
 			[this, since](size_t cur_epoch) {
 				auto eta = lround((omp_get_wtime() - since) * (n_epoch - cur_epoch) / cur_epoch);
 				barInfo("\r=== epoch %ld / %ld ===  eta: %ld min %ld sec", cur_epoch + 1, n_epoch, eta / 60, eta % 60)
 			},
 			[](size_t) {},
-			[this](size_t cur_epoch) { maybeSaveProgress(cur_epoch); }
+			[this](size_t cur_epoch) { saveProgress(cur_epoch); }
 	);
 }
 
@@ -142,7 +141,7 @@ void Renderer::renderVerbose()
 	// with progressbar
 	auto since = omp_get_wtime();
 	algorithm->start(
-			n_epoch,
+			n_epoch, save_step,
 			// callbeck before eppch
 			[this, since](size_t cur_epoch) {
 				auto eta = lround((omp_get_wtime() - since) * (n_epoch - cur_epoch) / cur_epoch);
@@ -155,7 +154,7 @@ void Renderer::renderVerbose()
 			// callback after epoch
 			[this](size_t cur_epoch) {
 				barInfo("\n");
-				maybeSaveProgress(cur_epoch);
+				saveProgress(cur_epoch);
 			}
 	);
 }

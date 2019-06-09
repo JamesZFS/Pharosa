@@ -35,7 +35,7 @@ String SPPM::info() const
 	return buffer;
 }
 
-void SPPM::start(size_t n_epoch,
+void SPPM::start(size_t n_epoch, size_t save_step,
 				 const std::function<void(size_t)> &pre_epoch_callback,
 				 const std::function<void(size_t)> &in_epoch_callback,
 				 const std::function<void(size_t)> &post_epoch_callback)
@@ -52,7 +52,7 @@ void SPPM::start(size_t n_epoch,
 	for (auto lt : lights) {
 		assert(lt->geo->type() == Geometry::SPHERE);
 	}
-
+	camera.step();
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {
 		pre_epoch_callback(epoch);
 
@@ -100,14 +100,14 @@ void SPPM::start(size_t n_epoch,
 			Dir ex, ey, ez = samp - s.c;
 			ez.getOrthogonalBasis(ex, ey);
 			samp = Sampling::uniformOnHemiSphere({randf(), randf()});
-			pdf *= 1.f / (s.area() * 2 * M_PIF);
+			pdf *= 1.f / (s.area() * 2 * M_PIF);    // todo
+//			pdf *= 1.f / (4 * M_PIF * 2 * M_PIF);
 			Dir dir = ex * samp.x + ey * samp.y + ez * samp.z;
 			Ray ri(pos, dir);
 
 			// trace light
 			tracePhoton(ri, lt->mtr->emi / pdf, r_bound);
 		}
-
 //		drawCurPhotons(epoch);
 
 		// pass over:
@@ -138,8 +138,22 @@ void SPPM::start(size_t n_epoch,
 			}
 		}
 //		drawLi(epoch);
-		post_epoch_callback(epoch + 1);
-	}	// next epoch
+
+		if (save_step > 0 && (epoch + 1 % save_step) == 0) {    // periodically save image
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+			for (size_t j = 0; j < camera.height; ++j) {
+				for (size_t i = 0; i < camera.width; ++i) {
+					auto &vp = visible_points[i][j];
+					camera.draw(i, j,
+								vp.Ld / (epoch + 1) +
+								vp.tau / ((epoch + 1) * n_photon_per_iter * M_PIF * vp.r * vp.r));    // Li
+				}
+			}
+			post_epoch_callback(epoch + 1);
+		}
+	}    // next epoch
 
 	// generate image
 #if OMP_ON
@@ -150,11 +164,9 @@ void SPPM::start(size_t n_epoch,
 			auto &vp = visible_points[i][j];
 			Color L = vp.Ld / n_epoch +
 					  vp.tau / (n_epoch * n_photon_per_iter * M_PIF * vp.r * vp.r);
-//			safe_debug("tau = %f %f %f\n", vp.tau.x, vp.tau.y, vp.tau.z)
 			camera.draw(i, j, L);
 		}
 	}
-	camera.step();
 }
 
 void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
@@ -182,6 +194,7 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 			flag = true;
 			vp.pos = isect.pos;
 			vp.Ld += vp.beta.mul(LdFaster(isect));
+			vp.wo = -ro.dir;
 			break;
 		}
 
@@ -218,6 +231,8 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		Ray r_new;
 		real w_new;
 		auto type = isect.scatter(ri, r_new, w_new);
+		beta *= std::abs(ri.dir % isect.nl);    // absorb ratio todo
+		Color beta_new = beta * w_new;
 		if (type == Intersection::DIFFUSE) {
 			// contribute to all visible points in the vicinity
 			VPPtrList vps;
@@ -226,21 +241,19 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 				if (found_vp) {
 					for (auto vp_ptr : vps) {
 						auto &vp = *vp_ptr;
-						assert(!vp.beta.isBlack());
+						if (vp.wo % isect.nl < 0) continue;    // in different surfaces
 						++vp.M;
-						// Phi += beta_j * f(wo, p, wj), but here f === 1/pi
+						// Phi += beta_j * f(wo, p, wj) where f = 1/pi * (wj * nl)
 						vp.Phi += beta * M_1_PIF;
 					}
 				}
 			}
 		}
 		// trace next depth
-		Color beta_new = beta * w_new;
-		beta_new *= isect.getColor() * M_1_PIF;	// todo
+		beta_new *= isect.getColor();
 
 		// Possibly terminate photon path with Russian Roulette
 		real P = min2(1.f, beta_new.max() / beta.max());
-//		safe_debug("%f\n", P);
 		if WITH_PROB(P)
 			beta = beta_new / P;
 		else

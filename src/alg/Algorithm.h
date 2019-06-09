@@ -38,10 +38,10 @@ public:
 
 	virtual ~Algorithm() = default;
 
-	virtual void start(size_t n_epoch,
+	virtual void start(size_t n_epoch, size_t save_step,
 					   const std::function<void(size_t)> &pre_epoch_callback,
 					   const std::function<void(size_t)> &in_epoch_callback,
-					   const std::function<void(size_t)> &post_epoch_callback);    // entrance
+					   const std::function<void(size_t)> &post_epoch_callback); // entrance
 
 	virtual String info() const = 0;
 

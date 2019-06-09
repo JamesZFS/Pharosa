@@ -1,5 +1,5 @@
 {
-	"save_path": "out/three_sppm/1 - 10.ppm",
+	"save_path": "out/sppm/sppm 10.ppm",
 	"n_epoch": 10,
 	"verbose_step": 20,
 	"save_step": 1,
@@ -8,14 +8,14 @@
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 1000,
-		"init_radius": 10
+		"n_photon_per_iter": 10000,
+		"init_radius": 5
 	},
 
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
-		"pos": [0, 0, 280],
+		"pos": [0, 0, 300],
 		"rot": [0, 180, 0]
 	},
 
@@ -34,16 +34,14 @@
 			"tra": [0, -20, 40]
 		},
 		{
-			"name": "green sphere",
-			"color": "green",
-			"emission": "none",
+			"name": "glass sphere",
+			"color": "white",
 			"diff": 0,
 			"spec": 0,
 			"refr": 1.0,
-			"rot": [0, 45, 0],
 			"geo": {
 				"type": "sphere",
-				"radius": 10.5,
+				"radius": 20.5,
 				"pos": [30, -10, 10]
 			}
 		},

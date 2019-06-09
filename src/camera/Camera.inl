@@ -1,7 +1,12 @@
 
-void Camera::draw(size_t i, size_t j, const Color &color)
+void Camera::drawInc(size_t i, size_t j, const Color &color)
 {
 	img.at(i, j) += color;
+}
+
+void Camera::draw(size_t i, size_t j, const Color &color)
+{
+	img.at(i, j) = color;
 }
 
 const Pos &Camera::viewpoint() const

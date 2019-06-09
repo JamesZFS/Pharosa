@@ -37,7 +37,7 @@ private:
 	// render one time frame
 	void renderFrame();
 
-	void maybeSaveProgress(size_t cur_epoch) const;    // save progress without checking
+	void saveProgress(size_t cur_epoch) const;    // save progress without checking
 
 	// ** rendering pipeline **
 	// do the rendering for n_epoch times, callback each epoch

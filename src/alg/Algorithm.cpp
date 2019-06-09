@@ -79,7 +79,7 @@ Color Algorithm::LdFaster(const Intersection &isect) const
 	auto light = lights.at((size_t) randf(0, N));
 	if (light->geo->type() != Geometry::SPHERE)
 		return Color::BLACK;    // deal only with sphere
-	auto s = (Sphere *) light->geo;	// todo support more shapes
+	auto s = (Sphere *) light->geo;    // todo support more shapes
 	Pos OS = s->c - isect.pos + isect.nl * EPS;
 	real dist = OS.norm();
 	Dir sz = OS / dist, sx, sy;
@@ -105,7 +105,7 @@ Color Algorithm::LdFaster(const Intersection &isect) const
 	return light->mtr->emi * (isect.nl % r_out.dir * 2 * (1 - cos_theta_max) * N);
 }
 
-void Algorithm::start(size_t n_epoch,
+void Algorithm::start(size_t n_epoch, size_t save_step,
 					  const std::function<void(size_t)> &pre_epoch_callback,
 					  const std::function<void(size_t)> &in_epoch_callback,
 					  const std::function<void(size_t)> &post_epoch_callback)
@@ -119,10 +119,11 @@ void Algorithm::start(size_t n_epoch,
 			in_epoch_callback(j);
 			for (size_t i = 0; i < camera.width; ++i) {
 				auto ray = camera.shootRayAt(i, j, 0.5);    // rand normal AA
-				camera.draw(i, j, radiance(ray));
+				camera.drawInc(i, j, radiance(ray));
 			}
 		}
 		camera.step();
-		post_epoch_callback(epoch + 1);
+		if (save_step > 0 && (epoch + 1) % save_step == 0)	// periodically save
+			post_epoch_callback(epoch + 1);
 	}
 }

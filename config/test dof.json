@@ -1,8 +1,8 @@
 {
-	"save_path": "out/dof/sppm 2 - 200.ppm",
-	"n_epoch": 200,
+	"save_path": "out/dof/sppm 9 - 10.ppm",
+	"n_epoch": 10,
 	"save_step": 0,
-	"verbose_step": 0,
+	"verbose_step": 20,
 	"algorithm": {
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
