@@ -10,6 +10,8 @@
 
 #include <omp.h>
 
+#define OMP_ON 1
+
 using Funcs::randf;
 
 Algorithm::Algorithm(const Scene &scene_, Camera &camera_) : scene(scene_), camera(camera_)

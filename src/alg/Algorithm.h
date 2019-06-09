@@ -11,8 +11,6 @@
 
 #include <functional>
 
-#define OMP_ON 0
-
 class Scene;
 class Camera;
 class Intersection;

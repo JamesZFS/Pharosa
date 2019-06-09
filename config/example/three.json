@@ -1,14 +1,15 @@
 {
-	"save_path": "out/three_sppm/2.ppm",
-	"n_epoch": 5,
+	"save_path": "out/three_sppm/15 - 10.ppm",
+	"n_epoch": 10,
+	"verbose_step": 20,
 	"save_step": 0,
 
 	"algorithm": {
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 1000,
-		"init_radius": 5
+		"n_photon_per_iter": 10000,
+		"init_radius": 8
 	},
 
 	"camera": {

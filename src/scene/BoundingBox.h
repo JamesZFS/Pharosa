@@ -27,7 +27,7 @@ public:
 
 	BoundingBox(const ObjectList &finite_objs);
 
-	BoundingBox(VPPtrList::iterator begin, VPPtrList::iterator end);
+	BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end);
 
 	bool intersect(const Ray &ray) const;
 

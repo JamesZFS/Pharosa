@@ -7,9 +7,9 @@
 #include <algorithm>
 
 
-KDGrid::KDGrid(VPPtrList vplist) : KDGrid()
+KDGrid::KDGrid(const VPPtrList &vplist) : KDGrid()
 {
-	build(vplist.begin(), vplist.end(), 0);    // build from root
+	build(vplist.cbegin(), vplist.cend(), 0);    // build from root
 	box->report();
 }
 
@@ -36,7 +36,7 @@ bool VPCompZ(VisiblePoint *a, const VisiblePoint *b)
 	return a->pos.z < b->pos.z;
 }
 
-void KDGrid::build(VPPtrList::iterator begin, VPPtrList::iterator end, size_t depth)
+void KDGrid::build(VPPtrList::const_iterator begin, VPPtrList::const_iterator end, size_t depth)
 {
 	__kdgrid_max_depth__ = max2(__kdgrid_max_depth__, depth);
 	box = new BoundingBox(begin, end);    // bound all vps
@@ -88,4 +88,16 @@ bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out, size_t dept
 	bool fl = l_child->query(pos, r_bound, vps_out, depth + 1);
 	bool fr = r_child->query(pos, r_bound, vps_out, depth + 1);
 	return fl || fr;
+}
+
+bool NaiveGrid::query(const Pos &pos, real, VPPtrList &vps_out)
+{
+	bool found = false;
+	for (auto vp : vps) {
+		if (!vp->beta.isBlack() && (vp->pos - pos).norm() <= vp->r) {
+			found = true;
+			vps_out.push_back(vp);
+		}
+	}
+	return found;
 }

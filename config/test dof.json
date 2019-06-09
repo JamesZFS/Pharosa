@@ -1,15 +1,17 @@
 {
-	"save_path": "out/dof/6-7 test refactor ptf ++.ppm",
-	"n_epoch": 300,
-	"save_step": 20,
+	"save_path": "out/dof/sppm 2 - 200.ppm",
+	"n_epoch": 200,
+	"save_step": 0,
 	"verbose_step": 0,
 	"algorithm": {
-		"type": "ptf",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 7
+		"max_depth": 5,
+		"n_photon_per_iter": 100000,
+		"init_radius": 8
 	},
 	"camera": {
-		"type": "dof",
+		"type": "basic",
 		"pos": [-20, -20, 380],
 		"rot": [0, 180, 5],
 		"width": 1024, "height": 768,

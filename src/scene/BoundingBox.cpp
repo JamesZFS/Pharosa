@@ -25,7 +25,7 @@ BoundingBox::BoundingBox(const ObjectList &finite_objs) : BoundingBox()
 	}
 }
 
-BoundingBox::BoundingBox(VPPtrList::iterator begin, VPPtrList::iterator end)
+BoundingBox::BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end)
 {
 	for (auto it = begin; it != end; ++it) {
 		auto vp = *it;

@@ -8,7 +8,10 @@
 #include "../geometric/Sphere.h"
 #include "../utils/sampling.h"
 
+#define OMP_ON 1
+
 using Funcs::randf;
+
 
 SPPM::SPPM(const Scene &scene_, Camera &camera_,
 		   size_t n_photon_per_iter_, size_t max_depth_, real init_radius_) :
@@ -25,7 +28,11 @@ SPPM::~SPPM()
 
 String SPPM::info() const
 {
-	return "<Stochastic Progressive Photon Mapping>";
+	Buffer buffer;
+	sprintf(buffer,
+			"<Stochastic Progressive Photon Mapping> n_photon_per_iter = %ld, max_depth = %ld, init_radius = %f",
+			n_photon_per_iter, max_depth, init_radius);
+	return buffer;
 }
 
 void SPPM::start(size_t n_epoch,
@@ -41,6 +48,10 @@ void SPPM::start(size_t n_epoch,
 		}
 	}
 	real r_bound = init_radius;    // upper bound of r
+	auto &lights = scene.getLightSources();
+	for (auto lt : lights) {
+		assert(lt->geo->type() == Geometry::SPHERE);
+	}
 
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {
 		pre_epoch_callback(epoch);
@@ -50,6 +61,7 @@ void SPPM::start(size_t n_epoch,
 		// for each shot ray, trace its path in the scene to form visible points
 		// build kd tree to hold all visible points
 
+		printf("\033[32m[ New Epoch, r_bound = %.4f ]\033[0m\n", r_bound);
 		message("Now tracing visible points...\n");
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
@@ -71,24 +83,18 @@ void SPPM::start(size_t n_epoch,
 		// trace it in the scene and query kd tree for path's nearby visible points
 		// contribute photon radiance to kd node
 
-		auto &lights = scene.getLightSources();
-//	real area_sum = 0;
-		for (auto lt : lights) {
-			assert(lt->geo->type() == Geometry::SPHERE);
-//		auto s = (Sphere *) lt->geo;
-//		area_sum += s->area();
-		}
-
 		message("Now processing photon tracing...\n");
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
 		for (size_t i = 0; i < n_photon_per_iter; ++i) {
-			// randomly select one light source
+			in_epoch_callback(i * camera.height / n_photon_per_iter);
+			// randomly pick one light source
 			auto lt = lights.at((size_t) randf(0, lights.size()));
 			auto &s = *(Sphere *) lt->geo;
 //		real wl = s->area() / area_sum;
 			real pdf = 1.f / lights.size();
+			// randomly pick one pos on light source
 			auto samp = Sampling::uniformOnSphere({randf(), randf()});
 			Pos pos = samp * s.rad;
 			Dir ex, ey, ez = samp - s.c;
@@ -100,14 +106,16 @@ void SPPM::start(size_t n_epoch,
 
 			// trace light
 			tracePhoton(ri, lt->mtr->emi / pdf, r_bound);
-			// todo update r
 		}
+
+//		drawCurPhotons(epoch);
 
 		// pass over:
 		// update pixel radiance values according to kd node info
 		const static real gamma = 2.f / 3.f;
 		message("Now updating params...\n");
 
+		r_bound = 0;    // update upper bound of r
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
@@ -117,7 +125,7 @@ void SPPM::start(size_t n_epoch,
 				auto &vp = visible_points[i][j];
 				real N_new = vp.N + gamma * vp.M;
 				real r_new = N_new > 0 ? vp.r * sqrtf(N_new / (vp.N + vp.M)) : vp.r;
-				Color tau_new = (vp.tau + vp.Phi) * ((r_new * r_new) / (vp.r * vp.r));
+				Color tau_new = (vp.tau + vp.beta.mul(vp.Phi)) * ((r_new * r_new) / (vp.r * vp.r));
 
 				vp.N = N_new;
 				vp.r = r_new;
@@ -126,12 +134,14 @@ void SPPM::start(size_t n_epoch,
 				vp.M = 0;
 				vp.Phi = {0, 0, 0};
 				vp.beta = {0, 0, 0};
-				r_bound = min2(r_bound, vp.r);
+				r_bound = max2(r_bound, vp.r);    // update upper bound of r
 			}
 		}
+//		drawLi(epoch);
 		post_epoch_callback(epoch + 1);
-	}
-	// draw image
+	}	// next epoch
+
+	// generate image
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
@@ -194,6 +204,7 @@ void SPPM::buildKDTree()
 			vps.push_back(&vp);
 		}
 	}
+//	kd_root = new NaiveGrid(vps);
 	kd_root = new KDGrid(vps);
 }
 
@@ -204,35 +215,85 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 	for (size_t depth = 0; depth < max_depth; ++depth) {
 		Intersection isect;
 		if (!scene.intersectAny(ri, isect)) break;
-		// contribute to all visible points in the vicinity
-		VPPtrList vps;
-		if (depth > 0) {    // skip direct lighting term
-			bool found_vp = kd_root->query(isect.pos, r_bound, vps);
-			if (found_vp) {
-				for (auto vp_ptr : vps) {
-					auto &vp = *vp_ptr;
-					assert(!vp.beta.isBlack());
-					++vp.M;
-					// Phi += beta_j * f(wo, p, wj), but here f === 1/pi
-					vp.Phi += beta * M_1_PIF;
+		Ray r_new;
+		real w_new;
+		auto type = isect.scatter(ri, r_new, w_new);
+		if (type == Intersection::DIFFUSE) {
+			// contribute to all visible points in the vicinity
+			VPPtrList vps;
+			if (depth > 0) {    // skip direct lighting term
+				bool found_vp = kd_root->query(isect.pos, r_bound, vps);
+				if (found_vp) {
+					for (auto vp_ptr : vps) {
+						auto &vp = *vp_ptr;
+						assert(!vp.beta.isBlack());
+						++vp.M;
+						// Phi += beta_j * f(wo, p, wj), but here f === 1/pi
+						vp.Phi += beta * M_1_PIF;
+					}
 				}
 			}
 		}
 		// trace next depth
-		Ray r_new;
-		real w_new;
-		isect.scatter(ri, r_new, w_new);
 		Color beta_new = beta * w_new;
-		// Possibly terminate photon path with Russian roulette
-//		real P = min2(1.f, beta_new.max() / beta.max());
+		beta_new *= isect.getColor() * M_1_PIF;	// todo
+
+		// Possibly terminate photon path with Russian Roulette
+		real P = min2(1.f, beta_new.max() / beta.max());
 //		safe_debug("%f\n", P);
-//		if WITH_PROB(P)
-//			beta = beta_new / P;
-//		else
-//			break;
+		if WITH_PROB(P)
+			beta = beta_new / P;
+		else
+			break;
 
 		// into next iter
 		ri = r_new;
 		beta = beta_new;
 	}
+}
+
+void SPPM::drawCurPhotons(size_t epoch) const
+{
+	// draw debug photon info
+	Image img(camera.width, camera.height);
+	real Phi_max = 0;
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < img.getHeight(); ++j) {
+		for (size_t i = 0; i < img.getWidth(); ++i) {
+			auto &vp = visible_points[i][j];
+			Phi_max = max2(Phi_max, vp.Phi.norm());
+			img.at(i, j) = vp.Phi;
+		}
+	}
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < img.getHeight(); ++j) {
+		for (size_t i = 0; i < img.getWidth(); ++i) {
+			img.at(i, j) /= Phi_max;
+		}
+	}
+	Buffer title;
+	sprintf(title, "out/photons - %ld.ppm", epoch);
+	img.writePPM(title, 1);
+}
+
+void SPPM::drawLi(size_t epoch) const
+{
+	Image img(camera.width, camera.height);
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < img.getHeight(); ++j) {
+		for (size_t i = 0; i < img.getWidth(); ++i) {
+			auto &vp = visible_points[i][j];
+			Color Li = vp.tau / ((epoch + 1) * n_photon_per_iter * M_PIF * vp.r * vp.r);
+			img.at(i, j) = Li;
+		}
+	}
+	Buffer title;
+	sprintf(title, "out/Li - %ld.ppm", epoch);
+	img.writePPM(title, 1);
 }

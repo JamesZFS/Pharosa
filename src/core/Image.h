@@ -14,6 +14,9 @@ private:
 	List2D<Color> data;    // width * height
 	size_t width, height;
 public:
+	Image() : width(0), height(0)
+	{}
+
 	Image(const String &ppm_path);    // create from ppm
 
 	Image(size_t width_, size_t height_);    // create an empty image
@@ -24,6 +27,12 @@ public:
 	{ return data[i][j]; }
 
 	const Color &get(real x, real y) const;
+
+	inline size_t getWidth() const
+	{ return width; }
+
+	inline size_t getHeight() const
+	{ return height; }
 
 	/** read from PPM file
 	 * input: ppm_path

@@ -85,10 +85,10 @@ struct Vec
 	inline Vec mul(const Vec &b) const    // element-wise multiply
 	{ return {x * b.x, y * b.y, z * b.z}; }
 
-	inline T norm()    // Euclidean norm
+	inline T norm() const    // Euclidean norm
 	{ return sqrtf(x * x + y * y + z * z); }
 
-	inline T sqr()    // square
+	inline T sqr() const    // square
 	{ return x * x + y * y + z * z; }
 
 	inline T operator%(const Vec &b) const    // dot product
@@ -293,7 +293,7 @@ struct RGB : Vec<real>        // RGB Vector
 		return *this;
 	}
 
-	inline bool isBlack()
+	inline bool isBlack() const
 	{ return r < EPS && g < EPS && b < EPS; }
 
 	static const RGB BLACK, WHITE, RED, GREEN, BLUE, YELLOW, BROWN;
