@@ -1,27 +1,31 @@
 {
-	"save_path": "out/sppm/ptf 20+.ppm",
-	"n_epoch": 20,
-	"verbose_step": 0,
-	"save_step": 0,
+	"save_path": "out/sppm2/sppm dragon3.ppm",
+	"n_epoch": 10,
+	"verbose_step": 20,
+	"save_step": 1,
 
 	"algorithm": {
-		"type": "ptf",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 10000,
-		"init_radius": 5
+		"n_photon_per_iter": 100000,
+		"init_radius": 6
 	},
 
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
 		"pos": [0, 0, 300],
-		"rot": [0, 180, 0]
+		"rot": [0, 180, 3],
+
+		"#pos": [-58, 30, 200],
+		"#rot": [-8, 163, 22]
 	},
 
 	"scene": [
 		{
 			"name": "glass cube",
+			"type": "skip",
 			"color": [0.8, 0.8, 0.95],
 			"diff": 0,
 			"spec": 0,
@@ -37,6 +41,18 @@
 			"tra": [0, -20, 40]
 		},
 		{
+			"name": "dragon",
+			"type": "obj",
+			"color": [0.7, 0.8, 0.92],
+			"diff": 0,
+			"spec": 0,
+			"refr": 1,
+			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
+			"scale": 30,
+			"tra": [14, -37, 30],
+			"rot": [0, 0, 170]
+		},
+		{
 			"name": "glass sphere",
 			"color": "white",
 			"diff": 0,
@@ -44,21 +60,20 @@
 			"refr": 1.0,
 			"geo": {
 				"type": "sphere",
-				"radius": 20.5,
-				"pos": [30, -10, 10]
+				"radius": 18.5,
+				"pos": [40, -10, -10]
 			}
 		},
 		{
-			"name": "white sphere",
+			"name": "mirror sphere",
 			"color": "white",
 			"spec": 1.0,
 			"diff": 0,
 			"refr": 0,
-			"rot": [0, 45, 0],
 			"geo": {
 				"type": "sphere",
-				"radius": 15,
-				"pos": [-40, -30, 30]
+				"radius": 14,
+				"pos": [-40, -40, 25]
 			}
 		},
 		{
@@ -71,7 +86,7 @@
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],
-						"point": [0, 0, -60]
+						"point": [0, 0, -120]
 					}
 				},
 				{
@@ -99,7 +114,7 @@
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
-						"point": [-80, 0, 0]
+						"point": [-120, 0, 0]
 					}
 				},
 				{
@@ -115,40 +130,41 @@
 		},
 		{
 			"name": "light bulb",
-			"emission": [30, 30, 30],
+			"type": "skip",
+			"emission": [15, 15, 15],
+			"geo": {
+				"type": "sphere",
+				"radius": 25,
+				"pos": [0, 90, 0]
+			}
+		},
+		{
+			"name": "left light bulb",
+			"emission": [60, 50, 45],
 			"geo": {
 				"type": "sphere",
 				"radius": 10,
-				"pos": [0, 85, 0]
+				"pos": [-126, 0, 0]
 			}
 		},
 		{
-			"name": "floor bulb right",
-			"emission": [15, 15, 15],
-			"geo": {
-				"type": "sphere",
-				"radius": 2,
-				"pos": [70, -60, -40]
-			}
-		},
-		{
-			"name": "floor bulb left",
-			"emission": [15, 15, 15],
-			"geo": {
-				"type": "sphere",
-				"radius": 2,
-				"pos": [-70, -60, -40]
-			}
-		},
-		{
-			"name": "obstacle",
-			"type": "skip",
+			"name": "obstacle1",
 			"geo": {
 				"type": "cube",
-				"pos": [-20, 65, -20],
-				"length": 40,
+				"pos": [-130, 13, -75],
+				"length": 30,
 				"width": 3,
-				"height": 40
+				"height": 150
+			}
+		},
+		{
+			"name": "obstacle2",
+			"geo": {
+				"type": "cube",
+				"pos": [-130, -12, -60],
+				"length": 30,
+				"width": 3,
+				"height": 120
 			}
 		}
 	]

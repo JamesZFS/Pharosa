@@ -43,7 +43,7 @@ void KDGrid::build(VPPtrList::const_iterator begin, VPPtrList::const_iterator en
 	vps = new VPPtrList(begin, end);    // copy Finite ptrs
 
 	// base case:
-	if (vps->size() <= 10) return;
+	if (vps->size() <= 50) return;
 
 	// sort vps to left or right range:
 	auto cur_axis = box->getLongestAxis();

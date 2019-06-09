@@ -139,7 +139,7 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 		}
 //		drawLi(epoch);
 
-		if (save_step > 0 && (epoch + 1 % save_step) == 0) {    // periodically save image
+		if (save_step > 0 && (epoch + 1) % save_step == 0) {    // periodically save image
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
@@ -231,9 +231,8 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		Ray r_new;
 		real w_new;
 		auto type = isect.scatter(ri, r_new, w_new);
-		beta *= std::abs(ri.dir % isect.nl);    // absorb ratio todo
-		Color beta_new = beta * w_new;
-		if (type == Intersection::DIFFUSE) {
+		beta *= std::abs(ri.dir % isect.nl);    // v1 absorb ratio
+		if (type == Intersection::DIFFUSE) {	// v2?
 			// contribute to all visible points in the vicinity
 			VPPtrList vps;
 			if (depth > 0) {    // skip direct lighting term
@@ -250,7 +249,9 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 			}
 		}
 		// trace next depth
-		beta_new *= isect.getColor();
+		Color beta_new = beta / w_new; // todo
+		beta_new *= isect.getColor();	// v1
+//		beta_new *= isect.getColor() * M_1_PIF;  // v2
 
 		// Possibly terminate photon path with Russian Roulette
 		real P = min2(1.f, beta_new.max() / beta.max());
