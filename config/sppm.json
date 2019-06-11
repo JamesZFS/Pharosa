@@ -1,6 +1,6 @@
 {
-	"save_path": "out/sppm2/sppm dragon3 test grid++++.ppm",
-	"n_epoch": 50,
+	"save_path": "out/sppm2/sppm dragon3 test Ld.ppm",
+	"n_epoch": 10,
 	"verbose_step": 0,
 	"save_step": 1,
 
@@ -8,14 +8,15 @@
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 50000,
+		"n_photon_per_iter": 100000,
 		"init_radius": 3
 	},
 
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
-		"pos": [0, 0, 300],
+		"length": 130.0, "focus": 140.0, "aperture": 1,
+		"pos": [0, 0, 270],
 		"rot": [0, 180, 3],
 
 		"#pos": [-58, 30, 200],
@@ -148,7 +149,7 @@
 			}
 		},
 		{
-			"name": "obstacle1",
+			"name": "obstacle up",
 			"geo": {
 				"type": "cube",
 				"pos": [-130, 13, -75],
@@ -158,13 +159,24 @@
 			}
 		},
 		{
-			"name": "obstacle2",
+			"name": "obstacle down",
 			"geo": {
 				"type": "cube",
 				"pos": [-130, -12, -60],
 				"length": 30,
 				"width": 3,
 				"height": 120
+			}
+		},
+		{
+			"name": "lens",
+			"type": "skip",
+			"diff": 0,
+			"refr": 1,
+			"geo": {
+				"type": "sphere",
+				"pos": [-110, 0, 0],
+				"radius": 9
 			}
 		}
 	]

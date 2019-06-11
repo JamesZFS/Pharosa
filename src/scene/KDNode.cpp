@@ -6,6 +6,8 @@
 #include "../geometric/Finite.h"
 #include "Intersection.h"
 
+#include <algorithm>
+
 KDNode::KDNode() : box(nullptr), objs(nullptr), l_child(nullptr), r_child(nullptr)
 {
 
@@ -84,10 +86,16 @@ void KDNode::build(const ObjectList &finite_objs, size_t depth)
 				break;
 		}
 	}
+	// stop subdividing condition:
+	auto n_match = std::count_if(l_objs->cbegin(), l_objs->cend(), [&r_objs](Object *obj) -> bool {
+		return std::find(r_objs->cbegin(), r_objs->cend(), obj) != r_objs->cend();
+	});
 
-	// recursively build
-	l_child = new KDNode;
-	l_child->build(*l_objs, depth + 1);
-	r_child = new KDNode;
-	r_child->build(*r_objs, depth + 1);
+	if (n_match < 0.5 * l_objs->size() && n_match < 0.5 * r_objs->size()) {
+		l_child = new KDNode;
+		l_child->build(*l_objs, depth + 1);    // recursively build
+		r_child = new KDNode;
+		r_child->build(*r_objs, depth + 1);
+	}
+	// else: stop dividing
 }

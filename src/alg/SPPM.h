@@ -39,9 +39,13 @@ protected:
 
 	void tracePhoton(Ray ri, Color beta, real r_bound);
 
-	void drawCurPhotons(size_t epoch) const;
+	void drawPhi(size_t epoch) const;
 
 	void drawLi(size_t epoch) const;
+
+	void drawM(size_t epoch) const;
+
+	void capture(size_t n_epoch);	// flash to camera
 
 public:
 	SPPM(const Scene &scene_, Camera &camera_,

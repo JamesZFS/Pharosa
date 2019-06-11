@@ -40,12 +40,14 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 {
 	// init vps
 	visible_points.assign(camera.width, List<VisiblePoint>(camera.height));    // width x height
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
 	for (size_t j = 0; j < camera.height; ++j) {
 		for (size_t i = 0; i < camera.width; ++i) {
 			visible_points[i][j].r = init_radius;
 		}
 	}
-	real r_bound = init_radius;    // upper bound of r
 	auto &lights = scene.getLightSources();
 	for (auto lt : lights) {
 		assert(lt->geo->type() == Geometry::SPHERE);
@@ -53,13 +55,19 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 	camera.step();
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {
 		pre_epoch_callback(epoch);
-
+		real r_avg = 0;    // average search radius
+		for (size_t j = 0; j < camera.height; ++j) {
+			for (size_t i = 0; i < camera.width; ++i) {
+				r_avg += visible_points[i][j].r;
+			}
+		}
+		r_avg /= camera.height * camera.width;
 		// pass 1:
 		// let camera shoot rays
 		// for each shot ray, trace its path in the scene to form visible points
 		// build grid data structure to hold all visible points
 
-		printf("\033[32m[ New Epoch, r_bound = %.4f ]\033[0m\n", r_bound);
+		printf("\033[32m[ New Epoch, r_avg = %.4f ]\033[0m\n", r_avg);
 		message("Now tracing visible points...\n");
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
@@ -94,26 +102,28 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 			real pdf = 1.f / lights.size();
 			// randomly pick one pos on light source
 			auto samp = Sampling::uniformOnSphere({randf(), randf()});
-			Pos pos = samp * s.rad;
-			Dir ex, ey, ez = samp - s.c;
+			Pos pos = s.c + samp * s.rad;
+			Dir ex, ey, ez = samp;
 			ez.getOrthogonalBasis(ex, ey);
 			samp = Sampling::uniformOnHemiSphere({randf(), randf()});
-			pdf *= 1.f / (s.area() * 2 * M_PIF);    // todo
+			pdf *= 1.f / (s.area() * 4 * M_PIF);    // todo
 //			pdf *= 1.f / (4 * M_PIF * 2 * M_PIF);
 			Dir dir = ex * samp.x + ey * samp.y + ez * samp.z;
 			Ray ri(pos, dir);
 
-			// trace light
-			tracePhoton(ri, lt->mtr->emi / pdf, r_bound);
+			// trace light path
+			tracePhoton(ri, lt->mtr->emi / pdf, r_avg);
 		}
-//		drawCurPhotons(epoch);
+#if DEBUG_DRAW_ON
+		drawPhi(epoch);
+		drawM(epoch);
+#endif
 
 		// pass over:
 		// update pixel radiance values according to grid cell's info
 		const static real gamma = 2.f / 3.f;
 		message("Now updating params...\n");
 
-		r_bound = 0;    // update upper bound of r
 #if OMP_ON
 #pragma omp parallel for schedule(dynamic, 1)
 #endif
@@ -132,39 +142,18 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 				vp.M = 0;
 				vp.Phi = {0, 0, 0};
 				vp.beta = {0, 0, 0};
-				r_bound = max2(r_bound, vp.r);    // update upper bound of r
 			}
 		}
-//		drawLi(epoch);
+#if DEBUG_DRAW_ON
+		drawLi(epoch);
+#endif
 
 		if (save_step > 0 && (epoch + 1) % save_step == 0) {    // periodically save image
-#if OMP_ON
-#pragma omp parallel for schedule(dynamic, 1)
-#endif
-			for (size_t j = 0; j < camera.height; ++j) {
-				for (size_t i = 0; i < camera.width; ++i) {
-					auto &vp = visible_points[i][j];
-					camera.draw(i, j,
-								vp.Ld / (epoch + 1) +
-								vp.tau / ((epoch + 1) * n_photon_per_iter * M_PIF * vp.r * vp.r));    // Li
-				}
-			}
+			capture(epoch + 1);
 			post_epoch_callback(epoch + 1);
 		}
 	}    // next epoch
-
-	// generate image
-#if OMP_ON
-#pragma omp parallel for schedule(dynamic, 1)
-#endif
-	for (size_t j = 0; j < camera.height; ++j) {
-		for (size_t i = 0; i < camera.width; ++i) {
-			auto &vp = visible_points[i][j];
-			Color L = vp.Ld / n_epoch +
-					  vp.tau / (n_epoch * n_photon_per_iter * M_PIF * vp.r * vp.r);
-			camera.draw(i, j, L);
-		}
-	}
+	capture(n_epoch);
 }
 
 void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
@@ -209,7 +198,7 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 void SPPM::buildGrid()
 {
 	delete grids;
-	VPPtrList vps;	// flattened
+	VPPtrList vps;    // flattened
 	vps.reserve(camera.height * camera.width);
 	for (auto &col : visible_points) {
 		for (auto &vp : col) {
@@ -230,14 +219,11 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		real w_new;
 		auto type = isect.scatter(ri, r_new, w_new);
 		beta *= std::abs(ri.dir % isect.nl);    // v1 absorb ratio
-		VPPtrList vps;
-		vps.reserve(200);
 		if (type == Intersection::DIFFUSE) {    // v2?
-			vps.clear();
 			// contribute to all visible points in the vicinity
 			if (depth > 0) {    // skip direct lighting term
-				grids->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {	// callback
-					if (vp->wo % isect.nl < 0) return;    // in different surfaces
+				grids->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {    // callback
+					if (vp->wo % isect.nl <= 0) return;    // in different surfaces
 					++vp->M;
 					// Phi += beta_j * f(wo, p, wj) where f = 1/pi * (wj * nl)
 					vp->Phi += beta * M_1_PIF;
@@ -245,7 +231,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 			}
 		}
 		// trace next depth
-		Color beta_new = beta / w_new; // todo
+		Color beta_new = beta * w_new; // todo why is this?
 		beta_new *= isect.getColor();    // v1
 //		beta_new *= isect.getColor() * M_1_PIF;  // v2
 
@@ -262,7 +248,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 	}
 }
 
-void SPPM::drawCurPhotons(size_t epoch) const
+void SPPM::drawPhi(size_t epoch) const
 {
 	// draw debug photon info
 	Image img(camera.width, camera.height);
@@ -286,7 +272,7 @@ void SPPM::drawCurPhotons(size_t epoch) const
 		}
 	}
 	Buffer title;
-	sprintf(title, "out/photons - %ld.ppm", epoch);
+	sprintf(title, "out/Phi - %ld.ppm", epoch);
 	img.writePPM(title, 1);
 }
 
@@ -306,4 +292,47 @@ void SPPM::drawLi(size_t epoch) const
 	Buffer title;
 	sprintf(title, "out/Li - %ld.ppm", epoch);
 	img.writePPM(title, 1);
+}
+
+void SPPM::drawM(size_t epoch) const
+{
+// draw debug photon info
+	Image img(camera.width, camera.height);
+	real M_max = 0;
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < img.getHeight(); ++j) {
+		for (size_t i = 0; i < img.getWidth(); ++i) {
+			auto &vp = visible_points[i][j];
+			M_max = max2((size_t) M_max, vp.M);
+			img.at(i, j) = vp.M;
+		}
+	}
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < img.getHeight(); ++j) {
+		for (size_t i = 0; i < img.getWidth(); ++i) {
+			img.at(i, j) /= M_max;
+		}
+	}
+	Buffer title;
+	sprintf(title, "out/M - %ld.ppm", epoch);
+	img.writePPM(title, 1);
+}
+
+void SPPM::capture(size_t n_epoch)
+{
+#if OMP_ON
+#pragma omp parallel for schedule(dynamic, 1)
+#endif
+	for (size_t j = 0; j < camera.height; ++j) {
+		for (size_t i = 0; i < camera.width; ++i) {
+			auto &vp = visible_points[i][j];
+			Color L = vp.Ld / n_epoch +
+					  vp.tau / (n_epoch * n_photon_per_iter * M_PIF * vp.r * vp.r);
+			camera.draw(i, j, L);
+		}
+	}
 }

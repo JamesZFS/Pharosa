@@ -19,6 +19,7 @@ BoundingBox::BoundingBox(const Pos &lower, const Pos &upper) :
 // !
 BoundingBox::BoundingBox(ObjectList::const_iterator begin, ObjectList::const_iterator end) : BoundingBox()
 {
+	if (begin == end) return;
 	auto it = begin;
 	auto shape = dynamic_cast<Finite *>((*it)->geo);    // down-casting
 	assert(shape != nullptr);
@@ -42,6 +43,7 @@ BoundingBox::BoundingBox(ObjectList::const_iterator begin, ObjectList::const_ite
 
 BoundingBox::BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end)
 {
+	assert(begin != end);
 	auto it = begin;
 	auto vp = *it;
 	xmin = xmax = vp->pos.x;
