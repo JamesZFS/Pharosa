@@ -232,25 +232,23 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		real w_new;
 		auto type = isect.scatter(ri, r_new, w_new);
 		beta *= std::abs(ri.dir % isect.nl);    // v1 absorb ratio
-		if (type == Intersection::DIFFUSE) {	// v2?
+		VPPtrList vps;
+		vps.reserve(200);
+		if (type == Intersection::DIFFUSE) {    // v2?
+			vps.clear();
 			// contribute to all visible points in the vicinity
-			VPPtrList vps;
 			if (depth > 0) {    // skip direct lighting term
-				bool found_vp = kd_root->query(isect.pos, r_bound, vps);
-				if (found_vp) {
-					for (auto vp_ptr : vps) {
-						auto &vp = *vp_ptr;
-						if (vp.wo % isect.nl < 0) continue;    // in different surfaces
-						++vp.M;
-						// Phi += beta_j * f(wo, p, wj) where f = 1/pi * (wj * nl)
-						vp.Phi += beta * M_1_PIF;
-					}
-				}
+				kd_root->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {	// callback
+					if (vp->wo % isect.nl < 0) return;    // in different surfaces
+					++vp->M;
+					// Phi += beta_j * f(wo, p, wj) where f = 1/pi * (wj * nl)
+					vp->Phi += beta * M_1_PIF;
+				});
 			}
 		}
 		// trace next depth
 		Color beta_new = beta / w_new; // todo
-		beta_new *= isect.getColor();	// v1
+		beta_new *= isect.getColor();    // v1
 //		beta_new *= isect.getColor() * M_1_PIF;  // v2
 
 		// Possibly terminate photon path with Russian Roulette

@@ -427,14 +427,11 @@ namespace Test
 			vps[i]->beta = {1, 1, 1};
 			vps[i]->r = randf(3, 6);
 		}
-		KDGrid *kd_root;
-		kd_root = new KDGrid(vps);
+		auto kd_root = new KDGrid(vps);
 		debug("\n\033[34m[ kdgrid max_depth = %ld ]\033[0m\n", __kdgrid_max_depth__);
 		for (int k = 0; k < 1000; ++k) {
 			__kdgrid_max_depth__ = 0;
 			Pos pos = {randf(-10, 10), randf(-10, 10), randf(-10, 10)};
-			VPPtrList vps_out;
-			kd_root->query(pos, 6, vps_out);
 			set<VisiblePoint *> s_out, s_ans;
 			shuffle(vps.begin(), vps.end(), Funcs::generator);
 			for (auto vp : vps) {
@@ -444,11 +441,11 @@ namespace Test
 //				cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
 				}
 			}
-			for (auto vp : vps_out) {
+			kd_root->query(pos, 6, [&s_out] (VisiblePoint *vp) {
 				s_out.insert(vp);
 //			vp->pos.report(false);
 //			cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
-			}
+			});
 			debug("\033[34m[ query max_depth = %ld ]\033[0m\n\n", __kdgrid_max_depth__);
 			cout << "expected: " << s_ans.size() << " vps" << endl;
 			cout << "output:   " << s_out.size() << " vps" << endl;

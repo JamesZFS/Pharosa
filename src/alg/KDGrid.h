@@ -9,6 +9,10 @@
 #include "../scene/Intersection.h"
 #include "../scene/BoundingBox.h"
 
+#include <functional>
+
+typedef std::function<void(VisiblePoint*)> QueryCallback;
+
 // a KD tree that contains visible points (as weak refrence)
 class KDGrid
 {
@@ -30,7 +34,7 @@ public:
 	~KDGrid();
 
 	// find all vps in the vicinity of pos whose r is below r_bound
-	bool query(const Pos &pos, real r_bound, VPPtrList &vps_out, size_t depth = 0);
+	bool query(const Pos &pos, real r_bound, QueryCallback callback, size_t depth = 0);
 };
 
 

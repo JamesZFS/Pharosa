@@ -1,15 +1,15 @@
 {
-	"save_path": "out/sppm2/sppm dragon3.ppm",
-	"n_epoch": 10,
-	"verbose_step": 20,
+	"save_path": "out/sppm2/sppm dragon3 test.ppm",
+	"n_epoch": 5,
+	"verbose_step": 0,
 	"save_step": 1,
 
 	"algorithm": {
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 100000,
-		"init_radius": 6
+		"n_photon_per_iter": 50000,
+		"init_radius": 5
 	},
 
 	"camera": {

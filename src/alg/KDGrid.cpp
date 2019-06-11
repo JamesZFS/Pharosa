@@ -43,7 +43,7 @@ void KDGrid::build(VPPtrList::const_iterator begin, VPPtrList::const_iterator en
 	vps = new VPPtrList(begin, end);    // copy Finite ptrs
 
 	// base case:
-	if (vps->size() <= 50) return;
+	if (vps->size() <= 10) return;
 
 	// sort vps to left or right range:
 	auto cur_axis = box->getLongestAxis();
@@ -67,7 +67,7 @@ void KDGrid::build(VPPtrList::const_iterator begin, VPPtrList::const_iterator en
 	r_child->build(begin + mid, end, depth + 1);
 }
 
-bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out, size_t depth)
+bool KDGrid::query(const Pos &pos, real r_bound, QueryCallback callback, size_t depth)
 {
 	__kdgrid_max_depth__ = max2(__kdgrid_max_depth__, depth);
 	if (box->outsideSphere(pos, r_bound)) {  // base case 1
@@ -76,17 +76,21 @@ bool KDGrid::query(const Pos &pos, real r_bound, VPPtrList &vps_out, size_t dept
 	if (l_child == nullptr || box->insideSphere(pos, r_bound)) {	// base case 2 or leaf
 		// try to report all
 		assert((l_child == nullptr) == (r_child == nullptr));
-		bool found;
-		std::for_each(vps->begin(), vps->end(), [&](VisiblePoint *vp) {
+		bool found = false;
+		size_t cnt = 0;
+		for (auto vp : *vps) {
 			if (!vp->beta.isBlack() && (vp->pos - pos).sqr() <= vp->r * vp->r) {    // filter unwanted
 				found = true;
-				vps_out.push_back(vp);
+				++cnt;
+				callback(vp);
 			}
-		});
+		}
+		if (found)
+			safe_debug("count = %ld\n", cnt);
 		return found;
 	}
-	bool fl = l_child->query(pos, r_bound, vps_out, depth + 1);
-	bool fr = r_child->query(pos, r_bound, vps_out, depth + 1);
+	bool fl = l_child->query(pos, r_bound, callback, depth + 1);
+	bool fr = r_child->query(pos, r_bound, callback, depth + 1);
 	return fl || fr;
 }
 
