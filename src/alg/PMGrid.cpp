@@ -2,7 +2,7 @@
 // Created by James on 2019/6/8.
 //
 
-#include "KDGrid.h"
+#include "PMGrid.h"
 
 #include <algorithm>
 
@@ -98,12 +98,11 @@ void NaiveGrid::query(const Pos &pos, real, const QueryCallback &callback)
 
 // == uniform grid ==
 
-const int UniformGrid::n_grid = 100;
+const int UniformGrid::n_grid = 220;	// todo param
 
 UniformGrid::UniformGrid(const VPPtrList &vplist) :
-		grids(n_grid, List2D<VPPtrList>(n_grid, List<VPPtrList>(n_grid)))
+		grids(size_t(n_grid), List2D<VPPtrList>(size_t(n_grid), List<VPPtrList>(size_t(n_grid))))
 {
-	assert(grids.size() == n_grid && grids.front().size() == n_grid && grids.front().front().size() == n_grid);
 	BoundingBox bbox(vplist.begin(), vplist.end());
 	real r_bound = 0;
 	for (auto vp : vplist) {

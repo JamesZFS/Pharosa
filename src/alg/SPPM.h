@@ -6,7 +6,7 @@
 #define PHAROSA_SPPM_H
 
 #include "Algorithm.h"
-#include "KDGrid.h"
+#include "PMGrid.h"
 #include "VisiblePoint.h"
 
 // Stochastic Progressive Photon Mapping

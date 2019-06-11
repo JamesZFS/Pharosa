@@ -16,8 +16,7 @@ typedef std::function<void(VisiblePoint *)> QueryCallback;
 class Grid
 {
 public:
-	virtual ~Grid()
-	{}
+	virtual ~Grid() = default;
 
 	virtual void query(const Pos &pos, real r_bound, const QueryCallback &callback) = 0;
 };
@@ -40,7 +39,7 @@ public:
 
 	explicit KDGrid(const VPPtrList &vplist);
 
-	~KDGrid();
+	~KDGrid() override;
 
 	// find all vps in the vicinity of pos whose r is below r_bound
 	void query(const Pos &pos, real r_bound, const QueryCallback &callback) override;

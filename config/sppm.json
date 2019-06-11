@@ -1,6 +1,6 @@
 {
 	"save_path": "out/sppm2/sppm dragon3 test grid.ppm",
-	"n_epoch": 5,
+	"n_epoch": 10,
 	"verbose_step": 10,
 	"save_step": 1,
 
@@ -9,7 +9,7 @@
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 50000,
-		"init_radius": 5
+		"init_radius": 3
 	},
 
 	"camera": {

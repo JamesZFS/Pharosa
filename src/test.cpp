@@ -8,7 +8,7 @@
 #include "utils/solvers/Linear.h"
 #include "core/Polynomial.h"
 #include "utils/solvers/NonLinear.h"
-#include "alg/KDGrid.h"
+#include "alg/PMGrid.h"
 
 #include <set>
 #include <algorithm>
