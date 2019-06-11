@@ -28,6 +28,8 @@ public:
 
 	BoundingBox();
 
+	BoundingBox(const Pos &lower, const Pos &upper);
+
 	BoundingBox(ObjectList::const_iterator begin, ObjectList::const_iterator end);
 
 	BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end);

@@ -67,6 +67,9 @@ private:
 	inline Vec<int> mapToGrid(const Pos &pos) const	// floor to index
 	{ return {int((pos.x - lower.x) / d.x), int((pos.y - lower.y) / d.y), int((pos.z - lower.z) / d.z)}; }
 
+	inline Pos mapToScene(int i, int j, int k) const
+	{ return {lower.x + i * d.x, lower.y + j * d.y, lower.z + k * d.z}; }
+
 public:
 	explicit UniformGrid(const VPPtrList &vplist);
 

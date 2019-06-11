@@ -98,7 +98,7 @@ void NaiveGrid::query(const Pos &pos, real, const QueryCallback &callback)
 
 // == uniform grid ==
 
-const int UniformGrid::n_grid = 220;	// todo param
+const int UniformGrid::n_grid = 220;    // todo param
 
 UniformGrid::UniformGrid(const VPPtrList &vplist) :
 		grids(size_t(n_grid), List2D<VPPtrList>(size_t(n_grid), List<VPPtrList>(size_t(n_grid))))
@@ -131,6 +131,9 @@ void UniformGrid::storeToGrid(VisiblePoint *vp)
 	for (auto i = i_lower; i < i_upper; ++i) {
 		for (auto j = j_lower; j < j_upper; ++j) {
 			for (auto k = k_lower; k < k_upper; ++k) {
+				BoundingBox box(mapToScene(i, j, k), mapToScene(i + 1, j + 1, k + 1));
+				if (box.outsideSphere(vp->pos, vp->r))
+					continue;
 				grids[i][j][k].push_back(vp);
 			}
 		}

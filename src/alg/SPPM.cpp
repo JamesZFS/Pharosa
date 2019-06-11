@@ -8,8 +8,6 @@
 #include "../geometric/Sphere.h"
 #include "../utils/sampling.h"
 
-#define OMP_ON 1
-
 using Funcs::randf;
 
 
@@ -59,7 +57,7 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 		// pass 1:
 		// let camera shoot rays
 		// for each shot ray, trace its path in the scene to form visible points
-		// build kd tree to hold all visible points
+		// build grid data structure to hold all visible points
 
 		printf("\033[32m[ New Epoch, r_bound = %.4f ]\033[0m\n", r_bound);
 		message("Now tracing visible points...\n");
@@ -74,14 +72,14 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 			}
 		}
 
-		message("\nNow building KD tree...\n");
-		buildKDTree();
+		message("\nNow building grid...\n");
+		buildGrid();
 
 		// pass 2:
 		// for each photon in n_photon_per_iteration
 		// randomly sample one light from source
-		// trace it in the scene and query kd tree for path's nearby visible points
-		// contribute photon radiance to kd node
+		// trace it in the scene and query grid for path's nearby visible points
+		// contribute photon radiance to grid cell
 
 		message("Now processing photon tracing...\n");
 #if OMP_ON
@@ -111,7 +109,7 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 //		drawCurPhotons(epoch);
 
 		// pass over:
-		// update pixel radiance values according to kd node info
+		// update pixel radiance values according to grid cell's info
 		const static real gamma = 2.f / 3.f;
 		message("Now updating params...\n");
 
@@ -208,10 +206,11 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 	}
 }
 
-void SPPM::buildKDTree()
+void SPPM::buildGrid()
 {
 	delete grids;
-	VPPtrList vps;
+	VPPtrList vps;	// flattened
+	vps.reserve(camera.height * camera.width);
 	for (auto &col : visible_points) {
 		for (auto &vp : col) {
 			vps.push_back(&vp);
@@ -220,8 +219,8 @@ void SPPM::buildKDTree()
 	grids = new UniformGrid(vps);
 }
 
-// trace it in the scene and query kd tree for path's nearby visible points
-// contribute photon radiance to kd node
+// trace it in the scene and query grid for path's nearby visible points
+// contribute photon radiance to grid cell
 void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 {
 	for (size_t depth = 0; depth < max_depth; ++depth) {

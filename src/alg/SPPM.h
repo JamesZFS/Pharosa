@@ -33,7 +33,7 @@ protected:
 //	NaiveGrid *kd_root;
 	UniformGrid *grids;
 
-	void buildKDTree();
+	void buildGrid();
 
 	void traceCameraRay(Ray ro, VisiblePoint &vp);
 

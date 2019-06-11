@@ -7,7 +7,13 @@
 
 BoundingBox::BoundingBox() : xmin(0), xmax(0), ymin(0), ymax(0), zmin(0), zmax(0)
 {
+}
 
+BoundingBox::BoundingBox(const Pos &lower, const Pos &upper) :
+		xmin(lower.x), xmax(upper.x),
+		ymin(lower.y), ymax(upper.y),
+		zmin(lower.z), zmax(upper.z)
+{
 }
 
 // !
