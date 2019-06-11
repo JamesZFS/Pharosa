@@ -31,7 +31,7 @@ protected:
 	const real init_radius;
 	List2D<VisiblePoint> visible_points;    // owned by this class, camera.width x camera.height
 //	NaiveGrid *kd_root;
-	KDGrid *kd_root;
+	UniformGrid *grids;
 
 	void buildKDTree();
 

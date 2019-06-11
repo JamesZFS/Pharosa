@@ -1,7 +1,7 @@
 {
-	"save_path": "out/sppm2/sppm dragon3 test.ppm",
+	"save_path": "out/sppm2/sppm dragon3 test grid.ppm",
 	"n_epoch": 5,
-	"verbose_step": 0,
+	"verbose_step": 10,
 	"save_step": 1,
 
 	"algorithm": {

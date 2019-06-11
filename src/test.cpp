@@ -418,20 +418,20 @@ namespace Test
 	{
 		List<Pos> poses(1000);
 		for (auto &pos:poses) {
-			pos = Pos(randf(-10, 10), randf(-5, 8), randf(0, 8));
+			pos = Pos(randf(-100, 100), randf(-50, 80), randf(0, 80));
 		};
 		VPPtrList vps(poses.size());
 		for (size_t i = 0; i < vps.size(); ++i) {
 			vps[i] = new VisiblePoint;
-			vps[i]->pos = poses.at(i);
+			vps[i]->pos = poses[i];
 			vps[i]->beta = {1, 1, 1};
 			vps[i]->r = randf(3, 6);
 		}
-		auto kd_root = new KDGrid(vps);
+		auto kd_root = new UniformGrid(vps);
 		debug("\n\033[34m[ kdgrid max_depth = %ld ]\033[0m\n", __kdgrid_max_depth__);
-		for (int k = 0; k < 1000; ++k) {
+		for (int k = 0; k < 10000; ++k) {
 			__kdgrid_max_depth__ = 0;
-			Pos pos = {randf(-10, 10), randf(-10, 10), randf(-10, 10)};
+			Pos pos = {randf(-100, 100), randf(-100, 100), randf(-100, 100)};
 			set<VisiblePoint *> s_out, s_ans;
 			shuffle(vps.begin(), vps.end(), Funcs::generator);
 			for (auto vp : vps) {
@@ -441,15 +441,48 @@ namespace Test
 //				cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
 				}
 			}
-			kd_root->query(pos, 6, [&s_out] (VisiblePoint *vp) {
+			kd_root->query(pos, 6, [&s_out](VisiblePoint *vp) {
 				s_out.insert(vp);
 //			vp->pos.report(false);
 //			cout << " d = " << (vp->pos - pos).norm() << " r = " << vp->r << endl;
 			});
-			debug("\033[34m[ query max_depth = %ld ]\033[0m\n\n", __kdgrid_max_depth__);
+			printf("\n\033[34m[ test %d, query max_depth = %ld ]\033[0m\n", k, __kdgrid_max_depth__);
+			printf("\033[34m[ query pos = (%.2f, %.2f, %.2f) ]\033[0m\n", pos.x, pos.y, pos.z);
 			cout << "expected: " << s_ans.size() << " vps" << endl;
 			cout << "output:   " << s_out.size() << " vps" << endl;
-			assert(s_out == s_ans);
+			real recall = 0;
+			real precis = 0;
+			for (auto vp: s_ans) {
+				if (s_out.find(vp) != s_out.end())
+					++recall;
+				else {
+					printf("FN: ");
+					vp->pos.report(false);
+					printf(" r = %.4f >= dist = %.4f\n", vp->r, (vp->pos - pos).norm());
+				}
+			}
+			for (auto vp: s_out) {
+				if (s_ans.find(vp) != s_ans.end())
+					++precis;
+				else {
+					printf("FP: ");
+					vp->pos.report(false);
+					printf(" r = %.4f >= dist = %.4f\n", vp->r, (vp->pos - pos).norm());
+				}
+			}
+			if (s_ans.size())
+				recall /= s_ans.size();
+			else
+				recall = 1;
+
+			if (s_out.size())
+				precis /= s_out.size();
+			else
+				precis = 1;
+			printf("recall = %.2f %%\n", recall * 100);
+			printf("precis = %.2f %%\n", precis * 100);
+			assert(recall == 1);
+			assert(precis == 1);
 		}
 		delete kd_root;
 	}

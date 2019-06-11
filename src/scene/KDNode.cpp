@@ -52,7 +52,7 @@ void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 void KDNode::build(const ObjectList &finite_objs, size_t depth)
 {
 	__kdnode_max_depth__ = max2(__kdnode_max_depth__, depth);
-	box = new BoundingBox(finite_objs);    // bound all finite_objs
+	box = new BoundingBox(finite_objs.cbegin(), finite_objs.cend());    // bound all finite_objs
 	objs = new ObjectList(finite_objs);    // copy Finite ptrs
 
 	// base case:

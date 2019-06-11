@@ -17,13 +17,13 @@ SPPM::SPPM(const Scene &scene_, Camera &camera_,
 		   size_t n_photon_per_iter_, size_t max_depth_, real init_radius_) :
 		Algorithm(scene_, camera_),
 		n_photon_per_iter(n_photon_per_iter_), max_depth(max_depth_), init_radius(init_radius_),
-		kd_root(nullptr)
+		grids(nullptr)
 {
 }
 
 SPPM::~SPPM()
 {
-	delete kd_root;
+	delete grids;
 }
 
 String SPPM::info() const
@@ -210,15 +210,14 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 
 void SPPM::buildKDTree()
 {
-	delete kd_root;
+	delete grids;
 	VPPtrList vps;
 	for (auto &col : visible_points) {
 		for (auto &vp : col) {
 			vps.push_back(&vp);
 		}
 	}
-//	kd_root = new NaiveGrid(vps);
-	kd_root = new KDGrid(vps);
+	grids = new UniformGrid(vps);
 }
 
 // trace it in the scene and query kd tree for path's nearby visible points
@@ -238,7 +237,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 			vps.clear();
 			// contribute to all visible points in the vicinity
 			if (depth > 0) {    // skip direct lighting term
-				kd_root->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {	// callback
+				grids->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {	// callback
 					if (vp->wo % isect.nl < 0) return;    // in different surfaces
 					++vp->M;
 					// Phi += beta_j * f(wo, p, wj) where f = 1/pi * (wj * nl)

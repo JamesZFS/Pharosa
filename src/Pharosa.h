@@ -29,7 +29,10 @@ template<typename T>
 using List = std::vector<T>;
 
 template<typename T>
-using List2D = List<List<T>>;
+using List2D = List<List<T> >;
+
+template<typename T>
+using List3D = List<List<List<T> > >;
 
 template<typename T, size_t n>
 using Arr = std::array<T, n>;

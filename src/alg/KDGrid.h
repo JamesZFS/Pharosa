@@ -11,14 +11,23 @@
 
 #include <functional>
 
-typedef std::function<void(VisiblePoint*)> QueryCallback;
+typedef std::function<void(VisiblePoint *)> QueryCallback;
+
+class Grid
+{
+public:
+	virtual ~Grid()
+	{}
+
+	virtual void query(const Pos &pos, real r_bound, const QueryCallback &callback) = 0;
+};
 
 // a KD tree that contains visible points (as weak refrence)
-class KDGrid
+class KDGrid : public Grid
 {
 private:
 	BoundingBox *box;
-	VPPtrList *vps;		// weak ptrs
+	VPPtrList *vps;        // weak ptrs
 	KDGrid *l_child;
 	KDGrid *r_child;
 
@@ -34,18 +43,39 @@ public:
 	~KDGrid();
 
 	// find all vps in the vicinity of pos whose r is below r_bound
-	bool query(const Pos &pos, real r_bound, QueryCallback callback, size_t depth = 0);
+	void query(const Pos &pos, real r_bound, const QueryCallback &callback) override;
 };
 
 
-class NaiveGrid
+class NaiveGrid : public Grid
 {
 private:
 	VPPtrList vps;
 public:
-	explicit NaiveGrid(const VPPtrList &vplist) : vps(vplist) {}
+	explicit NaiveGrid(const VPPtrList &vplist) : vps(vplist)
+	{}
 
-	bool query(const Pos &pos, real r_bound, VPPtrList &vps_out);
+	void query(const Pos &pos, real r_bound, const QueryCallback &callback) override;
+};
+
+
+class UniformGrid : public Grid
+{
+private:
+	Pos lower, upper, d;	// d = (upper - lower) / n_grid
+	List3D<VPPtrList> grids;	// each grid is a list of vp ptr
+
+	inline Vec<int> mapToGrid(const Pos &pos) const	// floor to index
+	{ return {int((pos.x - lower.x) / d.x), int((pos.y - lower.y) / d.y), int((pos.z - lower.z) / d.z)}; }
+
+public:
+	explicit UniformGrid(const VPPtrList &vplist);
+
+	void storeToGrid(VisiblePoint *vp);
+
+	void query(const Pos &pos, real r_bound, const QueryCallback &callback) override;
+
+	static const int n_grid;
 };
 
 

@@ -21,13 +21,24 @@ private:
 	real zmin, zmax;
 
 public:
-	enum Axis {X = 0, Y = 1, Z = 2};
+	enum Axis
+	{
+		X = 0, Y = 1, Z = 2
+	};
 
 	BoundingBox();
 
-	BoundingBox(const ObjectList &finite_objs);
+	BoundingBox(ObjectList::const_iterator begin, ObjectList::const_iterator end);
 
 	BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end);
+
+	inline Pos getLowerBound() const
+	{ return {xmin, ymin, zmin}; }
+
+	inline Pos getUpperBound() const
+	{ return {xmax, ymax, zmax}; }
+
+	void extendMargin(real margin);
 
 	bool intersect(const Ray &ray) const;
 

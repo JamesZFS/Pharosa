@@ -5,16 +5,25 @@
 #include "BoundingBox.h"
 #include "../geometric/Finite.h"
 
-BoundingBox::BoundingBox() : xmin(INF), xmax(-INF), ymin(INF), ymax(-INF), zmin(INF), zmax(-INF)
+BoundingBox::BoundingBox() : xmin(0), xmax(0), ymin(0), ymax(0), zmin(0), zmax(0)
 {
 
 }
 
 // !
-BoundingBox::BoundingBox(const ObjectList &finite_objs) : BoundingBox()
+BoundingBox::BoundingBox(ObjectList::const_iterator begin, ObjectList::const_iterator end) : BoundingBox()
 {
-	for (auto obj : finite_objs) {
-		auto shape = dynamic_cast<Finite *>(obj->geo);    // down-casting
+	auto it = begin;
+	auto shape = dynamic_cast<Finite *>((*it)->geo);    // down-casting
+	assert(shape != nullptr);
+	xmin = shape->xMin();
+	xmax = shape->xMax();
+	ymin = shape->yMin();
+	ymax = shape->yMax();
+	zmin = shape->zMin();
+	zmax = shape->zMax();
+	for (++it; it != end; ++it) {
+		shape = dynamic_cast<Finite *>((*it)->geo);    // down-casting
 		assert(shape != nullptr);
 		xmin = min2(xmin, shape->xMin());
 		xmax = max2(xmax, shape->xMax());
@@ -27,8 +36,13 @@ BoundingBox::BoundingBox(const ObjectList &finite_objs) : BoundingBox()
 
 BoundingBox::BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end)
 {
-	for (auto it = begin; it != end; ++it) {
-		auto vp = *it;
+	auto it = begin;
+	auto vp = *it;
+	xmin = xmax = vp->pos.x;
+	ymin = ymax = vp->pos.y;
+	zmin = zmax = vp->pos.z;
+	for (++it; it != end; ++it) {
+		vp = *it;
 		xmin = min2(xmin, vp->pos.x);
 		xmax = max2(xmax, vp->pos.x);
 		ymin = min2(ymin, vp->pos.y);
@@ -92,4 +106,14 @@ bool BoundingBox::insideSphere(const Pos &pos, real r) const
 	real dy = max2(fabsf(pos.y - ymin), fabsf(pos.y - ymax));
 	real dz = max2(fabsf(pos.z - zmin), fabsf(pos.z - zmax));
 	return dx * dx + dy * dy + dz * dz <= r * r;
+}
+
+void BoundingBox::extendMargin(real margin)
+{
+	xmin -= margin;
+	ymin -= margin;
+	zmin -= margin;
+	xmax += margin;
+	ymax += margin;
+	zmax += margin;
 }
