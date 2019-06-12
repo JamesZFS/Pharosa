@@ -1,11 +1,10 @@
 {
-	"save_path": "two 6-6 com.ppm",
-	"#prev_path": "two 6-6 .ppm",
-	"n_epoch": 30,
+	"save_path": "out/two/6-12.ppm",
+	"n_epoch": 10,
 	"save_step": 10,
 
 	"algorithm": {
-		"type": "pt",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},
@@ -13,14 +12,33 @@
 	"camera": {
 		"type": "basic",
 		"width": 800, "height": 700,
-		"pos": [0, 0, 280],
-		"rot": [0, 170, 0]
+		"#pos": [0, 0, 280],
+		"#rot": [0, 170, 0],
+		"pos": [-58, 30, 200],
+		"rot": [-8, 163, 22]
 	},
 
 	"scene": [
 		{
-			"name": "blue cube",
+			"name": "cube",
+			"type": "skip",
 			"color": [0.1, 0.1, 0.9],
+			"geo": {
+				"type": "cube",
+				"length": 10,
+				"width": 20,
+				"height": 40,
+				"pos": [0, -30, -20]
+			},
+			"rot": [0, 0, 45],
+			"tra": [0, -20, 40]
+		},
+		{
+			"name": "glass cube",
+			"color": [0.8, 0.8, 0.95],
+			"diff": 0,
+			"spec": 0,
+			"refr": 1.0,
 			"geo": {
 				"type": "cube",
 				"length": 10,
@@ -119,6 +137,19 @@
 				"type": "sphere",
 				"radius": 20,
 				"pos": [0, 80, 0]
+			}
+		},
+		{
+			"name": "light tri",
+			"type": "skip",
+			"emission": [15, 15, 15],
+			"geo": {
+				"type": "triangle",
+				"vertices": [
+					[-20, 78, 0],
+					[0, 78, 20],
+					[0, 78, -20]
+				]
 			}
 		}
 	]

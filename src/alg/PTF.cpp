@@ -4,6 +4,7 @@
 
 #include "PTF.h"
 #include "../scene/Scene.h"
+#include "../geometric/Finite.h"
 
 using Funcs::randf;
 
@@ -34,8 +35,8 @@ Color PTF::radiance(const Ray &ray) const
 		if (!scene.intersectAny(r, isect)) break; // if miss, stop tracing
 
 		// accumulate radiance and throughput
-		if (isect.hit->geo->type() != Geometry::SPHERE)
-			flag = true;    // since we deal only with sphere
+		if (!dynamic_cast<Finite *>(isect.hit->geo))
+			flag = true;    // since we deal only with Ld of finite obj
 		if (flag)
 			L += beta.mul(isect.getEmission());
 		Color color = isect.getColor();    // get texture from color

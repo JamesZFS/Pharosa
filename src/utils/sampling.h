@@ -11,13 +11,15 @@ namespace Sampling
 {
 	Vec3f uniformOnSphere(const Vec2f &xi);
 
-	Vec3f uniformOnHemiSphere(const Vec2f &xi);
+	Vec3f uniformOnHemisphere(const Vec2f &xi);
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi);
 
 	Vec2f uniformOnDisk(const Vec2f &xi);
 
 	Vec3f uniformOnSphereCap(real cos_theta_max, const Vec2f &xi);
+
+	Vec3f uniformOnTriangle(const Pos &A, const Pos &B, const Pos &C, const Vec2f &xi);
 };
 
 #endif //PHAROSA_SAMPLING_H

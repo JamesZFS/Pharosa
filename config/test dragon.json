@@ -1,6 +1,6 @@
 {
-	"save_path": "out/dragon/dragon 6-8.ppm",
-	"n_epoch": 10,
+	"save_path": "out/dragon/dragon 6-12 ++.ppm",
+	"n_epoch": 5,
 	"save_step": 10,
 	"verbose_step": 10,
 
@@ -90,12 +90,41 @@
 		},
 		{
 			"name": "light source",
+			"type": "skip",
 			"emission": [12, 11, 10],
 			"geo": {
 				"type": "cube",
 				"pos": [-40, 78, -60],
 				"length": 80, "width": 20, "height": 80
 			}
+		},
+		{
+			"type": "group",
+			"name": "light mesh",
+			"emission": [15, 15, 15],
+			"tra": [0, 78, -20],
+			"objects": [
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[-40, 0, -40],
+							[40, 0, -40],
+							[-40, 0, 40]
+						]
+					}
+				},
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[40, 0, 40],
+							[40, 0, -40],
+							[-40, 0, 40]
+						]
+					}
+				}
+			]
 		}
 	]
 }

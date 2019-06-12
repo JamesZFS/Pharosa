@@ -202,7 +202,7 @@ struct Pos : Vec<real>    // 3D coordinate
 
 	Pos &rotate(const ElAg &ea);    // Euler rotation, in place. Z -> X -> Y
 
-	inline Pos getCoordAs(const Pos &e1, const Pos &e2, const Pos &e3)    // coordinate transform
+	inline Pos transformAs(const Pos &e1, const Pos &e2, const Pos &e3)    // coordinate transform
 	{
 		return {
 				e1.x * x + e1.y * y + e1.z * z,
@@ -224,12 +224,6 @@ struct Dir : Pos        // direction, unitized vector
 	Dir(real x_, real y_, real z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
 	{
 		assert(x != 0 || y != 0 || z != 0);
-//		if (x == 0 && y == 0 && z == 0) {
-//			z = 1;
-//			x = 1;
-//			y = 1;
-//			__print_cnt__++;
-//		}
 		this->unitize();
 	}
 
@@ -315,10 +309,7 @@ struct Vec2f
 	{}
 
 	inline real operator[](size_t i) const
-	{
-		assert(i < 2);
-		return *(&x + i);
-	}
+	{ return *(&x + i); }
 };
 
 typedef RGB Color;            // intrinsic color of an object

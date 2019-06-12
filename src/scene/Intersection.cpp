@@ -32,7 +32,7 @@ Intersection::ScatterType Intersection::scatter(const Ray &r_in, Ray &r_out, rea
 		w_out = 1;
 		// without Phong-model:
 		// naive sampling of Phong-model:
-		/*auto samp = Sampling::uniformOnHemiSphere({randf(), randf()});
+		/*auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
 		Dir V = r_in.dir - nl * (nl % r_in.dir * 2);
 		Dir R = ex * samp.x + ey * samp.y + ez * samp.z;
 		// n = 2:

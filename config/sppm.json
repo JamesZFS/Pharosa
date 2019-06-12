@@ -1,11 +1,11 @@
 {
-	"save_path": "out/sppm2/sppm dragon3 test Ld.ppm",
-	"n_epoch": 10,
+	"save_path": "out/sppm2/ptf dragon3 test +.ppm",
+	"n_epoch": 5,
 	"verbose_step": 0,
 	"save_step": 1,
 
 	"algorithm": {
-		"type": "sppm",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 100000,

@@ -14,7 +14,7 @@ namespace Sampling
 		return {sin_theta * cosf(phi), sin_theta * sinf(phi), cos_theta};
 	}
 
-	Vec3f uniformOnHemiSphere(const Vec2f &xi)
+	Vec3f uniformOnHemisphere(const Vec2f &xi)
 	{
 		auto sin_theta = sqrtf(max2(0.f, 1 - xi[0] * xi[0]));
 		auto phi = 2 * M_PIF * xi[1];
@@ -23,9 +23,6 @@ namespace Sampling
 
 	Vec3f cosineOnHemisphere(const Vec2f &xi)
 	{
-//		auto r = sqrtf(xi[0]);
-//		auto phi = 2 * M_PIF * xi[1];
-//		return {r * cosf(phi), r * sinf(phi), sqrtf(max2(0., 1 - xi[0]))};
 		auto p = uniformOnDisk(xi);
 		return {p.x, p.y, sqrtf(max2(0.f, 1 - p.x * p.x - p.y * p.y))};
 	}
@@ -52,5 +49,11 @@ namespace Sampling
 		auto sin_theta = sqrtf(max2(0.f, 1 - cos_theta * cos_theta));
 		auto phi = 2 * M_PIF * xi[1];
 		return {sin_theta * cosf(phi), sin_theta * sinf(phi), cos_theta};
+	}
+
+	Vec3f uniformOnTriangle(const Pos &A, const Pos &B, const Pos &C, const Vec2f &xi)
+	{
+		real sxi0 = sqrtf(xi[0]);
+		return A * ((1 - xi[1]) * sxi0) + B * (1 - sxi0) + C * (xi[1] * sxi0);
 	}
 }

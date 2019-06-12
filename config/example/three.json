@@ -1,11 +1,11 @@
 {
-	"save_path": "out/three_sppm/test tri.ppm",
-	"n_epoch": 10,
+	"save_path": "out/three_sppm/test tri++.ppm",
+	"n_epoch": 5,
 	"verbose_step": 0,
 	"save_step": 5,
 
 	"algorithm": {
-		"type": "rc",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 100000,
@@ -22,6 +22,8 @@
 	"scene": [
 		{
 			"name": "blue cube",
+			"diff": 0,
+			"refr": 1.0,
 			"color": [0.1, 0.1, 0.9],
 			"geo": {
 				"type": "cube",

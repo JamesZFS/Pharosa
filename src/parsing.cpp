@@ -222,7 +222,7 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 
 		}
 		else if (type == "skip") continue;
-		else TERMINATE("Error, got unidentified scene type \"%s\"", type.data());
+		else TERMINATE("Error, got unidentified obj type \"%s\"", type.data());
 
 	}
 	return self;
@@ -313,7 +313,7 @@ Sphere *Sphere::acquire(const Json &json)
 
 Triangle *Triangle::acquire(const Json &json)
 {
-	return new Triangle(json.at("points").at(0), json.at("points").at(1), json.at("points").at(2));
+	return new Triangle(json.at("vertices").at(0), json.at("vertices").at(1), json.at("vertices").at(2));
 }
 
 PolyRev *PolyRev::acquire(const Json &json)

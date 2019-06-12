@@ -84,9 +84,7 @@ void Scene::prepare()
 				};
 		// get 12 triangles
 		for (auto tri : tris) {
-			tri->report();
 			auto mesh= new Object(tri, obj->mtr, obj->name);
-//			mesh->report();
 			meshes.push_back(mesh);
 		}
 	}
@@ -117,6 +115,8 @@ void Scene::prepare()
 	// find light sources
 	light_sources.clear();
 	for (const auto obj : objects) {
+		auto shape = dynamic_cast<Finite *>(obj->geo);
+		if (!shape) continue;	// deal only with finite light sources
 		if (obj->mtr->emi.hasPositivePart())
 			light_sources.push_back(obj);
 	}

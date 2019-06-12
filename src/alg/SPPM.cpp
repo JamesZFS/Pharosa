@@ -105,7 +105,7 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 			Pos pos = s.c + samp * s.rad;
 			Dir ex, ey, ez = samp;
 			ez.getOrthogonalBasis(ex, ey);
-			samp = Sampling::uniformOnHemiSphere({randf(), randf()});
+			samp = Sampling::uniformOnHemisphere({randf(), randf()});
 			pdf *= 1.f / (s.area() * 4 * M_PIF);    // todo
 //			pdf *= 1.f / (4 * M_PIF * 2 * M_PIF);
 			Dir dir = ex * samp.x + ey * samp.y + ez * samp.z;
