@@ -1,14 +1,14 @@
 {
-	"save_path": "out/sppm2/ref dragon3 lens.ppm",
-	"n_epoch": 30,
+	"save_path": "out/sppm2/fun dragon3 lens.ppm",
+	"n_epoch": 5,
 	"verbose_step": 0,
-	"save_step": 0,
+	"save_step": 1,
 
 	"algorithm": {
-		"type": "pt",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 200000,
+		"n_photon_per_iter": 100000,
 		"init_radius": 3
 	},
 

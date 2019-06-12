@@ -1,8 +1,8 @@
 {
-	"save_path": "out/dragon/sppm dragon 6-12 shit.ppm",
-	"n_epoch": 10,
-	"save_step": 2,
-	"verbose_step": 0,
+	"save_path": "out/dragon/sppm dragon 6-12 texture.ppm",
+	"n_epoch": 1,
+	"save_step": 1,
+	"verbose_step": 10,
 
 	"algorithm": {
 		"type": "sppm",
@@ -29,6 +29,10 @@
 			"spec": 0.01,
 			"refr": 0.01,
 			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
+			"texture": {
+				"path": "res/marble2.ppm",
+				"scale": 10
+			},
 			"scale": 40,
 			"tra": [0, -30, 0],
 			"rot": [0, 0, 34]
@@ -39,6 +43,13 @@
 			"objects": [
 				{
 					"name": "back wall",
+					"#texture": {
+						"path": "res/bamboo.ppm",
+						"mat": [
+							[0, 2, 9],
+							[2, 0, 100]
+						]
+					},
 					"color": "WHITE",
 					"geo": {
 						"type": "infplane",
@@ -69,6 +80,7 @@
 				{
 					"name": "left",
 					"color": [0.8, 0.4, 0.4],
+					"#texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -80,6 +92,7 @@
 				{
 					"name": "right",
 					"color": [0.4, 0.4, 0.8],
+					"#texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -91,13 +104,23 @@
 			]
 		},
 		{
-			"name": "light source",
 			"type": "skip",
+			"name": "light source",
 			"emission": [12, 11, 10],
 			"geo": {
 				"type": "cube",
 				"pos": [-40, 78, -60],
 				"length": 80, "width": 20, "height": 80
+			}
+		},
+		{
+			"type": "skip",
+			"name": "light bulb",
+			"emission": [16, 15, 15],
+			"geo": {
+				"type": "sphere",
+				"pos": [0, 50, 0],
+				"radius": 10
 			}
 		},
 		{

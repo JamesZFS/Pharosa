@@ -63,7 +63,13 @@ ObjectList *Parser::parseMeshes(const String &obj_path, real scale, const TransM
 
 			case 'f':    // face (rank1, rank2, rank3), notice this rank starts from 1
 				fin >> a >> b >> c;
-				mesh = new Triangle(v.at(--a), v.at(--b), v.at(--c));    // new a mesh
+				try {
+					mesh = new Triangle(v.at(--a), v.at(--b), v.at(--c));    // new a mesh
+				}
+				catch (Triangle::DegenerateCase &e) {
+					message(e.what());
+					SKIP_LINE
+				}
 				mesh->applyTransform(trans_mat);                         // transform
 				meshes->push_back(new Object(mesh, material));            // save
 				SKIP_LINE

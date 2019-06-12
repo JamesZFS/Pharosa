@@ -205,6 +205,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		Ray r_new;
 		real w_new;
 		auto type = isect.scatter(ri, r_new, w_new);
+		beta *= isect.getColor();
 		beta *= std::abs(ri.dir % isect.nl);    // v1 absorb ratio
 		if (type == Intersection::DIFFUSE) {    // v2?
 			// contribute to all visible points in the vicinity
@@ -223,7 +224,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		}
 		// trace next depth
 		Color beta_new = beta * w_new;
-		beta_new *= isect.getColor();    // v1
+//		beta_new *= isect.getColor();    // v1
 //		beta_new *= isect.getColor() * M_1_PIF;  // v2
 
 		// Possibly terminate photon path with Russian Roulette

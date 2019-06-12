@@ -83,6 +83,7 @@ bool PolyRev::intersect(const Ray &ray, real &t, Intersection &isect) const
 			cos_v = y / psi_u, sin_v = z / psi_u;
 
 	isect.n = mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);
+	isect.n.unitize();
 	isect.u = u;
 	isect.v = atan2f(sin_v, cos_v);
 	return true;

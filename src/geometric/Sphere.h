@@ -23,7 +23,7 @@ struct Sphere : Geometry, Finite
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
 	void getNormal(const Pos &pos, Dir &normal) const override
-	{ normal = pos - c; }
+	{ normal = pos - c; normal.unitize(); }
 
 	void getUV(const Pos &pos, real &u, real &v) const override
 	{

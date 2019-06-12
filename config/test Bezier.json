@@ -1,12 +1,14 @@
 {
-	"save_path": "out/Bezier/Bezier rc.ppm",
+	"save_path": "out/Bezier/Bezier sppm.ppm",
 	"n_epoch": 10,
-	"save_step": 2,
+	"save_step": 1,
 	"verbose_step": 10,
 	"algorithm": {
-		"type": "rc",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 5
+		"max_depth": 5,
+		"n_photon_per_iter": 100000,
+		"init_radius": 3
 	},
 	"camera": {
 		"type": "basic",

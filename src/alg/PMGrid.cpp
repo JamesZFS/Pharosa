@@ -98,7 +98,7 @@ void NaiveGrid::query(const Pos &pos, real, const QueryCallback &callback)
 
 // == uniform grid ==
 
-const int UniformGrid::n_grid = N_UNIFORM_GRID;    // todo param
+const int UniformGrid::n_grid = 220;    // todo param
 
 UniformGrid::UniformGrid(const VPPtrList &vplist) :
 		grids(size_t(n_grid), List2D<VPPtrList>(size_t(n_grid), List<VPPtrList>(size_t(n_grid))))

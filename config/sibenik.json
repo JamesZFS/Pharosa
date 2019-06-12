@@ -1,41 +1,64 @@
 {
-	"save_path": "out/sibenik/rc 2 ptf.ppm",
-	"n_epoch": 10,
-	"save_step": 2,
+	"save_path": "out/sibenik/2 sppm pure3.ppm",
+	"n_epoch": 150,
+	"save_step": 1,
 	"verbose_step": 10,
 
 	"algorithm": {
-		"type": "rc",
-		"light_dir": [-1, -1, -2],
+		"type": "sppm",
+		"light_dir": [-1, 1, -2],
 		"max_depth": 5,
-		"n_photon_per_iter": 200000,
+		"n_photon_per_iter": 1000000,
 		"init_radius": 3
 	},
 
 	"camera": {
 		"type": "basic",
 		"width": 1024, "height": 768,
-		"pos": [-500, 0, 800],
+		"pos": [-200, 0, 50],
 
-		"rot": [-90, -120, 0]
+		"rot": [-90, -100, 0]
 	},
 
 	"scene": [
 		{
+			"name": "church",
 			"type": "obj",
-			"color": [0.92, 0.95, 0.9],
+			"#texture": "res/marble.ppm",
+			"color": [0.93, 0.93, 0.91],
 			"reft": "diff",
 			"path": "/Users/james/Test/CG/Pharosa/res/sibenik - done.obj",
 			"scale": 100,
-			"rot": [5, 90, -2]
+			"rot": [0, 90, 0]
+		},
+		{
+			"name": "holy ball",
+			"type": "skip",
+			"diff": 0,
+			"refr": 1,
+			"geo": {
+				"type": "sphere",
+				"radius": 30,
+				"pos": [240, 0, -20]
+			}
+		},
+		{
+			"name": "holy bunny",
+			"type": "obj",
+			"path": "/Users/james/Test/CG/Pharosa/res/bunny.fine.obj",
+			"diff": 0,
+			"refr": 1,
+			"scale": 450,
+			"tra": [240, 0, -80],
+			"rot": [0, 90, -30]
 		},
 		{
 			"name": "light source",
-			"emission": "splendid",
+			"emission": [65, 60, 55],
 			"geo": {
 				"type": "sphere",
-				"radius": 50,
-				"pos": [200, 0, 100]
+				"radius": 23,
+				"pos": [100, 0, 300]
 			}
 		}
 	]
