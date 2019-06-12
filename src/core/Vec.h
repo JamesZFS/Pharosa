@@ -222,10 +222,7 @@ struct Dir : Pos        // direction, unitized vector
 	Dir() = default;
 
 	Dir(real x_, real y_, real z_) : Pos(x_, y_, z_)    // x, y, z should explicitly assigned
-	{
-		assert(x != 0 || y != 0 || z != 0);
-		this->unitize();
-	}
+	{}
 
 	Dir(const Json &json) : Pos(json)
 	{
@@ -233,10 +230,8 @@ struct Dir : Pos        // direction, unitized vector
 		this->unitize();
 	}
 
-	Dir(const Vec<real> &obj) : Dir(obj.x, obj.y, obj.z)    // copy constructor
+	Dir(const Vec<real> &obj) : Pos(obj.x, obj.y, obj.z)    // copy constructor
 	{}
-
-	Dir(const Dir &obj) = default;    // copy constructor
 
 	inline Dir &unitize()    // to unit vector
 	{

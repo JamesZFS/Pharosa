@@ -77,7 +77,7 @@ namespace Test
 		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.x == M_PI_4F && ea.y == 0 && ea.z == M_PI_2F);
 
-		d = Dir(0, 0, 5);
+		d = Dir(0, 0, 5).unitize();
 		ea = d.getEulerAngles();
 		printf("(%.2f, %.2f, %.2f)\n", ea.x / DEG, ea.y / DEG, ea.z / DEG);
 		assert(ea.y == 0 && ea.z == 0);
@@ -121,39 +121,44 @@ namespace Test
 	{
 		Polynomial f({1, 2, 3});
 		f.report();
-		assert(f(0.0f) == 1);
-		assert(f(1.0f) == 6);
-		assert(f(-2.0f) == 9);
+		assertApproxEqual(f(0.0f), 1);
+		assertApproxEqual(f(1.0f), 6);
+		assertApproxEqual(f(-2.0f), 9);
 		f -= Polynomial({-1.0f, -1, 0, 0, 2});
 		assert(f.order() == 4);
 		f.report();
 		(f + Polynomial(0, 1)).report();
-		assert(f[-1] == 0);
-		assert(f[1] == 3);
+		assertApproxEqual(f[-1], 0);
+		f.report();
+		assertApproxEqual(f(1), 6);
 		message("Poly Mul:");
 		Polynomial g({2, 0, 0});
 		f *= g;
 		f.report();
 		f.set(0, 0);
 		g.set(2, 1);
-		assert(f[0] == 0);
+		assertApproxEqual(f[0], 0);
 		(f * g).report();
 		f = Polynomial(1, 1);
 		(g = f * f * f * f).report();
 		assert(g.order() == 4);
-		assert(g[0] == 1 && g[1] == 4 && g[2] == 6 && g[3] == 4 && g[4] == 1);
+		assertApproxEqual(g[0], 1);
+		assertApproxEqual(g[1], 4);
+		assertApproxEqual (g[2], 6);
+		assertApproxEqual(g[3], 4);
+		assertApproxEqual(g[4], 1);
 		(g * 2).report();
-		assert((g * 2.)[0] == 2);
+		assertApproxEqual((g * 2.)[0], 2);
 		g *= 3;
-		assert(g[3] == 12);
+		assertApproxEqual(g[3], 12);
 		message("Binomial:");
 		auto h = Polynomial::binomial(2, -2, 10);
 		h.report();
-		assert(h.derivative(2.0) == 10 * powf(-2, 10));
-		assert(Polynomial().derivative(1.0) == 0);
-		assert(Polynomial(2, 0).derivative(1.0) == 0);
-		assert(Polynomial(1, -2).derivative(10) == -2);
-		assert(Polynomial({1, 2, 3}).derivative(1) == 8);
+		assertApproxEqual(h.derivative(2.0), 10 * powf(-2, 10));
+		assertApproxEqual(Polynomial().derivative(1.0), 0);
+		assertApproxEqual(Polynomial(2, 0).derivative(1.0), 0);
+		assertApproxEqual(Polynomial(1, -2).derivative(10), -2);
+		assertApproxEqual(Polynomial({1, 2, 3}).derivative(1), 8);
 	}
 
 	void Newton2D()
@@ -304,13 +309,12 @@ namespace Test
 		solvable = NonLinear::SolveEps(Fun0(), x = 2.1, 1e-5);
 		assert(solvable);
 		assertApproxEqual(x, 2.0f);
-
-		solvable = NonLinear::SolveTol(Fun0(), x = 1e3);
+		solvable = NonLinear::SolveTol(Fun0(), x = 4.1, 1e-3);
 		assert(solvable);
 		assertApproxEqual(x, 4.0f);
-		solvable = NonLinear::SolveEps(Fun0(), x = 1e3, 1e-5);
+		solvable = NonLinear::SolveEps(Fun0(), x = 1.8, 1e-5);
 		assert(solvable);
-		assertApproxEqual(x, 4.0f);
+		assertApproxEqual(x, 2.0f);
 
 		solvable = NonLinear::SolveTol(Fun1(), x = randf());
 		assert(!solvable);
@@ -429,7 +433,7 @@ namespace Test
 		}
 		auto kd_root = new UniformGrid(vps);
 		debug("\n\033[34m[ kdgrid max_depth = %ld ]\033[0m\n", __kdgrid_max_depth__);
-		for (int k = 0; k < 10000; ++k) {
+		for (int k = 0; k < 1000; ++k) {
 			__kdgrid_max_depth__ = 0;
 			Pos pos = {randf(-100, 100), randf(-100, 100), randf(-100, 100)};
 			set<VisiblePoint *> s_out, s_ans;
@@ -490,13 +494,13 @@ namespace Test
 	void main()
 	{
 		real since = clock();
-//		linear();
-//		coordinateConvert();
-//		matrix();
-//		polynomial();
-//		Newton();
-//		Newton2D();
-//		intersectRev();
+		linear();
+		coordinateConvert();
+		matrix();
+		polynomial();
+		Newton();
+		Newton2D();
+		intersectRev();
 		kdgrid();
 		printf("\n\033[32m[ Passed test in %.4f sec ]\033[0m\n", (clock() - since) / CLOCKS_PER_SEC);
 	}

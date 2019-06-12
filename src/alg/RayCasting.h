@@ -13,7 +13,7 @@ class RayCasting : public Algorithm
 public:
 	const Dir light_dir;    // parallel light orientation
 
-	RayCasting(const Scene &scene_, Camera &camera_, const Dir &light_dir_ = Dir(-1, -1, -1));
+	RayCasting(const Scene &scene_, Camera &camera_, const Dir &light_dir_ = Dir(-1, -1, -1).unitize());
 
 	Color radiance(const Ray &ray) const override;
 

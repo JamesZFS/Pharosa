@@ -6,8 +6,9 @@
 #include "../utils/solvers/Linear.h"
 
 Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) :
-		p{A, B, C}, n((B - A) ^ (C - A)), surface_area(((B - A) ^ (C - A)).norm())	// a tri has two sides
+		p{A, B, C}, n((B - A) ^ (C - A)), surface_area(n.norm())	// a tri has two sides
 {
+	if (n.sqr() == 0) throw DegenerateCase();
 	n.unitize();
 	Dir ex, ey;
 	n.getOrthogonalBasis(ex, ey);
@@ -24,7 +25,6 @@ void Triangle::applyTransform(const TransMat &mat)
 	n.getOrthogonalBasis(ex, ey);
 	cu = ex, cv = ey;
 }
-
 
 bool Triangle::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
@@ -51,4 +51,9 @@ void Triangle::report() const
 	p[2].report();
 	printf(" normal: ");
 	n.report(true);
+}
+
+const char *Triangle::DegenerateCase::what() const noexcept
+{
+	return "this triangle is generated, given A B C are in a line.";
 }

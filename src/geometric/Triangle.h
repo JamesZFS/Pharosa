@@ -8,8 +8,16 @@
 #include "Geometry.h"
 #include "Finite.h"
 
+#include <exception>
+
 struct Triangle : Geometry, Finite
 {
+	class DegenerateCase : public std::exception
+	{
+	public:
+		const char *what() const noexcept override;
+	};
+
 	Arr<Pos, 3> p;    // points in Global coordinate sys
 	Dir n;        // normal vector, in Global coordinate sys
 	const real surface_area;

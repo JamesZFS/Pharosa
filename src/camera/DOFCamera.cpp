@@ -15,8 +15,8 @@ Ray DOFCamera::shootRayAt(real i, real j) const
 //	real xp = xs + xd, yp = ys + yd;
 //	real xq = xs * (length + focus) / length, yq = ys * (length + focus) / length;
 	// randomly shoot L1
-	return {    // todo simplify
-			pos_ez_length + ex * (xs + xd) + ey * (ys + yd),        // org
-			ez_focus + ex * (xs * f_l - xd) + ey * (ys * f_l - yd)    // dir
-	};
+	Ray ray(pos_ez_length + ex * (xs + xd) + ey * (ys + yd),        // org
+			ez_focus + ex * (xs * f_l - xd) + ey * (ys * f_l - yd));    // dir
+	ray.dir.unitize();
+	return ray;
 }

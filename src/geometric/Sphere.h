@@ -27,7 +27,7 @@ struct Sphere : Geometry, Finite
 
 	void getUV(const Pos &pos, real &u, real &v) const override
 	{
-		ElAg &&ea = Dir(pos - c).getEulerAngles();
+		ElAg ea = Dir(pos - c).getEulerAngles();
 		u = ea.alpha, v = ea.gamma;
 	}
 
