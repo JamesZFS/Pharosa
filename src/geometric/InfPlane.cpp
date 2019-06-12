@@ -19,7 +19,7 @@ InfPlane::InfPlane() : InfPlane(Dir::Z_AXIS, Pos::ORIGIN)
 {
 }
 
-void InfPlane::applyTransform(TransMat mat)
+void InfPlane::applyTransform(const TransMat &mat)
 {
 	p = mat * p;
 	n = mat.rot * n;
@@ -36,6 +36,14 @@ bool InfPlane::intersect(const Ray &ray, real &t, Intersection &isect) const
 	if (fabsf(dn) < EPS) return false;
 	real ti = -(D + ray.org % n) / dn;
 	if (ti < EPS || ti >= t) return false;
-	t = ti;	// update
+	t = ti;    // update
 	return true;
+}
+
+void InfPlane::report() const
+{
+	printf("<Plane> p: ");
+	p.report();
+	printf(" normal: ");
+	n.report(true);
 }

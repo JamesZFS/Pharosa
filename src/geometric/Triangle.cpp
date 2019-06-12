@@ -5,7 +5,8 @@
 #include "Triangle.h"
 #include "../utils/solvers/Linear.h"
 
-Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}, n((B - A) ^ (C - A))
+Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) :
+		p{A, B, C}, n((B - A) ^ (C - A)), surface_area(((B - A) ^ (C - A)).norm())
 {
 	n.unitize();
 	Dir ex, ey;
@@ -13,7 +14,7 @@ Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) : p{A, B, C}, n((B 
 	cu = ex, cv = ey;
 }
 
-void Triangle::applyTransform(TransMat mat)
+void Triangle::applyTransform(const TransMat &mat)
 {
 	p[0] = mat * p[0];
 	p[1] = mat * p[1];
@@ -40,4 +41,14 @@ bool Triangle::intersect(const Ray &ray, real &t, Intersection &isect) const
 	if (ti < EPS || beta < 0 || 1 < beta || gamma < 0 || 1 < gamma || 1 < beta + gamma || ti >= t) return false;
 	t = ti;        // update
 	return true;
+}
+
+void Triangle::report() const
+{
+	printf("<Triangle> vertices: ");
+	p[0].report();
+	p[1].report();
+	p[2].report();
+	printf(" normal: ");
+	n.report(true);
 }

@@ -18,6 +18,8 @@ struct BezierRev : PolyRev
 	Type type() const override
 	{ return BEZIERREV; }
 
+	void report() const override;
+
 	// todo
 //	real xMin() const override;
 //

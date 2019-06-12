@@ -18,7 +18,7 @@ struct Sphere : Geometry, Finite
 	Type type() const override
 	{ return SPHERE; }
 
-	void applyTransform(TransMat mat) override;
+	void applyTransform(const TransMat &mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
@@ -30,6 +30,8 @@ struct Sphere : Geometry, Finite
 		ElAg &&ea = Dir(pos - c).getEulerAngles();
 		u = ea.alpha, v = ea.gamma;
 	}
+
+	void report() const override;
 
 	real xMin() const override
 	{ return c.x - rad; }
@@ -52,11 +54,8 @@ struct Sphere : Geometry, Finite
 	Pos center() const override
 	{ return c; }
 
-	real area() const
+	real area() const override
 	{ return 4 * M_PIF * rad_2; }
-
-	real volume() const
-	{ return 4.f / 3.f * M_PIF * rad_2 * rad; }
 
 	static Sphere *acquire(const Json &json);
 };

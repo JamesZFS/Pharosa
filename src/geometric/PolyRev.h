@@ -24,11 +24,11 @@ struct PolyRev : Geometry
 	Type type() const override
 	{ return POLYREV; }
 
-	void applyTransform(TransMat mat_) override;
+	void applyTransform(const TransMat &mat_) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
-//	void getNormal(const Pos &pos, Dir &normal) const override;
+	void report() const override;
 
 	static PolyRev *acquire(const Json &json);
 };

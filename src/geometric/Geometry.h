@@ -25,7 +25,7 @@ struct Geometry
 	virtual Type type() const = 0;
 
 	// interfaces:
-	virtual void applyTransform(TransMat mat) = 0;   // apply transform from transform matrix
+	virtual void applyTransform(const TransMat &mat) = 0;   // apply transform from transform matrix
 
 	/** standard intersection api. update first intersection
 	 * input:
@@ -47,13 +47,9 @@ struct Geometry
 	virtual void getUV(const Pos &pos, real &u, real &v) const
 	{}
 
-//	virtual real getRadius() const = 0; todo
-
-//	virtual Pos getCenter() const = 0; todo
+	virtual void report() const = 0;
 
 	static Geometry *acquire(const Json &json);    // new a geometry from json
-
-	/// todo max min xyz in another class
 };
 
 #endif //PHAROSA_GEOMETRY_H

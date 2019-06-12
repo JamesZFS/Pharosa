@@ -128,16 +128,16 @@ void Polynomial::trim()
 
 void Polynomial::report() const
 {
-	debug("order  = %ld\n", n);
-	debug("coeffs = ");
+	printf("order  = %ld\n", n);
+	printf("coeffs = ");
 	for (auto ai: a) {
-		debug("%.2f ", ai);
+		printf("%.2f ", ai);
 	}
-	debug("\nders   = ");
+	printf("\nders   = ");
 	for (auto di: d) {
-		debug("%.2f ", di);
+		printf("%.2f ", di);
 	}
-	debug("\n");
+	printf("\n");
 }
 
 void Polynomial::set(size_t i, real k)

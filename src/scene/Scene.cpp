@@ -6,6 +6,8 @@
 #include "KDNode.h"
 #include "../utils/funcs.hpp"
 #include "../geometric/Finite.h"
+#include "../geometric/Cube.h"
+#include "../geometric/Triangle.h"
 
 #include <algorithm>
 
@@ -36,9 +38,16 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only
 		}
 	}
 	// for KD-Tree
-//	assert(kd_root != nullptr);
+#if KD_TREE_ON
 	kd_root->intersect(ray, t, isect);
 	if (!isect.hit) return false;
+#else
+	for (const Object *obj : meshes) {
+		if (obj->geo->intersect(ray, t, isect)) {
+			isect.hit = obj;
+		}
+	}
+#endif
 
 	// if intersected:
 	if (comp_hit_only) return true;
@@ -50,25 +59,60 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only
 
 void Scene::prepare()
 {
-	// build KD tree
-	message("building KD-Tree...");
 	ObjectList remove_list;
+	// convert cubes into triangles
+#if CONVERT_CUBE_TO_MESHES_ON
 	for (Object *obj : objects) {
-		auto shape = dynamic_cast<Finite *>(obj->geo);
+		auto cube = dynamic_cast<Cube *>(obj->geo);    // if it's a finite, move it to meshes
+		if (!cube) continue;
+		auto &c = *cube;
+		remove_list.push_back(obj);
+		List<Triangle *> tris =
+				{
+						new Triangle(c.o + c.oy, c.o + c.ox, c.o),
+						new Triangle(c.o + c.oy, c.o + c.ox + c.oy, c.o + c.ox),
+						new Triangle(c.o + c.oz, c.o + c.oy, c.o),
+						new Triangle(c.o + c.oz, c.o + c.oy + c.oz, c.o + c.oy),
+						new Triangle(c.o + c.ox, c.o + c.oz, c.o),
+						new Triangle(c.o + c.ox, c.o + c.oz + c.ox, c.o + c.oz),
+						new Triangle(c.o + c.oz + c.ox, c.o + c.oz + c.oy, c.o + c.oz),
+						new Triangle(c.o + c.oz + c.oy, c.o + c.oz + c.ox, c.o + c.oz + c.ox + c.oy),
+						new Triangle(c.o + c.ox + c.oy, c.o + c.ox + c.oz, c.o + c.ox),
+						new Triangle(c.o + c.ox + c.oz, c.o + c.ox + c.oy, c.o + c.ox + c.oy + c.oz),
+						new Triangle(c.o + c.oy + c.oz, c.o + c.oy + c.ox, c.o + c.oy),
+						new Triangle(c.o + c.oy + c.ox, c.o + c.oy + c.oz, c.o + c.oy + c.oz + c.ox),
+				};
+		// get 12 triangles
+		for (auto tri : tris) {
+			tri->report();
+			auto mesh= new Object(tri, obj->mtr, obj->name);
+//			mesh->report();
+			meshes.push_back(mesh);
+		}
+	}
+#endif
+	// move to mesh
+	for (Object *obj : objects) {
+		auto shape = dynamic_cast<Finite *>(obj->geo);    // if it's a finite, move it to meshes
 		if (shape) {
 			meshes.push_back(obj);
 			remove_list.push_back(obj);
 		}
 	}
+	// dump trash
 	for (Object *obj : remove_list) {
 		auto it = std::find(objects.begin(), objects.end(), obj);
 		objects.erase(it);
 	}
+#if KD_TREE_ON
+	// build KD tree
+	message("building KD-Tree...");
 	delete kd_root;
 	kd_root = new KDNode(meshes);
-	message("KD-Tree built. max depth = " << __kdnode_max_depth__);
+	debug("KD-Tree built. max depth = %ld\n", __kdnode_max_depth__);
 	debug("  match counter   = %ld\n", __counter__);
 	__counter__ = 0;
+#endif
 
 	// find light sources
 	light_sources.clear();

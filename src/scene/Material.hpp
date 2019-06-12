@@ -37,6 +37,15 @@ struct Material
 	inline const Color &textureAt(real u, real v) const
 	{ return texture->get(Auu * u + Auv * v + Auc, Avu * u + Avv * v + Avc); }
 
+	inline void report() const
+	{
+		printf("color: ");
+		color.report(false);
+		printf(" emission: ");
+		emi.report(true);
+		printf("diff = %f, spec = %f, refr = %f, n_refr = %f\n", diff, spec, refr, n_refr);
+	}
+
 	static Material *acquire(const Json &json);
 };
 

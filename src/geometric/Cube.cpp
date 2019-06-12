@@ -6,23 +6,20 @@
 #include "../scene/Intersection.h"
 
 // init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point c
-Cube::Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o)
+Cube::Cube(const Pos &ox_, const Pos &oy_, const Pos &oz_, const Pos &o_) :
+		ox(ox_), oy(oy_), oz(oz_), o(o_)
 {
-	Arr<Dir, 3> n{ox ^ oy, oy ^ oz, oz ^ ox};
+	Arr<Dir, 3> n{ox_ ^ oy_, oy_ ^ oz_, oz_ ^ ox_};
 	slab = {{
-					{{InfPlane(n[0], o), InfPlane(n[0], o + oz)}},    // plane oxy, oxy'
-					{{InfPlane(n[1], o), InfPlane(n[1], o + ox)}},    // oyz, oyz'
-					{{InfPlane(n[2], o), InfPlane(n[2], o + oy)}},    // ozx, ozx'
+					{{InfPlane(n[0], o_), InfPlane(n[0], o_ + oz_)}},    // plane oxy, oxy'
+					{{InfPlane(n[1], o_), InfPlane(n[1], o_ + ox_)}},    // oyz, oyz'
+					{{InfPlane(n[2], o_), InfPlane(n[2], o_ + oy_)}},    // ozx, ozx'
 			}};
 }
 
 // init an orthogonal cube
 Cube::Cube(real length, real width, real height, const Pos &pos) :
-		slab{{
-					 {{InfPlane(Dir::Z_AXIS, pos), InfPlane(Dir::Z_AXIS, pos + Pos(0, 0, height))}}, // plane oxy, oxy'
-					 {{InfPlane(Dir::X_AXIS, pos), InfPlane(Dir::X_AXIS, pos + Pos(length, 0, 0))}}, // oyz, oyz'
-					 {{InfPlane(Dir::Y_AXIS, pos), InfPlane(Dir::Y_AXIS, pos + Pos(0, width, 0))}},  // ozx, ozx'
-			 }}
+		Cube({length, 0, 0}, {0, width, 0}, {0, 0, height}, pos)
 {
 }
 
@@ -31,8 +28,12 @@ Cube::Cube() : Cube(1, 1, 1)
 {
 }
 
-void Cube::applyTransform(TransMat mat)
+void Cube::applyTransform(const TransMat &mat)
 {
+	o = mat * o;
+	ox = mat.rot * ox;
+	oy = mat.rot * oy;
+	oz = mat.rot * oz;
 	for (auto &s : slab) {
 		s[0].applyTransform(mat);
 		s[1].applyTransform(mat);
@@ -84,3 +85,11 @@ void Cube::getNormal(const Pos &pos, Dir &normal) const
 	TERMINATE("\nCube::getNormal() should not reach the end!\n")
 }
 
+void Cube::report() const
+{
+	printf("<Cube> slabs:\n");
+	for (const auto &p :slab) {
+		p[0].report();
+		p[1].report();
+	}
+}

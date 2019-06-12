@@ -7,29 +7,6 @@
 #include "../utils/solvers/NonLinear.h"
 #include "../scene/Intersection.h"
 
-//struct Fun0 : NonLinear::BinFun
-//{
-//	const Polynomial &B0;
-//	const real L0, dL0;
-//
-//	Fun0(const Polynomial &phi, const Ray &ray) : B0(phi), L0(ray.org.x), dL0(ray.dir.x)
-//	{}
-//
-//	real operator()(real x0, real x1) const override
-//	{
-//		return B0(x0) - (L0 + x1 * dL0);
-//	}
-//
-//	real d0(real x0, real x1) const override
-//	{
-//		return B0.derivative(x0);
-//	}
-//
-//	real d1(real x0, real x1) const override
-//	{
-//		return -dL0;
-//	}
-//};
 
 struct BFun //: NonLinear::BinFun
 {
@@ -79,14 +56,7 @@ PolyRev::PolyRev(Polynomial &&phi_, Polynomial &&psi_) :
 
 }
 
-//PolyRev::PolyRev(List<real> &&x_coeffs, List<real> &&y_coeffs) :
-//	phi(x_coeffs), psi(y_coeffs)
-//{
-//
-//}
-
-
-void PolyRev::applyTransform(TransMat mat_)
+void PolyRev::applyTransform(const TransMat &mat_)
 {
 	mat = mat_;
 }
@@ -118,27 +88,12 @@ bool PolyRev::intersect(const Ray &ray, real &t, Intersection &isect) const
 	return true;
 }
 
-//void PolyRev::getNormal(const Pos &pos, Dir &normal) const
-//{
-//	Pos x_local = mat | pos;
-//	MFun f(phi, x_local.x);
-//	real u, cos_v, sin_v, psi_u, phi_p_u;
-//	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));	// solve for u
-//	psi_u = psi(u);
-//	phi_p_u = phi.derivative(u);
-//	cos_v = x_local.y / psi_u;
-//	sin_v = x_local.z / psi_u;
-//	normal = mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);    // transform back todo ??
-//}
-//
-//void PolyRev::getUV(const Pos &pos, real &u, real &v)
-//{
-//	Pos x_local = mat | pos;
-//	MFun f(phi, x_local.x);
-//	real cos_v, sin_v, psi_u;
-//	assert(NonLinear::SolveTol(f, u = Funcs::randf(1.0)));
-//	psi_u = psi(u);
-//	cos_v = x_local.y / psi_u;
-//	sin_v = x_local.z / psi_u;
-//	v = atan2f(sin_v, cos_v);
-//}
+void PolyRev::report() const
+{
+	printf("<Polynomial Revolution>\nphi = ");
+	phi.report();
+	printf("psi = ");
+	psi.report();
+	printf("transform:");
+	mat.report();
+}

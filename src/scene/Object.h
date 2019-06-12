@@ -26,6 +26,8 @@ struct Object
 	Object &rotate(const ElAg &ea);
 
 	Object &rotate(const ElAg &ea, const Pos &pos);    // rotate along c
+
+	void report() const;
 };
 
 typedef List<Object *> ObjectList;

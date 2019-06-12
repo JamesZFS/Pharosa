@@ -19,3 +19,13 @@ BezierRev::BezierRev(List<Arr<real, 2>> &&control_pts_) : PolyRev(), ctrl_pts(st
 	psi.report();
 	debug("\n");
 }
+
+void BezierRev::report() const
+{
+	printf("<Bezier Revolution> control points: ");
+	for (auto cp : ctrl_pts) {
+		printf("(%f, %f) ", cp[0], cp[1]);
+	}
+	printf("\n");
+	PolyRev::report();
+}

@@ -25,7 +25,7 @@ struct InfPlane : Geometry
 	Type type() const override
 	{ return INFPLANE; }
 
-	void applyTransform(TransMat mat) override;
+	void applyTransform(const TransMat &mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
@@ -40,6 +40,8 @@ struct InfPlane : Geometry
 
 	inline int above(const Pos &x) const    // +1, -1, 0 (above plane)
 	{ return Funcs::sgn((x - p) % n); }
+
+	void report() const override;
 
 	static InfPlane *acquire(const Json &json);
 };

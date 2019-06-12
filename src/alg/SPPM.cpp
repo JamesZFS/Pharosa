@@ -231,7 +231,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 			}
 		}
 		// trace next depth
-		Color beta_new = beta * w_new; // todo why is this?
+		Color beta_new = beta * w_new;
 		beta_new *= isect.getColor();    // v1
 //		beta_new *= isect.getColor() * M_1_PIF;  // v2
 

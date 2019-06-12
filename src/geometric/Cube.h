@@ -12,11 +12,12 @@
 struct Cube : Geometry
 {
 	Arr2D<InfPlane, 3, 2> slab;    // 3 slabs, 6 planes, each slap is two paralleled planes
+	Pos ox, oy, oz, o;
 
 	Cube();    // unit cube
 
 	// init from 3 basis (ox, oy, oz. by default) and left-bottom-front most point c
-	Cube(const Pos &ox, const Pos &oy, const Pos &oz, const Pos &o = {});
+	Cube(const Pos &ox_, const Pos &oy_, const Pos &oz_, const Pos &o_ = {});
 
 	// init an orthogonal cube
 	Cube(real length, real width, real height, const Pos &pos = {});
@@ -24,7 +25,7 @@ struct Cube : Geometry
 	Type type() const override
 	{ return CUBE; }
 
-	void applyTransform(TransMat mat) override;
+	void applyTransform(const TransMat &mat) override;
 
 	bool intersect(const Ray &ray, real &t, Intersection &isect) const override;
 
@@ -32,6 +33,8 @@ struct Cube : Geometry
 
 	inline void getUV(const Pos &pos, real &u, real &v) const override
 	{ slab[0][0].getUV(pos, u, v); }
+
+	void report() const override;
 
 	static Cube *acquire(const Json &json);
 };

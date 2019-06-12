@@ -9,7 +9,7 @@ Sphere::Sphere(real radius_, const Pos &pos_) :
 {
 }
 
-void Sphere::applyTransform(TransMat mat)
+void Sphere::applyTransform(const TransMat &mat)
 {
 	c = mat * c;
 }
@@ -29,4 +29,11 @@ bool Sphere::intersect(const Ray &ray, real &t, Intersection &isect) const
 	if (ti >= t) return false;
 	t = ti;
 	return true;
+}
+
+void Sphere::report() const
+{
+	printf("<Sphere> c: ");
+	c.report();
+	printf(" radius = %f\n", rad);
 }

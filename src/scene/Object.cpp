@@ -32,3 +32,12 @@ Object &Object::rotate(const ElAg &ea, const Pos &pos)
 	geo->applyTransform(TransMat(ea, pos) * TransMat(-pos));
 	return *this;
 }
+
+void Object::report() const
+{
+	printf("Object name: %s\nGeometry: \n", name.data());
+	geo->report();
+	printf("Material: \n");
+	mtr->report();
+	printf("\n");
+}

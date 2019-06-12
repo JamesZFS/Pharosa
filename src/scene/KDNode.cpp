@@ -32,9 +32,9 @@ KDNode::~KDNode()
 void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
 	// check bounding box first:
-	if (objs->empty() || !box->intersect(ray)) return;    // degenerate case
+	if (!box->intersect(ray)) return;    // degenerate case
 
-	// leaf case: todo possible accelerate by eliminating obj list
+	// leaf case:
 	if (l_child == nullptr || r_child == nullptr) {
 		// enumerate each tri:
 		for (const Object *obj : *objs) {
@@ -54,48 +54,53 @@ void KDNode::intersect(const Ray &ray, real &t, Intersection &isect) const
 void KDNode::build(const ObjectList &finite_objs, size_t depth)
 {
 	__kdnode_max_depth__ = max2(__kdnode_max_depth__, depth);
+	objs = new ObjectList;
 	box = new BoundingBox(finite_objs.cbegin(), finite_objs.cend());    // bound all finite_objs
-	objs = new ObjectList(finite_objs);    // copy Finite ptrs
 
 	// base case:
-	if (objs->size() <= 1) return;
+	if (finite_objs.size() <= KD_N_LEAF_MESH) {
+		objs->assign(finite_objs.cbegin(), finite_objs.cend());    // copy Finite ptrs
+		return;
+	}
 
 	// get center point of all objs:
 	Pos center;
-	for (auto obj: *objs) {
+	for (auto obj: finite_objs) {
 		auto shape = dynamic_cast<Finite *>(obj->geo);
 		assert(shape != nullptr);
 		center += shape->center();
 	}
-	center /= objs->size();
+	center /= finite_objs.size();
 
 	// sort objs to left or right range:
-	auto l_objs = new ObjectList, r_objs = new ObjectList;
+	ObjectList l_objs, r_objs;
 	auto cur_axis = box->getLongestAxis();
-	for (auto obj: *objs) {
+	for (auto obj: finite_objs) {
 		auto shape = dynamic_cast<Finite *>(obj->geo);
 		switch (cur_axis) {
 			case BoundingBox::X:
-				shape->center().x <= center.x ? l_objs->push_back(obj) : r_objs->push_back(obj);
+				shape->center().x <= center.x ? l_objs.push_back(obj) : r_objs.push_back(obj);
 				break;
 			case BoundingBox::Y:
-				shape->center().y <= center.y ? l_objs->push_back(obj) : r_objs->push_back(obj);
+				shape->center().y <= center.y ? l_objs.push_back(obj) : r_objs.push_back(obj);
 				break;
 			case BoundingBox::Z:
-				shape->center().z <= center.z ? l_objs->push_back(obj) : r_objs->push_back(obj);
+				shape->center().z <= center.z ? l_objs.push_back(obj) : r_objs.push_back(obj);
 				break;
 		}
 	}
 	// stop subdividing condition:
-	auto n_match = std::count_if(l_objs->cbegin(), l_objs->cend(), [&r_objs](Object *obj) -> bool {
-		return std::find(r_objs->cbegin(), r_objs->cend(), obj) != r_objs->cend();
+	auto n_match = std::count_if(l_objs.cbegin(), l_objs.cend(), [&r_objs](Object *obj) -> bool {
+		return std::find(r_objs.cbegin(), r_objs.cend(), obj) != r_objs.cend();
 	});
 
-	if (n_match < 0.5 * l_objs->size() && n_match < 0.5 * r_objs->size()) {
+	if (n_match < 0.5 * l_objs.size() && n_match < 0.5 * r_objs.size()) {
 		l_child = new KDNode;
-		l_child->build(*l_objs, depth + 1);    // recursively build
+		l_child->build(l_objs, depth + 1);    // recursively build
 		r_child = new KDNode;
-		r_child->build(*r_objs, depth + 1);
+		r_child->build(r_objs, depth + 1);
 	}
-	// else: stop dividing
+	else { // stop dividing
+		objs->assign(finite_objs.cbegin(), finite_objs.cend());
+	}
 }
