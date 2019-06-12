@@ -57,8 +57,7 @@ Color PTF::radiance(const Ray &ray) const
 		// account for direct light radiance Ld
 		if (scatter_type == Intersection::DIFFUSE) {
 			flag = false;
-//			L += beta.mul(LdSlower(isect));  // slower version, lower variance
-			L += beta.mul(LdFaster(isect));  // faster version, higher variance
+			L += beta.mul(computeLd(isect));  // faster version, higher variance
 		}
 		else
 			flag = true;

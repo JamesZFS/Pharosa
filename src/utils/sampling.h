@@ -6,6 +6,7 @@
 #define PHAROSA_SAMPLING_H
 
 #include "../core/Vec.h"
+#include "../geometric/Triangle.h"
 
 namespace Sampling
 {
@@ -19,7 +20,7 @@ namespace Sampling
 
 	Vec3f uniformOnSphereCap(real cos_theta_max, const Vec2f &xi);
 
-	Vec3f uniformOnTriangle(const Pos &A, const Pos &B, const Pos &C, const Vec2f &xi);
+	Vec3f uniformOnTriangle(const Triangle &t, const Vec2f &xi);
 };
 
 #endif //PHAROSA_SAMPLING_H

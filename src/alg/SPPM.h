@@ -30,12 +30,14 @@ protected:
 	const size_t max_depth;
 	const real init_radius;
 	List2D<VisiblePoint> visible_points;    // owned by this class, camera.width x camera.height
-//	NaiveGrid *kd_root;
 	UniformGrid *grids;
+	const List<const Object *> &lights;
 
 	void buildGrid();
 
 	void traceCameraRay(Ray ro, VisiblePoint &vp);
+
+	Ray sampleOneLight(Color &beta);
 
 	void tracePhoton(Ray ri, Color beta, real r_bound);
 

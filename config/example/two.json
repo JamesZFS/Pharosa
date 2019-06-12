@@ -1,11 +1,13 @@
 {
-	"save_path": "out/two/6-12.ppm",
-	"n_epoch": 10,
-	"save_step": 10,
+	"save_path": "out/two/ptf 6-12.ppm",
+	"n_epoch": 20,
+	"save_step": 5,
 
 	"algorithm": {
 		"type": "ptf",
 		"light_dir": [-1, -2, -1],
+		"n_photon_per_iter": 200000,
+		"init_radius": 3,
 		"max_depth": 5
 	},
 

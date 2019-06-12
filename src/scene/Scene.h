@@ -33,7 +33,7 @@ public:
 
 	size_t getMeshCount();    // count BoundingBox in total
 
-	const List<const Object *> &getLightSources() const;  // get all objects with positive emission
+	const List<const Object *> &getLightSources() const;  // get all objects with positive emission and finite size
 
 	/** judge and calculate first intersection with all objects
 	 * input:

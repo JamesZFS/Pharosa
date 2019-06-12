@@ -6,6 +6,7 @@
 #include "../camera/Camera.h"
 #include "../scene/Scene.h"
 #include "../geometric/Sphere.h"
+#include "../geometric/Triangle.h"
 #include "../utils/sampling.h"
 
 using Funcs::randf;
@@ -15,7 +16,7 @@ SPPM::SPPM(const Scene &scene_, Camera &camera_,
 		   size_t n_photon_per_iter_, size_t max_depth_, real init_radius_) :
 		Algorithm(scene_, camera_),
 		n_photon_per_iter(n_photon_per_iter_), max_depth(max_depth_), init_radius(init_radius_),
-		grids(nullptr)
+		grids(nullptr), lights(scene_.getLightSources())
 {
 }
 
@@ -48,11 +49,7 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 			visible_points[i][j].r = init_radius;
 		}
 	}
-	auto &lights = scene.getLightSources();
-	for (auto lt : lights) {
-		assert(lt->geo->type() == Geometry::SPHERE);
-	}
-	camera.step();
+	camera.step();    // one step always
 	for (size_t epoch = 0; epoch < n_epoch; ++epoch) {
 		pre_epoch_callback(epoch);
 		real r_avg = 0;    // average search radius
@@ -96,23 +93,11 @@ void SPPM::start(size_t n_epoch, size_t save_step,
 		for (size_t i = 0; i < n_photon_per_iter; ++i) {
 			in_epoch_callback(i * camera.height / n_photon_per_iter);
 			// randomly pick one light source
-			auto lt = lights.at((size_t) randf(0, lights.size()));
-			auto &s = *(Sphere *) lt->geo;
-//		real wl = s->area() / area_sum;
-			real pdf = 1.f / lights.size();
-			// randomly pick one pos on light source
-			auto samp = Sampling::uniformOnSphere({randf(), randf()});
-			Pos pos = s.c + samp * s.rad;
-			Dir ex, ey, ez = samp;
-			ez.getOrthogonalBasis(ex, ey);
-			samp = Sampling::uniformOnHemisphere({randf(), randf()});
-			pdf *= 1.f / (s.area() * 4 * M_PIF);    // todo
-//			pdf *= 1.f / (4 * M_PIF * 2 * M_PIF);
-			Dir dir = ex * samp.x + ey * samp.y + ez * samp.z;
-			Ray ri(pos, dir);
+			Color beta;
+			Ray ri = sampleOneLight(beta);
 
 			// trace light path
-			tracePhoton(ri, lt->mtr->emi / pdf, r_avg);
+			tracePhoton(ri, beta, r_avg);
 		}
 #if DEBUG_DRAW_ON
 		drawPhi(epoch);
@@ -180,7 +165,9 @@ void SPPM::traceCameraRay(Ray ro, VisiblePoint &vp)
 		if (scatter_type == Intersection::DIFFUSE) {
 			flag = true;
 			vp.pos = isect.pos;
-			vp.Ld += vp.beta.mul(LdFaster(isect));
+#if LD_ON
+			vp.Ld += vp.beta.mul(computeLd(isect));
+#endif
 			vp.wo = -ro.dir;
 			break;
 		}
@@ -221,7 +208,11 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 		beta *= std::abs(ri.dir % isect.nl);    // v1 absorb ratio
 		if (type == Intersection::DIFFUSE) {    // v2?
 			// contribute to all visible points in the vicinity
+#if LD_ON
 			if (depth > 0) {    // skip direct lighting term
+#else
+			{
+#endif
 				grids->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {    // callback
 					if (vp->wo % isect.nl <= 0) return;    // in different surfaces
 					++vp->M;
@@ -248,6 +239,46 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 	}
 }
 
+Ray SPPM::sampleOneLight(Color &beta)
+{
+	Ray ri;
+	// randomly choose one light
+	auto lt = lights.at((size_t) randf(0, lights.size()));
+	real inv_pdf = lights.size();    // 1/pdf
+	switch (lt->geo->type()) {
+		case Geometry::SPHERE: {
+			auto &s = *(Sphere *) lt->geo;
+			// randomly pick one pos on light source
+			auto samp = Sampling::uniformOnSphere({randf(), randf()});
+			inv_pdf *= s.area();
+			ri.org = s.c + samp * s.rad;
+			Dir ex, ey, ez = samp;
+			ez.getOrthogonalBasis(ex, ey);
+			samp = Sampling::uniformOnHemisphere({randf(), randf()});
+			inv_pdf *= 2 * M_PIF; // todo
+			ri.dir = ex * samp.x + ey * samp.y + ez * samp.z;
+			break;
+		}
+		case Geometry::TRIANGLE: {
+			auto &t = *(Triangle *) lt->geo;
+			ri.org = Sampling::uniformOnTriangle(t, {randf(), randf()});
+			inv_pdf *= t.area();
+			// randomly pick one side to shoot
+			Dir ex, ey, ez = WITH_PROB(0.5) ? t.n : -t.n;
+			ez.getOrthogonalBasis(ex, ey);
+			auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
+			inv_pdf *= 2 * M_PIF;
+			ri.dir = ex * samp.x + ey * samp.y + ez * samp.z;
+			break;
+		}
+		default: TERMINATE("Got unsupported finite shape light source for sampling!")
+	}
+	beta = lt->mtr->emi * inv_pdf;
+	ri.offset(EPS);
+	return ri;
+}
+
+// debuggers:
 void SPPM::drawPhi(size_t epoch) const
 {
 	// draw debug photon info

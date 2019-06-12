@@ -51,9 +51,9 @@ namespace Sampling
 		return {sin_theta * cosf(phi), sin_theta * sinf(phi), cos_theta};
 	}
 
-	Vec3f uniformOnTriangle(const Pos &A, const Pos &B, const Pos &C, const Vec2f &xi)
+	Vec3f uniformOnTriangle(const Triangle &t, const Vec2f &xi)
 	{
 		real sxi0 = sqrtf(xi[0]);
-		return A * ((1 - xi[1]) * sxi0) + B * (1 - sxi0) + C * (xi[1] * sxi0);
+		return t.p[0] * ((1 - xi[1]) * sxi0) + t.p[1] * (1 - sxi0) + t.p[2] * (xi[1] * sxi0);
 	}
 }

@@ -1,14 +1,14 @@
 {
-	"save_path": "out/sppm2/ptf dragon3 test +.ppm",
-	"n_epoch": 5,
+	"save_path": "out/sppm2/ref dragon3 lens.ppm",
+	"n_epoch": 30,
 	"verbose_step": 0,
-	"save_step": 1,
+	"save_step": 0,
 
 	"algorithm": {
-		"type": "ptf",
+		"type": "pt",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 100000,
+		"n_photon_per_iter": 200000,
 		"init_radius": 3
 	},
 
@@ -17,7 +17,7 @@
 		"width": 1024, "height": 768,
 		"length": 130.0, "focus": 140.0, "aperture": 1,
 		"pos": [0, 0, 270],
-		"rot": [0, 180, 3],
+		"rot": [0, 180, 0],
 
 		"#pos": [-58, 30, 200],
 		"#rot": [-8, 163, 22]
@@ -170,7 +170,6 @@
 		},
 		{
 			"name": "lens",
-			"type": "skip",
 			"diff": 0,
 			"refr": 1,
 			"geo": {

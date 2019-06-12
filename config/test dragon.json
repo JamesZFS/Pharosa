@@ -1,13 +1,15 @@
 {
-	"save_path": "out/dragon/dragon 6-12 ++.ppm",
-	"n_epoch": 5,
-	"save_step": 10,
-	"verbose_step": 10,
+	"save_path": "out/dragon/sppm dragon 6-12.ppm",
+	"n_epoch": 10,
+	"save_step": 2,
+	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "ptf",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 5
+		"max_depth": 5,
+		"n_photon_per_iter": 100000,
+		"init_radius": 3
 	},
 
 	"camera": {
