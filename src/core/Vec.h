@@ -19,10 +19,7 @@ struct Vec
 	{}
 
 	inline real operator[](size_t i) const
-	{
-		assert(i < 3);
-		return *(&x + i);
-	}
+	{ return *(&x + i); }
 
 	inline bool hasPositivePart() const
 	{ return x > 0 || y > 0 || z > 0; }

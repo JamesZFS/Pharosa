@@ -60,6 +60,25 @@ BoundingBox::BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_itera
 	}
 }
 
+BoundingBox::BoundingBox(List<Pos>::const_iterator begin, List<Pos>::const_iterator end)
+{
+	assert(begin != end);
+	auto it = begin;
+	auto vp = *it;
+	xmin = xmax = vp.x;
+	ymin = ymax = vp.y;
+	zmin = zmax = vp.z;
+	for (++it; it != end; ++it) {
+		vp = *it;
+		xmin = min2(xmin, vp.x);
+		xmax = max2(xmax, vp.x);
+		ymin = min2(ymin, vp.y);
+		ymax = max2(ymax, vp.y);
+		zmin = min2(zmin, vp.z);
+		zmax = max2(zmax, vp.z);
+	}
+}
+
 // !!
 bool BoundingBox::intersect(const Ray &ray) const
 {

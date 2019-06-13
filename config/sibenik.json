@@ -1,8 +1,8 @@
 {
-	"save_path": "out/sibenik/2 sppm pure3.ppm",
-	"n_epoch": 150,
-	"save_step": 1,
-	"verbose_step": 10,
+	"save_path": "out/sibenik/Angel Lucy2 dof a1 sppm e100.ppm",
+	"n_epoch": 100,
+	"save_step": 5,
+	"verbose_step": 0,
 
 	"algorithm": {
 		"type": "sppm",
@@ -13,23 +13,33 @@
 	},
 
 	"camera": {
-		"type": "basic",
+		"type": "dof",
 		"width": 1024, "height": 768,
-		"pos": [-200, 0, 50],
-
-		"rot": [-90, -100, 0]
+		"pos": [-170, 70, -70],
+		"rot": [-98, -82, 0],
+		"length": 140.0, "focus": 460.0, "aperture": 1.0
 	},
 
 	"scene": [
 		{
 			"name": "church",
 			"type": "obj",
-			"#texture": "res/marble.ppm",
-			"color": [0.93, 0.93, 0.91],
-			"reft": "diff",
+			"texture": "res/textures/marble1.ppm",
+			"color": [0.93, 0.91, 0.90],
 			"path": "/Users/james/Test/CG/Pharosa/res/sibenik - done.obj",
 			"scale": 100,
 			"rot": [0, 90, 0]
+		},
+		{
+			"name": "Angel Lucy",
+			"type": "obj",
+			"diff": 0.7,
+			"spec": 0.3,
+			"path": "/Users/james/Test/CG/Pharosa/res/lucy - done.obj",
+			"scale": 8,
+			"color": [0.95, 0.95, 0.70],
+			"tra": [420, -7, -80],
+			"rot": [0, 90, -20]
 		},
 		{
 			"name": "holy ball",
@@ -44,7 +54,7 @@
 		},
 		{
 			"name": "holy bunny",
-			"type": "obj",
+			"type": "skip",
 			"path": "/Users/james/Test/CG/Pharosa/res/bunny.fine.obj",
 			"diff": 0,
 			"refr": 1,
@@ -54,11 +64,21 @@
 		},
 		{
 			"name": "light source",
-			"emission": [65, 60, 55],
+			"emission": [69, 60, 56],
 			"geo": {
 				"type": "sphere",
 				"radius": 23,
 				"pos": [100, 0, 300]
+			}
+		},
+		{
+			"name": "sky doom",
+			"emission": [20, 20, 22],
+			"color": [0.9, 0.9, 0.98],
+			"geo": {
+				"type": "sphere",
+				"radius": 5000,
+				"pos": [0, 0, 0]
 			}
 		}
 	]

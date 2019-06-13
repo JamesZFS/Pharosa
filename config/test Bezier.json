@@ -1,20 +1,20 @@
 {
-	"save_path": "out/Bezier/Bezier sppm.ppm",
+	"save_path": "out/Bezier/6-13 Bezier ptf.ppm",
 	"n_epoch": 10,
 	"save_step": 1,
 	"verbose_step": 10,
 	"algorithm": {
-		"type": "sppm",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 100000,
-		"init_radius": 3
+		"init_radius": 2
 	},
 	"camera": {
 		"type": "basic",
 		"pos": [0, 0, 600],
 		"rot": [0, 180, 0],
-		"width": 800, "height": 500,
+		"width": 1024, "height": 768,
 		"pixel_size": 0.05, "length": 130.0, "focus": 250.0, "aperture": 0.8
 	},
 	"scene": [
@@ -47,33 +47,12 @@
 			}
 		},
 		{
-			"type": "skip",
-			"name": "bucket",
-			"diff": 0,
-			"refr": 1,
-			"spec": 0,
-			"color":[0.8, 0.8, 1.0],
-			"rot": [0, 0, -80],
-			"geo": {
-				"type": "poly revolution",
-				"exp": "{t, 50}",
-				"x_coeffs": [-50, 300],
-				"y_coeffs": [0, 0, 50]
-			}
-		},
-		{
 			"name": "cornell walls",
 			"type": "group",
 			"objects": [
 				{
 					"name": "back wall",
-					"texture": {
-						"path": "res/bamboo.ppm",
-						"mat": [
-							[0, 2, 9],
-							[2, 0, 100]
-						]
-					},
+					"texture": "res/textures/tile2.ppm",
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 0, 1],
@@ -82,7 +61,6 @@
 				},
 				{
 					"name": "floor",
-					"texture": "res/floor1.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -93,7 +71,6 @@
 				},
 				{
 					"name": "ceiling",
-					"texture": "res/floor2.ppm",
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
@@ -102,7 +79,6 @@
 				},
 				{
 					"name": "left",
-					"texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -113,7 +89,6 @@
 				},
 				{
 					"name": "right",
-					"texture": "res/floor3.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {

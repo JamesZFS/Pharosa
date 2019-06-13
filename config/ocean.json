@@ -1,0 +1,160 @@
+{
+	"save_path": "out/ocean/6.ppm",
+	"n_epoch": 10,
+	"save_step": 1,
+	"verbose_step": 20,
+
+	"algorithm": {
+		"type": "sppm",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 10,
+		"n_photon_per_iter": 1000000,
+		"init_radius": 1
+	},
+
+	"camera": {
+		"type": "basic",
+		"width": 500, "height": 800,
+		"pixel_size": 0.2, "length": 140.0,
+		"pos": [0, -10, 200],
+		"rot": [0, 175, 0]
+	},
+
+	"scene": [
+		{
+			"name": "ocean",
+			"type": "obj",
+			"color": [0.94, 0.94, 0.99],
+			"diff": 0.0,
+			"refr": 1.0,
+			"n_refr": 1.33,
+			"path": "/Users/james/Test/CG/Pharosa/res/ocean - done.obj",
+			"#texture": {
+				"path": "res/textures/water.ppm",
+				"scale": 5
+			},
+			"scale": 130,
+			"#tra": [0, -20, 60],
+			"tra": [0, -50, 60],
+			"rot": [0, 0, 0]
+		},
+		{
+			"name": "glass sphere",
+			"color": "white",
+			"diff": 0,
+			"spec": 0,
+			"refr": 1.0,
+			"geo": {
+				"type": "sphere",
+				"radius": 18.5,
+				"pos": [30, -30, -10]
+			}
+		},
+		{
+			"name": "mirror sphere",
+			"color": "white",
+			"diff": 0,
+			"spec": 1.0,
+			"refr": 0,
+			"geo": {
+				"type": "sphere",
+				"radius": 20,
+				"pos": [-30, -80, -10]
+			}
+		},
+		{
+			"name": "cornell walls",
+			"type": "group",
+			"objects": [
+				{
+					"name": "front wall",
+					"texture": {
+						"path": "res/textures/tile2.ppm",
+						"mat": [
+							[5, 0, 205],
+							[0, 5, 520]
+						]
+					},
+					"color": [0.7, 0.72, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, -50]
+					}
+				},
+				{
+					"name": "back wall",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 0, 1],
+						"point": [0, 0, 180]
+					}
+				},
+				{
+					"name": "floor",
+					"color": [0.87, 0.80, 0.5],
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, -110, 0]
+					}
+				},
+				{
+					"name": "ceiling",
+					"color": "WHITE",
+					"geo": {
+						"type": "infplane",
+						"normal": [0, 1, 0],
+						"point": [0, 80, 0]
+					}
+				},
+				{
+					"name": "left",
+					"color": [0.2, 0.6, 0.2],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [-60, 0, 0]
+					}
+				},
+				{
+					"name": "right",
+					"color": [0.4, 0.8, 0.8],
+					"geo": {
+						"type": "infplane",
+						"normal": [1, 0, 0],
+						"point": [60, 0, 0]
+					}
+				}
+			]
+		},
+		{
+			"type": "group",
+			"name": "light source",
+			"emission": [60, 60, 65],
+			"tra": [0, 78, 20],
+			"objects": [
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[-10, 0, -10],
+							[10, 0, -10],
+							[-10, 0, 10]
+						]
+					}
+				},
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[10, 0, 10],
+							[-10, 0, 10],
+							[10, 0, -10]
+						]
+					}
+				}
+			]
+		}
+	]
+}

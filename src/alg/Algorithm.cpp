@@ -36,12 +36,14 @@ Color Algorithm::computeLd(const Intersection &isect) const
 			Dir sz = OS / dist, sx, sy;
 			sz.getOrthogonalBasis(sx, sy);
 			real sin_theta_max = s.rad / dist;
-			if (sin_theta_max > 1)
-				return Color::BLACK;    // unwanted sample
+//			if (sin_theta_max > 1)
+//				return Color::BLACK;    // unwanted sample
 			real cos_theta_max = sqrtf(max2(0.f, 1 - sin_theta_max * sin_theta_max));
 			auto samp = Sampling::uniformOnSphereCap(cos_theta_max, {randf(), randf()});
 			r_out.dir = sx * samp.x + sy * samp.y + sz * samp.z;
 			G = isect.nl % r_out.dir;
+			if (G <= 0)
+				return Color::BLACK;    // shadow ray
 			inv_pdf *= 2 * M_PIF * (1 - cos_theta_max);
 			break;
 		}
@@ -50,14 +52,15 @@ Color Algorithm::computeLd(const Intersection &isect) const
 			Pos d = Sampling::uniformOnTriangle(t, {randf(), randf()}) - isect.pos;
 			real dist = d.norm();
 			r_out.dir = d / dist;
-			G = (isect.nl % r_out.dir) * fabsf(r_out.dir % t.n) / (dist * dist);
-			inv_pdf *= 0.5 * t.area();    // only sample one surface
+			G = isect.nl % r_out.dir;
+			if (G <= 0)
+				return Color::BLACK;    // shadow ray
+			G *= fabsf(r_out.dir % t.n) / (dist * dist);
+			inv_pdf *= t.area();
 			break;
 		}
 		default: TERMINATE("Got unsupported finite shape light source!")
 	}
-	if (isect.nl % r_out.dir <= 0)
-		return Color::BLACK;    // shadow ray
 	r_out.offset(EPS);
 	Intersection nxt_isect;
 	if (!scene.intersectAny(r_out, nxt_isect, true))    // a missing sample

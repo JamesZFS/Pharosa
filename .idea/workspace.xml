@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="212" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="145" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="92" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="199" />
     <bookmark url="file://$PROJECT_DIR$/src/parsing.cpp" line="271" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="77" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/Scene.cpp" line="80" />
-    <bookmark url="file://$PROJECT_DIR$/src/scene/KDNode.cpp" line="34" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="53" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="258" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="270" />
-    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="35" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="217" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="58" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/SPPM.cpp" line="261" />
+    <bookmark url="file://$PROJECT_DIR$/src/alg/Algorithm.cpp" line="57" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -33,19 +26,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7f39f1-c184-4819-b14e-fececa79d715" name="Default Changelist" comment="[hotfix]">
+      <change afterPath="$PROJECT_DIR$/config/ocean.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/example/three.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/example/three.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/sibenik.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/sibenik.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/sppm.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/sppm.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/test Bezier.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test Bezier.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/test dof.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test dof.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test dragon.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/test dragon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/alg/Algorithm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/Algorithm.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/PMGrid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/PMGrid.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/alg/SPPM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/alg/SPPM.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/camera/BasicCamera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Mat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Mat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Vec.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Vec.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometric/BezierRev.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/BezierRev.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometric/BezierRev.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/BezierRev.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometric/Finite.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Finite.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometric/PolyRev.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/PolyRev.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometric/Sphere.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Sphere.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometric/Triangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Triangle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometric/Triangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometric/Triangle.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/BoundingBox.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/BoundingBox.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/BoundingBox.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/BoundingBox.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/KDNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/KDNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -184,7 +191,7 @@
     <session id="612171128">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="40" />
+          <entry key="project.closed" value="41" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -195,10 +202,10 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="5" />
+          <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="6" />
           <entry key="project.open.time.9" value="5" />
-          <entry key="project.opened" value="41" />
+          <entry key="project.opened" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -210,37 +217,37 @@
           <entry key="cmake" value="1" />
           <entry key="cmath" value="2" />
           <entry key="cp" value="1" />
-          <entry key="cpp" value="1440" />
+          <entry key="cpp" value="1474" />
           <entry key="cstdio" value="1" />
           <entry key="d" value="5" />
           <entry key="fstream" value="2" />
           <entry key="gitignore" value="11" />
-          <entry key="h" value="1560" />
-          <entry key="hpp" value="182" />
+          <entry key="h" value="1589" />
+          <entry key="hpp" value="184" />
           <entry key="inl" value="43" />
           <entry key="iostream" value="1" />
           <entry key="istream" value="5" />
           <entry key="josn" value="1" />
-          <entry key="json" value="166" />
+          <entry key="json" value="183" />
           <entry key="obj" value="7" />
           <entry key="ppm" value="197" />
-          <entry key="py" value="47" />
-          <entry key="tcc" value="90" />
+          <entry key="py" value="50" />
+          <entry key="tcc" value="91" />
           <entry key="tpp" value="7" />
-          <entry key="txt" value="84" />
+          <entry key="txt" value="91" />
           <entry key="utility" value="1" />
           <entry key="xml" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="83" />
+          <entry key="CMakeLists.txt" value="90" />
           <entry key="Image" value="197" />
-          <entry key="JSON" value="164" />
+          <entry key="JSON" value="181" />
           <entry key="Makefile" value="27" />
-          <entry key="ObjectiveC" value="3339" />
+          <entry key="ObjectiveC" value="3405" />
           <entry key="PLAIN_TEXT" value="29" />
-          <entry key="Python" value="39" />
+          <entry key="Python" value="42" />
           <entry key="Scratch" value="8" />
           <entry key="XML" value="13" />
         </counts>
@@ -248,31 +255,31 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Makefile" value="332" />
-          <entry key="cpp" value="120421" />
+          <entry key="cpp" value="122828" />
           <entry key="dummy" value="4" />
           <entry key="gitignore" value="42" />
-          <entry key="h" value="41653" />
+          <entry key="h" value="41769" />
           <entry key="hpp" value="6032" />
           <entry key="inl" value="1299" />
           <entry key="istream" value="1" />
-          <entry key="json" value="13327" />
+          <entry key="json" value="15733" />
           <entry key="mm" value="607" />
           <entry key="obj" value="217" />
           <entry key="p" value="1" />
           <entry key="py" value="5007" />
-          <entry key="tcc" value="2938" />
+          <entry key="tcc" value="2947" />
           <entry key="tpp" value="11" />
-          <entry key="txt" value="2059" />
+          <entry key="txt" value="2358" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CMakeLists.txt" value="2041" />
+          <entry key="CMakeLists.txt" value="2340" />
           <entry key="Doxygen file" value="57" />
-          <entry key="JSON" value="13295" />
+          <entry key="JSON" value="15701" />
           <entry key="Makefile" value="332" />
-          <entry key="ObjectiveC" value="172906" />
+          <entry key="ObjectiveC" value="175438" />
           <entry key="PLAIN_TEXT" value="313" />
           <entry key="Python" value="4279" />
           <entry key="Scratch" value="728" />
@@ -287,19 +294,64 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.cpp">
+        <entry file="file://$PROJECT_DIR$/src/geometric/BezierRev.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="35">
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/sibenik.json">
+        <entry file="file://$PROJECT_DIR$/src/scene/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+            <state relative-caret-position="102">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="113" column="35" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/Scene.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pharosa.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -317,42 +369,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mapToGrid</find>
-      <find>kd</find>
-      <find>List2D</find>
-      <find>r_avg</find>
-      <find>w_new</find>
-      <find>vps</find>
-      <find>at</find>
-      <find>drawCurPhotons</find>
-      <find>DEBUG_DRAW</find>
-      <find>pixel_size</find>
-      <find>epoch</find>
-      <find>debug</find>
-      <find>intersec</find>
-      <find>objs</find>
-      <find>finite_objs</find>
-      <find>trans_mat</find>
-      <find>flag</find>
-      <find>unit</find>
-      <find>scene type</find>
-      <find>sphere</find>
-      <find>Sphere</find>
-      <find>sampleOneLight</find>
-      <find>Dir</find>
-      <find>&amp;&amp;</find>
-      <find>build</find>
-      <find>Phi</find>
-      <find>beta</find>
-      <find>n</find>
       <find>normal</find>
       <find>marble</find>
+      <find>length</find>
+      <find>++__counter__</find>
+      <find>40</find>
+      <find>30</find>
+      <find>10</find>
+      <find>20</find>
+      <find>left</find>
+      <find>f</find>
+      <find>right</find>
+      <find>front</find>
+      <find>scale</find>
+      <find>mat</find>
+      <find>glass</find>
+      <find>wo</find>
+      <find>vp.beta</find>
+      <find>floor</find>
+      <find>lens</find>
+      <find>sphere</find>
+      <find>inv_pdf</find>
+      <find>r_out</find>
+      <find>res</find>
+      <find>marble.</find>
+      <find>ez</find>
+      <find>ocean</find>
+      <find>ctrl_pts</find>
+      <find>report</find>
+      <find>back</find>
+      <find>ifdef</find>
     </findStrings>
     <replaceStrings>
-      <replace>zm</replace>
-      <replace>.z</replace>
-      <replace>r_tris</replace>
-      <replace>MATCH_THRESHOLD</replace>
       <replace>r_R</replace>
       <replace>r_T</replace>
       <replace>PHAROSA_PATHTRACING_H</replace>
@@ -379,6 +427,10 @@
       <replace>0.1</replace>
       <replace>DEBUG_DRAW_ON</replace>
       <replace>printf</replace>
+      <replace>30</replace>
+      <replace>20</replace>
+      <replace>10</replace>
+      <replace>if</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/core</dir>
@@ -410,26 +462,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/alg/KDGrid.h" />
-        <option value="$PROJECT_DIR$/src/scene/BoundingBox.h" />
-        <option value="$PROJECT_DIR$/src/alg/PMGrid.h" />
-        <option value="$PROJECT_DIR$/src/scene/BoundingBox.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/Finite.h" />
-        <option value="$PROJECT_DIR$/src/geometric/Cube.h" />
-        <option value="$PROJECT_DIR$/src/geometric/InfPlane.h" />
-        <option value="$PROJECT_DIR$/src/scene/Object.h" />
-        <option value="$PROJECT_DIR$/src/geometric/Geometry.h" />
-        <option value="$PROJECT_DIR$/src/geometric/BezierRev.h" />
-        <option value="$PROJECT_DIR$/src/geometric/BezierRev.cpp" />
-        <option value="$PROJECT_DIR$/src/scene/Material.hpp" />
         <option value="$PROJECT_DIR$/src/scene/Object.cpp" />
         <option value="$PROJECT_DIR$/src/core/Polynomial.cpp" />
         <option value="$PROJECT_DIR$/src/geometric/Sphere.cpp" />
         <option value="$PROJECT_DIR$/src/geometric/InfPlane.cpp" />
         <option value="$PROJECT_DIR$/src/geometric/PolyRev.h" />
         <option value="$PROJECT_DIR$/src/geometric/Cube.cpp" />
-        <option value="$PROJECT_DIR$/src/scene/KDNode.cpp" />
-        <option value="$PROJECT_DIR$/src/scene/Scene.cpp" />
         <option value="$PROJECT_DIR$/src/parsing.cpp" />
         <option value="$PROJECT_DIR$/src/alg/PTE.cpp" />
         <option value="$PROJECT_DIR$/src/alg/Algorithm.h" />
@@ -437,30 +475,44 @@
         <option value="$PROJECT_DIR$/src/alg/SPPM.h" />
         <option value="$PROJECT_DIR$/src/utils/sampling.h" />
         <option value="$PROJECT_DIR$/src/alg/PTF.cpp" />
-        <option value="$PROJECT_DIR$/config/example/three.json" />
-        <option value="$PROJECT_DIR$/src/scene/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/config/example/two.json" />
-        <option value="$PROJECT_DIR$/src/geometric/Triangle.h" />
-        <option value="$PROJECT_DIR$/src/alg/Algorithm.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/Triangle.cpp" />
         <option value="$PROJECT_DIR$/src/camera/DOFCamera.cpp" />
-        <option value="$PROJECT_DIR$/src/core/Vec.h" />
         <option value="$PROJECT_DIR$/src/alg/RayCasting.h" />
         <option value="$PROJECT_DIR$/src/test.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/src/utils/sampling.cpp" />
         <option value="$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp" />
-        <option value="$PROJECT_DIR$/config/test Bezier.json" />
         <option value="$PROJECT_DIR$/src/alg/PMGrid.cpp" />
-        <option value="$PROJECT_DIR$/src/camera/BasicCamera.cpp" />
-        <option value="$PROJECT_DIR$/src/alg/SPPM.cpp" />
-        <option value="$PROJECT_DIR$/src/geometric/Sphere.h" />
-        <option value="$PROJECT_DIR$/src/geometric/PolyRev.cpp" />
-        <option value="$PROJECT_DIR$/config/sppm.json" />
         <option value="$PROJECT_DIR$/config/test dragon.json" />
-        <option value="$PROJECT_DIR$/config/test dof.json" />
-        <option value="$PROJECT_DIR$/src/alg/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/config/sibenik.json" />
+        <option value="$PROJECT_DIR$/config/package.json" />
+        <option value="$PROJECT_DIR$/config/test ocean.json" />
+        <option value="$PROJECT_DIR$/config/sppm.json" />
+        <option value="$PROJECT_DIR$/src/geometric/Triangle.cpp" />
+        <option value="$PROJECT_DIR$/src/core/Vec.h" />
+        <option value="$PROJECT_DIR$/src/alg/Algorithm.cpp" />
+        <option value="$PROJECT_DIR$/src/alg/SPPM.cpp" />
+        <option value="$PROJECT_DIR$/config/test dof.json" />
+        <option value="$PROJECT_DIR$/config/example/three.json" />
+        <option value="$PROJECT_DIR$/src/alg/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/config/ocean.json" />
+        <option value="$PROJECT_DIR$/src/camera/BasicCamera.cpp" />
+        <option value="$PROJECT_DIR$/config/glass.json" />
+        <option value="$PROJECT_DIR$/src/geometric/Finite.h" />
+        <option value="$PROJECT_DIR$/src/geometric/Sphere.h" />
+        <option value="$PROJECT_DIR$/src/geometric/Triangle.h" />
+        <option value="$PROJECT_DIR$/src/scene/BoundingBox.h" />
+        <option value="$PROJECT_DIR$/src/scene/BoundingBox.cpp" />
+        <option value="$PROJECT_DIR$/src/geometric/BezierRev.h" />
+        <option value="$PROJECT_DIR$/src/geometric/BezierRev.cpp" />
+        <option value="$PROJECT_DIR$/src/core/Mat.cpp" />
+        <option value="$PROJECT_DIR$/src/geometric/PolyRev.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/KDNode.cpp" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.cpp" />
+        <option value="$PROJECT_DIR$/src/utils/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/config/test Bezier.json" />
+        <option value="$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc" />
+        <option value="$PROJECT_DIR$/src/scene/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -639,182 +691,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
-          <expand>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <subPane subId="Scope 'Project Non-Source Files'; set:Project Non-Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$NonSourceFilesScope">
-          <expand>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
-          <expand>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="solvers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="out" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="out" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="sibenik" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="alg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="camera" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="geometric" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="scene" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="parsers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="solvers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <subPane subId="Scope 'Project Source Files'; set:Project Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$SourceFilesScope">
-          <expand>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="geometric" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="scene" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -892,10 +768,179 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Non-Source Files'; set:Project Non-Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$NonSourceFilesScope">
+          <expand>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="solvers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="pyscripts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="alg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="camera" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="geometric" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scene" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="solvers" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Source Files'; set:Project Source Files; class com.jetbrains.cidr.lang.search.scopes.ProjectSourcesScopeProvider$SourceFilesScope">
+          <expand>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="core" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="geometric" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="scene" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Pharosa" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="bunny.j&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/bunny.json&#10;basic&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/camera/BasicCamera.cpp&#10;test dof&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dof.json&#10;testdof&#9;null&#9;null&#10;main.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;main&#9;null&#9;null&#10;basicc&#9;null&#9;null&#10;pte&#9;null&#9;null&#10;two.js&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;path&#9;null&#9;null&#10;sampl&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/sampling.cpp&#10;ptf&#9;null&#9;null&#10;test dragon&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dragon.json&#10;vec&#9;null&#9;null&#10;prepare&#9;null&#9;null&#10;Tria&#9;null&#9;null&#10;scene&#9;null&#9;null&#10;Cube&#9;null&#9;null&#10;renderer&#9;null&#9;null&#10;test.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;three.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/three.json&#10;parsing.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.cpp&#10;main.cp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;renderer.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/Renderer.cpp&#10;vec.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/core/Vec.cpp&#10;forward&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/forward.cpp&#10;forwar&#9;null&#9;null&#10;dof&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dof.json&#10;test.cp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;.gitignore&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;smallpt&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/smallpt.cpp&#10;json&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dragon.json&#10;.gitign&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;Geom&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp&#10;Mesh&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/MeshParser.cpp&#10;two.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/two.ppm&#10;two&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;parsing&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.inl&#10;one&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/one.ppm&#10;is_ed&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/is_edge.ppm&#10;ObjPar&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/ObjParser.cpp&#10;4-27&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test 4-27.ppm&#10;funcs&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/funcs.cpp&#10;tes&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;main.c&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;test&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;testppm&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test json.ppm&#10;gitig&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;renderver&#9;null&#9;null&#10;compute&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="nonlinear.h&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/solvers/NonLinear.h&#10;renderer&#9;null&#9;null&#10;Obje&#9;null&#9;null&#10;bounding&#9;null&#9;null&#10;ptf&#9;null&#9;null&#10;three.j&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/three.json&#10;bunny.j&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/bunny.json&#10;basic&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/camera/BasicCamera.cpp&#10;test dof&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dof.json&#10;testdof&#9;null&#9;null&#10;main.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;main&#9;null&#9;null&#10;basicc&#9;null&#9;null&#10;pte&#9;null&#9;null&#10;two.js&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;path&#9;null&#9;null&#10;sampl&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/sampling.cpp&#10;test dragon&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dragon.json&#10;vec&#9;null&#9;null&#10;prepare&#9;null&#9;null&#10;Tria&#9;null&#9;null&#10;scene&#9;null&#9;null&#10;Cube&#9;null&#9;null&#10;test.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;three.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/three.json&#10;parsing.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.cpp&#10;main.cp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;renderer.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/Renderer.cpp&#10;vec.cpp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/core/Vec.cpp&#10;forward&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/forward.cpp&#10;forwar&#9;null&#9;null&#10;dof&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dof.json&#10;test.cp&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;.gitignore&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;smallpt&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/smallpt.cpp&#10;json&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/test dragon.json&#10;.gitign&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/.gitignore&#10;Geom&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/geometric/Geometry.cpp&#10;Mesh&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/MeshParser.cpp&#10;two.&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/two.ppm&#10;two&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/config/example/two.json&#10;parsing&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/parsing.inl&#10;one&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/one.ppm&#10;is_ed&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/is_edge.ppm&#10;ObjPar&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/parsers/ObjParser.cpp&#10;4-27&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/test 4-27.ppm&#10;funcs&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/utils/funcs.cpp&#10;tes&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp&#10;main.c&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/main.cpp&#10;test&#9;FILE&#9;file:///Users/james/Test/CG/Pharosa/src/test.cpp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -938,7 +983,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Pharosa">
-    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/sibenik.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
+    <configuration name="Pharosa" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;config/test Bezier.json&quot;" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pharosa" TARGET_NAME="Pharosa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Pharosa" RUN_TARGET_NAME="Pharosa">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -986,7 +1031,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyscripts/img_codec.py" />
-      <option name="PARAMETERS" value="res/bamboo.jpg" />
+      <option name="PARAMETERS" value="res/textures/tile2.jpg" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -1007,7 +1052,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyscripts/obj_preprocess.py" />
-      <option name="PARAMETERS" value="&quot;res/farmhouse 2.obj&quot;" />
+      <option name="PARAMETERS" value="&quot;res/wooden-table/table.obj&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -1071,11 +1116,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.obj_preprocess" />
+        <item itemvalue="Python.img_codec" />
         <item itemvalue="Python.scratch_4" />
         <item itemvalue="Makefile.forward" />
-        <item itemvalue="Python.img_codec" />
         <item itemvalue="Python.scratch_2" />
-        <item itemvalue="Python.obj_preprocess" />
       </list>
     </recent_temporary>
   </component>
@@ -1132,7 +1177,8 @@
       <workItem from="1559991139297" duration="46247000" />
       <workItem from="1560092430039" duration="9978000" />
       <workItem from="1560182072886" duration="16162000" />
-      <workItem from="1560265813919" duration="39938000" />
+      <workItem from="1560265813919" duration="50267000" />
+      <workItem from="1560416057293" duration="18821000" />
     </task>
     <task id="LOCAL-00001" summary="[hotfix]">
       <created>1555925747860</created>
@@ -1145,7 +1191,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="739738000" />
+    <option name="totallyTimeSpent" value="768888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1158,8 +1204,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.52996475" visible="true" weight="0.24892704" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.52996475" visible="true" weight="0.25250357" />
       <window_info id="Structure" order="1" sideWeight="0.47003525" side_tool="true" weight="0.23125" />
       <window_info id="Favorites" order="2" sideWeight="0.46768507" side_tool="true" weight="0.24375" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1167,34 +1214,7 @@
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49928468" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49928468" weight="0.36144578" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.32891566" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28433734" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50143063" side_tool="true" weight="0.30240965" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32771084" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.35180724" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3385542" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Statistic" order="14" visible="true" weight="0.45903614" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" sideWeight="0.49840763" weight="0.3297568" />
-      <window_info anchor="right" id="make" order="4" weight="0.32904148" />
-      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" sideWeight="0.50159234" side_tool="true" weight="0.32847223" />
-      <window_info anchor="right" id="PlantUML" order="6" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.52996475" visible="true" weight="0.24892704" />
-      <window_info id="Structure" order="1" sideWeight="0.47003525" side_tool="true" weight="0.23125" />
-      <window_info id="Favorites" order="2" sideWeight="0.46768507" side_tool="true" weight="0.24375" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32650602" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.49928468" weight="0.3987952" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49928468" visible="true" weight="0.36144578" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49928468" visible="true" weight="0.38433734" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.28433734" />
@@ -1211,7 +1231,7 @@
       <window_info anchor="right" id="make" order="4" weight="0.32904148" />
       <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" sideWeight="0.50159234" side_tool="true" weight="0.32847223" />
       <window_info anchor="right" id="PlantUML" order="6" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1281,377 +1301,374 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/example/two.json">
+    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="268">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/sibenik/Sibenik.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/sibenik/1.ppm">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Ray.hpp">
+    <entry file="file://$PROJECT_DIR$/src/alg/PTF.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="457">
+          <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/Triangle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="e#95#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <element signature="e#40#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PTE.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.h">
+    <entry file="file://$PROJECT_DIR$/src/alg/PTF.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/Camera.h">
+    <entry file="file://$PROJECT_DIR$/src/geometric/Triangle.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/DOFCamera.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/OrthoCamera.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/Camera.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/RayCasting.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Polynomial.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Polynomial.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="498" column="17" lean-forward="true" selection-start-line="498" selection-start-column="17" selection-end-line="498" selection-end-column="17" />
+        <state relative-caret-position="111">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/sampling.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state relative-caret-position="238">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding>
             <element signature="e#96#120#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#243#268#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="295" lean-forward="true" selection-start-line="295" selection-end-line="295" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-617">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="128" column="45" selection-start-line="128" selection-start-column="45" selection-end-line="128" selection-end-column="45" />
-          <folding>
-            <element signature="e#40#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Vec.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="232" column="79" selection-start-line="232" selection-start-column="79" selection-end-line="232" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Vec.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/pandas/tests/tseries/offsets/test_offsets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="527" column="6" selection-start-line="527" selection-start-column="6" selection-end-line="527" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/DOFCamera.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/PMGrid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="106" column="21" lean-forward="true" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
-          <folding>
-            <element signature="e#40#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/parsers/MeshParser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/Triangle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/sampling.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/alg/SPPM.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding>
-            <element signature="e#87#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Intersection.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/Geometry.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-257">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state relative-caret-position="482">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Mat.tcc">
+    <entry file="file://$PROJECT_DIR$/src/core/Vec.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        <state relative-caret-position="306">
+          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Mat.h">
+    <entry file="file://$PROJECT_DIR$/src/camera/Camera.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+        <state relative-caret-position="262">
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRev.cpp">
+    <entry file="file://$PROJECT_DIR$/src/core/Image.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="85" column="18" lean-forward="true" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
+        <state relative-caret-position="306">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/BezierRev.h">
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="357">
+          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/sppm.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/example/three.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test dof.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/alg/Algorithm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/ocean.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/bunny.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="30" column="23" selection-start-line="28" selection-start-column="6" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="93">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/glass.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/camera/BasicCamera.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/alg/SPPM.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="132" column="22" lean-forward="true" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+        <state relative-caret-position="2414">
+          <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
           <folding>
             <element signature="e#40#57#0" expanded="true" />
-            <element signature="e#3700#3714#0" expanded="true" />
+            <element signature="e#7235#7348#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/camera/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="206">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/sppm.json">
+    <entry file="file://$PROJECT_DIR$/src/geometric/Triangle.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="230">
+          <caret line="32" column="40" lean-forward="true" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/Finite.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Polynomial.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parsing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="326" column="15" selection-start-line="326" selection-start-column="15" selection-end-line="326" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/PolyRev.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+        <state relative-caret-position="204">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#108#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/BoundingBox.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/gcc/8.3.0_2/include/c++/8.3.0/bits/stl_numeric.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="236" column="4" selection-start-line="236" selection-start-column="4" selection-end-line="236" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Material.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="40" column="11" lean-forward="true" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/BoundingBox.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometric/BezierRev.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="202">
+          <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+          <folding>
+            <element signature="e#41#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/test dragon.json">
+    <entry file="file://$PROJECT_DIR$/src/core/Mat.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="120">
+          <caret line="53" column="17" lean-forward="true" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/test dof.json">
+    <entry file="file://$PROJECT_DIR$/src/geometric/PolyRev.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+        <state relative-caret-position="163">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometric/Sphere.cpp">
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="255">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/sibenik.json">
+    <entry file="file://$PROJECT_DIR$/src/Pharosa.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        <state relative-caret-position="304">
+          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Renderer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="53" selection-start-line="53" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Renderer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/KDNode.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="60" column="34" lean-forward="true" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/solvers/Linear.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test Bezier.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometric/BezierRev.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="113" column="35" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.tcc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="e#648#688#0" expanded="true" />
+            <element signature="e#801#825#0" expanded="true" />
+            <element signature="e#1301#1341#0" expanded="true" />
+            <element signature="e#1393#1404#0" expanded="true" />
+            <element signature="e#1697#1729#0" expanded="true" />
+            <element signature="e#1781#1792#0" expanded="true" />
+            <element signature="e#2067#2099#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/solvers/NonLinear.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
         </state>
       </provider>
     </entry>

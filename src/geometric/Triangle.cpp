@@ -6,7 +6,7 @@
 #include "../utils/solvers/Linear.h"
 
 Triangle::Triangle(const Pos &A, const Pos &B, const Pos &C) :
-		p{A, B, C}, n((B - A) ^ (C - A)), surface_area(n.norm())	// a tri has two sides
+		p{A, B, C}, n((B - A) ^ (C - A)), surface_area(0.5f * n.norm())
 {
 	if (n.sqr() == 0) throw DegenerateCase();
 	n.unitize();

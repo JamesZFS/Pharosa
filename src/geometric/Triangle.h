@@ -38,6 +38,9 @@ struct Triangle : Geometry, Finite
 	void getUV(const Pos &pos, real &u, real &v) const override
 	{ u = cu % pos, v = cv % pos; }
 
+	inline real area() const
+	{ return surface_area; }
+
 	void report() const override;
 
 	// override Finite:
@@ -61,9 +64,6 @@ struct Triangle : Geometry, Finite
 
 	inline Pos center() const override    // get center point
 	{ return (p[0] + p[1] + p[2]) / 3; }
-
-	inline real area() const override
-	{ return surface_area; }
 
 	static Triangle *acquire(const Json &json);
 };

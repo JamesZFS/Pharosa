@@ -24,8 +24,6 @@ struct Finite
 	virtual real zMax() const = 0;
 
 	virtual Pos center() const = 0;// get center point
-
-	virtual real area() const = 0;// surface area
 };
 
 #endif //PHAROSA_FINITE_H

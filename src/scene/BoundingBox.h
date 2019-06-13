@@ -34,6 +34,8 @@ public:
 
 	BoundingBox(VPPtrList::const_iterator begin, VPPtrList::const_iterator end);
 
+	BoundingBox(List<Pos>::const_iterator begin, List<Pos>::const_iterator end);
+
 	inline Pos getLowerBound() const
 	{ return {xmin, ymin, zmin}; }
 

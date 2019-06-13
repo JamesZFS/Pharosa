@@ -55,10 +55,10 @@ void KDNode::build(const ObjectList &finite_objs, size_t depth)
 {
 	__kdnode_max_depth__ = max2(__kdnode_max_depth__, depth);
 	objs = new ObjectList;
-	box = new BoundingBox(finite_objs.cbegin(), finite_objs.cend());    // bound all finite_objs
+	box = new BoundingBox(finite_objs.cbegin(), finite_objs.cend());    // bound_pts all finite_objs
 
 	// base case:
-	if (finite_objs.size() <= KD_N_LEAF_MESH) {
+	if (finite_objs.size() <= 5) {
 		objs->assign(finite_objs.cbegin(), finite_objs.cend());    // copy Finite ptrs
 		return;
 	}

@@ -39,7 +39,7 @@ bool VPCompZ(VisiblePoint *a, const VisiblePoint *b)
 void KDGrid::build(VPPtrList::const_iterator begin, VPPtrList::const_iterator end, size_t depth)
 {
 	__kdgrid_max_depth__ = max2(__kdgrid_max_depth__, depth);
-	box = new BoundingBox(begin, end);    // bound all vps
+	box = new BoundingBox(begin, end);    // bound_pts all vps
 	vps = new VPPtrList(begin, end);    // copy Finite ptrs
 
 	// base case:

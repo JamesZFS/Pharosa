@@ -31,6 +31,9 @@ struct Sphere : Geometry, Finite
 		u = ea.alpha, v = ea.gamma;
 	}
 
+	real area() const
+	{ return 4 * M_PIF * rad_2; }
+
 	void report() const override;
 
 	real xMin() const override
@@ -53,9 +56,6 @@ struct Sphere : Geometry, Finite
 
 	Pos center() const override
 	{ return c; }
-
-	real area() const override
-	{ return 4 * M_PIF * rad_2; }
 
 	static Sphere *acquire(const Json &json);
 };

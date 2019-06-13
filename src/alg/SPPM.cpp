@@ -212,7 +212,7 @@ void SPPM::tracePhoton(Ray ri, Color beta, real r_bound)
 #if LD_ON
 			if (depth > 0) {    // skip direct lighting term
 #else
-			{
+				{
 #endif
 				grids->query(isect.pos, r_bound, [&isect, &beta](VisiblePoint *vp) {    // callback
 					if (vp->wo % isect.nl <= 0) return;    // in different surfaces
@@ -246,35 +246,41 @@ Ray SPPM::sampleOneLight(Color &beta)
 	// randomly choose one light
 	auto lt = lights.at((size_t) randf(0, lights.size()));
 	real inv_pdf = lights.size();    // 1/pdf
+	// compute ri.org in different cases:
 	switch (lt->geo->type()) {
 		case Geometry::SPHERE: {
 			auto &s = *(Sphere *) lt->geo;
 			// randomly pick one pos on light source
 			auto samp = Sampling::uniformOnSphere({randf(), randf()});
-			inv_pdf *= s.area();
+			inv_pdf *= s.area() * 2;
 			ri.org = s.c + samp * s.rad;
-			Dir ex, ey, ez = samp;
-			ez.getOrthogonalBasis(ex, ey);
-			samp = Sampling::uniformOnHemisphere({randf(), randf()});
-			inv_pdf *= 2 * M_PIF; // todo
-			ri.dir = ex * samp.x + ey * samp.y + ez * samp.z;
 			break;
 		}
 		case Geometry::TRIANGLE: {
 			auto &t = *(Triangle *) lt->geo;
 			ri.org = Sampling::uniformOnTriangle(t, {randf(), randf()});
-			inv_pdf *= t.area();
-			// randomly pick one side to shoot
-			Dir ex, ey, ez = WITH_PROB(0.5) ? t.n : -t.n;
-			ez.getOrthogonalBasis(ex, ey);
-			auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
-			inv_pdf *= 2 * M_PIF;
-			ri.dir = ex * samp.x + ey * samp.y + ez * samp.z;
+			inv_pdf *= t.area() * 2;	// todo
+//			ez = t.n;
+//			ez.getOrthogonalBasis(ex, ey);
 			break;
 		}
 		default: TERMINATE("Got unsupported finite shape light source for sampling!")
 	}
+	// choose direction
+#if SAMPLE_LIGHT_ON_ONE_SIDE
+	// sample only outter side
+	auto samp = Sampling::uniformOnHemisphere({randf(), randf()});
+	inv_pdf *= 2 * M_PIF;
+#else
+	// sample both sides
+	auto samp = Sampling::uniformOnSphere({randf(), randf()});
+	inv_pdf *= 4 * M_PIF;
+#endif
 	beta = lt->mtr->emi * inv_pdf;
+	Dir ex, ey, ez;
+	lt->geo->getNormal(ri.org, ez);
+	ez.getOrthogonalBasis(ex, ey);
+	ri.dir = ex * samp.x + ey * samp.y + ez * samp.z;
 	ri.offset(EPS);
 	return ri;
 }
@@ -300,7 +306,11 @@ void SPPM::drawPhi(size_t epoch) const
 #endif
 	for (size_t j = 0; j < img.getHeight(); ++j) {
 		for (size_t i = 0; i < img.getWidth(); ++i) {
-			img.at(i, j) /= Phi_max;
+			auto &pix = img.at(i, j);
+			pix /= Phi_max;
+			pix.x = sqrtf(pix.x);
+			pix.y = sqrtf(pix.y);
+			pix.z = sqrtf(pix.z);
 		}
 	}
 	Buffer title;
@@ -346,7 +356,11 @@ void SPPM::drawM(size_t epoch) const
 #endif
 	for (size_t j = 0; j < img.getHeight(); ++j) {
 		for (size_t i = 0; i < img.getWidth(); ++i) {
-			img.at(i, j) /= M_max;
+			auto &pix = img.at(i, j);
+			pix /= M_max;
+			pix.x = sqrtf(pix.x);
+			pix.y = sqrtf(pix.y);
+			pix.z = sqrtf(pix.z);
 		}
 	}
 	Buffer title;

@@ -95,6 +95,6 @@ void PolyRev::report() const
 	phi.report();
 	printf("psi = ");
 	psi.report();
-	printf("transform:");
+	printf("transform:\n");
 	mat.report();
 }

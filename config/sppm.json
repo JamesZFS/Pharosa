@@ -1,5 +1,5 @@
 {
-	"save_path": "out/sppm2/fun dragon3 lens.ppm",
+	"save_path": "out/sppm2/dragon3 debug+.ppm",
 	"n_epoch": 5,
 	"verbose_step": 0,
 	"save_step": 1,
@@ -8,8 +8,8 @@
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
-		"n_photon_per_iter": 100000,
-		"init_radius": 3
+		"n_photon_per_iter": 500000,
+		"init_radius": 2
 	},
 
 	"camera": {
@@ -48,7 +48,7 @@
 			"diff": 0,
 			"spec": 0,
 			"refr": 1,
-			"path": "/Users/james/Test/CG/Pharosa/res/dragon0_1 - done.obj",
+			"path": "res/dragon0_1 - done.obj",
 			"scale": 30,
 			"tra": [14, -37, 30],
 			"rot": [0, 0, 170]
@@ -92,7 +92,7 @@
 				},
 				{
 					"name": "floor",
-					"texture": "res/floor1.ppm",
+					"texture": "res/textures/floor1.ppm",
 					"#color": [0.95, 1.0, 0.7],
 					"geo": {
 						"type": "infplane",
@@ -170,6 +170,7 @@
 		},
 		{
 			"name": "lens",
+			"type": "skip",
 			"diff": 0,
 			"refr": 1,
 			"geo": {

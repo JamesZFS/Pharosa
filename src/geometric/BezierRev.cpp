@@ -5,7 +5,9 @@
 #include "BezierRev.h"
 #include "../utils/funcs.hpp"
 
-BezierRev::BezierRev(List<Arr<real, 2>> &&control_pts_) : PolyRev(), ctrl_pts(std::move(control_pts_))
+#include <algorithm>
+
+BezierRev::BezierRev(const List<Arr<real, 2>> &ctrl_pts) : PolyRev()
 {
 	auto n = (unsigned char) (ctrl_pts.size() - 1);
 	for (unsigned char i = 0; i <= n; ++i) {
@@ -14,18 +16,85 @@ BezierRev::BezierRev(List<Arr<real, 2>> &&control_pts_) : PolyRev(), ctrl_pts(st
 		psi += Bi * ctrl_pts[i][1];
 	}
 	psi_2 = psi * psi;
-	debug("Received Bezier Curve Eqa:\n");
-	phi.report();
-	psi.report();
-	debug("\n");
+	// find bounding of ctrl_pts:
+	real xmin, xmax, ymin, ymax, zmin, zmax;
+	xmin = xmax = ctrl_pts[0][0];
+	ymax = ctrl_pts[0][1];
+	for (auto i = 1; i <= n; ++i) {
+		auto &pt = ctrl_pts[i];
+		xmin = min2(xmin, pt[0]);
+		xmax = max2(xmax, pt[0]);
+		ymax = max2(ymax, pt[1]);
+	}
+	zmax = ymax;
+	zmin = ymin = -ymax;
+	bound_pts.reserve(8);
+	bound_pts.emplace_back(xmin, ymin, zmin);
+	bound_pts.emplace_back(xmin, ymin, zmax);
+	bound_pts.emplace_back(xmin, ymax, zmin);
+	bound_pts.emplace_back(xmax, ymin, zmin);
+	bound_pts.emplace_back(xmin, ymax, zmax);
+	bound_pts.emplace_back(xmax, ymin, zmax);
+	bound_pts.emplace_back(xmax, ymax, zmin);
+	bound_pts.emplace_back(xmax, ymax, zmax);	// a conservative upper bound_pts
+	bbox = BoundingBox(bound_pts.cbegin(), bound_pts.cend());
+	bbox.extendMargin(EPS);
+	c = Pos((xmin + xmax) / 2, 0, 0);
 }
 
 void BezierRev::report() const
 {
-	printf("<Bezier Revolution> control points: ");
-	for (auto cp : ctrl_pts) {
-		printf("(%f, %f) ", cp[0], cp[1]);
+	printf("<Bezier Revolution> bounding box:\n");
+	for (auto &pos : bound_pts) {
+		pos.report(true);
 	}
-	printf("\n");
+	printf("center: ");
+	c.report(true);
 	PolyRev::report();
+}
+
+void BezierRev::applyTransform(const TransMat &mat_)
+{
+	PolyRev::applyTransform(mat_);
+	for (auto &pos : bound_pts) {
+		pos = mat * pos;
+	}
+	bbox = BoundingBox(bound_pts.cbegin(), bound_pts.cend());
+	bbox.extendMargin(EPS);
+	c = mat * c;
+}
+
+real BezierRev::xMin() const
+{
+	return bbox.getLowerBound().x;
+}
+
+real BezierRev::xMax() const
+{
+	return bbox.getUpperBound().x;
+}
+
+real BezierRev::yMin() const
+{
+	return bbox.getLowerBound().y;
+}
+
+real BezierRev::yMax() const
+{
+	return bbox.getUpperBound().y;
+}
+
+real BezierRev::zMin() const
+{
+	return bbox.getLowerBound().z;
+}
+
+real BezierRev::zMax() const
+{
+	return bbox.getUpperBound().z;
+}
+
+Pos BezierRev::center() const
+{
+	return c;
 }

@@ -1,0 +1,72 @@
+{
+	"save_path": "out/glass/4 sppm e500.ppm",
+	"n_epoch": 500,
+	"verbose_step": 20,
+	"save_step": 5,
+	"algorithm": {
+		"type": "sppm",
+		"light_dir": [-1, -2, -1],
+		"max_depth": 10,
+		"n_photon_per_iter": 1000000,
+		"init_radius": 2
+	},
+	"camera": {
+		"type": "basic",
+		"width": 1024, "height": 768,
+		"#pos": [-30, 10, 280],
+		"rot": [0, 155, 0],
+		"pos": [0, 100, 180]
+	},
+	"scene": [
+		{
+			"name": "floor",
+			"diff": 0.8,
+			"spec": 0.2,
+			"texture": "res/textures/floor2.ppm",
+			"geo": {
+				"type": "infplane",
+				"normal": [0, 1, 0],
+				"point": [0, -60, 0]
+			}
+		},
+		{
+			"name": "table",
+			"texture": "res/textures/floor1.ppm",
+			"type": "obj",
+			"diff": 0.9,
+			"spec": 0.1,
+			"path": "res/table - done.obj",
+			"scale": 60,
+			"tra": [0, -53, 0],
+			"rot": [0, 0, 0]
+		},
+		{
+			"name": "glass",
+			"type": "obj",
+			"diff": 0,
+			"refr": 1,
+			"path": "res/glass - done.obj",
+			"scale": 15,
+			"tra": [0, 18, 0],
+			"rot": [0, 0, 0]
+		},
+		{
+			"name": "light bulb",
+			"emission": [100, 100, 100],
+			"geo": {
+				"type": "sphere",
+				"radius": 26,
+				"pos": [180, 120, -150]
+			}
+		},
+		{
+			"name": "doom",
+			"color": [0.1, 0.1, 0.1],
+			"geo": {
+				"type": "sphere",
+				"radius": 2000,
+				"pos": [0, 0, 0]
+			}
+		}
+	]
+}

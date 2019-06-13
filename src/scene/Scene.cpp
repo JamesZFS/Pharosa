@@ -89,6 +89,13 @@ void Scene::prepare()
 		}
 	}
 #endif
+#if REPORT_SINGLETON
+	printf("\033[34m\n---Singletons Info:---\n");
+	for (Object *obj : objects) {
+		obj->report();
+	}
+	printf("\n----------------------\n\033[0m");
+#endif
 	// move to mesh
 	for (Object *obj : objects) {
 		auto shape = dynamic_cast<Finite *>(obj->geo);    // if it's a finite, move it to meshes

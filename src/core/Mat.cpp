@@ -52,7 +52,6 @@ void TransMat::report() const
 {
 	tra.report(true);
 	rot.report();
-	printf("\n");
 }
 
 TransMat::TransMat(TransMat &&mat) noexcept : tra(mat.tra), rot(std::move(mat.rot))
