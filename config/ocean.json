@@ -1,30 +1,27 @@
 {
-	"save_path": "out/ocean/6.ppm",
-	"n_epoch": 10,
-	"save_step": 1,
-	"verbose_step": 20,
-
+	"save_path": "out/ocean/10 sppm 500.ppm",
+	"n_epoch": 500,
+	"save_step": 5,
+	"verbose_step": 0,
 	"algorithm": {
 		"type": "sppm",
 		"light_dir": [-1, -2, -1],
-		"max_depth": 10,
+		"max_depth": 5,
 		"n_photon_per_iter": 1000000,
 		"init_radius": 1
 	},
-
 	"camera": {
 		"type": "basic",
-		"width": 500, "height": 800,
-		"pixel_size": 0.2, "length": 140.0,
-		"pos": [0, -10, 200],
-		"rot": [0, 175, 0]
+		"width": 1000, "height": 1600,
+		"pixel_size": 0.1, "length": 140.0, "focus": 110, "aperture": 1.2,
+		"pos": [0, -20, 200],
+		"rot": [0, 180, 0]
 	},
-
 	"scene": [
 		{
 			"name": "ocean",
 			"type": "obj",
-			"color": [0.94, 0.94, 0.99],
+			"color": [0.65, 0.70, 0.80],
 			"diff": 0.0,
 			"refr": 1.0,
 			"n_refr": 1.33,
@@ -35,7 +32,7 @@
 			},
 			"scale": 130,
 			"#tra": [0, -20, 60],
-			"tra": [0, -50, 60],
+			"tra": [0, -30, 60],
 			"rot": [0, 0, 0]
 		},
 		{
@@ -43,11 +40,11 @@
 			"color": "white",
 			"diff": 0,
 			"spec": 0,
-			"refr": 1.0,
+			"refr": 1.5,
 			"geo": {
 				"type": "sphere",
 				"radius": 18.5,
-				"pos": [30, -30, -10]
+				"pos": [30, -78, -10]
 			}
 		},
 		{
@@ -58,8 +55,104 @@
 			"refr": 0,
 			"geo": {
 				"type": "sphere",
-				"radius": 20,
-				"pos": [-30, -80, -10]
+				"radius": 17,
+				"pos": [-32, -36, 10]
+			}
+		},
+		{
+			"name": "bubbles",
+			"type": "group",
+			"color": "white",
+			"diff": 0,
+			"spec": 0,
+			"refr": 1.0,
+			"n_refr": 0.752,
+			"objects": [
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 2,
+						"pos": [55, -52, -10]
+					}
+				},
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 1.2,
+						"pos": [49, -55, 8]
+					}
+				},
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 1.1,
+						"pos": [-45, -70, 11]
+					}
+				},
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 0.8,
+						"pos": [-48, -65, 9]
+					}
+				},
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 0.8,
+						"pos": [-49, -66, 9]
+					}
+				},
+				{
+					"geo": {
+						"type": "sphere",
+						"radius": 0.9,
+						"pos": [-47, -66, 3]
+					}
+				}
+			]
+		},
+		{
+			"name": "cube",
+			"color": "white",
+			"rot": [0, 0, 38],
+			"tra": [-55, -110, -30],
+			"geo": {
+				"type": "cube",
+				"length": 25,
+				"width": 25,
+				"height": 25
+			}
+		},
+		{
+			"name": "small cube",
+			"color": "white",
+			"diff": 1,
+			"rot": [0, 0, -12],
+			"tra": [-10, -110, -35],
+			"geo": {
+				"type": "cube",
+				"length": 12,
+				"width": 12,
+				"height": 12
+			}
+		},
+		{
+			"name": "photo",
+			"texture": {
+				"path": "res/textures/Malibu.ppm",
+				"mat": [
+					[-12.94, 48.30, 2300],
+					[48.30, 12.94, 3000]
+				]
+			},
+			"tra": [-15, -110, 10],
+			"rot": [0, 0, 14],
+			"geo": {
+				"type": "cube",
+				"length": 50,
+				"width": 0.3,
+				"height": 35
 			}
 		},
 		{

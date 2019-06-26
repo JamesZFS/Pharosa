@@ -1,10 +1,10 @@
 {
-	"save_path": "out/dof/6-13 ptf debug[].ppm",
-	"n_epoch": 20,
-	"save_step": 1,
+	"save_path": "out/submit/dragon sppm 100.ppm",
+	"n_epoch": 100,
+	"save_step": 10,
 	"verbose_step": 20,
 	"algorithm": {
-		"type": "ptf",
+		"type": "sppm",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 6,
 		"n_photon_per_iter": 500000,
@@ -19,9 +19,10 @@
 	},
 	"scene": [
 		{
-			"name": "dragon far",
+			"name": "dragon",
 			"type": "obj",
-			"texture": {
+			"color": [0.5, 0.98, 0.67],
+			"#texture": {
 				"path": "res/textures/marble2.ppm",
 				"scale": 10
 			},
@@ -33,8 +34,9 @@
 		},
 		{
 			"name": "sphere",
-			"diff": 0.8,
-			"spec": 0.2,
+			"diff": 0,
+			"refr": 1,
+			"color": [0.95, 0.95, 0.75],
 			"texture": {
 				"path": "res/textures/marble1.ppm",
 				"mat": [
@@ -55,7 +57,7 @@
 				{
 					"name": "front wall",
 					"texture": {
-						"path": "res/textures/bamboo.ppm",
+						"path": "res/textures/marble2.ppm",
 						"mat": [
 							[0, 2, 9],
 							[2, 0, 100]
@@ -98,7 +100,7 @@
 				},
 				{
 					"name": "left",
-					"texture": "res/textures/floor3.ppm",
+					"texture": "res/textures/marble1.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
@@ -109,7 +111,7 @@
 				},
 				{
 					"name": "right",
-					"texture": "res/textures/floor3.ppm",
+					"texture": "res/textures/marble1.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {

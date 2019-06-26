@@ -63,7 +63,6 @@ inline T max3(const T &a, const T &b, const T &c)
 
 // ****************** compile options ******************
 #define __DEV_STAGE__
-//#define __PRINT_N_ITER__
 
 #ifdef __DEV_STAGE__
 #define debug(...) printf(__VA_ARGS__)

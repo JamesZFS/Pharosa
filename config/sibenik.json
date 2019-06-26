@@ -1,6 +1,6 @@
 {
-	"save_path": "out/sibenik/Angel Lucy2 dof a1 sppm e100.ppm",
-	"n_epoch": 100,
+	"save_path": "out/sibenik/Angel Lucy2 dof a1 sppm e500.ppm",
+	"n_epoch": 500,
 	"save_step": 5,
 	"verbose_step": 0,
 
@@ -64,7 +64,7 @@
 		},
 		{
 			"name": "light source",
-			"emission": [69, 60, 56],
+			"emission": [70, 60, 58],
 			"geo": {
 				"type": "sphere",
 				"radius": 23,
@@ -73,6 +73,7 @@
 		},
 		{
 			"name": "sky doom",
+			"type": "skip",
 			"emission": [20, 20, 22],
 			"color": [0.9, 0.9, 0.98],
 			"geo": {

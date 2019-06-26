@@ -10,6 +10,9 @@ Cube::Cube(const Pos &ox_, const Pos &oy_, const Pos &oz_, const Pos &o_) :
 		ox(ox_), oy(oy_), oz(oz_), o(o_)
 {
 	Arr<Dir, 3> n{ox_ ^ oy_, oy_ ^ oz_, oz_ ^ ox_};
+	n[0].unitize();
+	n[1].unitize();
+	n[2].unitize();
 	slab = {{
 					{{InfPlane(n[0], o_), InfPlane(n[0], o_ + oz_)}},    // plane oxy, oxy'
 					{{InfPlane(n[1], o_), InfPlane(n[1], o_ + ox_)}},    // oyz, oyz'

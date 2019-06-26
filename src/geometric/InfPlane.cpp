@@ -11,6 +11,7 @@ InfPlane::InfPlane(const Dir &n_, const Pos &p_) :
 		p(p_), n(n_), D(-(p % n))
 {
 	Dir ex, ey;
+	n.unitize();
 	n.getOrthogonalBasis(ex, ey);
 	cu = ex, cv = ey;
 }

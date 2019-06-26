@@ -1,10 +1,10 @@
 {
-	"save_path": "out/glass/4 sppm e500.ppm",
-	"n_epoch": 500,
+	"save_path": "out/glass/4 ptf.ppm",
+	"n_epoch": 20,
 	"verbose_step": 20,
-	"save_step": 5,
+	"save_step": 1,
 	"algorithm": {
-		"type": "sppm",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 10,
 		"n_photon_per_iter": 1000000,

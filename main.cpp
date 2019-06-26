@@ -5,9 +5,7 @@
  */
 
 #include "src/Renderer.h"
-#include "src/utils/funcs.hpp"
-#include "src/test.h"
-using namespace std;
+
 
 #ifdef __DEV_STAGE__
 size_t __counter__ = 0;
@@ -16,8 +14,9 @@ size_t __print_cnt__ = 0;
 size_t __match_cnt__ = 0;
 size_t __kdnode_max_depth__ = 0;
 size_t __kdgrid_max_depth__ = 0;
-
 #endif
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {

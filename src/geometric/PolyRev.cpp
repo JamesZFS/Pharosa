@@ -7,6 +7,7 @@
 #include "../utils/solvers/NonLinear.h"
 #include "../scene/Intersection.h"
 
+real PolyRev::solve_precision = 1e-2;
 
 struct BFun //: NonLinear::BinFun
 {
@@ -63,7 +64,7 @@ void PolyRev::applyTransform(const TransMat &mat_)
 
 bool PolyRev::intersect(const Ray &ray, real &t, Intersection &isect) const
 {
-	Ray ray_local(mat | ray.org, mat.rot | ray.dir);    // to local todo
+	Ray ray_local(mat | ray.org, mat.rot | ray.dir);    // to local
 	Polynomial
 			L0(ray_local.org.x, ray_local.dir.x),
 			L1(ray_local.org.y, ray_local.dir.y),
@@ -71,16 +72,16 @@ bool PolyRev::intersect(const Ray &ray, real &t, Intersection &isect) const
 	L1 = L1 * L1 + L2 * L2;
 	BFun f0(phi, L0);
 	BFun f1(psi_2, L1);
-	real u = Funcs::randf(1.0), ti = 0.0;
+	real u = Funcs::randf(1.0), ti = Funcs::randf(EPS);
 	// Newton Iteration
-	if (!NonLinear::Solve2DTol(f0, f1, u, ti, 1e-2) || u < 0 || 1 < u || ti < EPS || ti >= t) return false;
+	if (!NonLinear::Solve2DTol(f0, f1, u, ti, solve_precision) || u < 0 || 1 < u || ti < 0 || ti >= t)
+		return false;
 
 	// update:
 	t = ti;
-	real
-			y = ray_local.org.y + t * ray_local.dir.y, z = ray_local.org.z + t * ray_local.dir.z,
-			psi_u = psi(u), phi_p_u = phi.derivative(u),
-			cos_v = y / psi_u, sin_v = z / psi_u;
+	real y = ray_local.org.y + t * ray_local.dir.y, z = ray_local.org.z + t * ray_local.dir.z;
+	real psi_u = psi(u), phi_p_u = phi.derivative(u);
+	real cos_v = y / psi_u, sin_v = z / psi_u;
 
 	isect.n = mat.rot * Pos(-psi.derivative(u), phi_p_u * cos_v, phi_p_u * sin_v);
 	isect.n.unitize();

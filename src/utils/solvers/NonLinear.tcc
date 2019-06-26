@@ -5,7 +5,8 @@
 #include "Linear.h"
 
 #define PRINT_N_ITER_ON 0
-#define MAX_ITER 1000
+#define MAX_ITER 50
+#define EPS_RECALL 0.1
 
 namespace NonLinear
 {
@@ -26,7 +27,7 @@ namespace NonLinear
 			}
 			x0_prev = x0, x1_prev = x1;
 		}
-		return false;    // still not converged yet
+		return (fabsf(f0(x0, x1)) < EPS_RECALL && fabsf(f1(x0, x1)) < EPS_RECALL);
 	}
 
 	template<class Fun0, class Fun1>
@@ -85,3 +86,7 @@ namespace NonLinear
 		return false;
 	}
 }
+
+#undef PRINT_N_ITER_ON
+#undef MAX_ITER
+#undef EPS_RECALL

@@ -31,6 +31,8 @@ struct PolyRev : Geometry
 	void report() const override;
 
 	static PolyRev *acquire(const Json &json);
+
+	static real solve_precision;
 };
 
 

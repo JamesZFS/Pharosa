@@ -1,10 +1,11 @@
 {
-	"save_path": "out/Bezier/6-13 Bezier ptf.ppm",
-	"n_epoch": 10,
+	"save_path": "out/Bezier/6-13 Bezier rc.ppm",
+	"n_epoch": 5,
 	"save_step": 1,
 	"verbose_step": 10,
+	"solve_precision": 0.1,
 	"algorithm": {
-		"type": "ptf",
+		"type": "rc",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5,
 		"n_photon_per_iter": 100000,
@@ -12,23 +13,40 @@
 	},
 	"camera": {
 		"type": "basic",
-		"pos": [0, 0, 600],
-		"rot": [0, 180, 0],
+		"#pos": [0, 0, 600],
+		"#rot": [0, 180, 0],
+		"rot": [0, -115, 0],
+		"pos": [-30, -200, 80],
+
 		"width": 1024, "height": 768,
-		"pixel_size": 0.05, "length": 130.0, "focus": 250.0, "aperture": 0.8
+		"pixel_size": 0.1, "length": 130.0, "focus": 250.0, "aperture": 0.8
 	},
 	"scene": [
 		{
 			"name": "BezierRev",
 			"color":[0.9, 0.9, 1.0],
-			"rot": [90, 0, 0],
+			"rot": [10, 20, 0],
+			"tra": [-30, 0, 0],
 			"#texture": {
 				"path": "res/floor1.ppm",
 				"scale": 10.0
 			},
 			"geo": {
 				"type": "Bezier revolution",
-				"control_points": [[-100, 0],[-50, 0], [0, 80], [50, 0], [100, 0]]
+				"$control_points": [[-7, 0],[-6.3, 4], [0, 1.5], [2.5, 0.05], [5, 0]],
+				"control_points": [[-70, 0],[-63, 40], [0, 15], [25, 0.1], [50, 0]],
+				"#control_points": [[-25, 0],[20, 20],[30, 30]]
+			}
+		},
+		{
+			"name": "The Drop",
+			"diff": 0,
+			"spec": 1,
+			"rot": [10, 0, 0],
+			"tra": [-30, 0, 0],
+			"geo": {
+				"type": "Bezier rev",
+				"control_points": [[0, 0], [2, 10], [10, 10], [21, 3.0], [40, 0]]
 			}
 		},
 		{
@@ -61,16 +79,18 @@
 				},
 				{
 					"name": "floor",
+					"texture": "res/textures/floor1.ppm",
 					"diff": 0.5,
 					"spec": 0.5,
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
-						"point": [0, -60, 0]
+						"point": [0, -200, 0]
 					}
 				},
 				{
 					"name": "ceiling",
+					"color": "Yellow",
 					"geo": {
 						"type": "infplane",
 						"normal": [0, 1, 0],
@@ -81,6 +101,7 @@
 					"name": "left",
 					"diff": 0.5,
 					"spec": 0.5,
+					"color": "red",
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -91,6 +112,7 @@
 					"name": "right",
 					"diff": 0.5,
 					"spec": 0.5,
+					"color": "blue",
 					"geo": {
 						"type": "infplane",
 						"normal": [1, 0, 0],
@@ -100,13 +122,32 @@
 			]
 		},
 		{
-			"name": "light source",
-			"emission": [16, 15, 15],
-			"geo": {
-				"type": "cube",
-				"pos": [-40, 78, -60],
-				"length": 80, "width": 20, "height": 80
-			}
+			"type": "group",
+			"name": "light mesh",
+			"emission": [15, 15, 15],
+			"tra": [0, 78, 0],
+			"objects": [
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[-10, 0, -10],
+							[10, 0, -10],
+							[-10, 0, 10]
+						]
+					}
+				},
+				{
+					"geo": {
+						"type": "triangle",
+						"vertices": [
+							[10, 0, 10],
+							[-10, 0, 10],
+							[10, 0, -10]
+						]
+					}
+				}
+			]
 		}
 	]
 }

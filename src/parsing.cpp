@@ -52,6 +52,7 @@ void Renderer::setup(const Json &json)
 	n_epoch = json.at("n_epoch");
 	save_step = json.value("save_step", 0);
 	verbose_step = json.value("verbose_step", 0);
+	PolyRev::solve_precision = json.value("solve_precision", 1e-2);
 
 	// camera
 	camera = Camera::acquire(json.at("camera"));
@@ -196,7 +197,8 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 			}
 			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
 			for (const Json &object: group) {    // parse each object in the group
-				if (object.has("color") || object.has("emission") || object.has("reft") || object.has("texture")) {
+				if (object.has("color") || object.has("emission") || object.has("diff") || object.has("spec") ||
+					object.has("refr") || object.has("n_refr") || object.has("texture")) {
 					sub_material = Material::acquire(object);    // new a customized mtr
 					self->materials.push_back(sub_material);
 				}
@@ -236,7 +238,7 @@ Material *Material::acquire(const Json &json)
 	if (json.has("diff")) self->diff = json["diff"];
 	if (json.has("spec")) self->spec = json["spec"];
 	if (json.has("refr")) self->refr = json["refr"];
-	if (json.has("n_refr")) self->refr = json["n_refr"];
+	if (json.has("n_refr")) self->n_refr = json["n_refr"];
 	if (json.has("texture")) {
 		const Json &t_json = json["texture"];
 		if (t_json.is_string()) {
@@ -324,7 +326,7 @@ PolyRev *PolyRev::acquire(const Json &json)
 
 BezierRev *BezierRev::acquire(const Json &json)
 {
-	return new BezierRev(json.at("control_points"));
+	return new BezierRev(json.at("control_points"), json.value("scale", 1.f));
 }
 
 // core: using constructor's name for expediency

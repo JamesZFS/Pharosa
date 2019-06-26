@@ -63,7 +63,7 @@ Color Algorithm::computeLd(const Intersection &isect) const
 	}
 	r_out.offset(EPS);
 	Intersection nxt_isect;
-	if (!scene.intersectAny(r_out, nxt_isect, true))    // a missing sample
+	if (!scene.intersectAny(r_out, nxt_isect, false))    // a missing sample todo
 		return Color::BLACK;
 	if (nxt_isect.hit != light)
 		return Color::BLACK;    // shadow ray
@@ -71,7 +71,8 @@ Color Algorithm::computeLd(const Intersection &isect) const
 	/**	Ld = f * Le_i * G / pdf
  	 * where f = 1 / pi, G = cos(theta_i) for sphere or cos(theta_i) * cos(theta_i') / dist^2
  	 */
-	return light->mtr->emi * (M_1_PIF * G * inv_pdf);
+//	return light->mtr->emi * (M_1_PIF * G * inv_pdf);
+	return nxt_isect.getEmission() * (M_1_PIF * G * inv_pdf);
 }
 
 void Algorithm::start(size_t n_epoch, size_t save_step,

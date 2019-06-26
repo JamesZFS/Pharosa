@@ -8,9 +8,7 @@
 #include "Pharosa.h"
 
 class Scene;
-
 class Camera;
-
 class Algorithm;
 
 // frontend of all, encapsulates a GI Algorithm, a Camera and a Scene Scene

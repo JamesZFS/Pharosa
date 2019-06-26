@@ -16,7 +16,7 @@ struct BezierRev : PolyRev, Finite
 	Pos c;
 	BoundingBox bbox;
 
-	BezierRev(const List<Arr<real, 2>> &ctrl_pts);
+	BezierRev(const List<Arr<real, 2>> &ctrl_pts, real scale = 1);
 
 	Type type() const override
 	{ return BEZIERREV; }

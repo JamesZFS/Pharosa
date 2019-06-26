@@ -12,8 +12,11 @@ Ray BasicCamera::shootRayAt(real i, real j) const
 	// using dir = x' ex + y' ey + ez * CAM_FOCUS
 //	return {pos_ez_length + tmp, ez_length + ex * xs + ey * ys};
 	Pos tmp = ex * xs + ey * ys;
-//	Ray ray(pos_ez_length + tmp, ez_length + tmp);
+#if CAMERA_PUSH_IN
+	Ray ray(pos_ez_length + tmp, ez_length + tmp);
+#else
 	Ray ray(pos, ez_length + tmp);
+#endif
 	ray.dir.unitize();
 	return ray;
 }

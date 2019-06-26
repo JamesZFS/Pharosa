@@ -25,8 +25,11 @@ struct Intersection
 	inline const Color &getColor() const    // get texture color at pos
 	{ return hit->mtr->texture ? hit->mtr->textureAt(u, v) : hit->mtr->color; }
 
-	inline const Color &getEmission() const    // get texture color at pos
-	{ return hit->mtr->emi; }
+//	inline const Color &getEmission() const    // get texture color at pos
+//	{ return hit->mtr->emi; }
+
+	inline Color getEmission() const    // get texture color at pos
+	{ return getColor().mul(hit->mtr->emi); }
 
 	inline void complementData()
 	{
