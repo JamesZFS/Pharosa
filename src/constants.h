@@ -14,8 +14,7 @@ typedef float real;    // real number precision
 #define M_PI_2F      1.57079632679489661923132169163975144f   // pi/2
 #define M_PI_4F      0.785398163397448309615660845819875721f  // pi/4
 #define DEG          0.017453292519943295769236907684886127f    // degree to rad
-
-extern const real INF;
-extern const real EPS;
+#define INF          1e20f
+#define EPS          1e-3f
 
 #endif //PHAROSA_CONSTANTS_H
