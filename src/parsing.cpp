@@ -156,6 +156,9 @@ Algorithm *Algorithm::acquire(const Json &json, const Scene &scene, Camera &came
 			return new SPPM(scene, camera);    // use default
 		}
 	}
+	else if (type == "Shadow Map" || type == "sm") {
+        return new ShadowMap(scene, camera);
+	}
 	else TERMINATE("Error: got unidentified algorithm type \"%s\".", type.data());
 }
 

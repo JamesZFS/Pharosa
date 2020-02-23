@@ -11,5 +11,6 @@
 #include "PTE.h"
 #include "PTF.h"
 #include "SPPM.h"
+#include "ShadowMap.h"
 
 #endif //PHAROSA_ALG_ALL_H

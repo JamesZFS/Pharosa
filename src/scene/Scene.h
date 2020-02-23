@@ -47,6 +47,9 @@ public:
 	 */
 	bool intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only = false) const;
 
+    // determine if the ray *possibly* intersects with some light
+    bool intersectAnyLight(const Ray &ray) const;
+
 	static Scene *acquire(const Json &json);    // load from json
 };
 

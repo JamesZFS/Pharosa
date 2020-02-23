@@ -40,7 +40,6 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only
 	// for KD-Tree
 #if KD_TREE_ON
 	kd_root->intersect(ray, t, isect);
-	if (!isect.hit) return false;
 #else
 	for (const Object *obj : meshes) {
 		if (obj->geo->intersect(ray, t, isect)) {
@@ -48,6 +47,7 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only
 		}
 	}
 #endif
+    if (!isect.hit) return false;
 
 	// if intersected:
 	if (comp_hit_only) return true;
@@ -55,6 +55,16 @@ bool Scene::intersectAny(const Ray &ray, Intersection &isect, bool comp_hit_only
 	isect.r_in = ray;
 	isect.complementData();
 	return true;
+}
+
+bool Scene::intersectAnyLight(const Ray &ray) const {
+    // todo build another kd tree!
+    real t;
+    Intersection isect;
+    for (const Object *light : light_sources) {
+        if (light->geo->intersect(ray, t, isect)) return true;
+    }
+    return false;
 }
 
 void Scene::prepare()

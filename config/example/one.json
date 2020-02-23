@@ -1,7 +1,7 @@
 {
-	"save_path": "one 5.ppm",
-	"n_epoch": 20,
-	"save_step": 5,
+	"save_path": "one 6.ppm",
+	"n_epoch": 10,
+	"save_step": 0,
 	"verbose_step": 0,
 
 	"algorithm": {

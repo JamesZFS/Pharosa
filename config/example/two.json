@@ -1,10 +1,10 @@
 {
-	"save_path": "out/two/ptf 6-12.ppm",
-	"n_epoch": 20,
-	"save_step": 5,
+	"save_path": "out/two/shadow map2.ppm",
+	"n_epoch": 1000,
+	"save_step": 100,
 
 	"algorithm": {
-		"type": "ptf",
+		"type": "sm",
 		"light_dir": [-1, -2, -1],
 		"n_photon_per_iter": 200000,
 		"init_radius": 3,
@@ -54,7 +54,6 @@
 		{
 			"name": "green sphere",
 			"color": "green",
-			"emission": "none",
 			"refr": 1.0,
 			"diff": 0,
 			"spec": 0,
@@ -93,7 +92,7 @@
 				},
 				{
 					"name": "floor",
-					"texture": "res/floor1.ppm",
+					"texture": "res/textures/floor1.ppm",
 					"#color": [0.95, 1.0, 0.7],
 					"diff": 0.6,
 					"spec": 0.4,
@@ -137,7 +136,7 @@
 			"emission": [15, 15, 15],
 			"geo": {
 				"type": "sphere",
-				"radius": 20,
+				"radius": 100,
 				"pos": [0, 80, 0]
 			}
 		},
