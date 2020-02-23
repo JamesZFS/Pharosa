@@ -5,7 +5,7 @@
 编写和重构历时一学期，主要实现算法：
 - Ray Casting
 - Path Tracing
-- Stochastic Progressive
+- Stochastic Progressive Photon Mapping
 
 相机：
 - 视点相机
