@@ -200,16 +200,16 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 			}
 			if (!group.is_array()) TERMINATE("Error, got invalid group object type.");
 			for (const Json &object: group) {    // parse each object in the group
-				if (object.has("color") || object.has("emission") || object.has("diff") || object.has("spec") ||
-					object.has("refr") || object.has("n_refr") || object.has("texture")) {
+				if (object.contains("color") || object.contains("emission") || object.contains("diff") || object.contains("spec") ||
+					object.contains("refr") || object.contains("n_refr") || object.contains("texture")) {
 					sub_material = Material::acquire(object);    // new a customized mtr
 					self->materials.push_back(sub_material);
 				}
 				else {
 					sub_material = material;
 				}
-				geo = Geometry::acquire(object.has("geo") ? object["geo"] : object);    // new geo
-				if (object.has("tra") || object.has("rot")) {
+				geo = Geometry::acquire(object.contains("geo") ? object["geo"] : object);    // new geo
+				if (object.contains("tra") || object.contains("rot")) {
 					geo->applyTransform(trans_mat * TransMat(object));
 				}
 				else {
@@ -236,25 +236,25 @@ Scene *Scene::acquire(const Json &json)   // json should be an array
 Material *Material::acquire(const Json &json)
 {
 	auto self = new Material;    // default material
-	if (json.has("color")) self->color = Color(json["color"]);
-	if (json.has("emission")) self->emi = Emission(json["emission"]);
-	if (json.has("diff")) self->diff = json["diff"];
-	if (json.has("spec")) self->spec = json["spec"];
-	if (json.has("refr")) self->refr = json["refr"];
-	if (json.has("n_refr")) self->n_refr = json["n_refr"];
-	if (json.has("texture")) {
+	if (json.contains("color")) self->color = Color(json["color"]);
+	if (json.contains("emission")) self->emi = Emission(json["emission"]);
+	if (json.contains("diff")) self->diff = json["diff"];
+	if (json.contains("spec")) self->spec = json["spec"];
+	if (json.contains("refr")) self->refr = json["refr"];
+	if (json.contains("n_refr")) self->n_refr = json["n_refr"];
+	if (json.contains("texture")) {
 		const Json &t_json = json["texture"];
 		if (t_json.is_string()) {
 			self->texture = new Image(String(t_json));
 		}
 		else {
 			self->texture = new Image(String(t_json.at("path")));
-			if (t_json.has("scale")) {
+			if (t_json.contains("scale")) {
 				real scale = t_json["scale"];
 				self->Auu = scale;
 				self->Avv = scale;
 			}
-			if (t_json.has("mat")) {
+			if (t_json.contains("mat")) {
 				const Json &mat = t_json["mat"];
 				self->Auu = mat.at(0).at(0);
 				self->Auv = mat.at(0).at(1);
@@ -301,19 +301,19 @@ InfPlane *InfPlane::acquire(const Json &json)
 
 Cube *Cube::acquire(const Json &json)
 {
-	if (json.has("basis")) {
+	if (json.contains("basis")) {
 		return new Cube(Pos(json.at("basis").at(0)), Pos(json.at("basis").at(1)), Pos(json.at("basis").at(2)),
-						json.has("pos") ? Pos(json["pos"]) : Pos());
+						json.contains("pos") ? Pos(json["pos"]) : Pos());
 	}
 	else {
 		return new Cube(json.value("length", 1.0f), json.value("width", 1.0f), json.value("height", 1.0f),
-						json.has("pos") ? Pos(json["pos"]) : Pos());
+						json.contains("pos") ? Pos(json["pos"]) : Pos());
 	}
 }
 
 Sphere *Sphere::acquire(const Json &json)
 {
-	return new Sphere(json.value("radius", 1.0f), json.has("pos") ? Pos(json["pos"]) : Pos());
+	return new Sphere(json.value("radius", 1.0f), json.contains("pos") ? Pos(json["pos"]) : Pos());
 }
 
 Triangle *Triangle::acquire(const Json &json)
@@ -360,6 +360,6 @@ ElAg::ElAg(const Json &json) :    // use degrees
 
 // transform matrix
 TransMat::TransMat(const Json &json) :    // should have "tra" and "rot" key, if not - identical transform
-		TransMat(json.has("tra") ? Pos(json["tra"]) : Pos(), json.has("rot") ? ElAg(json["rot"]) : ElAg())
+		TransMat(json.contains("tra") ? Pos(json["tra"]) : Pos(), json.contains("rot") ? ElAg(json["rot"]) : ElAg())
 {
 }

@@ -1,12 +1,11 @@
 {
 	"save_path": "farmhouse.ppm",
-	"n_epoch": 1,
-	"prev_path": "",
-	"save_step": 0,
+	"n_epoch": 10,
+	"save_step": 1,
 	"verbose_step": 0,
 
 	"algorithm": {
-		"type": "rc",
+		"type": "ptf",
 		"light_dir": [-1, -2, -1],
 		"max_depth": 5
 	},

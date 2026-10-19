@@ -1,6 +1,6 @@
 {
-	"save_path": "out/ocean/10 sppm 500.ppm",
-	"n_epoch": 500,
+	"save_path": "out/sppm.ppm",
+	"n_epoch": 20,
 	"save_step": 5,
 	"verbose_step": 0,
 	"algorithm": {
@@ -25,7 +25,7 @@
 			"diff": 0.0,
 			"refr": 1.0,
 			"n_refr": 1.33,
-			"path": "/Users/james/Test/CG/Pharosa/res/ocean - done.obj",
+			"path": "res/ocean - done.obj",
 			"#texture": {
 				"path": "res/textures/water.ppm",
 				"scale": 5
@@ -140,17 +140,17 @@
 		{
 			"name": "photo",
 			"texture": {
-				"path": "res/textures/Malibu.ppm",
+				"path": "res/textures/zoe.ppm",
 				"mat": [
-					[-12.94, 48.30, 2300],
-					[48.30, 12.94, 3000]
+					[-12.94, 48.30, 900],
+					[48.30, 12.94, 0]
 				]
 			},
 			"tra": [-15, -110, 10],
 			"rot": [0, 0, 14],
 			"geo": {
 				"type": "cube",
-				"length": 50,
+				"length": 45,
 				"width": 0.3,
 				"height": 35
 			}
